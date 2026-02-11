@@ -1,0 +1,16 @@
+[package]
+name = "ruspell-dict"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+description = "Dictionary loading and lookup for ruspell"
+
+[dependencies]
+hashbrown = { workspace = true }
+foldhash = { workspace = true }
+flate2 = { workspace = true }
+thiserror = { workspace = true }
+
+[dev-dependencies]
+insta = { workspace = true }

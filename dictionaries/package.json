@@ -1,0 +1,20 @@
+{
+  "name": "dictionaries",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@cspell/dict-cpp": "^7.0.2",
+    "@cspell/dict-django": "^4.1.6",
+    "@cspell/dict-en_us": "^4.4.29",
+    "@cspell/dict-python": "^4.2.25",
+    "@cspell/dict-software-terms": "^5.1.20"
+  }
+}

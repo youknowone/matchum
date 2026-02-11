@@ -1,0 +1,15 @@
+{
+    "version": "0.2",
+    "language": "en",
+    "dictionaryDefinitions": [
+        {
+            "name": "en_us",
+            "path": "../../dictionaries/node_modules/@cspell/dict-en_us/en_US.trie.gz"
+        },
+        {
+            "name": "software-terms",
+            "path": "../../dictionaries/node_modules/@cspell/dict-software-terms/dict/softwareTerms.txt"
+        }
+    ],
+    "dictionaries": ["en_us", "software-terms"]
+}

@@ -1,0 +1,22 @@
+[package]
+name = "ruspell-config"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+description = "cspell.json configuration parsing for ruspell"
+
+[dependencies]
+serde = { workspace = true }
+serde_json = { workspace = true }
+json5 = { workspace = true }
+regex = { workspace = true }
+globset = { workspace = true }
+thiserror = { workspace = true }
+ureq = { workspace = true }
+tar = { workspace = true }
+flate2 = { workspace = true }
+
+[dev-dependencies]
+insta = { workspace = true }
+tempfile = "3"

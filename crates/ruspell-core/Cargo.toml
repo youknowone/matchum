@@ -1,0 +1,17 @@
+[package]
+name = "ruspell-core"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+description = "Core spell checking logic: word splitting, validation pipeline"
+
+[dependencies]
+ruspell-dict = { workspace = true }
+ruspell-config = { workspace = true }
+regex = { workspace = true }
+unicode-xid = { workspace = true }
+thiserror = { workspace = true }
+
+[dev-dependencies]
+insta = { workspace = true }
