@@ -1,3 +1,4 @@
+// spell-checker:ignore abab ababa
 /// Damerau-Levenshtein edit distance.
 ///
 /// Supports 4 operations (each cost 1):
@@ -202,12 +203,7 @@ mod tests {
     #[test]
     fn select_nearest_basic() {
         let candidates = ["walk", "talked"];
-        let results = select_nearest_words(
-            "talk",
-            candidates.iter().copied(),
-            5,
-            3,
-        );
+        let results = select_nearest_words("talk", candidates.iter().copied(), 5, 3);
         assert_eq!(results.len(), 2);
         assert_eq!(results[0], ("walk".into(), 1));
         assert_eq!(results[1], ("talked".into(), 2));

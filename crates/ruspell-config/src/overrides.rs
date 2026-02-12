@@ -2,6 +2,51 @@ use crate::settings::{CSpellSettings, OverrideSettings};
 use globset::{Glob, GlobMatcher};
 use std::path::Path;
 
+/// Pre-compiled override with glob matcher.
+pub struct CompiledOverride {
+    matcher: GlobMatcher,
+    settings: OverrideSettings,
+}
+
+/// Pre-compile all overrides' glob patterns once.
+pub fn compile_overrides(settings: &CSpellSettings) -> Vec<CompiledOverride> {
+    settings
+        .overrides
+        .iter()
+        .filter_map(|ov| {
+            Glob::new(&ov.filename).ok().map(|g| CompiledOverride {
+                matcher: g.compile_matcher(),
+                settings: ov.clone(),
+            })
+        })
+        .collect()
+}
+
+/// Apply pre-compiled overrides. Returns None if no override matches,
+/// avoiding the CSpellSettings clone entirely.
+pub fn apply_compiled_overrides(
+    settings: &CSpellSettings,
+    file_path: &Path,
+    compiled: &[CompiledOverride],
+) -> Option<CSpellSettings> {
+    let matching: Vec<&OverrideSettings> = compiled
+        .iter()
+        .filter(|co| matches_compiled(&co.matcher, file_path))
+        .map(|co| &co.settings)
+        .collect();
+
+    if matching.is_empty() {
+        return None;
+    }
+
+    let mut result = settings.clone();
+    result.overrides = Vec::new();
+    for ov in matching {
+        merge_override(&mut result, ov);
+    }
+    Some(result)
+}
+
 /// Apply matching overrides from a CSpellSettings to produce an effective
 /// configuration for a specific file.
 pub fn apply_overrides(settings: &CSpellSettings, file_path: &Path) -> CSpellSettings {
@@ -16,6 +61,19 @@ pub fn apply_overrides(settings: &CSpellSettings, file_path: &Path) -> CSpellSet
     }
 
     result
+}
+
+fn matches_compiled(matcher: &GlobMatcher, file_path: &Path) -> bool {
+    if matcher.is_match(file_path) {
+        return true;
+    }
+    if let Some(name) = file_path.file_name() {
+        if matcher.is_match(Path::new(name)) {
+            return true;
+        }
+    }
+    let file_str = file_path.to_string_lossy();
+    matcher.is_match(file_str.as_ref())
 }
 
 /// Check if a file path matches an override's filename glob pattern.
@@ -47,14 +105,18 @@ fn matches_override(pattern: &str, file_path: &Path) -> bool {
 fn merge_override(settings: &mut CSpellSettings, ov: &OverrideSettings) {
     // Extend word lists
     settings.words.extend(ov.words.iter().cloned());
-    settings.ignore_words.extend(ov.ignore_words.iter().cloned());
+    settings
+        .ignore_words
+        .extend(ov.ignore_words.iter().cloned());
     settings.flag_words.extend(ov.flag_words.iter().cloned());
     settings
         .ignore_reg_exp_list
         .extend(ov.ignore_reg_exp_list.iter().cloned());
 
     // Extend dictionaries
-    settings.dictionaries.extend(ov.dictionaries.iter().cloned());
+    settings
+        .dictionaries
+        .extend(ov.dictionaries.iter().cloned());
 
     // Override scalar values if set
     if let Some(ref lang) = ov.language {
@@ -146,8 +208,7 @@ mod tests {
             ..Default::default()
         };
 
-        let effective =
-            apply_overrides(&settings, Path::new("src/types.generated.ts"));
+        let effective = apply_overrides(&settings, Path::new("src/types.generated.ts"));
         assert_eq!(effective.enabled, Some(false));
     }
 }

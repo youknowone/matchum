@@ -5,11 +5,13 @@ edition = "2021"
 publish = false
 
 [workspace]
+default-members = ["crates/ruspell"]
 members = [
     "crates/ruspell-core",
     "crates/ruspell-dict",
     "crates/ruspell-config",
-    "crates/ruspell-cli",
+    "crates/ruspell",
+    "crates/cargo-ruspell",
 ]
 resolver = "2"
 
@@ -17,7 +19,7 @@ resolver = "2"
 version = "0.1.0"
 edition = "2021"
 license = "MIT"
-rust-version = "1.75"
+rust-version = "1.91"
 
 [workspace.dependencies]
 # Serialization
@@ -36,9 +38,11 @@ globset = "0.4"
 clap = { version = "4", features = ["derive"] }
 
 # Performance
-hashbrown = "0.15"
+hashbrown = "0.16"
 foldhash = "0.1"
 rayon = "1"
+memmap2 = "0.9"
+compact_str = "0.8"
 
 # Compression
 flate2 = "1"
@@ -49,6 +53,7 @@ tar = "0.4"
 
 # Unicode
 unicode-xid = "0.2"
+unicode-normalization = "0.1"
 
 # Hashing
 md-5 = "0.10"
@@ -56,6 +61,9 @@ md-5 = "0.10"
 # Error handling
 thiserror = "2"
 anyhow = "1"
+
+# Config formats
+toml = "0.8"
 
 # Testing
 insta = "1"
@@ -65,13 +73,15 @@ ruspell-core = { path = "crates/ruspell-core" }
 ruspell-dict = { path = "crates/ruspell-dict" }
 ruspell-config = { path = "crates/ruspell-config" }
 
+[profile.release]
+lto = true
+codegen-units = 1
+
 [dev-dependencies]
 ruspell-core = { workspace = true }
 ruspell-dict = { workspace = true }
 ruspell-config = { workspace = true }
+compact_str = { workspace = true }
 regex = { workspace = true }
 serde_json = { workspace = true }
-unicode-normalization = "0.1"
-
-[profile.release]
-debug = true
+unicode-normalization = { workspace = true }

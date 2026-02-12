@@ -1,18 +1,68 @@
+use crate::convert;
 use crate::npm_fetch;
+use crate::ruspell_config::RuspellConfig;
 use crate::settings::CSpellSettings;
 use std::collections::HashSet;
 use std::path::{Path, PathBuf};
 
+/// Config file search locations, matching cspell's configLocations.ts.
+/// JS/TS/TOML config formats are excluded (require runtime execution).
 const CONFIG_NAMES: &[&str] = &[
-    "cspell.json",
+    // Original locations
     ".cspell.json",
-    ".cspellrc.json",
+    "cspell.json",
+    ".cSpell.json",
+    "cSpell.json",
+    // Original locations jsonc
+    ".cspell.jsonc",
+    "cspell.jsonc",
+    // Alternate locations
+    ".vscode/cspell.json",
+    ".vscode/cSpell.json",
+    ".vscode/.cspell.json",
+    // Standard locations
+    ".cspell.config.json",
+    ".cspell.config.jsonc",
+    ".cspell.config.yaml",
+    ".cspell.config.yml",
     "cspell.config.json",
-    "cspell.yaml",
-    ".cspellrc.yaml",
+    "cspell.config.jsonc",
     "cspell.config.yaml",
-    ".cspellrc",
+    "cspell.config.yml",
+    // YAML
+    ".cspell.yaml",
+    ".cspell.yml",
+    "cspell.yaml",
+    "cspell.yml",
+    // .config/
+    ".config/.cspell.json",
+    ".config/cspell.json",
+    ".config/.cSpell.json",
+    ".config/cSpell.json",
+    ".config/.cspell.jsonc",
+    ".config/cspell.jsonc",
+    ".config/cspell.config.json",
+    ".config/cspell.config.jsonc",
+    ".config/cspell.config.yaml",
+    ".config/cspell.config.yml",
+    ".config/.cspell.config.json",
+    ".config/.cspell.config.jsonc",
+    ".config/.cspell.config.yaml",
+    ".config/.cspell.config.yml",
+    ".config/cspell.yaml",
+    ".config/cspell.yml",
 ];
+
+/// Result of a prioritized config search.
+#[derive(Debug)]
+pub enum ConfigFound {
+    /// Found a native `ruspell.toml`.
+    Ruspell(PathBuf),
+    /// Found a cspell config file (json/jsonc/yaml).
+    Cspell(PathBuf),
+    /// No config found.
+    None,
+}
 
 #[derive(Debug, thiserror::Error)]
 pub enum ResolveError {
@@ -20,6 +70,8 @@ pub enum ResolveError {
     Io(#[from] std::io::Error),
     #[error("JSON parse error: {0}")]
     Json(String),
+    #[error("TOML parse error: {0}")]
+    Toml(String),
     #[error("config not found")]
     NotFound,
     #[error("circular import: {0}")]
@@ -32,10 +84,7 @@ pub fn find_config(start_dir: &Path) -> Option<PathBuf> {
 }
 
 /// Find cspell config file by searching up the directory tree, stopping at specific directories.
-pub fn find_config_with_stop(
-    start_dir: &Path,
-    stop_search_at: &[PathBuf],
-) -> Option<PathBuf> {
+pub fn find_config_with_stop(start_dir: &Path, stop_search_at: &[PathBuf]) -> Option<PathBuf> {
     let mut dir = Some(start_dir);
     let stop_set: HashSet<PathBuf> = stop_search_at
         .iter()
@@ -55,6 +104,67 @@ pub fn find_config_with_stop(
         dir = d.parent();
     }
     None
+}
+
+/// Ruspell native config file names, checked before cspell configs.
+const RUSPELL_CONFIG_NAMES: &[&str] = &["ruspell.toml", ".ruspell.toml"];
+
+/// Find config with priority: `ruspell.toml` first, then cspell configs.
+pub fn find_config_prioritized(start_dir: &Path) -> ConfigFound {
+    find_config_prioritized_with_stop(start_dir, &[])
+}
+
+/// Find config with priority, stopping at specific directories.
+pub fn find_config_prioritized_with_stop(
+    start_dir: &Path,
+    stop_search_at: &[PathBuf],
+) -> ConfigFound {
+    let mut dir = Some(start_dir);
+    let stop_set: HashSet<PathBuf> = stop_search_at
+        .iter()
+        .map(|p| p.canonicalize().unwrap_or_else(|_| p.clone()))
+        .collect();
+    while let Some(d) = dir {
+        let canonical = d.canonicalize().unwrap_or_else(|_| d.to_path_buf());
+        if stop_set.contains(&canonical) {
+            break;
+        }
+        // Check ruspell.toml first
+        for name in RUSPELL_CONFIG_NAMES {
+            let config_path = d.join(name);
+            if config_path.exists() {
+                return ConfigFound::Ruspell(config_path);
+            }
+        }
+        // Then check cspell configs
+        for name in CONFIG_NAMES {
+            let config_path = d.join(name);
+            if config_path.exists() {
+                return ConfigFound::Cspell(config_path);
+            }
+        }
+        dir = d.parent();
+    }
+    ConfigFound::None
+}
+
+/// Load a `ruspell.toml` and convert it to `CSpellSettings`.
+pub fn load_ruspell_config(path: &Path) -> Result<CSpellSettings, ResolveError> {
+    let content = std::fs::read_to_string(path)?;
+    let config: RuspellConfig =
+        toml::from_str(&content).map_err(|e| ResolveError::Toml(e.to_string()))?;
+    let config_dir = path.parent().unwrap_or(Path::new("."));
+    Ok(convert::to_cspell_settings(&config, config_dir))
+}
+
+/// Load config by file extension: `.toml` → ruspell loader, otherwise → cspell loader.
+pub fn load_config_auto(path: &Path) -> Result<CSpellSettings, ResolveError> {
+    let ext = path.extension().and_then(|e| e.to_str()).unwrap_or("");
+    if ext == "toml" {
+        load_ruspell_config(path)
+    } else {
+        load_config(path)
+    }
 }
 
 /// Load a cspell config file and resolve imports.
@@ -99,13 +209,7 @@ fn load_config_recursive(
     for import_path_str in &settings.import {
         if let Some(import_path) = resolve_import_path(import_path_str, base_dir) {
             match load_config_recursive(&import_path, visited) {
-                Ok(mut imported) => {
-                    // Activate all dictionary definitions from imported packages
-                    for def in &imported.dictionary_definitions {
-                        if !imported.dictionaries.iter().any(|d| d.eq_ignore_ascii_case(&def.name)) {
-                            imported.dictionaries.push(def.name.clone());
-                        }
-                    }
+                Ok(imported) => {
                     result = merge_settings(imported, result);
                 }
                 Err(e) => {
@@ -130,13 +234,21 @@ fn resolve_import_path(import: &str, base_dir: &Path) -> Option<PathBuf> {
 
     // Absolute path
     if path.is_absolute() {
-        return if path.exists() { Some(path.to_path_buf()) } else { None };
+        return if path.exists() {
+            Some(path.to_path_buf())
+        } else {
+            None
+        };
     }
 
     // Relative path (starts with . or ..)
     if import.starts_with('.') {
         let resolved = base_dir.join(path);
-        return if resolved.exists() { Some(resolved) } else { None };
+        return if resolved.exists() {
+            Some(resolved)
+        } else {
+            None
+        };
     }
 
     // npm package path — walk up looking for node_modules/ (only for scoped packages)
@@ -177,7 +289,11 @@ fn resolve_import_path(import: &str, base_dir: &Path) -> Option<PathBuf> {
 
     // Fallback: try as relative path
     let resolved = base_dir.join(path);
-    if resolved.exists() { Some(resolved) } else { None }
+    if resolved.exists() {
+        Some(resolved)
+    } else {
+        None
+    }
 }
 
 /// Merge base settings with overlay. Overlay values take precedence for scalars;
@@ -193,7 +309,7 @@ pub fn merge_settings(base: CSpellSettings, overlay: CSpellSettings) -> CSpellSe
         flag_words: concat_vecs(base.flag_words, overlay.flag_words),
         user_words: concat_vecs(base.user_words, overlay.user_words),
 
-        dictionaries: concat_vecs(base.dictionaries, overlay.dictionaries),
+        dictionaries: concat_vecs_unique(base.dictionaries, overlay.dictionaries),
         dictionary_definitions: concat_vecs(
             base.dictionary_definitions,
             overlay.dictionary_definitions,
@@ -210,14 +326,34 @@ pub fn merge_settings(base: CSpellSettings, overlay: CSpellSettings) -> CSpellSe
         case_sensitive: overlay.case_sensitive.or(base.case_sensitive),
         allow_compound_words: overlay.allow_compound_words.or(base.allow_compound_words),
         min_word_length: overlay.min_word_length.or(base.min_word_length),
+        max_duplicate_problems: overlay
+            .max_duplicate_problems
+            .or(base.max_duplicate_problems),
+        glob_root: overlay.glob_root.or(base.glob_root),
+        suggest_words: concat_vecs(base.suggest_words, overlay.suggest_words),
+        no_suggest_dictionaries: concat_vecs_unique(
+            base.no_suggest_dictionaries,
+            overlay.no_suggest_dictionaries,
+        ),
 
         import: Vec::new(), // imports already resolved
         overrides: concat_vecs(base.overrides, overlay.overrides),
+        language_settings: concat_vecs(base.language_settings, overlay.language_settings),
     }
 }
 
 fn concat_vecs<T>(mut a: Vec<T>, b: Vec<T>) -> Vec<T> {
     a.extend(b);
+    a
+}
+
+fn concat_vecs_unique(mut a: Vec<String>, b: Vec<String>) -> Vec<String> {
+    let existing: HashSet<String> = a.iter().map(|s| s.to_lowercase()).collect();
+    for item in b {
+        if !existing.contains(&item.to_lowercase()) {
+            a.push(item);
+        }
+    }
     a
 }
 
@@ -254,6 +390,67 @@ mod tests {
 
         let found = find_config(dir.path());
         assert_eq!(found, Some(config_path));
+    }
+
+    #[test]
+    fn test_prioritized_finds_ruspell_toml_first() {
+        let dir = tempfile::tempdir().unwrap();
+        // Create both config types
+        std::fs::write(dir.path().join("ruspell.toml"), "language = \"en\"\n").unwrap();
+        std::fs::write(dir.path().join("cspell.json"), "{}").unwrap();
+
+        match find_config_prioritized(dir.path()) {
+            ConfigFound::Ruspell(p) => {
+                assert_eq!(p.file_name().unwrap(), "ruspell.toml");
+            }
+            other => panic!("expected Ruspell, got {:?}", other),
+        }
+    }
+
+    #[test]
+    fn test_prioritized_falls_back_to_cspell() {
+        let dir = tempfile::tempdir().unwrap();
+        std::fs::write(dir.path().join("cspell.json"), "{}").unwrap();
+
+        match find_config_prioritized(dir.path()) {
+            ConfigFound::Cspell(p) => {
+                assert_eq!(p.file_name().unwrap(), "cspell.json");
+            }
+            other => panic!("expected Cspell, got {:?}", other),
+        }
+    }
+
+    #[test]
+    fn test_prioritized_returns_none() {
+        let dir = tempfile::tempdir().unwrap();
+        assert!(matches!(
+            find_config_prioritized(dir.path()),
+            ConfigFound::None
+        ));
+    }
+
+    #[test]
+    fn test_load_ruspell_config() {
+        let dir = tempfile::tempdir().unwrap();
+        let words_dir = dir.path().join(".ruspell");
+        std::fs::create_dir_all(&words_dir).unwrap();
+        std::fs::write(words_dir.join("words.txt"), "ruspell\ncspell\n").unwrap();
+
+        let config_path = dir.path().join("ruspell.toml");
+        std::fs::write(
+            &config_path,
+            r#"
+language = "en"
+words_file = ".ruspell/words.txt"
+dictionaries = ["en_us"]
+"#,
+        )
+        .unwrap();
+
+        let settings = load_ruspell_config(&config_path).unwrap();
+        assert_eq!(settings.language.as_deref(), Some("en"));
+        assert_eq!(settings.words, vec!["ruspell", "cspell"]);
+        assert_eq!(settings.dictionaries, vec!["en_us"]);
     }
 
     #[test]

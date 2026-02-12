@@ -9,8 +9,10 @@ description = "Dictionary loading and lookup for ruspell"
 [dependencies]
 hashbrown = { workspace = true }
 foldhash = { workspace = true }
+compact_str = { workspace = true }
 flate2 = { workspace = true }
 thiserror = { workspace = true }
+unicode-normalization = { workspace = true }
 
 [dev-dependencies]
 insta = { workspace = true }

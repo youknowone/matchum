@@ -17,9 +17,7 @@ use ruspell_core::validator::{Validator, ValidatorConfig};
 use ruspell_dict::dictionary::Dictionary;
 use ruspell_dict::hashdict::HashDictionary;
 
-// ============================================================
 // 1. splitCamelCaseWord — from text.test.ts lines 32-44
-// ============================================================
 
 mod split_camel_case {
     use super::*;
@@ -142,9 +140,7 @@ mod split_camel_case {
     }
 }
 
-// ============================================================
-// 2. extractWordsFromText — from text.test.ts lines 59-127
-// ============================================================
+// 2. extractWordsFromText
 
 mod extract_words_from_text {
     use super::*;
@@ -152,7 +148,7 @@ mod extract_words_from_text {
     fn word_texts(text: &str) -> Vec<String> {
         splitter::extract_words(text)
             .into_iter()
-            .map(|w| w.text)
+            .map(|w| w.text.to_string())
             .collect()
     }
 
@@ -270,7 +266,7 @@ mod extract_words_from_code {
     fn code_word_texts(text: &str) -> Vec<String> {
         splitter::extract_words_from_code(text)
             .into_iter()
-            .map(|w| w.text)
+            .map(|w| w.text.to_string())
             .collect()
     }
 
@@ -293,10 +289,7 @@ mod extract_words_from_code {
         let text = "expect(regExp.match(first_line));";
         let ws = code_word_texts(text);
         // cspell expects: ['expect', 'reg', 'Exp', 'match', 'first', 'line']
-        assert_eq!(
-            ws,
-            vec!["expect", "reg", "Exp", "match", "first", "line"]
-        );
+        assert_eq!(ws, vec!["expect", "reg", "Exp", "match", "first", "line"]);
     }
 
     // From text.test.ts line 166-178: aHELLO
@@ -458,9 +451,7 @@ mod inline_directives {
     }
 }
 
-// ============================================================
 // 5. Validator — from validator.test.ts
-// ============================================================
 
 mod validation {
     use super::*;
@@ -480,8 +471,14 @@ mod validation {
     ) -> Validator {
         let dict = make_dict(dict_words);
         let config = ValidatorConfig {
-            flag_words: flag_words.iter().map(|w| w.to_lowercase()).collect(),
-            ignore_words: ignore_words.iter().map(|w| w.to_lowercase()).collect(),
+            flag_words: flag_words
+                .iter()
+                .map(|w| compact_str::CompactString::from(w.to_lowercase()))
+                .collect(),
+            ignore_words: ignore_words
+                .iter()
+                .map(|w| compact_str::CompactString::from(w.to_lowercase()))
+                .collect(),
             ..Default::default()
         };
         Validator::new(vec![dict], config)
@@ -528,8 +525,18 @@ mod validation {
     #[test]
     fn issue_7_obvious_misspellings() {
         let common_words = &[
-            "fails", "to", "detect", "obviously", "misspelt", "words", "such", "as", "hello",
-            "apple", "banana", "respect",
+            "fails",
+            "to",
+            "detect",
+            "obviously",
+            "misspelt",
+            "words",
+            "such",
+            "as",
+            "hello",
+            "apple",
+            "banana",
+            "respect",
         ];
         let v = make_validator(common_words, &[], &[]);
         let text = "Fails to detect obviously misspelt words, such as:\nhellosd\napplesq\nbananasa\nrespectss";
@@ -545,8 +552,8 @@ mod validation {
     #[test]
     fn flag_words_detected() {
         let sample_words = &[
-            "and", "ant", "apple", "ate", "big", "elephant", "giraffe", "grape", "little",
-            "mango", "orange", "purple", "the", "tiger", "worm", "hello", "flagged",
+            "and", "ant", "apple", "ate", "big", "elephant", "giraffe", "grape", "little", "mango",
+            "orange", "purple", "the", "tiger", "worm", "hello", "flagged",
         ];
         let flag_words = &["hte", "flagged"];
         let ignore_words = &["ignored"];
@@ -643,7 +650,12 @@ const wrongg = 'mispelled';"#;
 
         let text = "// cspell:disable-next-line\nxyzzy\nxyzzy";
         let issues = v.validate_text(text);
-        assert_eq!(issues.len(), 1, "only second xyzzy: {:?}", issue_words(&issues));
+        assert_eq!(
+            issues.len(),
+            1,
+            "only second xyzzy: {:?}",
+            issue_words(&issues)
+        );
         assert_eq!(issues[0].line, 3);
     }
 

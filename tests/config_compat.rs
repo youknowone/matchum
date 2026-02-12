@@ -390,17 +390,10 @@ mod config_loading {
         let dir = std::env::temp_dir().join("ruspell_cfg_test_flag");
         std::fs::create_dir_all(&dir).unwrap();
         let path = dir.join("cspell.json");
-        std::fs::write(
-            &path,
-            r#"{"flagWords": ["therefor", "they'd", "they'll"]}"#,
-        )
-        .unwrap();
+        std::fs::write(&path, r#"{"flagWords": ["therefor", "they'd", "they'll"]}"#).unwrap();
 
         let settings = resolver::load_config(&path).unwrap();
-        assert_eq!(
-            settings.flag_words,
-            vec!["therefor", "they'd", "they'll"]
-        );
+        assert_eq!(settings.flag_words, vec!["therefor", "they'd", "they'll"]);
 
         std::fs::remove_dir_all(dir).ok();
     }
@@ -457,31 +450,32 @@ mod config_search {
     }
 
     #[test]
-    fn find_cspellrc_json_supported() {
+    fn find_cspell_config_json_supported() {
         let dir = std::env::temp_dir().join("ruspell_cfg_search_2");
         std::fs::create_dir_all(&dir).unwrap();
-        // Remove any leftover cspell.json so only .cspellrc.json exists
+        // Remove any leftover configs so only .cspell.config.json exists
         std::fs::remove_file(dir.join("cspell.json")).ok();
         std::fs::remove_file(dir.join(".cspell.json")).ok();
-        std::fs::write(dir.join(".cspellrc.json"), "{}").unwrap();
+        std::fs::write(dir.join(".cspell.config.json"), "{}").unwrap();
 
         let found = resolver::find_config(&dir);
-        assert!(found.is_some(), ".cspellrc.json should be found");
-        assert!(found.unwrap().ends_with(".cspellrc.json"));
+        assert!(found.is_some(), ".cspell.config.json should be found");
+        assert!(found.unwrap().ends_with(".cspell.config.json"));
 
         std::fs::remove_dir_all(dir).ok();
     }
 
     #[test]
-    fn find_config_prefers_cspell_json() {
+    fn find_config_prefers_dot_cspell_json() {
         let dir = std::env::temp_dir().join("ruspell_cfg_search_3");
         std::fs::create_dir_all(&dir).unwrap();
-        std::fs::write(dir.join("cspell.json"), "{}").unwrap();
-        std::fs::write(dir.join(".cspellrc.json"), "{}").unwrap();
+        std::fs::write(dir.join(".cspell.json"), "{}").unwrap();
+        std::fs::write(dir.join("cspell.config.json"), "{}").unwrap();
 
         let found = resolver::find_config(&dir);
         assert!(found.is_some());
-        assert!(found.unwrap().ends_with("cspell.json"));
+        // .cspell.json comes before cspell.config.json in cspell's search order
+        assert!(found.unwrap().ends_with(".cspell.json"));
 
         std::fs::remove_dir_all(dir).ok();
     }
@@ -536,16 +530,8 @@ mod import_resolution {
         let dir = std::env::temp_dir().join("ruspell_cfg_import_2");
         std::fs::create_dir_all(&dir).unwrap();
 
-        std::fs::write(
-            dir.join("dict-a.json"),
-            r#"{"words": ["alpha", "beta"]}"#,
-        )
-        .unwrap();
-        std::fs::write(
-            dir.join("dict-b.json"),
-            r#"{"words": ["gamma", "delta"]}"#,
-        )
-        .unwrap();
+        std::fs::write(dir.join("dict-a.json"), r#"{"words": ["alpha", "beta"]}"#).unwrap();
+        std::fs::write(dir.join("dict-b.json"), r#"{"words": ["gamma", "delta"]}"#).unwrap();
         std::fs::write(
             dir.join("cspell.json"),
             r#"{"import": ["dict-a.json", "dict-b.json"], "words": ["epsilon"]}"#,
@@ -585,11 +571,7 @@ mod import_resolution {
             }
             Err(e) => {
                 let msg = format!("{}", e);
-                assert!(
-                    msg.contains("circular"),
-                    "should mention circular: {}",
-                    msg
-                );
+                assert!(msg.contains("circular"), "should mention circular: {}", msg);
             }
         }
 
@@ -628,11 +610,7 @@ mod import_resolution {
         let dir = std::env::temp_dir().join("ruspell_cfg_import_flags");
         std::fs::create_dir_all(&dir).unwrap();
 
-        std::fs::write(
-            dir.join("base.json"),
-            r#"{"flagWords": ["hte", "colour"]}"#,
-        )
-        .unwrap();
+        std::fs::write(dir.join("base.json"), r#"{"flagWords": ["hte", "colour"]}"#).unwrap();
         std::fs::write(
             dir.join("cspell.json"),
             r#"{"import": "base.json", "flagWords": ["therefor"]}"#,
@@ -886,8 +864,7 @@ mod override_application {
             ..Default::default()
         };
 
-        let effective =
-            apply_overrides(&settings, Path::new("src/types.generated.ts"));
+        let effective = apply_overrides(&settings, Path::new("src/types.generated.ts"));
         assert_eq!(effective.enabled, Some(false));
     }
 

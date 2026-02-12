@@ -173,8 +173,7 @@ mod hash_patterns {
     fn sha256_hash() {
         let dict = make_dict(&["hash"]);
         let v = Validator::new(vec![dict], ValidatorConfig::default());
-        let text =
-            "hash e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855";
+        let text = "hash e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855";
         let issues = v.validate_text(text);
         let words = issue_words(&issues);
         assert!(
@@ -193,13 +192,19 @@ mod escape_patterns {
     use super::*;
 
     #[test]
-    fn unicode_escape_skipped() {
+    fn unicode_escape_not_skipped_by_default() {
+        // cspell's EscapeCharacters pattern is defined but NOT in the default exclude list.
+        // So \uBABC is NOT skipped by default — BABC is flagged as unknown.
         let dict = make_dict(&["const", "value"]);
         let v = Validator::new(vec![dict], ValidatorConfig::default());
         let text = r"const value = '\uBABC'";
         let issues = v.validate_text(text);
         let words = issue_words(&issues);
-        assert!(!words.contains(&"BABC"), "unicode escape: {:?}", words);
+        assert!(
+            words.contains(&"BABC"),
+            "unicode escape should not be skipped by default: {:?}",
+            words
+        );
     }
 
     #[test]
@@ -237,16 +242,8 @@ mod guard_blocks {
                      world";
         let issues = v.validate_text(text);
         let words = issue_words(&issues);
-        assert!(
-            !words.contains(&"badspelling1"),
-            "disabled: {:?}",
-            words
-        );
-        assert!(
-            !words.contains(&"badspelling2"),
-            "disabled: {:?}",
-            words
-        );
+        assert!(!words.contains(&"badspelling1"), "disabled: {:?}", words);
+        assert!(!words.contains(&"badspelling2"), "disabled: {:?}", words);
     }
 
     #[test]
@@ -320,22 +317,11 @@ mod guard_blocks {
         let v = Validator::new(vec![dict], ValidatorConfig::default());
 
         // All prefix forms should work
-        for prefix in &[
-            "cspell",
-            "cSpell",
-            "spell-checker",
-            "spellchecker",
-        ] {
-            let text = format!(
-                "hello\n// {prefix}:disable\nbadword\n// {prefix}:enable\nhello"
-            );
+        for prefix in &["cspell", "cSpell", "spell-checker", "spellchecker"] {
+            let text = format!("hello\n// {prefix}:disable\nbadword\n// {prefix}:enable\nhello");
             let issues = v.validate_text(&text);
             let words = issue_words(&issues);
-            assert!(
-                !words.contains(&"badword"),
-                "{prefix}: {:?}",
-                words
-            );
+            assert!(!words.contains(&"badword"), "{prefix}: {:?}", words);
         }
     }
 }
@@ -358,7 +344,11 @@ mod combined_patterns {
                      // cspell:enable\n\
                      hello";
         let issues = v.validate_text(text);
-        assert!(issues.is_empty(), "disabled block + URL: {:?}", issue_words(&issues));
+        assert!(
+            issues.is_empty(),
+            "disabled block + URL: {:?}",
+            issue_words(&issues)
+        );
     }
 
     #[test]
@@ -369,7 +359,11 @@ mod combined_patterns {
         let text = "// cspell:ignore customterm\n\
                      visit https://example.com customterm";
         let issues = v.validate_text(text);
-        assert!(issues.is_empty(), "ignore + URL: {:?}", issue_words(&issues));
+        assert!(
+            issues.is_empty(),
+            "ignore + URL: {:?}",
+            issue_words(&issues)
+        );
     }
 }
 
@@ -381,14 +375,16 @@ mod windows_paths {
     use super::*;
 
     #[test]
-    fn windows_path_skipped() {
-        let dict = make_dict(&["file", "located", "at"]);
+    fn windows_path_not_skipped() {
+        // cspell has no built-in Windows path skip pattern.
+        // Path components are checked as regular words.
+        let dict = make_dict(&["file", "located", "at", "Users", "Documents", "txt"]);
         let v = Validator::new(vec![dict], ValidatorConfig::default());
         let text = r"file located at C:\Users\admin\Documents\file.txt";
         let issues = v.validate_text(text);
         assert!(
-            !issues.iter().any(|i| i.word == "admin"),
-            "Windows path: {:?}",
+            issues.iter().any(|i| i.word == "admin"),
+            "Windows path components should be checked: {:?}",
             issue_words(&issues)
         );
     }

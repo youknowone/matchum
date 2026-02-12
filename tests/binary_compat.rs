@@ -51,9 +51,7 @@ fn parse_cspell_output(output: &str) -> BTreeSet<Issue> {
 
             let parts: Vec<&str> = loc.rsplitn(3, ':').collect();
             if parts.len() >= 2 {
-                if let (Ok(col), Ok(ln)) =
-                    (parts[0].parse::<usize>(), parts[1].parse::<usize>())
-                {
+                if let (Ok(col), Ok(ln)) = (parts[0].parse::<usize>(), parts[1].parse::<usize>()) {
                     issues.insert(Issue {
                         line: ln,
                         column: col,
@@ -89,9 +87,7 @@ fn parse_ruspell_output(output: &str) -> BTreeSet<Issue> {
 
             let parts: Vec<&str> = loc.rsplitn(3, ':').collect();
             if parts.len() >= 2 {
-                if let (Ok(col), Ok(ln)) =
-                    (parts[0].parse::<usize>(), parts[1].parse::<usize>())
-                {
+                if let (Ok(col), Ok(ln)) = (parts[0].parse::<usize>(), parts[1].parse::<usize>()) {
                     issues.insert(Issue {
                         line: ln,
                         column: col,
@@ -163,13 +159,19 @@ fn compare_file(relative_path: &str) {
         if !only_cspell.is_empty() {
             eprintln!("  Only in cspell ({}):", only_cspell.len());
             for issue in &only_cspell {
-                eprintln!("    {}:{}:{} '{}'", relative_path, issue.line, issue.column, issue.word);
+                eprintln!(
+                    "    {}:{}:{} '{}'",
+                    relative_path, issue.line, issue.column, issue.word
+                );
             }
         }
         if !only_ruspell.is_empty() {
             eprintln!("  Only in ruspell ({}):", only_ruspell.len());
             for issue in &only_ruspell {
-                eprintln!("    {}:{}:{} '{}'", relative_path, issue.line, issue.column, issue.word);
+                eprintln!(
+                    "    {}:{}:{} '{}'",
+                    relative_path, issue.line, issue.column, issue.word
+                );
             }
         }
         eprintln!(
@@ -273,12 +275,18 @@ fn compat_summary() {
 
         if !c_only.is_empty() {
             for issue in &c_only {
-                eprintln!("  [cspell-only] {}:{} '{}'", issue.line, issue.column, issue.word);
+                eprintln!(
+                    "  [cspell-only] {}:{} '{}'",
+                    issue.line, issue.column, issue.word
+                );
             }
         }
         if !r_only.is_empty() {
             for issue in &r_only {
-                eprintln!("  [ruspell-only] {}:{} '{}'", issue.line, issue.column, issue.word);
+                eprintln!(
+                    "  [ruspell-only] {}:{} '{}'",
+                    issue.line, issue.column, issue.word
+                );
             }
         }
 

@@ -152,14 +152,9 @@ mod nearest_words {
 
     fn sample_words() -> Vec<&'static str> {
         vec![
-            "talk", "talked", "talker", "talking", "talks",
-            "walk", "walked", "walker", "walking", "walks",
-            "help", "helped", "helper", "helpful", "helping",
-            "kelp", "kelps",
-            "joy", "joyful", "joyless", "joyous",
-            "toy", "toys",
-            "box", "boxes",
-            "fox", "foxes",
+            "talk", "talked", "talker", "talking", "talks", "walk", "walked", "walker", "walking",
+            "walks", "help", "helped", "helper", "helpful", "helping", "kelp", "kelps", "joy",
+            "joyful", "joyless", "joyous", "toy", "toys", "box", "boxes", "fox", "foxes",
         ]
     }
 
@@ -305,7 +300,13 @@ mod dict_suggestions {
     #[test]
     fn suggest_common_typos() {
         let dict = make_dict(&[
-            "receive", "separate", "occurred", "definitely", "the", "their", "there",
+            "receive",
+            "separate",
+            "occurred",
+            "definitely",
+            "the",
+            "their",
+            "there",
         ]);
 
         let r1 = dict.suggest("recieve", 5);

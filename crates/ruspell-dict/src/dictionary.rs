@@ -26,4 +26,30 @@ pub trait Dictionary: Send + Sync {
     fn is_empty(&self) -> bool {
         self.len() == 0
     }
+
+    /// Whether this dictionary has any forbidden words.
+    /// Used to skip is_forbidden() calls entirely when no words are forbidden.
+    fn has_forbidden_words(&self) -> bool {
+        false
+    }
+
+    /// Whether this dictionary uses case-sensitive matching.
+    /// When false, `has()` internally normalizes to lowercase.
+    fn is_case_sensitive(&self) -> bool {
+        false
+    }
+
+    /// Check if a word exists using a pre-normalized (lowercase) form.
+    /// Avoids redundant normalization when the caller has already computed it.
+    /// `word` is the original-case word (for ALL-CAPS ucfirst fallback),
+    /// `normalized` is the lowercase/NFC form.
+    fn has_pre_normalized(&self, word: &str, _normalized: &str) -> bool {
+        self.has(word)
+    }
+
+    /// Check if a word is forbidden using a pre-normalized form.
+    /// Avoids redundant normalization when the caller has already computed it.
+    fn is_forbidden_pre_normalized(&self, _word: &str, _normalized: &str) -> bool {
+        false
+    }
 }

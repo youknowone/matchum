@@ -11,6 +11,8 @@ pub struct ValidationIssue {
     pub column: usize,
     /// Whether this is a forbidden word (flagWord).
     pub is_forbidden: bool,
+    /// Whether this word is a known typo (from typos-dict).
+    pub is_known_typo: bool,
     /// Spelling suggestions.
     pub suggestions: Vec<String>,
 }

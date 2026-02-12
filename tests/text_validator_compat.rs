@@ -1,3 +1,4 @@
+// spell-checker:ignore aardvark
 //! Text validation tests ported from cspell's textValidator.test.ts
 //! and docValidator.test.ts.
 //!
@@ -18,10 +19,7 @@ fn make_dict(words: &[&str]) -> Box<dyn Dictionary> {
     Box::new(dict)
 }
 
-fn make_dict_with_forbidden(
-    words: &[&str],
-    forbidden: &[&str],
-) -> Box<dyn Dictionary> {
+fn make_dict_with_forbidden(words: &[&str], forbidden: &[&str]) -> Box<dyn Dictionary> {
     let mut dict = HashDictionary::new(false);
     for w in words {
         dict.add_word(w);
@@ -43,19 +41,63 @@ fn sample_dicts() -> Vec<Box<dyn Dictionary>> {
         "light", "dark",
     ]);
     let fruit = make_dict(&[
-        "apple", "banana", "orange", "pear", "pineapple", "mango", "avocado", "grape",
-        "strawberry", "blueberry", "blackberry", "berry",
+        "apple",
+        "banana",
+        "orange",
+        "pear",
+        "pineapple",
+        "mango",
+        "avocado",
+        "grape",
+        "strawberry",
+        "blueberry",
+        "blackberry",
+        "berry",
     ]);
     let animals = make_dict(&[
         "ape", "lion", "tiger", "elephant", "monkey", "gazelle", "antelope", "aardvark", "hyena",
     ]);
     let insects = make_dict(&[
-        "ant", "snail", "beetle", "worm", "stink", "bug", "centipede", "millipede", "flea", "fly",
+        "ant",
+        "snail",
+        "beetle",
+        "worm",
+        "stink",
+        "bug",
+        "centipede",
+        "millipede",
+        "flea",
+        "fly",
     ]);
     let common_words = make_dict(&[
-        "allowed", "and", "ate", "be", "been", "better", "big", "dark", "done", "fixes", "has",
-        "have", "here", "is", "known", "light", "little", "multiple", "not", "problems",
-        "published", "should", "the", "there", "they", "this", "to", "we",
+        "allowed",
+        "and",
+        "ate",
+        "be",
+        "been",
+        "better",
+        "big",
+        "dark",
+        "done",
+        "fixes",
+        "has",
+        "have",
+        "here",
+        "is",
+        "known",
+        "light",
+        "little",
+        "multiple",
+        "not",
+        "problems",
+        "published",
+        "should",
+        "the",
+        "there",
+        "they",
+        "this",
+        "to",
+        "we",
     ]);
 
     vec![colors, fruit, animals, insects, common_words]
@@ -115,13 +157,13 @@ mod basic_text_validation {
 mod flag_words_contractions {
     use super::*;
 
-    fn make_validator_with_flags(
-        dict_words: &[&str],
-        flag_words: &[&str],
-    ) -> Validator {
+    fn make_validator_with_flags(dict_words: &[&str], flag_words: &[&str]) -> Validator {
         let dict = make_dict(dict_words);
         let config = ValidatorConfig {
-            flag_words: flag_words.iter().map(|w| w.to_lowercase()).collect(),
+            flag_words: flag_words
+                .iter()
+                .map(|w| compact_str::CompactString::from(w.to_lowercase()))
+                .collect(),
             ..Default::default()
         };
         Validator::new(vec![dict], config)
@@ -130,9 +172,7 @@ mod flag_words_contractions {
     #[test]
     fn flag_ate_in_sentence() {
         // flagWords should be checked even for words below min_word_length
-        let common = &[
-            "the", "ant", "ate", "antelope",
-        ];
+        let common = &["the", "ant", "ate", "antelope"];
         let v = make_validator_with_flags(common, &["ate"]);
         let issues = v.validate_text("The ant ate the antelope.");
         let words = issue_words(&issues);
@@ -150,7 +190,9 @@ mod flag_words_contractions {
         let issues = v.validate_text("The ant ate the antelope.");
         let words = issue_words(&issues);
         assert!(words.contains(&"antelope"), "got: {:?}", words);
-        assert!(issues.iter().any(|i| i.word == "antelope" && i.is_forbidden));
+        assert!(issues
+            .iter()
+            .any(|i| i.word == "antelope" && i.is_forbidden));
     }
 
     #[test]
@@ -201,7 +243,10 @@ mod forbidden_in_dict {
         let common = &["the", "ant", "ate", "antelope"];
         let dict = make_dict(common);
         let config = ValidatorConfig {
-            flag_words: ["ate"].iter().map(|w| w.to_lowercase()).collect(),
+            flag_words: ["ate"]
+                .iter()
+                .map(|w| compact_str::CompactString::from(w.to_lowercase()))
+                .collect(),
             ..Default::default()
         };
         let v = Validator::new(vec![dict], config);
@@ -225,18 +270,16 @@ mod repeated_letters {
     use super::*;
 
     #[test]
-    fn single_repeated_letters_skipped_by_length() {
-        // tttt, gggg, xxxxxxx, jjjjj — all same character repeated
-        // These should either be skipped by min_word_length or detected as unknown
+    fn single_repeated_letters_skipped() {
+        // tttt, gggg, xxxxxxx, jjjjj — all same character repeated 4+ times
+        // cspell skips these via regExRepeatedChar: /^(\w)\1{3,}$/i
         let v = make_sample_validator();
         let text = "tttt gggg xxxxxxx jjjjj";
         let issues = v.validate_text(text);
         let words = issue_words(&issues);
-        // "tttt" is 4 chars, meets min_word_length=4
-        // These are unknown words — they should be flagged
         assert!(
-            words.contains(&"tttt") || words.contains(&"gggg"),
-            "repeated letters flagged: {:?}",
+            words.is_empty(),
+            "repeated letters should be skipped: {:?}",
             words
         );
     }
@@ -306,7 +349,9 @@ mod directive_validation {
 
     #[test]
     fn disable_block_skips_words() {
-        let dict = make_dict(&["hello", "world", "main", "console", "log", "message", "const"]);
+        let dict = make_dict(&[
+            "hello", "world", "main", "console", "log", "message", "const",
+        ]);
         let v = Validator::new(vec![dict], ValidatorConfig::default());
 
         let text = "// cspell:disable-next-line\n\
@@ -324,7 +369,11 @@ mod directive_validation {
         let words = issue_words(&issues);
 
         // "Helllo" on line 2 is covered by disable-next-line
-        assert!(!words.contains(&"Helllo"), "disabled next line: {:?}", words);
+        assert!(
+            !words.contains(&"Helllo"),
+            "disabled next line: {:?}",
+            words
+        );
 
         // Words inside disable block should not be flagged
         assert!(
@@ -335,11 +384,7 @@ mod directive_validation {
         assert!(!words.contains(&"grrrr"), "disabled block: {:?}", words);
 
         // "function" after enable should be checked
-        assert!(
-            words.contains(&"function"),
-            "after enable: {:?}",
-            words
-        );
+        assert!(words.contains(&"function"), "after enable: {:?}", words);
     }
 
     #[test]
@@ -349,7 +394,11 @@ mod directive_validation {
 
         let text = "// cspell:words customword specialterm\nhello customword specialterm";
         let issues = v.validate_text(text);
-        assert!(issues.is_empty(), "words directive: {:?}", issue_words(&issues));
+        assert!(
+            issues.is_empty(),
+            "words directive: {:?}",
+            issue_words(&issues)
+        );
     }
 
     #[test]
@@ -381,8 +430,8 @@ mod e2e_doc_validation {
     }
 
     fn load_en_us() -> Option<Box<dyn Dictionary>> {
-        let dict_path = project_root()
-            .join("dictionaries/node_modules/@cspell/dict-en_us/en_US.trie.gz");
+        let dict_path =
+            project_root().join("dictionaries/node_modules/@cspell/dict-en_us/en_US.trie.gz");
         if !dict_path.exists() {
             return None;
         }
@@ -483,9 +532,8 @@ mod e2e_doc_validation {
             None => return,
         };
 
-        let fixture = project_root().join(
-            "vendor/cspell/packages/cspell-lib/fixtures/docValidator/sample-with-errors.ts",
-        );
+        let fixture = project_root()
+            .join("vendor/cspell/packages/cspell-lib/fixtures/docValidator/sample-with-errors.ts");
         if !fixture.exists() {
             return;
         }
@@ -588,11 +636,7 @@ mod pattern_skipping {
         let issues = v.validate_text(text);
         let words = issue_words(&issues);
 
-        assert!(
-            !words.contains(&"DEADBEEF"),
-            "hex literal: {:?}",
-            words
-        );
+        assert!(!words.contains(&"DEADBEEF"), "hex literal: {:?}", words);
     }
 }
 
@@ -696,7 +740,11 @@ mod extended_directive_validation {
         // The directive line itself should be skipped
         let text = "// cspell:language en-US\nhello";
         let issues = v.validate_text(text);
-        assert!(issues.is_empty(), "language directive: {:?}", issue_words(&issues));
+        assert!(
+            issues.is_empty(),
+            "language directive: {:?}",
+            issue_words(&issues)
+        );
     }
 
     #[test]

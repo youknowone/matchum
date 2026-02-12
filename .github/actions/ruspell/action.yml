@@ -1,0 +1,55 @@
+name: 'ruspell'
+description: 'Spell check with ruspell. Supports full-project and diff-only modes.'
+
+inputs:
+  version:
+    description: 'ruspell version to install (cargo-binstall tag or "latest")'
+    required: false
+    default: 'latest'
+  config:
+    description: 'Path to cspell.json config file'
+    required: false
+    default: ''
+  paths:
+    description: 'Paths to check (space-separated)'
+    required: false
+    default: '.'
+  diff_base:
+    description: 'Git ref to diff against. Set empty to check all files.'
+    required: false
+    default: ''
+  strict:
+    description: 'Fail the workflow if spelling issues are found'
+    required: false
+    default: 'true'
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Install ruspell
+      shell: bash
+      run: |
+        cargo install --locked ruspell-cli
+
+    - name: Fetch diff base
+      shell: bash
+      if: inputs.diff_base != ''
+      run: |
+        git fetch --depth=1 origin "${{ inputs.diff_base }}" || true
+
+    - name: Run ruspell
+      shell: bash
+      run: |
+        ARGS="check ${{ inputs.paths }} --format github"
+        if [ "${{ inputs.strict }}" = "true" ]; then
+          ARGS="$ARGS --strict"
+        fi
+        if [ -n "${{ inputs.config }}" ]; then
+          ARGS="$ARGS --config ${{ inputs.config }}"
+        fi
+
+        if [ -n "${{ inputs.diff_base }}" ]; then
+          git diff "${{ inputs.diff_base }}"...HEAD | ruspell $ARGS --diff
+        else
+          ruspell $ARGS
+        fi

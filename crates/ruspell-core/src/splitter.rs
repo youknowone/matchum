@@ -1,8 +1,28 @@
+// spell-checker:ignore AUTHPRIV
 /// A word extracted from text, with its byte offset in the source.
-#[derive(Debug, Clone, PartialEq, Eq)]
-pub struct Word {
-    pub text: String,
+///
+/// Borrows the text from the input slice to avoid heap allocation.
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub struct Word<'a> {
+    pub text: &'a str,
     pub offset: usize,
+}
+
+/// Reusable buffers for camelCase splitting to avoid repeated heap allocations.
+pub struct SplitBuffers {
+    chars: Vec<char>,
+    byte_offsets: Vec<usize>,
+    boundaries: Vec<usize>,
+}
+
+impl SplitBuffers {
+    pub fn new() -> Self {
+        Self {
+            chars: Vec::new(),
+            byte_offsets: Vec::new(),
+            boundaries: Vec::new(),
+        }
+    }
 }
 
 /// Split a camelCase/PascalCase identifier into sub-words.
@@ -21,41 +41,75 @@ pub fn split_camel_case(word: &str) -> Vec<&str> {
     if word.is_empty() {
         return Vec::new();
     }
-
-    let chars: Vec<char> = word.chars().collect();
-    let len = chars.len();
-    if len <= 1 {
+    if word.len() <= 1 {
         return vec![word];
     }
+    // ASCII fast path: zero internal allocations
+    if word.is_ascii() {
+        let mut result = Vec::new();
+        split_camel_case_ascii(word, &mut result);
+        return result;
+    }
+    // Non-ASCII: use full Unicode path
+    let mut result = Vec::new();
+    let mut bufs = SplitBuffers::new();
+    split_camel_case_into(word, &mut result, &mut bufs);
+    result
+}
 
-    // Collect byte offsets for each char index
-    let byte_offsets: Vec<usize> = word
-        .char_indices()
-        .map(|(i, _)| i)
-        .chain(std::iter::once(word.len()))
-        .collect();
+/// Like `split_camel_case`, but reuses provided buffers to avoid allocation.
+pub fn split_camel_case_into<'a>(
+    word: &'a str,
+    result: &mut Vec<&'a str>,
+    bufs: &mut SplitBuffers,
+) {
+    result.clear();
+    if word.is_empty() {
+        return;
+    }
+    if word.len() <= 1 {
+        result.push(word);
+        return;
+    }
 
-    let mut boundaries: Vec<usize> = vec![0]; // char indices of split points
+    // ASCII fast path: avoid all internal Vec allocations.
+    // For ASCII, byte index == char index, so no char/byte_offset Vecs needed.
+    if word.is_ascii() {
+        split_camel_case_ascii(word, result);
+        return;
+    }
+
+    bufs.chars.clear();
+    bufs.chars.extend(word.chars());
+    let len = bufs.chars.len();
+    if len <= 1 {
+        result.push(word);
+        return;
+    }
+
+    bufs.byte_offsets.clear();
+    bufs.byte_offsets
+        .extend(word.char_indices().map(|(i, _)| i));
+    bufs.byte_offsets.push(word.len());
+
+    bufs.boundaries.clear();
+    bufs.boundaries.push(0);
 
     let mut i = 1;
     while i < len {
-        let prev = chars[i - 1];
-        let curr = chars[i];
+        let prev = bufs.chars[i - 1];
+        let curr = bufs.chars[i];
 
-        // Rule 1: lowercase → Uppercase
         if prev.is_lowercase() && curr.is_uppercase() {
-            boundaries.push(i);
+            bufs.boundaries.push(i);
             i += 1;
             continue;
         }
 
-        // Rule 2: Uppercase → Uppercase+Lowercase (acronym end)
-        // e.g., "HTMLParser" → split before 'P': "HTML" | "Parser"
-        // But preserve English suffixes: "URLs" stays "URLs", "WALKing" stays "WALKing"
-        if i >= 2 && chars[i - 2].is_uppercase() && prev.is_uppercase() && curr.is_lowercase() {
-            // Check if this is an English suffix that should stay attached
-            if !is_english_suffix_at(&chars, i - 1) {
-                boundaries.push(i - 1);
+        if i >= 2 && bufs.chars[i - 2].is_uppercase() && prev.is_uppercase() && curr.is_lowercase()
+        {
+            if !is_english_suffix_at(&bufs.chars, i - 1) {
+                bufs.boundaries.push(i - 1);
             }
             i += 1;
             continue;
@@ -64,21 +118,96 @@ pub fn split_camel_case(word: &str) -> Vec<&str> {
         i += 1;
     }
 
-    boundaries.push(len);
+    bufs.boundaries.push(len);
 
-    boundaries
-        .windows(2)
-        .filter_map(|pair| {
-            let start = byte_offsets[pair[0]];
-            let end = byte_offsets[pair[1]];
-            let slice = &word[start..end];
-            if slice.is_empty() {
-                None
-            } else {
-                Some(slice)
+    for pair in bufs.boundaries.windows(2) {
+        let start = bufs.byte_offsets[pair[0]];
+        let end = bufs.byte_offsets[pair[1]];
+        let slice = &word[start..end];
+        if !slice.is_empty() {
+            result.push(slice);
+        }
+    }
+}
+
+/// Zero-allocation ASCII fast path for camelCase splitting.
+/// Operates directly on bytes, no Vec<char> or Vec<usize> needed.
+#[inline]
+fn split_camel_case_ascii<'a>(word: &'a str, result: &mut Vec<&'a str>) {
+    let bytes = word.as_bytes();
+    let len = bytes.len();
+    let mut start = 0;
+
+    let mut i = 1;
+    while i < len {
+        let prev = bytes[i - 1];
+        let curr = bytes[i];
+
+        // Rule 1: lowercase → Uppercase
+        if prev.is_ascii_lowercase() && curr.is_ascii_uppercase() {
+            result.push(&word[start..i]);
+            start = i;
+            i += 1;
+            continue;
+        }
+
+        // Rule 2: Uppercase → Uppercase+Lowercase (acronym end)
+        if i >= 2
+            && bytes[i - 2].is_ascii_uppercase()
+            && prev.is_ascii_uppercase()
+            && curr.is_ascii_lowercase()
+        {
+            if !is_english_suffix_at_ascii(bytes, i - 1) {
+                result.push(&word[start..i - 1]);
+                start = i - 1;
             }
-        })
-        .collect()
+            i += 1;
+            continue;
+        }
+
+        i += 1;
+    }
+
+    if start < len {
+        result.push(&word[start..]);
+    }
+}
+
+/// ASCII version of `is_english_suffix_at`, operating on bytes directly.
+#[inline]
+fn is_english_suffix_at_ascii(bytes: &[u8], pos: usize) -> bool {
+    if pos >= bytes.len() || !bytes[pos].is_ascii_uppercase() {
+        return false;
+    }
+    let start = pos + 1;
+    let rem = &bytes[start..];
+    if rem.is_empty() {
+        return false;
+    }
+
+    let matches_suffix = |suf: &[u8]| -> bool {
+        if rem.len() < suf.len() {
+            return false;
+        }
+        if !rem[..suf.len()]
+            .iter()
+            .zip(suf)
+            .all(|(&c, &b)| c.to_ascii_lowercase() == b)
+        {
+            return false;
+        }
+        let after = start + suf.len();
+        after >= bytes.len() || !bytes[after].is_ascii_lowercase()
+    };
+
+    matches_suffix(b"nings")
+        || matches_suffix(b"ings")
+        || matches_suffix(b"ning")
+        || matches_suffix(b"ing")
+        || matches_suffix(b"ies")
+        || matches_suffix(b"es")
+        || matches_suffix(b"ed")
+        || matches_suffix(b"s")
 }
 
 /// Check if the split candidate at `pos` would break an English suffix.
@@ -91,30 +220,117 @@ pub fn split_camel_case(word: &str) -> Vec<&str> {
 /// This mirrors cspell's negative lookahead:
 ///   `(?!\p{Lu}\p{M}?(?:s|ing|ies|es|ings|ed|ning)(?!\p{Ll}))`
 fn is_english_suffix_at(chars: &[char], pos: usize) -> bool {
-    // pos should be an uppercase letter (the candidate split point)
     if pos >= chars.len() || !chars[pos].is_uppercase() {
         return false;
     }
-
-    // Look at chars[pos+1..] to see if it forms an English suffix
-    let suffix_start = pos + 1;
-    if suffix_start >= chars.len() {
+    let start = pos + 1;
+    let rem = &chars[start..];
+    if rem.is_empty() {
         return false;
     }
 
-    let remaining: String = chars[suffix_start..].iter().collect();
-    let remaining_lower = remaining.to_lowercase();
+    // Zero-allocation suffix check: compare chars directly (ASCII lowercase)
+    let matches_suffix = |suf: &[u8]| -> bool {
+        if rem.len() < suf.len() {
+            return false;
+        }
+        if !rem[..suf.len()]
+            .iter()
+            .zip(suf)
+            .all(|(c, &b)| c.to_ascii_lowercase() == b as char)
+        {
+            return false;
+        }
+        let after = start + suf.len();
+        after >= chars.len() || !chars[after].is_lowercase()
+    };
 
-    for suffix in &["nings", "ings", "ning", "ing", "ies", "es", "ed", "s"] {
-        if remaining_lower.starts_with(suffix) {
-            let after = suffix_start + suffix.len();
-            // Suffix must not be followed by a lowercase letter
-            if after >= chars.len() || !chars[after].is_lowercase() {
-                return true;
+    matches_suffix(b"nings")
+        || matches_suffix(b"ings")
+        || matches_suffix(b"ning")
+        || matches_suffix(b"ing")
+        || matches_suffix(b"ies")
+        || matches_suffix(b"es")
+        || matches_suffix(b"ed")
+        || matches_suffix(b"s")
+}
+
+/// Extract broad "code tokens" from text.
+///
+/// A code token is a sequence starting with a letter, then containing
+/// letters, digits, underscores, and apostrophes. This mirrors cspell's
+/// `regExWordsAndDigits`: `/\p{L}\p{M}?[\p{L}\p{M}'\w-]*/gu`
+///
+/// Used for pre-checking whole identifiers (e.g., `LOG_AUTHPRIV`,
+/// `flate2`, `nturl2path`) against dictionaries before splitting.
+pub fn extract_code_tokens<'a>(text: &'a str) -> Vec<Word<'a>> {
+    let mut tokens = Vec::new();
+    extract_code_tokens_into(text, &mut tokens);
+    tokens
+}
+
+/// Like `extract_code_tokens`, but reuses the provided Vec to avoid allocation.
+pub fn extract_code_tokens_into<'a>(text: &'a str, tokens: &mut Vec<Word<'a>>) {
+    tokens.clear();
+    let mut chars = text.char_indices().peekable();
+
+    while let Some(&(byte_offset, ch)) = chars.peek() {
+        if is_cjk(ch) {
+            chars.next();
+            continue;
+        }
+        if is_word_char(ch) {
+            let start = byte_offset;
+            let mut end = byte_offset + ch.len_utf8();
+            chars.next();
+
+            loop {
+                match chars.peek() {
+                    Some(&(_, c))
+                        if is_word_char(c)
+                            || is_combining_mark(c)
+                            || c.is_ascii_digit()
+                            || c == '_'
+                            || c == '-' =>
+                    {
+                        end += c.len_utf8();
+                        chars.next();
+                    }
+                    Some(&(apos_offset, c))
+                        if (c == '\'' || c == '\u{2019}')
+                            && is_letter_after_apostrophe(text, apos_offset) =>
+                    {
+                        end += c.len_utf8();
+                        chars.next();
+                        while let Some(&(_, c)) = chars.peek() {
+                            if is_word_char(c)
+                                || is_combining_mark(c)
+                                || c.is_ascii_digit()
+                                || c == '_'
+                                || c == '-'
+                            {
+                                end += c.len_utf8();
+                                chars.next();
+                            } else {
+                                break;
+                            }
+                        }
+                    }
+                    _ => break,
+                }
             }
+
+            let token_text = &text[start..end];
+            if !token_text.is_empty() {
+                tokens.push(Word {
+                    text: token_text,
+                    offset: start,
+                });
+            }
+        } else {
+            chars.next();
         }
     }
-    false
 }
 
 /// Extract word tokens from text.
@@ -124,8 +340,15 @@ fn is_english_suffix_at(chars: &[char], pos: usize) -> bool {
 /// CJK characters (Han, Hiragana, Katakana, Hangul) are skipped.
 ///
 /// This mirrors cspell's `extractWordsFromText` using `regExWords`.
-pub fn extract_words(text: &str) -> Vec<Word> {
+pub fn extract_words<'a>(text: &'a str) -> Vec<Word<'a>> {
     let mut words = Vec::new();
+    extract_words_into(text, &mut words);
+    words
+}
+
+/// Like `extract_words`, but reuses the provided Vec to avoid allocation.
+pub fn extract_words_into<'a>(text: &'a str, words: &mut Vec<Word<'a>>) {
+    words.clear();
     let mut chars = text.char_indices().peekable();
 
     while let Some(&(byte_offset, ch)) = chars.peek() {
@@ -144,14 +367,12 @@ pub fn extract_words(text: &str) -> Vec<Word> {
                         end += c.len_utf8();
                         chars.next();
                     }
-                    // Handle apostrophes inside words (contractions)
                     Some(&(apos_offset, c))
                         if (c == '\'' || c == '\u{2019}')
                             && is_letter_after_apostrophe(text, apos_offset) =>
                     {
                         end += c.len_utf8();
                         chars.next();
-                        // Consume the letter(s) after apostrophe
                         while let Some(&(_, c)) = chars.peek() {
                             if is_word_char(c) || is_combining_mark(c) {
                                 end += c.len_utf8();
@@ -168,7 +389,7 @@ pub fn extract_words(text: &str) -> Vec<Word> {
             let word_text = &text[start..end];
             if !word_text.is_empty() {
                 words.push(Word {
-                    text: word_text.to_string(),
+                    text: word_text,
                     offset: start,
                 });
             }
@@ -176,22 +397,20 @@ pub fn extract_words(text: &str) -> Vec<Word> {
             chars.next();
         }
     }
-
-    words
 }
 
 /// Extract words from code: first extract word tokens, then split each by
 /// camelCase boundaries.
 ///
 /// This mirrors cspell's `extractWordsFromCode`.
-pub fn extract_words_from_code(text: &str) -> Vec<Word> {
+pub fn extract_words_from_code<'a>(text: &'a str) -> Vec<Word<'a>> {
     let tokens = extract_words(text);
     let mut result = Vec::new();
 
     for token in &tokens {
-        let parts = split_camel_case(&token.text);
+        let parts = split_camel_case(token.text);
         if parts.len() <= 1 {
-            result.push(token.clone());
+            result.push(*token);
         } else {
             let mut offset_in_token = 0;
             for part in parts {
@@ -200,7 +419,7 @@ pub fn extract_words_from_code(text: &str) -> Vec<Word> {
                     .map(|pos| offset_in_token + pos)
                     .unwrap_or(offset_in_token);
                 result.push(Word {
-                    text: part.to_string(),
+                    text: part,
                     offset: token.offset + part_start,
                 });
                 offset_in_token = part_start + part.len();
@@ -249,7 +468,11 @@ fn is_cjk(ch: char) -> bool {
 /// Check if there's a letter immediately after an apostrophe position,
 /// which indicates a contraction (not a trailing quote).
 fn is_letter_after_apostrophe(text: &str, apos_byte_offset: usize) -> bool {
-    let after_apos = apos_byte_offset + text[apos_byte_offset..].chars().next().map_or(0, |c| c.len_utf8());
+    let after_apos = apos_byte_offset
+        + text[apos_byte_offset..]
+            .chars()
+            .next()
+            .map_or(0, |c| c.len_utf8());
     text[after_apos..]
         .chars()
         .next()
@@ -287,10 +510,7 @@ mod tests {
 
     #[test]
     fn test_split_urls_and_dbas() {
-        assert_eq!(
-            split_camel_case("URLsAndDBAs"),
-            vec!["URLs", "And", "DBAs"]
-        );
+        assert_eq!(split_camel_case("URLsAndDBAs"), vec!["URLs", "And", "DBAs"]);
     }
 
     #[test]
@@ -423,28 +643,28 @@ mod tests {
     #[test]
     fn test_code_camel_case() {
         let words = extract_words_from_code("splitCamelCaseWord");
-        let texts: Vec<&str> = words.iter().map(|w| w.text.as_str()).collect();
+        let texts: Vec<&str> = words.iter().map(|w| w.text).collect();
         assert_eq!(texts, vec!["split", "Camel", "Case", "Word"]);
     }
 
     #[test]
     fn test_code_expression() {
         let words = extract_words_from_code("regExp.match(first_line)");
-        let texts: Vec<&str> = words.iter().map(|w| w.text.as_str()).collect();
+        let texts: Vec<&str> = words.iter().map(|w| w.text).collect();
         assert_eq!(texts, vec!["reg", "Exp", "match", "first", "line"]);
     }
 
     #[test]
     fn test_code_a_hello() {
         let words = extract_words_from_code("aHELLO");
-        let texts: Vec<&str> = words.iter().map(|w| w.text.as_str()).collect();
+        let texts: Vec<&str> = words.iter().map(|w| w.text).collect();
         assert_eq!(texts, vec!["a", "HELLO"]);
     }
 
     #[test]
     fn test_code_html_input() {
         let words = extract_words_from_code("HTMLInput.value");
-        let texts: Vec<&str> = words.iter().map(|w| w.text.as_str()).collect();
+        let texts: Vec<&str> = words.iter().map(|w| w.text).collect();
         assert_eq!(texts, vec!["HTML", "Input", "value"]);
     }
 }

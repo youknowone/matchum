@@ -1,3 +1,4 @@
+// spell-checker:ignore Anishinaabemowin
 use std::collections::HashMap;
 use std::io::Read;
 use std::path::Path;
@@ -132,12 +133,37 @@ impl TrieBuilder {
         if n == 0 {
             return;
         }
-        debug_assert!(n <= self.depth, "backstep {n} exceeds depth {}", self.depth);
+        debug_assert!(
+            n <= self.depth,
+            "back_step {n} exceeds depth {}",
+            self.depth
+        );
         self.depth -= n;
         self.curr = self.stack[self.depth + 1].parent_pool_idx;
     }
 
+    /// Walk the trie and add words directly to the dictionary,
+    /// avoiding the intermediate Vec<String> allocation.
+    fn populate_dict(&self, dict: &mut HashDictionary) {
+        let mut path = String::new();
+        self.walk_into_dict(0, &mut path, dict);
+    }
+
+    fn walk_into_dict(&self, node_idx: usize, path: &mut String, dict: &mut HashDictionary) {
+        let node = &self.pool[node_idx];
+        if node.is_word {
+            add_trie_word(dict, path);
+        }
+
+        for (&c, &child_idx) in &node.children {
+            path.push(c);
+            self.walk_into_dict(child_idx, path, dict);
+            path.pop();
+        }
+    }
+
     /// Extract all words from the built trie via depth-first walk.
+    #[cfg(test)]
     fn extract_words(&self) -> Vec<String> {
         let mut words = Vec::new();
         let mut path = String::new();
@@ -145,6 +171,7 @@ impl TrieBuilder {
         words
     }
 
+    #[cfg(test)]
     fn walk(&self, node_idx: usize, path: &mut String, words: &mut Vec<String>) {
         let node = &self.pool[node_idx];
         if node.is_word {
@@ -205,13 +232,43 @@ pub fn load_trie_v3(path: &Path) -> Result<HashDictionary, LoadError> {
         }
     }
 
-    let words = builder.extract_words();
     let mut dict = HashDictionary::new(false);
-    for word in &words {
-        dict.add_word(word);
-    }
+    builder.populate_dict(&mut dict);
 
     Ok(dict)
+}
+
+/// Route a trie word to the correct dictionary method based on prefix.
+fn add_trie_word(dict: &mut HashDictionary, word: &str) {
+    if word.is_empty() {
+        return;
+    }
+    match word.as_bytes()[0] {
+        b'~' => {
+            // Case-insensitive variant: add as no-suggest word
+            let base = &word[1..];
+            if !base.is_empty() {
+                dict.add_no_suggest(base);
+            }
+        }
+        b'!' => {
+            // Forbidden word
+            let base = &word[1..];
+            if !base.is_empty() {
+                dict.add_forbidden(base);
+            }
+        }
+        b'+' => {
+            // Compound-only word
+            let base = &word[1..];
+            if !base.is_empty() {
+                dict.add_compound_part(base);
+            }
+        }
+        _ => {
+            dict.add_word(word);
+        }
+    }
 }
 
 fn parse_header(header_lines: &[&str]) -> Result<u32, LoadError> {
@@ -374,7 +431,7 @@ mod tests {
     }
 
     #[test]
-    fn test_eow_with_multi_backstep() {
+    fn test_eow_with_multi_back_step() {
         // "$3" = markEOW + backStep(1), then backStep(2) = total 3
         let words = parse_trie_str("abc$3def$3", 10);
         assert_eq!(words, vec!["abc", "def"]);
@@ -480,10 +537,7 @@ mod tests {
         // $ -> mark k as EOW ("walk"), back to l
         // 4 -> back(3) to root
         let words = parse_trie_str("walked$r$<ing$3s$$4", 10);
-        assert_eq!(
-            words,
-            vec!["walk", "walked", "walker", "walking", "walks"]
-        );
+        assert_eq!(words, vec!["walk", "walked", "walker", "walking", "walks"]);
     }
 
     #[test]
@@ -496,7 +550,10 @@ mod tests {
             .join("vendor/cspell/packages/cspell-trie-lib/Samples/sampleV3.trie");
 
         if !sample_path.exists() {
-            eprintln!("Skipping: sample trie not found at {}", sample_path.display());
+            eprintln!(
+                "Skipping: sample trie not found at {}",
+                sample_path.display()
+            );
             return;
         }
 
@@ -525,7 +582,10 @@ mod tests {
         assert!(dict.has("eow $"), "should have 'eow $'");
         assert!(dict.has("ref #"), "should have 'ref #'");
         assert!(dict.has("escape \\"), "should have 'escape \\\\'");
-        assert!(dict.has("Numbers 0123456789"), "should have 'Numbers 0123456789'");
+        assert!(
+            dict.has("Numbers 0123456789"),
+            "should have 'Numbers 0123456789'"
+        );
         assert!(dict.has("Braces: {}[]()"), "should have 'Braces: {{}}[]()'");
 
         // Non-latin scripts

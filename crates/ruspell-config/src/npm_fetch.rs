@@ -95,7 +95,11 @@ pub fn extract_sub_path(import: &str) -> Option<&str> {
     let pkg_name = extract_package_name(import);
     let rest = import.strip_prefix(pkg_name)?;
     let rest = rest.strip_prefix('/')?;
-    if rest.is_empty() { None } else { Some(rest) }
+    if rest.is_empty() {
+        None
+    } else {
+        Some(rest)
+    }
 }
 
 /// Fetch package metadata from the npm registry.
@@ -113,16 +117,13 @@ fn fetch_package_meta(
             .timeout_global(Some(std::time::Duration::from_secs(30)))
             .build(),
     );
-    let mut response = agent
-        .get(&url)
-        .call()
-        .map_err(|e| {
-            if e.to_string().contains("404") || e.to_string().contains("Not Found") {
-                FetchError::NotFound(package_name.to_string())
-            } else {
-                FetchError::Http(e.to_string())
-            }
-        })?;
+    let mut response = agent.get(&url).call().map_err(|e| {
+        if e.to_string().contains("404") || e.to_string().contains("Not Found") {
+            FetchError::NotFound(package_name.to_string())
+        } else {
+            FetchError::Http(e.to_string())
+        }
+    })?;
 
     let status = response.status();
     if status == 404 {
@@ -165,10 +166,7 @@ fn download_and_extract(tarball_url: &str, target_dir: &Path) -> Result<(), Fetc
         let path = entry.path()?.into_owned();
 
         // Strip "package/" prefix from tar entries
-        let stripped = path
-            .strip_prefix("package")
-            .unwrap_or(&path)
-            .to_path_buf();
+        let stripped = path.strip_prefix("package").unwrap_or(&path).to_path_buf();
 
         if stripped.as_os_str().is_empty() {
             continue;
@@ -228,7 +226,10 @@ pub fn ensure_package(
         return Ok(pkg_dir);
     }
 
-    eprintln!("Fetching {package_name}{}...", version.map_or(String::new(), |v| format!("@{v}")));
+    eprintln!(
+        "Fetching {package_name}{}...",
+        version.map_or(String::new(), |v| format!("@{v}"))
+    );
 
     let meta = fetch_package_meta(package_name, version)?;
 

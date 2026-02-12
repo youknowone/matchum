@@ -132,7 +132,7 @@ mod extract_words {
     fn word_texts(text: &str) -> Vec<String> {
         splitter::extract_words(text)
             .into_iter()
-            .map(|w| w.text)
+            .map(|w| w.text.to_string())
             .collect()
     }
 
@@ -142,11 +142,7 @@ mod extract_words {
         let text = "could've would've couldn't've wasn't y'all 'twas shouldn\u{2019}t";
         let ws = word_texts(text);
         assert!(ws.contains(&"could've".to_string()), "got: {:?}", ws);
-        assert!(
-            ws.contains(&"couldn't've".to_string()),
-            "got: {:?}",
-            ws
-        );
+        assert!(ws.contains(&"couldn't've".to_string()), "got: {:?}", ws);
         assert!(ws.contains(&"wasn't".to_string()), "got: {:?}", ws);
     }
 
@@ -277,7 +273,7 @@ mod extract_words_from_code {
     fn code_word_texts(text: &str) -> Vec<String> {
         splitter::extract_words_from_code(text)
             .into_iter()
-            .map(|w| w.text)
+            .map(|w| w.text.to_string())
             .collect()
     }
 
@@ -296,10 +292,7 @@ mod extract_words_from_code {
     fn reg_exp_match() {
         let text = "expect(regExp.match(first_line));";
         let ws = code_word_texts(text);
-        assert_eq!(
-            ws,
-            vec!["expect", "reg", "Exp", "match", "first", "line"]
-        );
+        assert_eq!(ws, vec!["expect", "reg", "Exp", "match", "first", "line"]);
     }
 
     #[test]
@@ -398,26 +391,10 @@ mod word_offsets {
     #[test]
     fn code_words_offsets_with_prefix() {
         let words = splitter::extract_words_from_code("var splitCamelCaseWord = 1;");
-        let texts: Vec<(&str, usize)> = words.iter().map(|w| (w.text.as_str(), w.offset)).collect();
-        assert!(
-            texts.contains(&("split", 4)),
-            "got: {:?}",
-            texts
-        );
-        assert!(
-            texts.contains(&("Camel", 9)),
-            "got: {:?}",
-            texts
-        );
-        assert!(
-            texts.contains(&("Case", 14)),
-            "got: {:?}",
-            texts
-        );
-        assert!(
-            texts.contains(&("Word", 18)),
-            "got: {:?}",
-            texts
-        );
+        let texts: Vec<(&str, usize)> = words.iter().map(|w| (w.text, w.offset)).collect();
+        assert!(texts.contains(&("split", 4)), "got: {:?}", texts);
+        assert!(texts.contains(&("Camel", 9)), "got: {:?}", texts);
+        assert!(texts.contains(&("Case", 14)), "got: {:?}", texts);
+        assert!(texts.contains(&("Word", 18)), "got: {:?}", texts);
     }
 }

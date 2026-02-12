@@ -347,8 +347,7 @@ mod trie_loading {
         if !path.exists() {
             return;
         }
-        let dict =
-            loader::trie_v3::load_trie_v3(&path).expect("load en_US");
+        let dict = loader::trie_v3::load_trie_v3(&path).expect("load en_US");
         assert!(dict.has("hello"), "hello");
         assert!(dict.has("world"), "world");
         assert!(!dict.has("xyzzy"), "xyzzy should not exist");
@@ -360,8 +359,7 @@ mod trie_loading {
         if !path.exists() {
             return;
         }
-        let dict =
-            loader::trie_v3::load_trie_v3(&path).expect("load en_US");
+        let dict = loader::trie_v3::load_trie_v3(&path).expect("load en_US");
         assert!(dict.has("Hello"), "Hello");
         assert!(dict.has("HELLO"), "HELLO");
     }
@@ -372,8 +370,7 @@ mod trie_loading {
         if !path.exists() {
             return;
         }
-        let dict =
-            loader::trie_v3::load_trie_v3(&path).expect("load en_US");
+        let dict = loader::trie_v3::load_trie_v3(&path).expect("load en_US");
         assert!(dict.has("don't"), "don't");
         assert!(dict.has("can't"), "can't");
     }
@@ -384,8 +381,7 @@ mod trie_loading {
         if !path.exists() {
             return;
         }
-        let dict =
-            loader::trie_v3::load_trie_v3(&path).expect("load en_US");
+        let dict = loader::trie_v3::load_trie_v3(&path).expect("load en_US");
         let common = [
             "the", "quick", "brown", "fox", "jumped", "over", "lazy", "dog",
         ];
@@ -414,8 +410,8 @@ mod auto_detection {
 
     #[test]
     fn auto_detect_trie_gz() {
-        let path = project_root()
-            .join("dictionaries/node_modules/@cspell/dict-en_us/en_US.trie.gz");
+        let path =
+            project_root().join("dictionaries/node_modules/@cspell/dict-en_us/en_US.trie.gz");
         if !path.exists() {
             return;
         }
@@ -578,9 +574,8 @@ mod software_terms {
     use super::*;
 
     fn software_terms_path() -> PathBuf {
-        project_root().join(
-            "dictionaries/node_modules/@cspell/dict-software-terms/dict/softwareTerms.txt",
-        )
+        project_root()
+            .join("dictionaries/node_modules/@cspell/dict-software-terms/dict/softwareTerms.txt")
     }
 
     #[test]

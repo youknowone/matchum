@@ -1,3 +1,4 @@
+use aho_corasick::{AhoCorasick, AhoCorasickKind};
 use regex::Regex;
 use std::sync::LazyLock;
 
@@ -18,18 +19,50 @@ pub enum Directive {
     Language(String),
     /// cspell:dictionaries dict1 dict2
     Dictionaries(Vec<String>),
+    /// cspell:forbid word1 word2 / cspell:flag word1 word2
+    ForbidWords(Vec<String>),
+    /// cspell:includeRegExp /pattern/
+    IncludeRegExp(String),
+    /// cspell:enableCaseSensitive
+    EnableCaseSensitive,
+    /// cspell:disableCaseSensitive
+    DisableCaseSensitive,
     /// Emacs-style: LocalWords: word1 word2
     LocalWords(Vec<String>),
 }
 
-// Matches: cSpell:, cspell:, spell-checker:, spellchecker:
-// Case insensitive, optional space after colon
-static DIRECTIVE_RE: LazyLock<Regex> = LazyLock::new(|| {
-    Regex::new(r"(?i)\b(?:c?spell|spell-?checker)\s*:\s*(.+)").unwrap()
+// Matches: cSpell:, cspell::, spell-checker:, spellchecker:
+// From cspell's InDocSettings.ts: /\b(?:spell-?checker|c?spell)::?(.*)/
+static DIRECTIVE_RE: LazyLock<Regex> =
+    LazyLock::new(|| Regex::new(r"(?i)\b(?:spell-?checker|c?spell)::?(.+)").unwrap());
+
+/// Aho-Corasick DFA automaton for fast case-insensitive multi-pattern pre-filter.
+/// All directive prefixes contain "spell" or "local". DFA mode for maximum
+/// throughput on the tiny 2-pattern set.
+pub static DIRECTIVE_PREFILTER: LazyLock<AhoCorasick> = LazyLock::new(|| {
+    AhoCorasick::builder()
+        .ascii_case_insensitive(true)
+        .kind(Some(AhoCorasickKind::DFA))
+        .build(["spell", "local"])
+        .unwrap()
 });
 
 /// Parse a line of text for an inline cspell directive.
 pub fn parse_directive(line: &str) -> Option<Directive> {
+    // Quick rejection: skip regex for lines without directive keywords
+    if !DIRECTIVE_PREFILTER.is_match(line) {
+        return None;
+    }
+    parse_directive_inner(line)
+}
+
+/// Parse a directive without the AC prefilter check.
+/// Use when the caller has already verified the line contains a directive keyword.
+pub fn parse_directive_no_prefilter(line: &str) -> Option<Directive> {
+    parse_directive_inner(line)
+}
+
+fn parse_directive_inner(line: &str) -> Option<Directive> {
     // Check for Emacs-style "LocalWords:" first
     if let Some(lw) = parse_local_words(line) {
         return Some(lw);
@@ -43,16 +76,37 @@ pub fn parse_directive(line: &str) -> Option<Directive> {
 
     if lower.starts_with("disable-next-line") {
         Some(Directive::DisableNextLine)
+    } else if lower.starts_with("disable-next") {
+        // "disable-next" is a synonym for "disable-next-line"
+        Some(Directive::DisableNextLine)
     } else if lower.starts_with("disable-line") {
         Some(Directive::DisableLine)
-    } else if lower.starts_with("disablecompoundwords") || lower.starts_with("disable-compound-words") {
+    } else if lower.starts_with("disablecasesensitive")
+        || lower.starts_with("disable-case-sensitive")
+    {
+        Some(Directive::DisableCaseSensitive)
+    } else if lower.starts_with("disablecompoundwords")
+        || lower.starts_with("disable-compound-words")
+    {
         Some(Directive::DisableCompoundWords)
     } else if lower.starts_with("disable") {
         Some(Directive::Disable)
-    } else if lower.starts_with("enablecompoundwords") || lower.starts_with("enable-compound-words") {
+    } else if lower.starts_with("enablecasesensitive") || lower.starts_with("enable-case-sensitive")
+    {
+        Some(Directive::EnableCaseSensitive)
+    } else if lower.starts_with("enablecompoundwords") || lower.starts_with("enable-compound-words")
+    {
         Some(Directive::EnableCompoundWords)
     } else if lower.starts_with("enable") {
         Some(Directive::Enable)
+    } else if lower.starts_with("includeregexp") || lower.starts_with("include-reg-exp") {
+        let prefix_len = if lower.starts_with("includeregexp") {
+            13
+        } else {
+            15
+        };
+        let rest = directive_text[prefix_len..].trim();
+        Some(Directive::IncludeRegExp(rest.to_string()))
     } else if lower.starts_with("ignoreregexp") || lower.starts_with("ignore-reg-exp") {
         let prefix_len = if lower.starts_with("ignoreregexp") {
             12
@@ -61,9 +115,25 @@ pub fn parse_directive(line: &str) -> Option<Directive> {
         };
         let rest = directive_text[prefix_len..].trim();
         Some(Directive::IgnoreRegExp(rest.to_string()))
+    } else if lower.starts_with("forbid") || lower.starts_with("flag") {
+        let prefix_len = if lower.starts_with("forbid") { 6 } else { 4 };
+        let mut rest = &directive_text[prefix_len..];
+        let rest_lower = rest.to_lowercase();
+        // Strip optional "-words", "-word", "words", "word" suffix
+        if rest_lower.starts_with("-words") {
+            rest = &rest[6..];
+        } else if rest_lower.starts_with("-word") {
+            rest = &rest[5..];
+        } else if rest_lower.starts_with("words") {
+            rest = &rest[5..];
+        } else if rest_lower.starts_with("word") {
+            rest = &rest[4..];
+        }
+        let words = parse_word_list(rest);
+        Some(Directive::ForbidWords(words))
     } else if lower.starts_with("ignore") {
         let mut rest = &directive_text[6..]; // len("ignore") = 6
-        // Strip optional "-words", "-word", "words", "word" suffix
+                                             // Strip optional "-words", "-word", "words", "word" suffix
         let rest_lower = rest.to_lowercase();
         if rest_lower.starts_with("-words") {
             rest = &rest[6..];
@@ -97,9 +167,8 @@ pub fn parse_directive(line: &str) -> Option<Directive> {
     }
 }
 
-static LOCAL_WORDS_RE: LazyLock<Regex> = LazyLock::new(|| {
-    Regex::new(r"(?i)\bLocalWords\s*:\s*(.+)").unwrap()
-});
+static LOCAL_WORDS_RE: LazyLock<Regex> =
+    LazyLock::new(|| Regex::new(r"(?i)\bLocalWords\s*:\s*(.+)").unwrap());
 
 fn parse_local_words(line: &str) -> Option<Directive> {
     let caps = LOCAL_WORDS_RE.captures(line)?;
@@ -134,10 +203,7 @@ mod tests {
 
     #[test]
     fn test_enable() {
-        assert_eq!(
-            parse_directive("// cSpell:enable"),
-            Some(Directive::Enable)
-        );
+        assert_eq!(parse_directive("// cSpell:enable"), Some(Directive::Enable));
     }
 
     #[test]

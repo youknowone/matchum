@@ -11,8 +11,10 @@ serde = { workspace = true }
 serde_json = { workspace = true }
 json5 = { workspace = true }
 regex = { workspace = true }
+aho-corasick = "1"
 globset = { workspace = true }
 thiserror = { workspace = true }
+toml = { workspace = true }
 ureq = { workspace = true }
 tar = { workspace = true }
 flate2 = { workspace = true }

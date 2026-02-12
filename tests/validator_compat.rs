@@ -19,15 +19,17 @@ fn make_dict(words: &[&str]) -> Box<dyn Dictionary> {
     Box::new(dict)
 }
 
-fn make_validator(
-    dict_words: &[&str],
-    flag_words: &[&str],
-    ignore_words: &[&str],
-) -> Validator {
+fn make_validator(dict_words: &[&str], flag_words: &[&str], ignore_words: &[&str]) -> Validator {
     let dict = make_dict(dict_words);
     let config = ValidatorConfig {
-        flag_words: flag_words.iter().map(|w| w.to_lowercase()).collect(),
-        ignore_words: ignore_words.iter().map(|w| w.to_lowercase()).collect(),
+        flag_words: flag_words
+            .iter()
+            .map(|w| compact_str::CompactString::from(w.to_lowercase()))
+            .collect(),
+        ignore_words: ignore_words
+            .iter()
+            .map(|w| compact_str::CompactString::from(w.to_lowercase()))
+            .collect(),
         ..Default::default()
     };
     Validator::new(vec![dict], config)
@@ -45,8 +47,14 @@ fn make_validator_with_patterns(
         .filter_map(|p| regex::Regex::new(p).ok())
         .collect();
     let config = ValidatorConfig {
-        flag_words: flag_words.iter().map(|w| w.to_lowercase()).collect(),
-        ignore_words: ignore_words.iter().map(|w| w.to_lowercase()).collect(),
+        flag_words: flag_words
+            .iter()
+            .map(|w| compact_str::CompactString::from(w.to_lowercase()))
+            .collect(),
+        ignore_words: ignore_words
+            .iter()
+            .map(|w| compact_str::CompactString::from(w.to_lowercase()))
+            .collect(),
         ignore_patterns: patterns,
         ..Default::default()
     };
@@ -96,8 +104,18 @@ mod basic_validation {
     #[test]
     fn issue_7_obvious_misspellings() {
         let common = &[
-            "fails", "to", "detect", "obviously", "misspelt", "words",
-            "such", "as", "hello", "apple", "banana", "respect",
+            "fails",
+            "to",
+            "detect",
+            "obviously",
+            "misspelt",
+            "words",
+            "such",
+            "as",
+            "hello",
+            "apple",
+            "banana",
+            "respect",
         ];
         let v = make_validator(common, &[], &[]);
         let text =
@@ -113,9 +131,25 @@ mod basic_validation {
     #[test]
     fn contractions_valid() {
         let common = &[
-            "we", "have", "a", "bit", "of", "text", "to", "check",
-            "don't", "look", "too", "hard", "which", "single", "quote",
-            "use", "is", "it", "shouldn't",
+            "we",
+            "have",
+            "a",
+            "bit",
+            "of",
+            "text",
+            "to",
+            "check",
+            "don't",
+            "look",
+            "too",
+            "hard",
+            "which",
+            "single",
+            "quote",
+            "use",
+            "is",
+            "it",
+            "shouldn't",
         ];
         let v = make_validator(common, &[], &[]);
         let text = "We have a bit of text to check. Don't look too hard.";
@@ -138,7 +172,11 @@ mod basic_validation {
     fn camel_case_validation() {
         let v = make_validator(&["hello", "world"], &[], &[]);
         let issues = v.validate_text("helloWorld");
-        assert!(issues.is_empty(), "camelCase parts in dict: {:?}", issue_words(&issues));
+        assert!(
+            issues.is_empty(),
+            "camelCase parts in dict: {:?}",
+            issue_words(&issues)
+        );
     }
 }
 
@@ -182,9 +220,8 @@ mod flag_and_ignore_words {
     #[test]
     fn flag_words_detected() {
         let sample_words = &[
-            "and", "ant", "apple", "ate", "big", "elephant", "giraffe",
-            "grape", "little", "mango", "orange", "purple", "the",
-            "tiger", "worm", "hello", "flagged",
+            "and", "ant", "apple", "ate", "big", "elephant", "giraffe", "grape", "little", "mango",
+            "orange", "purple", "the", "tiger", "worm", "hello", "flagged",
         ];
         let flag_words = &["hte", "flagged"];
         let v = make_validator(sample_words, flag_words, &[]);
@@ -225,7 +262,7 @@ mod flag_and_ignore_words {
         dict.add_word("color");
         // colour is a forbidden word
         let config = ValidatorConfig {
-            flag_words: HashSet::from(["colour".to_string()]),
+            flag_words: HashSet::from([compact_str::CompactString::from("colour")]),
             ..Default::default()
         };
         let v = Validator::new(vec![Box::new(dict)], config);
@@ -256,7 +293,9 @@ mod url_and_hex_skipping {
     #[test]
     fn url_words_not_checked() {
         let v = make_validator(
-            &["verify", "urls", "do", "not", "get", "checked", "const", "url"],
+            &[
+                "verify", "urls", "do", "not", "get", "checked", "const", "url",
+            ],
             &[],
             &[],
         );
@@ -282,7 +321,11 @@ mod url_and_hex_skipping {
         let text = "// Verify hex values.\nconst value = 0xaccd;\nconst hex = 0xBADC0FFEE;";
         let issues = v.validate_text(text);
         let words = issue_words(&issues);
-        assert!(!words.contains(&"xaccd"), "hex should be skipped: {:?}", words);
+        assert!(
+            !words.contains(&"xaccd"),
+            "hex should be skipped: {:?}",
+            words
+        );
         assert!(
             !words.contains(&"BADC"),
             "hex should be skipped: {:?}",
@@ -369,7 +412,12 @@ const wrongg = 'mispelled';"#;
 
         let text = "// cspell:disable-next-line\nxyzzy\nxyzzy";
         let issues = v.validate_text(text);
-        assert_eq!(issues.len(), 1, "only second xyzzy: {:?}", issue_words(&issues));
+        assert_eq!(
+            issues.len(),
+            1,
+            "only second xyzzy: {:?}",
+            issue_words(&issues)
+        );
         assert_eq!(issues[0].line, 3);
     }
 
@@ -428,16 +476,12 @@ mod ignore_regexp {
     #[test]
     fn ignore_regexp_pattern() {
         let common = &[
-            "verify", "urls", "do", "not", "get", "checked", "const",
-            "url", "value", "hex", "words", "weird", "spell", "checker",
-            "check", "message", "move", "next", "line", "the",
+            "verify", "urls", "do", "not", "get", "checked", "const", "url", "value", "hex",
+            "words", "weird", "spell", "checker", "check", "message", "move", "next", "line",
+            "the",
         ];
-        let v = make_validator_with_patterns(
-            common,
-            &[],
-            &[],
-            &[r"^const [wy]RON[g]+", r"mis.*led"],
-        );
+        let v =
+            make_validator_with_patterns(common, &[], &[], &[r"^const [wy]RON[g]+", r"mis.*led"]);
 
         let text = "const wrongg = 'mispelled';\nconst check = 'mischecked';";
         let issues = v.validate_text(text);
@@ -483,11 +527,7 @@ mod e2e_real_dict {
         let v = Validator::new(vec![dict], ValidatorConfig::default());
 
         let issues = v.validate_text("The quick brown fox jumped over the lazy dog.");
-        assert!(
-            issues.is_empty(),
-            "valid text: {:?}",
-            issue_words(&issues)
-        );
+        assert!(issues.is_empty(), "valid text: {:?}", issue_words(&issues));
 
         let issues = v.validate_text("The quick brouwn fox jumpped over the lazzy dog.");
         let words = issue_words(&issues);
@@ -615,10 +655,9 @@ const hex = 0xBADC0FFEE;"#;
     #[test]
     fn sample_code_expected_issues() {
         let common = &[
-            "verify", "urls", "do", "not", "get", "checked", "const",
-            "url", "value", "hex", "values", "words", "weird", "spell",
-            "checker", "check", "message", "move", "next", "line",
-            "the", "to",
+            "verify", "urls", "do", "not", "get", "checked", "const", "url", "value", "hex",
+            "values", "words", "weird", "spell", "checker", "check", "message", "move", "next",
+            "line", "the", "to",
         ];
         let v = make_validator(common, &[], &[]);
 

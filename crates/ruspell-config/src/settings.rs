@@ -33,6 +33,10 @@ pub struct CSpellSettings {
     pub case_sensitive: Option<bool>,
     pub allow_compound_words: Option<bool>,
     pub min_word_length: Option<usize>,
+    pub max_duplicate_problems: Option<usize>,
+    pub glob_root: Option<String>,
+    pub suggest_words: Vec<String>,
+    pub no_suggest_dictionaries: Vec<String>,
 
     // Inheritance — can be a single string or list of strings
     #[serde(deserialize_with = "deserialize_import", default)]
@@ -40,6 +44,9 @@ pub struct CSpellSettings {
 
     // Overrides
     pub overrides: Vec<OverrideSettings>,
+
+    // Language settings (per-file-type dictionary activation)
+    pub language_settings: Vec<LanguageSetting>,
 }
 
 #[derive(Debug, Clone, Deserialize, Serialize)]
@@ -90,6 +97,20 @@ impl Default for OverrideSettings {
     }
 }
 
+/// Per-language-type settings for dictionary activation.
+#[derive(Debug, Clone, Deserialize, Serialize, Default)]
+#[serde(rename_all = "camelCase", default)]
+pub struct LanguageSetting {
+    /// Programming language ID filter. Can be a single string ("rust"),
+    /// a comma-separated list ("c,cpp"), or a JSON array (["c","cpp","rust"]).
+    #[serde(deserialize_with = "deserialize_language_id", default)]
+    pub language_id: Vec<String>,
+    /// Locale filter (e.g. "en", "en-GB", "*").
+    pub locale: Option<String>,
+    /// Dictionaries to activate for matching files.
+    pub dictionaries: Vec<String>,
+}
+
 /// Either a single string or a list of strings.
 #[derive(Debug, Clone, Deserialize, Serialize)]
 #[serde(untagged)]
@@ -114,4 +135,23 @@ where
 {
     let value: StringOrList = Deserialize::deserialize(deserializer)?;
     Ok(value.into_vec())
+}
+
+/// Deserialize `languageId` which can be a string or list of strings.
+/// A comma-separated string like `"c,cpp"` is split into individual IDs.
+fn deserialize_language_id<'de, D>(deserializer: D) -> Result<Vec<String>, D::Error>
+where
+    D: Deserializer<'de>,
+{
+    let value: StringOrList = Deserialize::deserialize(deserializer)?;
+    let raw = value.into_vec();
+    // Expand comma-separated entries
+    Ok(raw
+        .into_iter()
+        .flat_map(|s| {
+            s.split(',')
+                .map(|p| p.trim().to_string())
+                .collect::<Vec<_>>()
+        })
+        .collect())
 }
