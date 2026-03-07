@@ -118,13 +118,13 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "1e748733b7cbc798e1434b6ac524f0c1ff2ab456fe201501e6497c8417a4fc33"
 
 [[package]]
-name = "cargo-ruspell"
+name = "cargo-matchum"
 version = "0.1.0"
 dependencies = [
  "anyhow",
  "clap",
- "ruspell",
- "ruspell-config",
+ "matchum",
+ "matchum-config",
 ]
 
 [[package]]
@@ -671,6 +671,92 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "5e5032e24019045c762d3c0f28f5b6b8bbf38563a65908389bf7978758920897"
 
 [[package]]
+name = "matchum"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "clap",
+ "compact_str",
+ "gix-attributes",
+ "globset",
+ "ignore",
+ "json5",
+ "matchum-config",
+ "matchum-core",
+ "matchum-dict",
+ "md-5",
+ "memmap2",
+ "rayon",
+ "regex",
+ "serde_json",
+ "tempfile",
+ "toml",
+ "unidiff",
+]
+
+[[package]]
+name = "matchum-config"
+version = "0.1.0"
+dependencies = [
+ "aho-corasick",
+ "flate2",
+ "globset",
+ "insta",
+ "json5",
+ "regex",
+ "serde",
+ "serde_json",
+ "tar",
+ "tempfile",
+ "thiserror",
+ "toml",
+ "ureq",
+]
+
+[[package]]
+name = "matchum-core"
+version = "0.1.0"
+dependencies = [
+ "aho-corasick",
+ "compact_str",
+ "hashbrown 0.16.1",
+ "insta",
+ "matchum-config",
+ "matchum-dict",
+ "regex",
+ "thiserror",
+ "typos-dict",
+ "unicase",
+ "unicode-xid",
+]
+
+[[package]]
+name = "matchum-dict"
+version = "0.1.0"
+dependencies = [
+ "compact_str",
+ "flate2",
+ "foldhash 0.1.5",
+ "hashbrown 0.16.1",
+ "insta",
+ "thiserror",
+ "unicode-normalization",
+]
+
+[[package]]
+name = "matchum-integration-tests"
+version = "0.1.0"
+dependencies = [
+ "compact_str",
+ "matchum-config",
+ "matchum-core",
+ "matchum-dict",
+ "regex",
+ "serde_json",
+ "unicode-normalization",
+]
+
+[[package]]
 name = "md-5"
 version = "0.10.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -915,92 +1001,6 @@ dependencies = [
  "libc",
  "untrusted",
  "windows-sys 0.52.0",
-]
-
-[[package]]
-name = "ruspell"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "clap",
- "compact_str",
- "gix-attributes",
- "globset",
- "ignore",
- "json5",
- "md-5",
- "memmap2",
- "rayon",
- "regex",
- "ruspell-config",
- "ruspell-core",
- "ruspell-dict",
- "serde_json",
- "tempfile",
- "toml",
- "unidiff",
-]
-
-[[package]]
-name = "ruspell-config"
-version = "0.1.0"
-dependencies = [
- "aho-corasick",
- "flate2",
- "globset",
- "insta",
- "json5",
- "regex",
- "serde",
- "serde_json",
- "tar",
- "tempfile",
- "thiserror",
- "toml",
- "ureq",
-]
-
-[[package]]
-name = "ruspell-core"
-version = "0.1.0"
-dependencies = [
- "aho-corasick",
- "compact_str",
- "hashbrown 0.16.1",
- "insta",
- "regex",
- "ruspell-config",
- "ruspell-dict",
- "thiserror",
- "typos-dict",
- "unicase",
- "unicode-xid",
-]
-
-[[package]]
-name = "ruspell-dict"
-version = "0.1.0"
-dependencies = [
- "compact_str",
- "flate2",
- "foldhash 0.1.5",
- "hashbrown 0.16.1",
- "insta",
- "thiserror",
- "unicode-normalization",
-]
-
-[[package]]
-name = "ruspell-integration-tests"
-version = "0.1.0"
-dependencies = [
- "compact_str",
- "regex",
- "ruspell-config",
- "ruspell-core",
- "ruspell-dict",
- "serde_json",
- "unicode-normalization",
 ]
 
 [[package]]

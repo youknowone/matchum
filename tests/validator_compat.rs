@@ -6,10 +6,10 @@
 
 use std::collections::HashSet;
 
-use ruspell_core::issue::ValidationIssue;
-use ruspell_core::validator::{Validator, ValidatorConfig};
-use ruspell_dict::dictionary::Dictionary;
-use ruspell_dict::hashdict::HashDictionary;
+use matchum_core::issue::ValidationIssue;
+use matchum_core::validator::{Validator, ValidatorConfig};
+use matchum_dict::dictionary::Dictionary;
+use matchum_dict::hashdict::HashDictionary;
 
 fn make_dict(words: &[&str]) -> Box<dyn Dictionary> {
     let mut dict = HashDictionary::new(false);
@@ -504,7 +504,7 @@ mod ignore_regexp {
 
 mod e2e_real_dict {
     use super::*;
-    use ruspell_dict::loader;
+    use matchum_dict::loader;
 
     fn load_en_us() -> Option<Box<dyn Dictionary>> {
         let dict_path = std::path::PathBuf::from(env!("CARGO_MANIFEST_DIR"))

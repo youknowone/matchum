@@ -5,10 +5,10 @@
 //! - vendor/cspell/packages/cspell-trie-lib/src/lib/distance/levenshtein.test.ts
 //! - vendor/cspell/packages/cspell-trie-lib/src/lib/distance/distance.test.ts
 
-use ruspell_dict::dictionary::Dictionary;
-use ruspell_dict::distance::damerau_levenshtein;
-use ruspell_dict::distance::select_nearest_words;
-use ruspell_dict::hashdict::HashDictionary;
+use matchum_dict::dictionary::Dictionary;
+use matchum_dict::distance::damerau_levenshtein;
+use matchum_dict::distance::select_nearest_words;
+use matchum_dict::hashdict::HashDictionary;
 
 // ============================================================
 // 1. Damerau-Levenshtein distance — levenshtein.test.ts

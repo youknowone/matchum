@@ -6,10 +6,10 @@
 //! - vendor/cspell/packages/cspell-lib/src/lib/textValidation/textValidator.test.ts
 //! - vendor/cspell/packages/cspell-lib/src/lib/textValidation/docValidator.test.ts
 
-use ruspell_core::issue::ValidationIssue;
-use ruspell_core::validator::{Validator, ValidatorConfig};
-use ruspell_dict::dictionary::Dictionary;
-use ruspell_dict::hashdict::HashDictionary;
+use matchum_core::issue::ValidationIssue;
+use matchum_core::validator::{Validator, ValidatorConfig};
+use matchum_dict::dictionary::Dictionary;
+use matchum_dict::hashdict::HashDictionary;
 
 fn make_dict(words: &[&str]) -> Box<dyn Dictionary> {
     let mut dict = HashDictionary::new(false);
@@ -422,7 +422,7 @@ mod directive_validation {
 
 mod e2e_doc_validation {
     use super::*;
-    use ruspell_dict::loader;
+    use matchum_dict::loader;
     use std::path::PathBuf;
 
     fn project_root() -> PathBuf {
@@ -798,7 +798,7 @@ mod case_sensitivity {
 
     #[test]
     fn case_sensitive_mode() {
-        let mut dict = ruspell_dict::hashdict::HashDictionary::new(true);
+        let mut dict = matchum_dict::hashdict::HashDictionary::new(true);
         dict.add_word("Seattle");
         let dict: Box<dyn Dictionary> = Box::new(dict);
 
@@ -818,7 +818,7 @@ mod case_sensitivity {
 
     #[test]
     fn case_sensitive_correct_case() {
-        let mut dict = ruspell_dict::hashdict::HashDictionary::new(true);
+        let mut dict = matchum_dict::hashdict::HashDictionary::new(true);
         dict.add_word("Seattle");
         let dict: Box<dyn Dictionary> = Box::new(dict);
 

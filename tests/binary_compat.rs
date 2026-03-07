@@ -1,4 +1,4 @@
-//! Binary compatibility tests: run both cspell and ruspell on the same files
+//! Binary compatibility tests: run both cspell and matchum on the same files
 //! and compare results.
 //!
 //! These tests require `npx cspell` to be available and are ignored by default.
@@ -64,10 +64,10 @@ fn parse_cspell_output(output: &str) -> BTreeSet<Issue> {
     issues
 }
 
-/// Parse ruspell output lines like:
+/// Parse matchum output lines like:
 ///   /path/to/file.txt:1:14 - Unknown word: 'fulll'
 ///   /path/to/file.txt:1:14 - Forbidden word: 'fulll'
-fn parse_ruspell_output(output: &str) -> BTreeSet<Issue> {
+fn parse_matchum_output(output: &str) -> BTreeSet<Issue> {
     let mut issues = BTreeSet::new();
     for line in output.lines() {
         let marker = if line.contains(" - Unknown word: '") {
@@ -118,8 +118,8 @@ fn run_cspell(file: &Path, config: &Path) -> Option<String> {
     Some(String::from_utf8_lossy(&output.stdout).to_string())
 }
 
-fn run_ruspell(file: &Path, config: &Path) -> Option<String> {
-    let binary = project_root().join("target/debug/ruspell");
+fn run_matchum(file: &Path, config: &Path) -> Option<String> {
+    let binary = project_root().join("target/debug/matchum");
     if !binary.exists() {
         return None;
     }
@@ -145,16 +145,16 @@ fn compare_file(relative_path: &str) {
     let config = config_path();
 
     let cspell_out = run_cspell(&file, &config).expect("failed to run cspell");
-    let ruspell_out = run_ruspell(&file, &config).expect("failed to run ruspell");
+    let matchum_out = run_matchum(&file, &config).expect("failed to run matchum");
 
     let cspell_issues = parse_cspell_output(&cspell_out);
-    let ruspell_issues = parse_ruspell_output(&ruspell_out);
+    let matchum_issues = parse_matchum_output(&matchum_out);
 
     // Find differences
-    let only_cspell: Vec<_> = cspell_issues.difference(&ruspell_issues).collect();
-    let only_ruspell: Vec<_> = ruspell_issues.difference(&cspell_issues).collect();
+    let only_cspell: Vec<_> = cspell_issues.difference(&matchum_issues).collect();
+    let only_matchum: Vec<_> = matchum_issues.difference(&cspell_issues).collect();
 
-    if !only_cspell.is_empty() || !only_ruspell.is_empty() {
+    if !only_cspell.is_empty() || !only_matchum.is_empty() {
         eprintln!("\n=== Differences for {} ===", relative_path);
         if !only_cspell.is_empty() {
             eprintln!("  Only in cspell ({}):", only_cspell.len());
@@ -165,9 +165,9 @@ fn compare_file(relative_path: &str) {
                 );
             }
         }
-        if !only_ruspell.is_empty() {
-            eprintln!("  Only in ruspell ({}):", only_ruspell.len());
-            for issue in &only_ruspell {
+        if !only_matchum.is_empty() {
+            eprintln!("  Only in matchum ({}):", only_matchum.len());
+            for issue in &only_matchum {
                 eprintln!(
                     "    {}:{}:{} '{}'",
                     relative_path, issue.line, issue.column, issue.word
@@ -175,26 +175,26 @@ fn compare_file(relative_path: &str) {
             }
         }
         eprintln!(
-            "  Common issues: {}, cspell-only: {}, ruspell-only: {}",
-            cspell_issues.intersection(&ruspell_issues).count(),
+            "  Common issues: {}, cspell-only: {}, matchum-only: {}",
+            cspell_issues.intersection(&matchum_issues).count(),
             only_cspell.len(),
-            only_ruspell.len()
+            only_matchum.len()
         );
     }
 
     assert_eq!(
         only_cspell.len(),
         0,
-        "cspell found issues that ruspell missed in {}: {:?}",
+        "cspell found issues that matchum missed in {}: {:?}",
         relative_path,
         only_cspell
     );
     assert_eq!(
-        only_ruspell.len(),
+        only_matchum.len(),
         0,
-        "ruspell found issues that cspell didn't in {}: {:?}",
+        "matchum found issues that cspell didn't in {}: {:?}",
         relative_path,
-        only_ruspell
+        only_matchum
     );
 }
 
@@ -240,7 +240,7 @@ fn compat_summary() {
     let config = config_path();
     let mut total_common = 0;
     let mut total_cspell_only = 0;
-    let mut total_ruspell_only = 0;
+    let mut total_matchum_only = 0;
     let mut files_tested = 0;
 
     for relative_path in &files {
@@ -253,20 +253,20 @@ fn compat_summary() {
             Some(o) => o,
             None => continue,
         };
-        let ruspell_out = match run_ruspell(&file, &config) {
+        let matchum_out = match run_matchum(&file, &config) {
             Some(o) => o,
             None => continue,
         };
 
         let cspell_issues = parse_cspell_output(&cspell_out);
-        let ruspell_issues = parse_ruspell_output(&ruspell_out);
+        let matchum_issues = parse_matchum_output(&matchum_out);
 
-        let common = cspell_issues.intersection(&ruspell_issues).count();
-        let c_only: Vec<_> = cspell_issues.difference(&ruspell_issues).collect();
-        let r_only: Vec<_> = ruspell_issues.difference(&cspell_issues).collect();
+        let common = cspell_issues.intersection(&matchum_issues).count();
+        let c_only: Vec<_> = cspell_issues.difference(&matchum_issues).collect();
+        let r_only: Vec<_> = matchum_issues.difference(&cspell_issues).collect();
 
         eprintln!(
-            "{}: common={}, cspell-only={}, ruspell-only={}",
+            "{}: common={}, cspell-only={}, matchum-only={}",
             relative_path,
             common,
             c_only.len(),
@@ -284,7 +284,7 @@ fn compat_summary() {
         if !r_only.is_empty() {
             for issue in &r_only {
                 eprintln!(
-                    "  [ruspell-only] {}:{} '{}'",
+                    "  [matchum-only] {}:{} '{}'",
                     issue.line, issue.column, issue.word
                 );
             }
@@ -292,7 +292,7 @@ fn compat_summary() {
 
         total_common += common;
         total_cspell_only += c_only.len();
-        total_ruspell_only += r_only.len();
+        total_matchum_only += r_only.len();
         files_tested += 1;
     }
 
@@ -300,9 +300,9 @@ fn compat_summary() {
     eprintln!("Files tested: {}", files_tested);
     eprintln!("Common issues: {}", total_common);
     eprintln!("cspell-only: {}", total_cspell_only);
-    eprintln!("ruspell-only: {}", total_ruspell_only);
+    eprintln!("matchum-only: {}", total_matchum_only);
 
-    let total = total_common + total_cspell_only + total_ruspell_only;
+    let total = total_common + total_cspell_only + total_matchum_only;
     if total > 0 {
         let pct = (total_common as f64 / total as f64) * 100.0;
         eprintln!("Compatibility: {:.1}%", pct);

@@ -1,4 +1,4 @@
-# ruspell
+# matchum
 
 High-performance Rust spell checker, cspell-compatible.
 
@@ -6,19 +6,19 @@ High-performance Rust spell checker, cspell-compatible.
 
 Workspace with 4 crates:
 
-- `crates/ruspell-core/` — Word splitting (`splitter.rs`), validation pipeline (`validator.rs`)
-- `crates/ruspell-dict/` — Dictionary loading (trie_v3, txt) and lookup (`hashdict.rs`)
-- `crates/ruspell-config/` — cspell.json parsing, config resolution, inline directives, npm dictionary fetching
-- `crates/ruspell-cli/` — CLI entry point. `check` command drives the main pipeline
+- `crates/matchum-core/` — Word splitting (`splitter.rs`), validation pipeline (`validator.rs`)
+- `crates/matchum-dict/` — Dictionary loading (trie_v3, txt) and lookup (`hashdict.rs`)
+- `crates/matchum-config/` — cspell.json parsing, config resolution, inline directives, npm dictionary fetching
+- `crates/matchum-cli/` — CLI entry point. `check` command drives the main pipeline
 
 Integration tests live in `tests/` at workspace root (10 test files, ~460 tests total).
 
 ## Build / Test / Run
 
 ```
-cargo build --release -p ruspell-cli
+cargo build --release -p matchum-cli
 cargo test --workspace
-target/release/ruspell check --config .cspell.json <path>
+target/release/matchum check --config .cspell.json <path>
 ```
 
 ## Key Dependencies

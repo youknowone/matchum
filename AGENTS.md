@@ -2,12 +2,12 @@
 
 ## Product Direction
 
-`ruspell` is a performance-first native spell checker.
+`matchum` is a performance-first native spell checker.
 
-- Default command surface (`ruspell ...`) is optimized for speed and Rust-native UX.
+- Default command surface (`matchum ...`) is optimized for speed and Rust-native UX.
 - Full cspell CLI argument compatibility must be isolated under:
-  - `ruspell cspell ...`
-- `ruspell cspell` is the drop-in replacement layer for cspell workflows.
+  - `matchum cspell ...`
+- `matchum cspell` is the drop-in replacement layer for cspell workflows.
 
 ## CLI Strategy
 
@@ -15,7 +15,7 @@
 - Keep native subcommands focused, minimal, and performance-oriented.
 - Do not force cspell argument/behavior parity into native commands.
 
-2. Compatibility mode (`ruspell cspell`)
+2. Compatibility mode (`matchum cspell`)
 - Implement cspell-compatible command tree and flags here.
 - Prioritize behavior parity over internal purity in this namespace.
 - Compatibility shims and translation logic should stay in this layer.
@@ -26,15 +26,15 @@
 - Compatibility code must not leak complexity into native fast path.
 - Add targeted tests for both paths:
   - native behavior tests
-  - compatibility parity tests (`ruspell cspell ...` vs `cspell ...`)
+  - compatibility parity tests (`matchum cspell ...` vs `cspell ...`)
 
 ## Execution Plan (High Level)
 
 1. Introduce `cspell` subcommand namespace
-- Add `ruspell cspell` with dedicated parser and dispatch.
+- Add `matchum cspell` with dedicated parser and dispatch.
 - Keep existing native commands unchanged.
 
-2. Move compatibility flags into `ruspell cspell`
+2. Move compatibility flags into `matchum cspell`
 - Rehome cspell-style arguments from native commands into this namespace.
 - Leave native commands with performance-first option set.
 

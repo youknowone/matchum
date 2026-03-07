@@ -3,7 +3,7 @@
 //! Sources:
 //! - vendor/cspell/packages/cspell-lib/src/lib/Settings/InDocSettings.test.ts
 
-use ruspell_config::directives::{self, Directive};
+use matchum_config::directives::{self, Directive};
 
 // ============================================================
 // 1. Prefix variations

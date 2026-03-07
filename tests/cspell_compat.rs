@@ -1,6 +1,6 @@
 //! Integration tests ported from cspell's test suite.
 //!
-//! These verify that ruspell produces identical results to cspell
+//! These verify that matchum produces identical results to cspell
 //! for word splitting, text extraction, directives, and validation.
 //!
 //! Sources:
@@ -10,12 +10,12 @@
 //! - vendor/cspell/packages/cspell-lib/src/lib/Settings/InDocSettings.test.ts
 //! - vendor/cspell/packages/cspell-trie-lib/src/lib/io/importExport.test.ts
 
-use ruspell_config::directives::{self, Directive};
-use ruspell_core::issue::ValidationIssue;
-use ruspell_core::splitter;
-use ruspell_core::validator::{Validator, ValidatorConfig};
-use ruspell_dict::dictionary::Dictionary;
-use ruspell_dict::hashdict::HashDictionary;
+use matchum_config::directives::{self, Directive};
+use matchum_core::issue::ValidationIssue;
+use matchum_core::splitter;
+use matchum_core::validator::{Validator, ValidatorConfig};
+use matchum_dict::dictionary::Dictionary;
+use matchum_dict::hashdict::HashDictionary;
 
 // 1. splitCamelCaseWord — from text.test.ts lines 32-44
 
@@ -711,7 +711,7 @@ const wrongg = 'mispelled';"#;
 
 mod trie_loading {
     use super::*;
-    use ruspell_dict::loader;
+    use matchum_dict::loader;
 
     #[test]
     fn load_sample_trie_v3() {
@@ -888,7 +888,7 @@ mod trie_loading {
 
 mod e2e_validation {
     use super::*;
-    use ruspell_dict::loader;
+    use matchum_dict::loader;
 
     fn load_en_us() -> Option<Box<dyn Dictionary>> {
         let dict_path = std::path::PathBuf::from(env!("CARGO_MANIFEST_DIR"))

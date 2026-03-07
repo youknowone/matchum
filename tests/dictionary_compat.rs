@@ -7,9 +7,9 @@
 //! - vendor/cspell/packages/cspell-lib/src/lib/SpellingDictionary/DictionaryLoader.test.ts
 //! - vendor/cspell/packages/cspell-trie-lib/src/lib/SimpleDictionaryParser.test.ts
 
-use ruspell_dict::dictionary::Dictionary;
-use ruspell_dict::hashdict::HashDictionary;
-use ruspell_dict::loader;
+use matchum_dict::dictionary::Dictionary;
+use matchum_dict::hashdict::HashDictionary;
+use matchum_dict::loader;
 use std::path::PathBuf;
 
 fn project_root() -> PathBuf {
@@ -430,7 +430,7 @@ mod txt_forbidden {
 
     #[test]
     fn parse_forbidden_entries() {
-        let dir = std::env::temp_dir().join("ruspell_test_forbidden");
+        let dir = std::env::temp_dir().join("matchum_test_forbidden");
         std::fs::create_dir_all(&dir).unwrap();
         let path = dir.join("test_forbidden.txt");
 
@@ -456,7 +456,7 @@ mod txt_forbidden {
 
     #[test]
     fn comments_and_empty_lines_skipped() {
-        let dir = std::env::temp_dir().join("ruspell_test_comments");
+        let dir = std::env::temp_dir().join("matchum_test_comments");
         std::fs::create_dir_all(&dir).unwrap();
         let path = dir.join("test_comments.txt");
 

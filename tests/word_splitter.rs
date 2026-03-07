@@ -4,7 +4,7 @@
 //! - vendor/cspell/packages/cspell-lib/src/lib/util/wordSplitter.test.ts
 //! - vendor/cspell/packages/cspell-lib/src/lib/util/text.test.ts
 
-use ruspell_core::splitter;
+use matchum_core::splitter;
 
 // ============================================================
 // splitCamelCaseWord — from text.test.ts

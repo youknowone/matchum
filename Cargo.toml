@@ -1,17 +1,17 @@
 [package]
-name = "ruspell-integration-tests"
+name = "matchum-integration-tests"
 version = "0.1.0"
 edition = "2021"
 publish = false
 
 [workspace]
-default-members = ["crates/ruspell"]
+default-members = ["crates/matchum"]
 members = [
-    "crates/ruspell-core",
-    "crates/ruspell-dict",
-    "crates/ruspell-config",
-    "crates/ruspell",
-    "crates/cargo-ruspell",
+    "crates/matchum-core",
+    "crates/matchum-dict",
+    "crates/matchum-config",
+    "crates/matchum",
+    "crates/cargo-matchum",
 ]
 resolver = "2"
 
@@ -69,18 +69,18 @@ toml = "0.8"
 insta = "1"
 
 # Internal crates
-ruspell-core = { path = "crates/ruspell-core" }
-ruspell-dict = { path = "crates/ruspell-dict" }
-ruspell-config = { path = "crates/ruspell-config" }
+matchum-core = { path = "crates/matchum-core" }
+matchum-dict = { path = "crates/matchum-dict" }
+matchum-config = { path = "crates/matchum-config" }
 
 [profile.release]
 lto = true
 codegen-units = 1
 
 [dev-dependencies]
-ruspell-core = { workspace = true }
-ruspell-dict = { workspace = true }
-ruspell-config = { workspace = true }
+matchum-core = { workspace = true }
+matchum-dict = { workspace = true }
+matchum-config = { workspace = true }
 compact_str = { workspace = true }
 regex = { workspace = true }
 serde_json = { workspace = true }

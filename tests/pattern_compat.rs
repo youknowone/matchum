@@ -4,10 +4,10 @@
 //! - vendor/cspell/packages/cspell-lib/src/lib/Settings/RegExpPatterns.test.ts
 //! - vendor/cspell/packages/cspell-lib/src/lib/Settings/RegExpPatterns.ts
 
-use ruspell_core::issue::ValidationIssue;
-use ruspell_core::validator::{Validator, ValidatorConfig};
-use ruspell_dict::dictionary::Dictionary;
-use ruspell_dict::hashdict::HashDictionary;
+use matchum_core::issue::ValidationIssue;
+use matchum_core::validator::{Validator, ValidatorConfig};
+use matchum_dict::dictionary::Dictionary;
+use matchum_dict::hashdict::HashDictionary;
 
 fn make_dict(words: &[&str]) -> Box<dyn Dictionary> {
     let mut dict = HashDictionary::new(false);

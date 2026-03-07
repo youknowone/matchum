@@ -5,9 +5,9 @@
 //! - vendor/cspell/packages/cspell-lib/src/lib/Settings/CSpellSettingsServer.test.ts
 //! - vendor/cspell/packages/cspell-lib/src/lib/Settings/Controller/configLoader/configLoader.test.ts
 
-use ruspell_config::overrides::apply_overrides;
-use ruspell_config::resolver;
-use ruspell_config::settings::CSpellSettings;
+use matchum_config::overrides::apply_overrides;
+use matchum_config::resolver;
+use matchum_config::settings::CSpellSettings;
 use std::path::{Path, PathBuf};
 
 fn project_root() -> PathBuf {
@@ -298,7 +298,7 @@ mod merge_settings {
 
     #[test]
     fn merge_overrides_concatenated() {
-        use ruspell_config::settings::OverrideSettings;
+        use matchum_config::settings::OverrideSettings;
         let base = CSpellSettings {
             overrides: vec![OverrideSettings {
                 filename: "**/*.ts".into(),
@@ -368,7 +368,7 @@ mod config_loading {
 
     #[test]
     fn load_simple_json() {
-        let dir = std::env::temp_dir().join("ruspell_cfg_test_simple");
+        let dir = std::env::temp_dir().join("matchum_cfg_test_simple");
         std::fs::create_dir_all(&dir).unwrap();
         let path = dir.join("cspell.json");
         std::fs::write(
@@ -387,7 +387,7 @@ mod config_loading {
 
     #[test]
     fn load_with_flag_words() {
-        let dir = std::env::temp_dir().join("ruspell_cfg_test_flag");
+        let dir = std::env::temp_dir().join("matchum_cfg_test_flag");
         std::fs::create_dir_all(&dir).unwrap();
         let path = dir.join("cspell.json");
         std::fs::write(&path, r#"{"flagWords": ["therefor", "they'd", "they'll"]}"#).unwrap();
@@ -400,7 +400,7 @@ mod config_loading {
 
     #[test]
     fn load_with_dictionary_definitions() {
-        let dir = std::env::temp_dir().join("ruspell_cfg_test_dicts");
+        let dir = std::env::temp_dir().join("matchum_cfg_test_dicts");
         std::fs::create_dir_all(&dir).unwrap();
         let path = dir.join("cspell.json");
         std::fs::write(
@@ -438,7 +438,7 @@ mod config_search {
 
     #[test]
     fn find_config_in_current_dir() {
-        let dir = std::env::temp_dir().join("ruspell_cfg_search_1");
+        let dir = std::env::temp_dir().join("matchum_cfg_search_1");
         std::fs::create_dir_all(&dir).unwrap();
         std::fs::write(dir.join("cspell.json"), "{}").unwrap();
 
@@ -451,7 +451,7 @@ mod config_search {
 
     #[test]
     fn find_cspell_config_json_supported() {
-        let dir = std::env::temp_dir().join("ruspell_cfg_search_2");
+        let dir = std::env::temp_dir().join("matchum_cfg_search_2");
         std::fs::create_dir_all(&dir).unwrap();
         // Remove any leftover configs so only .cspell.config.json exists
         std::fs::remove_file(dir.join("cspell.json")).ok();
@@ -467,7 +467,7 @@ mod config_search {
 
     #[test]
     fn find_config_prefers_dot_cspell_json() {
-        let dir = std::env::temp_dir().join("ruspell_cfg_search_3");
+        let dir = std::env::temp_dir().join("matchum_cfg_search_3");
         std::fs::create_dir_all(&dir).unwrap();
         std::fs::write(dir.join(".cspell.json"), "{}").unwrap();
         std::fs::write(dir.join("cspell.config.json"), "{}").unwrap();
@@ -496,7 +496,7 @@ mod import_resolution {
 
     #[test]
     fn single_import_merges_words() {
-        let dir = std::env::temp_dir().join("ruspell_cfg_import_1");
+        let dir = std::env::temp_dir().join("matchum_cfg_import_1");
         std::fs::create_dir_all(&dir).unwrap();
 
         std::fs::write(
@@ -527,7 +527,7 @@ mod import_resolution {
 
     #[test]
     fn multiple_imports_merge() {
-        let dir = std::env::temp_dir().join("ruspell_cfg_import_2");
+        let dir = std::env::temp_dir().join("matchum_cfg_import_2");
         std::fs::create_dir_all(&dir).unwrap();
 
         std::fs::write(dir.join("dict-a.json"), r#"{"words": ["alpha", "beta"]}"#).unwrap();
@@ -548,7 +548,7 @@ mod import_resolution {
 
     #[test]
     fn circular_import_handled() {
-        let dir = std::env::temp_dir().join("ruspell_cfg_import_circular");
+        let dir = std::env::temp_dir().join("matchum_cfg_import_circular");
         std::fs::create_dir_all(&dir).unwrap();
 
         std::fs::write(
@@ -580,7 +580,7 @@ mod import_resolution {
 
     #[test]
     fn missing_import_file_error() {
-        let dir = std::env::temp_dir().join("ruspell_cfg_import_missing");
+        let dir = std::env::temp_dir().join("matchum_cfg_import_missing");
         std::fs::create_dir_all(&dir).unwrap();
 
         std::fs::write(
@@ -607,7 +607,7 @@ mod import_resolution {
 
     #[test]
     fn import_inherits_flag_words() {
-        let dir = std::env::temp_dir().join("ruspell_cfg_import_flags");
+        let dir = std::env::temp_dir().join("matchum_cfg_import_flags");
         std::fs::create_dir_all(&dir).unwrap();
 
         std::fs::write(dir.join("base.json"), r#"{"flagWords": ["hte", "colour"]}"#).unwrap();
@@ -805,7 +805,7 @@ mod override_application {
     fn override_adds_words_for_matching_file() {
         let settings = CSpellSettings {
             words: vec!["hello".into()],
-            overrides: vec![ruspell_config::settings::OverrideSettings {
+            overrides: vec![matchum_config::settings::OverrideSettings {
                 filename: "**/*.ts".into(),
                 words: vec!["typescript".into(), "readonly".into()],
                 ..Default::default()
@@ -823,7 +823,7 @@ mod override_application {
     fn override_does_not_apply_to_nonmatching_file() {
         let settings = CSpellSettings {
             words: vec!["hello".into()],
-            overrides: vec![ruspell_config::settings::OverrideSettings {
+            overrides: vec![matchum_config::settings::OverrideSettings {
                 filename: "**/*.ts".into(),
                 words: vec!["typescript".into()],
                 ..Default::default()
@@ -840,7 +840,7 @@ mod override_application {
     fn override_changes_language() {
         let settings = CSpellSettings {
             language: Some("en".into()),
-            overrides: vec![ruspell_config::settings::OverrideSettings {
+            overrides: vec![matchum_config::settings::OverrideSettings {
                 filename: "**/NL/*.txt".into(),
                 language: Some("en,nl".into()),
                 ..Default::default()
@@ -856,7 +856,7 @@ mod override_application {
     fn override_disables_checking() {
         let settings = CSpellSettings {
             enabled: Some(true),
-            overrides: vec![ruspell_config::settings::OverrideSettings {
+            overrides: vec![matchum_config::settings::OverrideSettings {
                 filename: "**/*.generated.*".into(),
                 enabled: Some(false),
                 ..Default::default()
@@ -872,7 +872,7 @@ mod override_application {
     fn override_adds_flag_words() {
         let settings = CSpellSettings {
             flag_words: vec!["todo".into()],
-            overrides: vec![ruspell_config::settings::OverrideSettings {
+            overrides: vec![matchum_config::settings::OverrideSettings {
                 filename: "**/*.py".into(),
                 flag_words: vec!["fixme".into()],
                 ..Default::default()
@@ -889,7 +889,7 @@ mod override_application {
     fn override_adds_ignore_words() {
         let settings = CSpellSettings {
             ignore_words: vec!["xyzzy".into()],
-            overrides: vec![ruspell_config::settings::OverrideSettings {
+            overrides: vec![matchum_config::settings::OverrideSettings {
                 filename: "**/*.rs".into(),
                 ignore_words: vec!["println".into(), "eprintln".into()],
                 ..Default::default()
@@ -906,7 +906,7 @@ mod override_application {
     fn override_case_sensitive() {
         let settings = CSpellSettings {
             case_sensitive: Some(false),
-            overrides: vec![ruspell_config::settings::OverrideSettings {
+            overrides: vec![matchum_config::settings::OverrideSettings {
                 filename: "**/*.lex".into(),
                 case_sensitive: Some(true),
                 ..Default::default()
@@ -923,12 +923,12 @@ mod override_application {
         let settings = CSpellSettings {
             words: vec!["base".into()],
             overrides: vec![
-                ruspell_config::settings::OverrideSettings {
+                matchum_config::settings::OverrideSettings {
                     filename: "**/*.ts".into(),
                     words: vec!["first".into()],
                     ..Default::default()
                 },
-                ruspell_config::settings::OverrideSettings {
+                matchum_config::settings::OverrideSettings {
                     filename: "**/*.ts".into(),
                     words: vec!["second".into()],
                     language: Some("typescript".into()),
@@ -948,7 +948,7 @@ mod override_application {
     #[test]
     fn overrides_cleared_after_application() {
         let settings = CSpellSettings {
-            overrides: vec![ruspell_config::settings::OverrideSettings {
+            overrides: vec![matchum_config::settings::OverrideSettings {
                 filename: "**/*.ts".into(),
                 words: vec!["hello".into()],
                 ..Default::default()

@@ -1,0 +1,17 @@
+[package]
+name = "cargo-matchum"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+description = "Cargo subcommand for spell-checking Rust projects"
+
+[[bin]]
+name = "cargo-matchum"
+path = "src/main.rs"
+
+[dependencies]
+matchum = { path = "../matchum" }
+matchum-config = { workspace = true }
+clap = { workspace = true }
+anyhow = { workspace = true }

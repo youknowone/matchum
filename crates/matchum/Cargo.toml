@@ -1,0 +1,36 @@
+[package]
+name = "matchum"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+description = "High-performance spell checker compatible with cspell"
+
+[lib]
+path = "src/lib.rs"
+
+[[bin]]
+name = "matchum"
+path = "src/main.rs"
+
+[dependencies]
+matchum-core = { workspace = true }
+matchum-dict = { workspace = true }
+matchum-config = { workspace = true }
+clap = { workspace = true }
+ignore = { workspace = true }
+rayon = { workspace = true }
+anyhow = { workspace = true }
+serde_json = { workspace = true }
+globset = { workspace = true }
+regex = { workspace = true }
+json5 = { workspace = true }
+compact_str = { workspace = true }
+md-5 = { workspace = true }
+memmap2 = { workspace = true }
+unidiff = "0.4.0"
+gix-attributes = "0.27.0"
+toml = { workspace = true }
+
+[dev-dependencies]
+tempfile = "3"

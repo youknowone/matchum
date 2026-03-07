@@ -1,0 +1,18 @@
+[package]
+name = "matchum-dict"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+description = "Dictionary loading and lookup for matchum"
+
+[dependencies]
+hashbrown = { workspace = true }
+foldhash = { workspace = true }
+compact_str = { workspace = true }
+flate2 = { workspace = true }
+thiserror = { workspace = true }
+unicode-normalization = { workspace = true }
+
+[dev-dependencies]
+insta = { workspace = true }

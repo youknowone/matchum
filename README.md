@@ -1,16 +1,16 @@
-# ruspell
+# matchum
 
 Performance-first Rust spell checker.
 
 ## Vision
 
-`ruspell` has two explicit operating modes:
+`matchum` has two explicit operating modes:
 
-1. Native mode: `ruspell ...`
+1. Native mode: `matchum ...`
 - Optimized for speed, low overhead, and Rust-native ergonomics.
 - Not required to mirror cspell CLI surface 1:1.
 
-2. Compatibility mode: `ruspell cspell ...`
+2. Compatibility mode: `matchum cspell ...`
 - Dedicated cspell drop-in replacement layer.
 - This is where cspell argument and behavior parity belongs.
 
@@ -19,13 +19,13 @@ Performance-first Rust spell checker.
 Trying to preserve full cspell compatibility directly in native commands adds parser complexity,
 runtime branching, and maintenance burden that can hurt performance goals.
 
-By isolating compatibility in `ruspell cspell`, we keep:
+By isolating compatibility in `matchum cspell`, we keep:
 - native path fast and clean
 - compatibility path predictable for existing cspell users
 
 ## Planned Work
 
-1. Add `ruspell cspell` command namespace
+1. Add `matchum cspell` command namespace
 - separate command parser/dispatch for compatibility
 
 2. Move cspell-style flags to compatibility namespace
@@ -45,5 +45,5 @@ By isolating compatibility in `ruspell cspell`, we keep:
 
 ## Current Policy
 
-- Default `ruspell` CLI: performance first.
-- cspell parity: `ruspell cspell` only.
+- Default `matchum` CLI: performance first.
+- cspell parity: `matchum cspell` only.
