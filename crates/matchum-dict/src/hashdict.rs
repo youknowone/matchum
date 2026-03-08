@@ -1,5 +1,6 @@
 use crate::dictionary::{Dictionary, FindResult};
-use crate::distance;
+use crate::distance::{self, EditCosts};
+use crate::repmap::RepMap;
 use compact_str::CompactString;
 use hashbrown::HashSet;
 use std::borrow::Cow;
@@ -11,6 +12,9 @@ pub struct HashDictionary {
     words: HashSet<CompactString>,
     forbidden: HashSet<CompactString>,
     no_suggest: HashSet<CompactString>,
+    /// Preferred suggestions: words marked with `!*` prefix in dictionary files.
+    /// These are promoted to the top of suggestion results.
+    preferred: HashSet<CompactString>,
     /// Compound word parts (entries like `*Word*`, `Word*`, `*Word`, `+Word`, `Word+`).
     /// Stored as lowercased base words.
     compound_parts: HashSet<CompactString>,
@@ -18,6 +22,7 @@ pub struct HashDictionary {
     /// These match only the exact casing provided.
     identity_words: HashSet<CompactString>,
     case_sensitive: bool,
+    pub repmap: Option<RepMap>,
 }
 
 impl HashDictionary {
@@ -26,10 +31,16 @@ impl HashDictionary {
             words: HashSet::default(),
             forbidden: HashSet::default(),
             no_suggest: HashSet::default(),
+            preferred: HashSet::default(),
             compound_parts: HashSet::default(),
             identity_words: HashSet::default(),
             case_sensitive,
+            repmap: None,
         }
+    }
+
+    pub fn set_repmap(&mut self, repmap: RepMap) {
+        self.repmap = Some(repmap);
     }
 
     pub fn add_word(&mut self, word: &str) {
@@ -46,6 +57,14 @@ impl HashDictionary {
         let normalized = self.normalize_owned(word);
         self.no_suggest.insert(CompactString::from(&normalized));
         // Still a valid word, just don't suggest it
+        self.words.insert(CompactString::from(normalized));
+    }
+
+    /// Add a preferred suggestion word (marked with `!*` in dictionary files).
+    /// The word is added as a regular word AND marked preferred for suggestion ranking.
+    pub fn add_preferred(&mut self, word: &str) {
+        let normalized = self.normalize_owned(word);
+        self.preferred.insert(CompactString::from(&normalized));
         self.words.insert(CompactString::from(normalized));
     }
 
@@ -72,13 +91,14 @@ impl HashDictionary {
         let total_words = self.words.len()
             + self.forbidden.len()
             + self.no_suggest.len()
+            + self.preferred.len()
             + self.compound_parts.len()
             + self.identity_words.len();
         // Estimate ~12 bytes per word average
         let mut buf = Vec::with_capacity(21 + total_words * 12);
 
-        // Header
-        buf.extend_from_slice(b"RSPELLD\x01"); // magic + version
+        // Header: bumped to version 2 to include preferred set
+        buf.extend_from_slice(b"RSPELLD\x02"); // magic + version
         buf.extend_from_slice(&mtime.to_le_bytes());
         buf.extend_from_slice(&size.to_le_bytes());
         buf.push(self.case_sensitive as u8);
@@ -96,6 +116,7 @@ impl HashDictionary {
         write_set(&mut buf, &self.words);
         write_set(&mut buf, &self.forbidden);
         write_set(&mut buf, &self.no_suggest);
+        write_set(&mut buf, &self.preferred);
         write_set(&mut buf, &self.compound_parts);
         write_set(&mut buf, &self.identity_words);
 
@@ -108,8 +129,12 @@ impl HashDictionary {
         if bytes.len() < 21 {
             return None;
         }
-        // Check magic + version
-        if &bytes[0..8] != b"RSPELLD\x01" {
+        // Check magic + version (v2 includes preferred set)
+        if &bytes[0..7] != b"RSPELLD" {
+            return None;
+        }
+        let version = bytes[7];
+        if version != 1 && version != 2 {
             return None;
         }
         let mtime = u64::from_le_bytes(bytes[8..16].try_into().ok()?);
@@ -147,6 +172,12 @@ impl HashDictionary {
         let words = read_set(bytes, &mut pos)?;
         let forbidden = read_set(bytes, &mut pos)?;
         let no_suggest = read_set(bytes, &mut pos)?;
+        // v2 added preferred set between no_suggest and compound_parts
+        let preferred = if version >= 2 {
+            read_set(bytes, &mut pos)?
+        } else {
+            HashSet::default()
+        };
         let compound_parts = read_set(bytes, &mut pos)?;
         let identity_words = read_set(bytes, &mut pos)?;
 
@@ -154,9 +185,11 @@ impl HashDictionary {
             words,
             forbidden,
             no_suggest,
+            preferred,
             compound_parts,
             identity_words,
             case_sensitive,
+            repmap: None,
         })
     }
 
@@ -187,6 +220,51 @@ impl HashDictionary {
                     return true;
                 }
                 if self.decompose_compound(right, depth + 1) {
+                    return true;
+                }
+            }
+        }
+        false
+    }
+
+    /// Direct word lookup without repMap fallback.
+    /// Contains the core logic shared by `has()` and repMap alternative checks.
+    fn has_direct(&self, word: &str) -> bool {
+        let normalized = self.normalize(word);
+        if self.words.contains(normalized.as_ref()) || self.check_compound(word) {
+            return true;
+        }
+        if !self.case_sensitive && word.chars().all(|c| !c.is_alphabetic() || c.is_uppercase()) {
+            let ucfirst = uc_first(normalized.as_ref());
+            if ucfirst != normalized.as_ref() && self.words.contains(ucfirst.as_str()) {
+                return true;
+            }
+        }
+        false
+    }
+
+    /// Direct word lookup using pre-normalized form, without repMap fallback.
+    fn has_direct_pre_normalized(&self, word: &str, normalized: &str) -> bool {
+        if self.words.contains(normalized) {
+            return true;
+        }
+        if !self.compound_parts.is_empty() && self.decompose_compound(normalized, 0) {
+            return true;
+        }
+        if !self.case_sensitive && word.chars().all(|c| !c.is_alphabetic() || c.is_uppercase()) {
+            let ucfirst = uc_first(normalized);
+            if ucfirst != normalized && self.words.contains(ucfirst.as_str()) {
+                return true;
+            }
+        }
+        false
+    }
+
+    /// Try repMap alternatives for a word. Returns true if any alternative matches.
+    fn has_via_repmap(&self, word: &str) -> bool {
+        if let Some(ref rm) = self.repmap {
+            for alt in rm.generate_alternatives(word) {
+                if self.has_direct(&alt) {
                     return true;
                 }
             }
@@ -236,19 +314,10 @@ fn uc_first(word: &str) -> String {
 
 impl Dictionary for HashDictionary {
     fn has(&self, word: &str) -> bool {
-        let normalized = self.normalize(word);
-        if self.words.contains(normalized.as_ref()) || self.check_compound(word) {
+        if self.has_direct(word) {
             return true;
         }
-        // ALL-CAPS fallback: e.g. "HOUSE" → lowercase "house" (already checked),
-        // also try Ucfirst "House"
-        if !self.case_sensitive && word.chars().all(|c| !c.is_alphabetic() || c.is_uppercase()) {
-            let ucfirst = uc_first(normalized.as_ref());
-            if ucfirst != normalized.as_ref() && self.words.contains(ucfirst.as_str()) {
-                return true;
-            }
-        }
-        false
+        self.has_via_repmap(word)
     }
 
     fn is_forbidden(&self, word: &str) -> bool {
@@ -270,23 +339,30 @@ impl Dictionary for HashDictionary {
             }
         });
         let max_edits = 2; // default max edit distance for suggestions
-        distance::select_nearest_words(normalized.as_ref(), candidates, max_edits, limit)
-            .into_iter()
-            .map(|(w, _)| w)
-            .collect()
+        let costs = EditCosts::default();
+        let preferred = if self.preferred.is_empty() {
+            None
+        } else {
+            Some(&self.preferred)
+        };
+        distance::select_nearest_words_weighted(
+            normalized.as_ref(),
+            candidates,
+            max_edits,
+            limit,
+            &costs,
+            preferred,
+        )
+        .into_iter()
+        .map(|c| c.word)
+        .collect()
     }
 
     fn find(&self, word: &str) -> FindResult {
         let normalized = self.normalize(word);
-        let mut found = self.words.contains(normalized.as_ref()) || self.check_compound(word);
-        if !found
-            && !self.case_sensitive
-            && word.chars().all(|c| !c.is_alphabetic() || c.is_uppercase())
-        {
-            let ucfirst = uc_first(normalized.as_ref());
-            if ucfirst != normalized.as_ref() && self.words.contains(ucfirst.as_str()) {
-                found = true;
-            }
+        let mut found = self.has_direct(word);
+        if !found {
+            found = self.has_via_repmap(word);
         }
         FindResult {
             found,
@@ -308,21 +384,10 @@ impl Dictionary for HashDictionary {
     }
 
     fn has_pre_normalized(&self, word: &str, normalized: &str) -> bool {
-        if self.words.contains(normalized) {
+        if self.has_direct_pre_normalized(word, normalized) {
             return true;
         }
-        // Compound check with pre-normalized word
-        if !self.compound_parts.is_empty() && self.decompose_compound(normalized, 0) {
-            return true;
-        }
-        // ALL-CAPS ucfirst fallback: "HOUSE" → try "House"
-        if !self.case_sensitive && word.chars().all(|c| !c.is_alphabetic() || c.is_uppercase()) {
-            let ucfirst = uc_first(normalized);
-            if ucfirst != normalized && self.words.contains(ucfirst.as_str()) {
-                return true;
-            }
-        }
-        false
+        self.has_via_repmap(word)
     }
 
     fn is_forbidden_pre_normalized(&self, _word: &str, normalized: &str) -> bool {

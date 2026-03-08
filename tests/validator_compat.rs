@@ -7,7 +7,7 @@
 use std::collections::HashSet;
 
 use matchum_core::issue::ValidationIssue;
-use matchum_core::validator::{Validator, ValidatorConfig};
+use matchum_core::validator::{CompoundWordsMode, Validator, ValidatorConfig};
 use matchum_dict::dictionary::Dictionary;
 use matchum_dict::hashdict::HashDictionary;
 
@@ -685,5 +685,178 @@ const hex = 0xBADC0FFEE;"#;
         // Should NOT detect (URL/hex patterns)
         assert!(!words.contains(&"ctrip"), "URL: {:?}", words);
         assert!(!words.contains(&"xaccd"), "hex: {:?}", words);
+    }
+}
+
+// ============================================================
+// 10. Compound word modes
+// ============================================================
+
+mod compound_word_modes {
+    use super::*;
+    use std::sync::Arc;
+
+    fn make_named_dict(words: &[&str]) -> Arc<dyn Dictionary> {
+        let mut dict = HashDictionary::new(false);
+        for w in words {
+            dict.add_word(w);
+        }
+        Arc::new(dict)
+    }
+
+    /// Create a validator with two named dictionaries:
+    /// - "colors": white, red, green, blue
+    /// - "fruit": red, mango, berry, strawberry, banana
+    fn make_multi_dict_validator(mode: CompoundWordsMode) -> Validator {
+        let colors = make_named_dict(&["white", "red", "green", "blue"]);
+        let fruit = make_named_dict(&["red", "mango", "berry", "strawberry", "banana"]);
+
+        let config = ValidatorConfig {
+            allow_compound_words: true,
+            compound_words_mode: mode,
+            ..Default::default()
+        };
+
+        Validator::new_named(
+            vec![
+                ("colors".to_string(), colors, true),
+                ("fruit".to_string(), fruit, true),
+            ],
+            config,
+        )
+    }
+
+    #[test]
+    fn separate_words_rejects_cross_dict_compound() {
+        // "white" is in colors, "berry" is in fruit => different dicts => false
+        let v = make_multi_dict_validator(CompoundWordsMode::SeparateWords);
+        let issues = v.validate_text("whiteberry");
+        let words = issue_words(&issues);
+        assert!(
+            words.contains(&"whiteberry"),
+            "SeparateWords should reject cross-dict compound: {:?}",
+            words
+        );
+    }
+
+    #[test]
+    fn separate_words_accepts_same_dict_compound() {
+        // "red" and "mango" are both in fruit => same dict => true
+        let v = make_multi_dict_validator(CompoundWordsMode::SeparateWords);
+        let issues = v.validate_text("redmango");
+        assert!(
+            issues.is_empty(),
+            "SeparateWords should accept same-dict compound: {:?}",
+            issue_words(&issues)
+        );
+    }
+
+    #[test]
+    fn join_words_accepts_cross_dict_compound() {
+        // "white" is in colors, "berry" is in fruit => any dict => true
+        let v = make_multi_dict_validator(CompoundWordsMode::JoinWords);
+        let issues = v.validate_text("whiteberry");
+        assert!(
+            issues.is_empty(),
+            "JoinWords should accept cross-dict compound: {:?}",
+            issue_words(&issues)
+        );
+    }
+
+    #[test]
+    fn join_words_accepts_same_dict_compound() {
+        // "red" and "mango" are both in fruit => true
+        let v = make_multi_dict_validator(CompoundWordsMode::JoinWords);
+        let issues = v.validate_text("redmango");
+        assert!(
+            issues.is_empty(),
+            "JoinWords should accept same-dict compound: {:?}",
+            issue_words(&issues)
+        );
+    }
+
+    #[test]
+    fn none_mode_rejects_all_compounds() {
+        // Even though allow_compound_words is false (overridden by mode=None),
+        // compound check should be disabled
+        let colors = make_named_dict(&["white", "red", "green", "blue"]);
+        let fruit = make_named_dict(&["red", "mango", "berry", "strawberry", "banana"]);
+
+        let config = ValidatorConfig {
+            allow_compound_words: false,
+            compound_words_mode: CompoundWordsMode::None,
+            ..Default::default()
+        };
+
+        let v = Validator::new_named(
+            vec![
+                ("colors".to_string(), colors, true),
+                ("fruit".to_string(), fruit, true),
+            ],
+            config,
+        );
+
+        let issues = v.validate_text("redmango");
+        let words = issue_words(&issues);
+        assert!(
+            words.contains(&"redmango"),
+            "None mode should reject all compounds: {:?}",
+            words
+        );
+    }
+
+    #[test]
+    fn separate_words_both_parts_in_colors_dict() {
+        // "red" and "blue" are both in colors => same dict => true
+        let v = make_multi_dict_validator(CompoundWordsMode::SeparateWords);
+        let issues = v.validate_text("redblue");
+        assert!(
+            issues.is_empty(),
+            "SeparateWords should accept when both parts in colors: {:?}",
+            issue_words(&issues)
+        );
+    }
+
+    #[test]
+    fn separate_words_rejects_when_no_single_dict_has_both() {
+        // "green" is only in colors, "banana" is only in fruit
+        let v = make_multi_dict_validator(CompoundWordsMode::SeparateWords);
+        let issues = v.validate_text("greenbanana");
+        let words = issue_words(&issues);
+        assert!(
+            words.contains(&"greenbanana"),
+            "SeparateWords should reject when no single dict has both parts: {:?}",
+            words
+        );
+    }
+
+    #[test]
+    fn backward_compat_allow_compound_words_bool() {
+        // When allow_compound_words=true and compound_words_mode=None,
+        // it should default to JoinWords behavior for backward compatibility
+        let colors = make_named_dict(&["white", "red", "green", "blue"]);
+        let fruit = make_named_dict(&["red", "mango", "berry", "strawberry", "banana"]);
+
+        let config = ValidatorConfig {
+            allow_compound_words: true,
+            compound_words_mode: CompoundWordsMode::None,
+            ..Default::default()
+        };
+
+        let v = Validator::new_named(
+            vec![
+                ("colors".to_string(), colors, true),
+                ("fruit".to_string(), fruit, true),
+            ],
+            config,
+        );
+
+        // "white" in colors, "berry" in fruit => should work with JoinWords default
+        let issues = v.validate_text("whiteberry");
+        assert!(
+            issues.is_empty(),
+            "allow_compound_words=true with mode=None should default to JoinWords: {:?}",
+            issue_words(&issues)
+        );
     }
 }

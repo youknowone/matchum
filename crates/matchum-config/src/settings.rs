@@ -38,6 +38,9 @@ pub struct CSpellSettings {
     pub suggest_words: Vec<String>,
     pub no_suggest_dictionaries: Vec<String>,
 
+    // Character replacement mapping (e.g., [["ss", "ß"], ["ae", "ä"]])
+    pub rep_map: Vec<Vec<String>>,
+
     // Inheritance — can be a single string or list of strings
     #[serde(deserialize_with = "deserialize_import", default)]
     pub import: Vec<String>,

@@ -1,0 +1,12 @@
+---
+source: tests/cli_snapshots.rs
+expression: stdout
+---
+Initialize a matchum.toml config file
+
+Usage: matchum init [OPTIONS]
+
+Options:
+      --from-cspell      Migrate from an existing cspell config
+  -c, --config <CONFIG>  Source config file path (for --from-cspell)
+  -h, --help             Print help

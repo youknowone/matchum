@@ -1,0 +1,5 @@
+---
+source: tests/cli_snapshots.rs
+expression: stdout
+---
+No @cspell dictionary packages installed.

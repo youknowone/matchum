@@ -1,0 +1,15 @@
+---
+source: tests/cli_snapshots.rs
+expression: content
+---
+language = "en"
+
+dictionaries = ["en_us"]
+
+ignore_paths = [
+    "node_modules",
+    "target",
+    "dist",
+    "build",
+    "*.lock",
+]

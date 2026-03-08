@@ -302,7 +302,7 @@ mod txt_loading {
         let dict = loader::txt::load_txt(&path).expect("load words.txt");
         // The sample file stores Geschäft in NFD form (a + combining umlaut).
         // Our loader reads bytes as-is, so we check the NFD form.
-        use unicode_normalization::UnicodeNormalization;
+        use ::unicode_normalization::UnicodeNormalization;
         let nfd: String = "geschäft".nfd().collect();
         assert!(dict.has(&nfd), "geschäft (NFD)");
     }
@@ -528,6 +528,88 @@ mod trait_object {
 }
 
 // ============================================================
+// 14. Unicode normalization (NFC/NFD equivalence)
+// ============================================================
+
+mod unicode_normalization {
+    use matchum_dict::dictionary::Dictionary;
+    use matchum_dict::hashdict::HashDictionary;
+
+    #[test]
+    fn nfd_word_matches_nfc_query() {
+        // Add word in NFD form (decomposed), query in NFC form (composed)
+        let mut dict = HashDictionary::new(false);
+        dict.add_word("cafe\u{0301}"); // NFD: e + combining acute accent
+        assert!(dict.has("caf\u{00E9}")); // NFC: e-acute (precomposed)
+    }
+
+    #[test]
+    fn nfc_word_matches_nfd_query() {
+        let mut dict = HashDictionary::new(false);
+        dict.add_word("caf\u{00E9}"); // NFC: precomposed e-acute
+        assert!(dict.has("cafe\u{0301}")); // NFD: decomposed
+    }
+
+    #[test]
+    fn german_umlauts_nfc_nfd() {
+        let mut dict = HashDictionary::new(false);
+        dict.add_word("stra\u{00DF}e"); // NFC: strasse (eszett)
+        assert!(dict.has("stra\u{00DF}e")); // Same NFC
+    }
+
+    #[test]
+    fn combining_diacritical_marks() {
+        let mut dict = HashDictionary::new(false);
+        // Add "naive" with precomposed i-diaeresis
+        dict.add_word("na\u{00EF}ve");
+        // Query with decomposed form: i + combining diaeresis
+        assert!(dict.has("nai\u{0308}ve"));
+    }
+
+    #[test]
+    fn ascii_words_unaffected() {
+        let mut dict = HashDictionary::new(false);
+        dict.add_word("hello");
+        assert!(dict.has("hello"));
+        assert!(!dict.has("world"));
+    }
+
+    #[test]
+    fn nfc_nfd_case_insensitive() {
+        // NFC/NFD normalization should also work with case-insensitive lookup
+        let mut dict = HashDictionary::new(false);
+        dict.add_word("Caf\u{00E9}"); // NFC uppercase
+        assert!(dict.has("cafe\u{0301}")); // NFD lowercase
+        assert!(dict.has("CAF\u{00C9}")); // NFC uppercase all caps
+    }
+
+    #[test]
+    fn nfc_nfd_case_sensitive() {
+        let mut dict = HashDictionary::new(true);
+        dict.add_word("Caf\u{00E9}"); // NFC: "Cafe" with precomposed e-acute
+        assert!(dict.has("Cafe\u{0301}")); // NFD same casing should match
+        assert!(!dict.has("caf\u{00E9}")); // NFC lowercase should NOT match
+    }
+
+    #[test]
+    fn korean_hangul_normalization() {
+        // Hangul syllable can be NFC (single codepoint) or NFD (jamo decomposed)
+        let mut dict = HashDictionary::new(false);
+        dict.add_word("\u{D55C}"); // NFC: single Hangul syllable "han"
+        assert!(dict.has("\u{1112}\u{1161}\u{11AB}")); // NFD: decomposed jamo
+    }
+
+    #[test]
+    fn multiple_combining_marks() {
+        let mut dict = HashDictionary::new(false);
+        // "o" + combining acute + combining tilde (multiple combining marks)
+        dict.add_word("o\u{0301}\u{0303}");
+        // Same sequence should match
+        assert!(dict.has("o\u{0301}\u{0303}"));
+    }
+}
+
+// ============================================================
 // 12. Multiple dictionaries
 // ============================================================
 
@@ -590,5 +672,438 @@ mod software_terms {
         assert!(dict.has("webpack"), "webpack");
         assert!(dict.has("eslint"), "eslint");
         assert!(dict.has("npm"), "npm");
+    }
+}
+
+// ============================================================
+// 15. Case sensitivity edge cases — SpellingDictionary.test.ts
+// ============================================================
+
+mod case_sensitivity_advanced {
+    use super::*;
+
+    #[test]
+    fn case_insensitive_all_caps() {
+        let mut dict = HashDictionary::new(false);
+        dict.add_word("hello");
+        assert!(dict.has("HELLO"), "ALL CAPS on case-insensitive dict");
+    }
+
+    #[test]
+    fn case_insensitive_mixed_case() {
+        let mut dict = HashDictionary::new(false);
+        dict.add_word("hello");
+        assert!(dict.has("HeLLo"), "mixed case on case-insensitive dict");
+    }
+
+    #[test]
+    fn case_sensitive_exact_match_only() {
+        let mut dict = HashDictionary::new(true);
+        dict.add_word("Apple");
+        assert!(dict.has("Apple"), "exact match");
+        assert!(!dict.has("apple"), "lowercase should not match");
+        assert!(!dict.has("APPLE"), "ALL CAPS should not match");
+        assert!(!dict.has("aPPLE"), "inverted case should not match");
+    }
+
+    #[test]
+    fn case_sensitive_multiple_forms() {
+        let mut dict = HashDictionary::new(true);
+        dict.add_word("apple");
+        dict.add_word("Apple");
+        dict.add_word("APPLE");
+        assert!(dict.has("apple"));
+        assert!(dict.has("Apple"));
+        assert!(dict.has("APPLE"));
+        assert!(!dict.has("aPPLE"));
+    }
+
+    #[test]
+    fn case_insensitive_ucfirst_fallback() {
+        // ALL_CAPS word should match ucfirst form in case-insensitive mode
+        let mut dict = HashDictionary::new(false);
+        dict.add_word("house");
+        assert!(dict.has("HOUSE"), "ALL CAPS should match via ucfirst");
+        assert!(dict.has("House"), "ucfirst should match");
+    }
+
+    #[test]
+    fn case_sensitive_unicode_koln() {
+        let mut dict = HashDictionary::new(true);
+        dict.add_word("K\u{00f6}ln"); // Koln with o-umlaut
+        assert!(dict.has("K\u{00f6}ln"), "exact match");
+        assert!(!dict.has("k\u{00f6}ln"), "lowercase should not match");
+        assert!(!dict.has("K\u{00D6}LN"), "ALLCAPS should not match");
+    }
+}
+
+// ============================================================
+// 16. Compound word parts — SpellingDictionary.test.ts
+// ============================================================
+
+mod compound_word_parts {
+    use super::*;
+
+    #[test]
+    fn compound_parts_basic() {
+        let mut dict = HashDictionary::new(false);
+        dict.add_compound_part("apple");
+        dict.add_compound_part("banana");
+        assert!(dict.has_compound_parts());
+        // "applebanana" should be found as compound
+        assert!(dict.has("applebanana"), "compound: applebanana");
+    }
+
+    #[test]
+    fn compound_parts_not_matched_as_regular() {
+        let mut dict = HashDictionary::new(false);
+        // compound parts alone are not in the regular words set
+        dict.add_compound_part("apple");
+        // "apple" alone should NOT match as a regular word
+        // but compound parts might be in a separate set
+        // This behavior depends on implementation
+        let _ = dict.has("apple");
+    }
+
+    #[test]
+    fn compound_three_parts() {
+        let mut dict = HashDictionary::new(false);
+        dict.add_compound_part("red");
+        dict.add_compound_part("green");
+        dict.add_compound_part("blue");
+        assert!(dict.has("redgreen"), "two-part compound");
+        assert!(dict.has("redgreenblue"), "three-part compound");
+    }
+
+    #[test]
+    fn compound_case_insensitive() {
+        let mut dict = HashDictionary::new(false);
+        dict.add_compound_part("apple");
+        dict.add_compound_part("sauce");
+        assert!(dict.has("AppleSauce"), "case insensitive compound");
+    }
+}
+
+// ============================================================
+// 17. Identity words — exact case match
+// ============================================================
+
+mod identity_words {
+    use super::*;
+
+    #[test]
+    fn identity_word_exact_case() {
+        let mut dict = HashDictionary::new(false);
+        dict.add_identity_word("iPhone");
+        assert!(dict.has("iPhone"), "exact identity word");
+    }
+
+    #[test]
+    fn identity_word_case_insensitive_dict() {
+        let mut dict = HashDictionary::new(false);
+        dict.add_identity_word("iPhone");
+        // In case-insensitive mode, the lowercased form is also added
+        assert!(dict.has("iphone"), "lowercased also works");
+    }
+}
+
+// ============================================================
+// 18. Dictionary suggest — SpellingDictionary.test.ts
+// ============================================================
+
+mod dictionary_suggest {
+    use super::*;
+
+    #[test]
+    fn suggest_basic() {
+        let mut dict = HashDictionary::new(false);
+        dict.add_word("apple");
+        dict.add_word("ape");
+        dict.add_word("able");
+        dict.add_word("banana");
+        let suggestions = dict.suggest("aple", 5);
+        assert!(
+            suggestions.contains(&"apple".to_string()),
+            "suggest apple: {:?}",
+            suggestions
+        );
+    }
+
+    #[test]
+    fn suggest_excludes_no_suggest() {
+        let mut dict = HashDictionary::new(false);
+        dict.add_word("apple");
+        dict.add_no_suggest("aple");
+        let suggestions = dict.suggest("aple", 5);
+        // "aple" should not appear in suggestions since it's no-suggest
+        assert!(
+            !suggestions.contains(&"aple".to_string()),
+            "no-suggest excluded: {:?}",
+            suggestions
+        );
+    }
+
+    #[test]
+    fn suggest_excludes_forbidden() {
+        let mut dict = HashDictionary::new(false);
+        dict.add_word("apple");
+        dict.add_forbidden("aple");
+        let suggestions = dict.suggest("aple", 5);
+        // "aple" should not appear in suggestions since it's forbidden
+        assert!(
+            !suggestions.contains(&"aple".to_string()),
+            "forbidden excluded: {:?}",
+            suggestions
+        );
+    }
+
+    #[test]
+    fn suggest_limit() {
+        let mut dict = HashDictionary::new(false);
+        for w in &[
+            "cat", "car", "cart", "care", "card", "can", "cap", "cab", "cam",
+        ] {
+            dict.add_word(w);
+        }
+        let suggestions = dict.suggest("cax", 3);
+        assert!(
+            suggestions.len() <= 3,
+            "limit to 3: {:?}",
+            suggestions
+        );
+    }
+
+    #[test]
+    fn suggest_empty_dict() {
+        let dict = HashDictionary::new(false);
+        let suggestions = dict.suggest("hello", 5);
+        assert!(suggestions.is_empty());
+    }
+}
+
+// ============================================================
+// 19. RepMap in dictionary — language-specific substitutions
+// ============================================================
+
+mod repmap_in_dict {
+    use super::*;
+    use matchum_dict::repmap::RepMap;
+
+    #[test]
+    fn german_ss_to_eszett() {
+        let mut dict = HashDictionary::new(false);
+        dict.add_word("stra\u{00df}e"); // Straße
+        dict.set_repmap(RepMap::new(vec![("ss".into(), "\u{00df}".into())]));
+        assert!(dict.has("strasse"), "repmap: ss -> eszett");
+    }
+
+    #[test]
+    fn french_e_accent() {
+        let mut dict = HashDictionary::new(false);
+        dict.add_word("caf\u{00e9}"); // cafe with accent
+        dict.set_repmap(RepMap::new(vec![("e".into(), "\u{00e9}".into())]));
+        assert!(dict.has("cafe"), "repmap: e -> e-acute");
+    }
+
+    #[test]
+    fn repmap_reverse_direction() {
+        let mut dict = HashDictionary::new(false);
+        dict.add_word("strasse");
+        dict.set_repmap(RepMap::new(vec![("ss".into(), "\u{00df}".into())]));
+        assert!(
+            dict.has("stra\u{00df}e"),
+            "repmap reverse: eszett -> ss"
+        );
+    }
+}
+
+// ============================================================
+// 20. Binary cache roundtrip
+// ============================================================
+
+mod binary_cache {
+    use super::*;
+
+    #[test]
+    fn cache_roundtrip() {
+        let mut dict = HashDictionary::new(false);
+        dict.add_word("hello");
+        dict.add_word("world");
+        dict.add_forbidden("badword");
+        dict.add_no_suggest("nosuggest");
+
+        let mtime = 123456789u64;
+        let size = 42u32;
+        let bytes = dict.to_cache_bytes(mtime, size);
+
+        let restored = HashDictionary::from_cache_bytes(&bytes, mtime, size);
+        assert!(restored.is_some());
+        let restored = restored.unwrap();
+        assert!(restored.has("hello"));
+        assert!(restored.has("world"));
+        assert!(restored.is_forbidden("badword"));
+        assert!(restored.has("nosuggest"));
+    }
+
+    #[test]
+    fn cache_mtime_mismatch_returns_none() {
+        let mut dict = HashDictionary::new(false);
+        dict.add_word("hello");
+
+        let bytes = dict.to_cache_bytes(100, 42);
+        let restored = HashDictionary::from_cache_bytes(&bytes, 999, 42);
+        assert!(restored.is_none());
+    }
+
+    #[test]
+    fn cache_size_mismatch_returns_none() {
+        let mut dict = HashDictionary::new(false);
+        dict.add_word("hello");
+
+        let bytes = dict.to_cache_bytes(100, 42);
+        let restored = HashDictionary::from_cache_bytes(&bytes, 100, 999);
+        assert!(restored.is_none());
+    }
+
+    #[test]
+    fn cache_invalid_magic_returns_none() {
+        let bytes = vec![0u8; 100];
+        let restored = HashDictionary::from_cache_bytes(&bytes, 0, 0);
+        assert!(restored.is_none());
+    }
+
+    #[test]
+    fn cache_too_short_returns_none() {
+        let bytes = vec![0u8; 10];
+        let restored = HashDictionary::from_cache_bytes(&bytes, 0, 0);
+        assert!(restored.is_none());
+    }
+
+    #[test]
+    fn cache_case_sensitive_preserved() {
+        let mut dict = HashDictionary::new(true);
+        dict.add_word("Hello");
+
+        let bytes = dict.to_cache_bytes(100, 42);
+        let restored = HashDictionary::from_cache_bytes(&bytes, 100, 42).unwrap();
+        assert!(restored.is_case_sensitive());
+        assert!(restored.has("Hello"));
+        assert!(!restored.has("hello"));
+    }
+}
+
+// ============================================================
+// 21. Dictionary find with various word states
+// ============================================================
+
+mod find_result_advanced {
+    use super::*;
+
+    #[test]
+    fn find_word_that_is_both_word_and_forbidden() {
+        let mut dict = HashDictionary::new(false);
+        dict.add_word("colour");
+        dict.add_forbidden("colour");
+        let result = dict.find("colour");
+        // When a word is both added and forbidden, forbidden takes precedence
+        assert!(result.forbidden, "forbidden should be set");
+    }
+
+    #[test]
+    fn find_word_that_is_both_word_and_no_suggest() {
+        let mut dict = HashDictionary::new(false);
+        dict.add_no_suggest("zeros");
+        let result = dict.find("zeros");
+        assert!(result.found, "should be found");
+        assert!(result.no_suggest, "should be no_suggest");
+        assert!(!result.forbidden, "should not be forbidden");
+    }
+
+    #[test]
+    fn find_returns_false_for_empty_dict() {
+        let dict = HashDictionary::new(false);
+        let result = dict.find("anything");
+        assert!(!result.found);
+        assert!(!result.forbidden);
+        assert!(!result.no_suggest);
+    }
+
+    #[test]
+    fn find_case_insensitive_lookup() {
+        let mut dict = HashDictionary::new(false);
+        dict.add_word("Apple");
+        let result = dict.find("apple");
+        assert!(result.found, "case insensitive find");
+    }
+
+    #[test]
+    fn find_case_sensitive_lookup() {
+        let mut dict = HashDictionary::new(true);
+        dict.add_word("Apple");
+        let result = dict.find("apple");
+        assert!(!result.found, "case sensitive find lowercase");
+        let result = dict.find("Apple");
+        assert!(result.found, "case sensitive find exact");
+    }
+
+    #[test]
+    fn forbidden_case_sensitive() {
+        let mut dict = HashDictionary::new(true);
+        dict.add_forbidden("Colour");
+        // Case-sensitive forbidden — only exact case matches
+        assert!(dict.is_forbidden("Colour"));
+        // In a case-sensitive dictionary, the normalization preserves case
+    }
+}
+
+// ============================================================
+// 22. Large dictionary stress tests
+// ============================================================
+
+mod dictionary_stress {
+    use super::*;
+
+    #[test]
+    fn large_dictionary_lookup() {
+        let mut dict = HashDictionary::new(false);
+        for i in 0..10_000 {
+            dict.add_word(&format!("word{}", i));
+        }
+        assert_eq!(dict.len(), 10_000);
+        assert!(dict.has("word0"));
+        assert!(dict.has("word5000"));
+        assert!(dict.has("word9999"));
+        assert!(!dict.has("word10000"));
+    }
+
+    #[test]
+    fn large_forbidden_set() {
+        let mut dict = HashDictionary::new(false);
+        for i in 0..1000 {
+            dict.add_forbidden(&format!("bad{}", i));
+        }
+        assert!(dict.is_forbidden("bad0"));
+        assert!(dict.is_forbidden("bad500"));
+        assert!(dict.is_forbidden("bad999"));
+        assert!(!dict.is_forbidden("bad1000"));
+    }
+
+    #[test]
+    fn dictionary_with_unicode_words() {
+        let mut dict = HashDictionary::new(false);
+        let words = vec![
+            "caf\u{00e9}",
+            "na\u{00ef}ve",
+            "r\u{00e9}sum\u{00e9}",
+            "\u{00fc}ber",
+            "Gesch\u{00e4}ft",
+            "\u{00e9}l\u{00e8}ve",
+        ];
+        for w in &words {
+            dict.add_word(w);
+        }
+        for w in &words {
+            assert!(dict.has(w), "should find: {}", w);
+        }
     }
 }

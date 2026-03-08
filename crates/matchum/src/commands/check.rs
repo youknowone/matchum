@@ -1049,6 +1049,7 @@ fn build_validator_config(
             .collect(),
         allow_compound_words: cli_allow_compound_words
             .unwrap_or(settings.allow_compound_words.unwrap_or(false)),
+        compound_words_mode: matchum_core::validator::CompoundWordsMode::None,
         compute_suggestions,
         max_duplicate_problems: settings.max_duplicate_problems.unwrap_or(5),
     }

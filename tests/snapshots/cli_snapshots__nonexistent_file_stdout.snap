@@ -1,0 +1,6 @@
+---
+source: tests/cli_snapshots.rs
+assertion_line: 157
+expression: normalize(&stdout)
+---
+

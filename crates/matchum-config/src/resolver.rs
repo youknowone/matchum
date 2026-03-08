@@ -336,6 +336,12 @@ pub fn merge_settings(base: CSpellSettings, overlay: CSpellSettings) -> CSpellSe
             overlay.no_suggest_dictionaries,
         ),
 
+        rep_map: if overlay.rep_map.is_empty() {
+            base.rep_map
+        } else {
+            overlay.rep_map
+        },
+
         import: Vec::new(), // imports already resolved
         overrides: concat_vecs(base.overrides, overlay.overrides),
         language_settings: concat_vecs(base.language_settings, overlay.language_settings),

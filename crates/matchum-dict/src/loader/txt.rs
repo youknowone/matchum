@@ -70,6 +70,15 @@ fn add_word_entry(dict: &mut HashDictionary, word: &str) {
         return;
     }
 
+    // Preferred suggestion prefix '!*'
+    if let Some(rest) = word.strip_prefix("!*") {
+        let base = extract_base_before_suggestion(rest);
+        if !base.is_empty() {
+            dict.add_preferred(base);
+        }
+        return;
+    }
+
     // Forbidden prefix '!'
     if let Some(rest) = word.strip_prefix('!') {
         let base = extract_base_before_suggestion(rest);

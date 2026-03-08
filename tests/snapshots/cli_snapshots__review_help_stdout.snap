@@ -1,0 +1,14 @@
+---
+source: tests/cli_snapshots.rs
+expression: stdout
+---
+Interactively review spelling issues
+
+Usage: matchum review [OPTIONS] [PATHS]...
+
+Arguments:
+  [PATHS]...  Files or directories to check [default: .]
+
+Options:
+  -c, --config <CONFIG>  Config file path
+  -h, --help             Print help

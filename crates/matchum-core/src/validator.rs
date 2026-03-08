@@ -10,6 +10,14 @@ use std::sync::{Arc, LazyLock, RwLock};
 
 pub type WordCache = Arc<RwLock<hashbrown::HashMap<CompactString, bool>>>;
 
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Default)]
+pub enum CompoundWordsMode {
+    #[default]
+    None,
+    SeparateWords,
+    JoinWords,
+}
+
 /// Configuration for the validation pipeline.
 #[derive(Clone)]
 pub struct ValidatorConfig {
@@ -20,6 +28,7 @@ pub struct ValidatorConfig {
     pub flag_words: HashSet<CompactString>,
     pub ignore_words: HashSet<CompactString>,
     pub allow_compound_words: bool,
+    pub compound_words_mode: CompoundWordsMode,
     pub compute_suggestions: bool,
     /// Maximum number of times a duplicate word is reported per document.
     /// Matches cspell's `maxDuplicateProblems` (default: 5).
@@ -36,6 +45,7 @@ impl Default for ValidatorConfig {
             flag_words: HashSet::new(),
             ignore_words: HashSet::new(),
             allow_compound_words: false,
+            compound_words_mode: CompoundWordsMode::None,
             compute_suggestions: true,
             max_duplicate_problems: 5,
         }
@@ -1087,11 +1097,23 @@ impl Validator {
             }
         }
 
-        if !allow_compound_words {
+        let compound_mode = if allow_compound_words {
+            // If compound words are enabled but mode is None, default to JoinWords
+            // for backward compatibility
+            if self.config.compound_words_mode == CompoundWordsMode::None {
+                CompoundWordsMode::JoinWords
+            } else {
+                self.config.compound_words_mode
+            }
+        } else {
+            CompoundWordsMode::None
+        };
+
+        if compound_mode == CompoundWordsMode::None {
             return false;
         }
 
-        self.is_compound_valid(word, directive_dictionaries, case_sensitive)
+        self.is_compound_valid(word, directive_dictionaries, case_sensitive, compound_mode)
     }
 
     fn has_in_active_dicts(
@@ -1115,11 +1137,16 @@ impl Validator {
             .any(|d| d.dict.has(word))
     }
 
+    fn has_in_single_dict(&self, word: &str, dict: &DictionaryEntry) -> bool {
+        dict.dict.has(word)
+    }
+
     fn is_compound_valid(
         &self,
         word: &str,
         directive_dictionaries: Option<&HashSet<String>>,
         case_sensitive: bool,
+        mode: CompoundWordsMode,
     ) -> bool {
         if word.len() < 2 {
             return false;
@@ -1138,18 +1165,48 @@ impl Validator {
             if left.is_empty() || right.is_empty() {
                 continue;
             }
-            if self.has_in_active_dicts(left, directive_dictionaries)
-                && self.has_in_active_dicts(right, directive_dictionaries)
-            {
+
+            let found = match mode {
+                CompoundWordsMode::JoinWords => {
+                    self.has_in_active_dicts(left, directive_dictionaries)
+                        && self.has_in_active_dicts(right, directive_dictionaries)
+                }
+                CompoundWordsMode::SeparateWords => {
+                    // Both parts must exist in the SAME dictionary
+                    self.dictionaries
+                        .iter()
+                        .filter(|d| self.is_dict_active(d, directive_dictionaries))
+                        .any(|d| {
+                            self.has_in_single_dict(left, d)
+                                && self.has_in_single_dict(right, d)
+                        })
+                }
+                CompoundWordsMode::None => return false,
+            };
+            if found {
                 return true;
             }
 
             if !case_sensitive && !self.all_dicts_case_insensitive {
                 let left_lower = left.to_lowercase();
                 let right_lower = right.to_lowercase();
-                if self.has_in_active_dicts(&left_lower, directive_dictionaries)
-                    && self.has_in_active_dicts(&right_lower, directive_dictionaries)
-                {
+                let found_lower = match mode {
+                    CompoundWordsMode::JoinWords => {
+                        self.has_in_active_dicts(&left_lower, directive_dictionaries)
+                            && self.has_in_active_dicts(&right_lower, directive_dictionaries)
+                    }
+                    CompoundWordsMode::SeparateWords => {
+                        self.dictionaries
+                            .iter()
+                            .filter(|d| self.is_dict_active(d, directive_dictionaries))
+                            .any(|d| {
+                                self.has_in_single_dict(&left_lower, d)
+                                    && self.has_in_single_dict(&right_lower, d)
+                            })
+                    }
+                    CompoundWordsMode::None => return false,
+                };
+                if found_lower {
                     return true;
                 }
             }

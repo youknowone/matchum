@@ -1,0 +1,6 @@
+---
+source: tests/cli_snapshots.rs
+assertion_line: 125
+expression: normalize(&stdout)
+---
+::error file=tests/fixtures/sample.txt,line=3,col=1::Unknown word (misspeled)

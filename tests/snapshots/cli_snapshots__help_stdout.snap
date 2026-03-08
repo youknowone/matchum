@@ -1,0 +1,22 @@
+---
+source: tests/cli_snapshots.rs
+expression: stdout
+---
+High-performance spell checker
+
+Usage: matchum <COMMAND>
+
+Commands:
+  check   Check files for spelling errors
+  lint    Check files (strict mode, exits 1 on errors)
+  trace   Trace a word through dictionaries
+  init    Initialize a matchum.toml config file
+  review  Interactively review spelling issues
+  add     Add words to the project dictionary
+  dict    Manage dictionary packages
+  cspell  cspell-compatible command interface
+  help    Print this message or the help of the given subcommand(s)
+
+Options:
+  -h, --help     Print help
+  -V, --version  Print version

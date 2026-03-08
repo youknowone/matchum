@@ -1,3 +1,4 @@
+pub mod hunspell;
 pub mod trie_v3;
 pub mod txt;
 
@@ -40,6 +41,9 @@ fn load_dictionary_inner(path: &Path) -> Result<HashDictionary, LoadError> {
     let name = path.to_string_lossy();
     if name.ends_with(".trie") || name.ends_with(".trie.gz") {
         trie_v3::load_trie_v3(path)
+    } else if name.ends_with(".dic") {
+        let aff_path = path.with_extension("aff");
+        hunspell::load_hunspell(path, &aff_path)
     } else {
         txt::load_txt(path)
     }

@@ -6,8 +6,9 @@
 //! - vendor/cspell/packages/cspell-trie-lib/src/lib/distance/distance.test.ts
 
 use matchum_dict::dictionary::Dictionary;
-use matchum_dict::distance::damerau_levenshtein;
-use matchum_dict::distance::select_nearest_words;
+use matchum_dict::distance::{
+    damerau_levenshtein, select_nearest_words, weighted_damerau_levenshtein, EditCosts,
+};
 use matchum_dict::hashdict::HashDictionary;
 
 // ============================================================
@@ -329,5 +330,109 @@ mod dict_suggestions {
             "case insensitive: {:?}",
             suggestions
         );
+    }
+}
+
+// ============================================================
+// 4. Weighted Damerau-Levenshtein distance
+// ============================================================
+
+mod weighted_distance {
+    use super::*;
+
+    #[test]
+    fn case_change_costs_zero_by_default() {
+        let costs = EditCosts::default();
+        assert_eq!(weighted_damerau_levenshtein("hello", "Hello", &costs), 0);
+        assert_eq!(weighted_damerau_levenshtein("abc", "ABC", &costs), 0);
+        assert_eq!(weighted_damerau_levenshtein("color", "Color", &costs), 0);
+    }
+
+    #[test]
+    fn identical_strings_zero() {
+        let costs = EditCosts::default();
+        assert_eq!(weighted_damerau_levenshtein("hello", "hello", &costs), 0);
+    }
+
+    #[test]
+    fn pure_case_change_cheaper_than_substitution() {
+        let costs = EditCosts::default();
+        let case_dist = weighted_damerau_levenshtein("color", "Color", &costs);
+        let sub_dist = weighted_damerau_levenshtein("color", "dolor", &costs);
+        assert!(
+            case_dist < sub_dist,
+            "case change ({case_dist}) should be cheaper than substitution ({sub_dist})"
+        );
+    }
+
+    #[test]
+    fn keyboard_adjacent_cheaper_than_distant() {
+        let costs = EditCosts::default();
+        // 'f' and 'g' are adjacent
+        let adj = weighted_damerau_levenshtein("fat", "gat", &costs);
+        // 'f' and 'l' are not adjacent
+        let far = weighted_damerau_levenshtein("fat", "lat", &costs);
+        assert!(
+            adj < far,
+            "adjacent key ({adj}) should be cheaper than distant key ({far})"
+        );
+    }
+
+    #[test]
+    fn unweighted_matches_classic() {
+        let costs = EditCosts::unweighted();
+        let pairs = [
+            ("kitten", "sitting", 3),
+            ("Saturday", "Sunday", 3),
+            ("ab", "ba", 1),
+            ("abc", "ab", 1),
+            ("appear", "apple", 3),
+        ];
+        for (a, b, expected) in &pairs {
+            assert_eq!(
+                weighted_damerau_levenshtein(a, b, &costs),
+                *expected,
+                "unweighted({a}, {b})"
+            );
+        }
+    }
+
+    #[test]
+    fn transposition_with_default_cost() {
+        let costs = EditCosts::default();
+        // "teh" -> "the" is a transposition, cost = 100
+        assert_eq!(weighted_damerau_levenshtein("teh", "the", &costs), 100);
+    }
+
+    #[test]
+    fn insertion_and_deletion_with_default_cost() {
+        let costs = EditCosts::default();
+        // "helo" -> "hello" is an insertion, cost = 100
+        assert_eq!(weighted_damerau_levenshtein("helo", "hello", &costs), 100);
+        // "helloo" -> "hello" is a deletion, cost = 100
+        assert_eq!(weighted_damerau_levenshtein("helloo", "hello", &costs), 100);
+    }
+
+    #[test]
+    fn empty_strings() {
+        let costs = EditCosts::default();
+        assert_eq!(weighted_damerau_levenshtein("", "", &costs), 0);
+        assert_eq!(
+            weighted_damerau_levenshtein("abc", "", &costs),
+            3 * costs.deletion
+        );
+        assert_eq!(
+            weighted_damerau_levenshtein("", "abc", &costs),
+            3 * costs.insertion
+        );
+    }
+
+    #[test]
+    fn mixed_case_and_edit() {
+        let costs = EditCosts::default();
+        // "color" -> "Color" is case (0), "color" -> "colours" is case(0) + ins('u') + ins('s') = 200
+        let dist = weighted_damerau_levenshtein("color", "Colours", &costs);
+        // case('c'->'C')=0, ins('u')=100, ins('s')=100 = 200
+        assert_eq!(dist, 200);
     }
 }

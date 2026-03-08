@@ -1,0 +1,14 @@
+---
+source: tests/cli_snapshots.rs
+expression: stdout
+---
+Check files (strict mode, exits 1 on errors)
+
+Usage: matchum lint [OPTIONS] [PATHS]...
+
+Arguments:
+  [PATHS]...  Files or directories to check [default: .]
+
+Options:
+  -c, --config <CONFIG>  Config file path
+  -h, --help             Print help

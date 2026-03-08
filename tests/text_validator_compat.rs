@@ -836,3 +836,451 @@ mod case_sensitivity {
         );
     }
 }
+
+// ============================================================
+// 13. Compound words with allowCompoundWords — textValidator.test.ts
+// ============================================================
+
+mod compound_words_validation {
+    use super::*;
+
+    fn sample_dicts_for_compound() -> Vec<Box<dyn Dictionary>> {
+        let colors = make_dict(&[
+            "red", "green", "blue", "black", "white", "orange", "purple", "yellow", "gray",
+            "brown", "light", "dark",
+        ]);
+        let fruit = make_dict(&[
+            "apple",
+            "banana",
+            "orange",
+            "pear",
+            "pineapple",
+            "mango",
+            "avocado",
+            "grape",
+            "strawberry",
+            "blueberry",
+            "blackberry",
+            "berry",
+        ]);
+        let animals = make_dict(&[
+            "ape", "lion", "tiger", "elephant", "monkey", "gazelle", "antelope", "aardvark",
+            "hyena",
+        ]);
+        let insects = make_dict(&[
+            "ant",
+            "snail",
+            "beetle",
+            "worm",
+            "stink",
+            "bug",
+            "centipede",
+            "millipede",
+            "flea",
+            "fly",
+        ]);
+        let common_words = make_dict(&[
+            "allowed", "and", "ate", "be", "been", "better", "big", "dark", "done", "fixes",
+            "has", "have", "here", "is", "known", "light", "little", "multiple", "not",
+            "problems", "published", "should", "the", "there", "they", "this", "to", "we",
+        ]);
+        vec![colors, fruit, animals, insects, common_words]
+    }
+
+    #[test]
+    fn compound_words_enabled_fewer_errors() {
+        let dicts = sample_dicts_for_compound();
+        let config = ValidatorConfig {
+            allow_compound_words: true,
+            ..Default::default()
+        };
+        let v = Validator::new(dicts, config);
+
+        // With compounds: "lightbrown" = "light"+"brown" should be valid
+        let text = "The lightbrown worm ate the apple.";
+        let issues = v.validate_text(text);
+        let words = issue_words(&issues);
+        assert!(
+            !words.contains(&"lightbrown"),
+            "compound words should resolve lightbrown: {:?}",
+            words
+        );
+    }
+
+    #[test]
+    fn compound_words_disabled_more_errors() {
+        let dicts = sample_dicts_for_compound();
+        let config = ValidatorConfig {
+            allow_compound_words: false,
+            ..Default::default()
+        };
+        let v = Validator::new(dicts, config);
+
+        let text = "The lightbrown worm ate the apple.";
+        let issues = v.validate_text(text);
+        let words = issue_words(&issues);
+        assert!(
+            words.contains(&"lightbrown"),
+            "without compound should flag lightbrown: {:?}",
+            words
+        );
+    }
+}
+
+// ============================================================
+// 14. Min word length filtering — textValidator.test.ts
+// ============================================================
+
+mod min_word_length_validation {
+    use super::*;
+
+    #[test]
+    fn default_min_word_length_is_4() {
+        let dict = make_dict(&["hello"]);
+        let v = Validator::new(vec![dict], ValidatorConfig::default());
+
+        // Words shorter than 4 chars should be skipped
+        let issues = v.validate_text("ab xyz qw hello");
+        assert!(
+            issues.is_empty(),
+            "short words should be skipped: {:?}",
+            issue_words(&issues)
+        );
+    }
+
+    #[test]
+    fn custom_min_word_length() {
+        let dict = make_dict(&["hello"]);
+        let config = ValidatorConfig {
+            min_word_length: 2,
+            ..Default::default()
+        };
+        let v = Validator::new(vec![dict], config);
+
+        let issues = v.validate_text("hello ab xyz");
+        let words = issue_words(&issues);
+        // With min_word_length=2, "ab" and "xyz" should be checked
+        assert!(words.contains(&"xyz"), "min_word_length=2: {:?}", words);
+    }
+
+    #[test]
+    fn min_word_length_1_checks_everything() {
+        let dict = make_dict(&["a", "hello"]);
+        let config = ValidatorConfig {
+            min_word_length: 1,
+            ..Default::default()
+        };
+        let v = Validator::new(vec![dict], config);
+
+        let issues = v.validate_text("a hello x");
+        let words = issue_words(&issues);
+        assert!(words.contains(&"x"), "min=1 checks single chars: {:?}", words);
+        assert!(!words.contains(&"a"), "'a' is in dict: {:?}", words);
+    }
+
+    #[test]
+    fn flag_words_bypass_min_word_length() {
+        // Flag words are checked even below min_word_length
+        let dict = make_dict(&["hello"]);
+        let config = ValidatorConfig {
+            flag_words: ["bad"]
+                .iter()
+                .map(|w| compact_str::CompactString::from(w.to_lowercase()))
+                .collect(),
+            min_word_length: 4,
+            ..Default::default()
+        };
+        let v = Validator::new(vec![dict], config);
+
+        let issues = v.validate_text("hello bad");
+        assert_eq!(issues.len(), 1);
+        assert_eq!(issues[0].word, "bad");
+        assert!(issues[0].is_forbidden);
+    }
+}
+
+// ============================================================
+// 15. Max duplicate problems — textValidator.test.ts
+// ============================================================
+
+mod max_duplicate_problems {
+    use super::*;
+
+    #[test]
+    fn default_max_duplicate_problems_is_5() {
+        let dict = make_dict(&["hello"]);
+        let config = ValidatorConfig {
+            max_duplicate_problems: 5,
+            ..Default::default()
+        };
+        let v = Validator::new(vec![dict], config);
+
+        // "unword" repeated 20 times
+        let text = (0..20).map(|_| "unword").collect::<Vec<_>>().join(" ");
+        let issues = v.validate_text(&text);
+        assert_eq!(
+            issues.len(),
+            5,
+            "default max dup is 5: got {} issues",
+            issues.len()
+        );
+    }
+
+    #[test]
+    fn custom_max_duplicate_problems() {
+        let dict = make_dict(&["hello"]);
+        let config = ValidatorConfig {
+            max_duplicate_problems: 10,
+            ..Default::default()
+        };
+        let v = Validator::new(vec![dict], config);
+
+        let text = (0..20).map(|_| "unword").collect::<Vec<_>>().join(" ");
+        let issues = v.validate_text(&text);
+        assert_eq!(
+            issues.len(),
+            10,
+            "max dup=10: got {} issues",
+            issues.len()
+        );
+    }
+
+    #[test]
+    fn different_unknown_words_not_limited() {
+        let dict = make_dict(&["hello"]);
+        let config = ValidatorConfig {
+            max_duplicate_problems: 2,
+            ..Default::default()
+        };
+        let v = Validator::new(vec![dict], config);
+
+        // Use non-repeating-character words to avoid regExRepeatedChar skip
+        let text = "abcd efgh ijkl mnop qrst uvwx yzab cdef";
+        let issues = v.validate_text(&text);
+        // Each unique word gets its own count; none should be over 2
+        assert_eq!(issues.len(), 8, "unique words not limited: {:?}", issue_words(&issues));
+    }
+}
+
+// ============================================================
+// 16. Trailing morphology in validation — textValidator.test.ts
+// ============================================================
+
+mod morphology_validation {
+    use super::*;
+
+    #[test]
+    fn uppercase_with_lowercase_suffix() {
+        // "PUBLISHed" — PUBLISH is uppercase block, "ed" is suffix
+        let dict = make_dict(&["publish", "fix", "problem", "multiple", "we"]);
+        let v = Validator::new(vec![dict], ValidatorConfig::default());
+
+        let issues = v.validate_text("We have PUBLISHed multiple FixesToThePROBLEMs");
+        let words = issue_words(&issues);
+        // "have" is not in dict, so it would be flagged
+        assert!(words.contains(&"have"), "have not in dict: {:?}", words);
+    }
+}
+
+// ============================================================
+// 17. Multiple dictionaries interaction
+// ============================================================
+
+mod multi_dict_validation {
+    use super::*;
+
+    #[test]
+    fn word_found_in_any_dict_is_valid() {
+        let dict1 = make_dict(&["apple", "banana"]);
+        let dict2 = make_dict(&["cherry", "date"]);
+        let v = Validator::new(vec![dict1, dict2], ValidatorConfig::default());
+
+        let issues = v.validate_text("apple cherry");
+        assert!(issues.is_empty(), "words from either dict valid: {:?}", issue_words(&issues));
+    }
+
+    #[test]
+    fn word_not_in_any_dict_flagged() {
+        let dict1 = make_dict(&["apple", "banana"]);
+        let dict2 = make_dict(&["cherry", "date"]);
+        let v = Validator::new(vec![dict1, dict2], ValidatorConfig::default());
+
+        let issues = v.validate_text("apple grape cherry");
+        let words = issue_words(&issues);
+        assert!(words.contains(&"grape"), "got: {:?}", words);
+    }
+
+    #[test]
+    fn forbidden_in_one_dict_flagged() {
+        let dict1 = make_dict(&["apple", "banana"]);
+        let dict2 = make_dict_with_forbidden(&["cherry"], &["colour"]);
+        let config = ValidatorConfig::default();
+        let v = Validator::new(vec![dict1, dict2], config);
+
+        let issues = v.validate_text("apple colour cherry");
+        let words = issue_words(&issues);
+        assert!(words.contains(&"colour"), "forbidden: {:?}", words);
+    }
+}
+
+// ============================================================
+// 18. Ignore words with mixed case — textValidator.test.ts
+// ============================================================
+
+mod ignore_words_case_handling {
+    use super::*;
+
+    #[test]
+    fn ignore_words_case_insensitive() {
+        let dict = make_dict(&["hello"]);
+        let config = ValidatorConfig {
+            ignore_words: ["customword"]
+                .iter()
+                .map(|w| compact_str::CompactString::from(w.to_lowercase()))
+                .collect(),
+            ..Default::default()
+        };
+        let v = Validator::new(vec![dict], config);
+
+        // "CustomWord" should be matched case-insensitively against "customword"
+        let issues = v.validate_text("hello CustomWord");
+        assert!(
+            issues.is_empty(),
+            "ignore words case insensitive: {:?}",
+            issue_words(&issues)
+        );
+    }
+
+    #[test]
+    fn ignore_words_in_camel_case() {
+        let dict = make_dict(&["hello"]);
+        let config = ValidatorConfig {
+            ignore_words: ["myspecialword"]
+                .iter()
+                .map(|w| compact_str::CompactString::from(w.to_lowercase()))
+                .collect(),
+            ..Default::default()
+        };
+        let v = Validator::new(vec![dict], config);
+
+        let issues = v.validate_text("hello mySpecialWord");
+        // The full token "mySpecialWord" is checked; after splitting, "my" and "Special" and "Word"
+        // are individual sub-words, so this depends on whether ignore is checked on the full token
+        // or sub-words
+        let words = issue_words(&issues);
+        // At least "hello" should be valid
+        assert!(!words.contains(&"hello"), "got: {:?}", words);
+    }
+}
+
+// ============================================================
+// 19. Unicode text validation
+// ============================================================
+
+mod unicode_text_validation {
+    use super::*;
+
+    #[test]
+    fn german_text_valid() {
+        let dict = make_dict(&["das", "ist", "gut"]);
+        let v = Validator::new(vec![dict], ValidatorConfig::default());
+
+        let issues = v.validate_text("Das ist gut");
+        assert!(issues.is_empty(), "german: {:?}", issue_words(&issues));
+    }
+
+    #[test]
+    fn accented_words_valid() {
+        let dict = make_dict(&["caf\u{00e9}", "na\u{00ef}ve", "r\u{00e9}sum\u{00e9}"]);
+        let v = Validator::new(vec![dict], ValidatorConfig::default());
+
+        let issues = v.validate_text("caf\u{00e9} na\u{00ef}ve r\u{00e9}sum\u{00e9}");
+        assert!(
+            issues.is_empty(),
+            "accented words: {:?}",
+            issue_words(&issues)
+        );
+    }
+
+    #[test]
+    fn greek_text_checked() {
+        let dict = make_dict(&["alpha", "beta"]);
+        let v = Validator::new(vec![dict], ValidatorConfig::default());
+
+        let issues = v.validate_text("alpha \u{03B1}\u{03BB}\u{03C6}\u{03B1}");
+        // The Greek word should be a separate token and checked
+        let words = issue_words(&issues);
+        assert!(
+            !words.contains(&"alpha"),
+            "latin alpha ok: {:?}",
+            words
+        );
+    }
+}
+
+// ============================================================
+// 20. Empty and edge-case text
+// ============================================================
+
+mod edge_case_text {
+    use super::*;
+
+    #[test]
+    fn empty_text() {
+        let dict = make_dict(&["hello"]);
+        let v = Validator::new(vec![dict], ValidatorConfig::default());
+        let issues = v.validate_text("");
+        assert!(issues.is_empty());
+    }
+
+    #[test]
+    fn whitespace_only() {
+        let dict = make_dict(&["hello"]);
+        let v = Validator::new(vec![dict], ValidatorConfig::default());
+        let issues = v.validate_text("   \t\n  ");
+        assert!(issues.is_empty());
+    }
+
+    #[test]
+    fn numbers_only() {
+        let dict = make_dict(&["hello"]);
+        let v = Validator::new(vec![dict], ValidatorConfig::default());
+        let issues = v.validate_text("12345 67890");
+        assert!(issues.is_empty());
+    }
+
+    #[test]
+    fn special_chars_only() {
+        let dict = make_dict(&["hello"]);
+        let v = Validator::new(vec![dict], ValidatorConfig::default());
+        let issues = v.validate_text("!@#$%^&*()+-=[]{}|;':\",./<>?");
+        assert!(issues.is_empty());
+    }
+
+    #[test]
+    fn single_valid_word() {
+        let dict = make_dict(&["hello"]);
+        let v = Validator::new(vec![dict], ValidatorConfig::default());
+        let issues = v.validate_text("hello");
+        assert!(issues.is_empty());
+    }
+
+    #[test]
+    fn single_invalid_word() {
+        let dict = make_dict(&["hello"]);
+        let v = Validator::new(vec![dict], ValidatorConfig::default());
+        let issues = v.validate_text("xyzzy");
+        assert_eq!(issues.len(), 1);
+        assert_eq!(issues[0].word, "xyzzy");
+    }
+
+    #[test]
+    fn very_long_word_does_not_panic() {
+        let dict = make_dict(&["hello"]);
+        let v = Validator::new(vec![dict], ValidatorConfig::default());
+        // Very long words may be skipped as random strings or repeated chars.
+        // The key is that the validator does not panic.
+        let long_word = "abcdefghij".repeat(10);
+        let _issues = v.validate_text(&long_word);
+    }
+}

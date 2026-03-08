@@ -1,0 +1,28 @@
+---
+source: tests/cli_snapshots.rs
+assertion_line: 108
+expression: normalize(&stdout)
+---
+{
+  "files": [
+    {
+      "issues": [
+        {
+          "column": 1,
+          "forbidden": false,
+          "line": 3,
+          "offset": 12,
+          "suggestions": [
+            "misspelled"
+          ],
+          "word": "misspeled"
+        }
+      ],
+      "path": "tests/fixtures/sample.txt"
+    }
+  ],
+  "summary": {
+    "files_with_issues": 1,
+    "total_issues": 1
+  }
+}

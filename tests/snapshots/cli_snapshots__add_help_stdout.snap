@@ -1,0 +1,15 @@
+---
+source: tests/cli_snapshots.rs
+expression: stdout
+---
+Add words to the project dictionary
+
+Usage: matchum add [OPTIONS] [WORDS]...
+
+Arguments:
+  [WORDS]...  Words to add
+
+Options:
+      --forbidden        Add as forbidden words instead
+  -c, --config <CONFIG>  Config file path
+  -h, --help             Print help

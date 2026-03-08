@@ -1,0 +1,14 @@
+{
+    "version": "0.2",
+    "language": "en",
+    "words": ["customword", "hello"],
+    "ignoreWords": ["ignoredword"],
+    "flagWords": ["badword"],
+    "dictionaryDefinitions": [
+        {
+            "name": "test-dict",
+            "path": "./test-dict.txt"
+        }
+    ],
+    "dictionaries": ["test-dict"]
+}

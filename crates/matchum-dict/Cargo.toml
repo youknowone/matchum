@@ -11,6 +11,7 @@ hashbrown = { workspace = true }
 foldhash = { workspace = true }
 compact_str = { workspace = true }
 flate2 = { workspace = true }
+regex = { workspace = true }
 thiserror = { workspace = true }
 unicode-normalization = { workspace = true }
 

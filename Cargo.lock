@@ -739,6 +739,7 @@ dependencies = [
  "foldhash 0.1.5",
  "hashbrown 0.16.1",
  "insta",
+ "regex",
  "thiserror",
  "unicode-normalization",
 ]
@@ -748,10 +749,13 @@ name = "matchum-integration-tests"
 version = "0.1.0"
 dependencies = [
  "compact_str",
+ "globset",
+ "insta",
  "matchum-config",
  "matchum-core",
  "matchum-dict",
  "regex",
+ "serde",
  "serde_json",
  "unicode-normalization",
 ]

@@ -963,3 +963,528 @@ mod override_application {
         );
     }
 }
+
+// ============================================================
+// 9. Settings merging edge cases — CSpellSettingsServer.test.ts
+// ============================================================
+
+mod merge_settings_advanced {
+    use super::*;
+
+    #[test]
+    fn merge_two_empty_settings() {
+        let a = CSpellSettings::default();
+        let b = CSpellSettings::default();
+        let merged = resolver::merge_settings(a, b);
+        assert!(merged.words.is_empty());
+        assert!(merged.language.is_none());
+        assert!(merged.version.is_none());
+    }
+
+    #[test]
+    fn merge_version_overlay_wins() {
+        let base = CSpellSettings {
+            version: Some("0.1".into()),
+            ..Default::default()
+        };
+        let overlay = CSpellSettings {
+            version: Some("0.2".into()),
+            ..Default::default()
+        };
+        let merged = resolver::merge_settings(base, overlay);
+        assert_eq!(merged.version.as_deref(), Some("0.2"));
+    }
+
+    #[test]
+    fn merge_version_base_kept_if_overlay_none() {
+        let base = CSpellSettings {
+            version: Some("0.2".into()),
+            ..Default::default()
+        };
+        let overlay = CSpellSettings::default();
+        let merged = resolver::merge_settings(base, overlay);
+        assert_eq!(merged.version.as_deref(), Some("0.2"));
+    }
+
+    #[test]
+    fn merge_allow_compound_words_overlay_wins() {
+        let base = CSpellSettings {
+            allow_compound_words: Some(false),
+            ..Default::default()
+        };
+        let overlay = CSpellSettings {
+            allow_compound_words: Some(true),
+            ..Default::default()
+        };
+        let merged = resolver::merge_settings(base, overlay);
+        assert_eq!(merged.allow_compound_words, Some(true));
+    }
+
+    #[test]
+    fn merge_max_duplicate_problems() {
+        let base = CSpellSettings {
+            max_duplicate_problems: Some(5),
+            ..Default::default()
+        };
+        let overlay = CSpellSettings {
+            max_duplicate_problems: Some(10),
+            ..Default::default()
+        };
+        let merged = resolver::merge_settings(base, overlay);
+        assert_eq!(merged.max_duplicate_problems, Some(10));
+    }
+
+    #[test]
+    fn merge_user_words_concatenated() {
+        let base = CSpellSettings {
+            user_words: vec!["base_user".into()],
+            ..Default::default()
+        };
+        let overlay = CSpellSettings {
+            user_words: vec!["overlay_user".into()],
+            ..Default::default()
+        };
+        let merged = resolver::merge_settings(base, overlay);
+        assert!(merged.user_words.contains(&"base_user".to_string()));
+        assert!(merged.user_words.contains(&"overlay_user".to_string()));
+    }
+
+    #[test]
+    fn merge_dictionary_definitions_concatenated() {
+        use matchum_config::settings::DictionaryDefinition;
+        let base = CSpellSettings {
+            dictionary_definitions: vec![DictionaryDefinition {
+                name: "base-dict".into(),
+                path: Some("./base.txt".into()),
+                add_words: false,
+                no_suggest: false,
+            }],
+            ..Default::default()
+        };
+        let overlay = CSpellSettings {
+            dictionary_definitions: vec![DictionaryDefinition {
+                name: "overlay-dict".into(),
+                path: Some("./overlay.txt".into()),
+                add_words: true,
+                no_suggest: false,
+            }],
+            ..Default::default()
+        };
+        let merged = resolver::merge_settings(base, overlay);
+        assert_eq!(merged.dictionary_definitions.len(), 2);
+        assert_eq!(merged.dictionary_definitions[0].name, "base-dict");
+        assert_eq!(merged.dictionary_definitions[1].name, "overlay-dict");
+    }
+
+    #[test]
+    fn merge_ignore_reg_exp_list_concatenated() {
+        let base = CSpellSettings {
+            ignore_reg_exp_list: vec!["/pattern1/".into()],
+            ..Default::default()
+        };
+        let overlay = CSpellSettings {
+            ignore_reg_exp_list: vec!["/pattern2/".into()],
+            ..Default::default()
+        };
+        let merged = resolver::merge_settings(base, overlay);
+        assert_eq!(merged.ignore_reg_exp_list.len(), 2);
+    }
+
+    #[test]
+    fn merge_patterns_concatenated() {
+        use matchum_config::settings::{PatternDefinition, StringOrList};
+        let base = CSpellSettings {
+            patterns: vec![PatternDefinition {
+                name: "base-pattern".into(),
+                pattern: StringOrList::Single("/foo/".into()),
+            }],
+            ..Default::default()
+        };
+        let overlay = CSpellSettings {
+            patterns: vec![PatternDefinition {
+                name: "overlay-pattern".into(),
+                pattern: StringOrList::Single("/bar/".into()),
+            }],
+            ..Default::default()
+        };
+        let merged = resolver::merge_settings(base, overlay);
+        assert_eq!(merged.patterns.len(), 2);
+    }
+
+    #[test]
+    fn merge_language_settings_concatenated() {
+        use matchum_config::settings::LanguageSetting;
+        let base = CSpellSettings {
+            language_settings: vec![LanguageSetting {
+                language_id: vec!["typescript".into()],
+                dictionaries: vec!["ts-dict".into()],
+                ..Default::default()
+            }],
+            ..Default::default()
+        };
+        let overlay = CSpellSettings {
+            language_settings: vec![LanguageSetting {
+                language_id: vec!["rust".into()],
+                dictionaries: vec!["rust-dict".into()],
+                ..Default::default()
+            }],
+            ..Default::default()
+        };
+        let merged = resolver::merge_settings(base, overlay);
+        assert_eq!(merged.language_settings.len(), 2);
+    }
+}
+
+// ============================================================
+// 10. JSONC parsing and edge cases
+// ============================================================
+
+mod json_parsing_edge_cases {
+    use super::*;
+
+    #[test]
+    fn parse_empty_words_list() {
+        let json = r#"{"words": []}"#;
+        let settings: CSpellSettings = serde_json::from_str(json).unwrap();
+        assert!(settings.words.is_empty());
+    }
+
+    #[test]
+    fn parse_null_version() {
+        let json = r#"{"version": null}"#;
+        let settings: CSpellSettings = serde_json::from_str(json).unwrap();
+        assert!(settings.version.is_none());
+    }
+
+    #[test]
+    fn parse_language_settings() {
+        let json = r#"{
+            "languageSettings": [
+                {
+                    "languageId": "typescript",
+                    "dictionaries": ["typescript"]
+                },
+                {
+                    "languageId": "python",
+                    "dictionaries": ["python"]
+                }
+            ]
+        }"#;
+        let settings: CSpellSettings = serde_json::from_str(json).unwrap();
+        assert_eq!(settings.language_settings.len(), 2);
+        assert_eq!(settings.language_settings[0].language_id, vec!["typescript"]);
+        assert_eq!(settings.language_settings[1].language_id, vec!["python"]);
+    }
+
+    #[test]
+    fn parse_language_id_comma_separated() {
+        let json = r#"{
+            "languageSettings": [
+                {
+                    "languageId": "c,cpp,csharp",
+                    "dictionaries": ["c-dict"]
+                }
+            ]
+        }"#;
+        let settings: CSpellSettings = serde_json::from_str(json).unwrap();
+        assert_eq!(
+            settings.language_settings[0].language_id,
+            vec!["c", "cpp", "csharp"]
+        );
+    }
+
+    #[test]
+    fn parse_rep_map() {
+        let json = r#"{
+            "repMap": [
+                ["ss", "\u00df"],
+                ["ae", "\u00e4"]
+            ]
+        }"#;
+        let settings: CSpellSettings = serde_json::from_str(json).unwrap();
+        assert_eq!(settings.rep_map.len(), 2);
+        assert_eq!(settings.rep_map[0], vec!["ss", "\u{00df}"]);
+        assert_eq!(settings.rep_map[1], vec!["ae", "\u{00e4}"]);
+    }
+
+    #[test]
+    fn parse_suggest_words() {
+        let json = r#"{"suggestWords": ["suggestion1", "suggestion2"]}"#;
+        let settings: CSpellSettings = serde_json::from_str(json).unwrap();
+        assert_eq!(settings.suggest_words, vec!["suggestion1", "suggestion2"]);
+    }
+
+    #[test]
+    fn parse_no_suggest_dictionaries() {
+        let json = r#"{"noSuggestDictionaries": ["custom-nosuggest"]}"#;
+        let settings: CSpellSettings = serde_json::from_str(json).unwrap();
+        assert_eq!(
+            settings.no_suggest_dictionaries,
+            vec!["custom-nosuggest"]
+        );
+    }
+
+    #[test]
+    fn parse_use_gitignore() {
+        let json = r#"{"useGitignore": true}"#;
+        let settings: CSpellSettings = serde_json::from_str(json).unwrap();
+        assert_eq!(settings.use_gitignore, Some(true));
+    }
+
+    #[test]
+    fn parse_glob_root() {
+        let json = r#"{"globRoot": "${workspaceFolder}"}"#;
+        let settings: CSpellSettings = serde_json::from_str(json).unwrap();
+        assert_eq!(settings.glob_root.as_deref(), Some("${workspaceFolder}"));
+    }
+
+    #[test]
+    fn parse_files_list() {
+        let json = r#"{"files": ["src/**/*.ts", "src/**/*.tsx"]}"#;
+        let settings: CSpellSettings = serde_json::from_str(json).unwrap();
+        assert_eq!(
+            settings.files.unwrap(),
+            vec!["src/**/*.ts", "src/**/*.tsx"]
+        );
+    }
+
+    #[test]
+    fn parse_include_reg_exp_list() {
+        let json = r#"{"includeRegExpList": ["/\\w+/"]}"#;
+        let settings: CSpellSettings = serde_json::from_str(json).unwrap();
+        assert_eq!(settings.include_reg_exp_list.len(), 1);
+    }
+}
+
+// ============================================================
+// 11. Override with multiple filename patterns
+// ============================================================
+
+mod override_patterns_advanced {
+    use super::*;
+
+    #[test]
+    fn override_with_ts_extension_only() {
+        let settings = CSpellSettings {
+            words: vec!["hello".into()],
+            overrides: vec![matchum_config::settings::OverrideSettings {
+                filename: "*.ts".into(),
+                words: vec!["typescript".into()],
+                ..Default::default()
+            }],
+            ..Default::default()
+        };
+
+        let effective = apply_overrides(&settings, Path::new("main.ts"));
+        assert!(effective.words.contains(&"typescript".to_string()));
+    }
+
+    #[test]
+    fn override_not_applied_to_different_extension() {
+        let settings = CSpellSettings {
+            words: vec!["hello".into()],
+            overrides: vec![matchum_config::settings::OverrideSettings {
+                filename: "**/*.py".into(),
+                words: vec!["python".into()],
+                ..Default::default()
+            }],
+            ..Default::default()
+        };
+
+        let effective = apply_overrides(&settings, Path::new("src/main.ts"));
+        assert!(!effective.words.contains(&"python".to_string()));
+    }
+
+    #[test]
+    fn override_adds_dictionaries() {
+        let settings = CSpellSettings {
+            dictionaries: vec!["en_us".into()],
+            overrides: vec![matchum_config::settings::OverrideSettings {
+                filename: "**/*.rs".into(),
+                dictionaries: vec!["rust-dict".into()],
+                ..Default::default()
+            }],
+            ..Default::default()
+        };
+
+        let effective = apply_overrides(&settings, Path::new("src/lib.rs"));
+        assert!(effective.dictionaries.contains(&"en_us".to_string()));
+        assert!(effective.dictionaries.contains(&"rust-dict".to_string()));
+    }
+
+    #[test]
+    fn override_adds_ignore_reg_exp_list() {
+        let settings = CSpellSettings {
+            ignore_reg_exp_list: vec!["/base/".into()],
+            overrides: vec![matchum_config::settings::OverrideSettings {
+                filename: "**/*.rs".into(),
+                ignore_reg_exp_list: vec!["/overlay/".into()],
+                ..Default::default()
+            }],
+            ..Default::default()
+        };
+
+        let effective = apply_overrides(&settings, Path::new("src/main.rs"));
+        assert!(effective
+            .ignore_reg_exp_list
+            .contains(&"/base/".to_string()));
+        assert!(effective
+            .ignore_reg_exp_list
+            .contains(&"/overlay/".to_string()));
+    }
+
+    #[test]
+    fn no_override_matches_preserves_all_settings() {
+        let settings = CSpellSettings {
+            words: vec!["base".into()],
+            language: Some("en".into()),
+            case_sensitive: Some(false),
+            overrides: vec![matchum_config::settings::OverrideSettings {
+                filename: "**/*.py".into(),
+                words: vec!["python".into()],
+                case_sensitive: Some(true),
+                ..Default::default()
+            }],
+            ..Default::default()
+        };
+
+        let effective = apply_overrides(&settings, Path::new("src/main.rs"));
+        assert_eq!(effective.words, vec!["base"]);
+        assert_eq!(effective.language.as_deref(), Some("en"));
+        assert_eq!(effective.case_sensitive, Some(false));
+    }
+}
+
+// ============================================================
+// 12. Config loading with complex structures
+// ============================================================
+
+mod config_loading_advanced {
+    use super::*;
+
+    #[test]
+    fn load_config_with_overrides() {
+        let dir = std::env::temp_dir().join("matchum_cfg_test_overrides");
+        std::fs::create_dir_all(&dir).unwrap();
+        let path = dir.join("cspell.json");
+        std::fs::write(
+            &path,
+            r#"{
+                "words": ["hello"],
+                "overrides": [
+                    {"filename": "**/*.ts", "words": ["typescript"]},
+                    {"filename": "**/*.py", "words": ["python"]}
+                ]
+            }"#,
+        )
+        .unwrap();
+
+        let settings = resolver::load_config(&path).unwrap();
+        assert_eq!(settings.overrides.len(), 2);
+        assert_eq!(settings.overrides[0].filename, "**/*.ts");
+        assert_eq!(settings.overrides[1].filename, "**/*.py");
+        assert!(settings.overrides[0].words.contains(&"typescript".to_string()));
+        assert!(settings.overrides[1].words.contains(&"python".to_string()));
+
+        std::fs::remove_dir_all(dir).ok();
+    }
+
+    #[test]
+    fn load_config_with_language_settings() {
+        let dir = std::env::temp_dir().join("matchum_cfg_test_langsettings");
+        std::fs::create_dir_all(&dir).unwrap();
+        let path = dir.join("cspell.json");
+        std::fs::write(
+            &path,
+            r#"{
+                "languageSettings": [
+                    {"languageId": "typescript", "dictionaries": ["typescript"]},
+                    {"languageId": "python", "dictionaries": ["python"]}
+                ]
+            }"#,
+        )
+        .unwrap();
+
+        let settings = resolver::load_config(&path).unwrap();
+        assert_eq!(settings.language_settings.len(), 2);
+
+        std::fs::remove_dir_all(dir).ok();
+    }
+
+    #[test]
+    fn load_config_with_patterns() {
+        let dir = std::env::temp_dir().join("matchum_cfg_test_patterns");
+        std::fs::create_dir_all(&dir).unwrap();
+        let path = dir.join("cspell.json");
+        std::fs::write(
+            &path,
+            r#"{
+                "patterns": [
+                    {"name": "urls", "pattern": "/https?:\\/\\/[^\\s]+/g"},
+                    {"name": "emails", "pattern": "/[\\w.]+@[\\w.]+/g"}
+                ],
+                "ignoreRegExpList": ["urls", "emails"]
+            }"#,
+        )
+        .unwrap();
+
+        let settings = resolver::load_config(&path).unwrap();
+        assert_eq!(settings.patterns.len(), 2);
+        assert_eq!(settings.ignore_reg_exp_list.len(), 2);
+
+        std::fs::remove_dir_all(dir).ok();
+    }
+
+    #[test]
+    fn load_config_preserves_all_word_lists() {
+        let dir = std::env::temp_dir().join("matchum_cfg_test_wordlists");
+        std::fs::create_dir_all(&dir).unwrap();
+        let path = dir.join("cspell.json");
+        std::fs::write(
+            &path,
+            r#"{
+                "words": ["word1", "word2"],
+                "flagWords": ["flag1"],
+                "ignoreWords": ["ignore1"],
+                "userWords": ["user1"]
+            }"#,
+        )
+        .unwrap();
+
+        let settings = resolver::load_config(&path).unwrap();
+        assert_eq!(settings.words, vec!["word1", "word2"]);
+        assert_eq!(settings.flag_words, vec!["flag1"]);
+        assert_eq!(settings.ignore_words, vec!["ignore1"]);
+        assert_eq!(settings.user_words, vec!["user1"]);
+
+        std::fs::remove_dir_all(dir).ok();
+    }
+
+    #[test]
+    fn import_with_overrides_preserved() {
+        let dir = std::env::temp_dir().join("matchum_cfg_import_overrides");
+        std::fs::create_dir_all(&dir).unwrap();
+
+        std::fs::write(
+            dir.join("base.json"),
+            r#"{"overrides": [{"filename": "**/*.ts", "words": ["typescript"]}]}"#,
+        )
+        .unwrap();
+        std::fs::write(
+            dir.join("cspell.json"),
+            r#"{"import": "base.json", "words": ["hello"]}"#,
+        )
+        .unwrap();
+
+        let settings = resolver::load_config(&dir.join("cspell.json")).unwrap();
+        assert!(settings.words.contains(&"hello".to_string()));
+        // The imported overrides should be present
+        assert!(
+            !settings.overrides.is_empty(),
+            "imported overrides: {:?}",
+            settings.overrides
+        );
+
+        std::fs::remove_dir_all(dir).ok();
+    }
+}

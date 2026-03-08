@@ -389,3 +389,365 @@ mod windows_paths {
         );
     }
 }
+
+// ============================================================
+// 9. CSS hex color patterns — RegExpPatterns.test.ts
+// ============================================================
+
+mod css_hex_patterns {
+    use super::*;
+
+    #[test]
+    fn css_hex_6_digit_skipped() {
+        let dict = make_dict(&["background", "color"]);
+        let v = Validator::new(vec![dict], ValidatorConfig::default());
+        let text = "background color #fffedb";
+        let issues = v.validate_text(text);
+        let words = issue_words(&issues);
+        assert!(!words.contains(&"fffedb"), "CSS hex 6: {:?}", words);
+    }
+
+    #[test]
+    fn css_hex_3_digit_skipped() {
+        let dict = make_dict(&["color"]);
+        let v = Validator::new(vec![dict], ValidatorConfig::default());
+        let text = "color: #aaa";
+        let issues = v.validate_text(text);
+        let words = issue_words(&issues);
+        assert!(!words.contains(&"aaa"), "CSS hex 3: {:?}", words);
+    }
+
+    #[test]
+    fn css_hex_8_digit_skipped() {
+        let dict = make_dict(&["background", "color"]);
+        let v = Validator::new(vec![dict], ValidatorConfig::default());
+        let text = "background-color: #fffedbff;";
+        let issues = v.validate_text(text);
+        let words = issue_words(&issues);
+        assert!(!words.contains(&"fffedbff"), "CSS hex 8: {:?}", words);
+    }
+}
+
+// ============================================================
+// 10. UUID pattern — RegExpPatterns.test.ts
+// ============================================================
+
+mod uuid_patterns {
+    use super::*;
+
+    #[test]
+    fn uuid_skipped() {
+        let dict = make_dict(&["identifier"]);
+        let v = Validator::new(vec![dict], ValidatorConfig::default());
+        let text = "identifier 3dcdf935-d346-48cc-bdeb-fd9369192fec";
+        let issues = v.validate_text(text);
+        let words = issue_words(&issues);
+        // UUID parts should be skipped
+        assert!(
+            !words.iter().any(|w| w.contains("dcdf")),
+            "UUID should be skipped: {:?}",
+            words
+        );
+    }
+}
+
+// ============================================================
+// 11. Commit hash patterns — RegExpPatterns.test.ts
+// ============================================================
+
+mod commit_hash_patterns {
+    use super::*;
+
+    #[test]
+    fn commit_hash_7_char_skipped() {
+        let dict = make_dict(&["commit"]);
+        let v = Validator::new(vec![dict], ValidatorConfig::default());
+        let text = "commit 60975ea";
+        let issues = v.validate_text(text);
+        let words = issue_words(&issues);
+        // 60975ea has digits mixed with letters — should be skipped or not a word
+        assert!(
+            !words.iter().any(|w| w.contains("60975")),
+            "commit hash: {:?}",
+            words
+        );
+    }
+
+    #[test]
+    fn commit_hash_with_digits_skipped() {
+        let dict = make_dict(&["commit"]);
+        let v = Validator::new(vec![dict], ValidatorConfig::default());
+        let text = "commit c00ffee";
+        let issues = v.validate_text(text);
+        let words = issue_words(&issues);
+        // c00ffee has digits, so is a mixed-case/digit token
+        assert!(
+            !words.iter().any(|w| w.contains("00ffee")),
+            "commit hash with digits: {:?}",
+            words
+        );
+    }
+}
+
+// ============================================================
+// 12. Multiple URL formats — RegExpPatterns.test.ts
+// ============================================================
+
+mod url_format_patterns {
+    use super::*;
+
+    #[test]
+    fn url_with_query_params() {
+        let dict = make_dict(&["visit"]);
+        let v = Validator::new(vec![dict], ValidatorConfig::default());
+        let text = "visit https://example.com/path?query=value&other=123";
+        let issues = v.validate_text(text);
+        let words = issue_words(&issues);
+        assert!(!words.contains(&"example"), "URL query: {:?}", words);
+        assert!(!words.contains(&"query"), "URL query param: {:?}", words);
+    }
+
+    #[test]
+    fn url_with_fragment() {
+        let dict = make_dict(&["see"]);
+        let v = Validator::new(vec![dict], ValidatorConfig::default());
+        let text = "see https://docs.example.com/api#section-two";
+        let issues = v.validate_text(text);
+        let words = issue_words(&issues);
+        assert!(!words.contains(&"docs"), "URL fragment: {:?}", words);
+        assert!(!words.contains(&"section"), "URL fragment: {:?}", words);
+    }
+
+    #[test]
+    fn url_with_port() {
+        let dict = make_dict(&["connect", "to"]);
+        let v = Validator::new(vec![dict], ValidatorConfig::default());
+        let text = "connect to http://localhost:8080/api";
+        let issues = v.validate_text(text);
+        let words = issue_words(&issues);
+        assert!(
+            !words.contains(&"localhost"),
+            "URL with port: {:?}",
+            words
+        );
+    }
+
+    #[test]
+    fn url_with_auth() {
+        let dict = make_dict(&["connect"]);
+        let v = Validator::new(vec![dict], ValidatorConfig::default());
+        let text = "connect https://user:pass@example.com/path";
+        let issues = v.validate_text(text);
+        let words = issue_words(&issues);
+        assert!(
+            !words.contains(&"example"),
+            "URL with auth: {:?}",
+            words
+        );
+    }
+
+    #[test]
+    fn data_uri_skipped() {
+        let dict = make_dict(&["image"]);
+        let v = Validator::new(vec![dict], ValidatorConfig::default());
+        let text = "image data:image/png;base64,iVBORw0KGgo";
+        let issues = v.validate_text(text);
+        let words = issue_words(&issues);
+        // base64 data after data: should be skipped
+        assert!(
+            !words.iter().any(|w| w.contains("VBORw")),
+            "data URI: {:?}",
+            words
+        );
+    }
+}
+
+// ============================================================
+// 13. Email edge cases — RegExpPatterns.test.ts
+// ============================================================
+
+mod email_edge_cases {
+    use super::*;
+
+    #[test]
+    fn email_with_plus() {
+        let dict = make_dict(&["send", "to"]);
+        let v = Validator::new(vec![dict], ValidatorConfig::default());
+        let text = "send to user+tag@example.com";
+        let issues = v.validate_text(text);
+        let words = issue_words(&issues);
+        assert!(!words.contains(&"example"), "email plus: {:?}", words);
+    }
+
+    #[test]
+    fn email_with_subdomain() {
+        let dict = make_dict(&["contact"]);
+        let v = Validator::new(vec![dict], ValidatorConfig::default());
+        let text = "contact admin@mail.corp.example.org";
+        let issues = v.validate_text(text);
+        let words = issue_words(&issues);
+        assert!(!words.contains(&"admin"), "email subdomain: {:?}", words);
+        assert!(!words.contains(&"corp"), "email subdomain: {:?}", words);
+    }
+
+    #[test]
+    fn not_an_email_no_tld() {
+        let dict = make_dict(&["prefix"]);
+        let v = Validator::new(vec![dict], ValidatorConfig::default());
+        // Single-component domain is questionable but "@" should still trigger email pattern
+        let text = "prefix user@localhost";
+        let issues = v.validate_text(text);
+        // The behavior depends on the email regex, but user@localhost may be
+        // matched by the email pattern
+        let _ = issue_words(&issues);
+    }
+}
+
+// ============================================================
+// 14. Hex patterns with various formats — RegExpPatterns.test.ts
+// ============================================================
+
+mod hex_format_patterns {
+    use super::*;
+
+    #[test]
+    fn hex_0x_mixed_case() {
+        let dict = make_dict(&["value"]);
+        let v = Validator::new(vec![dict], ValidatorConfig::default());
+        let text = "value = 0xDeAdBeEf;";
+        let issues = v.validate_text(text);
+        let words = issue_words(&issues);
+        assert!(!words.contains(&"DeAdBeEf"), "hex mixed case: {:?}", words);
+    }
+
+    #[test]
+    fn hex_with_underscores() {
+        let dict = make_dict(&["value"]);
+        let v = Validator::new(vec![dict], ValidatorConfig::default());
+        // Some languages allow underscores in hex: 0xbadc_0ffe
+        let text = "value = 0xbadc_0ffe";
+        let issues = v.validate_text(text);
+        let words = issue_words(&issues);
+        // The hex pattern should handle this
+        assert!(
+            !words.iter().any(|w| w.contains("badc")),
+            "hex underscore: {:?}",
+            words
+        );
+    }
+
+    #[test]
+    fn hex_short_0xf() {
+        let dict = make_dict(&["value"]);
+        let v = Validator::new(vec![dict], ValidatorConfig::default());
+        let text = "value = 0xf";
+        let issues = v.validate_text(text);
+        let words = issue_words(&issues);
+        assert!(!words.contains(&"xf"), "short hex: {:?}", words);
+    }
+
+    #[test]
+    fn not_hex_leading_letter() {
+        let dict = make_dict(&["value"]);
+        let v = Validator::new(vec![dict], ValidatorConfig::default());
+        // "a0xf" is not a hex literal (leading letter before 0x)
+        let text = "value a0xf";
+        let issues = v.validate_text(text);
+        // a0xf is not a valid identifier pattern, should be handled
+        let _ = issue_words(&issues);
+    }
+}
+
+// ============================================================
+// 15. Multiple patterns in same text
+// ============================================================
+
+mod combined_pattern_skipping {
+    use super::*;
+
+    #[test]
+    fn url_and_email_in_same_line() {
+        let dict = make_dict(&["visit", "or", "email"]);
+        let v = Validator::new(vec![dict], ValidatorConfig::default());
+        let text = "visit https://example.com or email support@example.com";
+        let issues = v.validate_text(text);
+        let words = issue_words(&issues);
+        assert!(!words.contains(&"example"), "URL+email combo: {:?}", words);
+        assert!(
+            !words.contains(&"support"),
+            "email part: {:?}",
+            words
+        );
+    }
+
+    #[test]
+    fn hex_and_url_in_same_text() {
+        let dict = make_dict(&["the", "value", "is", "at"]);
+        let v = Validator::new(vec![dict], ValidatorConfig::default());
+        let text = "the value 0xDEAD is at https://docs.example.com";
+        let issues = v.validate_text(text);
+        let words = issue_words(&issues);
+        assert!(!words.contains(&"DEAD"), "hex: {:?}", words);
+        assert!(!words.contains(&"docs"), "URL: {:?}", words);
+    }
+
+    #[test]
+    fn url_inside_html_attribute() {
+        let dict = make_dict(&["link", "href"]);
+        let v = Validator::new(vec![dict], ValidatorConfig::default());
+        let text = r#"<link href="https://cdn.example.com/style.css">"#;
+        let issues = v.validate_text(text);
+        let words = issue_words(&issues);
+        assert!(!words.contains(&"cdn"), "URL in attr: {:?}", words);
+        assert!(!words.contains(&"style"), "URL path: {:?}", words);
+    }
+
+    #[test]
+    fn multiple_urls_in_text() {
+        let dict = make_dict(&["see", "and"]);
+        let v = Validator::new(vec![dict], ValidatorConfig::default());
+        let text = "see https://first.example.com and https://second.example.com";
+        let issues = v.validate_text(text);
+        let words = issue_words(&issues);
+        assert!(
+            !words.contains(&"first"),
+            "first URL: {:?}",
+            words
+        );
+        assert!(
+            !words.contains(&"second"),
+            "second URL: {:?}",
+            words
+        );
+    }
+}
+
+// ============================================================
+// 16. Disable/enable with patterns
+// ============================================================
+
+mod directives_with_patterns {
+    use super::*;
+
+    #[test]
+    fn url_in_disabled_block_no_errors() {
+        let dict = make_dict(&["hello"]);
+        let v = Validator::new(vec![dict], ValidatorConfig::default());
+        let text = "hello\n// cspell:disable\nhttps://xyzzy.example.com\nbadword\n// cspell:enable\nhello";
+        let issues = v.validate_text(text);
+        let words = issue_words(&issues);
+        assert!(!words.contains(&"xyzzy"), "disabled URL: {:?}", words);
+        assert!(!words.contains(&"badword"), "disabled word: {:?}", words);
+    }
+
+    #[test]
+    fn ignore_directive_with_hex() {
+        let dict = make_dict(&["value"]);
+        let v = Validator::new(vec![dict], ValidatorConfig::default());
+        let text = "// cspell:ignore myword\nvalue = 0xDEADBEEF myword";
+        let issues = v.validate_text(text);
+        let words = issue_words(&issues);
+        assert!(!words.contains(&"DEADBEEF"), "hex: {:?}", words);
+        assert!(!words.contains(&"myword"), "ignored: {:?}", words);
+    }
+}

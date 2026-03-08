@@ -1,0 +1,21 @@
+---
+source: tests/cli_snapshots.rs
+expression: stdout
+---
+Check files for spelling errors
+
+Usage: matchum check [OPTIONS] [PATHS]...
+
+Arguments:
+  [PATHS]...  Files or directories to check [default: .]
+
+Options:
+  -c, --config <CONFIG>   Config file path
+  -f, --format <FORMAT>   Output format: text, json, github, words-only [default: text]
+      --suggestions       Show spelling suggestions
+      --unique            Only show unique misspelled words
+      --strict            Exit with code 1 if any spelling errors found
+  -t, --type <FILE_TYPE>  Only check files of this type (e.g., rust, python, js)
+      --stats             Show execution statistics
+      --diff              Read unified diff from stdin; only report issues on added lines
+  -h, --help              Print help

@@ -1,0 +1,6 @@
+---
+source: tests/cli_snapshots.rs
+assertion_line: 216
+expression: normalize(&stdout)
+---
+tests/fixtures/sample.txt:3:1 - Unknown word (misspeled) fix: (misspelled)

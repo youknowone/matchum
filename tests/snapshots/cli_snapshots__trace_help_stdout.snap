@@ -1,0 +1,14 @@
+---
+source: tests/cli_snapshots.rs
+expression: stdout
+---
+Trace a word through dictionaries
+
+Usage: matchum trace [OPTIONS] <WORD>
+
+Arguments:
+  <WORD>  Word to trace
+
+Options:
+  -c, --config <CONFIG>  Config file path
+  -h, --help             Print help

@@ -1,0 +1,6 @@
+---
+source: tests/cli_snapshots.rs
+expression: normalize_stderr(&stderr)
+---
+
+Found 1 issue in 1 file

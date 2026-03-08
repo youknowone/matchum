@@ -1,0 +1,7 @@
+---
+source: tests/cli_snapshots.rs
+expression: stdout
+---
+Tracing word: 'xyznotaword'
+
+  Word 'xyznotaword' not found in any dictionary.
