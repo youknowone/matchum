@@ -477,3 +477,203 @@ fn cli_no_subcommand() {
     assert_ne!(code, 0, "no subcommand should fail");
     insta::assert_snapshot!("no_subcommand_stderr", stderr);
 }
+
+// ── tests: add command (actual functionality) ─────────────────────
+
+#[test]
+fn cli_add_words_to_project() {
+    let tmpdir =
+        std::env::temp_dir().join(format!("matchum_add_test_{}", std::process::id()));
+    std::fs::create_dir_all(&tmpdir).unwrap();
+
+    // Create matchum.toml
+    std::fs::write(
+        tmpdir.join("matchum.toml"),
+        "language = \"en\"\n",
+    )
+    .unwrap();
+
+    // Add words
+    let (_stdout, stderr, code) =
+        run_matchum_in(&tmpdir, &["add", "myword", "anotherword"]);
+    assert_eq!(code, 0, "add should succeed");
+    assert!(
+        stderr.contains("Added 2 word"),
+        "stderr should confirm: {stderr}"
+    );
+
+    // Verify the words file was created
+    let words_path = tmpdir.join(".matchum/words.txt");
+    assert!(words_path.exists(), ".matchum/words.txt should exist");
+    let content = std::fs::read_to_string(&words_path).unwrap();
+    assert!(content.contains("myword"));
+    assert!(content.contains("anotherword"));
+
+    // Add duplicate — should not re-add
+    let (_stdout, stderr2, code2) = run_matchum_in(&tmpdir, &["add", "myword"]);
+    assert_eq!(code2, 0);
+    assert!(
+        stderr2.contains("already present"),
+        "duplicate should report already present: {stderr2}"
+    );
+
+    // Cleanup
+    let _ = std::fs::remove_dir_all(&tmpdir);
+}
+
+#[test]
+fn cli_add_forbidden_words() {
+    let tmpdir = std::env::temp_dir().join(format!(
+        "matchum_add_forbid_test_{}",
+        std::process::id()
+    ));
+    std::fs::create_dir_all(&tmpdir).unwrap();
+
+    std::fs::write(
+        tmpdir.join("matchum.toml"),
+        "language = \"en\"\n",
+    )
+    .unwrap();
+
+    let (_stdout, stderr, code) =
+        run_matchum_in(&tmpdir, &["add", "--forbidden", "badword"]);
+    assert_eq!(code, 0, "add --forbidden should succeed");
+    assert!(
+        stderr.contains("Added 1 word"),
+        "stderr should confirm addition: {stderr}"
+    );
+
+    let flagged_path = tmpdir.join(".matchum/flagged.txt");
+    assert!(flagged_path.exists(), "flagged.txt should exist");
+    let content = std::fs::read_to_string(&flagged_path).unwrap();
+    assert!(content.contains("badword"));
+
+    let _ = std::fs::remove_dir_all(&tmpdir);
+}
+
+#[test]
+fn cli_add_no_config_fails() {
+    let tmpdir = std::env::temp_dir().join(format!(
+        "matchum_add_noconfig_test_{}",
+        std::process::id()
+    ));
+    std::fs::create_dir_all(&tmpdir).unwrap();
+
+    let (_stdout, stderr, code) =
+        run_matchum_in(&tmpdir, &["add", "someword"]);
+    assert_eq!(code, 2, "add without config should fail");
+    assert!(
+        stderr.contains("matchum.toml") || stderr.contains("matchum init"),
+        "should mention matchum.toml: {stderr}"
+    );
+
+    let _ = std::fs::remove_dir_all(&tmpdir);
+}
+
+// ── tests: cspell subcommand (actual functionality) ───────────────
+
+#[test]
+fn cli_cspell_lint_with_issues() {
+    let (stdout, _stderr, code) = run_matchum(&[
+        "cspell",
+        "lint",
+        "--config",
+        "tests/fixtures/cspell.json",
+        "tests/fixtures/sample.txt",
+    ]);
+
+    // cspell lint should find issues and exit 1
+    assert_eq!(code, 1, "cspell lint should exit 1 with issues");
+    assert!(!stdout.is_empty(), "stdout should contain issues");
+}
+
+#[test]
+fn cli_cspell_lint_no_issues() {
+    let (_stdout, _stderr, code) = run_matchum(&[
+        "cspell",
+        "lint",
+        "--config",
+        "tests/fixtures/cspell.json",
+        "tests/fixtures/clean_sample.txt",
+    ]);
+
+    assert_eq!(code, 0, "cspell lint should exit 0 with no issues");
+}
+
+#[test]
+fn cli_cspell_lint_words_only() {
+    let (stdout, _stderr, code) = run_matchum(&[
+        "cspell",
+        "lint",
+        "--config",
+        "tests/fixtures/cspell.json",
+        "--words-only",
+        "tests/fixtures/sample.txt",
+    ]);
+
+    assert_eq!(code, 1);
+    // words-only mode should output just words, not full diagnostic lines
+    for line in stdout.lines() {
+        if !line.is_empty() {
+            assert!(
+                !line.contains(':'),
+                "words-only should not contain path separators: {line}"
+            );
+        }
+    }
+}
+
+#[test]
+fn cli_cspell_lint_unique() {
+    let (stdout, _stderr, _code) = run_matchum(&[
+        "cspell",
+        "lint",
+        "--config",
+        "tests/fixtures/cspell.json",
+        "--unique",
+        "--words-only",
+        "tests/fixtures/sample.txt",
+    ]);
+
+    // Unique should not have duplicate words
+    let words: Vec<&str> = stdout.lines().filter(|l| !l.is_empty()).collect();
+    let unique_words: std::collections::HashSet<&str> = words.iter().copied().collect();
+    assert_eq!(
+        words.len(),
+        unique_words.len(),
+        "unique mode should not produce duplicates"
+    );
+}
+
+#[test]
+fn cli_cspell_check_file() {
+    let (stdout, _stderr, code) = run_matchum(&[
+        "cspell",
+        "check",
+        "--config",
+        "tests/fixtures/cspell.json",
+        "tests/fixtures/sample.txt",
+    ]);
+
+    // cspell check shows the full file content with highlights
+    assert_eq!(code, 1, "cspell check should exit 1 with issues");
+    assert!(!stdout.is_empty(), "stdout should have output");
+}
+
+#[test]
+fn cli_cspell_trace_word() {
+    let (stdout, _stderr, code) = run_matchum(&[
+        "cspell",
+        "trace",
+        "--config",
+        "tests/fixtures/cspell-trace.json",
+        "customword",
+    ]);
+
+    assert_eq!(code, 0);
+    // Should indicate the word was found
+    assert!(
+        stdout.contains("Found") || stdout.contains("found") || stdout.contains("customword"),
+        "trace should mention the word: {stdout}"
+    );
+}

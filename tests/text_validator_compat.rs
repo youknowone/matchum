@@ -1284,3 +1284,65 @@ mod edge_case_text {
         let _issues = v.validate_text(&long_word);
     }
 }
+
+// ============================================================
+// Directive typo detection integration
+// ============================================================
+mod directive_typo_integration {
+    use super::*;
+
+    #[test]
+    fn typo_wrods_reports_issue_with_suggestion() {
+        let dict = make_dict(&["hello", "world"]);
+        let v = Validator::new(vec![dict], ValidatorConfig::default());
+        // "wrods" is not a valid directive → should detect typo and suggest "words"
+        let issues = v.validate_text("// cspell:wrods hello\nxyzzy");
+        // Should report "xyzzy" as unknown AND "wrods" as a directive typo
+        let typo_issue = issues.iter().find(|i| i.word == "wrods");
+        assert!(
+            typo_issue.is_some(),
+            "should detect directive typo 'wrods': {issues:?}"
+        );
+        let typo = typo_issue.unwrap();
+        assert_eq!(typo.suggestions, vec!["words"]);
+        assert_eq!(typo.line, 1);
+    }
+
+    #[test]
+    fn typo_disble_reports_issue_with_suggestion() {
+        let dict = make_dict(&["hello"]);
+        let v = Validator::new(vec![dict], ValidatorConfig::default());
+        let issues = v.validate_text("// cspell:disble\nhello");
+        let typo_issue = issues.iter().find(|i| i.word == "disble");
+        assert!(
+            typo_issue.is_some(),
+            "should detect directive typo 'disble': {issues:?}"
+        );
+        assert_eq!(typo_issue.unwrap().suggestions, vec!["disable"]);
+    }
+
+    #[test]
+    fn valid_directive_no_typo_issue() {
+        let dict = make_dict(&["hello"]);
+        let v = Validator::new(vec![dict], ValidatorConfig::default());
+        let issues = v.validate_text("// cspell:disable\nhello");
+        // "disable" is valid → should NOT produce a typo issue
+        let typo_issue = issues.iter().find(|i| i.word == "disable");
+        assert!(
+            typo_issue.is_none(),
+            "valid directive should not be reported as typo: {issues:?}"
+        );
+    }
+
+    #[test]
+    fn unrelated_comment_no_typo() {
+        let dict = make_dict(&["hello", "some", "random", "comment"]);
+        let v = Validator::new(vec![dict], ValidatorConfig::default());
+        let issues = v.validate_text("// some random comment\nhello");
+        // No cspell: prefix → no directive typo issue should be produced
+        assert!(
+            issues.is_empty(),
+            "no directive prefix means no directive typo: {issues:?}"
+        );
+    }
+}

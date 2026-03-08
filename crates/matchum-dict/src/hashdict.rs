@@ -345,17 +345,46 @@ impl Dictionary for HashDictionary {
         } else {
             Some(&self.preferred)
         };
-        distance::select_nearest_words_weighted(
+        let mut results = distance::select_nearest_words_weighted(
             normalized.as_ref(),
             candidates,
             max_edits,
             limit,
             &costs,
             preferred,
-        )
-        .into_iter()
-        .map(|c| c.word)
-        .collect()
+        );
+
+        // Inject repmap-based suggestions: generate alternative spellings and
+        // check if any match a known word. If the alternative already appears in
+        // the candidate list (from edit-distance search), promote it to preferred
+        // with zero distance so it ranks at the top.
+        if let Some(ref rm) = self.repmap {
+            for alt in rm.generate_alternatives(word) {
+                if self.has_direct(&alt) && !self.no_suggest.contains(alt.as_str()) {
+                    if let Some(existing) = results.iter_mut().find(|c| c.word == alt) {
+                        existing.preferred = true;
+                        existing.weighted_distance = 0;
+                    } else {
+                        results.push(distance::SuggestionCandidate {
+                            word: alt,
+                            raw_distance: 0,
+                            weighted_distance: 0,
+                            preferred: true,
+                        });
+                    }
+                }
+            }
+            // Re-sort after promoting/inserting repmap suggestions
+            results.sort_by(|a, b| {
+                b.preferred
+                    .cmp(&a.preferred)
+                    .then_with(|| a.weighted_distance.cmp(&b.weighted_distance))
+                    .then_with(|| a.word.cmp(&b.word))
+            });
+            results.truncate(limit);
+        }
+
+        results.into_iter().map(|c| c.word).collect()
     }
 
     fn find(&self, word: &str) -> FindResult {

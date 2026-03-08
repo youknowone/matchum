@@ -546,6 +546,37 @@ impl Validator {
             })
             .collect();
 
+        // Check for directive typos: lines where the AC prefilter matched
+        // (has_keyword) and a cspell: prefix was found (extract_directive_name
+        // returns Some) but no valid directive was parsed.
+        {
+            let mut typo_line_start = 0usize;
+            for (i, line) in lines.iter().enumerate() {
+                if has_keyword[i] && line_directives[i].is_none() {
+                    if let Some(name) = directives::extract_directive_name(line) {
+                        if let Some(warning) = directives::check_directive_typo(&name) {
+                            // Find the byte offset of the directive name in the line
+                            let col = line
+                                .to_lowercase()
+                                .find(&name)
+                                .map(|p| p + 1)
+                                .unwrap_or(1);
+                            issues.push(ValidationIssue {
+                                word: warning.found,
+                                offset: typo_line_start + col - 1,
+                                line: i + 1,
+                                column: col,
+                                is_forbidden: false,
+                                is_known_typo: false,
+                                suggestions: vec![warning.suggestion],
+                            });
+                        }
+                    }
+                }
+                typo_line_start += line.len() + 1;
+            }
+        }
+
         // Collect file-wide directives from cached results
         for directive in line_directives.iter().filter_map(|d| d.as_ref()) {
             match directive {

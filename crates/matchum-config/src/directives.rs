@@ -138,6 +138,24 @@ pub static DIRECTIVE_PREFILTER: LazyLock<AhoCorasick> = LazyLock::new(|| {
         .unwrap()
 });
 
+/// Extract the raw directive name from a line containing a cspell prefix.
+///
+/// Returns the first word after `cspell:` / `spell-checker:` (lowercased),
+/// or `None` if the line doesn't contain a directive prefix.
+pub fn extract_directive_name(line: &str) -> Option<String> {
+    let caps = DIRECTIVE_RE.captures(line)?;
+    let text = caps.get(1)?.as_str().trim();
+    // The directive name is everything up to the first space or end of text,
+    // but compound directives like "disable-next-line" are a single token.
+    let name = text
+        .split(|c: char| c.is_whitespace() || c == ':')
+        .next()?;
+    if name.is_empty() {
+        return None;
+    }
+    Some(name.to_lowercase())
+}
+
 /// Parse a line of text for an inline cspell directive.
 pub fn parse_directive(line: &str) -> Option<Directive> {
     // Quick rejection: skip regex for lines without directive keywords

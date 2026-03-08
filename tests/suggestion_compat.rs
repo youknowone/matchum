@@ -311,3 +311,67 @@ mod edge_cases {
         assert!(suggestions.len() <= 3, "limit: {:?}", suggestions);
     }
 }
+
+// ============================================================
+// repmap-based suggestions
+// ============================================================
+mod repmap_suggestions {
+    use super::*;
+    use matchum_dict::repmap::RepMap;
+
+    #[test]
+    fn german_strasse_suggests_eszett() {
+        let mut dict = HashDictionary::new(false);
+        // Dictionary contains the ß variant
+        dict.add_word("stra\u{00df}e");
+        dict.add_word("hello");
+        dict.set_repmap(RepMap::new(vec![("ss".into(), "\u{00df}".into())]));
+
+        // User typed "strasse" (ss variant) which is NOT in dictionary
+        let suggestions = dict.suggest("strasse", 5);
+        assert!(
+            suggestions.contains(&"stra\u{00df}e".to_string()),
+            "repmap should suggest ß variant: {suggestions:?}"
+        );
+    }
+
+    #[test]
+    fn french_cafe_suggests_accent() {
+        let mut dict = HashDictionary::new(false);
+        dict.add_word("caf\u{00e9}");
+        dict.set_repmap(RepMap::new(vec![("e".into(), "\u{00e9}".into())]));
+
+        let suggestions = dict.suggest("cafe", 5);
+        assert!(
+            suggestions.contains(&"caf\u{00e9}".to_string()),
+            "repmap should suggest accented variant: {suggestions:?}"
+        );
+    }
+
+    #[test]
+    fn repmap_suggestion_ranked_high() {
+        let mut dict = HashDictionary::new(false);
+        dict.add_word("stra\u{00df}e");
+        dict.add_word("strafe"); // also edit-distance 1 from "strasse"
+        dict.set_repmap(RepMap::new(vec![("ss".into(), "\u{00df}".into())]));
+
+        let suggestions = dict.suggest("strasse", 5);
+        // The repmap suggestion should appear first (preferred=true, distance=0)
+        assert_eq!(
+            suggestions.first().map(|s| s.as_str()),
+            Some("stra\u{00df}e"),
+            "repmap suggestion should rank first: {suggestions:?}"
+        );
+    }
+
+    #[test]
+    fn no_repmap_no_extra_suggestions() {
+        let dict = make_dict(&["hello", "world"]);
+        let suggestions = dict.suggest("strasse", 5);
+        // Without repmap, "straße" would not appear
+        assert!(
+            !suggestions.iter().any(|s| s.contains('\u{00df}')),
+            "without repmap, no ß suggestions: {suggestions:?}"
+        );
+    }
+}
