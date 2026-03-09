@@ -577,6 +577,7 @@ fn cli_cspell_lint_with_issues() {
     let (stdout, _stderr, code) = run_matchum(&[
         "cspell",
         "lint",
+        "--no-default-configuration",
         "--config",
         "tests/fixtures/cspell.json",
         "tests/fixtures/sample.txt",
@@ -592,6 +593,7 @@ fn cli_cspell_lint_no_issues() {
     let (_stdout, _stderr, code) = run_matchum(&[
         "cspell",
         "lint",
+        "--no-default-configuration",
         "--config",
         "tests/fixtures/cspell.json",
         "tests/fixtures/clean_sample.txt",
@@ -605,6 +607,7 @@ fn cli_cspell_lint_words_only() {
     let (stdout, _stderr, code) = run_matchum(&[
         "cspell",
         "lint",
+        "--no-default-configuration",
         "--config",
         "tests/fixtures/cspell.json",
         "--words-only",
@@ -628,6 +631,7 @@ fn cli_cspell_lint_unique() {
     let (stdout, _stderr, _code) = run_matchum(&[
         "cspell",
         "lint",
+        "--no-default-configuration",
         "--config",
         "tests/fixtures/cspell.json",
         "--unique",
@@ -650,6 +654,7 @@ fn cli_cspell_check_file() {
     let (stdout, _stderr, code) = run_matchum(&[
         "cspell",
         "check",
+        "--no-default-configuration",
         "--config",
         "tests/fixtures/cspell.json",
         "tests/fixtures/sample.txt",
@@ -665,6 +670,7 @@ fn cli_cspell_trace_word() {
     let (stdout, _stderr, code) = run_matchum(&[
         "cspell",
         "trace",
+        "--no-default-configuration",
         "--config",
         "tests/fixtures/cspell-trace.json",
         "customword",

@@ -5,3 +5,10 @@ pub mod dict;
 pub mod init;
 pub mod review;
 pub mod trace;
+
+use std::path::PathBuf;
+
+/// Central cache directory for downloaded dictionary packages.
+pub fn dict_cache_dir() -> PathBuf {
+    matchum_config::npm_fetch::default_cache_dir()
+}

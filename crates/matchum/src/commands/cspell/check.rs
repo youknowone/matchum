@@ -1,4 +1,5 @@
 use crate::commands::check::{self, CheckOptions};
+use crate::commands::dict_cache_dir;
 use anyhow::Result;
 use std::path::PathBuf;
 
@@ -27,6 +28,7 @@ pub fn run(
             no_default_configuration,
             validate_directives,
             config_search: true,
+            dict_base_dir: Some(dict_cache_dir()),
             ..CheckOptions::default()
         },
     )

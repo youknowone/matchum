@@ -1,4 +1,5 @@
 use crate::commands::check::{self, CheckOptions};
+use crate::commands::dict_cache_dir;
 use anyhow::Result;
 use std::path::PathBuf;
 
@@ -95,7 +96,7 @@ pub fn run(opts: LintOptions) -> Result<()> {
             cache_strategy: opts.cache_strategy,
             cache_location: opts.cache_location,
             use_gitignore_default: false,
-            dict_base_dir: None,
+            dict_base_dir: Some(dict_cache_dir()),
             file_type: None,
             stats: false,
             diff_filter: None,

@@ -6,6 +6,13 @@ use tar::Archive;
 
 const NPM_REGISTRY: &str = "https://registry.npmjs.org";
 
+/// Default cache directory for downloaded npm packages.
+/// Packages are stored here instead of creating `node_modules/` in the project directory.
+pub fn default_cache_dir() -> PathBuf {
+    let home = std::env::var_os("HOME").unwrap_or_default();
+    PathBuf::from(home).join(".matchum_cache").join("packages")
+}
+
 #[derive(Debug, thiserror::Error)]
 pub enum FetchError {
     #[error("HTTP error: {0}")]

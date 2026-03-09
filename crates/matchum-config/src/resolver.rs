@@ -275,7 +275,8 @@ fn resolve_import_path(import: &str, base_dir: &Path) -> Option<PathBuf> {
     if import.starts_with('@') {
         let package_name = npm_fetch::extract_package_name(import);
         let sub_path = npm_fetch::extract_sub_path(import);
-        if let Ok(pkg_dir) = npm_fetch::ensure_package(package_name, None, base_dir) {
+        let cache_dir = npm_fetch::default_cache_dir();
+        if let Ok(pkg_dir) = npm_fetch::ensure_package(package_name, None, &cache_dir) {
             let resolved = match sub_path {
                 Some(sub) => pkg_dir.join(sub),
                 // No sub-path: default to cspell-ext.json

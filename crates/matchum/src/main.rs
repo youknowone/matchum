@@ -141,11 +141,6 @@ enum DictAction {
     List,
 }
 
-fn dict_cache_dir() -> PathBuf {
-    let home = std::env::var_os("HOME").unwrap_or_default();
-    PathBuf::from(home).join(".matchum_cache").join("packages")
-}
-
 fn main() {
     let cli = Cli::parse();
 
@@ -179,7 +174,7 @@ fn main() {
                 commands::check::CheckOptions {
                     config_search: true,
                     use_gitignore_default: true,
-                    dict_base_dir: Some(dict_cache_dir()),
+                    dict_base_dir: Some(commands::dict_cache_dir()),
                     fallback_settings: Some(commands::check::default_settings()),
                     file_type,
                     stats,
@@ -200,7 +195,7 @@ fn main() {
             commands::check::CheckOptions {
                 config_search: true,
                 use_gitignore_default: true,
-                dict_base_dir: Some(dict_cache_dir()),
+                dict_base_dir: Some(commands::dict_cache_dir()),
                 fallback_settings: Some(commands::check::default_settings()),
                 ..commands::check::CheckOptions::default()
             },
@@ -215,7 +210,7 @@ fn main() {
             commands::check::CheckOptions {
                 config_search: true,
                 use_gitignore_default: true,
-                dict_base_dir: Some(dict_cache_dir()),
+                dict_base_dir: Some(commands::dict_cache_dir()),
                 fallback_settings: Some(commands::check::default_settings()),
                 ..commands::check::CheckOptions::default()
             },
