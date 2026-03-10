@@ -89,6 +89,7 @@ pub fn to_cspell_settings(config: &MatchumConfig, config_dir: &Path) -> CSpellSe
             language_id: ls.language_id.clone(),
             locale: ls.locale.clone(),
             dictionaries: ls.dictionaries.clone(),
+            ..Default::default()
         })
         .collect();
 

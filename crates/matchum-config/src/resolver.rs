@@ -1,6 +1,6 @@
 use crate::convert;
-use crate::npm_fetch;
 use crate::matchum_config::MatchumConfig;
+use crate::npm_fetch;
 use crate::settings::CSpellSettings;
 use std::collections::HashSet;
 use std::path::{Path, PathBuf};
@@ -62,6 +62,27 @@ pub enum ConfigFound {
     Cspell(PathBuf),
     /// No config found.
     None,
+}
+
+impl ConfigFound {
+    /// Classify an explicit config path as matchum or cspell config.
+    pub fn classify(path: &Path) -> Self {
+        let name = path
+            .file_name()
+            .and_then(|n| n.to_str())
+            .unwrap_or("");
+        if MATCHUM_CONFIG_NAMES.contains(&name) {
+            ConfigFound::Matchum(path.to_path_buf())
+        } else {
+            ConfigFound::Cspell(path.to_path_buf())
+        }
+    }
+
+    /// Whether this config enables cspell-compatible npm auto-resolution
+    /// for bare dictionary names.
+    pub fn is_cspell(&self) -> bool {
+        matches!(self, ConfigFound::Cspell(_) | ConfigFound::None)
+    }
 }
 
 #[derive(Debug, thiserror::Error)]
@@ -185,8 +206,15 @@ fn load_config_recursive(
     }
 
     let content = std::fs::read_to_string(path)?;
-    let mut settings: CSpellSettings =
-        json5::from_str(&content).map_err(|e| ResolveError::Json(e.to_string()))?;
+    let mut settings: CSpellSettings = match path
+        .extension()
+        .and_then(|e| e.to_str())
+    {
+        Some("yaml" | "yml") => {
+            serde_yaml::from_str(&content).map_err(|e| ResolveError::Json(e.to_string()))?
+        }
+        _ => json5::from_str(&content).map_err(|e| ResolveError::Json(e.to_string()))?,
+    };
 
     let base_dir = path.parent().unwrap_or(Path::new("."));
 
@@ -330,6 +358,9 @@ pub fn merge_settings(base: CSpellSettings, overlay: CSpellSettings) -> CSpellSe
         max_duplicate_problems: overlay
             .max_duplicate_problems
             .or(base.max_duplicate_problems),
+        max_number_of_problems: overlay
+            .max_number_of_problems
+            .or(base.max_number_of_problems),
         glob_root: overlay.glob_root.or(base.glob_root),
         suggest_words: concat_vecs(base.suggest_words, overlay.suggest_words),
         no_suggest_dictionaries: concat_vecs_unique(

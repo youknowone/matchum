@@ -1172,7 +1172,10 @@ mod json_parsing_edge_cases {
         }"#;
         let settings: CSpellSettings = serde_json::from_str(json).unwrap();
         assert_eq!(settings.language_settings.len(), 2);
-        assert_eq!(settings.language_settings[0].language_id, vec!["typescript"]);
+        assert_eq!(
+            settings.language_settings[0].language_id,
+            vec!["typescript"]
+        );
         assert_eq!(settings.language_settings[1].language_id, vec!["python"]);
     }
 
@@ -1218,10 +1221,7 @@ mod json_parsing_edge_cases {
     fn parse_no_suggest_dictionaries() {
         let json = r#"{"noSuggestDictionaries": ["custom-nosuggest"]}"#;
         let settings: CSpellSettings = serde_json::from_str(json).unwrap();
-        assert_eq!(
-            settings.no_suggest_dictionaries,
-            vec!["custom-nosuggest"]
-        );
+        assert_eq!(settings.no_suggest_dictionaries, vec!["custom-nosuggest"]);
     }
 
     #[test]
@@ -1242,10 +1242,7 @@ mod json_parsing_edge_cases {
     fn parse_files_list() {
         let json = r#"{"files": ["src/**/*.ts", "src/**/*.tsx"]}"#;
         let settings: CSpellSettings = serde_json::from_str(json).unwrap();
-        assert_eq!(
-            settings.files.unwrap(),
-            vec!["src/**/*.ts", "src/**/*.tsx"]
-        );
+        assert_eq!(settings.files.unwrap(), vec!["src/**/*.ts", "src/**/*.tsx"]);
     }
 
     #[test]
@@ -1383,7 +1380,9 @@ mod config_loading_advanced {
         assert_eq!(settings.overrides.len(), 2);
         assert_eq!(settings.overrides[0].filename, "**/*.ts");
         assert_eq!(settings.overrides[1].filename, "**/*.py");
-        assert!(settings.overrides[0].words.contains(&"typescript".to_string()));
+        assert!(settings.overrides[0]
+            .words
+            .contains(&"typescript".to_string()));
         assert!(settings.overrides[1].words.contains(&"python".to_string()));
 
         std::fs::remove_dir_all(dir).ok();

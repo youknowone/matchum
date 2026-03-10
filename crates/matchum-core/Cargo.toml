@@ -17,6 +17,7 @@ unicode-xid = { workspace = true }
 thiserror = { workspace = true }
 typos-dict = "0.13.22"
 unicase = "2.9.0"
+papaya = "0.2.3"
 
 [dev-dependencies]
 insta = { workspace = true }

@@ -108,7 +108,7 @@ pub const PRETTIER: RepoSpec = RepoSpec {
     name: "prettier",
     url: "https://github.com/prettier/prettier.git",
     commit: "9bb7335452738e54ace26093bf9158c033bbfe7b",
-    check_paths: &[],
+    check_paths: &["."],
     cspell_config: None,
     args: &[],
 };

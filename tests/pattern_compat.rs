@@ -192,17 +192,17 @@ mod escape_patterns {
     use super::*;
 
     #[test]
-    fn unicode_escape_not_skipped_by_default() {
-        // cspell's EscapeCharacters pattern is defined but NOT in the default exclude list.
-        // So \uBABC is NOT skipped by default — BABC is flagged as unknown.
+    fn unicode_escape_skipped_by_hex_values_pattern() {
+        // cspell's HexValues pattern (regExMatchCommonHexFormats) skips \uXXXX escapes.
+        // \uBABC should be skipped — BABC should NOT be flagged.
         let dict = make_dict(&["const", "value"]);
         let v = Validator::new(vec![dict], ValidatorConfig::default());
         let text = r"const value = '\uBABC'";
         let issues = v.validate_text(text);
         let words = issue_words(&issues);
         assert!(
-            words.contains(&"BABC"),
-            "unicode escape should not be skipped by default: {:?}",
+            !words.contains(&"BABC"),
+            "unicode escape \\uBABC should be skipped by HexValues pattern: {:?}",
             words
         );
     }
@@ -525,11 +525,7 @@ mod url_format_patterns {
         let text = "connect to http://localhost:8080/api";
         let issues = v.validate_text(text);
         let words = issue_words(&issues);
-        assert!(
-            !words.contains(&"localhost"),
-            "URL with port: {:?}",
-            words
-        );
+        assert!(!words.contains(&"localhost"), "URL with port: {:?}", words);
     }
 
     #[test]
@@ -539,11 +535,7 @@ mod url_format_patterns {
         let text = "connect https://user:pass@example.com/path";
         let issues = v.validate_text(text);
         let words = issue_words(&issues);
-        assert!(
-            !words.contains(&"example"),
-            "URL with auth: {:?}",
-            words
-        );
+        assert!(!words.contains(&"example"), "URL with auth: {:?}", words);
     }
 
     #[test]
@@ -673,11 +665,7 @@ mod combined_pattern_skipping {
         let issues = v.validate_text(text);
         let words = issue_words(&issues);
         assert!(!words.contains(&"example"), "URL+email combo: {:?}", words);
-        assert!(
-            !words.contains(&"support"),
-            "email part: {:?}",
-            words
-        );
+        assert!(!words.contains(&"support"), "email part: {:?}", words);
     }
 
     #[test]
@@ -709,16 +697,8 @@ mod combined_pattern_skipping {
         let text = "see https://first.example.com and https://second.example.com";
         let issues = v.validate_text(text);
         let words = issue_words(&issues);
-        assert!(
-            !words.contains(&"first"),
-            "first URL: {:?}",
-            words
-        );
-        assert!(
-            !words.contains(&"second"),
-            "second URL: {:?}",
-            words
-        );
+        assert!(!words.contains(&"first"), "first URL: {:?}", words);
+        assert!(!words.contains(&"second"), "second URL: {:?}", words);
     }
 }
 
@@ -733,7 +713,8 @@ mod directives_with_patterns {
     fn url_in_disabled_block_no_errors() {
         let dict = make_dict(&["hello"]);
         let v = Validator::new(vec![dict], ValidatorConfig::default());
-        let text = "hello\n// cspell:disable\nhttps://xyzzy.example.com\nbadword\n// cspell:enable\nhello";
+        let text =
+            "hello\n// cspell:disable\nhttps://xyzzy.example.com\nbadword\n// cspell:enable\nhello";
         let issues = v.validate_text(text);
         let words = issue_words(&issues);
         assert!(!words.contains(&"xyzzy"), "disabled URL: {:?}", words);

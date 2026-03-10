@@ -85,11 +85,7 @@ pub fn ensure_cloned(spec: &RepoSpec) -> PathBuf {
         .current_dir(&repo_dir)
         .status()
         .expect("failed to run git remote add");
-    assert!(
-        status.success(),
-        "git remote add failed for {}",
-        spec.name
-    );
+    assert!(status.success(), "git remote add failed for {}", spec.name);
 
     // git fetch origin <commit> --depth=1
     let status = Command::new("git")
@@ -163,7 +159,13 @@ pub fn run_matchum(repo_dir: &Path, spec: &RepoSpec) -> BTreeSet<Issue> {
 /// Output format: `path:line:col - Unknown word (word)`
 pub fn run_cspell(repo_dir: &Path, spec: &RepoSpec) -> BTreeSet<Issue> {
     let mut cmd = Command::new("npx");
-    cmd.args(["cspell", "lint", "--no-progress", "--no-summary", "--relative"]);
+    cmd.args([
+        "cspell",
+        "lint",
+        "--no-progress",
+        "--no-summary",
+        "--relative",
+    ]);
 
     if let Some(config) = spec.cspell_config {
         let config_path = repo_dir.join(config);
@@ -190,23 +192,23 @@ pub fn run_cspell(repo_dir: &Path, spec: &RepoSpec) -> BTreeSet<Issue> {
 
 /// Parse matchum output lines.
 ///
-/// Format: `/absolute/path/to/file.rs:10:5 - Unknown word: 'foobar'`
-///         `/absolute/path/to/file.rs:10:5 - Forbidden word: 'foobar'`
+/// Format: `/absolute/path/to/file.rs:10:5 - Unknown word (foobar)`
+///         `/absolute/path/to/file.rs:10:5 - Forbidden word (foobar)`
 fn parse_matchum_output(output: &str, repo_dir: &Path) -> BTreeSet<Issue> {
     let mut issues = BTreeSet::new();
     let repo_prefix = format!("{}/", repo_dir.display());
 
     for line in output.lines() {
-        let marker = if line.contains(" - Unknown word: '") {
-            " - Unknown word: '"
-        } else if line.contains(" - Forbidden word: '") {
-            " - Forbidden word: '"
+        let marker = if line.contains(" - Unknown word (") {
+            " - Unknown word ("
+        } else if line.contains(" - Forbidden word (") {
+            " - Forbidden word ("
         } else {
             continue;
         };
 
         if let Some((loc, rest)) = line.split_once(marker) {
-            let word = match rest.find('\'') {
+            let word = match rest.find(')') {
                 Some(end) => &rest[..end],
                 None => continue,
             };
@@ -307,8 +309,7 @@ pub fn load_snapshot(spec: &RepoSpec) -> Option<BTreeSet<Issue>> {
 pub fn save_snapshot(spec: &RepoSpec, issues: &BTreeSet<Issue>) {
     let path = snapshot_path(spec);
     fs::create_dir_all(path.parent().unwrap()).expect("failed to create snapshots dir");
-    let json =
-        serde_json::to_string_pretty(issues).expect("failed to serialize snapshot");
+    let json = serde_json::to_string_pretty(issues).expect("failed to serialize snapshot");
     fs::write(&path, json)
         .unwrap_or_else(|e| panic!("failed to write snapshot {}: {e}", path.display()));
     eprintln!(

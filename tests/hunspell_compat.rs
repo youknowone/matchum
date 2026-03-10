@@ -249,7 +249,10 @@ fn test_load_hunspell_fixture() {
     assert!(dict.has("rebuild"), "should have 'rebuild' (R prefix)");
 
     // Cross product: prefix + suffix for build/SR
-    assert!(dict.has("rebuilds"), "should have 'rebuilds' (R prefix + S suffix cross product)");
+    assert!(
+        dict.has("rebuilds"),
+        "should have 'rebuilds' (R prefix + S suffix cross product)"
+    );
 
     // D suffix: walked
     assert!(dict.has("walked"), "should have 'walked' (D suffix)");

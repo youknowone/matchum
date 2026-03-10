@@ -1,0 +1,3 @@
+language = "en"
+dictionaries = ["en_us", "rust", "softwareTerms"]
+ignore_paths = ["**/target/**", "**/tests/**"]

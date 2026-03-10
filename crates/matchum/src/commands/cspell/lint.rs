@@ -101,6 +101,8 @@ pub fn run(opts: LintOptions) -> Result<()> {
             stats: false,
             diff_filter: None,
             fallback_settings: None,
+            auto_resolve_cspell: true,
+            config_file: None,
         },
     )
     .map(|_| ())

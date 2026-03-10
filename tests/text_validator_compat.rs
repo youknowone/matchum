@@ -881,9 +881,34 @@ mod compound_words_validation {
             "fly",
         ]);
         let common_words = make_dict(&[
-            "allowed", "and", "ate", "be", "been", "better", "big", "dark", "done", "fixes",
-            "has", "have", "here", "is", "known", "light", "little", "multiple", "not",
-            "problems", "published", "should", "the", "there", "they", "this", "to", "we",
+            "allowed",
+            "and",
+            "ate",
+            "be",
+            "been",
+            "better",
+            "big",
+            "dark",
+            "done",
+            "fixes",
+            "has",
+            "have",
+            "here",
+            "is",
+            "known",
+            "light",
+            "little",
+            "multiple",
+            "not",
+            "problems",
+            "published",
+            "should",
+            "the",
+            "there",
+            "they",
+            "this",
+            "to",
+            "we",
         ]);
         vec![colors, fruit, animals, insects, common_words]
     }
@@ -975,7 +1000,11 @@ mod min_word_length_validation {
 
         let issues = v.validate_text("a hello x");
         let words = issue_words(&issues);
-        assert!(words.contains(&"x"), "min=1 checks single chars: {:?}", words);
+        assert!(
+            words.contains(&"x"),
+            "min=1 checks single chars: {:?}",
+            words
+        );
         assert!(!words.contains(&"a"), "'a' is in dict: {:?}", words);
     }
 
@@ -1038,12 +1067,7 @@ mod max_duplicate_problems {
 
         let text = (0..20).map(|_| "unword").collect::<Vec<_>>().join(" ");
         let issues = v.validate_text(&text);
-        assert_eq!(
-            issues.len(),
-            10,
-            "max dup=10: got {} issues",
-            issues.len()
-        );
+        assert_eq!(issues.len(), 10, "max dup=10: got {} issues", issues.len());
     }
 
     #[test]
@@ -1059,7 +1083,12 @@ mod max_duplicate_problems {
         let text = "abcd efgh ijkl mnop qrst uvwx yzab cdef";
         let issues = v.validate_text(&text);
         // Each unique word gets its own count; none should be over 2
-        assert_eq!(issues.len(), 8, "unique words not limited: {:?}", issue_words(&issues));
+        assert_eq!(
+            issues.len(),
+            8,
+            "unique words not limited: {:?}",
+            issue_words(&issues)
+        );
     }
 }
 
@@ -1097,7 +1126,11 @@ mod multi_dict_validation {
         let v = Validator::new(vec![dict1, dict2], ValidatorConfig::default());
 
         let issues = v.validate_text("apple cherry");
-        assert!(issues.is_empty(), "words from either dict valid: {:?}", issue_words(&issues));
+        assert!(
+            issues.is_empty(),
+            "words from either dict valid: {:?}",
+            issue_words(&issues)
+        );
     }
 
     #[test]
@@ -1211,11 +1244,7 @@ mod unicode_text_validation {
         let issues = v.validate_text("alpha \u{03B1}\u{03BB}\u{03C6}\u{03B1}");
         // The Greek word should be a separate token and checked
         let words = issue_words(&issues);
-        assert!(
-            !words.contains(&"alpha"),
-            "latin alpha ok: {:?}",
-            words
-        );
+        assert!(!words.contains(&"alpha"), "latin alpha ok: {:?}", words);
     }
 }
 
@@ -1344,6 +1373,60 @@ mod directive_typo_integration {
         assert!(
             issues.is_empty(),
             "no directive prefix means no directive typo: {issues:?}"
+        );
+    }
+}
+
+// ============================================================
+// Curly apostrophe (U+2019) normalization
+// ============================================================
+
+mod curly_apostrophe {
+    use super::*;
+
+    #[test]
+    fn curly_apostrophe_contraction_recognized() {
+        // cspell treats curly apostrophe (\u{2019}) the same as ASCII apostrophe
+        let dict = make_dict(&["doesn't", "hello", "world"]);
+        let v = Validator::new(vec![dict], ValidatorConfig::default());
+        // "doesn\u{2019}t" should be recognized via doesn't in the dictionary
+        let issues = v.validate_text("hello doesn\u{2019}t world");
+        assert!(
+            issues.is_empty(),
+            "curly apostrophe contraction should be valid: {issues:?}"
+        );
+    }
+
+    #[test]
+    fn curly_apostrophe_possessive_recognized() {
+        let dict = make_dict(&["it's", "hello"]);
+        let v = Validator::new(vec![dict], ValidatorConfig::default());
+        let issues = v.validate_text("hello it\u{2019}s");
+        assert!(
+            issues.is_empty(),
+            "curly apostrophe possessive should be valid: {issues:?}"
+        );
+    }
+
+    #[test]
+    fn unknown_word_with_curly_apostrophe_still_flagged() {
+        let dict = make_dict(&["hello", "world"]);
+        let v = Validator::new(vec![dict], ValidatorConfig::default());
+        let issues = v.validate_text("hello xyzzy\u{2019}plugh world");
+        assert!(
+            !issues.is_empty(),
+            "unknown word with curly apostrophe should still be flagged"
+        );
+    }
+
+    #[test]
+    fn ascii_apostrophe_still_works() {
+        let dict = make_dict(&["doesn't", "hello"]);
+        let v = Validator::new(vec![dict], ValidatorConfig::default());
+        let issues = v.validate_text("hello doesn't");
+        assert!(
+            issues.is_empty(),
+            "ASCII apostrophe contraction should still work: {issues:?}"
         );
     }
 }

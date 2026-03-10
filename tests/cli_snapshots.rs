@@ -302,10 +302,8 @@ fn cli_init_creates_config() {
 
 #[test]
 fn cli_init_already_exists() {
-    let tmpdir = std::env::temp_dir().join(format!(
-        "matchum_init_exists_test_{}",
-        std::process::id()
-    ));
+    let tmpdir =
+        std::env::temp_dir().join(format!("matchum_init_exists_test_{}", std::process::id()));
     std::fs::create_dir_all(&tmpdir).unwrap();
     std::fs::write(tmpdir.join("matchum.toml"), "# existing").unwrap();
 
@@ -350,10 +348,8 @@ fn cli_lint_no_issues() {
 
 #[test]
 fn cli_dict_list_empty() {
-    let tmpdir = std::env::temp_dir().join(format!(
-        "matchum_dict_list_test_{}",
-        std::process::id()
-    ));
+    let tmpdir =
+        std::env::temp_dir().join(format!("matchum_dict_list_test_{}", std::process::id()));
     std::fs::create_dir_all(&tmpdir).unwrap();
 
     let (stdout, _stderr, code) = run_matchum_in(&tmpdir, &["dict", "list"]);
@@ -447,6 +443,139 @@ fn cli_review_help() {
     insta::assert_snapshot!("review_help_stdout", stdout);
 }
 
+// ── tests: review command ─────────────────────────────────────────
+
+/// Run matchum with piped stdin (for review command that reads from stdin).
+fn run_matchum_with_stdin(args: &[&str], stdin_data: &[u8]) -> (String, String, i32) {
+    use std::io::Write;
+    use std::process::Stdio;
+    let mut child = Command::new(matchum_binary())
+        .args(args)
+        .current_dir(project_root())
+        .stdin(Stdio::piped())
+        .stdout(Stdio::piped())
+        .stderr(Stdio::piped())
+        .spawn()
+        .expect("failed to spawn matchum");
+
+    if let Some(mut stdin) = child.stdin.take() {
+        let _ = stdin.write_all(stdin_data);
+    }
+
+    let output = child.wait_with_output().expect("failed to wait for matchum");
+    let stdout = String::from_utf8_lossy(&output.stdout).to_string();
+    let stderr = String::from_utf8_lossy(&output.stderr).to_string();
+    let code = output.status.code().unwrap_or(-1);
+    (stdout, stderr, code)
+}
+
+/// Run matchum in a specific directory with piped stdin.
+fn run_matchum_in_with_stdin(
+    dir: &std::path::Path,
+    args: &[&str],
+    stdin_data: &[u8],
+) -> (String, String, i32) {
+    use std::io::Write;
+    use std::process::Stdio;
+    let mut child = Command::new(matchum_binary())
+        .args(args)
+        .current_dir(dir)
+        .stdin(Stdio::piped())
+        .stdout(Stdio::piped())
+        .stderr(Stdio::piped())
+        .spawn()
+        .expect("failed to spawn matchum");
+
+    if let Some(mut stdin) = child.stdin.take() {
+        let _ = stdin.write_all(stdin_data);
+    }
+
+    let output = child.wait_with_output().expect("failed to wait for matchum");
+    let stdout = String::from_utf8_lossy(&output.stdout).to_string();
+    let stderr = String::from_utf8_lossy(&output.stderr).to_string();
+    let code = output.status.code().unwrap_or(-1);
+    (stdout, stderr, code)
+}
+
+#[test]
+fn cli_review_shows_relative_paths() {
+    // When running `matchum review` with a fixture path, the output should
+    // contain relative paths, not absolute paths.
+    let (stdout, _stderr, _code) = run_matchum_with_stdin(
+        &[
+            "review",
+            "--config",
+            "tests/fixtures/cspell.json",
+            "tests/fixtures/sample.txt",
+        ],
+        b"q\n",
+    );
+
+    // Output should contain the relative path
+    assert!(
+        stdout.contains("tests/fixtures/sample.txt"),
+        "output should contain relative path: {stdout}"
+    );
+    // Output should NOT contain an absolute path
+    let root = project_root().to_string_lossy().to_string();
+    assert!(
+        !stdout.contains(&root),
+        "output should not contain absolute root path: {stdout}"
+    );
+}
+
+#[test]
+fn cli_review_absolute_input_shows_relative_paths() {
+    // When the input path is absolute (as cargo-matchum does), the output
+    // should still show relative paths.
+    let root = project_root();
+    let abs_fixture = root.join("tests/fixtures/sample.txt");
+
+    let (stdout, _stderr, _code) = run_matchum_with_stdin(
+        &[
+            "review",
+            "--config",
+            "tests/fixtures/cspell.json",
+            &abs_fixture.to_string_lossy(),
+        ],
+        b"q\n",
+    );
+
+    // Even with absolute input, the display should be relative
+    // (at minimum, it should not show the full absolute path)
+    let root_str = root.to_string_lossy().to_string();
+    assert!(
+        !stdout.contains(&root_str),
+        "absolute input should not produce absolute path in output: {stdout}"
+    );
+}
+
+#[test]
+fn cli_review_dir_input_shows_relative_paths() {
+    // When running review on a directory (which is what cargo-matchum does),
+    // paths should be relative to that directory.
+    let root = project_root();
+    let fixtures_dir = root.join("tests/fixtures");
+
+    let (stdout, _stderr, _code) = run_matchum_in_with_stdin(
+        &root,
+        &[
+            "review",
+            "--config",
+            "tests/fixtures/cspell.json",
+            &fixtures_dir.to_string_lossy(),
+        ],
+        b"q\n",
+    );
+
+    // Should show paths relative to the fixtures dir or the project root
+    let fixtures_str = fixtures_dir.to_string_lossy().to_string();
+    assert!(
+        !stdout.contains(&fixtures_str),
+        "dir input should not produce absolute path in output: {stdout}"
+    );
+}
+
 // ── tests: error cases (additional) ───────────────────────────────
 
 #[test]
@@ -482,20 +611,14 @@ fn cli_no_subcommand() {
 
 #[test]
 fn cli_add_words_to_project() {
-    let tmpdir =
-        std::env::temp_dir().join(format!("matchum_add_test_{}", std::process::id()));
+    let tmpdir = std::env::temp_dir().join(format!("matchum_add_test_{}", std::process::id()));
     std::fs::create_dir_all(&tmpdir).unwrap();
 
     // Create matchum.toml
-    std::fs::write(
-        tmpdir.join("matchum.toml"),
-        "language = \"en\"\n",
-    )
-    .unwrap();
+    std::fs::write(tmpdir.join("matchum.toml"), "language = \"en\"\n").unwrap();
 
     // Add words
-    let (_stdout, stderr, code) =
-        run_matchum_in(&tmpdir, &["add", "myword", "anotherword"]);
+    let (_stdout, stderr, code) = run_matchum_in(&tmpdir, &["add", "myword", "anotherword"]);
     assert_eq!(code, 0, "add should succeed");
     assert!(
         stderr.contains("Added 2 word"),
@@ -523,20 +646,13 @@ fn cli_add_words_to_project() {
 
 #[test]
 fn cli_add_forbidden_words() {
-    let tmpdir = std::env::temp_dir().join(format!(
-        "matchum_add_forbid_test_{}",
-        std::process::id()
-    ));
+    let tmpdir =
+        std::env::temp_dir().join(format!("matchum_add_forbid_test_{}", std::process::id()));
     std::fs::create_dir_all(&tmpdir).unwrap();
 
-    std::fs::write(
-        tmpdir.join("matchum.toml"),
-        "language = \"en\"\n",
-    )
-    .unwrap();
+    std::fs::write(tmpdir.join("matchum.toml"), "language = \"en\"\n").unwrap();
 
-    let (_stdout, stderr, code) =
-        run_matchum_in(&tmpdir, &["add", "--forbidden", "badword"]);
+    let (_stdout, stderr, code) = run_matchum_in(&tmpdir, &["add", "--forbidden", "badword"]);
     assert_eq!(code, 0, "add --forbidden should succeed");
     assert!(
         stderr.contains("Added 1 word"),
@@ -553,14 +669,11 @@ fn cli_add_forbidden_words() {
 
 #[test]
 fn cli_add_no_config_fails() {
-    let tmpdir = std::env::temp_dir().join(format!(
-        "matchum_add_noconfig_test_{}",
-        std::process::id()
-    ));
+    let tmpdir =
+        std::env::temp_dir().join(format!("matchum_add_noconfig_test_{}", std::process::id()));
     std::fs::create_dir_all(&tmpdir).unwrap();
 
-    let (_stdout, stderr, code) =
-        run_matchum_in(&tmpdir, &["add", "someword"]);
+    let (_stdout, stderr, code) = run_matchum_in(&tmpdir, &["add", "someword"]);
     assert_eq!(code, 2, "add without config should fail");
     assert!(
         stderr.contains("matchum.toml") || stderr.contains("matchum init"),

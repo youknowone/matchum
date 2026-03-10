@@ -34,6 +34,7 @@ pub struct CSpellSettings {
     pub allow_compound_words: Option<bool>,
     pub min_word_length: Option<usize>,
     pub max_duplicate_problems: Option<usize>,
+    pub max_number_of_problems: Option<usize>,
     pub glob_root: Option<String>,
     pub suggest_words: Vec<String>,
     pub no_suggest_dictionaries: Vec<String>,
@@ -112,6 +113,10 @@ pub struct LanguageSetting {
     pub locale: Option<String>,
     /// Dictionaries to activate for matching files.
     pub dictionaries: Vec<String>,
+    /// Additional ignore patterns for matching files.
+    pub ignore_reg_exp_list: Vec<String>,
+    /// Additional pattern definitions scoped to this language setting.
+    pub patterns: Vec<PatternDefinition>,
 }
 
 /// Either a single string or a list of strings.

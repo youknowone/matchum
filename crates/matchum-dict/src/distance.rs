@@ -447,7 +447,10 @@ mod tests {
         // 's' and 'z' are not adjacent on QWERTY... wait, they are.
         // 's' and 'b' are NOT adjacent
         let sb = weighted_damerau_levenshtein("sat", "bat", &costs);
-        assert!(sd < sb, "adjacent key cost ({sd}) should be less than non-adjacent ({sb})");
+        assert!(
+            sd < sb,
+            "adjacent key cost ({sd}) should be less than non-adjacent ({sb})"
+        );
     }
 
     #[test]

@@ -425,4 +425,5 @@ impl Dictionary for HashDictionary {
         }
         self.forbidden.contains(normalized)
     }
+
 }

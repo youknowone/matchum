@@ -52,6 +52,62 @@ enum Commands {
         /// Read unified diff from stdin; only report issues on added lines
         #[arg(long)]
         diff: bool,
+
+        /// Exclude files matching the glob pattern (can be used multiple times)
+        #[arg(short = 'e', long = "exclude")]
+        exclude: Vec<String>,
+
+        /// Set language locales (e.g., "en,fr" or "en-GB")
+        #[arg(long)]
+        locale: Option<String>,
+
+        /// Force programming language for unknown extensions
+        #[arg(long)]
+        language_id: Option<String>,
+
+        /// Do not show the spelling errors
+        #[arg(long)]
+        no_issues: bool,
+
+        /// Turn off progress messages
+        #[arg(long)]
+        no_progress: bool,
+
+        /// Turn off summary message
+        #[arg(long)]
+        no_summary: bool,
+
+        /// Only show spelling issues or errors
+        #[arg(long)]
+        quiet: bool,
+
+        /// Silent mode, suppress error messages
+        #[arg(short = 's', long)]
+        silent: bool,
+
+        /// Use paths relative to the config file or root
+        #[arg(long)]
+        relative: bool,
+
+        /// Exit after first file with an issue or error
+        #[arg(long)]
+        fail_fast: bool,
+
+        /// Show hidden files
+        #[arg(long)]
+        dot: bool,
+
+        /// Do not use .gitignore
+        #[arg(long)]
+        no_gitignore: bool,
+
+        /// Set the root directory for relative paths
+        #[arg(long)]
+        root: Option<PathBuf>,
+
+        /// Specify a list of files to be spell checked
+        #[arg(long = "file-list")]
+        file_list: Vec<String>,
     },
 
     /// Check files (strict mode, exits 1 on errors)
@@ -155,6 +211,20 @@ fn main() {
             file_type,
             stats,
             diff,
+            exclude,
+            locale,
+            language_id,
+            no_issues,
+            no_progress,
+            no_summary,
+            quiet,
+            silent,
+            relative: _,
+            fail_fast,
+            dot,
+            no_gitignore,
+            root,
+            file_list,
         } => {
             let diff_filter = if diff {
                 let mut buf = String::new();
@@ -164,6 +234,7 @@ fn main() {
             } else {
                 None
             };
+            let use_gitignore = if no_gitignore { Some(false) } else { None };
             commands::check::run_check(
                 &paths,
                 config.as_deref(),
@@ -179,6 +250,19 @@ fn main() {
                     file_type,
                     stats,
                     diff_filter,
+                    exclude,
+                    locale,
+                    language_id,
+                    no_issues,
+                    no_progress,
+                    no_summary,
+                    quiet,
+                    silent,
+                    fail_fast,
+                    dot,
+                    use_gitignore,
+                    root,
+                    file_list,
                     ..commands::check::CheckOptions::default()
                 },
             )

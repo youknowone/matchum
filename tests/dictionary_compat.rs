@@ -866,11 +866,7 @@ mod dictionary_suggest {
             dict.add_word(w);
         }
         let suggestions = dict.suggest("cax", 3);
-        assert!(
-            suggestions.len() <= 3,
-            "limit to 3: {:?}",
-            suggestions
-        );
+        assert!(suggestions.len() <= 3, "limit to 3: {:?}", suggestions);
     }
 
     #[test]
@@ -910,10 +906,7 @@ mod repmap_in_dict {
         let mut dict = HashDictionary::new(false);
         dict.add_word("strasse");
         dict.set_repmap(RepMap::new(vec![("ss".into(), "\u{00df}".into())]));
-        assert!(
-            dict.has("stra\u{00df}e"),
-            "repmap reverse: eszett -> ss"
-        );
+        assert!(dict.has("stra\u{00df}e"), "repmap reverse: eszett -> ss");
     }
 }
 

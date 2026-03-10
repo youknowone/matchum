@@ -1,8 +1,6 @@
 use crate::diff::DiffFilter;
 use anyhow::{Context, Result};
 use ignore::WalkBuilder;
-use md5::{Digest, Md5};
-use rayon::prelude::*;
 use matchum_config::overrides;
 use matchum_config::resolver;
 use matchum_config::settings::{CSpellSettings, PatternDefinition, StringOrList};
@@ -11,6 +9,8 @@ use matchum_core::validator::{Validator, ValidatorConfig};
 use matchum_dict::dictionary::Dictionary;
 use matchum_dict::hashdict::HashDictionary;
 use matchum_dict::loader;
+use md5::{Digest, Md5};
+use rayon::prelude::*;
 use std::collections::{HashMap, HashSet};
 use std::io::{self, Read};
 use std::path::{Path, PathBuf};
@@ -76,6 +76,12 @@ pub struct CheckOptions {
     /// Settings to use when no config file is found.
     /// `matchum check` uses `default_settings()`, `matchum cspell` uses `CSpellSettings::default()`.
     pub fallback_settings: Option<CSpellSettings>,
+    /// When true, bare dictionary names like "en_us" are auto-mapped to
+    /// npm packages (`@cspell/dict-en_us`).  Enabled for cspell.json configs,
+    /// disabled for matchum.toml where users must use `@cspell/en_us` explicitly.
+    pub auto_resolve_cspell: bool,
+    /// Config file path to auto-exclude from checking (cspell behavior).
+    pub config_file: Option<PathBuf>,
 }
 
 const DEFAULT_DICTIONARIES: &[&str] = &[
@@ -86,11 +92,34 @@ const DEFAULT_DICTIONARIES: &[&str] = &[
     "filetypes",
 ];
 
-/// Fill default dictionaries when config doesn't specify any.
+/// Ensure default dictionaries are always present.
+/// cspell merges default dictionaries with user-specified ones (never replaces).
+/// A user can exclude a default dict with `"!dictName"` syntax in `dictionaries`.
 fn apply_default_dictionaries(settings: &mut CSpellSettings) {
-    if settings.dictionaries.is_empty() {
-        settings.dictionaries = DEFAULT_DICTIONARIES.iter().map(|&s| s.into()).collect();
+    // Collect negated names (e.g. "!companies" means "don't use companies")
+    let negated: HashSet<String> = settings
+        .dictionaries
+        .iter()
+        .filter(|d| d.starts_with('!'))
+        .map(|d| d[1..].to_lowercase())
+        .collect();
+
+    for &name in DEFAULT_DICTIONARIES {
+        if negated.contains(&name.to_lowercase()) {
+            continue;
+        }
+        let name_lower = name.to_lowercase();
+        let already = settings
+            .dictionaries
+            .iter()
+            .any(|d| d.to_lowercase() == name_lower);
+        if !already {
+            settings.dictionaries.push(name.into());
+        }
     }
+
+    // Remove negation entries (cspell strips them after processing)
+    settings.dictionaries.retain(|d| !d.starts_with('!'));
 }
 
 /// Default settings when no config file is found.
@@ -134,37 +163,38 @@ pub fn run_check(
 
     // Load settings (or skip if --no-default-configuration)
     let fallback = options.fallback_settings.clone().unwrap_or_default();
-    let (mut settings, config_dir) = if options.no_default_configuration {
-        (CSpellSettings::default(), None)
-    } else {
-        let config_search_start = effective_paths.first().map(|p| p.as_path());
-        let result = load_settings(
-            config_path,
-            config_search_start.or(effective_root),
-            options.config_search,
-            &options.stop_config_search_at,
-        );
-        match result {
-            Ok((s, dir)) => {
-                if dir.is_some() {
-                    (s, dir)
-                } else {
-                    // No config found — use fallback
-                    (fallback, None)
-                }
-            }
-            Err(e) => {
-                if options.continue_on_error {
-                    if !options.silent {
-                        eprintln!("Warning: {:#}", e);
+    let (mut settings, config_dir, is_cspell, config_file_path) =
+        if options.no_default_configuration {
+            (CSpellSettings::default(), None, true, None)
+        } else {
+            let config_search_start = effective_paths.first().map(|p| p.as_path());
+            let result = load_settings(
+                config_path,
+                config_search_start.or(effective_root),
+                options.config_search,
+                &options.stop_config_search_at,
+            );
+            match result {
+                Ok((s, dir, is_cspell, cf)) => {
+                    if dir.is_some() {
+                        (s, dir, is_cspell, cf)
+                    } else {
+                        // No config found — use fallback
+                        (fallback, None, true, None)
                     }
-                    (fallback, None)
-                } else {
-                    return Err(e);
+                }
+                Err(e) => {
+                    if options.continue_on_error {
+                        if !options.silent {
+                            eprintln!("Warning: {:#}", e);
+                        }
+                        (fallback, None, true, None)
+                    } else {
+                        return Err(e);
+                    }
                 }
             }
-        }
-    };
+        };
 
     // Apply --locale override
     if let Some(ref locale) = options.locale {
@@ -173,6 +203,10 @@ pub fn run_check(
 
     // Fill default dictionaries if config didn't specify any
     apply_default_dictionaries(&mut settings);
+
+    let mut options = options;
+    options.auto_resolve_cspell = is_cspell;
+    options.config_file = config_file_path;
 
     run_check_inner(
         &effective_paths,
@@ -218,33 +252,38 @@ pub fn collect_all_issues(
     options: CheckOptions,
 ) -> Result<Vec<(PathBuf, String, Vec<ValidationIssue>)>> {
     let fallback = options.fallback_settings.clone().unwrap_or_default();
-    let (mut settings, config_dir) = if options.no_default_configuration {
-        (CSpellSettings::default(), None)
-    } else {
-        let config_search_start = paths.first().map(|p| p.as_path());
-        let result = load_settings(
-            config_path,
-            config_search_start,
-            options.config_search,
-            &options.stop_config_search_at,
-        );
-        match result {
-            Ok((s, dir)) => {
-                if dir.is_some() {
-                    (s, dir)
-                } else {
-                    (fallback, None)
+    let (mut settings, config_dir, is_cspell, config_file_path) =
+        if options.no_default_configuration {
+            (CSpellSettings::default(), None, true, None)
+        } else {
+            let config_search_start = paths.first().map(|p| p.as_path());
+            let result = load_settings(
+                config_path,
+                config_search_start,
+                options.config_search,
+                &options.stop_config_search_at,
+            );
+            match result {
+                Ok((s, dir, is_cspell, cf)) => {
+                    if dir.is_some() {
+                        (s, dir, is_cspell, cf)
+                    } else {
+                        (fallback, None, true, None)
+                    }
                 }
+                Err(e) => return Err(e),
             }
-            Err(e) => return Err(e),
-        }
-    };
+        };
 
     if let Some(ref locale) = options.locale {
         settings.language = Some(locale.clone());
     }
 
     apply_default_dictionaries(&mut settings);
+
+    let mut options = options;
+    options.auto_resolve_cspell = is_cspell;
+    options.config_file = config_file_path;
 
     run_collect_issues(paths, &settings, config_dir.as_deref(), &options)
 }
@@ -256,11 +295,29 @@ fn run_collect_issues(
     config_dir: Option<&Path>,
     options: &CheckOptions,
 ) -> Result<Vec<(PathBuf, String, Vec<ValidationIssue>)>> {
-    let (named_dicts, extra_active) =
-        build_dictionary_catalog(settings, config_dir, options.dict_base_dir.as_deref())?;
+    let (named_dicts, extra_active, bundled_lang_settings) = build_dictionary_catalog(
+        settings,
+        config_dir,
+        options.dict_base_dir.as_deref(),
+        options.auto_resolve_cspell,
+    )?;
+    // Merge bundled languageSettings with user-config languageSettings.
+    // This ensures that per-file-type dictionary activation from @cspell/dict-*
+    // packages is applied (e.g., typescript dict for .ts files, python for .py).
+    let settings = if !bundled_lang_settings.is_empty() {
+        let mut merged = settings.clone();
+        // Bundled settings go first (lower priority), user config overrides
+        let user_ls = std::mem::take(&mut merged.language_settings);
+        merged.language_settings = bundled_lang_settings;
+        merged.language_settings.extend(user_ls);
+        merged
+    } else {
+        settings.clone()
+    };
+    let settings = &settings;
     let compiled_overrides = matchum_config::overrides::compile_overrides(settings);
     let base_validator_config =
-        build_validator_config(settings, options.allow_compound_words, false);
+        build_validator_config(settings, options.allow_compound_words, false, None);
     let mut files = collect_files(effective_paths, settings, options)?;
 
     if let Some(ref df) = options.diff_filter {
@@ -323,6 +380,7 @@ fn run_collect_issues(
                 validator.set_word_cache(cache);
             }
             let issues = validator.validate_text(&content);
+            let issues = apply_issue_limits(issues, settings.max_duplicate_problems, settings.max_number_of_problems);
 
             if issues.is_empty() {
                 None
@@ -347,13 +405,31 @@ fn run_check_inner(
 ) -> Result<CheckResult> {
     let wall_start = std::time::Instant::now();
 
-    let (named_dicts, extra_active) =
-        build_dictionary_catalog(settings, config_dir, options.dict_base_dir.as_deref())?;
+    let (named_dicts, extra_active, bundled_lang_settings) = build_dictionary_catalog(
+        settings,
+        config_dir,
+        options.dict_base_dir.as_deref(),
+        options.auto_resolve_cspell,
+    )?;
+    // Merge bundled languageSettings
+    let merged_settings;
+    let settings = if !bundled_lang_settings.is_empty() {
+        merged_settings = {
+            let mut merged = settings.clone();
+            let user_ls = std::mem::take(&mut merged.language_settings);
+            merged.language_settings = bundled_lang_settings;
+            merged.language_settings.extend(user_ls);
+            merged
+        };
+        &merged_settings
+    } else {
+        settings
+    };
     let dict_count = named_dicts.len();
-    let compiled_overrides = matchum_config::overrides::compile_overrides(&settings);
+    let compiled_overrides = matchum_config::overrides::compile_overrides(settings);
     let base_validator_config =
-        build_validator_config(&settings, options.allow_compound_words, show_suggestions);
-    let mut files = collect_files(&effective_paths, &settings, &options)?;
+        build_validator_config(settings, options.allow_compound_words, show_suggestions, None);
+    let mut files = collect_files(&effective_paths, settings, &options)?;
 
     // Restrict to files present in the diff
     if let Some(ref df) = options.diff_filter {
@@ -502,6 +578,9 @@ fn run_check_inner(
                 issues.sort_by(|a, b| a.offset.cmp(&b.offset));
             }
 
+            // Apply per-file duplicate limit (cspell's maxDuplicateProblems, default 5)
+            issues = apply_issue_limits(issues, effective_settings.max_duplicate_problems, effective_settings.max_number_of_problems);
+
             if issues.is_empty() {
                 if use_cache {
                     if let Ok(mut guard) = cache.lock() {
@@ -537,7 +616,14 @@ fn run_check_inner(
     let base_dir = if options.no_relative {
         None
     } else {
-        std::env::current_dir().ok()
+        // Use the first absolute directory from input paths as the base for
+        // relative display (cargo-matchum passes an absolute workspace root).
+        // Falls back to current_dir() for the relative-path case.
+        effective_paths
+            .iter()
+            .find(|p| p.is_dir() && p.is_absolute())
+            .cloned()
+            .or_else(|| std::env::current_dir().ok())
     };
 
     for (file, content, issues) in &results {
@@ -615,20 +701,25 @@ fn run_check_inner(
     })
 }
 
+/// Returns (settings, config_dir, is_cspell, config_file_path).
+/// `is_cspell` is true when the config was loaded from a cspell config file,
+/// false for matchum.toml.
+/// `config_file_path` is the resolved config file for auto-exclusion (cspell behavior).
 fn load_settings(
     config_path: Option<&Path>,
     start_path: Option<&Path>,
     config_search: bool,
     stop_config_search_at: &[PathBuf],
-) -> Result<(CSpellSettings, Option<PathBuf>)> {
+) -> Result<(CSpellSettings, Option<PathBuf>, bool, Option<PathBuf>)> {
     if let Some(path) = config_path {
         let config_dir = path.parent().map(|p| p.to_path_buf());
+        let is_cspell = resolver::ConfigFound::classify(path).is_cspell();
         let settings = load_config_by_ext(path)?;
-        return Ok((settings, config_dir));
+        return Ok((settings, config_dir, is_cspell, Some(path.to_path_buf())));
     }
 
     if !config_search {
-        return Ok((CSpellSettings::default(), None));
+        return Ok((CSpellSettings::default(), None, true, None));
     }
 
     let search_dir = start_path
@@ -646,7 +737,7 @@ fn load_settings(
             let config_dir = path.parent().map(|p| p.to_path_buf());
             let settings =
                 resolver::load_matchum_config(&path).context("failed to load matchum.toml")?;
-            Ok((settings, config_dir))
+            Ok((settings, config_dir, false, Some(path)))
         }
         resolver::ConfigFound::Cspell(path) => {
             eprintln!(
@@ -654,9 +745,9 @@ fn load_settings(
             );
             let config_dir = path.parent().map(|p| p.to_path_buf());
             let settings = resolver::load_config(&path).context("failed to load config file")?;
-            Ok((settings, config_dir))
+            Ok((settings, config_dir, true, Some(path)))
         }
-        resolver::ConfigFound::None => Ok((CSpellSettings::default(), None)),
+        resolver::ConfigFound::None => Ok((CSpellSettings::default(), None, true, None)),
     }
 }
 
@@ -676,7 +767,12 @@ pub fn build_dictionary_catalog(
     settings: &CSpellSettings,
     config_dir: Option<&Path>,
     dict_base_dir: Option<&Path>,
-) -> Result<(Vec<(String, Arc<dyn Dictionary>)>, HashSet<String>)> {
+    auto_resolve_cspell: bool,
+) -> Result<(
+    Vec<(String, Arc<dyn Dictionary>)>,
+    HashSet<String>,
+    Vec<matchum_config::settings::LanguageSetting>,
+)> {
     let defined_names: HashSet<String> = settings
         .dictionary_definitions
         .iter()
@@ -686,6 +782,7 @@ pub fn build_dictionary_catalog(
     // Phase 1: Collect all dictionary paths (sequential, lightweight I/O)
     let mut jobs: Vec<DictJob> = Vec::new();
     let mut collected_names: HashSet<String> = HashSet::new();
+    let mut accumulated_lang_settings: Vec<matchum_config::settings::LanguageSetting> = Vec::new();
 
     // User-defined dictionaries
     for def in &settings.dictionary_definitions {
@@ -710,7 +807,11 @@ pub fn build_dictionary_catalog(
         }
     }
 
-    // Auto-fetch @cspell/dict-* packages
+    // Auto-fetch @cspell/dict-* packages.
+    // When auto_resolve_cspell is true (cspell.json mode), bare names like "en_us"
+    // are mapped to npm packages via dict_name_to_package.
+    // When false (matchum.toml mode), only names already starting with "@" are
+    // resolved as npm packages — bare names require a matching dictionary_definition.
     let npm_base = dict_base_dir.or(config_dir);
     if let Some(base) = npm_base {
         for dict_name in &settings.dictionaries {
@@ -718,7 +819,14 @@ pub fn build_dictionary_catalog(
             if defined_names.contains(&lower) || collected_names.contains(&lower) {
                 continue;
             }
-            let pkg_name = dict_name_to_package(&lower);
+            let pkg_name = if auto_resolve_cspell {
+                dict_name_to_package(&lower)
+            } else if dict_name.starts_with('@') {
+                // matchum.toml: only resolve explicit @-scoped package names
+                dict_name_to_package(&lower)
+            } else {
+                continue;
+            };
             let ext_path = format!("{}/cspell-ext.json", pkg_name);
             if let Some(ext_json) = resolve_npm_import(&ext_path, base) {
                 if let Ok(content) = std::fs::read_to_string(&ext_json) {
@@ -750,18 +858,23 @@ pub fn build_dictionary_catalog(
         }
     }
 
-    // Default bundled dictionaries
+    // Default bundled dictionaries — also collect their languageSettings.
+    // Dicts listed in the package's `dictionaries` field are globally active
+    // (same as cspell). Dicts only in languageSettings are activated per file type.
     if let Some(base) = npm_base {
-        for &(pkg, dict_name) in DEFAULT_BUNDLED_DICTS {
-            if collected_names.contains(dict_name) {
+        let mut loaded_pkgs: HashSet<String> = HashSet::new();
+        for &(pkg, _dict_name) in DEFAULT_BUNDLED_DICTS {
+            if loaded_pkgs.contains(pkg) {
                 continue;
             }
             let ext_path = format!("{}/cspell-ext.json", pkg);
             if let Some(ext_json) = resolve_npm_import(&ext_path, base) {
                 if let Ok(content) = std::fs::read_to_string(&ext_json) {
                     if let Ok(ext_settings) = json5::from_str::<CSpellSettings>(&content) {
+                        loaded_pkgs.insert(pkg.to_string());
                         let ext_dir = ext_json.parent().unwrap_or(base);
-                        let ext_active: HashSet<String> = ext_settings
+                        // Dicts in the package's top-level `dictionaries` are globally active
+                        let pkg_active: HashSet<String> = ext_settings
                             .dictionaries
                             .iter()
                             .map(|d| d.to_lowercase())
@@ -774,7 +887,7 @@ pub fn build_dictionary_catalog(
                             if let Some(ref p) = ext_def.path {
                                 let dict_path = ext_dir.join(p);
                                 if dict_path.exists() {
-                                    let is_active = ext_active.contains(&name) || name == dict_name;
+                                    let is_active = pkg_active.contains(&name);
                                     collected_names.insert(name.clone());
                                     jobs.push(DictJob {
                                         name,
@@ -784,11 +897,17 @@ pub fn build_dictionary_catalog(
                                 }
                             }
                         }
+                        // Collect languageSettings from the package
+                        accumulated_lang_settings.extend(ext_settings.language_settings);
                     }
                 }
             }
         }
     }
+
+    // Add cspell's core default languageSettings from cspell-default.config.js.
+    // These supplement the per-package languageSettings collected above.
+    accumulated_lang_settings.extend(default_language_settings());
 
     // Phase 2: Load all dictionaries in parallel
     let results: Vec<_> = jobs
@@ -816,19 +935,257 @@ pub fn build_dictionary_catalog(
         dicts.push((job.name.clone(), Arc::new(dict) as Arc<dyn Dictionary>));
     }
 
-    Ok((dicts, extra_active))
+    Ok((dicts, extra_active, accumulated_lang_settings))
 }
 
 /// Default bundled dictionary packages that cspell always loads via
 /// @cspell/cspell-bundled-dicts. Each entry is (package_name, primary_dict_name).
+/// This must match the full list from cspell's `cspell-default.config.js` and
+/// `@cspell/cspell-bundled-dicts/package.json`.
 const DEFAULT_BUNDLED_DICTS: &[(&str, &str)] = &[
-    ("@cspell/dict-fullstack", "fullstack"),
+    // Always-active global dicts
     ("@cspell/dict-companies", "companies"),
-    ("@cspell/dict-aws", "aws"),
-    ("@cspell/dict-cryptocurrencies", "cryptocurrencies"),
-    ("@cspell/dict-filetypes", "filetypes"),
+    ("@cspell/dict-software-terms", "softwareterms"),
     ("@cspell/dict-public-licenses", "public-licenses"),
+    ("@cspell/dict-filetypes", "filetypes"),
+    ("@cspell/dict-aws", "aws"),
+    ("@cspell/dict-fullstack", "fullstack"),
+    ("@cspell/dict-cryptocurrencies", "cryptocurrencies"),
+    ("@cspell/dict-en-common-misspellings", "en-common-misspellings"),
+    ("@cspell/dict-en-gb-mit", "en-gb-mit"),
+    ("@cspell/dict-gaming-terms", "gaming-terms"),
+    ("@cspell/dict-google", "google"),
+    ("@cspell/dict-lorem-ipsum", "lorem-ipsum"),
+    ("@cspell/dict-markdown", "markdown"),
+    // Language-specific dicts (activated via languageSettings per file type)
+    ("@cspell/dict-ada", "ada"),
+    ("@cspell/dict-al", "al"),
+    ("@cspell/dict-bash", "bash"),
+    ("@cspell/dict-shell", "shellscript"),
+    ("@cspell/dict-cpp", "cpp"),
+    ("@cspell/dict-csharp", "csharp"),
+    ("@cspell/dict-css", "css"),
+    ("@cspell/dict-dart", "dart"),
+    ("@cspell/dict-data-science", "data-science"),
+    ("@cspell/dict-django", "django"),
+    ("@cspell/dict-docker", "docker"),
+    ("@cspell/dict-dotnet", "dotnet"),
+    ("@cspell/dict-elixir", "elixir"),
+    ("@cspell/dict-flutter", "flutter"),
+    ("@cspell/dict-fonts", "fonts"),
+    ("@cspell/dict-fsharp", "fsharp"),
+    ("@cspell/dict-git", "git"),
+    ("@cspell/dict-golang", "golang"),
+    ("@cspell/dict-haskell", "haskell"),
+    ("@cspell/dict-html", "html"),
+    ("@cspell/dict-html-symbol-entities", "html-symbol-entities"),
+    ("@cspell/dict-java", "java"),
+    ("@cspell/dict-julia", "julia"),
+    ("@cspell/dict-k8s", "k8s"),
+    ("@cspell/dict-kotlin", "kotlin"),
+    ("@cspell/dict-latex", "latex"),
+    ("@cspell/dict-lua", "lua"),
+    ("@cspell/dict-makefile", "makefile"),
+    ("@cspell/dict-monkeyc", "monkeyc"),
+    ("@cspell/dict-node", "node"),
+    ("@cspell/dict-npm", "npm"),
+    ("@cspell/dict-php", "php"),
+    ("@cspell/dict-powershell", "powershell"),
+    ("@cspell/dict-python", "python"),
+    ("@cspell/dict-r", "r"),
+    ("@cspell/dict-ruby", "ruby"),
+    ("@cspell/dict-rust", "rust"),
+    ("@cspell/dict-scala", "scala"),
+    ("@cspell/dict-sql", "sql"),
+    ("@cspell/dict-svelte", "svelte"),
+    ("@cspell/dict-swift", "swift"),
+    ("@cspell/dict-terraform", "terraform"),
+    ("@cspell/dict-typescript", "typescript"),
+    ("@cspell/dict-vue", "vue"),
+    ("@cspell/dict-zig", "zig"),
 ];
+
+/// Core default languageSettings from cspell's `cspell-default.config.js`.
+/// These supplement per-package languageSettings and define which dictionaries
+/// are activated for each file type.
+fn default_language_settings() -> Vec<matchum_config::settings::LanguageSetting> {
+    use matchum_config::settings::LanguageSetting;
+
+    let ls = |ids: &[&str], dicts: &[&str]| LanguageSetting {
+        language_id: ids.iter().map(|s| s.to_string()).collect(),
+        locale: None,
+        dictionaries: dicts.iter().map(|s| s.to_string()).collect(),
+        ..Default::default()
+    };
+    let pd = |name: &str, pat: &str| matchum_config::settings::PatternDefinition {
+        name: name.into(),
+        pattern: matchum_config::settings::StringOrList::Single(pat.into()),
+    };
+
+    vec![
+        // JavaScript/TypeScript
+        ls(
+            &["javascript", "javascriptreact"],
+            &["typescript", "node", "npm"],
+        ),
+        ls(
+            &["typescript", "typescriptreact", "mdx"],
+            &["typescript", "node", "npm"],
+        ),
+        // JSX/TSX/MDX get HTML/CSS dicts too
+        ls(
+            &["javascriptreact", "typescriptreact", "mdx"],
+            &["html", "html-symbol-entities", "css", "fonts"],
+        ),
+        // Markdown/AsciiDoc — dicts + ignore patterns for link targets
+        LanguageSetting {
+            language_id: ["markdown", "asciidoc"]
+                .iter()
+                .map(|s| s.to_string())
+                .collect(),
+            locale: None,
+            dictionaries: ["npm", "html", "html-symbol-entities"]
+                .iter()
+                .map(|s| s.to_string())
+                .collect(),
+            ignore_reg_exp_list: [
+                "MARKDOWN-link",
+                "MARKDOWN-link-reference",
+                "MARKDOWN-link-footer",
+                "MARKDOWN-anchor",
+            ]
+            .iter()
+            .map(|s| s.to_string())
+            .collect(),
+            patterns: vec![
+                // Rewritten without lookbehind (Rust regex doesn't support it).
+                // Including the prefix in the match is safe because ]( and ][ are
+                // non-word characters and won't affect spell checking.
+                matchum_config::settings::PatternDefinition {
+                    name: "MARKDOWN-link".into(),
+                    pattern: matchum_config::settings::StringOrList::Single(
+                        r"\]\([^)\s]+".into(),
+                    ),
+                },
+                matchum_config::settings::PatternDefinition {
+                    name: "MARKDOWN-link-reference".into(),
+                    pattern: matchum_config::settings::StringOrList::Single(
+                        r#"\]\[[-\w.`'"*&;#@ ]+\]"#.into(),
+                    ),
+                },
+                matchum_config::settings::PatternDefinition {
+                    name: "MARKDOWN-link-footer".into(),
+                    pattern: matchum_config::settings::StringOrList::Single(
+                        r#"\[[-\w.`'"*&;#@ ]+\]:( [^\s]*)?"#.into(),
+                    ),
+                },
+                matchum_config::settings::PatternDefinition {
+                    name: "MARKDOWN-anchor".into(),
+                    pattern: matchum_config::settings::StringOrList::Single(
+                        r#"<a\s+id="[^"\s]+"#.into(),
+                    ),
+                },
+            ],
+        },
+        // HTML and template languages — dicts + ignore patterns for
+        // class/id/src/href/aria-* attribute values
+        // (from @cspell/dict-html/cspell-ext.json)
+        LanguageSetting {
+            language_id: ["html", "pug", "jade", "php", "handlebars"]
+                .iter()
+                .map(|s| s.to_string())
+                .collect(),
+            locale: None,
+            dictionaries: ["html", "fonts", "typescript", "css", "npm", "html-symbol-entities"]
+                .iter()
+                .map(|s| s.to_string())
+                .collect(),
+            ignore_reg_exp_list: [
+                "href",
+                "HTML-id",
+                "HTML-src",
+                "HTML-class",
+                "HTML-IDREF-aria-activedescendant",
+                "HTML-IDREF-aria-controls",
+                "HTML-IDREF-aria-describedby",
+                "HTML-IDREF-aria-details",
+                "HTML-IDREF-aria-errormessage",
+                "HTML-IDREF-aria-flowto",
+                "HTML-IDREF-aria-labelledby",
+                "HTML-IDREF-aria-owns",
+                "HTML-IDREF-for",
+            ]
+            .iter()
+            .map(|s| s.to_string())
+            .collect(),
+            patterns: vec![
+                pd("HTML-id", r#"\bid="[^"]*""#),
+                pd("HTML-src", r#"\bsrc="[^"]*""#),
+                pd("HTML-class", r#"\bclass="[^"]*""#),
+                pd("HTML-IDREF-aria-activedescendant", r#"\baria-activedescendant="[^"]*""#),
+                pd("HTML-IDREF-aria-controls", r#"\baria-controls="[^"]*""#),
+                pd("HTML-IDREF-aria-describedby", r#"\baria-describedby="[^"]*""#),
+                pd("HTML-IDREF-aria-details", r#"\baria-details="[^"]*""#),
+                pd("HTML-IDREF-aria-errormessage", r#"\baria-errormessage="[^"]*""#),
+                pd("HTML-IDREF-aria-flowto", r#"\baria-flowto="[^"]*""#),
+                pd("HTML-IDREF-aria-labelledby", r#"\baria-labelledby="[^"]*""#),
+                pd("HTML-IDREF-aria-owns", r#"\baria-owns="[^"]*""#),
+                pd("HTML-IDREF-for", r#"\bfor="[^"]*""#),
+            ],
+        },
+        // Markdown, HTML, MDX — ignore HTML symbol entities (&clubs; etc.)
+        LanguageSetting {
+            language_id: ["markdown", "html", "mdx"]
+                .iter()
+                .map(|s| s.to_string())
+                .collect(),
+            locale: None,
+            dictionaries: vec![],
+            ignore_reg_exp_list: vec!["HTML-symbol-entity".into()],
+            patterns: vec![pd("HTML-symbol-entity", r"&[a-z]+;")],
+        },
+        // HTML-specific: also ignore href attribute values
+        LanguageSetting {
+            language_id: vec!["html".into()],
+            locale: None,
+            dictionaries: vec![],
+            ignore_reg_exp_list: vec!["href".into()],
+            patterns: vec![pd("href", r#"\bhref\s*=\s*"[^"]*""#)],
+        },
+        // JSON/JSONC
+        ls(&["json", "jsonc"], &["node", "npm"]),
+        // PHP
+        ls(&["php"], &["php"]),
+        // CSS/LESS/SCSS
+        ls(&["css", "less", "scss"], &["fonts", "css"]),
+        // Vue files — activate npm dict + HTML ignore patterns
+        LanguageSetting {
+            language_id: vec!["vue".into()],
+            locale: None,
+            dictionaries: ["typescript", "node", "npm", "html", "html-symbol-entities", "css", "fonts"]
+                .iter()
+                .map(|s| s.to_string())
+                .collect(),
+            ignore_reg_exp_list: [
+                "HTML-id",
+                "HTML-src",
+                "HTML-class",
+                "HTML-IDREF-aria-labelledby",
+                "HTML-IDREF-for",
+            ]
+            .iter()
+            .map(|s| s.to_string())
+            .collect(),
+            patterns: vec![
+                pd("HTML-id", r#"\bid="[^"]*""#),
+                pd("HTML-src", r#"\bsrc="[^"]*""#),
+                pd("HTML-class", r#"\bclass="[^"]*""#),
+                pd("HTML-IDREF-aria-labelledby", r#"\baria-labelledby="[^"]*""#),
+                pd("HTML-IDREF-for", r#"\bfor="[^"]*""#),
+            ],
+        },
+    ]
+}
 
 /// Map a dictionary name (from `dictionaries` array) to an npm package name.
 ///
@@ -839,7 +1196,11 @@ fn dict_name_to_package(dict_name: &str) -> String {
     match dict_name {
         "softwareterms" => return "@cspell/dict-software-terms".into(),
         "en_us" => return "@cspell/dict-en_us".into(),
+        "en-gb" => return "@cspell/dict-en-gb-mit".into(),
         "c" => return "@cspell/dict-cpp".into(),
+        "public-licenses" => return "@cspell/dict-public-licenses".into(),
+        "html-symbol-entities" => return "@cspell/dict-html-symbol-entities".into(),
+        "data-science" => return "@cspell/dict-data-science".into(),
         _ => {}
     }
     // General: convert camelCase to kebab-case
@@ -883,6 +1244,9 @@ fn language_id_from_path(path: &Path) -> String {
         "lua" => "lua",
         "pl" | "pm" => "perl",
         "html" | "htm" => "html",
+        "svelte" => "svelte",
+        "vue" => "vue",
+        "astro" => "astro",
         "css" => "css",
         "scss" => "scss",
         "less" => "less",
@@ -891,9 +1255,19 @@ fn language_id_from_path(path: &Path) -> String {
         "toml" => "toml",
         "xml" => "xml",
         "md" | "markdown" => "markdown",
+        "mdx" => "mdx",
         "sql" => "sql",
         "dockerfile" => "dockerfile",
         "makefile" => "makefile",
+        "dart" => "dart",
+        "ex" | "exs" => "elixir",
+        "hs" => "haskell",
+        "jl" => "julia",
+        "fs" | "fsx" | "fsi" => "fsharp",
+        "zig" => "zig",
+        "tf" | "tfvars" => "terraform",
+        "tex" | "latex" => "latex",
+        "ada" | "adb" | "ads" => "ada",
         _ => {
             // Check filename for special cases
             let name = path.file_name().and_then(|n| n.to_str()).unwrap_or("");
@@ -910,12 +1284,60 @@ fn language_id_from_path(path: &Path) -> String {
     .to_string()
 }
 
+/// Apply cspell's per-file issue limits:
+/// - `maxDuplicateProblems` (default 5): cap how many times the same word is reported
+/// - `maxNumberOfProblems` (default 10000): cap total issues per file
+const DEFAULT_MAX_DUPLICATE_PROBLEMS: usize = 5;
+const DEFAULT_MAX_NUMBER_OF_PROBLEMS: usize = 10_000;
+
+fn apply_issue_limits(
+    issues: Vec<ValidationIssue>,
+    max_dup: Option<usize>,
+    max_total: Option<usize>,
+) -> Vec<ValidationIssue> {
+    let dup_limit = max_dup.unwrap_or(DEFAULT_MAX_DUPLICATE_PROBLEMS);
+    let total_limit = max_total.unwrap_or(DEFAULT_MAX_NUMBER_OF_PROBLEMS);
+    let mut counts: HashMap<String, usize> = HashMap::new();
+    let mut total = 0;
+    issues
+        .into_iter()
+        .filter(|issue| {
+            if total >= total_limit {
+                return false;
+            }
+            let word = issue.word.to_lowercase();
+            let count = counts.entry(word).or_insert(0);
+            *count += 1;
+            if *count > dup_limit {
+                return false;
+            }
+            total += 1;
+            true
+        })
+        .collect()
+}
+
 /// Check if a list of languageId patterns matches a given languageId.
 /// Supports `"*"` (all), and exact match.
 fn language_id_matches(patterns: &[String], lang_id: &str) -> bool {
     patterns
         .iter()
         .any(|p| p == "*" || p.eq_ignore_ascii_case(lang_id))
+}
+
+/// Check if a languageSetting's locale filter matches the active locale.
+/// If the locale field is None or "*", it matches everything.
+/// Otherwise, split by comma and match any part against the active locale.
+fn locale_matches(ls_locale: Option<&str>, active_locale: &str) -> bool {
+    match ls_locale {
+        None => true,
+        Some(loc) => loc
+            .split(',')
+            .any(|part| {
+                let part = part.trim();
+                part == "*" || part.eq_ignore_ascii_case(active_locale)
+            }),
+    }
 }
 
 /// Try to resolve an npm package import by walking up node_modules or auto-fetching.
@@ -968,11 +1390,14 @@ fn build_validator(
                 .map(|d| d.to_lowercase())
                 .collect();
             set.extend(extra_active.iter().cloned());
-            // Apply languageSettings: activate dicts for matching file types
+            // Apply languageSettings: activate dicts for matching file types and locales
             if let Some(file_path) = file {
                 let lang_id = language_id_from_path(file_path);
+                let active_locale = settings.language.as_deref().unwrap_or("en");
                 for ls in &settings.language_settings {
-                    if language_id_matches(&ls.language_id, &lang_id) {
+                    if language_id_matches(&ls.language_id, &lang_id)
+                        && locale_matches(ls.locale.as_deref(), active_locale)
+                    {
                         for d in &ls.dictionaries {
                             set.insert(d.to_lowercase());
                         }
@@ -1019,10 +1444,42 @@ fn build_validator(
         entries.push(("__inline_words".into(), Arc::new(inline_dict), true));
     }
 
-    let validator_config = match precompiled_config {
+    let mut validator_config = match precompiled_config {
         Some(config) => config.clone(),
-        None => build_validator_config(settings, options.allow_compound_words, compute_suggestions),
+        None => build_validator_config(settings, options.allow_compound_words, compute_suggestions, file),
     };
+
+    // Even with precompiled config, apply language-specific ignore patterns
+    if precompiled_config.is_some() {
+        if let Some(file_path) = file {
+            let lang_id = language_id_from_path(file_path);
+            let active_locale = settings.language.as_deref().unwrap_or("en");
+            for ls in &settings.language_settings {
+                if language_id_matches(&ls.language_id, &lang_id)
+                    && locale_matches(ls.locale.as_deref(), active_locale)
+                    && !ls.ignore_reg_exp_list.is_empty()
+                {
+                    let mut defs: HashMap<String, &PatternDefinition> = settings
+                        .patterns
+                        .iter()
+                        .map(|p| (p.name.to_lowercase(), p))
+                        .collect();
+                    for p in &ls.patterns {
+                        defs.insert(p.name.to_lowercase(), p);
+                    }
+                    for p in &ls.ignore_reg_exp_list {
+                        resolve_pattern_token(
+                            p,
+                            &defs,
+                            &mut HashSet::new(),
+                            &mut validator_config.ignore_patterns,
+                        );
+                    }
+                }
+            }
+        }
+    }
+
     Validator::new_named(entries, validator_config)
 }
 
@@ -1030,8 +1487,34 @@ fn build_validator_config(
     settings: &CSpellSettings,
     cli_allow_compound_words: Option<bool>,
     compute_suggestions: bool,
+    file: Option<&Path>,
 ) -> ValidatorConfig {
-    let (ignore_patterns, include_patterns) = resolve_patterns(settings);
+    let (mut ignore_patterns, include_patterns) = resolve_patterns(settings);
+
+    // Apply languageSettings ignore patterns for matching file types
+    if let Some(file_path) = file {
+        let lang_id = language_id_from_path(file_path);
+        let active_locale = settings.language.as_deref().unwrap_or("en");
+        for ls in &settings.language_settings {
+            if language_id_matches(&ls.language_id, &lang_id)
+                && locale_matches(ls.locale.as_deref(), active_locale)
+                && !ls.ignore_reg_exp_list.is_empty()
+            {
+                // Build combined pattern defs: settings-level + languageSetting-level
+                let mut defs: HashMap<String, &PatternDefinition> = settings
+                    .patterns
+                    .iter()
+                    .map(|p| (p.name.to_lowercase(), p))
+                    .collect();
+                for p in &ls.patterns {
+                    defs.insert(p.name.to_lowercase(), p);
+                }
+                for p in &ls.ignore_reg_exp_list {
+                    resolve_pattern_token(p, &defs, &mut HashSet::new(), &mut ignore_patterns);
+                }
+            }
+        }
+    }
 
     ValidatorConfig {
         min_word_length: settings.min_word_length.unwrap_or(4),
@@ -1134,11 +1617,28 @@ fn parse_regex_pattern(value: &str) -> Option<regex::Regex> {
                 } else {
                     format!("(?{}){}", prefix, body)
                 };
-                return regex::Regex::new(&pat).ok();
+                return try_compile_regex(&pat);
             }
         }
     }
-    regex::Regex::new(s).ok()
+    try_compile_regex(s)
+}
+
+/// Try to compile a regex, falling back to replacing backreferences (\1, \2, etc.)
+/// with a generic pattern when the regex crate doesn't support them.
+fn try_compile_regex(pat: &str) -> Option<regex::Regex> {
+    if let Ok(re) = regex::Regex::new(pat) {
+        return Some(re);
+    }
+    // Backreferences (\1..\9) are not supported by the regex crate.
+    // Replace them with a non-greedy wildcard as a best-effort approximation.
+    static BACKREF_RE: std::sync::LazyLock<regex::Regex> =
+        std::sync::LazyLock::new(|| regex::Regex::new(r"\\[1-9]").unwrap());
+    if BACKREF_RE.is_match(pat) {
+        let simplified = BACKREF_RE.replace_all(pat, r"[\s\S]*?");
+        return regex::Regex::new(&simplified).ok();
+    }
+    None
 }
 
 /// Strip unescaped whitespace and `#` line comments for verbose (`x`) mode.
@@ -1166,16 +1666,192 @@ fn strip_verbose_whitespace(pattern: &str) -> String {
     result
 }
 
+fn is_glob_pattern(s: &str) -> bool {
+    s.contains('*') || s.contains('?') || s.contains('[') || s.contains('{')
+}
+
+/// Normalize an exclude pattern following cspell's `normalizePatternNested` logic.
+/// Returns the expanded patterns that should be added to the glob set.
+///
+/// Rules (matching cspell/cspell-glob):
+/// - No `/` in pattern: `["**/X", "**/X/**"]`
+/// - Starts with `/`: strip it, treat as root-relative: `["X", "X/**"]`
+/// - Ends with `/`: directory pattern: `["X**/*"]` (with `**/` if no `/` in body)
+/// - Ends with `**`: as-is: `["X**"]`
+/// - Otherwise (has `/`, no leading `/`): `["X", "X/**"]`
+fn normalize_pattern_nested(pattern: &str) -> Vec<String> {
+    if pattern.is_empty() {
+        return vec![];
+    }
+    // Strip negation prefix for processing, re-add later
+    let (neg, pat) = if let Some(stripped) = pattern.strip_prefix('!') {
+        ("!", stripped)
+    } else {
+        ("", pattern)
+    };
+
+    if !pat.contains('/') {
+        if pat == "**" {
+            return vec![format!("{neg}**")];
+        }
+        return vec![format!("{neg}**/{pat}"), format!("{neg}**/{pat}/**")];
+    }
+
+    let has_leading_slash = pat.starts_with('/');
+    let pat = if has_leading_slash { &pat[1..] } else { pat };
+
+    if pat.ends_with('/') {
+        let inner = &pat[..pat.len() - 1];
+        if has_leading_slash || inner.contains('/') {
+            return vec![format!("{neg}{pat}**/*")];
+        }
+        return vec![format!("{neg}**/{pat}**/*")];
+    }
+
+    if pat.ends_with("**") {
+        return vec![format!("{neg}{pat}")];
+    }
+
+    vec![format!("{neg}{pat}"), format!("{neg}{pat}/**")]
+}
+
+/// Expand bash-style `!(...)` extglob negation into positive + negation patterns.
+/// e.g., `src/translations/!(en).ts` → `[src/translations/*.ts, !src/translations/en.ts]`
+/// Supports `|` alternation: `!(en|fr)` → negations for each alternative.
+fn expand_extglobs(pattern: &str) -> Vec<String> {
+    if let Some(start) = pattern.find("!(") {
+        if let Some(close_offset) = pattern[start + 2..].find(')') {
+            let close = start + 2 + close_offset;
+            let prefix = &pattern[..start];
+            let inner = &pattern[start + 2..close];
+            let suffix = &pattern[close + 1..];
+
+            // Replace !(inner) with * for positive match
+            let positive = format!("{prefix}*{suffix}");
+            let mut result = vec![positive];
+            // Each alternative becomes a negation (un-ignore) pattern
+            for alt in inner.split('|') {
+                result.push(format!("!{prefix}{alt}{suffix}"));
+            }
+            return result;
+        }
+    }
+    vec![pattern.to_string()]
+}
+
+struct IgnoreFilter {
+    include: globset::GlobSet,
+    exclude: Option<globset::GlobSet>,
+}
+
+impl IgnoreFilter {
+    fn is_ignored(&self, path: &Path) -> bool {
+        if !self.include.is_match(path) {
+            return false;
+        }
+        if let Some(ref excl) = self.exclude {
+            return !excl.is_match(path);
+        }
+        true
+    }
+}
+
+/// Build an ignore filter for ignorePaths / --exclude patterns.
+/// Each pattern is expanded via `normalize_pattern_nested` (cspell-compatible).
+/// Supports `!(...)` extglob negation and `!` prefix re-inclusion patterns.
+fn build_ignore_filter(patterns: &[String]) -> Option<IgnoreFilter> {
+    let mut include_builder = globset::GlobSetBuilder::new();
+    let mut exclude_builder = globset::GlobSetBuilder::new();
+    let mut has_include = false;
+    let mut has_exclude = false;
+
+    for pattern in patterns {
+        for ep in expand_extglobs(pattern) {
+            for normalized in normalize_pattern_nested(&ep) {
+                if let Some(stripped) = normalized.strip_prefix('!') {
+                    if let Ok(glob) = globset::Glob::new(stripped) {
+                        exclude_builder.add(glob);
+                        has_exclude = true;
+                    }
+                } else if let Ok(glob) = globset::Glob::new(&normalized) {
+                    include_builder.add(glob);
+                    has_include = true;
+                }
+            }
+        }
+    }
+
+    if !has_include {
+        return None;
+    }
+
+    let include = include_builder.build().ok()?;
+    let exclude = if has_exclude {
+        exclude_builder.build().ok()
+    } else {
+        None
+    };
+
+    Some(IgnoreFilter { include, exclude })
+}
+
 fn collect_files(
     paths: &[PathBuf],
     settings: &CSpellSettings,
     options: &CheckOptions,
 ) -> Result<Vec<PathBuf>> {
-    let mut roots = paths.to_vec();
+    let mut roots: Vec<PathBuf> = Vec::new();
+    let mut glob_patterns: Vec<String> = Vec::new();
+
+    // Separate literal paths from glob patterns
+    for path in paths {
+        let s = path.to_string_lossy();
+        if is_glob_pattern(&s) {
+            glob_patterns.push(s.into_owned());
+        } else {
+            roots.push(path.clone());
+        }
+    }
+
     roots.extend(read_file_list_paths(&options.file_list)?);
     for f in &options.file {
         if f.is_file() {
             roots.push(f.clone());
+        }
+    }
+
+    let use_gitignore = options.use_gitignore.unwrap_or(
+        settings
+            .use_gitignore
+            .unwrap_or(options.use_gitignore_default),
+    );
+    let show_hidden = options.dot;
+
+    // Expand glob patterns from CLI positional arguments
+    if !glob_patterns.is_empty() {
+        let mut glob_builder = globset::GlobSetBuilder::new();
+        for pattern in &glob_patterns {
+            if let Ok(glob) = globset::Glob::new(pattern) {
+                glob_builder.add(glob);
+            }
+        }
+        if let Ok(glob_set) = glob_builder.build() {
+            let walk_dir = std::env::current_dir().unwrap_or_default();
+            let walker = WalkBuilder::new(&walk_dir)
+                .hidden(!show_hidden)
+                .git_ignore(use_gitignore)
+                .build();
+            for entry in walker {
+                if let Ok(entry) = entry {
+                    if entry.file_type().is_some_and(|ft| ft.is_file()) {
+                        let path = entry.path();
+                        let rel = path.strip_prefix(&walk_dir).unwrap_or(path);
+                        if glob_set.is_match(rel) {
+                            roots.push(entry.into_path());
+                        }
+                    }
+                }
+            }
         }
     }
 
@@ -1186,7 +1862,10 @@ fn collect_files(
                 if let Ok(glob) = globset::Glob::new(pattern) {
                     let matcher = glob.compile_matcher();
                     let walk_dir = std::env::current_dir().unwrap_or_default();
-                    let walker = WalkBuilder::new(&walk_dir).hidden(false).build();
+                    let walker = WalkBuilder::new(&walk_dir)
+                        .hidden(!show_hidden)
+                        .git_ignore(use_gitignore)
+                        .build();
                     for entry in walker {
                         if let Ok(entry) = entry {
                             if entry.file_type().is_some_and(|ft| ft.is_file()) {
@@ -1203,18 +1882,39 @@ fn collect_files(
         }
     }
 
-    let use_gitignore = options.use_gitignore.unwrap_or(
-        settings
-            .use_gitignore
-            .unwrap_or(options.use_gitignore_default),
-    );
-    let show_hidden = options.dot;
-
     let mut files = Vec::new();
 
     for path in &roots {
         if path.is_file() {
             files.push(path.clone());
+        } else if is_glob_pattern(path) {
+            // Expand glob patterns in path arguments (e.g. "**/*.rs", "src/**/*.{ts,js}")
+            let path_str = path.to_string_lossy();
+            if let Some((base_dir, pattern)) = split_glob_base(&path_str) {
+                let base = if base_dir.is_empty() {
+                    std::env::current_dir().unwrap_or_default()
+                } else {
+                    PathBuf::from(&base_dir)
+                };
+                if base.is_dir() {
+                    if let Ok(glob) = globset::Glob::new(&pattern) {
+                        let matcher = glob.compile_matcher();
+                        let mut builder = WalkBuilder::new(&base);
+                        builder.hidden(!show_hidden).git_ignore(use_gitignore);
+                        for entry in builder.build() {
+                            if let Ok(entry) = entry {
+                                if entry.file_type().is_some_and(|ft| ft.is_file()) {
+                                    let entry_path = entry.path();
+                                    let rel = entry_path.strip_prefix(&base).unwrap_or(entry_path);
+                                    if matcher.is_match(rel) {
+                                        files.push(entry.into_path());
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         } else {
             let mut builder = WalkBuilder::new(path);
             builder.hidden(!show_hidden).git_ignore(use_gitignore);
@@ -1239,6 +1939,20 @@ fn collect_files(
         }
     }
 
+    // Exclude the config file itself (cspell auto-excludes its own config)
+    if let Some(ref config_file) = options.config_file {
+        let config_abs =
+            std::fs::canonicalize(config_file).unwrap_or_else(|_| config_file.clone());
+        files.retain(|f| {
+            let f_abs = std::fs::canonicalize(f).unwrap_or_else(|_| f.clone());
+            f_abs != config_abs
+        });
+    }
+
+    // ignorePaths and --exclude patterns are matched against relative paths,
+    // with patterns without '/' treated as basename-anywhere matches (prefixed with **/).
+    let cwd = std::env::current_dir().unwrap_or_default();
+
     if !settings.ignore_paths.is_empty() {
         let mut glob_builder = globset::GlobSetBuilder::new();
         for pattern in &settings.ignore_paths {
@@ -1247,19 +1961,43 @@ fn collect_files(
             }
         }
         if let Ok(glob_set) = glob_builder.build() {
-            files.retain(|f| !glob_set.is_match(f));
+            // ignorePaths patterns are matched against paths relative to the
+            // project root (the working directory where matchum was invoked).
+            let cwd = std::env::current_dir().unwrap_or_default();
+            files.retain(|f| {
+                let rel = f.strip_prefix(&cwd).unwrap_or(f);
+                !glob_set.is_match(rel)
+            });
         }
     }
 
     if !options.exclude.is_empty() {
-        let mut glob_builder = globset::GlobSetBuilder::new();
-        for pattern in &options.exclude {
-            if let Ok(glob) = globset::Glob::new(pattern) {
-                glob_builder.add(glob);
-            }
+        let filter = build_ignore_filter(&options.exclude);
+        if let Some(filter) = filter {
+            files.retain(|f| {
+                let rel = f.strip_prefix(&cwd).unwrap_or(f);
+                !filter.is_ignored(rel)
+            });
         }
-        if let Ok(glob_set) = glob_builder.build() {
-            files.retain(|f| !glob_set.is_match(f));
+    }
+
+    // settings.files: when set, acts as an inclusion filter — only files matching
+    // at least one pattern are checked. This matches cspell behavior where `files`
+    // restricts checked files regardless of CLI globs.
+    if let Some(ref file_globs) = settings.files {
+        if !file_globs.is_empty() {
+            let mut glob_builder = globset::GlobSetBuilder::new();
+            for pattern in file_globs {
+                if let Ok(glob) = globset::Glob::new(pattern) {
+                    glob_builder.add(glob);
+                }
+            }
+            if let Ok(inclusion_set) = glob_builder.build() {
+                files.retain(|f| {
+                    let rel = f.strip_prefix(&cwd).unwrap_or(f);
+                    inclusion_set.is_match(rel)
+                });
+            }
         }
     }
 
@@ -1310,10 +2048,43 @@ fn collect_files(
         }
     }
 
+    // Filter out generated/binary files (cspell skips these via @cspell/filetypes)
+    files.retain(|f| !is_generated_file(f));
+
     let mut seen = HashSet::new();
     files.retain(|f| seen.insert(f.clone()));
 
     Ok(files)
+}
+
+/// Check if a path contains glob metacharacters.
+fn is_glob_pattern(path: &Path) -> bool {
+    let s = path.to_string_lossy();
+    s.contains('*') || s.contains('?') || s.contains('[') || s.contains('{')
+}
+
+/// Split a path with glob characters into (base_directory, glob_pattern).
+///
+/// E.g. `/home/user/repo/**/*.rs` → (`/home/user/repo`, `**/*.rs`)
+///      `src/**/*.{ts,js}` → (`src`, `**/*.{ts,js}`)
+///      `**/*.*` → (``, `**/*.*`)
+fn split_glob_base(path: &str) -> Option<(String, String)> {
+    // Split on '/' (works on all platforms for glob paths)
+    let components: Vec<&str> = path.split('/').collect();
+    let mut base_end = 0;
+
+    for (i, component) in components.iter().enumerate() {
+        if component.contains('*')
+            || component.contains('?')
+            || component.contains('[')
+            || component.contains('{')
+        {
+            let base = components[..i].join("/");
+            let pattern = components[i..].join("/");
+            return Some((base, pattern));
+        }
+    }
+    None
 }
 
 fn type_to_extensions(file_type: &str) -> Vec<&'static str> {
@@ -1781,7 +2552,7 @@ mod tests {
     }
 
     #[test]
-    fn preserve_explicit_dictionaries() {
+    fn merge_defaults_with_explicit_dictionaries() {
         let mut settings = CSpellSettings {
             dictionaries: vec!["en_gb".into(), "custom".into()],
             ..Default::default()
@@ -1789,6 +2560,248 @@ mod tests {
 
         apply_default_dictionaries(&mut settings);
 
-        assert_eq!(settings.dictionaries, vec!["en_gb", "custom"]);
+        // User dictionaries are preserved
+        assert!(settings.dictionaries.contains(&"en_gb".to_string()));
+        assert!(settings.dictionaries.contains(&"custom".to_string()));
+        // Default dictionaries are also added
+        for &name in DEFAULT_DICTIONARIES {
+            assert!(
+                settings.dictionaries.iter().any(|d| d == name),
+                "default dict '{}' should be present",
+                name
+            );
+        }
+    }
+
+    #[test]
+    fn negated_dictionary_removes_default() {
+        let mut settings = CSpellSettings {
+            dictionaries: vec!["!companies".into(), "custom".into()],
+            ..Default::default()
+        };
+
+        apply_default_dictionaries(&mut settings);
+
+        // "companies" should be excluded
+        assert!(!settings.dictionaries.iter().any(|d| d == "companies"));
+        // "custom" should remain
+        assert!(settings.dictionaries.contains(&"custom".to_string()));
+        // Other defaults should be present
+        assert!(settings.dictionaries.iter().any(|d| d == "en_us"));
+        // Negation entries should be stripped
+        assert!(!settings.dictionaries.iter().any(|d| d.starts_with('!')));
+    }
+
+    /// cspell.json uses bare dictionary names like "en_us" which auto-resolve
+    /// to npm packages via `dict_name_to_package`.
+    #[test]
+    fn cspell_bare_dict_name_maps_to_npm_package() {
+        assert_eq!(dict_name_to_package("en_us"), "@cspell/dict-en_us");
+        assert_eq!(
+            dict_name_to_package("softwareterms"),
+            "@cspell/dict-software-terms"
+        );
+        assert_eq!(dict_name_to_package("c"), "@cspell/dict-cpp");
+        assert_eq!(dict_name_to_package("rust"), "@cspell/dict-rust");
+        assert_eq!(
+            dict_name_to_package("typescript"),
+            "@cspell/dict-typescript"
+        );
+    }
+
+    /// matchum.toml bare dictionary names must NOT auto-resolve via npm.
+    /// Only names starting with `@cspell/` should trigger npm resolution.
+    #[test]
+    fn matchum_toml_bare_dict_does_not_auto_resolve_cspell() {
+        let dir = tempfile::tempdir().unwrap();
+        let config_path = dir.path().join("matchum.toml");
+        std::fs::write(
+            &config_path,
+            r#"
+language = "en"
+dictionaries = ["en_us"]
+"#,
+        )
+        .unwrap();
+
+        let settings = resolver::load_matchum_config(&config_path).unwrap();
+        assert_eq!(settings.dictionaries, vec!["en_us"]);
+
+        // build_dictionary_catalog with auto_resolve_cspell=false should NOT
+        // try to map "en_us" → "@cspell/dict-en_us" and fetch from npm.
+        let (dicts, _extra, _lang_settings) =
+            build_dictionary_catalog(&settings, Some(dir.path()), None, false).unwrap();
+
+        // "en_us" has no dictionary_definition and auto-resolve is off,
+        // so it must not appear in the loaded dictionaries.
+        assert!(
+            !dicts.iter().any(|(name, _)| name == "en_us"),
+            "bare 'en_us' in matchum.toml must not auto-resolve via npm"
+        );
+    }
+
+    #[test]
+    fn locale_matches_none_matches_everything() {
+        assert!(super::locale_matches(None, "en"));
+        assert!(super::locale_matches(None, "de"));
+    }
+
+    #[test]
+    fn locale_matches_wildcard() {
+        assert!(super::locale_matches(Some("*"), "en"));
+        assert!(super::locale_matches(Some("*"), "de"));
+    }
+
+    #[test]
+    fn locale_matches_exact() {
+        assert!(super::locale_matches(Some("en"), "en"));
+        assert!(!super::locale_matches(Some("de"), "en"));
+    }
+
+    #[test]
+    fn locale_matches_case_insensitive() {
+        assert!(super::locale_matches(Some("en-GB"), "en-gb"));
+        assert!(super::locale_matches(Some("EN"), "en"));
+    }
+
+    #[test]
+    fn locale_matches_comma_separated() {
+        assert!(super::locale_matches(Some("lorem,lorem-ipsum"), "lorem"));
+        assert!(!super::locale_matches(Some("lorem,lorem-ipsum"), "en"));
+    }
+
+    #[test]
+    fn locale_matches_comma_with_spaces() {
+        assert!(super::locale_matches(Some("lorem, lorem-ipsum"), "lorem-ipsum"));
+    }
+
+    #[test]
+    fn language_id_matches_basic() {
+        let pats = vec!["javascript".to_string(), "typescript".to_string()];
+        assert!(super::language_id_matches(&pats, "javascript"));
+        assert!(super::language_id_matches(&pats, "typescript"));
+        assert!(!super::language_id_matches(&pats, "rust"));
+    }
+
+    #[test]
+    fn language_id_matches_wildcard() {
+        let pats = vec!["*".to_string()];
+        assert!(super::language_id_matches(&pats, "anything"));
+    }
+
+    #[test]
+    fn expand_extglobs_negation() {
+        let result = super::expand_extglobs("src/translations/!(en).ts");
+        assert_eq!(result.len(), 2);
+        assert_eq!(result[0], "src/translations/*.ts");
+        assert_eq!(result[1], "!src/translations/en.ts");
+    }
+
+    #[test]
+    fn expand_extglobs_multiple_alternatives() {
+        let result = super::expand_extglobs("!(en|fr).ts");
+        assert_eq!(result.len(), 3);
+        assert_eq!(result[0], "*.ts");
+        assert_eq!(result[1], "!en.ts");
+        assert_eq!(result[2], "!fr.ts");
+    }
+
+    #[test]
+    fn expand_extglobs_no_negation() {
+        let result = super::expand_extglobs("**/*.ts");
+        assert_eq!(result, vec!["**/*.ts"]);
+    }
+
+    #[test]
+    fn is_generated_file_lock_files() {
+        assert!(is_generated_file(Path::new("package-lock.json")));
+        assert!(is_generated_file(Path::new("Cargo.lock")));
+        assert!(is_generated_file(Path::new("composer.lock")));
+        assert!(is_generated_file(Path::new("yarn.lock")));
+        assert!(is_generated_file(Path::new("berksfile.lock")));
+    }
+
+    #[test]
+    fn is_generated_file_binary_extensions() {
+        assert!(is_generated_file(Path::new("image.png")));
+        assert!(is_generated_file(Path::new("font.woff2")));
+        assert!(is_generated_file(Path::new("archive.zip")));
+        assert!(is_generated_file(Path::new("video.mp4")));
+        assert!(is_generated_file(Path::new("output.pdf")));
+        assert!(is_generated_file(Path::new("output.log")));
+    }
+
+    #[test]
+    fn is_generated_file_source_not_filtered() {
+        assert!(!is_generated_file(Path::new("src/main.rs")));
+        assert!(!is_generated_file(Path::new("README.md")));
+        assert!(!is_generated_file(Path::new("package.json")));
+        assert!(!is_generated_file(Path::new("index.ts")));
+        assert!(!is_generated_file(Path::new("style.css")));
+    }
+
+    #[test]
+    fn is_generated_file_cache_files() {
+        assert!(is_generated_file(Path::new(".DS_Store")));
+        assert!(is_generated_file(Path::new(".cspellcache")));
+        assert!(is_generated_file(Path::new(".eslintcache")));
+    }
+
+    #[test]
+    fn is_generated_file_map_files() {
+        assert!(is_generated_file(Path::new("bundle.js.map")));
+        assert!(is_generated_file(Path::new("styles.css.map")));
+    }
+
+    fn make_issue(word: &str, offset: usize, line: usize) -> ValidationIssue {
+        ValidationIssue {
+            word: word.into(),
+            offset,
+            line,
+            column: 1,
+            suggestions: vec![],
+            is_forbidden: false,
+            is_known_typo: false,
+        }
+    }
+
+    #[test]
+    fn duplicate_limit_basic() {
+        let issues = vec![
+            make_issue("foo", 0, 1),
+            make_issue("foo", 10, 2),
+            make_issue("bar", 20, 3),
+        ];
+
+        // With limit=1, only first occurrence of each word
+        let filtered = apply_issue_limits(issues.clone(), Some(1), None);
+        assert_eq!(filtered.len(), 2); // foo(1st) + bar(1st)
+
+        // With limit=5 (default), all pass since each word appears <= 5
+        let filtered = apply_issue_limits(issues, None, None);
+        assert_eq!(filtered.len(), 3);
+    }
+
+    #[test]
+    fn duplicate_limit_exceeds_threshold() {
+        let issues: Vec<ValidationIssue> = (0..10)
+            .map(|i| make_issue("repeated", i * 10, i + 1))
+            .collect();
+
+        // Default limit of 5
+        let filtered = apply_issue_limits(issues, None, None);
+        assert_eq!(filtered.len(), 5);
+    }
+
+    #[test]
+    fn total_issue_limit() {
+        let mut issues = Vec::new();
+        for i in 0..20 {
+            issues.push(make_issue(&format!("word{}", i), i * 10, i + 1));
+        }
+
+        // Limit total issues to 10
+        let filtered = apply_issue_limits(issues, None, Some(10));
+        assert_eq!(filtered.len(), 10);
     }
 }

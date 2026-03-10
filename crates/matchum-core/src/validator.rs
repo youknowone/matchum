@@ -2,13 +2,13 @@ use crate::issue::ValidationIssue;
 use crate::splitter;
 use aho_corasick::{AhoCorasick, AhoCorasickKind};
 use compact_str::CompactString;
-use regex::Regex;
 use matchum_config::directives::{self, Directive};
 use matchum_dict::dictionary::Dictionary;
+use regex::Regex;
 use std::collections::HashSet;
-use std::sync::{Arc, LazyLock, RwLock};
+use std::sync::{Arc, LazyLock};
 
-pub type WordCache = Arc<RwLock<hashbrown::HashMap<CompactString, bool>>>;
+pub type WordCache = Arc<papaya::HashMap<CompactString, bool>>;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Default)]
 pub enum CompoundWordsMode {
@@ -92,6 +92,10 @@ const BUILTIN_SKIP_PATTERN_STRS: &[&str] = &[
     r"(?i)\bU\+[0-9a-f]{4,5}(?:-[0-9a-f]{4,5})?",
     // UUID
     r"(?i)\b[0-9a-fx]{8}-[0-9a-fx]{4}-[0-9a-fx]{4}-[0-9a-fx]{4}-[0-9a-fx]{12}\b",
+    // HexValues: unicode escape \uFEFF and extended hex escape \x{abcd}
+    // From cspell's regExMatchCommonHexFormats (RegExpPatterns.ts)
+    r"(?i)\\u[0-9a-f]{4}",
+    r"(?i)\\x\{[0-9a-f]{4}\}",
     // BinaryLiteral
     r"(?i)\b0b[01_]+\b",
     // OctalLiteral
@@ -131,8 +135,10 @@ static BUILTIN_SKIP_PREFILTER: LazyLock<SkipPrefilter> = LazyLock::new(|| {
         ("assertion", &[11]),      // HashStrings
         ("#code/", &[11]),         // HashStrings
         ("u+", &[12]),             // UnicodeRef
-        ("0b", &[14]),             // BinaryLiteral
-        ("0o", &[15]),             // OctalLiteral
+        ("\\u", &[14]),            // HexValues (unicode escape \uFFFF)
+        ("\\x{", &[15]),           // HexValues (extended hex \x{abcd})
+        ("0b", &[16]),             // BinaryLiteral
+        ("0o", &[17]),             // OctalLiteral
     ];
 
     let patterns: Vec<&str> = ANCHORS.iter().map(|(s, _)| *s).collect();
@@ -310,6 +316,18 @@ fn scan_scientific_notation(text: &[u8], ranges: &mut Vec<(usize, usize)>) {
     }
 }
 
+/// Find the next newline position (exclusive end-of-line + 1) starting from `from`.
+/// Returns `text.len() + 1` as a sentinel when no newline is found, so that any
+/// byte offset in the last line compares less than the sentinel.
+#[inline]
+fn memchr_newline(bytes: &[u8], from: usize) -> usize {
+    let slice = &bytes[from..];
+    match slice.iter().position(|&b| b == b'\n') {
+        Some(pos) => from + pos + 1,
+        None => bytes.len() + 1,
+    }
+}
+
 #[inline]
 fn is_word_byte(b: u8) -> bool {
     b.is_ascii_alphanumeric() || b == b'_'
@@ -451,6 +469,8 @@ pub struct Validator {
     /// Shared word validation cache across files with the same dictionary set.
     /// Key: word text, Value: is_word_valid result.
     word_cache: Option<WordCache>,
+    /// Pre-computed indices of default-active dictionaries (avoids per-call filtering).
+    default_active_indices: Vec<usize>,
 }
 
 impl Validator {
@@ -484,12 +504,24 @@ impl Validator {
     fn new_internal(dictionaries: Vec<DictionaryEntry>, config: ValidatorConfig) -> Self {
         let any_dict_has_forbidden = dictionaries.iter().any(|d| d.dict.has_forbidden_words());
         let all_dicts_case_insensitive = !dictionaries.iter().any(|d| d.dict.is_case_sensitive());
+        let mut default_active_indices: Vec<usize> = dictionaries
+            .iter()
+            .enumerate()
+            .filter(|(_, d)| d.default_active)
+            .map(|(i, _)| i)
+            .collect();
+        // Sort by dictionary size descending so .any() short-circuits faster
+        // on the largest (most likely to match) dictionary.
+        default_active_indices.sort_by(|&a, &b| {
+            dictionaries[b].dict.len().cmp(&dictionaries[a].dict.len())
+        });
         Self {
             dictionaries,
             config,
             any_dict_has_forbidden,
             all_dicts_case_insensitive,
             word_cache: None,
+            default_active_indices,
         }
     }
 
@@ -497,12 +529,18 @@ impl Validator {
         self.word_cache = Some(cache);
     }
 
+
     pub fn new_word_cache() -> WordCache {
-        Arc::new(RwLock::new(hashbrown::HashMap::new()))
+        Arc::new(papaya::HashMap::new())
     }
 
     /// Validate text and return all spelling issues found.
     pub fn validate_text(&self, text: &str) -> Vec<ValidationIssue> {
+        // Pin a lock-free guard once per file for the shared cache.
+        // All lookups/inserts go through this guard with zero contention.
+        let cache_guard: Option<papaya::LocalGuard<'_>> =
+            self.word_cache.as_ref().map(|c| c.guard());
+
         let mut issues = Vec::new();
         let mut disabled = false;
         let mut disable_next_line = false;
@@ -517,34 +555,28 @@ impl Validator {
         let mut directive_include_patterns: Vec<Regex> = Vec::new();
         let mut case_sensitive = self.config.case_sensitive;
 
-        // Single pass: parse all directives once and cache results.
-        // Use document-level AC scan to find candidate lines, then parse only those.
-        let lines: Vec<&str> = text.lines().collect();
-        let mut has_keyword = vec![false; lines.len()];
+        // Sparse directive scan: use AC prefilter to find candidate byte offsets,
+        // map to line indices via byte-level newline scan, parse only matching lines.
+        // Avoids allocating per-line Vec<&str>, Vec<bool>, Vec<Option<Directive>>.
+        let mut directive_map: hashbrown::HashMap<usize, Directive> =
+            hashbrown::HashMap::new();
         {
             let prefilter = &*directives::DIRECTIVE_PREFILTER;
-            let mut line_idx = 0;
-            let mut line_end = lines.first().map_or(0, |l| l.len());
-            for mat in prefilter.find_iter(text) {
-                let pos = mat.start();
-                while line_idx + 1 < lines.len() && pos >= line_end + 1 {
-                    line_idx += 1;
-                    line_end += 1 + lines[line_idx].len();
+            // Collect line indices that contain directive keywords
+            let mut keyword_lines: hashbrown::HashSet<usize> = hashbrown::HashSet::new();
+            {
+                let bytes = text.as_bytes();
+                let mut line_idx = 0usize;
+                let mut next_newline = memchr_newline(bytes, 0);
+                for mat in prefilter.find_iter(text) {
+                    let pos = mat.start();
+                    while pos >= next_newline {
+                        line_idx += 1;
+                        next_newline = memchr_newline(bytes, next_newline);
+                    }
+                    keyword_lines.insert(line_idx);
                 }
-                has_keyword[line_idx] = true;
             }
-        }
-        let line_directives: Vec<Option<Directive>> = lines
-            .iter()
-            .enumerate()
-            .map(|(i, line)| {
-                if has_keyword[i] {
-                    directives::parse_directive_no_prefilter(line)
-                } else {
-                    None
-                }
-            })
-            .collect();
 
         // Check for directive typos: lines where the AC prefilter matched
         // (has_keyword) and a cspell: prefix was found (extract_directive_name
@@ -556,11 +588,7 @@ impl Validator {
                     if let Some(name) = directives::extract_directive_name(line) {
                         if let Some(warning) = directives::check_directive_typo(&name) {
                             // Find the byte offset of the directive name in the line
-                            let col = line
-                                .to_lowercase()
-                                .find(&name)
-                                .map(|p| p + 1)
-                                .unwrap_or(1);
+                            let col = line.to_lowercase().find(&name).map(|p| p + 1).unwrap_or(1);
                             issues.push(ValidationIssue {
                                 word: warning.found,
                                 offset: typo_line_start + col - 1,
@@ -572,13 +600,13 @@ impl Validator {
                             });
                         }
                     }
+                    line_start += line.len() + 1;
                 }
-                typo_line_start += line.len() + 1;
             }
         }
 
-        // Collect file-wide directives from cached results
-        for directive in line_directives.iter().filter_map(|d| d.as_ref()) {
+        // Collect file-wide directives from sparse map
+        for directive in directive_map.values() {
             match directive {
                 Directive::Ignore(words)
                 | Directive::Words(words)
@@ -618,10 +646,10 @@ impl Validator {
         let mut split_buffers = splitter::SplitBuffers::new();
         let mut prevalidated_ranges: Vec<(usize, usize)> = Vec::new();
 
-        for (line_idx, line) in lines.iter().enumerate() {
+        for (line_idx, line) in text.lines().enumerate() {
             let line_num = line_idx + 1;
 
-            if let Some(ref directive) = line_directives[line_idx] {
+            if let Some(directive) = directive_map.get(&line_idx) {
                 match directive {
                     Directive::Disable => {
                         disabled = true;
@@ -732,12 +760,14 @@ impl Validator {
                         directive_dictionaries.as_ref(),
                         allow_compound_words,
                         case_sensitive,
+                        cache_guard.as_ref(),
                     ) || inline_words.contains(&ct.text.to_lowercase())
                         || self.is_underscore_compound_valid(
                             ct.text,
                             directive_dictionaries.as_ref(),
                             allow_compound_words,
                             case_sensitive,
+                            cache_guard.as_ref(),
                         )
                     {
                         prevalidated_ranges.push((ct.offset, ct.offset + ct.text.len()));
@@ -789,6 +819,28 @@ impl Validator {
                 let single_word = [*token];
                 let multi_words;
                 let single_word_token = camel_parts_buf.len() <= 1;
+
+                // When camelCase splitting produces multiple parts, check the
+                // WHOLE token against dictionaries first. Words in the config
+                // 'words' list (e.g. "jsDelivr") should be recognized as-is
+                // without decomposition. This matches cspell behavior.
+                if !single_word_token
+                    && !token_is_flagged
+                    && (self.has_in_active_dicts(
+                        token.text,
+                        directive_dictionaries.as_ref(),
+                    ) || self.all_camel_parts_valid_with_boundary_shift(
+                        token.text,
+                        &camel_parts_buf,
+                        directive_dictionaries.as_ref(),
+                        allow_compound_words,
+                        case_sensitive,
+                        cache_guard.as_ref(),
+                    ))
+                {
+                    continue;
+                }
+
                 let sub_words: &[splitter::Word<'_>] = if single_word_token {
                     &single_word
                 } else {
@@ -843,7 +895,7 @@ impl Validator {
                                 word: word.text.to_string(),
                                 offset: line_start_offset + word.offset,
                                 line: line_num,
-                                column: word.offset + 1,
+                                column: byte_offset_to_char_col(line, word.offset),
                                 is_forbidden: true,
                                 is_known_typo: false,
                                 suggestions: Vec::new(),
@@ -884,6 +936,7 @@ impl Validator {
                         directive_dictionaries.as_ref(),
                         allow_compound_words,
                         case_sensitive,
+                        cache_guard.as_ref(),
                     ) {
                         // Fallback: strip trailing possessive/contraction and re-check
                         if let Some(base) = strip_trailing_suffix(word.text) {
@@ -893,6 +946,7 @@ impl Validator {
                                     directive_dictionaries.as_ref(),
                                     allow_compound_words,
                                     case_sensitive,
+                                    cache_guard.as_ref(),
                                 )
                             {
                                 continue;
@@ -900,14 +954,42 @@ impl Validator {
                         }
 
                         // Fallback: ALL-CAPS + English suffix (e.g. REPLs → REPL)
+                        // cspell's isAllCapsWithTrailingCommonEnglishSuffix:
+                        //   1. If stem is flagged → not valid
+                        //   2. If stem is found in dictionary → valid
+                        //   3. If stem is too short (< minWordLength) → valid
                         if let Some(base) = strip_all_caps_suffix(word.text) {
-                            if self.is_word_valid(
-                                base,
-                                directive_dictionaries.as_ref(),
-                                allow_compound_words,
-                                case_sensitive,
-                            ) {
-                                continue;
+                            let base_lower = base.to_lowercase();
+                            let base_flagged =
+                                self.config.flag_words.contains(base_lower.as_str())
+                                    || directive_flag_words.contains(base_lower.as_str())
+                                    || (self.any_dict_has_forbidden
+                                        && self
+                                            .dictionaries
+                                            .iter()
+                                            .filter(|d| {
+                                                self.is_dict_active(
+                                                    d,
+                                                    directive_dictionaries.as_ref(),
+                                                )
+                                            })
+                                            .any(|d| {
+                                                d.dict.is_forbidden_pre_normalized(
+                                                    base,
+                                                    &base_lower,
+                                                )
+                                            }));
+                            if !base_flagged {
+                                if self.is_word_valid(
+                                    base,
+                                    directive_dictionaries.as_ref(),
+                                    allow_compound_words,
+                                    case_sensitive,
+                                    cache_guard.as_ref(),
+                                ) || base.chars().count() < self.config.min_word_length
+                                {
+                                    continue;
+                                }
                             }
                         }
 
@@ -919,12 +1001,15 @@ impl Validator {
                                 directive_dictionaries.as_ref(),
                                 allow_compound_words,
                                 case_sensitive,
+                                cache_guard.as_ref(),
                             ) {
                                 continue;
                             }
                         }
 
-                        // Fallback: if preceded by '\', drop first char and retry
+                        // Fallback: if preceded by '\', drop first char and retry.
+                        // cspell's isWordValidWithEscapeRetry + wordSplitter
+                        // regExEscapeCharacters break.
                         if word.offset > 0
                             && line.as_bytes().get(word.offset - 1) == Some(&b'\\')
                             && word.text.len() > 1
@@ -932,12 +1017,20 @@ impl Validator {
                             let first_len =
                                 word.text.chars().next().map(|c| c.len_utf8()).unwrap_or(1);
                             let without_first = &word.text[first_len..];
-                            if self.is_word_valid(
-                                without_first,
-                                directive_dictionaries.as_ref(),
-                                allow_compound_words,
-                                case_sensitive,
-                            ) {
+                            // Strip leading apostrophe if present (escape broke the word)
+                            let effective = without_first
+                                .strip_prefix('\'')
+                                .or_else(|| without_first.strip_prefix('\u{2019}'))
+                                .unwrap_or(without_first);
+                            if effective.chars().count() < self.config.min_word_length
+                                || self.is_word_valid(
+                                    effective,
+                                    directive_dictionaries.as_ref(),
+                                    allow_compound_words,
+                                    case_sensitive,
+                                    cache_guard.as_ref(),
+                                )
+                            {
                                 continue;
                             }
                         }
@@ -970,7 +1063,7 @@ impl Validator {
                             word: word.text.to_string(),
                             offset: line_start_offset + word.offset,
                             line: line_num,
-                            column: word.offset + 1,
+                            column: byte_offset_to_char_col(line, word.offset),
                             is_forbidden: false,
                             is_known_typo: typo_correction.is_some(),
                             suggestions,
@@ -1006,7 +1099,7 @@ impl Validator {
         scan_base64_multiline(bytes, &mut ranges);
 
         // AC prefilter: determine which anchor-triggered patterns are needed
-        let mut needed = [false; 17];
+        let mut needed = [false; 19];
         for mat in prefilter.ac.find_iter(text) {
             for &regex_idx in prefilter.anchor_to_regex[mat.pattern().as_usize()] {
                 needed[regex_idx] = true;
@@ -1076,37 +1169,35 @@ impl Validator {
         directive_dictionaries: Option<&HashSet<String>>,
         allow_compound_words: bool,
         case_sensitive: bool,
+        cache_guard: Option<&papaya::LocalGuard<'_>>,
     ) -> bool {
-        let can_cache = directive_dictionaries.is_none()
+        let can_cache = cache_guard.is_some()
+            && directive_dictionaries.is_none()
             && allow_compound_words == self.config.allow_compound_words
             && case_sensitive == self.config.case_sensitive;
 
-        if can_cache {
-            if let Some(ref cache) = self.word_cache {
-                if let Ok(guard) = cache.read() {
-                    if let Some(&result) = guard.get(word) {
-                        return result;
-                    }
-                }
+        if let (true, Some(cache), Some(guard)) =
+            (can_cache, self.word_cache.as_ref(), cache_guard)
+        {
+            if let Some(&result) = cache.get::<str>(word, guard) {
+                return result;
             }
+            let result = self.is_word_valid_inner(
+                word,
+                directive_dictionaries,
+                allow_compound_words,
+                case_sensitive,
+            );
+            cache.insert(CompactString::from(word), result, guard);
+            return result;
         }
 
-        let result = self.is_word_valid_inner(
+        self.is_word_valid_inner(
             word,
             directive_dictionaries,
             allow_compound_words,
             case_sensitive,
-        );
-
-        if can_cache {
-            if let Some(ref cache) = self.word_cache {
-                if let Ok(mut guard) = cache.write() {
-                    guard.insert(CompactString::from(word), result);
-                }
-            }
-        }
-
-        result
+        )
     }
 
     fn is_word_valid_inner(
@@ -1126,6 +1217,20 @@ impl Validator {
             let lower = word.to_lowercase();
             if lower != word && self.has_in_active_dicts(&lower, directive_dictionaries) {
                 return true;
+            }
+        }
+
+        // Curly apostrophe normalization: replace \u{2019} with ASCII apostrophe
+        if word.contains('\u{2019}') {
+            let normalized: String = word.replace('\u{2019}', "'");
+            if self.has_in_active_dicts(&normalized, directive_dictionaries) {
+                return true;
+            }
+            if !case_sensitive && !self.all_dicts_case_insensitive {
+                let lower = normalized.to_lowercase();
+                if self.has_in_active_dicts(&lower, directive_dictionaries) {
+                    return true;
+                }
             }
         }
 
@@ -1169,15 +1274,34 @@ impl Validator {
         word: &str,
         directive_dictionaries: Option<&HashSet<String>>,
     ) -> bool {
-        // Fast path: normalize once and pass to all dicts.
-        // Saves N-1 redundant normalize() calls (each potentially allocating).
         if self.all_dicts_case_insensitive && word.is_ascii() {
             let lower = ascii_lowercase(word);
+            let norm = lower.as_ref();
+
+            if directive_dictionaries.is_none() {
+                // Use pre-computed indices to skip filter overhead
+                return self
+                    .default_active_indices
+                    .iter()
+                    .any(|&i| self.dictionaries[i].dict.has_pre_normalized(word, norm));
+            }
+
+            // Directive overrides: fall back to filtered per-dict iteration
             return self
                 .dictionaries
                 .iter()
                 .filter(|d| self.is_dict_active(d, directive_dictionaries))
-                .any(|d| d.dict.has_pre_normalized(word, lower.as_ref()));
+                .any(|d| d.dict.has_pre_normalized(word, norm));
+        }
+
+        // Non-ASCII or mixed case-sensitivity
+        if directive_dictionaries.is_none() {
+            for &i in &self.default_active_indices {
+                if self.dictionaries[i].dict.has(word) {
+                    return true;
+                }
+            }
+            return false;
         }
         self.dictionaries
             .iter()
@@ -1225,8 +1349,7 @@ impl Validator {
                         .iter()
                         .filter(|d| self.is_dict_active(d, directive_dictionaries))
                         .any(|d| {
-                            self.has_in_single_dict(left, d)
-                                && self.has_in_single_dict(right, d)
+                            self.has_in_single_dict(left, d) && self.has_in_single_dict(right, d)
                         })
                 }
                 CompoundWordsMode::None => return false,
@@ -1243,15 +1366,14 @@ impl Validator {
                         self.has_in_active_dicts(&left_lower, directive_dictionaries)
                             && self.has_in_active_dicts(&right_lower, directive_dictionaries)
                     }
-                    CompoundWordsMode::SeparateWords => {
-                        self.dictionaries
-                            .iter()
-                            .filter(|d| self.is_dict_active(d, directive_dictionaries))
-                            .any(|d| {
-                                self.has_in_single_dict(&left_lower, d)
-                                    && self.has_in_single_dict(&right_lower, d)
-                            })
-                    }
+                    CompoundWordsMode::SeparateWords => self
+                        .dictionaries
+                        .iter()
+                        .filter(|d| self.is_dict_active(d, directive_dictionaries))
+                        .any(|d| {
+                            self.has_in_single_dict(&left_lower, d)
+                                && self.has_in_single_dict(&right_lower, d)
+                        }),
                     CompoundWordsMode::None => return false,
                 };
                 if found_lower {
@@ -1275,6 +1397,7 @@ impl Validator {
         directive_dictionaries: Option<&HashSet<String>>,
         allow_compound_words: bool,
         case_sensitive: bool,
+        cache_guard: Option<&papaya::LocalGuard<'_>>,
     ) -> bool {
         if !token.contains('_') {
             return false;
@@ -1319,6 +1442,7 @@ impl Validator {
                         directive_dictionaries,
                         allow_compound_words,
                         case_sensitive,
+                        cache_guard,
                     )
             });
             if all_valid {
@@ -1340,6 +1464,7 @@ impl Validator {
         directive_dictionaries: Option<&HashSet<String>>,
         allow_compound_words: bool,
         case_sensitive: bool,
+        cache_guard: Option<&papaya::LocalGuard<'_>>,
     ) -> bool {
         let parts: Vec<&str> = word.split(|c: char| c == '\'' || c == '\u{2019}').collect();
         if parts.len() < 2 {
@@ -1352,6 +1477,109 @@ impl Validator {
                     directive_dictionaries,
                     allow_compound_words,
                     case_sensitive,
+                    cache_guard,
+                )
+        })
+    }
+
+    /// Dictionary-guided camelCase boundary adjustment.
+    ///
+    /// cspell uses an A* search to find the optimal split of a token
+    /// into valid dictionary words. This is a simplified fallback:
+    /// when the regex-based camelCase split produces invalid parts,
+    /// try shifting the boundary at acronym→lowercase transitions
+    /// by one character.
+    ///
+    /// Example: `ASTnode` → regex gives `AS` + `Tnode` → shift to `AST` + `node`.
+    fn all_camel_parts_valid_with_boundary_shift(
+        &self,
+        token: &str,
+        parts: &[&str],
+        directive_dictionaries: Option<&HashSet<String>>,
+        allow_compound_words: bool,
+        case_sensitive: bool,
+        cache_guard: Option<&papaya::LocalGuard<'_>>,
+    ) -> bool {
+        if parts.len() < 2 {
+            return false;
+        }
+
+        // First check: if any original part is a flag word, don't bypass
+        // the per-word validation loop (which handles flag word reporting).
+        for part in parts {
+            let part_lower = part.to_lowercase();
+            if self.config.flag_words.contains(part_lower.as_str()) {
+                return false;
+            }
+        }
+
+        // Try shifting boundaries between consecutive pairs.
+        // For each pair (A, B), if B starts with uppercase, try (A+B[0], B[1:]).
+        // Build a new parts list with the shift applied.
+        let mut shifted_parts: Vec<&str> = Vec::with_capacity(parts.len());
+
+        let mut i = 0;
+        while i < parts.len() {
+            if i + 1 < parts.len() {
+                let a = parts[i];
+                let b = parts[i + 1];
+                // Only try shift when B starts with uppercase (acronym boundary)
+                if b.len() > 1
+                    && b.chars().next().map_or(false, |c| c.is_uppercase())
+                    && b.chars().nth(1).map_or(false, |c| c.is_lowercase())
+                {
+                    let first_char_len = b.chars().next().unwrap().len_utf8();
+                    // Compute byte offsets in original token
+                    let a_start = a.as_ptr() as usize - token.as_ptr() as usize;
+                    let new_a_end = a_start + a.len() + first_char_len;
+                    let new_b_end = a_start + a.len() + b.len();
+
+                    if new_a_end <= token.len() && new_b_end <= token.len() {
+                        let new_a = &token[a_start..new_a_end];
+                        let new_b = &token[new_a_end..new_b_end];
+
+                        let a_valid = new_a.chars().count() < self.config.min_word_length
+                            || self.is_word_valid(
+                                new_a,
+                                directive_dictionaries,
+                                allow_compound_words,
+                                case_sensitive,
+                                cache_guard,
+                            );
+                        let b_valid = new_b.is_empty()
+                            || new_b.chars().count() < self.config.min_word_length
+                            || self.is_word_valid(
+                                new_b,
+                                directive_dictionaries,
+                                allow_compound_words,
+                                case_sensitive,
+                                cache_guard,
+                            );
+
+                        if a_valid && b_valid {
+                            shifted_parts.push(new_a);
+                            if !new_b.is_empty() {
+                                shifted_parts.push(new_b);
+                            }
+                            i += 2;
+                            continue;
+                        }
+                    }
+                }
+            }
+            shifted_parts.push(parts[i]);
+            i += 1;
+        }
+
+        // Check if all shifted parts are valid
+        shifted_parts.iter().all(|part| {
+            part.chars().count() < self.config.min_word_length
+                || self.is_word_valid(
+                    part,
+                    directive_dictionaries,
+                    allow_compound_words,
+                    case_sensitive,
+                    cache_guard,
                 )
         })
     }
@@ -1409,6 +1637,17 @@ fn merge_sorted_ranges(ranges: &mut Vec<(usize, usize)>) {
 /// Binary search in sorted, non-overlapping (start, end) ranges to check
 /// if `offset` falls within any range. O(log n).
 #[inline]
+/// Convert a byte offset within a line to a 1-based character column.
+/// cspell reports columns as character (code point) offsets, not byte offsets.
+#[inline]
+fn byte_offset_to_char_col(line: &str, byte_offset: usize) -> usize {
+    if line.is_ascii() {
+        byte_offset + 1
+    } else {
+        line[..byte_offset].chars().count() + 1
+    }
+}
+
 fn is_in_sorted_ranges(ranges: &[(usize, usize)], offset: usize) -> bool {
     // Find the rightmost range whose start <= offset
     let idx = ranges.partition_point(|&(s, _)| s <= offset);
@@ -1619,12 +1858,13 @@ mod tests {
 
     #[test]
     fn test_builtin_patterns_all_compile() {
-        // 17 patterns: 14 from cspell's definedDefaultRegExpExcludeList + 3 numeric literals
+        // 19 patterns: 14 from cspell's definedDefaultRegExpExcludeList + 2 from HexValues
+        // + 3 numeric literals
         // (SpellCheckerDisable and SpellCheckerIgnoreInDocSetting handled by directive system)
         assert_eq!(
             BUILTIN_SKIP_PATTERNS.len(),
-            17,
-            "Expected 17 builtin skip patterns"
+            19,
+            "Expected 19 builtin skip patterns"
         );
         // AC prefilter should be initialized
         assert!(!BUILTIN_SKIP_PREFILTER.anchor_to_regex.is_empty());
@@ -1638,5 +1878,187 @@ mod tests {
                 .map_or(false, |m| m.as_str().contains("@"))
         });
         assert!(matched, "email should be matched by a builtin pattern");
+    }
+
+    #[test]
+    fn test_strip_all_caps_suffix() {
+        assert_eq!(strip_all_caps_suffix("REPLs"), Some("REPL"));
+        assert_eq!(strip_all_caps_suffix("APIs"), Some("API"));
+        assert_eq!(strip_all_caps_suffix("HTMLs"), Some("HTML"));
+        assert_eq!(strip_all_caps_suffix("URLed"), Some("URL"));
+        assert_eq!(strip_all_caps_suffix("APQs"), Some("APQ"));
+        assert_eq!(strip_all_caps_suffix("ERROR'S"), Some("ERROR"));
+        assert_eq!(strip_all_caps_suffix("URLs"), Some("URL"));
+        // Not ALL-CAPS - should return None
+        assert_eq!(strip_all_caps_suffix("hello"), None);
+        assert_eq!(strip_all_caps_suffix("Hello"), None);
+        // Too short prefix
+        assert_eq!(strip_all_caps_suffix("As"), None);
+    }
+
+    #[test]
+    fn test_all_caps_suffix_stem_too_short_skipped() {
+        // APQs: stem is "APQ" (3 chars), minWordLength=4 → skip (valid)
+        let dict = make_dict(&["hello"]);
+        let config = ValidatorConfig {
+            min_word_length: 4,
+            ..ValidatorConfig::default()
+        };
+        let validator = Validator::new(vec![dict], config);
+        let issues = validator.validate_text("hello APQs");
+        assert!(
+            issues.is_empty(),
+            "APQs should be skipped: stem APQ is shorter than minWordLength"
+        );
+    }
+
+    #[test]
+    fn test_all_caps_suffix_stem_found_in_dict() {
+        // REPLs: stem is "REPL" (4 chars >= minWordLength) and REPL is in dict → skip
+        let dict = make_dict(&["hello", "REPL"]);
+        let config = ValidatorConfig {
+            min_word_length: 4,
+            ..ValidatorConfig::default()
+        };
+        let validator = Validator::new(vec![dict], config);
+        let issues = validator.validate_text("hello REPLs");
+        assert!(
+            issues.is_empty(),
+            "REPLs should be skipped: stem REPL is in dictionary"
+        );
+    }
+
+    #[test]
+    fn test_unicode_escape_skipped() {
+        let dict = make_dict(&["hello", "const", "bom"]);
+        let validator = Validator::new(vec![dict], ValidatorConfig::default());
+        // \uFEFF should be skipped - FEFF should not be extracted as a word
+        let issues = validator.validate_text(r#"const bom = "\uFEFF";"#);
+        assert!(
+            !issues.iter().any(|i| i.word == "FEFF" || i.word == "uFEFF"),
+            "unicode escape \\uFEFF should be skipped, got: {:?}",
+            issues.iter().map(|i| &i.word).collect::<Vec<_>>()
+        );
+    }
+
+    #[test]
+    fn test_all_caps_suffix_stem_not_found_flagged() {
+        // XYZZYs: stem is "XYZZY" (5 chars >= minWordLength), not in dict → flagged
+        let dict = make_dict(&["hello"]);
+        let config = ValidatorConfig {
+            min_word_length: 4,
+            ..ValidatorConfig::default()
+        };
+        let validator = Validator::new(vec![dict], config);
+        let issues = validator.validate_text("hello XYZZYs");
+        assert_eq!(issues.len(), 1, "XYZZYs should be flagged: stem XYZZY not in dict");
+        assert_eq!(issues[0].word, "XYZZYs");
+    }
+
+    #[test]
+    fn test_camel_boundary_shift_astnode() {
+        // ASTnode: regex splits as AS + Tnode, but boundary shift gives AST + node
+        let dict = make_dict(&["hello", "AST", "node"]);
+        let config = ValidatorConfig {
+            min_word_length: 4,
+            ..ValidatorConfig::default()
+        };
+        let validator = Validator::new(vec![dict], config);
+        let issues = validator.validate_text("hello ASTnode");
+        assert!(
+            issues.is_empty(),
+            "ASTnode should be valid via boundary shift (AST + node): {:?}",
+            issues.iter().map(|i| &i.word).collect::<Vec<_>>()
+        );
+    }
+
+    #[test]
+    fn test_camel_boundary_shift_ariatabs() {
+        // ARIAtabs: regex splits as ARI + Atabs, but boundary shift gives ARIA + tabs
+        let dict = make_dict(&["hello", "ARIA", "tabs"]);
+        let config = ValidatorConfig {
+            min_word_length: 4,
+            ..ValidatorConfig::default()
+        };
+        let validator = Validator::new(vec![dict], config);
+        let issues = validator.validate_text("hello ARIAtabs");
+        assert!(
+            issues.is_empty(),
+            "ARIAtabs should be valid via boundary shift (ARIA + tabs): {:?}",
+            issues.iter().map(|i| &i.word).collect::<Vec<_>>()
+        );
+    }
+
+    #[test]
+    fn test_camel_boundary_shift_not_applied_when_invalid() {
+        // XYZZYfoo: neither XYZZY+foo shift nor XYZZ+Yfoo is valid
+        let dict = make_dict(&["hello"]);
+        let config = ValidatorConfig {
+            min_word_length: 4,
+            ..ValidatorConfig::default()
+        };
+        let validator = Validator::new(vec![dict], config);
+        let issues = validator.validate_text("hello XYZZYfoo");
+        assert!(
+            !issues.is_empty(),
+            "XYZZYfoo should be flagged: no valid boundary shift"
+        );
+    }
+
+    #[test]
+    fn test_escaped_apostrophe_contraction_valid() {
+        // doesn\'t should be treated as doesn't (valid contraction)
+        let dict = make_dict(&["doesn't", "work"]);
+        let validator = Validator::new(vec![dict], ValidatorConfig::default());
+        let issues = validator.validate_text(r"it doesn\'t work");
+        assert!(
+            !issues.iter().any(|i| i.word == "doesn" || i.word == "t"),
+            "doesn\\'t should be valid as a contraction: {:?}",
+            issues.iter().map(|i| &i.word).collect::<Vec<_>>()
+        );
+    }
+
+    #[test]
+    fn test_escaped_apostrophe_contraction_unknown() {
+        // xyzzy\'s should be flagged since xyzzy is not in dict
+        let dict = make_dict(&["hello"]);
+        let validator = Validator::new(vec![dict], ValidatorConfig::default());
+        let issues = validator.validate_text(r"hello xyzzy\'s");
+        assert!(
+            issues.iter().any(|i| i.word.contains("xyzzy")),
+            "xyzzy\\'s should be flagged: {:?}",
+            issues.iter().map(|i| &i.word).collect::<Vec<_>>()
+        );
+    }
+
+    #[test]
+    fn test_column_is_char_offset_not_byte() {
+        // Multi-byte chars before the flagged word should use char count, not byte count.
+        // U+201C (left double quotation mark) is 3 bytes in UTF-8.
+        let dict = make_dict(&["hello"]);
+        let validator = Validator::new(vec![dict], ValidatorConfig::default());
+        // "hello \u{201c}xyzzy\u{201d}" — xyzzy starts at char 8 (h,e,l,l,o,space,",x)
+        let issues = validator.validate_text("hello \u{201c}xyzzy\u{201d}");
+        assert_eq!(issues.len(), 1);
+        assert_eq!(issues[0].word, "xyzzy");
+        // Char column: 'h'(1) 'e'(2) 'l'(3) 'l'(4) 'o'(5) ' '(6) '\u{201c}'(7) 'x'(8)
+        assert_eq!(issues[0].column, 8, "column should be char-based, not byte-based");
+    }
+
+    #[test]
+    fn test_escape_retry_with_short_word() {
+        // \n'qur' — escape char \n causes word break; remaining 'qur (3 chars) < minWordLength
+        let dict = make_dict(&["hello"]);
+        let config = ValidatorConfig {
+            min_word_length: 4,
+            ..ValidatorConfig::default()
+        };
+        let validator = Validator::new(vec![dict], config);
+        let issues = validator.validate_text(r"hello \n'qur'");
+        assert!(
+            !issues.iter().any(|i| i.word == "n'qur"),
+            "n'qur should be skipped via escape retry + minWordLength: {:?}",
+            issues.iter().map(|i| &i.word).collect::<Vec<_>>()
+        );
     }
 }

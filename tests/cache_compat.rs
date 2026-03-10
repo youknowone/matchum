@@ -28,15 +28,15 @@ fn make_validator_with_cache(dict_words: &[&str], cache: WordCache) -> Validator
 }
 
 fn cache_len(cache: &WordCache) -> usize {
-    cache.read().unwrap().len()
+    cache.pin().len()
 }
 
 fn cache_contains(cache: &WordCache, word: &str) -> bool {
-    cache.read().unwrap().contains_key(word)
+    cache.pin().contains_key(word)
 }
 
 fn cache_result(cache: &WordCache, word: &str) -> Option<bool> {
-    cache.read().unwrap().get(word).copied()
+    cache.pin().get(word).map(|v| *v)
 }
 
 // ============================================================
@@ -55,7 +55,10 @@ mod cache_population {
 
         v.validate_text("hello world xyzzy");
 
-        assert!(cache_len(&cache) > 0, "cache should have entries after validation");
+        assert!(
+            cache_len(&cache) > 0,
+            "cache should have entries after validation"
+        );
         // "hello" and "world" are valid (>=4 chars); "xyzzy" is invalid (>=4 chars)
         assert_eq!(
             cache_result(&cache, "hello"),
@@ -127,7 +130,10 @@ mod cache_sharing {
         // First validation
         v.validate_text("hello world xyzzy");
         let after_first = cache_len(&cache);
-        assert!(after_first > 0, "cache should have entries after first call");
+        assert!(
+            after_first > 0,
+            "cache should have entries after first call"
+        );
 
         // Second validation with overlapping and new words
         v.validate_text("hello good morning plugh");
@@ -144,7 +150,10 @@ mod cache_sharing {
         assert!(cache_contains(&cache, "world"), "world from first call");
         assert!(cache_contains(&cache, "xyzzy"), "xyzzy from first call");
         assert!(cache_contains(&cache, "good"), "good from second call");
-        assert!(cache_contains(&cache, "morning"), "morning from second call");
+        assert!(
+            cache_contains(&cache, "morning"),
+            "morning from second call"
+        );
         assert!(cache_contains(&cache, "plugh"), "plugh from second call");
     }
 
@@ -267,7 +276,10 @@ mod cache_bypass {
             !cache_contains(&cache, "xyzzy"),
             "disabled word xyzzy should not be cached"
         );
-        assert!(cache_contains(&cache, "plugh"), "plugh after enable should be cached");
+        assert!(
+            cache_contains(&cache, "plugh"),
+            "plugh after enable should be cached"
+        );
     }
 
     #[test]
@@ -282,7 +294,10 @@ mod cache_bypass {
         assert!(cache_contains(&cache, "hello"), "hello should be cached");
         // "xyzzy" is ignored by directive, so it may or may not be in cache
         // depending on implementation. The important thing is it doesn't produce an issue.
-        assert!(cache_contains(&cache, "plugh"), "plugh should be cached (not ignored)");
+        assert!(
+            cache_contains(&cache, "plugh"),
+            "plugh should be cached (not ignored)"
+        );
     }
 }
 
@@ -303,7 +318,10 @@ mod cache_correctness {
 
         // Validate again — should still report no issues
         let issues = v.validate_text("hello");
-        assert!(issues.is_empty(), "cached valid word should produce no issues");
+        assert!(
+            issues.is_empty(),
+            "cached valid word should produce no issues"
+        );
     }
 
     #[test]

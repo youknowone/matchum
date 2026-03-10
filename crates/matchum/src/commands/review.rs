@@ -88,7 +88,15 @@ pub fn run_review(
     let mut skipped = 0usize;
     let mut disabled_files: HashSet<PathBuf> = HashSet::new();
 
-    let base_dir = std::env::current_dir().ok();
+    // Use the first absolute directory from the input paths as base for
+    // relative display.  cargo-matchum passes the workspace root as an
+    // absolute path, so WalkBuilder returns absolute file paths under it.
+    // Falling back to current_dir() handles the `matchum review .` case.
+    let base_dir = paths
+        .iter()
+        .find(|p| p.is_dir() && p.is_absolute())
+        .cloned()
+        .or_else(|| std::env::current_dir().ok());
 
     for (idx, group) in groups.iter().enumerate() {
         // Filter out occurrences in already-disabled files
@@ -108,11 +116,7 @@ pub fn run_review(
             groups.len(),
             group.word,
             live_occurrences.len(),
-            if live_occurrences.len() == 1 {
-                ""
-            } else {
-                "s"
-            },
+            if live_occurrences.len() == 1 { "" } else { "s" },
         );
 
         // Show occurrences with context
@@ -2056,5 +2060,63 @@ mod tests {
         )
         .unwrap();
         assert_eq!(result, DispatchResult::Skipped);
+    }
+
+    // ── display_relative ──
+
+    #[test]
+    fn display_relative_strips_dot_prefix() {
+        let path = Path::new("./tests/foo.rs");
+        assert_eq!(display_relative(path, None), "tests/foo.rs");
+    }
+
+    #[test]
+    fn display_relative_strips_base_prefix() {
+        let path = Path::new("/home/user/project/tests/foo.rs");
+        let base = Path::new("/home/user/project");
+        assert_eq!(display_relative(path, Some(base)), "tests/foo.rs");
+    }
+
+    #[test]
+    fn display_relative_no_base() {
+        let path = Path::new("tests/foo.rs");
+        assert_eq!(display_relative(path, None), "tests/foo.rs");
+    }
+
+    #[test]
+    fn display_relative_absolute_path_no_base() {
+        // Absolute path without a base should return as-is (no ./ to strip)
+        let path = Path::new("/home/user/project/tests/foo.rs");
+        assert_eq!(
+            display_relative(path, None),
+            "/home/user/project/tests/foo.rs"
+        );
+    }
+
+    #[test]
+    fn display_relative_absolute_path_mismatched_base() {
+        // Absolute path whose base doesn't match — this is the cargo-matchum
+        // worktree scenario: WalkBuilder returns paths under workspace_root
+        // but current_dir() is a different directory (e.g., a worktree).
+        // The function should still produce a relative path by using the
+        // common input root.
+        let path = Path::new("/home/user/project/tests/foo.rs");
+        let base = Path::new("/home/user/worktree");
+        // base doesn't match, but we want the function to handle this gracefully.
+        // With the fix, paths passed to the function should use the correct base,
+        // so strip_prefix should succeed.
+        // For this test, verify that when base mismatches, we still get something reasonable.
+        let result = display_relative(path, Some(base));
+        // Cannot strip prefix, falls through — should still show full path
+        assert_eq!(result, "/home/user/project/tests/foo.rs");
+    }
+
+    #[test]
+    fn display_relative_workspace_root_as_base() {
+        // The cargo-matchum scenario: workspace_root is absolute, paths are
+        // under workspace_root, and base = workspace_root.
+        let workspace = Path::new("/Users/dev/my-project");
+        let path = Path::new("/Users/dev/my-project/src/main.rs");
+        assert_eq!(display_relative(path, Some(workspace)), "src/main.rs");
     }
 }

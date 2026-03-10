@@ -65,9 +65,7 @@ fn levenshtein(a: &str, b: &str) -> usize {
         curr[0] = i + 1;
         for (j, cb) in b.bytes().enumerate() {
             let cost = if ca == cb { 0 } else { 1 };
-            curr[j + 1] = (prev[j] + cost)
-                .min(prev[j + 1] + 1)
-                .min(curr[j] + 1);
+            curr[j + 1] = (prev[j] + cost).min(prev[j + 1] + 1).min(curr[j] + 1);
         }
         std::mem::swap(&mut prev, &mut curr);
     }
@@ -160,9 +158,7 @@ pub fn extract_directive_name(line: &str) -> Option<String> {
     let text = caps.get(1)?.as_str().trim();
     // The directive name is everything up to the first space or end of text,
     // but compound directives like "disable-next-line" are a single token.
-    let name = text
-        .split(|c: char| c.is_whitespace() || c == ':')
-        .next()?;
+    let name = text.split(|c: char| c.is_whitespace() || c == ':').next()?;
     if name.is_empty() {
         return None;
     }

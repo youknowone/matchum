@@ -1,3 +1,4 @@
+// spell-checker:disable
 //! Suggestion quality tests for cspell compatibility.
 //!
 //! Verifies that suggestions are ranked correctly:
@@ -180,8 +181,7 @@ mod preferred_suggestions {
         let suggestions = dict.suggest("wold", 5);
         // Both "word" (distance 1) and "world" (distance 1) should appear
         // "world" should rank first because it's preferred
-        if suggestions.contains(&"world".to_string()) && suggestions.contains(&"word".to_string())
-        {
+        if suggestions.contains(&"world".to_string()) && suggestions.contains(&"word".to_string()) {
             assert_eq!(
                 suggestions[0], "world",
                 "preferred should rank first even at same distance: {:?}",
@@ -235,7 +235,9 @@ mod keyboard_adjacency {
     fn adjacent_key_ranked_higher_than_distant() {
         // When we have a typo where 'f' was typed instead of 'g' (adjacent),
         // and another candidate differs by a distant key
-        let dict = make_dict(&["get", "bet", "let", "met", "net", "set", "vet", "wet", "yet", "fet"]);
+        let dict = make_dict(&[
+            "get", "bet", "let", "met", "net", "set", "vet", "wet", "yet", "fet",
+        ]);
         let suggestions = dict.suggest("fet", 5);
         // "fet" (distance 0) would be first, but if it's not in dict:
         // All are distance 1. But "get" (f->g adjacent) should rank before "let" (f->l distant)

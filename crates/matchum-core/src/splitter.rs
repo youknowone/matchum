@@ -367,6 +367,36 @@ pub fn extract_words_into<'a>(text: &'a str, words: &mut Vec<Word<'a>>) {
                         end += c.len_utf8();
                         chars.next();
                     }
+                    // Escaped apostrophe: \' treated as word-internal apostrophe
+                    // (cspell's regExWords: \\?[''])
+                    Some(&(_, '\\')) => {
+                        let mut lookahead = chars.clone();
+                        lookahead.next(); // skip '\'
+                        if let Some(&(_, apos)) = lookahead.peek() {
+                            if apos == '\'' || apos == '\u{2019}' {
+                                lookahead.next(); // skip apostrophe
+                                if let Some(&(_, after)) = lookahead.peek() {
+                                    if after.is_alphabetic() {
+                                        // Include \' + subsequent letters
+                                        end += 1; // backslash
+                                        chars.next();
+                                        end += apos.len_utf8();
+                                        chars.next();
+                                        while let Some(&(_, c)) = chars.peek() {
+                                            if is_word_char(c) || is_combining_mark(c) {
+                                                end += c.len_utf8();
+                                                chars.next();
+                                            } else {
+                                                break;
+                                            }
+                                        }
+                                        continue;
+                                    }
+                                }
+                            }
+                        }
+                        break;
+                    }
                     Some(&(apos_offset, c))
                         if (c == '\'' || c == '\u{2019}')
                             && is_letter_after_apostrophe(text, apos_offset) =>
@@ -666,5 +696,42 @@ mod tests {
         let words = extract_words_from_code("HTMLInput.value");
         let texts: Vec<&str> = words.iter().map(|w| w.text).collect();
         assert_eq!(texts, vec!["HTML", "Input", "value"]);
+    }
+
+    // ---- escaped apostrophe tests (cspell regExWords: \\?['']) ----
+
+    #[test]
+    fn test_extract_escaped_apostrophe_contraction() {
+        // doesn\'t should be extracted as one word "doesn\'t"
+        let words = extract_words(r"doesn\'t");
+        assert_eq!(words.len(), 1);
+        assert_eq!(words[0].text, r"doesn\'t");
+    }
+
+    #[test]
+    fn test_extract_escaped_apostrophe_in_string() {
+        // 'it doesn\'t work' — the doesn\'t should be one token
+        let words = extract_words(r"it doesn\'t work");
+        assert_eq!(words.len(), 3);
+        assert_eq!(words[0].text, "it");
+        assert_eq!(words[1].text, r"doesn\'t");
+        assert_eq!(words[2].text, "work");
+    }
+
+    #[test]
+    fn test_extract_backslash_not_before_apostrophe() {
+        // Backslash not followed by apostrophe should still break
+        let words = extract_words(r"hello\nworld");
+        // \n breaks the word — 'hello', then 'nworld' (n is a letter)
+        assert_eq!(words.len(), 2);
+        assert_eq!(words[0].text, "hello");
+    }
+
+    #[test]
+    fn test_extract_trailing_backslash_apostrophe() {
+        // Trailing \' without letter after — should not include
+        let words = extract_words("word\\'");
+        assert_eq!(words.len(), 1);
+        assert_eq!(words[0].text, "word");
     }
 }

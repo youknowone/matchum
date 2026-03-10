@@ -138,6 +138,11 @@ fn run_check(args: &CheckArgs, workspace_root: &Path) -> anyhow::Result<()> {
         .clone()
         .or_else(|| find_config_in_workspace(workspace_root));
 
+    let is_cspell_config = config_path
+        .as_ref()
+        .map(|p| matchum_config::resolver::ConfigFound::classify(p).is_cspell())
+        .unwrap_or(true);
+
     let (settings, config_dir) = if let Some(ref config) = config_path {
         match matchum_config::resolver::load_config_auto(config) {
             Ok(mut s) => {
@@ -157,6 +162,7 @@ fn run_check(args: &CheckArgs, workspace_root: &Path) -> anyhow::Result<()> {
             }
         }
     } else {
+        // No config found — use defaults, which need npm auto-resolve
         (default_rust_settings(), None)
     };
 
@@ -168,6 +174,7 @@ fn run_check(args: &CheckArgs, workspace_root: &Path) -> anyhow::Result<()> {
     let options = commands::check::CheckOptions {
         use_gitignore_default: true,
         dict_base_dir: dict_base,
+        auto_resolve_cspell: is_cspell_config,
         ..commands::check::CheckOptions::default()
     };
 
