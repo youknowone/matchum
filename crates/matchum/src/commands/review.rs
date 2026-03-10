@@ -8,6 +8,18 @@ use std::path::{Path, PathBuf};
 
 use crate::commands::check::{self, CheckOptions};
 
+/// Make a path relative to `base` for display.
+/// Handles both absolute paths (strips base prefix) and `./`-prefixed relative paths.
+fn display_relative(path: &Path, base: Option<&Path>) -> String {
+    if let Some(base) = base {
+        if let Ok(rel) = path.strip_prefix(base) {
+            return rel.display().to_string();
+        }
+    }
+    let s = path.display().to_string();
+    s.strip_prefix("./").unwrap_or(&s).to_string()
+}
+
 struct WritableDict {
     name: String,
     path: PathBuf,
@@ -105,15 +117,7 @@ pub fn run_review(
 
         // Show occurrences with context
         for occ in &live_occurrences {
-            let display_path = match &base_dir {
-                Some(base) => occ
-                    .file
-                    .strip_prefix(base)
-                    .unwrap_or(&occ.file)
-                    .display()
-                    .to_string(),
-                None => occ.file.display().to_string(),
-            };
+            let display_path = display_relative(&occ.file, base_dir.as_deref());
             println!("  {}:{}:{}", display_path, occ.line, occ.column);
             if !occ.context_line.is_empty() {
                 println!("    {}", occ.context_line.trim_end());
@@ -144,15 +148,7 @@ pub fn run_review(
         println!("  Writable dictionaries:");
         println!("    [0] create new dictionary");
         for (i, d) in writable_dicts.iter().enumerate() {
-            let rel = match &base_dir {
-                Some(base) => d
-                    .path
-                    .strip_prefix(base)
-                    .unwrap_or(&d.path)
-                    .display()
-                    .to_string(),
-                None => d.path.display().to_string(),
-            };
+            let rel = display_relative(&d.path, base_dir.as_deref());
             println!("    [{}] {:<12} ({})", i + 1, d.name, rel);
         }
 
