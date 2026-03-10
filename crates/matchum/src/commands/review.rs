@@ -74,17 +74,29 @@ pub fn run_review(
     let mut ignored = 0usize;
     let mut fixed = 0usize;
     let mut skipped = 0usize;
+    let mut disabled_files: HashSet<PathBuf> = HashSet::new();
 
     let base_dir = std::env::current_dir().ok();
 
     for (idx, group) in groups.iter().enumerate() {
+        // Filter out occurrences in already-disabled files
+        let live_occurrences: Vec<&Occurrence> = group
+            .occurrences
+            .iter()
+            .filter(|occ| !disabled_files.contains(&occ.file))
+            .collect();
+
+        if live_occurrences.is_empty() {
+            continue;
+        }
+
         println!(
             "[{}/{}] \"{}\" ({} occurrence{})",
             idx + 1,
             groups.len(),
             group.word,
-            group.occurrences.len(),
-            if group.occurrences.len() == 1 {
+            live_occurrences.len(),
+            if live_occurrences.len() == 1 {
                 ""
             } else {
                 "s"
@@ -92,7 +104,7 @@ pub fn run_review(
         );
 
         // Show occurrences with context
-        for occ in &group.occurrences {
+        for occ in &live_occurrences {
             let display_path = match &base_dir {
                 Some(base) => occ
                     .file
@@ -162,6 +174,7 @@ pub fn run_review(
             matchum_config_path.as_deref(),
             &typos_toml,
             &mut fix_memory,
+            &mut disabled_files,
         )?;
 
         match result {
@@ -204,6 +217,7 @@ fn dispatch_command(
     matchum_config_path: Option<&Path>,
     typos_toml: &Path,
     fix_memory: &mut HashMap<String, String>,
+    disabled_files: &mut HashSet<PathBuf>,
 ) -> Result<DispatchResult> {
     if input.is_empty() || input == "s" || input == "skip" {
         return Ok(DispatchResult::Skipped);
@@ -342,6 +356,9 @@ fn dispatch_command(
         }
         "df" => {
             let count = disable_in_files(&group.occurrences)?;
+            for occ in &group.occurrences {
+                disabled_files.insert(occ.file.clone());
+            }
             eprintln!(
                 "  Disabled spell-checking for {} file{} (entire file)",
                 count,
@@ -1637,6 +1654,7 @@ mod tests {
             None,
             &typos,
             &mut fix_memory,
+            &mut HashSet::new(),
         )
         .unwrap();
         assert_eq!(result, DispatchResult::Skipped);
@@ -1659,6 +1677,7 @@ mod tests {
             None,
             &typos,
             &mut fix_memory,
+            &mut HashSet::new(),
         )
         .unwrap();
         assert_eq!(result, DispatchResult::Skipped);
@@ -1681,6 +1700,7 @@ mod tests {
             None,
             &typos,
             &mut fix_memory,
+            &mut HashSet::new(),
         )
         .unwrap();
         assert_eq!(result, DispatchResult::Quit);
@@ -1711,6 +1731,7 @@ mod tests {
             None,
             &typos,
             &mut fix_memory,
+            &mut HashSet::new(),
         )
         .unwrap();
         assert_eq!(result, DispatchResult::Accepted);
@@ -1748,6 +1769,7 @@ mod tests {
             None,
             &typos,
             &mut fix_memory,
+            &mut HashSet::new(),
         )
         .unwrap();
         assert_eq!(result, DispatchResult::Accepted);
@@ -1772,6 +1794,7 @@ mod tests {
             None,
             &typos,
             &mut fix_memory,
+            &mut HashSet::new(),
         )
         .unwrap();
         assert_eq!(result, DispatchResult::Accepted);
@@ -1803,6 +1826,7 @@ mod tests {
             None,
             &typos,
             &mut fix_memory,
+            &mut HashSet::new(),
         )
         .unwrap();
         assert_eq!(result, DispatchResult::Fixed);
@@ -1830,6 +1854,7 @@ mod tests {
             None,
             &typos,
             &mut fix_memory,
+            &mut HashSet::new(),
         )
         .unwrap();
         assert_eq!(result, DispatchResult::Fixed);
@@ -1859,6 +1884,7 @@ mod tests {
             None,
             &typos,
             &mut fix_memory,
+            &mut HashSet::new(),
         )
         .unwrap();
         assert_eq!(result, DispatchResult::Fixed);
@@ -1887,6 +1913,7 @@ mod tests {
             None,
             &typos,
             &mut fix_memory,
+            &mut HashSet::new(),
         )
         .unwrap();
         assert_eq!(result, DispatchResult::Fixed);
@@ -1915,6 +1942,7 @@ mod tests {
             None,
             &typos,
             &mut fix_memory,
+            &mut HashSet::new(),
         )
         .unwrap();
         assert_eq!(result, DispatchResult::Fixed);
@@ -1943,6 +1971,7 @@ mod tests {
             None,
             &typos,
             &mut fix_memory,
+            &mut HashSet::new(),
         )
         .unwrap();
         assert_eq!(result, DispatchResult::Ignored);
@@ -1972,6 +2001,7 @@ mod tests {
             None,
             &typos,
             &mut fix_memory,
+            &mut HashSet::new(),
         )
         .unwrap();
         assert_eq!(result, DispatchResult::Ignored);
@@ -2001,6 +2031,7 @@ mod tests {
             None,
             &typos,
             &mut fix_memory,
+            &mut HashSet::new(),
         )
         .unwrap();
         assert_eq!(result, DispatchResult::Ignored);
@@ -2025,6 +2056,7 @@ mod tests {
             None,
             &typos,
             &mut fix_memory,
+            &mut HashSet::new(),
         )
         .unwrap();
         assert_eq!(result, DispatchResult::Skipped);
