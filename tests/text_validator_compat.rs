@@ -1,3 +1,4 @@
+// spell-checker:disable
 // spell-checker:ignore aardvark
 //! Text validation tests ported from cspell's textValidator.test.ts
 //! and docValidator.test.ts.

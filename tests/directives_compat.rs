@@ -1,3 +1,4 @@
+// spell-checker:disable
 //! Directive parsing tests ported from cspell's InDocSettings.test.ts.
 //!
 //! Sources:

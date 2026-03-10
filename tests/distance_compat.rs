@@ -1,3 +1,4 @@
+// spell-checker:disable
 //! Edit distance and suggestion tests ported from cspell's
 //! levenshtein.test.ts, distance.test.ts, and suggestion-related tests.
 //!
