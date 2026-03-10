@@ -445,18 +445,32 @@ mod compound_word_directives {
     }
 
     #[test]
-    fn enable_compound_words_hyphenated() {
+    fn enable_allow_compound_words() {
+        // cspell: (?:allow)? makes "allow" optional
         assert_eq!(
-            directives::parse_directive("// cspell:enable-compound-words"),
+            directives::parse_directive("// cspell:enableAllowCompoundWords"),
             Some(Directive::EnableCompoundWords)
         );
     }
 
     #[test]
-    fn disable_compound_words_hyphenated() {
+    fn disable_allow_compound_words() {
+        assert_eq!(
+            directives::parse_directive("// cspell:disableAllowCompoundWords"),
+            Some(Directive::DisableCompoundWords)
+        );
+    }
+
+    #[test]
+    fn hyphenated_compound_words_not_valid() {
+        // cspell does NOT support hyphenated form (no hyphens in regex)
+        assert_eq!(
+            directives::parse_directive("// cspell:enable-compound-words"),
+            None
+        );
         assert_eq!(
             directives::parse_directive("// cspell:disable-compound-words"),
-            Some(Directive::DisableCompoundWords)
+            None
         );
     }
 }
@@ -479,13 +493,31 @@ mod extended_directives {
     }
 
     #[test]
-    fn ignore_reg_exp_hyphenated() {
-        let result = directives::parse_directive("// cspell:ignore-reg-exp /test/");
+    fn ignore_underscore_regexp() {
+        // cspell: ignore_?Reg_?Exp (underscore variants, not hyphenated)
+        let result = directives::parse_directive("// cspell:ignore_RegExp /test/");
         if let Some(Directive::IgnoreRegExp(pattern)) = &result {
             assert_eq!(pattern, "/test/");
         } else {
             panic!("expected IgnoreRegExp, got: {:?}", result);
         }
+    }
+
+    #[test]
+    fn ignore_reg_underscore_exp() {
+        let result = directives::parse_directive("// cspell:ignore_Reg_Exp /test/i");
+        if let Some(Directive::IgnoreRegExp(pattern)) = &result {
+            assert_eq!(pattern, "/test/i");
+        } else {
+            panic!("expected IgnoreRegExp, got: {:?}", result);
+        }
+    }
+
+    #[test]
+    fn ignore_reg_exp_hyphenated_not_valid() {
+        // cspell does NOT support hyphenated form
+        let result = directives::parse_directive("// cspell:ignore-reg-exp /test/");
+        assert!(result.is_none(), "hyphenated ignore-reg-exp should not be valid");
     }
 
     #[test]

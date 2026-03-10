@@ -595,20 +595,27 @@ mod tests {
 
     #[test]
     fn test_load_en_us_trie() {
-        let dict_path = std::path::PathBuf::from(env!("CARGO_MANIFEST_DIR"))
-            .parent()
-            .unwrap()
-            .parent()
-            .unwrap()
-            .join("dictionaries/node_modules/@cspell/dict-en_us/en_US.trie.gz");
-
-        if !dict_path.exists() {
-            eprintln!(
-                "Skipping: en_US dictionary not found at {}",
-                dict_path.display()
-            );
-            return;
-        }
+        // Try multiple known locations
+        let candidates = [
+            std::path::PathBuf::from(env!("CARGO_MANIFEST_DIR"))
+                .parent()
+                .unwrap()
+                .parent()
+                .unwrap()
+                .join("dictionaries/node_modules/@cspell/dict-en_us/en_US.trie.gz"),
+            {
+                let home = std::env::var("HOME").unwrap_or_default();
+                std::path::PathBuf::from(home)
+                    .join(".matchum_cache/packages/node_modules/@cspell/dict-en_us/en_US.trie.gz")
+            },
+        ];
+        let dict_path = match candidates.iter().find(|p| p.exists()) {
+            Some(p) => p.clone(),
+            None => {
+                eprintln!("Skipping: en_US dictionary not found");
+                return;
+            }
+        };
 
         let dict = load_trie_v3(&dict_path).expect("Failed to load en_US trie");
 
@@ -627,6 +634,7 @@ mod tests {
         assert!(dict.has("computer"), "should have 'computer'");
         assert!(dict.has("programming"), "should have 'programming'");
         assert!(dict.has("dictionary"), "should have 'dictionary'");
+        assert!(dict.has("active"), "should have 'active'");
 
         // Should not have random gibberish
         assert!(!dict.has("xyzzyplugh"), "should not have gibberish");

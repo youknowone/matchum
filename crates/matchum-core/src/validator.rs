@@ -653,8 +653,25 @@ impl Validator {
                         continue;
                     }
                     Directive::Dictionaries(dicts) => {
-                        let set: HashSet<String> = dicts.iter().map(|d| d.to_lowercase()).collect();
-                        directive_dictionaries = Some(set);
+                        // Additive: merge with existing active set (matches cspell behavior).
+                        let new_dicts: Vec<String> =
+                            dicts.iter().map(|d| d.to_lowercase()).collect();
+                        match directive_dictionaries {
+                            Some(ref mut set) => {
+                                set.extend(new_dicts);
+                            }
+                            None => {
+                                // First directive: start from the base active set and add
+                                let mut set: HashSet<String> = self
+                                    .dictionaries
+                                    .iter()
+                                    .filter(|d| d.default_active)
+                                    .filter_map(|d| d.name.clone())
+                                    .collect();
+                                set.extend(new_dicts);
+                                directive_dictionaries = Some(set);
+                            }
+                        }
                         line_start_offset += line.len() + 1;
                         continue;
                     }
