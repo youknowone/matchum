@@ -1,7 +1,10 @@
 pub mod convert;
 pub mod directives;
+pub mod glob_match;
 pub mod matchum_config;
+#[cfg(feature = "fetch")]
 pub mod npm_fetch;
 pub mod overrides;
 pub mod resolver;
 pub mod settings;
+pub mod words_file;

@@ -1,3 +1,23 @@
 language = "en"
-dictionaries = ["en_us", "rust", "softwareTerms"]
-ignore_paths = ["**/target/**", "**/tests/**"]
+words_file = ".matchum/words.txt"
+dictionaries = [
+    "@cspell/dict-en_us",
+    "@cspell/dict-rust",
+    "@cspell/dict-software-terms",
+]
+ignore_paths = [
+    "target/**",
+    "vendor/**",
+    "editors/**",
+    "dictionaries/**",
+    ".claude/**",
+    "*.lock",
+    "*.json",
+    "*.toml",
+    "*.trie",
+    "*.md",
+    "*.yml",
+    "*.yaml",
+    "**/tests/**",
+    "crates/matchum-wasm/pkg/**",
+]

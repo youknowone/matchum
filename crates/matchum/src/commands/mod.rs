@@ -4,6 +4,7 @@ pub mod cspell;
 pub mod dict;
 pub mod init;
 pub mod review;
+pub mod setup;
 pub mod trace;
 
 use std::path::PathBuf;

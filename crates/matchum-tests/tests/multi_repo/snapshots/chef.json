@@ -1,0 +1,8 @@
+[
+  {
+    "file": "lib/chef/provider/mount/solaris.rb",
+    "line": 152,
+    "column": 74,
+    "word": "largefiles"
+  }
+]

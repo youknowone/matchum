@@ -48,6 +48,14 @@ pub fn to_cspell_settings(config: &MatchumConfig, config_dir: &Path) -> CSpellSe
                     path: d.path.clone(),
                     add_words: d.add_words,
                     no_suggest: d.no_suggest,
+                    r#type: None,
+                    use_compounds: None,
+                    ignore_forbidden_words: None,
+                    support_non_strict_searches: None,
+                    words: Vec::new(),
+                    flag_words: Vec::new(),
+                    suggest_words: Vec::new(),
+                    rep_map: Vec::new(),
                 }),
         );
 
@@ -64,7 +72,7 @@ pub fn to_cspell_settings(config: &MatchumConfig, config_dir: &Path) -> CSpellSe
         .iter()
         .map(|ov| {
             let mut o = OverrideSettings {
-                filename: ov.filename.clone(),
+                filename: ov.filename.clone().into(),
                 dictionaries: ov.dictionaries.clone(),
                 language: ov.language.clone(),
                 case_sensitive: ov.case_sensitive,
@@ -156,7 +164,7 @@ pub fn from_cspell_settings(settings: &CSpellSettings) -> (MatchumConfig, Vec<Wo
 
     for (i, ov) in settings.overrides.iter().enumerate() {
         let mut r_ov = MatchumOverride {
-            filename: ov.filename.clone(),
+            filename: ov.filename.to_string(),
             dictionaries: ov.dictionaries.clone(),
             language: ov.language.clone(),
             case_sensitive: ov.case_sensitive,
@@ -165,12 +173,12 @@ pub fn from_cspell_settings(settings: &CSpellSettings) -> (MatchumConfig, Vec<Wo
             ..Default::default()
         };
         if !ov.words.is_empty() {
-            let path = override_word_path(&ov.filename, "words", i);
+            let path = override_word_path(&ov.filename.to_string(), "words", i);
             files.push((path.clone(), words_to_content(&ov.words)));
             r_ov.words_file = Some(path);
         }
         if !ov.flag_words.is_empty() {
-            let path = override_word_path(&ov.filename, "flagged", i);
+            let path = override_word_path(&ov.filename.to_string(), "flagged", i);
             files.push((path.clone(), words_to_content(&ov.flag_words)));
             r_ov.flag_words_file = Some(path);
         }
@@ -207,8 +215,7 @@ fn override_word_path(filename_glob: &str, kind: &str, index: usize) -> String {
         .next()
         .unwrap_or(filename_glob)
         .trim_start_matches("*.")
-        .replace('{', "")
-        .replace('}', "")
+        .replace(['{', '}'], "")
         .replace(',', "-")
         .replace('*', "all");
     let slug = if slug.is_empty() {
@@ -238,6 +245,7 @@ fn discover_dict_dir(dict_dir: &Path, s: &mut CSpellSettings) {
     }
 }
 
+// cspell:disable
 #[cfg(test)]
 mod tests {
     use super::*;

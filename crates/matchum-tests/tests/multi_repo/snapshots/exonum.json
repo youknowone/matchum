@@ -1,0 +1,44 @@
+[
+  {
+    "file": "exonum/src/runtime/versioning.rs",
+    "line": 97,
+    "column": 66,
+    "word": "defences"
+  },
+  {
+    "file": "test-suite/exonum-py-tests/suite/process_manager.py",
+    "line": 44,
+    "column": 88,
+    "word": "preexec"
+  },
+  {
+    "file": "test-suite/exonum-py-tests/suite/process_manager.py",
+    "line": 44,
+    "column": 102,
+    "word": "setsid"
+  },
+  {
+    "file": "test-suite/rust-runtime-proto/src/proto/service.proto",
+    "line": 42,
+    "column": 3,
+    "word": "sfixed"
+  },
+  {
+    "file": "test-suite/rust-runtime-proto/src/proto/service.proto",
+    "line": 43,
+    "column": 3,
+    "word": "sfixed"
+  },
+  {
+    "file": "test-suite/rust-runtime-proto/src/proto/service.proto",
+    "line": 47,
+    "column": 3,
+    "word": "sint"
+  },
+  {
+    "file": "test-suite/rust-runtime-proto/src/proto/service.proto",
+    "line": 48,
+    "column": 3,
+    "word": "sint"
+  }
+]

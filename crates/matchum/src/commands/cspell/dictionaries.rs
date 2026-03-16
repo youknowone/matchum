@@ -1,5 +1,4 @@
-use anyhow::{Context, Result};
-use matchum_config::resolver;
+use anyhow::Result;
 use matchum_config::settings::CSpellSettings;
 use std::collections::HashSet;
 use std::path::{Path, PathBuf};
@@ -20,7 +19,7 @@ pub fn run(opts: DictListOptions) -> Result<()> {
     let (mut settings, _config_dir) = if opts.no_default_configuration {
         (CSpellSettings::default(), None)
     } else {
-        load_settings(opts.config.as_deref())?
+        super::load_settings(opts.config.as_deref())?
     };
 
     // Apply --locale override
@@ -75,23 +74,4 @@ pub fn run(opts: DictListOptions) -> Result<()> {
     }
 
     Ok(())
-}
-
-fn load_settings(config_path: Option<&Path>) -> Result<(CSpellSettings, Option<PathBuf>)> {
-    if let Some(path) = config_path {
-        let config_dir = path.parent().map(|p| p.to_path_buf());
-        let settings = resolver::load_config(path).context("failed to load config file")?;
-        Ok((settings, config_dir))
-    } else {
-        let cwd = std::env::current_dir()?;
-        match resolver::find_config(&cwd) {
-            Some(path) => {
-                let config_dir = path.parent().map(|p| p.to_path_buf());
-                let settings =
-                    resolver::load_config(&path).context("failed to load config file")?;
-                Ok((settings, config_dir))
-            }
-            None => Ok((CSpellSettings::default(), None)),
-        }
-    }
 }

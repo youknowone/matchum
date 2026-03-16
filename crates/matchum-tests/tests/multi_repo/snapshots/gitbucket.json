@@ -1,0 +1,1598 @@
+[
+  {
+    "file": "README.md",
+    "line": 82,
+    "column": 88,
+    "word": "MVCC"
+  },
+  {
+    "file": "build.sbt",
+    "line": 4,
+    "column": 13,
+    "word": "gitbucket"
+  },
+  {
+    "file": "build.sbt",
+    "line": 6,
+    "column": 5,
+    "word": "Scalatra"
+  },
+  {
+    "file": "build.sbt",
+    "line": 8,
+    "column": 5,
+    "word": "Jgit"
+  },
+  {
+    "file": "build.sbt",
+    "line": 21,
+    "column": 4,
+    "word": "scalafmt"
+  },
+  {
+    "file": "build.sbt",
+    "line": 28,
+    "column": 34,
+    "word": "scalatra"
+  },
+  {
+    "file": "build.sbt",
+    "line": 28,
+    "column": 43,
+    "word": "javax"
+  },
+  {
+    "file": "build.sbt",
+    "line": 33,
+    "column": 34,
+    "word": "solidbase"
+  },
+  {
+    "file": "build.sbt",
+    "line": 34,
+    "column": 34,
+    "word": "markedj"
+  },
+  {
+    "file": "build.sbt",
+    "line": 39,
+    "column": 34,
+    "word": "httpclient"
+  },
+  {
+    "file": "build.sbt",
+    "line": 45,
+    "column": 40,
+    "word": "tika"
+  },
+  {
+    "file": "build.sbt",
+    "line": 47,
+    "column": 40,
+    "word": "jldap"
+  },
+  {
+    "file": "build.sbt",
+    "line": 51,
+    "column": 40,
+    "word": "logback"
+  },
+  {
+    "file": "build.sbt",
+    "line": 52,
+    "column": 40,
+    "word": "Hikari"
+  },
+  {
+    "file": "build.sbt",
+    "line": 54,
+    "column": 40,
+    "word": "xhub"
+  },
+  {
+    "file": "build.sbt",
+    "line": 58,
+    "column": 40,
+    "word": "thumbnailator"
+  },
+  {
+    "file": "build.sbt",
+    "line": 64,
+    "column": 49,
+    "word": "scalatest"
+  },
+  {
+    "file": "build.sbt",
+    "line": 68,
+    "column": 40,
+    "word": "eddsa"
+  },
+  {
+    "file": "build.sbt",
+    "line": 69,
+    "column": 40,
+    "word": "woothee"
+  },
+  {
+    "file": "build.sbt",
+    "line": 75,
+    "column": 1,
+    "word": "scalac"
+  },
+  {
+    "file": "build.sbt",
+    "line": 80,
+    "column": 5,
+    "word": "Wunused"
+  },
+  {
+    "file": "build.sbt",
+    "line": 81,
+    "column": 5,
+    "word": "Wconf"
+  },
+  {
+    "file": "build.sbt",
+    "line": 86,
+    "column": 13,
+    "word": "Xsource"
+  },
+  {
+    "file": "build.sbt",
+    "line": 91,
+    "column": 11,
+    "word": "javac"
+  },
+  {
+    "file": "build.sbt",
+    "line": 92,
+    "column": 30,
+    "word": "Dlogback"
+  },
+  {
+    "file": "build.sbt",
+    "line": 96,
+    "column": 25,
+    "word": "Dgitbucket"
+  },
+  {
+    "file": "build.sbt",
+    "line": 241,
+    "column": 11,
+    "word": "takezoe"
+  },
+  {
+    "file": "build.sbt",
+    "line": 242,
+    "column": 13,
+    "word": "Naoki"
+  },
+  {
+    "file": "build.sbt",
+    "line": 242,
+    "column": 19,
+    "word": "Takezoe"
+  },
+  {
+    "file": "build.sbt",
+    "line": 246,
+    "column": 11,
+    "word": "shimamoto"
+  },
+  {
+    "file": "build.sbt",
+    "line": 247,
+    "column": 13,
+    "word": "Takako"
+  },
+  {
+    "file": "build.sbt",
+    "line": 247,
+    "column": 20,
+    "word": "Shimamoto"
+  },
+  {
+    "file": "build.sbt",
+    "line": 251,
+    "column": 11,
+    "word": "tanacasino"
+  },
+  {
+    "file": "build.sbt",
+    "line": 252,
+    "column": 13,
+    "word": "Tomofumi"
+  },
+  {
+    "file": "build.sbt",
+    "line": 252,
+    "column": 22,
+    "word": "Tanaka"
+  },
+  {
+    "file": "build.sbt",
+    "line": 256,
+    "column": 11,
+    "word": "mrkm"
+  },
+  {
+    "file": "build.sbt",
+    "line": 257,
+    "column": 13,
+    "word": "Shintaro"
+  },
+  {
+    "file": "build.sbt",
+    "line": 257,
+    "column": 22,
+    "word": "Murakami"
+  },
+  {
+    "file": "build.sbt",
+    "line": 261,
+    "column": 11,
+    "word": "nazoking"
+  },
+  {
+    "file": "build.sbt",
+    "line": 267,
+    "column": 13,
+    "word": "Matthieu"
+  },
+  {
+    "file": "build.sbt",
+    "line": 267,
+    "column": 22,
+    "word": "Brouillard"
+  },
+  {
+    "file": "build.sbt",
+    "line": 290,
+    "column": 5,
+    "word": "Xrunjdwp"
+  },
+  {
+    "file": "build.sbt",
+    "line": 291,
+    "column": 5,
+    "word": "Dorg"
+  },
+  {
+    "file": "build.sbt",
+    "line": 292,
+    "column": 8,
+    "word": "Ddev"
+  },
+  {
+    "file": "contrib/install",
+    "line": 10,
+    "column": 1,
+    "word": "GITBUCKET"
+  },
+  {
+    "file": "contrib/install",
+    "line": 27,
+    "column": 35,
+    "word": "dport"
+  },
+  {
+    "file": "contrib/linux/redhat/README.md",
+    "line": 12,
+    "column": 13,
+    "word": "rpmbuild"
+  },
+  {
+    "file": "contrib/linux/redhat/README.md",
+    "line": 16,
+    "column": 15,
+    "word": "chkconfig"
+  },
+  {
+    "file": "contrib/linux/redhat/selinux/readme.md",
+    "line": 14,
+    "column": 3,
+    "word": "sedeploy"
+  },
+  {
+    "file": "contrib/linux/redhat/selinux/readme.md",
+    "line": 24,
+    "column": 1,
+    "word": "semanage"
+  },
+  {
+    "file": "contrib/linux/redhat/selinux/readme.md",
+    "line": 24,
+    "column": 10,
+    "word": "fcontext"
+  },
+  {
+    "file": "contrib/linux/redhat/selinux/readme.md",
+    "line": 25,
+    "column": 1,
+    "word": "restorecon"
+  },
+  {
+    "file": "contrib/linux/redhat/selinux/sedeploy.sh",
+    "line": 8,
+    "column": 1,
+    "word": "checkmodule"
+  },
+  {
+    "file": "contrib/linux/redhat/selinux/sedeploy.sh",
+    "line": 10,
+    "column": 31,
+    "word": "semodule"
+  },
+  {
+    "file": "doc/activity.md",
+    "line": 21,
+    "column": 6,
+    "word": "pullreq"
+  },
+  {
+    "file": "doc/auto_update.md",
+    "line": 3,
+    "column": 56,
+    "word": "Solidbase"
+  },
+  {
+    "file": "doc/auto_update.md",
+    "line": 10,
+    "column": 9,
+    "word": "Liquibase"
+  },
+  {
+    "file": "doc/auto_update.md",
+    "line": 28,
+    "column": 48,
+    "word": "varchar"
+  },
+  {
+    "file": "doc/directory.md",
+    "line": 32,
+    "column": 24,
+    "word": "millis"
+  },
+  {
+    "file": "doc/icons.svg",
+    "line": 3,
+    "column": 61,
+    "word": "xlink"
+  },
+  {
+    "file": "doc/icons.svg",
+    "line": 13,
+    "column": 145,
+    "word": "linecap"
+  },
+  {
+    "file": "doc/icons.svg",
+    "line": 13,
+    "column": 168,
+    "word": "linejoin"
+  },
+  {
+    "file": "doc/icons.svg",
+    "line": 716,
+    "column": 153,
+    "word": "miterlimit"
+  },
+  {
+    "file": "doc/licenses.md",
+    "line": 5,
+    "column": 124,
+    "word": "osgi"
+  },
+  {
+    "file": "doc/licenses.md",
+    "line": 5,
+    "column": 156,
+    "word": "notextile"
+  },
+  {
+    "file": "doc/licenses.md",
+    "line": 6,
+    "column": 75,
+    "word": "googlecode"
+  },
+  {
+    "file": "doc/licenses.md",
+    "line": 6,
+    "column": 86,
+    "word": "javaewah"
+  },
+  {
+    "file": "doc/licenses.md",
+    "line": 6,
+    "column": 101,
+    "word": "EWAH"
+  },
+  {
+    "file": "doc/licenses.md",
+    "line": 10,
+    "column": 75,
+    "word": "objenesis"
+  },
+  {
+    "file": "doc/licenses.md",
+    "line": 20,
+    "column": 101,
+    "word": "stephenc"
+  },
+  {
+    "file": "doc/licenses.md",
+    "line": 20,
+    "column": 110,
+    "word": "jcip"
+  },
+  {
+    "file": "doc/licenses.md",
+    "line": 21,
+    "column": 94,
+    "word": "kohlschutter"
+  },
+  {
+    "file": "doc/licenses.md",
+    "line": 21,
+    "column": 107,
+    "word": "junixsocket"
+  },
+  {
+    "file": "doc/licenses.md",
+    "line": 23,
+    "column": 91,
+    "word": "typesafe"
+  },
+  {
+    "file": "doc/licenses.md",
+    "line": 24,
+    "column": 99,
+    "word": "akka"
+  },
+  {
+    "file": "doc/licenses.md",
+    "line": 26,
+    "column": 93,
+    "word": "tagomor"
+  },
+  {
+    "file": "doc/licenses.md",
+    "line": 30,
+    "column": 101,
+    "word": "httpcomponents"
+  },
+  {
+    "file": "doc/licenses.md",
+    "line": 31,
+    "column": 118,
+    "word": "httpcore"
+  },
+  {
+    "file": "doc/licenses.md",
+    "line": 32,
+    "column": 118,
+    "word": "httpmime"
+  },
+  {
+    "file": "doc/licenses.md",
+    "line": 35,
+    "column": 90,
+    "word": "liquibase"
+  },
+  {
+    "file": "doc/licenses.md",
+    "line": 36,
+    "column": 101,
+    "word": "snakeyaml"
+  },
+  {
+    "file": "doc/licenses.md",
+    "line": 37,
+    "column": 96,
+    "word": "nimbusds"
+  },
+  {
+    "file": "doc/licenses.md",
+    "line": 46,
+    "column": 99,
+    "word": "bouncycastle"
+  },
+  {
+    "file": "doc/licenses.md",
+    "line": 46,
+    "column": 114,
+    "word": "bcpg"
+  },
+  {
+    "file": "doc/licenses.md",
+    "line": 47,
+    "column": 80,
+    "word": "bkromhout"
+  },
+  {
+    "file": "doc/licenses.md",
+    "line": 52,
+    "column": 89,
+    "word": "scalap"
+  },
+  {
+    "file": "doc/licenses.md",
+    "line": 55,
+    "column": 107,
+    "word": "enragedginger"
+  },
+  {
+    "file": "doc/licenses.md",
+    "line": 56,
+    "column": 107,
+    "word": "fasterxml"
+  },
+  {
+    "file": "doc/licenses.md",
+    "line": 58,
+    "column": 140,
+    "word": "databind"
+  },
+  {
+    "file": "doc/licenses.md",
+    "line": 60,
+    "column": 119,
+    "word": "findbugs"
+  },
+  {
+    "file": "doc/licenses.md",
+    "line": 63,
+    "column": 107,
+    "word": "zaxxer"
+  },
+  {
+    "file": "doc/licenses.md",
+    "line": 64,
+    "column": 106,
+    "word": "medsea"
+  },
+  {
+    "file": "doc/licenses.md",
+    "line": 64,
+    "column": 113,
+    "word": "mimeutil"
+  },
+  {
+    "file": "doc/licenses.md",
+    "line": 67,
+    "column": 107,
+    "word": "bytebuddy"
+  },
+  {
+    "file": "doc/licenses.md",
+    "line": 69,
+    "column": 107,
+    "word": "minidev"
+  },
+  {
+    "file": "doc/licenses.md",
+    "line": 73,
+    "column": 98,
+    "word": "scalactic"
+  },
+  {
+    "file": "doc/licenses.md",
+    "line": 82,
+    "column": 107,
+    "word": "combinators"
+  },
+  {
+    "file": "doc/licenses.md",
+    "line": 85,
+    "column": 76,
+    "word": "jgit"
+  },
+  {
+    "file": "doc/licenses.md",
+    "line": 88,
+    "column": 83,
+    "word": "hamcrest"
+  },
+  {
+    "file": "doc/licenses.md",
+    "line": 89,
+    "column": 67,
+    "word": "jcraft"
+  },
+  {
+    "file": "doc/licenses.md",
+    "line": 89,
+    "column": 76,
+    "word": "jsch"
+  },
+  {
+    "file": "doc/licenses.md",
+    "line": 90,
+    "column": 77,
+    "word": "jzlib"
+  },
+  {
+    "file": "doc/licenses.md",
+    "line": 92,
+    "column": 70,
+    "word": "reactivestreams"
+  },
+  {
+    "file": "doc/licenses.md",
+    "line": 94,
+    "column": 92,
+    "word": "scijava"
+  },
+  {
+    "file": "doc/licenses.md",
+    "line": 97,
+    "column": 86,
+    "word": "jaxb"
+  },
+  {
+    "file": "doc/licenses.md",
+    "line": 102,
+    "column": 106,
+    "word": "mchange"
+  },
+  {
+    "file": "doc/licenses.md",
+    "line": 105,
+    "column": 55,
+    "word": "rnorth"
+  },
+  {
+    "file": "doc/licenses.md",
+    "line": 114,
+    "column": 90,
+    "word": "zafarkhaja"
+  },
+  {
+    "file": "doc/licenses.md",
+    "line": 115,
+    "column": 58,
+    "word": "jsoup"
+  },
+  {
+    "file": "doc/licenses.md",
+    "line": 117,
+    "column": 74,
+    "word": "dimafeng"
+  },
+  {
+    "file": "doc/licenses.md",
+    "line": 118,
+    "column": 90,
+    "word": "coobird"
+  },
+  {
+    "file": "doc/licenses.md",
+    "line": 120,
+    "column": 108,
+    "word": "juniversalchardet"
+  },
+  {
+    "file": "doc/licenses.md",
+    "line": 121,
+    "column": 31,
+    "word": "Licence"
+  },
+  {
+    "file": "doc/licenses.md",
+    "line": 121,
+    "column": 103,
+    "word": "bcpkix"
+  },
+  {
+    "file": "doc/licenses.md",
+    "line": 122,
+    "column": 103,
+    "word": "bcprov"
+  },
+  {
+    "file": "doc/licenses.md",
+    "line": 125,
+    "column": 55,
+    "word": "thoughtworks"
+  },
+  {
+    "file": "doc/licenses.md",
+    "line": 125,
+    "column": 68,
+    "word": "paranamer"
+  },
+  {
+    "file": "doc/licenses.md",
+    "line": 128,
+    "column": 54,
+    "word": "brouillard"
+  },
+  {
+    "file": "doc/release.md",
+    "line": 47,
+    "column": 27,
+    "word": "Sonatype's"
+  },
+  {
+    "file": "doc/release.md",
+    "line": 50,
+    "column": 7,
+    "word": "sona"
+  },
+  {
+    "file": "project/plugins.sbt",
+    "line": 9,
+    "column": 47,
+    "word": "scoverage"
+  },
+  {
+    "file": "src/main/java/JettyLauncher.java",
+    "line": 162,
+    "column": 36,
+    "word": "KEYSTOREPATH"
+  },
+  {
+    "file": "src/main/java/JettyLauncher.java",
+    "line": 166,
+    "column": 36,
+    "word": "KEYSTOREPASSWORD"
+  },
+  {
+    "file": "src/main/java/JettyLauncher.java",
+    "line": 170,
+    "column": 36,
+    "word": "KEYMANAGERPASSWORD"
+  },
+  {
+    "file": "src/main/java/JettyLauncher.java",
+    "line": 194,
+    "column": 18,
+    "word": "sess"
+  },
+  {
+    "file": "src/main/java/JettyLauncher.java",
+    "line": 200,
+    "column": 34,
+    "word": "fsds"
+  },
+  {
+    "file": "src/main/java/gitbucket/core/util/PatchUtil.java",
+    "line": 89,
+    "column": 17,
+    "word": "lhrt"
+  },
+  {
+    "file": "src/main/scala/gitbucket/core/api/ApiTag.scala",
+    "line": 13,
+    "column": 3,
+    "word": "zipball"
+  },
+  {
+    "file": "src/main/scala/gitbucket/core/api/CreateARelease.scala",
+    "line": 5,
+    "column": 10,
+    "word": "commitish"
+  },
+  {
+    "file": "src/main/scala/gitbucket/core/controller/AccountController.scala",
+    "line": 76,
+    "column": 58,
+    "word": "maxlength"
+  },
+  {
+    "file": "src/main/scala/gitbucket/core/controller/AccountController.scala",
+    "line": 196,
+    "column": 5,
+    "word": "ctype"
+  },
+  {
+    "file": "src/main/scala/gitbucket/core/controller/AccountController.scala",
+    "line": 313,
+    "column": 73,
+    "word": "noimage"
+  },
+  {
+    "file": "src/main/scala/gitbucket/core/controller/AccountController.scala",
+    "line": 699,
+    "column": 21,
+    "word": "editgroup"
+  },
+  {
+    "file": "src/main/scala/gitbucket/core/controller/AccountController.scala",
+    "line": 706,
+    "column": 21,
+    "word": "deletegroup"
+  },
+  {
+    "file": "src/main/scala/gitbucket/core/controller/ControllerBase.scala",
+    "line": 158,
+    "column": 68,
+    "word": "mobilephone"
+  },
+  {
+    "file": "src/main/scala/gitbucket/core/controller/ControllerBase.scala",
+    "line": 241,
+    "column": 51,
+    "word": "nosniff"
+  },
+  {
+    "file": "src/main/scala/gitbucket/core/controller/ControllerBase.scala",
+    "line": 315,
+    "column": 51,
+    "word": "Charsets"
+  },
+  {
+    "file": "src/main/scala/gitbucket/core/controller/IndexController.scala",
+    "line": 95,
+    "column": 13,
+    "word": "renderable"
+  },
+  {
+    "file": "src/main/scala/gitbucket/core/controller/IssuesController.scala",
+    "line": 385,
+    "column": 40,
+    "word": "customfield"
+  },
+  {
+    "file": "src/main/scala/gitbucket/core/controller/IssuesController.scala",
+    "line": 414,
+    "column": 36,
+    "word": "batchedit"
+  },
+  {
+    "file": "src/main/scala/gitbucket/core/controller/IssuesController.scala",
+    "line": 504,
+    "column": 66,
+    "word": "octicon"
+  },
+  {
+    "file": "src/main/scala/gitbucket/core/controller/PullRequestsController.scala",
+    "line": 206,
+    "column": 41,
+    "word": "mergeguide"
+  },
+  {
+    "file": "src/main/scala/gitbucket/core/controller/PullRequestsController.scala",
+    "line": 556,
+    "column": 46,
+    "word": "mergecheck"
+  },
+  {
+    "file": "src/main/scala/gitbucket/core/controller/RepositorySettingsController.scala",
+    "line": 179,
+    "column": 9,
+    "word": "protecteions"
+  },
+  {
+    "file": "src/main/scala/gitbucket/core/controller/RepositorySettingsController.scala",
+    "line": 472,
+    "column": 37,
+    "word": "deploykey"
+  },
+  {
+    "file": "src/main/scala/gitbucket/core/controller/RepositoryViewerController.scala",
+    "line": 746,
+    "column": 16,
+    "word": "commited"
+  },
+  {
+    "file": "src/main/scala/gitbucket/core/controller/SystemSettingsController.scala",
+    "line": 77,
+    "column": 10,
+    "word": "starttls"
+  },
+  {
+    "file": "src/main/scala/gitbucket/core/controller/SystemSettingsController.scala",
+    "line": 77,
+    "column": 42,
+    "word": "STARTTLS"
+  },
+  {
+    "file": "src/main/scala/gitbucket/core/controller/SystemSettingsController.scala",
+    "line": 251,
+    "column": 15,
+    "word": "dbviewer"
+  },
+  {
+    "file": "src/main/scala/gitbucket/core/controller/SystemSettingsController.scala",
+    "line": 396,
+    "column": 22,
+    "word": "newuser"
+  },
+  {
+    "file": "src/main/scala/gitbucket/core/controller/SystemSettingsController.scala",
+    "line": 415,
+    "column": 32,
+    "word": "edituser"
+  },
+  {
+    "file": "src/main/scala/gitbucket/core/controller/SystemSettingsController.scala",
+    "line": 463,
+    "column": 22,
+    "word": "newgroup"
+  },
+  {
+    "file": "src/main/scala/gitbucket/core/controller/WikiController.scala",
+    "line": 226,
+    "column": 22,
+    "word": "Gollum"
+  },
+  {
+    "file": "src/main/scala/gitbucket/core/controller/api/ApiGitReferenceControllerBase.scala",
+    "line": 40,
+    "column": 9,
+    "word": "revstr"
+  },
+  {
+    "file": "src/main/scala/gitbucket/core/controller/api/ApiRepositoryCommitControllerBase.scala",
+    "line": 49,
+    "column": 13,
+    "word": "revfilters"
+  },
+  {
+    "file": "src/main/scala/gitbucket/core/controller/api/ApiRepositoryContentsControllerBase.scala",
+    "line": 8,
+    "column": 39,
+    "word": "Renderable"
+  },
+  {
+    "file": "src/main/scala/gitbucket/core/model/AccountWebHook.scala",
+    "line": 7,
+    "column": 55,
+    "word": "whct"
+  },
+  {
+    "file": "src/main/scala/gitbucket/core/model/AccountWebHook.scala",
+    "line": 14,
+    "column": 45,
+    "word": "CTYPE"
+  },
+  {
+    "file": "src/main/scala/gitbucket/core/model/WebHook.scala",
+    "line": 34,
+    "column": 37,
+    "word": "gollum"
+  },
+  {
+    "file": "src/main/scala/gitbucket/core/service/AccountService.scala",
+    "line": 253,
+    "column": 35,
+    "word": "devnull"
+  },
+  {
+    "file": "src/main/scala/gitbucket/core/service/IssuesService.scala",
+    "line": 680,
+    "column": 31,
+    "word": "unassignment"
+  },
+  {
+    "file": "src/main/scala/gitbucket/core/service/OpenIDConnectService.scala",
+    "line": 217,
+    "column": 6,
+    "word": "HMAC"
+  },
+  {
+    "file": "src/main/scala/gitbucket/core/service/ProtectedBranchService.scala",
+    "line": 186,
+    "column": 15,
+    "word": "Successed"
+  },
+  {
+    "file": "src/main/scala/gitbucket/core/service/PullRequestService.scala",
+    "line": 406,
+    "column": 9,
+    "word": "patchs"
+  },
+  {
+    "file": "src/main/scala/gitbucket/core/service/RepositoryCreationService.scala",
+    "line": 118,
+    "column": 13,
+    "word": "gitdir"
+  },
+  {
+    "file": "src/main/scala/gitbucket/core/service/RepositoryCreationService.scala",
+    "line": 305,
+    "column": 8,
+    "word": "fccd"
+  },
+  {
+    "file": "src/main/scala/gitbucket/core/service/RepositoryCreationService.scala",
+    "line": 307,
+    "column": 76,
+    "word": "acacac"
+  },
+  {
+    "file": "src/main/scala/gitbucket/core/service/SystemSettingsService.scala",
+    "line": 50,
+    "column": 58,
+    "word": "Starttls"
+  },
+  {
+    "file": "src/main/scala/gitbucket/core/service/WebHookService.scala",
+    "line": 47,
+    "column": 23,
+    "word": "informations"
+  },
+  {
+    "file": "src/main/scala/gitbucket/core/service/WebHookService.scala",
+    "line": 289,
+    "column": 15,
+    "word": "itcp"
+  },
+  {
+    "file": "src/main/scala/gitbucket/core/ssh/PublicKeyAuthenticator.scala",
+    "line": 44,
+    "column": 13,
+    "word": "Publickey"
+  },
+  {
+    "file": "src/main/scala/gitbucket/core/util/DatabaseConfig.scala",
+    "line": 59,
+    "column": 12,
+    "word": "liqui"
+  },
+  {
+    "file": "src/main/scala/gitbucket/core/util/FileUtil.scala",
+    "line": 11,
+    "column": 20,
+    "word": "Tika"
+  },
+  {
+    "file": "src/main/scala/gitbucket/core/util/JDBCUtil.scala",
+    "line": 194,
+    "column": 46,
+    "word": "FKTABLE"
+  },
+  {
+    "file": "src/main/scala/gitbucket/core/util/JDBCUtil.scala",
+    "line": 215,
+    "column": 21,
+    "word": "tsort"
+  },
+  {
+    "file": "src/main/scala/gitbucket/core/util/JDBCUtil.scala",
+    "line": 223,
+    "column": 19,
+    "word": "Preds"
+  },
+  {
+    "file": "src/main/scala/gitbucket/core/util/JGitUtil.scala",
+    "line": 1010,
+    "column": 38,
+    "word": "receivepack"
+  },
+  {
+    "file": "src/main/scala/gitbucket/core/util/LDAPUtil.scala",
+    "line": 135,
+    "column": 46,
+    "word": "JSSE"
+  },
+  {
+    "file": "src/main/scala/gitbucket/core/util/LDAPUtil.scala",
+    "line": 143,
+    "column": 32,
+    "word": "LDAPJSSE"
+  },
+  {
+    "file": "src/main/scala/gitbucket/core/util/StringUtil.scala",
+    "line": 30,
+    "column": 62,
+    "word": "Hmac"
+  },
+  {
+    "file": "src/main/scala/gitbucket/core/util/TextAvatarUtil.scala",
+    "line": 16,
+    "column": 17,
+    "word": "Blightness"
+  },
+  {
+    "file": "src/main/scala/gitbucket/core/view/helpers.scala",
+    "line": 524,
+    "column": 36,
+    "word": "inlinediff"
+  },
+  {
+    "file": "src/main/scala/gitbucket/core/view/helpers.scala",
+    "line": 527,
+    "column": 41,
+    "word": "oldline"
+  },
+  {
+    "file": "src/main/twirl/gitbucket/core/account/creategroup.scala.html",
+    "line": 7,
+    "column": 38,
+    "word": "groupform"
+  },
+  {
+    "file": "src/main/twirl/gitbucket/core/account/edit.scala.html",
+    "line": 55,
+    "column": 45,
+    "word": "uploadavatar"
+  },
+  {
+    "file": "src/main/twirl/gitbucket/core/account/edit.scala.html",
+    "line": 75,
+    "column": 9,
+    "word": "pwval"
+  },
+  {
+    "file": "src/main/twirl/gitbucket/core/account/edithook.scala.html",
+    "line": 8,
+    "column": 35,
+    "word": "edithookform"
+  },
+  {
+    "file": "src/main/twirl/gitbucket/core/account/preferences.scala.html",
+    "line": 32,
+    "column": 29,
+    "word": "sulphurpool"
+  },
+  {
+    "file": "src/main/twirl/gitbucket/core/account/preferences.scala.html",
+    "line": 32,
+    "column": 57,
+    "word": "Sulphurpool"
+  },
+  {
+    "file": "src/main/twirl/gitbucket/core/account/preferences.scala.html",
+    "line": 36,
+    "column": 21,
+    "word": "hemisu"
+  },
+  {
+    "file": "src/main/twirl/gitbucket/core/account/preferences.scala.html",
+    "line": 36,
+    "column": 36,
+    "word": "Hemisu"
+  },
+  {
+    "file": "src/main/twirl/gitbucket/core/account/preferences.scala.html",
+    "line": 59,
+    "column": 24,
+    "word": "cout"
+  },
+  {
+    "file": "src/main/twirl/gitbucket/core/account/preferences.scala.html",
+    "line": 59,
+    "column": 50,
+    "word": "endl"
+  },
+  {
+    "file": "src/main/twirl/gitbucket/core/account/repositories.scala.html",
+    "line": 13,
+    "column": 39,
+    "word": "repositoryicon"
+  },
+  {
+    "file": "src/main/twirl/gitbucket/core/account/repositories.scala.html",
+    "line": 28,
+    "column": 78,
+    "word": "datetimeago"
+  },
+  {
+    "file": "src/main/twirl/gitbucket/core/admin/dbviewer.scala.html",
+    "line": 10,
+    "column": 22,
+    "word": "jstree"
+  },
+  {
+    "file": "src/main/twirl/gitbucket/core/admin/dbviewer.scala.html",
+    "line": 29,
+    "column": 55,
+    "word": "autorun"
+  },
+  {
+    "file": "src/main/twirl/gitbucket/core/admin/dbviewer.scala.html",
+    "line": 38,
+    "column": 40,
+    "word": "vakata"
+  },
+  {
+    "file": "src/main/twirl/gitbucket/core/admin/dbviewer.scala.html",
+    "line": 53,
+    "column": 30,
+    "word": "monokai"
+  },
+  {
+    "file": "src/main/twirl/gitbucket/core/dashboard/header.scala.html",
+    "line": 10,
+    "column": 37,
+    "word": "checkicon"
+  },
+  {
+    "file": "src/main/twirl/gitbucket/core/dashboard/issues.scala.html",
+    "line": 14,
+    "column": 38,
+    "word": "issuesnavi"
+  },
+  {
+    "file": "src/main/twirl/gitbucket/core/dashboard/issues.scala.html",
+    "line": 15,
+    "column": 38,
+    "word": "issueslist"
+  },
+  {
+    "file": "src/main/twirl/gitbucket/core/dashboard/issueslist.scala.html",
+    "line": 30,
+    "column": 41,
+    "word": "commitstatus"
+  },
+  {
+    "file": "src/main/twirl/gitbucket/core/helper/acenavbar.scala.html",
+    "line": 55,
+    "column": 34,
+    "word": "dreamweaver"
+  },
+  {
+    "file": "src/main/twirl/gitbucket/core/helper/acenavbar.scala.html",
+    "line": 55,
+    "column": 47,
+    "word": "Dreamweaver"
+  },
+  {
+    "file": "src/main/twirl/gitbucket/core/helper/acenavbar.scala.html",
+    "line": 61,
+    "column": 34,
+    "word": "iplastic"
+  },
+  {
+    "file": "src/main/twirl/gitbucket/core/helper/acenavbar.scala.html",
+    "line": 61,
+    "column": 44,
+    "word": "Iplastic"
+  },
+  {
+    "file": "src/main/twirl/gitbucket/core/helper/acenavbar.scala.html",
+    "line": 62,
+    "column": 34,
+    "word": "katzenmilch"
+  },
+  {
+    "file": "src/main/twirl/gitbucket/core/helper/acenavbar.scala.html",
+    "line": 62,
+    "column": 47,
+    "word": "Katzenmilch"
+  },
+  {
+    "file": "src/main/twirl/gitbucket/core/helper/acenavbar.scala.html",
+    "line": 64,
+    "column": 34,
+    "word": "kuroir"
+  },
+  {
+    "file": "src/main/twirl/gitbucket/core/helper/acenavbar.scala.html",
+    "line": 64,
+    "column": 42,
+    "word": "Kuroir"
+  },
+  {
+    "file": "src/main/twirl/gitbucket/core/helper/acenavbar.scala.html",
+    "line": 65,
+    "column": 34,
+    "word": "merbivore"
+  },
+  {
+    "file": "src/main/twirl/gitbucket/core/helper/acenavbar.scala.html",
+    "line": 65,
+    "column": 45,
+    "word": "Merbivore"
+  },
+  {
+    "file": "src/main/twirl/gitbucket/core/helper/acenavbar.scala.html",
+    "line": 67,
+    "column": 52,
+    "word": "Monokai"
+  },
+  {
+    "file": "src/main/twirl/gitbucket/core/helper/acenavbar.scala.html",
+    "line": 68,
+    "column": 34,
+    "word": "nord"
+  },
+  {
+    "file": "src/main/twirl/gitbucket/core/helper/acenavbar.scala.html",
+    "line": 68,
+    "column": 45,
+    "word": "Nord"
+  },
+  {
+    "file": "src/main/twirl/gitbucket/core/helper/attached.scala.html",
+    "line": 20,
+    "column": 21,
+    "word": "textcomplete"
+  },
+  {
+    "file": "src/main/twirl/gitbucket/core/helper/attached.scala.html",
+    "line": 95,
+    "column": 112,
+    "word": "uploadprogress"
+  },
+  {
+    "file": "src/main/twirl/gitbucket/core/helper/commitcomments.scala.html",
+    "line": 17,
+    "column": 35,
+    "word": "commitcomment"
+  },
+  {
+    "file": "src/main/twirl/gitbucket/core/helper/copy.scala.html",
+    "line": 21,
+    "column": 86,
+    "word": "tooptip"
+  },
+  {
+    "file": "src/main/twirl/gitbucket/core/helper/datepicker.scala.html",
+    "line": 9,
+    "column": 15,
+    "word": "datetimepicker"
+  },
+  {
+    "file": "src/main/twirl/gitbucket/core/helper/diff.scala.html",
+    "line": 155,
+    "column": 63,
+    "word": "jsdifflib"
+  },
+  {
+    "file": "src/main/twirl/gitbucket/core/helper/diff.scala.html",
+    "line": 155,
+    "column": 73,
+    "word": "difflib"
+  },
+  {
+    "file": "src/main/twirl/gitbucket/core/helper/diff.scala.html",
+    "line": 156,
+    "column": 49,
+    "word": "diffview"
+  },
+  {
+    "file": "src/main/twirl/gitbucket/core/helper/diff.scala.html",
+    "line": 373,
+    "column": 16,
+    "word": "diffstat"
+  },
+  {
+    "file": "src/main/twirl/gitbucket/core/helper/preview.scala.html",
+    "line": 63,
+    "column": 41,
+    "word": "textareajs"
+  },
+  {
+    "file": "src/main/twirl/gitbucket/core/helper/preview.scala.html",
+    "line": 75,
+    "column": 9,
+    "word": "markedown"
+  },
+  {
+    "file": "src/main/twirl/gitbucket/core/helper/preview.scala.html",
+    "line": 101,
+    "column": 8,
+    "word": "Headding"
+  },
+  {
+    "file": "src/main/twirl/gitbucket/core/index.scala.html",
+    "line": 40,
+    "column": 32,
+    "word": "signinform"
+  },
+  {
+    "file": "src/main/twirl/gitbucket/core/issues/commentform.scala.html",
+    "line": 2,
+    "column": 3,
+    "word": "reopenable"
+  },
+  {
+    "file": "src/main/twirl/gitbucket/core/issues/commentlist.scala.html",
+    "line": 317,
+    "column": 33,
+    "word": "commitcomments"
+  },
+  {
+    "file": "src/main/twirl/gitbucket/core/issues/create.scala.html",
+    "line": 35,
+    "column": 39,
+    "word": "issueinfo"
+  },
+  {
+    "file": "src/main/twirl/gitbucket/core/issues/issue.scala.html",
+    "line": 57,
+    "column": 37,
+    "word": "commentlist"
+  },
+  {
+    "file": "src/main/twirl/gitbucket/core/issues/issue.scala.html",
+    "line": 58,
+    "column": 37,
+    "word": "commentform"
+  },
+  {
+    "file": "src/main/twirl/gitbucket/core/issues/issueinfo.scala.html",
+    "line": 1,
+    "column": 27,
+    "word": "scalasig"
+  },
+  {
+    "file": "src/main/twirl/gitbucket/core/issues/issueinfo.scala.html",
+    "line": 37,
+    "column": 31,
+    "word": "labellist"
+  },
+  {
+    "file": "src/main/twirl/gitbucket/core/issues/labels/edit.scala.html",
+    "line": 13,
+    "column": 35,
+    "word": "colorpicker"
+  },
+  {
+    "file": "src/main/twirl/gitbucket/core/issues/list.scala.html",
+    "line": 44,
+    "column": 33,
+    "word": "listparts"
+  },
+  {
+    "file": "src/main/twirl/gitbucket/core/main.scala.html",
+    "line": 31,
+    "column": 43,
+    "word": "facebox"
+  },
+  {
+    "file": "src/main/twirl/gitbucket/core/main.scala.html",
+    "line": 59,
+    "column": 62,
+    "word": "adminlte"
+  },
+  {
+    "file": "src/main/twirl/gitbucket/core/menu.scala.html",
+    "line": 113,
+    "column": 54,
+    "word": "closelabel"
+  },
+  {
+    "file": "src/main/twirl/gitbucket/core/repo/blob.scala.html",
+    "line": 41,
+    "column": 35,
+    "word": "branchcontrol"
+  },
+  {
+    "file": "src/main/twirl/gitbucket/core/repo/blob.scala.html",
+    "line": 130,
+    "column": 30,
+    "word": "linenums"
+  },
+  {
+    "file": "src/main/twirl/gitbucket/core/repo/editor.scala.html",
+    "line": 31,
+    "column": 35,
+    "word": "acenavbar"
+  },
+  {
+    "file": "src/main/twirl/gitbucket/core/repo/editor.scala.html",
+    "line": 75,
+    "column": 52,
+    "word": "modelist"
+  },
+  {
+    "file": "src/main/twirl/gitbucket/core/settings/deploykey.scala.html",
+    "line": 6,
+    "column": 41,
+    "word": "deploykeys"
+  },
+  {
+    "file": "src/main/twirl/gitbucket/core/settings/issues.scala.html",
+    "line": 18,
+    "column": 41,
+    "word": "issuesfield"
+  },
+  {
+    "file": "src/test/scala/gitbucket/core/api/ApiIntegrationTest.scala",
+    "line": 302,
+    "column": 44,
+    "word": "testref"
+  },
+  {
+    "file": "src/test/scala/gitbucket/core/api/ApiSpecModels.scala",
+    "line": 34,
+    "column": 17,
+    "word": "octocat"
+  },
+  {
+    "file": "src/test/scala/gitbucket/core/api/ApiSpecModels.scala",
+    "line": 102,
+    "column": 21,
+    "word": "myboss"
+  },
+  {
+    "file": "src/test/scala/gitbucket/core/api/ApiSpecModels.scala",
+    "line": 466,
+    "column": 32,
+    "word": "Njpy"
+  },
+  {
+    "file": "src/test/scala/gitbucket/core/api/ApiSpecModels.scala",
+    "line": 781,
+    "column": 22,
+    "word": "VBRE"
+  },
+  {
+    "file": "src/test/scala/gitbucket/core/api/JsonFormatSpec.scala",
+    "line": 3,
+    "column": 37,
+    "word": "jvalue"
+  },
+  {
+    "file": "src/test/scala/gitbucket/core/model/CommitStateSpec.scala",
+    "line": 14,
+    "column": 49,
+    "word": "peinding"
+  },
+  {
+    "file": "src/test/scala/gitbucket/core/service/MergeServiceSpec.scala",
+    "line": 53,
+    "column": 57,
+    "word": "hoge"
+  },
+  {
+    "file": "src/test/scala/gitbucket/core/service/MergeServiceSpec.scala",
+    "line": 58,
+    "column": 13,
+    "word": "Confrict"
+  },
+  {
+    "file": "src/test/scala/gitbucket/core/service/ProtectedBranchServiceSpec.scala",
+    "line": 75,
+    "column": 80,
+    "word": "fuga"
+  },
+  {
+    "file": "src/test/scala/gitbucket/core/service/ServiceSpecBase.scala",
+    "line": 170,
+    "column": 49,
+    "word": "baes"
+  },
+  {
+    "file": "src/test/scala/gitbucket/core/util/JGitUtilSpec.scala",
+    "line": 345,
+    "column": 53,
+    "word": "finfo"
+  },
+  {
+    "file": "src/test/scala/gitbucket/core/util/ValidationsSpec.scala",
+    "line": 21,
+    "column": 40,
+    "word": "gghhii"
+  },
+  {
+    "file": "src/test/scala/gitbucket/core/view/HelpersSpec.scala",
+    "line": 45,
+    "column": 37,
+    "word": "metacharacters"
+  },
+  {
+    "file": "src/test/scala/gitbucket/core/view/HelpersSpec.scala",
+    "line": 57,
+    "column": 43,
+    "word": "metacharacter"
+  },
+  {
+    "file": "src/test/scala/gitbucket/core/view/HelpersSpec.scala",
+    "line": 64,
+    "column": 33,
+    "word": "mple"
+  },
+  {
+    "file": "src/test/scala/gitbucket/core/view/MarkdownSpec.scala",
+    "line": 20,
+    "column": 21,
+    "word": "Dónde"
+  },
+  {
+    "file": "src/test/scala/gitbucket/core/view/MarkdownSpec.scala",
+    "line": 20,
+    "column": 27,
+    "word": "estará"
+  },
+  {
+    "file": "src/test/scala/gitbucket/core/view/MarkdownSpec.scala",
+    "line": 22,
+    "column": 36,
+    "word": "estara"
+  }
+]

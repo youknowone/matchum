@@ -1,0 +1,5 @@
+---
+source: tests/cli_snapshots.rs
+expression: normalize(&stdout)
+---
+tests/fixtures/sample.txt:3:1 - Unknown word (misspeled) fix: (misspelled, misspells, misspell, misspelt, misspend)

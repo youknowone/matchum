@@ -1,13 +1,23 @@
+pub mod catalog;
 pub mod check;
+pub mod config_search;
+pub mod defaults;
 pub mod dictionaries;
 pub mod init;
 pub mod link;
 pub mod lint;
+pub mod patterns;
+pub mod resolve;
 pub mod suggestions;
 pub mod trace;
 
+use anyhow::{Context, Result};
 use clap::Subcommand;
-use std::path::PathBuf;
+use matchum_config::resolver;
+use matchum_config::settings::CSpellSettings;
+use matchum_dict::dictionary::Dictionary;
+use matchum_dict::loader;
+use std::path::{Path, PathBuf};
 
 #[derive(Subcommand)]
 pub enum CspellCommands {
@@ -96,8 +106,12 @@ pub enum CspellCommands {
         #[arg(short = 'r', long, value_name = "root folder")]
         root: Option<PathBuf>,
 
+        /// Display issues with relative paths
+        #[arg(long = "relative", conflicts_with = "no_relative")]
+        relative: bool,
+
         /// Display issues with absolute path instead of relative
-        #[arg(long = "no-relative")]
+        #[arg(long = "no-relative", conflicts_with = "relative")]
         no_relative: bool,
 
         /// Show the surrounding text around an issue
@@ -186,6 +200,14 @@ pub enum CspellCommands {
         /// Specify one or more reporters to use
         #[arg(long, value_name = "module|path")]
         reporter: Vec<String>,
+
+        /// Output a summary of issues found
+        #[arg(long = "issues-summary-report", hide = true)]
+        issues_summary_report: bool,
+
+        /// Output a performance summary report
+        #[arg(long = "show-perf-summary", hide = true)]
+        show_perf_summary: bool,
     },
 
     /// Spell check file(s) and display the result. The full file is displayed in color.
@@ -420,6 +442,16 @@ pub enum LinkCommands {
     },
 }
 
+fn normalize_lint_globs(
+    globs: Vec<String>,
+    _file_list: &[String],
+    _file: &[PathBuf],
+) -> Vec<String> {
+    // cspell leaves positional globs empty when the user does not pass any file sources.
+    // That allows lint.ts to fall back to config.files instead of scanning "." implicitly.
+    globs
+}
+
 pub fn dispatch(cmd: CspellCommands) -> anyhow::Result<()> {
     match cmd {
         CspellCommands::Lint {
@@ -444,6 +476,7 @@ pub fn dispatch(cmd: CspellCommands) -> anyhow::Result<()> {
             fail_fast,
             continue_on_error,
             root,
+            relative,
             no_relative,
             show_context,
             show_suggestions,
@@ -466,18 +499,15 @@ pub fn dispatch(cmd: CspellCommands) -> anyhow::Result<()> {
             allow_compound_words,
             no_allow_compound_words,
             reporter,
+            issues_summary_report: _,
+            show_perf_summary: _,
         } => {
             if !reporter.is_empty() {
                 eprintln!(
                     "Warning: custom reporters are not yet supported, using default reporter"
                 );
             }
-            // Default to "." only when no file sources are specified
-            let globs = if globs.is_empty() && file_list.is_empty() && file.is_empty() {
-                vec![".".into()]
-            } else {
-                globs
-            };
+            let globs = normalize_lint_globs(globs, &file_list, &file);
             lint::run(lint::LintOptions {
                 globs,
                 config,
@@ -493,14 +523,20 @@ pub fn dispatch(cmd: CspellCommands) -> anyhow::Result<()> {
                 unique,
                 words_only,
                 no_exit_code,
-                show_suggestions: show_suggestions && !no_show_suggestions,
+                show_suggestions: if show_suggestions {
+                    Some(true)
+                } else if no_show_suggestions {
+                    Some(false)
+                } else {
+                    None
+                },
                 root,
                 quiet,
                 silent,
                 no_issues,
                 no_progress,
                 no_summary,
-                no_relative,
+                no_relative: no_relative && !relative,
                 show_context,
                 fail_fast,
                 dot,
@@ -641,6 +677,82 @@ pub fn dispatch(cmd: CspellCommands) -> anyhow::Result<()> {
             no_default_configuration,
         }),
     }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::normalize_lint_globs;
+    use std::path::PathBuf;
+
+    #[test]
+    fn lint_preserves_empty_globs_without_file_sources() {
+        let globs = normalize_lint_globs(Vec::new(), &[], &[]);
+        assert!(
+            globs.is_empty(),
+            "cspell lint should keep empty positional globs so config.files can drive discovery"
+        );
+    }
+
+    #[test]
+    fn lint_preserves_explicit_globs() {
+        let globs = normalize_lint_globs(
+            vec!["src/**/*.ts".into()],
+            &[],
+            &[PathBuf::from("README.md")],
+        );
+        assert_eq!(globs, vec!["src/**/*.ts"]);
+    }
+}
+
+/// Load cspell settings from a config path or by searching from cwd.
+pub(crate) fn load_settings(
+    config_path: Option<&Path>,
+) -> Result<(CSpellSettings, Option<PathBuf>)> {
+    if let Some(path) = config_path {
+        let config_dir = path.parent().map(|p| p.to_path_buf());
+        let settings = resolver::load_config(path).context("failed to load config file")?;
+        Ok((settings, config_dir))
+    } else {
+        let cwd = std::env::current_dir()?;
+        match resolver::find_config(&cwd) {
+            Some(path) => {
+                let config_dir = path.parent().map(|p| p.to_path_buf());
+                let settings =
+                    resolver::load_config(&path).context("failed to load config file")?;
+                Ok((settings, config_dir))
+            }
+            None => Ok((CSpellSettings::default(), None)),
+        }
+    }
+}
+
+/// Build named dictionaries from config dictionary_definitions.
+pub(crate) fn build_named_dictionaries(
+    settings: &CSpellSettings,
+    config_dir: Option<&Path>,
+) -> Result<Vec<(String, Box<dyn Dictionary>)>> {
+    let mut dicts: Vec<(String, Box<dyn Dictionary>)> = Vec::new();
+    for def in &settings.dictionary_definitions {
+        if let Some(ref path_str) = def.path {
+            let path = Path::new(path_str);
+            let resolved = if path.is_absolute() {
+                path.to_path_buf()
+            } else if let Some(base) = config_dir {
+                base.join(path)
+            } else {
+                path.to_path_buf()
+            };
+            if resolved.exists() {
+                match loader::load_dictionary(&resolved) {
+                    Ok(dict) => dicts.push((def.name.clone(), Box::new(dict))),
+                    Err(e) => {
+                        eprintln!("Warning: failed to load dictionary {}: {}", path_str, e)
+                    }
+                }
+            }
+        }
+    }
+    Ok(dicts)
 }
 
 fn compound_flag(allow: bool, no_allow: bool) -> Option<bool> {

@@ -1,0 +1,1856 @@
+[
+  {
+    "file": "CONTRIBUTING.md",
+    "line": 24,
+    "column": 6,
+    "word": "tocstop"
+  },
+  {
+    "file": "CONTRIBUTING.md",
+    "line": 79,
+    "column": 3,
+    "word": "Poli"
+  },
+  {
+    "file": "SECURITY.md",
+    "line": 13,
+    "column": 72,
+    "word": "MSRC"
+  },
+  {
+    "file": "SECURITY.md",
+    "line": 17,
+    "column": 205,
+    "word": "msrc"
+  },
+  {
+    "file": "documentation/sdkautomation/README.md",
+    "line": 51,
+    "column": 87,
+    "word": "commitish"
+  },
+  {
+    "file": "profiles/ResourceSchemas.md",
+    "line": 47,
+    "column": 92,
+    "word": "apimdeployment"
+  },
+  {
+    "file": "profiles/ResourceSchemas.md",
+    "line": 49,
+    "column": 92,
+    "word": "apimapis"
+  },
+  {
+    "file": "profiles/ResourceSchemas.md",
+    "line": 50,
+    "column": 92,
+    "word": "apimauthorizationservers"
+  },
+  {
+    "file": "profiles/ResourceSchemas.md",
+    "line": 51,
+    "column": 92,
+    "word": "apimbackends"
+  },
+  {
+    "file": "profiles/ResourceSchemas.md",
+    "line": 52,
+    "column": 92,
+    "word": "apimcertificates"
+  },
+  {
+    "file": "profiles/ResourceSchemas.md",
+    "line": 53,
+    "column": 92,
+    "word": "apimdeployment"
+  },
+  {
+    "file": "profiles/ResourceSchemas.md",
+    "line": 54,
+    "column": 92,
+    "word": "apimgroups"
+  },
+  {
+    "file": "profiles/ResourceSchemas.md",
+    "line": 56,
+    "column": 92,
+    "word": "apimloggers"
+  },
+  {
+    "file": "profiles/ResourceSchemas.md",
+    "line": 57,
+    "column": 92,
+    "word": "apimnetworkstatus"
+  },
+  {
+    "file": "profiles/ResourceSchemas.md",
+    "line": 59,
+    "column": 92,
+    "word": "apimproducts"
+  },
+  {
+    "file": "profiles/ResourceSchemas.md",
+    "line": 60,
+    "column": 92,
+    "word": "apimproperties"
+  },
+  {
+    "file": "profiles/ResourceSchemas.md",
+    "line": 61,
+    "column": 92,
+    "word": "apimquotas"
+  },
+  {
+    "file": "profiles/ResourceSchemas.md",
+    "line": 62,
+    "column": 92,
+    "word": "apimreports"
+  },
+  {
+    "file": "profiles/ResourceSchemas.md",
+    "line": 63,
+    "column": 92,
+    "word": "apimsubscriptions"
+  },
+  {
+    "file": "profiles/ResourceSchemas.md",
+    "line": 64,
+    "column": 92,
+    "word": "apimtenant"
+  },
+  {
+    "file": "profiles/ResourceSchemas.md",
+    "line": 112,
+    "column": 26,
+    "word": "devtestlabs"
+  },
+  {
+    "file": "profiles/ResourceSchemas.md",
+    "line": 113,
+    "column": 26,
+    "word": "devtestlabs"
+  },
+  {
+    "file": "profiles/ResourceSchemas.md",
+    "line": 118,
+    "column": 26,
+    "word": "hdinsight"
+  },
+  {
+    "file": "profiles/ResourceSchemas.md",
+    "line": 119,
+    "column": 26,
+    "word": "hdinsight"
+  },
+  {
+    "file": "profiles/ResourceSchemas.md",
+    "line": 120,
+    "column": 26,
+    "word": "hdinsight"
+  },
+  {
+    "file": "profiles/ResourceSchemas.md",
+    "line": 121,
+    "column": 26,
+    "word": "hdinsight"
+  },
+  {
+    "file": "profiles/ResourceSchemas.md",
+    "line": 122,
+    "column": 26,
+    "word": "hdinsight"
+  },
+  {
+    "file": "profiles/ResourceSchemas.md",
+    "line": 136,
+    "column": 26,
+    "word": "intune"
+  },
+  {
+    "file": "profiles/ResourceSchemas.md",
+    "line": 136,
+    "column": 60,
+    "word": "Intune"
+  },
+  {
+    "file": "profiles/ResourceSchemas.md",
+    "line": 136,
+    "column": 86,
+    "word": "intune"
+  },
+  {
+    "file": "profiles/ResourceSchemas.md",
+    "line": 137,
+    "column": 26,
+    "word": "intune"
+  },
+  {
+    "file": "profiles/ResourceSchemas.md",
+    "line": 137,
+    "column": 60,
+    "word": "Intune"
+  },
+  {
+    "file": "profiles/ResourceSchemas.md",
+    "line": 137,
+    "column": 93,
+    "word": "intune"
+  },
+  {
+    "file": "profiles/ResourceSchemas.md",
+    "line": 213,
+    "column": 26,
+    "word": "powerbiembedded"
+  },
+  {
+    "file": "profiles/ResourceSchemas.md",
+    "line": 213,
+    "column": 88,
+    "word": "powerbiembedded"
+  },
+  {
+    "file": "profiles/definitions/hybrid-2018-03-01.md",
+    "line": 107,
+    "column": 13,
+    "word": "ishostnameavailable"
+  },
+  {
+    "file": "profiles/definitions/hybrid-2018-03-01.md",
+    "line": 108,
+    "column": 13,
+    "word": "isusernameavailable"
+  },
+  {
+    "file": "profiles/definitions/hybrid-2019-03-01.md",
+    "line": 150,
+    "column": 13,
+    "word": "ishostnameavailable"
+  },
+  {
+    "file": "profiles/definitions/hybrid-2019-03-01.md",
+    "line": 151,
+    "column": 13,
+    "word": "isusernameavailable"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-01.md",
+    "line": 112,
+    "column": 15,
+    "word": "svpn"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-01.md",
+    "line": 113,
+    "column": 15,
+    "word": "svpn"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-01.md",
+    "line": 144,
+    "column": 20,
+    "word": "Wans"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-01.md",
+    "line": 145,
+    "column": 20,
+    "word": "Wans"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-01.md",
+    "line": 146,
+    "column": 20,
+    "word": "Wans"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-01.md",
+    "line": 147,
+    "column": 20,
+    "word": "Wans"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-01.md",
+    "line": 201,
+    "column": 17,
+    "word": "Asns"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-01.md",
+    "line": 410,
+    "column": 13,
+    "word": "pricings"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-01.md",
+    "line": 447,
+    "column": 17,
+    "word": "devspaces"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-01.md",
+    "line": 695,
+    "column": 19,
+    "word": "iscloneable"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-01.md",
+    "line": 770,
+    "column": 25,
+    "word": "iscloneable"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-01.md",
+    "line": 801,
+    "column": 25,
+    "word": "snapshotsdr"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-01.md",
+    "line": 819,
+    "column": 19,
+    "word": "snapshotsdr"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-01.md",
+    "line": 850,
+    "column": 13,
+    "word": "csrs"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-01.md",
+    "line": 852,
+    "column": 13,
+    "word": "ishostingenvironmentnameavailable"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-01.md",
+    "line": 907,
+    "column": 17,
+    "word": "signalrservice"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-01.md",
+    "line": 947,
+    "column": 37,
+    "word": "reimage"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-01.md",
+    "line": 948,
+    "column": 37,
+    "word": "reimageall"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-01.md",
+    "line": 974,
+    "column": 29,
+    "word": "reimage"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-01.md",
+    "line": 1011,
+    "column": 17,
+    "word": "devtestlab"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-01.md",
+    "line": 1027,
+    "column": 22,
+    "word": "Vhds"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-01.md",
+    "line": 1069,
+    "column": 23,
+    "word": "retarget"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-01.md",
+    "line": 1141,
+    "column": 17,
+    "word": "iotcentral"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-01.md",
+    "line": 1231,
+    "column": 39,
+    "word": "migratetoaad"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-01.md",
+    "line": 1296,
+    "column": 20,
+    "word": "replicationv"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-01.md",
+    "line": 1440,
+    "column": 13,
+    "word": "remediations"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-01.md",
+    "line": 1441,
+    "column": 13,
+    "word": "remediations"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-01.md",
+    "line": 1442,
+    "column": 13,
+    "word": "remediations"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-01.md",
+    "line": 1555,
+    "column": 17,
+    "word": "dbformariadb"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-01.md",
+    "line": 1663,
+    "column": 17,
+    "word": "hdinsight"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-01.md",
+    "line": 2015,
+    "column": 24,
+    "word": "ipfilterrules"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-01.md",
+    "line": 2050,
+    "column": 24,
+    "word": "ipfilterrules"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-01.md",
+    "line": 2081,
+    "column": 17,
+    "word": "dbformysql"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-01.md",
+    "line": 2096,
+    "column": 17,
+    "word": "dbforpostgresql"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-01.md",
+    "line": 2111,
+    "column": 17,
+    "word": "hanaonazure"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-01.md",
+    "line": 2183,
+    "column": 17,
+    "word": "iotspaces"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-01.md",
+    "line": 2188,
+    "column": 17,
+    "word": "powerbidedicated"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-01.md",
+    "line": 2311,
+    "column": 30,
+    "word": "iscsiservers"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-01.md",
+    "line": 2312,
+    "column": 30,
+    "word": "iscsiservers"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-01.md",
+    "line": 2313,
+    "column": 30,
+    "word": "iscsiservers"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-01.md",
+    "line": 2316,
+    "column": 30,
+    "word": "iscsiservers"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-01.md",
+    "line": 2322,
+    "column": 22,
+    "word": "iscsiservers"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-01.md",
+    "line": 2491,
+    "column": 17,
+    "word": "powerbi"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-01.md",
+    "line": 2563,
+    "column": 17,
+    "word": "intune"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-01.md",
+    "line": 2588,
+    "column": 17,
+    "word": "adhybridhealthservice"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-01.md",
+    "line": 2591,
+    "column": 26,
+    "word": "addomainservicemembers"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-01.md",
+    "line": 2660,
+    "column": 19,
+    "word": "backendid"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-01.md",
+    "line": 2672,
+    "column": 18,
+    "word": "loggerid"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-01.md",
+    "line": 2674,
+    "column": 33,
+    "word": "opid"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-01.md",
+    "line": 2741,
+    "column": 8,
+    "word": "nodeagentskus"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-01.md",
+    "line": 2783,
+    "column": 39,
+    "word": "reimage"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-01.md",
+    "line": 2790,
+    "column": 24,
+    "word": "upgradeos"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-01.md",
+    "line": 2869,
+    "column": 8,
+    "word": "findsimilars"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-01.md",
+    "line": 2919,
+    "column": 43,
+    "word": "prebuilts"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-01.md",
+    "line": 2920,
+    "column": 43,
+    "word": "listprebuilts"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-01.md",
+    "line": 2928,
+    "column": 43,
+    "word": "prebuilts"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-01.md",
+    "line": 2967,
+    "column": 43,
+    "word": "prebuilts"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-01.md",
+    "line": 2978,
+    "column": 43,
+    "word": "prebuilts"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-01.md",
+    "line": 3031,
+    "column": 17,
+    "word": "usql"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-01.md",
+    "line": 3032,
+    "column": 17,
+    "word": "usql"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-01.md",
+    "line": 3033,
+    "column": 17,
+    "word": "usql"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-01.md",
+    "line": 3034,
+    "column": 17,
+    "word": "usql"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-01.md",
+    "line": 3035,
+    "column": 17,
+    "word": "usql"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-01.md",
+    "line": 3128,
+    "column": 29,
+    "word": "LISTAFTERID"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-01.md",
+    "line": 3133,
+    "column": 21,
+    "word": "sqoop"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-01.md",
+    "line": 3270,
+    "column": 10,
+    "word": "Unprovision"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-01.md",
+    "line": 3289,
+    "column": 50,
+    "word": "Unprovision"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-24.md",
+    "line": 209,
+    "column": 15,
+    "word": "svpn"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-24.md",
+    "line": 210,
+    "column": 15,
+    "word": "svpn"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-24.md",
+    "line": 241,
+    "column": 20,
+    "word": "Wans"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-24.md",
+    "line": 242,
+    "column": 20,
+    "word": "Wans"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-24.md",
+    "line": 243,
+    "column": 20,
+    "word": "Wans"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-24.md",
+    "line": 244,
+    "column": 20,
+    "word": "Wans"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-24.md",
+    "line": 332,
+    "column": 37,
+    "word": "reimage"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-24.md",
+    "line": 333,
+    "column": 37,
+    "word": "reimageall"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-24.md",
+    "line": 359,
+    "column": 29,
+    "word": "reimage"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-24.md",
+    "line": 407,
+    "column": 17,
+    "word": "Asns"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-24.md",
+    "line": 679,
+    "column": 17,
+    "word": "devspaces"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-24.md",
+    "line": 707,
+    "column": 13,
+    "word": "pricings"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-24.md",
+    "line": 866,
+    "column": 19,
+    "word": "iscloneable"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-24.md",
+    "line": 941,
+    "column": 25,
+    "word": "iscloneable"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-24.md",
+    "line": 972,
+    "column": 25,
+    "word": "snapshotsdr"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-24.md",
+    "line": 990,
+    "column": 19,
+    "word": "snapshotsdr"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-24.md",
+    "line": 1015,
+    "column": 13,
+    "word": "csrs"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-24.md",
+    "line": 1017,
+    "column": 13,
+    "word": "ishostingenvironmentnameavailable"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-24.md",
+    "line": 1122,
+    "column": 17,
+    "word": "signalrservice"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-24.md",
+    "line": 1144,
+    "column": 17,
+    "word": "devtestlab"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-24.md",
+    "line": 1160,
+    "column": 22,
+    "word": "Vhds"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-24.md",
+    "line": 1202,
+    "column": 23,
+    "word": "retarget"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-24.md",
+    "line": 1296,
+    "column": 17,
+    "word": "iotcentral"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-24.md",
+    "line": 1365,
+    "column": 39,
+    "word": "migratetoaad"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-24.md",
+    "line": 1430,
+    "column": 20,
+    "word": "replicationv"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-24.md",
+    "line": 1575,
+    "column": 13,
+    "word": "remediations"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-24.md",
+    "line": 1576,
+    "column": 13,
+    "word": "remediations"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-24.md",
+    "line": 1577,
+    "column": 13,
+    "word": "remediations"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-24.md",
+    "line": 1685,
+    "column": 17,
+    "word": "dbformariadb"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-24.md",
+    "line": 1863,
+    "column": 17,
+    "word": "hdinsight"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-24.md",
+    "line": 2055,
+    "column": 24,
+    "word": "ipfilterrules"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-24.md",
+    "line": 2081,
+    "column": 24,
+    "word": "ipfilterrules"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-24.md",
+    "line": 2121,
+    "column": 17,
+    "word": "dbformysql"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-24.md",
+    "line": 2136,
+    "column": 17,
+    "word": "dbforpostgresql"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-24.md",
+    "line": 2151,
+    "column": 17,
+    "word": "hanaonazure"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-24.md",
+    "line": 2179,
+    "column": 17,
+    "word": "iotspaces"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-24.md",
+    "line": 2184,
+    "column": 17,
+    "word": "powerbidedicated"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-24.md",
+    "line": 2338,
+    "column": 30,
+    "word": "iscsiservers"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-24.md",
+    "line": 2339,
+    "column": 30,
+    "word": "iscsiservers"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-24.md",
+    "line": 2340,
+    "column": 30,
+    "word": "iscsiservers"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-24.md",
+    "line": 2343,
+    "column": 30,
+    "word": "iscsiservers"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-24.md",
+    "line": 2349,
+    "column": 22,
+    "word": "iscsiservers"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-24.md",
+    "line": 2538,
+    "column": 17,
+    "word": "powerbi"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-24.md",
+    "line": 2616,
+    "column": 17,
+    "word": "intune"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-24.md",
+    "line": 2641,
+    "column": 17,
+    "word": "adhybridhealthservice"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-24.md",
+    "line": 2644,
+    "column": 26,
+    "word": "addomainservicemembers"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-24.md",
+    "line": 2713,
+    "column": 19,
+    "word": "backendid"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-24.md",
+    "line": 2725,
+    "column": 18,
+    "word": "loggerid"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-24.md",
+    "line": 2727,
+    "column": 33,
+    "word": "opid"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-24.md",
+    "line": 2794,
+    "column": 8,
+    "word": "nodeagentskus"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-24.md",
+    "line": 2836,
+    "column": 39,
+    "word": "reimage"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-24.md",
+    "line": 2843,
+    "column": 24,
+    "word": "upgradeos"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-24.md",
+    "line": 2932,
+    "column": 8,
+    "word": "findsimilars"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-24.md",
+    "line": 2982,
+    "column": 43,
+    "word": "prebuilts"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-24.md",
+    "line": 2983,
+    "column": 43,
+    "word": "listprebuilts"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-24.md",
+    "line": 2991,
+    "column": 43,
+    "word": "prebuilts"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-24.md",
+    "line": 3030,
+    "column": 43,
+    "word": "prebuilts"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-24.md",
+    "line": 3041,
+    "column": 43,
+    "word": "prebuilts"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-24.md",
+    "line": 3094,
+    "column": 17,
+    "word": "usql"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-24.md",
+    "line": 3095,
+    "column": 17,
+    "word": "usql"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-24.md",
+    "line": 3096,
+    "column": 17,
+    "word": "usql"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-24.md",
+    "line": 3097,
+    "column": 17,
+    "word": "usql"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-24.md",
+    "line": 3098,
+    "column": 17,
+    "word": "usql"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-24.md",
+    "line": 3191,
+    "column": 29,
+    "word": "LISTAFTERID"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-24.md",
+    "line": 3196,
+    "column": 21,
+    "word": "sqoop"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-24.md",
+    "line": 3333,
+    "column": 10,
+    "word": "Unprovision"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-24.md",
+    "line": 3352,
+    "column": 50,
+    "word": "Unprovision"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-29.md",
+    "line": 166,
+    "column": 15,
+    "word": "svpn"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-29.md",
+    "line": 167,
+    "column": 15,
+    "word": "svpn"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-29.md",
+    "line": 198,
+    "column": 20,
+    "word": "Wans"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-29.md",
+    "line": 199,
+    "column": 20,
+    "word": "Wans"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-29.md",
+    "line": 200,
+    "column": 20,
+    "word": "Wans"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-29.md",
+    "line": 201,
+    "column": 20,
+    "word": "Wans"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-29.md",
+    "line": 278,
+    "column": 17,
+    "word": "devspaces"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-29.md",
+    "line": 347,
+    "column": 37,
+    "word": "reimage"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-29.md",
+    "line": 348,
+    "column": 37,
+    "word": "reimageall"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-29.md",
+    "line": 374,
+    "column": 29,
+    "word": "reimage"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-29.md",
+    "line": 449,
+    "column": 17,
+    "word": "Asns"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-29.md",
+    "line": 751,
+    "column": 13,
+    "word": "pricings"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-29.md",
+    "line": 954,
+    "column": 19,
+    "word": "iscloneable"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-29.md",
+    "line": 1029,
+    "column": 25,
+    "word": "iscloneable"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-29.md",
+    "line": 1060,
+    "column": 25,
+    "word": "snapshotsdr"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-29.md",
+    "line": 1078,
+    "column": 19,
+    "word": "snapshotsdr"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-29.md",
+    "line": 1103,
+    "column": 13,
+    "word": "csrs"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-29.md",
+    "line": 1105,
+    "column": 13,
+    "word": "ishostingenvironmentnameavailable"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-29.md",
+    "line": 1179,
+    "column": 17,
+    "word": "signalrservice"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-29.md",
+    "line": 1188,
+    "column": 17,
+    "word": "devtestlab"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-29.md",
+    "line": 1204,
+    "column": 22,
+    "word": "Vhds"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-29.md",
+    "line": 1246,
+    "column": 23,
+    "word": "retarget"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-29.md",
+    "line": 1303,
+    "column": 17,
+    "word": "iotcentral"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-29.md",
+    "line": 1372,
+    "column": 39,
+    "word": "migratetoaad"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-29.md",
+    "line": 1437,
+    "column": 20,
+    "word": "replicationv"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-29.md",
+    "line": 1582,
+    "column": 13,
+    "word": "remediations"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-29.md",
+    "line": 1583,
+    "column": 13,
+    "word": "remediations"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-29.md",
+    "line": 1584,
+    "column": 13,
+    "word": "remediations"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-29.md",
+    "line": 1693,
+    "column": 17,
+    "word": "dbformariadb"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-29.md",
+    "line": 1868,
+    "column": 17,
+    "word": "hdinsight"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-29.md",
+    "line": 2074,
+    "column": 24,
+    "word": "ipfilterrules"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-29.md",
+    "line": 2100,
+    "column": 24,
+    "word": "ipfilterrules"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-29.md",
+    "line": 2131,
+    "column": 17,
+    "word": "dbforpostgresql"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-29.md",
+    "line": 2146,
+    "column": 17,
+    "word": "dbformysql"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-29.md",
+    "line": 2160,
+    "column": 17,
+    "word": "hanaonazure"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-29.md",
+    "line": 2188,
+    "column": 17,
+    "word": "iotspaces"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-29.md",
+    "line": 2193,
+    "column": 17,
+    "word": "powerbidedicated"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-29.md",
+    "line": 2347,
+    "column": 30,
+    "word": "iscsiservers"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-29.md",
+    "line": 2348,
+    "column": 30,
+    "word": "iscsiservers"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-29.md",
+    "line": 2349,
+    "column": 30,
+    "word": "iscsiservers"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-29.md",
+    "line": 2352,
+    "column": 30,
+    "word": "iscsiservers"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-29.md",
+    "line": 2358,
+    "column": 22,
+    "word": "iscsiservers"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-29.md",
+    "line": 2547,
+    "column": 17,
+    "word": "powerbi"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-29.md",
+    "line": 2626,
+    "column": 17,
+    "word": "intune"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-29.md",
+    "line": 2651,
+    "column": 17,
+    "word": "adhybridhealthservice"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-29.md",
+    "line": 2654,
+    "column": 26,
+    "word": "addomainservicemembers"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-29.md",
+    "line": 2723,
+    "column": 19,
+    "word": "backendid"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-29.md",
+    "line": 2735,
+    "column": 18,
+    "word": "loggerid"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-29.md",
+    "line": 2737,
+    "column": 33,
+    "word": "opid"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-29.md",
+    "line": 2804,
+    "column": 8,
+    "word": "nodeagentskus"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-29.md",
+    "line": 2846,
+    "column": 39,
+    "word": "reimage"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-29.md",
+    "line": 2853,
+    "column": 24,
+    "word": "upgradeos"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-29.md",
+    "line": 2942,
+    "column": 8,
+    "word": "findsimilars"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-29.md",
+    "line": 2992,
+    "column": 43,
+    "word": "prebuilts"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-29.md",
+    "line": 2993,
+    "column": 43,
+    "word": "listprebuilts"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-29.md",
+    "line": 3001,
+    "column": 43,
+    "word": "prebuilts"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-29.md",
+    "line": 3040,
+    "column": 43,
+    "word": "prebuilts"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-29.md",
+    "line": 3051,
+    "column": 43,
+    "word": "prebuilts"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-29.md",
+    "line": 3117,
+    "column": 17,
+    "word": "usql"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-29.md",
+    "line": 3118,
+    "column": 17,
+    "word": "usql"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-29.md",
+    "line": 3119,
+    "column": 17,
+    "word": "usql"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-29.md",
+    "line": 3120,
+    "column": 17,
+    "word": "usql"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-29.md",
+    "line": 3121,
+    "column": 17,
+    "word": "usql"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-29.md",
+    "line": 3214,
+    "column": 29,
+    "word": "LISTAFTERID"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-29.md",
+    "line": 3219,
+    "column": 21,
+    "word": "sqoop"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-29.md",
+    "line": 3356,
+    "column": 10,
+    "word": "Unprovision"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-29.md",
+    "line": 3375,
+    "column": 50,
+    "word": "Unprovision"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-30.md",
+    "line": 194,
+    "column": 37,
+    "word": "reimage"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-30.md",
+    "line": 195,
+    "column": 37,
+    "word": "reimageall"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-30.md",
+    "line": 221,
+    "column": 29,
+    "word": "reimage"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-30.md",
+    "line": 344,
+    "column": 15,
+    "word": "svpn"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-30.md",
+    "line": 345,
+    "column": 15,
+    "word": "svpn"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-30.md",
+    "line": 376,
+    "column": 20,
+    "word": "Wans"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-30.md",
+    "line": 377,
+    "column": 20,
+    "word": "Wans"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-30.md",
+    "line": 378,
+    "column": 20,
+    "word": "Wans"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-30.md",
+    "line": 379,
+    "column": 20,
+    "word": "Wans"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-30.md",
+    "line": 401,
+    "column": 17,
+    "word": "devspaces"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-30.md",
+    "line": 464,
+    "column": 17,
+    "word": "Asns"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-30.md",
+    "line": 766,
+    "column": 13,
+    "word": "pricings"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-30.md",
+    "line": 914,
+    "column": 19,
+    "word": "iscloneable"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-30.md",
+    "line": 989,
+    "column": 25,
+    "word": "iscloneable"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-30.md",
+    "line": 1020,
+    "column": 25,
+    "word": "snapshotsdr"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-30.md",
+    "line": 1038,
+    "column": 19,
+    "word": "snapshotsdr"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-30.md",
+    "line": 1063,
+    "column": 13,
+    "word": "csrs"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-30.md",
+    "line": 1065,
+    "column": 13,
+    "word": "ishostingenvironmentnameavailable"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-30.md",
+    "line": 1181,
+    "column": 17,
+    "word": "signalrservice"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-30.md",
+    "line": 1203,
+    "column": 17,
+    "word": "devtestlab"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-30.md",
+    "line": 1219,
+    "column": 22,
+    "word": "Vhds"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-30.md",
+    "line": 1261,
+    "column": 23,
+    "word": "retarget"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-30.md",
+    "line": 1318,
+    "column": 17,
+    "word": "iotcentral"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-30.md",
+    "line": 1387,
+    "column": 39,
+    "word": "migratetoaad"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-30.md",
+    "line": 1452,
+    "column": 20,
+    "word": "replicationv"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-30.md",
+    "line": 1597,
+    "column": 13,
+    "word": "remediations"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-30.md",
+    "line": 1598,
+    "column": 13,
+    "word": "remediations"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-30.md",
+    "line": 1599,
+    "column": 13,
+    "word": "remediations"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-30.md",
+    "line": 1871,
+    "column": 17,
+    "word": "hdinsight"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-30.md",
+    "line": 1889,
+    "column": 17,
+    "word": "dbformariadb"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-30.md",
+    "line": 2076,
+    "column": 24,
+    "word": "ipfilterrules"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-30.md",
+    "line": 2123,
+    "column": 24,
+    "word": "ipfilterrules"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-30.md",
+    "line": 2146,
+    "column": 17,
+    "word": "dbforpostgresql"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-30.md",
+    "line": 2161,
+    "column": 17,
+    "word": "dbformysql"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-30.md",
+    "line": 2176,
+    "column": 17,
+    "word": "hanaonazure"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-30.md",
+    "line": 2204,
+    "column": 17,
+    "word": "powerbidedicated"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-30.md",
+    "line": 2213,
+    "column": 17,
+    "word": "iotspaces"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-30.md",
+    "line": 2363,
+    "column": 30,
+    "word": "iscsiservers"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-30.md",
+    "line": 2364,
+    "column": 30,
+    "word": "iscsiservers"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-30.md",
+    "line": 2365,
+    "column": 30,
+    "word": "iscsiservers"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-30.md",
+    "line": 2368,
+    "column": 30,
+    "word": "iscsiservers"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-30.md",
+    "line": 2374,
+    "column": 22,
+    "word": "iscsiservers"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-30.md",
+    "line": 2563,
+    "column": 17,
+    "word": "powerbi"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-30.md",
+    "line": 2642,
+    "column": 17,
+    "word": "intune"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-30.md",
+    "line": 2667,
+    "column": 17,
+    "word": "adhybridhealthservice"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-30.md",
+    "line": 2670,
+    "column": 26,
+    "word": "addomainservicemembers"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-30.md",
+    "line": 2739,
+    "column": 19,
+    "word": "backendid"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-30.md",
+    "line": 2751,
+    "column": 18,
+    "word": "loggerid"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-30.md",
+    "line": 2753,
+    "column": 33,
+    "word": "opid"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-30.md",
+    "line": 2820,
+    "column": 8,
+    "word": "nodeagentskus"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-30.md",
+    "line": 2862,
+    "column": 39,
+    "word": "reimage"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-30.md",
+    "line": 2869,
+    "column": 24,
+    "word": "upgradeos"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-30.md",
+    "line": 2958,
+    "column": 8,
+    "word": "findsimilars"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-30.md",
+    "line": 3008,
+    "column": 43,
+    "word": "prebuilts"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-30.md",
+    "line": 3009,
+    "column": 43,
+    "word": "listprebuilts"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-30.md",
+    "line": 3017,
+    "column": 43,
+    "word": "prebuilts"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-30.md",
+    "line": 3056,
+    "column": 43,
+    "word": "prebuilts"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-30.md",
+    "line": 3067,
+    "column": 43,
+    "word": "prebuilts"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-30.md",
+    "line": 3133,
+    "column": 17,
+    "word": "usql"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-30.md",
+    "line": 3134,
+    "column": 17,
+    "word": "usql"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-30.md",
+    "line": 3135,
+    "column": 17,
+    "word": "usql"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-30.md",
+    "line": 3136,
+    "column": 17,
+    "word": "usql"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-30.md",
+    "line": 3137,
+    "column": 17,
+    "word": "usql"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-30.md",
+    "line": 3230,
+    "column": 29,
+    "word": "LISTAFTERID"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-30.md",
+    "line": 3235,
+    "column": 21,
+    "word": "sqoop"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-30.md",
+    "line": 3372,
+    "column": 10,
+    "word": "Unprovision"
+  },
+  {
+    "file": "profiles/definitions/latest-2019-04-30.md",
+    "line": 3391,
+    "column": 50,
+    "word": "Unprovision"
+  },
+  {
+    "file": "profiles/definitions/stable-2019-01.md",
+    "line": 53,
+    "column": 13,
+    "word": "ishostnameavailable"
+  },
+  {
+    "file": "profiles/definitions/stable-2019-01.md",
+    "line": 54,
+    "column": 13,
+    "word": "isusernameavailable"
+  }
+]

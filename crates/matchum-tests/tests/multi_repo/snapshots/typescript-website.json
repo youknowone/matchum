@@ -1,0 +1,1820 @@
+[
+  {
+    "file": "SECURITY.md",
+    "line": 13,
+    "column": 72,
+    "word": "MSRC"
+  },
+  {
+    "file": "SECURITY.md",
+    "line": 17,
+    "column": 205,
+    "word": "msrc"
+  },
+  {
+    "file": "docs/New TypeScript Version.md",
+    "line": 116,
+    "column": 3,
+    "word": "Shippit"
+  },
+  {
+    "file": "packages/ata/src/apis.ts",
+    "line": 17,
+    "column": 17,
+    "word": "Filetree"
+  },
+  {
+    "file": "packages/ata/src/index.ts",
+    "line": 159,
+    "column": 19,
+    "word": "strat"
+  },
+  {
+    "file": "packages/ata/src/index.ts",
+    "line": 205,
+    "column": 46,
+    "word": "filetree"
+  },
+  {
+    "file": "packages/ata/tests/ata.spec.ts",
+    "line": 11,
+    "column": 27,
+    "word": "asda"
+  },
+  {
+    "file": "packages/community-meta/scripts/generateRichMeetupData.js",
+    "line": 21,
+    "column": 13,
+    "word": "Deets"
+  },
+  {
+    "file": "packages/community-meta/scripts/meetups.js",
+    "line": 31,
+    "column": 5,
+    "word": "continentish"
+  },
+  {
+    "file": "packages/create-typescript-playground-plugin/template/scripts/getDTS.js",
+    "line": 63,
+    "column": 18,
+    "word": "TSVFS"
+  },
+  {
+    "file": "packages/create-typescript-playground-plugin/template/scripts/getDTS.js",
+    "line": 64,
+    "column": 23,
+    "word": "tsvfs"
+  },
+  {
+    "file": "packages/documentation/copy/en/declaration-files/Publishing.md",
+    "line": 27,
+    "column": 14,
+    "word": "Vandelay"
+  },
+  {
+    "file": "packages/documentation/copy/en/declaration-files/Publishing.md",
+    "line": 141,
+    "column": 11,
+    "word": "redirections"
+  },
+  {
+    "file": "packages/documentation/copy/en/declaration-files/templates/global.d.ts.md",
+    "line": 130,
+    "column": 57,
+    "word": "Maru"
+  },
+  {
+    "file": "packages/documentation/copy/en/get-started/TS for Functional Programmers.md",
+    "line": 12,
+    "column": 56,
+    "word": "Scripters"
+  },
+  {
+    "file": "packages/documentation/copy/en/handbook-v1/Basic Types.md",
+    "line": 58,
+    "column": 29,
+    "word": "Bobbington"
+  },
+  {
+    "file": "packages/documentation/copy/en/handbook-v1/Functions.md",
+    "line": 250,
+    "column": 73,
+    "word": "Yehuda"
+  },
+  {
+    "file": "packages/documentation/copy/en/handbook-v1/Functions.md",
+    "line": 251,
+    "column": 1,
+    "word": "Yehuda's"
+  },
+  {
+    "file": "packages/documentation/copy/en/handbook-v1/Interfaces.md",
+    "line": 186,
+    "column": 31,
+    "word": "colour"
+  },
+  {
+    "file": "packages/documentation/copy/en/handbook-v1/Unions and Intersections.md",
+    "line": 379,
+    "column": 39,
+    "word": "Loggable"
+  },
+  {
+    "file": "packages/documentation/copy/en/handbook-v2/Basics.md",
+    "line": 316,
+    "column": 8,
+    "word": "Maddison"
+  },
+  {
+    "file": "packages/documentation/copy/en/handbook-v2/Classes.md",
+    "line": 1214,
+    "column": 14,
+    "word": "Gameboy"
+  },
+  {
+    "file": "packages/documentation/copy/en/handbook-v2/Everyday Types.md",
+    "line": 208,
+    "column": 36,
+    "word": "Alisson"
+  },
+  {
+    "file": "packages/documentation/copy/en/handbook-v2/Narrowing.md",
+    "line": 475,
+    "column": 21,
+    "word": "sharkey"
+  },
+  {
+    "file": "packages/documentation/copy/en/handbook-v2/Type Manipulation/Generics.md",
+    "line": 353,
+    "column": 22,
+    "word": "Mikle"
+  },
+  {
+    "file": "packages/documentation/copy/en/handbook-v2/Type Manipulation/Indexed Access Types.md",
+    "line": 38,
+    "column": 19,
+    "word": "alve"
+  },
+  {
+    "file": "packages/documentation/copy/en/handbook-v2/Type Manipulation/Keyof Type Operator.md",
+    "line": 26,
+    "column": 6,
+    "word": "Mapish"
+  },
+  {
+    "file": "packages/documentation/copy/en/handbook-v2/Type Manipulation/Template Literal Types.md",
+    "line": 57,
+    "column": 15,
+    "word": "Saoirse"
+  },
+  {
+    "file": "packages/documentation/copy/en/handbook-v2/Type Manipulation/Template Literal Types.md",
+    "line": 58,
+    "column": 14,
+    "word": "Ronan"
+  },
+  {
+    "file": "packages/documentation/copy/en/handbook-v2/Type Manipulation/Template Literal Types.md",
+    "line": 124,
+    "column": 12,
+    "word": "frst"
+  },
+  {
+    "file": "packages/documentation/copy/en/handbook-v2/Type Manipulation/Template Literal Types.md",
+    "line": 188,
+    "column": 6,
+    "word": "Shouty"
+  },
+  {
+    "file": "packages/documentation/copy/en/handbook-v2/Type Manipulation/Template Literal Types.md",
+    "line": 224,
+    "column": 6,
+    "word": "Uncapitalize"
+  },
+  {
+    "file": "packages/documentation/copy/en/javascript/JSDoc Reference.md",
+    "line": 403,
+    "column": 38,
+    "word": "Seriousalizable"
+  },
+  {
+    "file": "packages/documentation/copy/en/javascript/JSDoc Reference.md",
+    "line": 407,
+    "column": 10,
+    "word": "seriousalize"
+  },
+  {
+    "file": "packages/documentation/copy/en/javascript/JSDoc Reference.md",
+    "line": 780,
+    "column": 10,
+    "word": "jsdocs"
+  },
+  {
+    "file": "packages/documentation/copy/en/modules-reference/Reference.md",
+    "line": 554,
+    "column": 495,
+    "word": "analagous"
+  },
+  {
+    "file": "packages/documentation/copy/en/modules-reference/Reference.md",
+    "line": 586,
+    "column": 6,
+    "word": "Extensionless"
+  },
+  {
+    "file": "packages/documentation/copy/en/modules-reference/Reference.md",
+    "line": 781,
+    "column": 52,
+    "word": "subpaths"
+  },
+  {
+    "file": "packages/documentation/copy/en/modules-reference/Reference.md",
+    "line": 862,
+    "column": 19,
+    "word": "tsold"
+  },
+  {
+    "file": "packages/documentation/copy/en/modules-reference/Theory.md",
+    "line": 347,
+    "column": 177,
+    "word": "extensioned"
+  },
+  {
+    "file": "packages/documentation/copy/en/modules-reference/appendices/ESM-CJS-Interop.md",
+    "line": 149,
+    "column": 41,
+    "word": "Traceur"
+  },
+  {
+    "file": "packages/documentation/copy/en/modules-reference/appendices/ESM-CJS-Interop.md",
+    "line": 224,
+    "column": 10,
+    "word": "worl"
+  },
+  {
+    "file": "packages/documentation/copy/en/modules-reference/guides/Choosing Compiler Options.md",
+    "line": 75,
+    "column": 164,
+    "word": "extensionless"
+  },
+  {
+    "file": "packages/documentation/copy/en/modules-reference/guides/Choosing Compiler Options.md",
+    "line": 115,
+    "column": 15,
+    "word": "importmap"
+  },
+  {
+    "file": "packages/documentation/copy/en/project-config/Compiler Options.md",
+    "line": 207,
+    "column": 16,
+    "word": "fixedinterval"
+  },
+  {
+    "file": "packages/documentation/copy/en/project-config/Compiler Options.md",
+    "line": 207,
+    "column": 44,
+    "word": "priorityinterval"
+  },
+  {
+    "file": "packages/documentation/copy/en/project-config/Compiler Options.md",
+    "line": 207,
+    "column": 75,
+    "word": "dynamicpriority"
+  },
+  {
+    "file": "packages/documentation/copy/en/project-config/Compiler Options.md",
+    "line": 207,
+    "column": 108,
+    "word": "fixedchunksize"
+  },
+  {
+    "file": "packages/documentation/copy/en/project-config/Compiler Options.md",
+    "line": 234,
+    "column": 16,
+    "word": "usefsevents"
+  },
+  {
+    "file": "packages/documentation/copy/en/project-config/Compiler Options.md",
+    "line": 234,
+    "column": 42,
+    "word": "fixedpollinginterval"
+  },
+  {
+    "file": "packages/documentation/copy/en/project-config/Compiler Options.md",
+    "line": 234,
+    "column": 77,
+    "word": "dynamicprioritypolling"
+  },
+  {
+    "file": "packages/documentation/copy/en/project-config/Compiler Options.md",
+    "line": 234,
+    "column": 117,
+    "word": "fixedchunksizepolling"
+  },
+  {
+    "file": "packages/documentation/copy/en/project-config/Compiler Options.md",
+    "line": 243,
+    "column": 51,
+    "word": "prioritypollinginterval"
+  },
+  {
+    "file": "packages/documentation/copy/en/project-config/Compiler Options.md",
+    "line": 243,
+    "column": 191,
+    "word": "usefseventsonparentdirectory"
+  },
+  {
+    "file": "packages/documentation/copy/en/project-config/Compiler Options.md",
+    "line": 726,
+    "column": 119,
+    "word": "jsxdev"
+  },
+  {
+    "file": "packages/documentation/copy/en/project-config/Integrating with Build Tools.md",
+    "line": 131,
+    "column": 16,
+    "word": "jmreidy"
+  },
+  {
+    "file": "packages/documentation/copy/en/reference/Advanced Types.md",
+    "line": 869,
+    "column": 102,
+    "word": "otherwords"
+  },
+  {
+    "file": "packages/documentation/copy/en/reference/Enums.md",
+    "line": 388,
+    "column": 43,
+    "word": "deconstifying"
+  },
+  {
+    "file": "packages/documentation/copy/en/reference/JSX.md",
+    "line": 127,
+    "column": 121,
+    "word": "jsxs"
+  },
+  {
+    "file": "packages/documentation/copy/en/reference/JSX.md",
+    "line": 449,
+    "column": 114,
+    "word": "behaviour"
+  },
+  {
+    "file": "packages/documentation/copy/en/reference/Mixins.md",
+    "line": 127,
+    "column": 6,
+    "word": "Positionable"
+  },
+  {
+    "file": "packages/documentation/copy/en/reference/Type Compatibility.md",
+    "line": 48,
+    "column": 42,
+    "word": "Weatherwax"
+  },
+  {
+    "file": "packages/documentation/copy/en/reference/Utility Types.md",
+    "line": 153,
+    "column": 39,
+    "word": "Shorthair"
+  },
+  {
+    "file": "packages/documentation/copy/en/release-notes/TypeScript 2.0.md",
+    "line": 519,
+    "column": 63,
+    "word": "knops"
+  },
+  {
+    "file": "packages/documentation/copy/en/release-notes/TypeScript 2.0.md",
+    "line": 815,
+    "column": 3,
+    "word": "webworker"
+  },
+  {
+    "file": "packages/documentation/copy/en/release-notes/TypeScript 2.6.md",
+    "line": 158,
+    "column": 52,
+    "word": "может"
+  },
+  {
+    "file": "packages/documentation/copy/en/release-notes/TypeScript 2.6.md",
+    "line": 158,
+    "column": 58,
+    "word": "быть"
+  },
+  {
+    "file": "packages/documentation/copy/en/release-notes/TypeScript 2.6.md",
+    "line": 158,
+    "column": 63,
+    "word": "назначен"
+  },
+  {
+    "file": "packages/documentation/copy/en/release-notes/TypeScript 2.6.md",
+    "line": 158,
+    "column": 76,
+    "word": "типа"
+  },
+  {
+    "file": "packages/documentation/copy/en/release-notes/TypeScript 2.7.md",
+    "line": 192,
+    "column": 32,
+    "word": "Kiara"
+  },
+  {
+    "file": "packages/documentation/copy/en/release-notes/TypeScript 3.6.md",
+    "line": 217,
+    "column": 7,
+    "word": "𝓱𝓮𝓵𝓵𝓸"
+  },
+  {
+    "file": "packages/documentation/copy/en/release-notes/TypeScript 3.6.md",
+    "line": 329,
+    "column": 42,
+    "word": "Artem"
+  },
+  {
+    "file": "packages/documentation/copy/en/release-notes/TypeScript 3.6.md",
+    "line": 329,
+    "column": 48,
+    "word": "Tyurin"
+  },
+  {
+    "file": "packages/documentation/copy/en/release-notes/TypeScript 3.7.md",
+    "line": 151,
+    "column": 96,
+    "word": "Cernicova"
+  },
+  {
+    "file": "packages/documentation/copy/en/release-notes/TypeScript 3.8.md",
+    "line": 79,
+    "column": 33,
+    "word": "Bearimy"
+  },
+  {
+    "file": "packages/documentation/copy/en/release-notes/TypeScript 3.9.md",
+    "line": 374,
+    "column": 117,
+    "word": "Zacher"
+  },
+  {
+    "file": "packages/documentation/copy/en/release-notes/TypeScript 3.9.md",
+    "line": 473,
+    "column": 98,
+    "word": "pathurs"
+  },
+  {
+    "file": "packages/documentation/copy/en/release-notes/TypeScript 4.1.md",
+    "line": 18,
+    "column": 23,
+    "word": "middel"
+  },
+  {
+    "file": "packages/documentation/copy/en/release-notes/TypeScript 4.1.md",
+    "line": 104,
+    "column": 7,
+    "word": "twslash"
+  },
+  {
+    "file": "packages/documentation/copy/en/release-notes/TypeScript 4.1.md",
+    "line": 305,
+    "column": 32,
+    "word": "Collatz"
+  },
+  {
+    "file": "packages/documentation/copy/en/release-notes/TypeScript 4.2.md",
+    "line": 158,
+    "column": 49,
+    "word": "Hübotter"
+  },
+  {
+    "file": "packages/documentation/copy/en/release-notes/TypeScript 4.2.md",
+    "line": 338,
+    "column": 5,
+    "word": "badda"
+  },
+  {
+    "file": "packages/documentation/copy/en/release-notes/TypeScript 4.2.md",
+    "line": 472,
+    "column": 14,
+    "word": "Tenenbaums"
+  },
+  {
+    "file": "packages/documentation/copy/en/release-notes/TypeScript 4.3.md",
+    "line": 424,
+    "column": 209,
+    "word": "Kubilay"
+  },
+  {
+    "file": "packages/documentation/copy/en/release-notes/TypeScript 4.3.md",
+    "line": 424,
+    "column": 217,
+    "word": "Kahveci"
+  },
+  {
+    "file": "packages/documentation/copy/en/release-notes/TypeScript 4.3.md",
+    "line": 672,
+    "column": 39,
+    "word": "Koppers"
+  },
+  {
+    "file": "packages/documentation/copy/en/release-notes/TypeScript 4.4.md",
+    "line": 514,
+    "column": 42,
+    "word": "Michon"
+  },
+  {
+    "file": "packages/documentation/copy/en/release-notes/TypeScript 4.5.md",
+    "line": 38,
+    "column": 35,
+    "word": "saschanaz"
+  },
+  {
+    "file": "packages/documentation/copy/en/release-notes/TypeScript 4.5.md",
+    "line": 112,
+    "column": 12,
+    "word": "Kagami"
+  },
+  {
+    "file": "packages/documentation/copy/en/release-notes/TypeScript 4.5.md",
+    "line": 112,
+    "column": 22,
+    "word": "Rosylight"
+  },
+  {
+    "file": "packages/documentation/copy/en/release-notes/TypeScript 4.6.md",
+    "line": 160,
+    "column": 74,
+    "word": "lazylog"
+  },
+  {
+    "file": "packages/documentation/copy/en/release-notes/TypeScript 4.6.md",
+    "line": 246,
+    "column": 101,
+    "word": "Sascha"
+  },
+  {
+    "file": "packages/documentation/copy/en/release-notes/TypeScript 4.6.md",
+    "line": 354,
+    "column": 23,
+    "word": "Unspreadable"
+  },
+  {
+    "file": "packages/documentation/copy/en/release-notes/TypeScript 4.6.md",
+    "line": 356,
+    "column": 60,
+    "word": "unspreadable"
+  },
+  {
+    "file": "packages/documentation/copy/en/release-notes/TypeScript 4.7.md",
+    "line": 12,
+    "column": 1,
+    "word": "Interoperating"
+  },
+  {
+    "file": "packages/documentation/copy/en/release-notes/TypeScript 4.7.md",
+    "line": 334,
+    "column": 39,
+    "word": "Oleksandr"
+  },
+  {
+    "file": "packages/documentation/copy/en/release-notes/TypeScript 4.7.md",
+    "line": 334,
+    "column": 49,
+    "word": "Tarasiuk"
+  },
+  {
+    "file": "packages/documentation/copy/en/release-notes/TypeScript 4.7.md",
+    "line": 589,
+    "column": 106,
+    "word": "circularities"
+  },
+  {
+    "file": "packages/documentation/copy/en/release-notes/TypeScript 4.7.md",
+    "line": 661,
+    "column": 115,
+    "word": "Foxman"
+  },
+  {
+    "file": "packages/documentation/copy/en/release-notes/TypeScript 4.7.md",
+    "line": 792,
+    "column": 36,
+    "word": "Minh"
+  },
+  {
+    "file": "packages/documentation/copy/en/release-notes/TypeScript 4.8.md",
+    "line": 45,
+    "column": 16,
+    "word": "Unknownish"
+  },
+  {
+    "file": "packages/documentation/copy/en/release-notes/TypeScript 4.8.md",
+    "line": 212,
+    "column": 47,
+    "word": "inodes"
+  },
+  {
+    "file": "packages/documentation/copy/en/release-notes/TypeScript 4.8.md",
+    "line": 220,
+    "column": 41,
+    "word": "Celani"
+  },
+  {
+    "file": "packages/documentation/copy/en/release-notes/TypeScript 4.8.md",
+    "line": 220,
+    "column": 99,
+    "word": "Airtable"
+  },
+  {
+    "file": "packages/documentation/copy/en/release-notes/TypeScript 4.8.md",
+    "line": 492,
+    "column": 48,
+    "word": "uhyo"
+  },
+  {
+    "file": "packages/documentation/copy/en/release-notes/TypeScript 4.9.md",
+    "line": 19,
+    "column": 5,
+    "word": "bleu"
+  },
+  {
+    "file": "packages/documentation/copy/en/release-notes/TypeScript 4.9.md",
+    "line": 20,
+    "column": 10,
+    "word": "sacrebleu"
+  },
+  {
+    "file": "packages/documentation/copy/en/release-notes/TypeScript 4.9.md",
+    "line": 308,
+    "column": 90,
+    "word": "kqueue"
+  },
+  {
+    "file": "packages/documentation/copy/en/release-notes/TypeScript 4.9.md",
+    "line": 308,
+    "column": 100,
+    "word": "epoll"
+  },
+  {
+    "file": "packages/documentation/copy/en/release-notes/TypeScript 4.9.md",
+    "line": 308,
+    "column": 113,
+    "word": "inotify"
+  },
+  {
+    "file": "packages/documentation/copy/en/release-notes/TypeScript 4.9.md",
+    "line": 361,
+    "column": 138,
+    "word": "triggerable"
+  },
+  {
+    "file": "packages/documentation/copy/en/release-notes/TypeScript 4.9.md",
+    "line": 399,
+    "column": 154,
+    "word": "Everfree"
+  },
+  {
+    "file": "packages/documentation/copy/en/release-notes/TypeScript 4.9.md",
+    "line": 424,
+    "column": 13,
+    "word": "substitition"
+  },
+  {
+    "file": "packages/documentation/copy/en/release-notes/TypeScript 5.0.md",
+    "line": 278,
+    "column": 67,
+    "word": "Rauschmayer's"
+  },
+  {
+    "file": "packages/documentation/copy/en/release-notes/TypeScript 5.0.md",
+    "line": 1106,
+    "column": 95,
+    "word": "Tomasz"
+  },
+  {
+    "file": "packages/documentation/copy/en/release-notes/TypeScript 5.0.md",
+    "line": 1106,
+    "column": 102,
+    "word": "Lenarcik"
+  },
+  {
+    "file": "packages/documentation/copy/en/release-notes/TypeScript 5.0.md",
+    "line": 1254,
+    "column": 30,
+    "word": "megamorphic"
+  },
+  {
+    "file": "packages/documentation/copy/en/release-notes/TypeScript 5.0.md",
+    "line": 1269,
+    "column": 11,
+    "word": "Monomorphization"
+  },
+  {
+    "file": "packages/documentation/copy/en/release-notes/TypeScript 5.0.md",
+    "line": 1318,
+    "column": 113,
+    "word": "Mateusz"
+  },
+  {
+    "file": "packages/documentation/copy/en/release-notes/TypeScript 5.0.md",
+    "line": 1318,
+    "column": 121,
+    "word": "Burzyński"
+  },
+  {
+    "file": "packages/documentation/copy/en/release-notes/TypeScript 5.0.md",
+    "line": 1339,
+    "column": 51,
+    "word": "indirected"
+  },
+  {
+    "file": "packages/documentation/copy/en/release-notes/TypeScript 5.1.md",
+    "line": 232,
+    "column": 46,
+    "word": "Silbermann"
+  },
+  {
+    "file": "packages/documentation/copy/en/release-notes/TypeScript 5.1.md",
+    "line": 376,
+    "column": 10,
+    "word": "EBADENGINE"
+  },
+  {
+    "file": "packages/documentation/copy/en/release-notes/TypeScript 5.2.md",
+    "line": 213,
+    "column": 10,
+    "word": "throwy"
+  },
+  {
+    "file": "packages/documentation/copy/en/release-notes/TypeScript 5.2.md",
+    "line": 382,
+    "column": 109,
+    "word": "polyfilling"
+  },
+  {
+    "file": "packages/documentation/copy/en/release-notes/TypeScript 5.2.md",
+    "line": 449,
+    "column": 21,
+    "word": "jsonify"
+  },
+  {
+    "file": "packages/documentation/copy/en/release-notes/TypeScript 5.2.md",
+    "line": 479,
+    "column": 7,
+    "word": "serializables"
+  },
+  {
+    "file": "packages/documentation/copy/en/release-notes/TypeScript 5.2.md",
+    "line": 672,
+    "column": 95,
+    "word": "invokable"
+  },
+  {
+    "file": "packages/documentation/copy/en/release-notes/TypeScript 5.3.md",
+    "line": 347,
+    "column": 4,
+    "word": "Triggerable"
+  },
+  {
+    "file": "packages/documentation/copy/en/release-notes/TypeScript 5.3.md",
+    "line": 383,
+    "column": 27,
+    "word": "tsserverlibrary"
+  },
+  {
+    "file": "packages/documentation/copy/en/release-notes/TypeScript 5.4.md",
+    "line": 322,
+    "column": 83,
+    "word": "courtsey"
+  },
+  {
+    "file": "packages/documentation/copy/en/release-notes/TypeScript 5.5.md",
+    "line": 10,
+    "column": 35,
+    "word": "Vanderkam"
+  },
+  {
+    "file": "packages/documentation/copy/en/release-notes/TypeScript 5.5.md",
+    "line": 334,
+    "column": 37,
+    "word": "graphemecluster"
+  },
+  {
+    "file": "packages/documentation/copy/en/release-notes/TypeScript 5.5.md",
+    "line": 459,
+    "column": 104,
+    "word": "analyse"
+  },
+  {
+    "file": "packages/documentation/copy/en/release-notes/TypeScript 5.5.md",
+    "line": 619,
+    "column": 18,
+    "word": "Hana"
+  },
+  {
+    "file": "packages/documentation/copy/en/release-notes/TypeScript 5.5.md",
+    "line": 619,
+    "column": 208,
+    "word": "Kühle"
+  },
+  {
+    "file": "packages/documentation/copy/en/release-notes/TypeScript 5.5.md",
+    "line": 619,
+    "column": 220,
+    "word": "Velden"
+  },
+  {
+    "file": "packages/documentation/copy/en/release-notes/TypeScript 5.5.md",
+    "line": 619,
+    "column": 251,
+    "word": "Chetwin"
+  },
+  {
+    "file": "packages/documentation/copy/en/release-notes/TypeScript 5.5.md",
+    "line": 746,
+    "column": 5,
+    "word": "Monomorphized"
+  },
+  {
+    "file": "packages/documentation/copy/en/release-notes/TypeScript 5.5.md",
+    "line": 756,
+    "column": 29,
+    "word": "monomorphization"
+  },
+  {
+    "file": "packages/documentation/copy/en/release-notes/TypeScript 5.5.md",
+    "line": 766,
+    "column": 62,
+    "word": "monomorphized"
+  },
+  {
+    "file": "packages/documentation/copy/en/release-notes/TypeScript 5.5.md",
+    "line": 983,
+    "column": 47,
+    "word": "ambiently"
+  },
+  {
+    "file": "packages/documentation/copy/en/release-notes/TypeScript 5.5.md",
+    "line": 1032,
+    "column": 44,
+    "word": "simplfy"
+  },
+  {
+    "file": "packages/documentation/copy/en/release-notes/TypeScript 5.6.md",
+    "line": 440,
+    "column": 27,
+    "word": "cromulent"
+  },
+  {
+    "file": "packages/documentation/copy/en/release-notes/TypeScript 5.6.md",
+    "line": 467,
+    "column": 100,
+    "word": "thoes"
+  },
+  {
+    "file": "packages/documentation/copy/en/release-notes/TypeScript 5.7.md",
+    "line": 63,
+    "column": 118,
+    "word": "Zzzen"
+  },
+  {
+    "file": "packages/documentation/copy/en/release-notes/TypeScript 5.7.md",
+    "line": 212,
+    "column": 99,
+    "word": "Kenta"
+  },
+  {
+    "file": "packages/documentation/copy/en/release-notes/TypeScript 5.7.md",
+    "line": 212,
+    "column": 105,
+    "word": "Moriuchi"
+  },
+  {
+    "file": "packages/documentation/copy/en/release-notes/TypeScript 5.8.md",
+    "line": 130,
+    "column": 86,
+    "word": "Amaro"
+  },
+  {
+    "file": "packages/documentation/copy/en/release-notes/TypeScript 5.9.md",
+    "line": 21,
+    "column": 42,
+    "word": "papercuts"
+  },
+  {
+    "file": "packages/documentation/copy/en/release-notes/TypeScript 5.9.md",
+    "line": 143,
+    "column": 36,
+    "word": "Nicolò"
+  },
+  {
+    "file": "packages/documentation/copy/en/release-notes/TypeScript 5.9.md",
+    "line": 143,
+    "column": 43,
+    "word": "Ribaudo"
+  },
+  {
+    "file": "packages/documentation/copy/en/release-notes/TypeScript 5.9.md",
+    "line": 161,
+    "column": 36,
+    "word": "Naji"
+  },
+  {
+    "file": "packages/documentation/scripts/generateDocsNavigationPerLanguage.js",
+    "line": 239,
+    "column": 9,
+    "word": "navigations"
+  },
+  {
+    "file": "packages/documentation/scripts/generateTypesForFilesInDocs.js",
+    "line": 24,
+    "column": 20,
+    "word": "ortatherox"
+  },
+  {
+    "file": "packages/glossary/copy/en/index-signatures.md",
+    "line": 18,
+    "column": 3,
+    "word": "taniguchi"
+  },
+  {
+    "file": "packages/glossary/copy/en/index-signatures.md",
+    "line": 19,
+    "column": 3,
+    "word": "raabe"
+  },
+  {
+    "file": "packages/glossary/copy/en/shape.md",
+    "line": 10,
+    "column": 10,
+    "word": "Shibden"
+  },
+  {
+    "file": "packages/glossary/copy/en/type-system.md",
+    "line": 17,
+    "column": 13,
+    "word": "Maplewood"
+  },
+  {
+    "file": "packages/playground-examples/copy/en/3-8/Syntax and Messaging/Private Class Fields.ts",
+    "line": 55,
+    "column": 17,
+    "word": "Cherny"
+  },
+  {
+    "file": "packages/playground-examples/copy/en/4-7/New JS Features/Control Flow Improvements.ts",
+    "line": 9,
+    "column": 17,
+    "word": "Shanes"
+  },
+  {
+    "file": "packages/playground-examples/copy/en/JavaScript/External APIs/TypeScript with React.tsx",
+    "line": 98,
+    "column": 17,
+    "word": "Cersei"
+  },
+  {
+    "file": "packages/playground-examples/copy/en/JavaScript/External APIs/TypeScript with WebGL.js",
+    "line": 52,
+    "column": 11,
+    "word": "lowp"
+  },
+  {
+    "file": "packages/playground-examples/copy/en/JavaScript/JavaScript Essentials/Objects and Arrays.ts",
+    "line": 7,
+    "column": 10,
+    "word": "Kieron"
+  },
+  {
+    "file": "packages/playground-examples/copy/en/JavaScript/Working With Classes/Classes 101.ts",
+    "line": 49,
+    "column": 47,
+    "word": "Adobo"
+  },
+  {
+    "file": "packages/playground-examples/copy/en/TypeScript/Language Extensions/Types vs Interfaces.ts",
+    "line": 31,
+    "column": 3,
+    "word": "colourful"
+  },
+  {
+    "file": "packages/playground-examples/copy/en/TypeScript/Meta-Types/Conditional Types.ts",
+    "line": 80,
+    "column": 20,
+    "word": "Catish"
+  },
+  {
+    "file": "packages/playground-examples/copy/en/TypeScript/Primitives/Literals.ts",
+    "line": 59,
+    "column": 26,
+    "word": "Raîssa"
+  },
+  {
+    "file": "packages/playground-examples/copy/en/TypeScript/Primitives/Unknown and Never.ts",
+    "line": 100,
+    "column": 20,
+    "word": "rubiginosa"
+  },
+  {
+    "file": "packages/playground-examples/copy/en/TypeScript/Primitives/Unknown and Never.ts",
+    "line": 106,
+    "column": 15,
+    "word": "Bellis"
+  },
+  {
+    "file": "packages/playground-examples/copy/en/TypeScript/Type Primitives/Tuples.ts",
+    "line": 42,
+    "column": 8,
+    "word": "Adankwo"
+  },
+  {
+    "file": "packages/playground-examples/copy/en/TypeScript/Type Primitives/Tuples.ts",
+    "line": 42,
+    "column": 19,
+    "word": "adankwo"
+  },
+  {
+    "file": "packages/playground-handbook/copy/en/Writing DTS Files.md",
+    "line": 3,
+    "column": 94,
+    "word": "realise"
+  },
+  {
+    "file": "packages/playground-worker/index.ts",
+    "line": 19,
+    "column": 9,
+    "word": "twolash"
+  },
+  {
+    "file": "packages/playground-worker/index.ts",
+    "line": 27,
+    "column": 12,
+    "word": "grabbable"
+  },
+  {
+    "file": "packages/playground-worker/index.ts",
+    "line": 116,
+    "column": 19,
+    "word": "twoslashed"
+  },
+  {
+    "file": "packages/playground-worker/index.ts",
+    "line": 232,
+    "column": 44,
+    "word": "rebindings"
+  },
+  {
+    "file": "packages/playground/src/createUI.ts",
+    "line": 87,
+    "column": 25,
+    "word": "screenreader"
+  },
+  {
+    "file": "packages/playground/src/navigation.ts",
+    "line": 61,
+    "column": 9,
+    "word": "titleh"
+  },
+  {
+    "file": "packages/playground/src/navigation.ts",
+    "line": 211,
+    "column": 21,
+    "word": "incase"
+  },
+  {
+    "file": "packages/playground/src/sidebar/fixtures/npmPlugins.ts",
+    "line": 6,
+    "column": 14,
+    "word": "xavdid"
+  },
+  {
+    "file": "packages/playground/src/sidebar/fixtures/npmPlugins.ts",
+    "line": 13,
+    "column": 14,
+    "word": "anuraghazra"
+  },
+  {
+    "file": "packages/playground/src/sidebar/fixtures/npmPlugins.ts",
+    "line": 36,
+    "column": 14,
+    "word": "atanasster"
+  },
+  {
+    "file": "packages/playground/src/sidebar/fixtures/npmPlugins.ts",
+    "line": 66,
+    "column": 14,
+    "word": "kevram"
+  },
+  {
+    "file": "packages/playground/src/sidebar/fixtures/npmPlugins.ts",
+    "line": 141,
+    "column": 147,
+    "word": "Gantt"
+  },
+  {
+    "file": "packages/playground/src/sidebar/fixtures/npmPlugins.ts",
+    "line": 142,
+    "column": 14,
+    "word": "jsuder"
+  },
+  {
+    "file": "packages/sandbox/src/compilerOptions.ts",
+    "line": 88,
+    "column": 91,
+    "word": "jakebailey"
+  },
+  {
+    "file": "packages/sandbox/src/index.ts",
+    "line": 457,
+    "column": 16,
+    "word": "Complier"
+  },
+  {
+    "file": "packages/sandbox/src/theme.ts",
+    "line": 12,
+    "column": 53,
+    "word": "fffffe"
+  },
+  {
+    "file": "packages/sandbox/src/vendor/lzstring.min.js",
+    "line": 6,
+    "column": 28,
+    "word": "Hocevar"
+  },
+  {
+    "file": "packages/sandbox/test/defaultCompilerOptions.test.ts",
+    "line": 31,
+    "column": 42,
+    "word": "asdasdasdasd"
+  },
+  {
+    "file": "packages/ts-twoslasher/scripts/makeGlobals.js",
+    "line": 3,
+    "column": 29,
+    "word": "tstwoslash"
+  },
+  {
+    "file": "packages/ts-twoslasher/src/index.ts",
+    "line": 525,
+    "column": 11,
+    "word": "lsped"
+  },
+  {
+    "file": "packages/tsconfig-reference/copy/en/options/sourceMap.md",
+    "line": 37,
+    "column": 28,
+    "word": "UAAU"
+  },
+  {
+    "file": "packages/tsconfig-reference/copy/en/options/sourceMap.md",
+    "line": 37,
+    "column": 43,
+    "word": "CAAA"
+  },
+  {
+    "file": "packages/tsconfig-reference/scripts/msbuild/Microsoft.TypeScript.targets",
+    "line": 84,
+    "column": 22,
+    "word": "Guids"
+  },
+  {
+    "file": "packages/tsconfig-reference/scripts/msbuild/Microsoft.TypeScript.targets",
+    "line": 198,
+    "column": 25,
+    "word": "Cordova"
+  },
+  {
+    "file": "packages/tsconfig-reference/scripts/schema/generateJSON.ts",
+    "line": 162,
+    "column": 6,
+    "word": "subschema"
+  },
+  {
+    "file": "packages/tsconfig-reference/scripts/tsconfig/generateMarkdown.ts",
+    "line": 100,
+    "column": 75,
+    "word": "failable"
+  },
+  {
+    "file": "packages/tsconfig-reference/scripts/types.ts",
+    "line": 30,
+    "column": 11,
+    "word": "Compatability"
+  },
+  {
+    "file": "packages/typescript-vfs/src/index.ts",
+    "line": 200,
+    "column": 17,
+    "word": "weakref"
+  },
+  {
+    "file": "packages/typescript-vfs/src/index.ts",
+    "line": 663,
+    "column": 41,
+    "word": "nightlies"
+  },
+  {
+    "file": "packages/typescript-vfs/test/fsbacked.test.ts",
+    "line": 26,
+    "column": 53,
+    "word": "Compone"
+  },
+  {
+    "file": "packages/typescriptlang-org/gatsby-ssr.js",
+    "line": 33,
+    "column": 88,
+    "word": "cascadia"
+  },
+  {
+    "file": "packages/typescriptlang-org/lib/bootup/pathsOnSiteTracker.ts",
+    "line": 17,
+    "column": 21,
+    "word": "bootstapping"
+  },
+  {
+    "file": "packages/typescriptlang-org/lib/themes/themeGen.js",
+    "line": 22,
+    "column": 8,
+    "word": "Burgendy"
+  },
+  {
+    "file": "packages/typescriptlang-org/lib/themes/themeGen.js",
+    "line": 23,
+    "column": 3,
+    "word": "burgendy"
+  },
+  {
+    "file": "packages/typescriptlang-org/scripts/getTypeScriptNPMVersions.js",
+    "line": 121,
+    "column": 6,
+    "word": "Incase"
+  },
+  {
+    "file": "packages/typescriptlang-org/src/components/display/GreyButton.tsx",
+    "line": 20,
+    "column": 21,
+    "word": "clicky"
+  },
+  {
+    "file": "packages/typescriptlang-org/src/components/index/MigrationStories.tsx",
+    "line": 95,
+    "column": 55,
+    "word": "Hawaiʻi"
+  },
+  {
+    "file": "packages/typescriptlang-org/src/components/index/MigrationStories.tsx",
+    "line": 136,
+    "column": 12,
+    "word": "Rodoslav"
+  },
+  {
+    "file": "packages/typescriptlang-org/src/components/layout.tsx",
+    "line": 24,
+    "column": 40,
+    "word": "Csvg"
+  },
+  {
+    "file": "packages/typescriptlang-org/src/components/layout/CookieBanner.tsx",
+    "line": 51,
+    "column": 42,
+    "word": "openx"
+  },
+  {
+    "file": "packages/typescriptlang-org/src/components/layout/LanguageRecommendation.tsx",
+    "line": 47,
+    "column": 65,
+    "word": "dont"
+  },
+  {
+    "file": "packages/typescriptlang-org/src/components/layout/SiteFooter-Customize.tsx",
+    "line": 73,
+    "column": 30,
+    "word": "colours"
+  },
+  {
+    "file": "packages/typescriptlang-org/src/components/layout/SiteFooter.tsx",
+    "line": 306,
+    "column": 17,
+    "word": "Accessibilité"
+  },
+  {
+    "file": "packages/typescriptlang-org/src/components/layout/TopNav.tsx",
+    "line": 32,
+    "column": 15,
+    "word": "BGCDYOIYZ"
+  },
+  {
+    "file": "packages/typescriptlang-org/src/components/layout/fonts.scss",
+    "line": 662,
+    "column": 38,
+    "word": "Kmer"
+  },
+  {
+    "file": "packages/typescriptlang-org/src/components/layout/fonts.scss",
+    "line": 697,
+    "column": 41,
+    "word": "Pmingliu"
+  },
+  {
+    "file": "packages/typescriptlang-org/src/components/workbench/plugins/docs.ts",
+    "line": 110,
+    "column": 18,
+    "word": "disply"
+  },
+  {
+    "file": "packages/typescriptlang-org/src/copy/en/footer.ts",
+    "line": 3,
+    "column": 30,
+    "word": "Colours"
+  },
+  {
+    "file": "packages/typescriptlang-org/src/copy/en/playground.ts",
+    "line": 48,
+    "column": 15,
+    "word": "bugworkbench"
+  },
+  {
+    "file": "packages/typescriptlang-org/src/dom.d.ts",
+    "line": 83,
+    "column": 5,
+    "word": "samplerate"
+  },
+  {
+    "file": "packages/typescriptlang-org/src/dom.d.ts",
+    "line": 147,
+    "column": 5,
+    "word": "timecode"
+  },
+  {
+    "file": "packages/typescriptlang-org/src/dom.d.ts",
+    "line": 482,
+    "column": 5,
+    "word": "fontfaces"
+  },
+  {
+    "file": "packages/typescriptlang-org/src/dom.d.ts",
+    "line": 1996,
+    "column": 5,
+    "word": "onremove"
+  },
+  {
+    "file": "packages/typescriptlang-org/src/dom.d.ts",
+    "line": 2154,
+    "column": 106,
+    "word": "spatialization"
+  },
+  {
+    "file": "packages/typescriptlang-org/src/dom.d.ts",
+    "line": 2154,
+    "column": 138,
+    "word": "spatialize"
+  },
+  {
+    "file": "packages/typescriptlang-org/src/dom.d.ts",
+    "line": 4137,
+    "column": 20,
+    "word": "indexth"
+  },
+  {
+    "file": "packages/typescriptlang-org/src/dom.d.ts",
+    "line": 4796,
+    "column": 35,
+    "word": "rgtc"
+  },
+  {
+    "file": "packages/typescriptlang-org/src/dom.d.ts",
+    "line": 4797,
+    "column": 35,
+    "word": "RGTC"
+  },
+  {
+    "file": "packages/typescriptlang-org/src/dom.d.ts",
+    "line": 4863,
+    "column": 25,
+    "word": "uppercased"
+  },
+  {
+    "file": "packages/typescriptlang-org/src/dom.d.ts",
+    "line": 5021,
+    "column": 78,
+    "word": "cancelation"
+  },
+  {
+    "file": "packages/typescriptlang-org/src/dom.d.ts",
+    "line": 5328,
+    "column": 6,
+    "word": "loadingdone"
+  },
+  {
+    "file": "packages/typescriptlang-org/src/dom.d.ts",
+    "line": 5329,
+    "column": 6,
+    "word": "loadingerror"
+  },
+  {
+    "file": "packages/typescriptlang-org/src/dom.d.ts",
+    "line": 5333,
+    "column": 5,
+    "word": "onloading"
+  },
+  {
+    "file": "packages/typescriptlang-org/src/dom.d.ts",
+    "line": 5334,
+    "column": 5,
+    "word": "onloadingdone"
+  },
+  {
+    "file": "packages/typescriptlang-org/src/dom.d.ts",
+    "line": 5335,
+    "column": 5,
+    "word": "onloadingerror"
+  },
+  {
+    "file": "packages/typescriptlang-org/src/dom.d.ts",
+    "line": 5432,
+    "column": 129,
+    "word": "gamepadconnected"
+  },
+  {
+    "file": "packages/typescriptlang-org/src/dom.d.ts",
+    "line": 5432,
+    "column": 157,
+    "word": "gamepaddisconnected"
+  },
+  {
+    "file": "packages/typescriptlang-org/src/dom.d.ts",
+    "line": 8738,
+    "column": 6,
+    "word": "enterpictureinpicture"
+  },
+  {
+    "file": "packages/typescriptlang-org/src/dom.d.ts",
+    "line": 8739,
+    "column": 6,
+    "word": "leavepictureinpicture"
+  },
+  {
+    "file": "packages/typescriptlang-org/src/dom.d.ts",
+    "line": 8749,
+    "column": 5,
+    "word": "onenterpictureinpicture"
+  },
+  {
+    "file": "packages/typescriptlang-org/src/dom.d.ts",
+    "line": 8750,
+    "column": 5,
+    "word": "onleavepictureinpicture"
+  },
+  {
+    "file": "packages/typescriptlang-org/src/dom.d.ts",
+    "line": 8752,
+    "column": 25,
+    "word": "playsinline"
+  },
+  {
+    "file": "packages/typescriptlang-org/src/dom.d.ts",
+    "line": 9838,
+    "column": 11,
+    "word": "timeslice"
+  },
+  {
+    "file": "packages/typescriptlang-org/src/dom.d.ts",
+    "line": 10688,
+    "column": 82,
+    "word": "GLSL"
+  },
+  {
+    "file": "packages/typescriptlang-org/src/dom.d.ts",
+    "line": 10718,
+    "column": 15,
+    "word": "multiview"
+  },
+  {
+    "file": "packages/typescriptlang-org/src/dom.d.ts",
+    "line": 10719,
+    "column": 23,
+    "word": "Multiview"
+  },
+  {
+    "file": "packages/typescriptlang-org/src/dom.d.ts",
+    "line": 10790,
+    "column": 168,
+    "word": "unsalvageable"
+  },
+  {
+    "file": "packages/typescriptlang-org/src/dom.d.ts",
+    "line": 10937,
+    "column": 6,
+    "word": "paymentmethodchange"
+  },
+  {
+    "file": "packages/typescriptlang-org/src/dom.d.ts",
+    "line": 10943,
+    "column": 5,
+    "word": "onpaymentmethodchange"
+  },
+  {
+    "file": "packages/typescriptlang-org/src/dom.d.ts",
+    "line": 11440,
+    "column": 40,
+    "word": "subcription's"
+  },
+  {
+    "file": "packages/typescriptlang-org/src/dom.d.ts",
+    "line": 11440,
+    "column": 78,
+    "word": "unsubscription"
+  },
+  {
+    "file": "packages/typescriptlang-org/src/dom.d.ts",
+    "line": 11891,
+    "column": 5,
+    "word": "onconnecting"
+  },
+  {
+    "file": "packages/typescriptlang-org/src/dom.d.ts",
+    "line": 11892,
+    "column": 5,
+    "word": "ondisconnect"
+  },
+  {
+    "file": "packages/typescriptlang-org/src/dom.d.ts",
+    "line": 11927,
+    "column": 26,
+    "word": "subresource"
+  },
+  {
+    "file": "packages/typescriptlang-org/src/dom.d.ts",
+    "line": 13123,
+    "column": 11,
+    "word": "SVGM"
+  },
+  {
+    "file": "packages/typescriptlang-org/src/dom.d.ts",
+    "line": 14189,
+    "column": 30,
+    "word": "unitless"
+  },
+  {
+    "file": "packages/typescriptlang-org/src/dom.d.ts",
+    "line": 14664,
+    "column": 145,
+    "word": "trackpad"
+  },
+  {
+    "file": "packages/typescriptlang-org/src/dom.d.ts",
+    "line": 15003,
+    "column": 30,
+    "word": "PUNCHTHROUGH"
+  },
+  {
+    "file": "packages/typescriptlang-org/src/dom.d.ts",
+    "line": 15016,
+    "column": 36,
+    "word": "pvrtc"
+  },
+  {
+    "file": "packages/typescriptlang-org/src/dom.d.ts",
+    "line": 15017,
+    "column": 30,
+    "word": "PVRTC"
+  },
+  {
+    "file": "packages/typescriptlang-org/src/dom.d.ts",
+    "line": 15017,
+    "column": 37,
+    "word": "BPPV"
+  },
+  {
+    "file": "packages/typescriptlang-org/src/dom.d.ts",
+    "line": 15438,
+    "column": 14,
+    "word": "DONT"
+  },
+  {
+    "file": "packages/typescriptlang-org/src/dom.d.ts",
+    "line": 17248,
+    "column": 5,
+    "word": "ongamepadconnected"
+  },
+  {
+    "file": "packages/typescriptlang-org/src/dom.d.ts",
+    "line": 17249,
+    "column": 5,
+    "word": "ongamepaddisconnected"
+  },
+  {
+    "file": "packages/typescriptlang-org/src/dom.d.ts",
+    "line": 17784,
+    "column": 35,
+    "word": "externref"
+  },
+  {
+    "file": "packages/typescriptlang-org/src/dom.d.ts",
+    "line": 18111,
+    "column": 6,
+    "word": "mpath"
+  },
+  {
+    "file": "packages/typescriptlang-org/src/dom.d.ts",
+    "line": 18665,
+    "column": 129,
+    "word": "unicase"
+  },
+  {
+    "file": "packages/typescriptlang-org/src/dom.d.ts",
+    "line": 18693,
+    "column": 25,
+    "word": "smpte"
+  },
+  {
+    "file": "packages/typescriptlang-org/src/dom.d.ts",
+    "line": 18704,
+    "column": 53,
+    "word": "webrtc"
+  },
+  {
+    "file": "packages/typescriptlang-org/src/dom.d.ts",
+    "line": 18711,
+    "column": 39,
+    "word": "nexttrack"
+  },
+  {
+    "file": "packages/typescriptlang-org/src/dom.d.ts",
+    "line": 18711,
+    "column": 72,
+    "word": "previoustrack"
+  },
+  {
+    "file": "packages/typescriptlang-org/src/dom.d.ts",
+    "line": 18711,
+    "column": 90,
+    "word": "seekbackward"
+  },
+  {
+    "file": "packages/typescriptlang-org/src/dom.d.ts",
+    "line": 18711,
+    "column": 107,
+    "word": "seekforward"
+  },
+  {
+    "file": "packages/typescriptlang-org/src/dom.d.ts",
+    "line": 18711,
+    "column": 123,
+    "word": "seekto"
+  },
+  {
+    "file": "packages/typescriptlang-org/src/dom.d.ts",
+    "line": 18711,
+    "column": 134,
+    "word": "skipad"
+  },
+  {
+    "file": "packages/typescriptlang-org/src/dom.d.ts",
+    "line": 18711,
+    "column": 154,
+    "word": "togglecamera"
+  },
+  {
+    "file": "packages/typescriptlang-org/src/dom.d.ts",
+    "line": 18711,
+    "column": 171,
+    "word": "togglemicrophone"
+  },
+  {
+    "file": "packages/typescriptlang-org/src/pages/dev/dev.scss",
+    "line": 41,
+    "column": 10,
+    "word": "fivehundred"
+  },
+  {
+    "file": "packages/typescriptlang-org/src/templates/glossary.scss",
+    "line": 4,
+    "column": 17,
+    "word": "quicklinks"
+  },
+  {
+    "file": "packages/typescriptlang-org/src/templates/pages/community.tsx",
+    "line": 106,
+    "column": 99,
+    "word": "deftyped"
+  },
+  {
+    "file": "packages/typescriptlang-org/src/templates/pages/css/cheatsheets.scss",
+    "line": 113,
+    "column": 8,
+    "word": "BIIIGG"
+  },
+  {
+    "file": "packages/typescriptlang-org/src/templates/pages/css/index.scss",
+    "line": 80,
+    "column": 32,
+    "word": "doens't"
+  },
+  {
+    "file": "packages/typescriptlang-org/src/templates/pages/index.tsx",
+    "line": 64,
+    "column": 23,
+    "word": "ikey"
+  },
+  {
+    "file": "packages/typescriptlang-org/src/templates/tsconfigReference.tsx",
+    "line": 97,
+    "column": 11,
+    "word": "subnavs"
+  },
+  {
+    "file": "packages/typescriptlang-org/static/License.html",
+    "line": 807,
+    "column": 16,
+    "word": "WINEXTERNAL"
+  },
+  {
+    "file": "packages/typescriptlang-org/static/js/docsearch.js",
+    "line": 2,
+    "column": 3184,
+    "word": "clazz"
+  },
+  {
+    "file": "packages/typescriptlang-org/static/js/docsearch.js",
+    "line": 2,
+    "column": 6920,
+    "word": "darkorchid"
+  },
+  {
+    "file": "packages/typescriptlang-org/static/js/docsearch.js",
+    "line": 2,
+    "column": 16164,
+    "word": "Zepto"
+  },
+  {
+    "file": "packages/typescriptlang-org/static/js/docsearch.js",
+    "line": 2,
+    "column": 17129,
+    "word": "zepto"
+  },
+  {
+    "file": "packages/typescriptlang-org/static/js/docsearch.js",
+    "line": 2,
+    "column": 23339,
+    "word": "klass"
+  },
+  {
+    "file": "packages/typescriptlang-org/static/js/docsearch.js",
+    "line": 2,
+    "column": 52585,
+    "word": "Callbac"
+  },
+  {
+    "file": "packages/typescriptlang-org/static/js/docsearch.js",
+    "line": 2,
+    "column": 53353,
+    "word": "collumns"
+  },
+  {
+    "file": "packages/typescriptlang-org/static/js/docsearch.js",
+    "line": 2,
+    "column": 75041,
+    "word": "Algoliasearch"
+  },
+  {
+    "file": "packages/typescriptlang-org/static/js/docsearch.js",
+    "line": 2,
+    "column": 75638,
+    "word": "algoliasearch"
+  },
+  {
+    "file": "packages/typescriptlang-org/static/js/docsearch.js",
+    "line": 2,
+    "column": 76700,
+    "word": "algolianet"
+  },
+  {
+    "file": "packages/typescriptlang-org/static/js/docsearch.js",
+    "line": 2,
+    "column": 98376,
+    "word": "Dont"
+  },
+  {
+    "file": "packages/typescriptlang-org/static/js/vs.loader.js",
+    "line": 25,
+    "column": 743,
+    "word": "Annonymous"
+  },
+  {
+    "file": "patches/gatsby-remark-shiki-twoslash@3.0.38.patch",
+    "line": 17,
+    "column": 49,
+    "word": "focusable"
+  },
+  {
+    "file": "patches/react-server-dom-webpack@0.0.0-experimental-c8b778b7f-20220825.patch",
+    "line": 11,
+    "column": 89,
+    "word": "subarray"
+  },
+  {
+    "file": "watcher.js",
+    "line": 194,
+    "column": 40,
+    "word": "afplay"
+  }
+]

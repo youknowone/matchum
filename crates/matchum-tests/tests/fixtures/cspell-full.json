@@ -1,0 +1,39 @@
+{
+    "version": "0.2",
+    "language": "en",
+    "dictionaryDefinitions": [
+        {
+            "name": "en_us",
+            "path": "../../../../dictionaries/node_modules/@cspell/dict-en_us/en_US.trie.gz"
+        },
+        {
+            "name": "software-terms",
+            "path": "../../../../dictionaries/node_modules/@cspell/dict-software-terms/dict/softwareTerms.txt"
+        },
+        {
+            "name": "cpp",
+            "path": "../../../../dictionaries/node_modules/@cspell/dict-cpp/dict/cpp.txt.gz"
+        },
+        {
+            "name": "cpp-refined",
+            "path": "../../../../dictionaries/node_modules/@cspell/dict-cpp/dict/cpp-refined.txt.gz"
+        },
+        {
+            "name": "cpp-legacy",
+            "path": "../../../../dictionaries/node_modules/@cspell/dict-cpp/dict/cpp-legacy.txt.gz"
+        },
+        {
+            "name": "python",
+            "path": "../../../../dictionaries/node_modules/@cspell/dict-python/dict/python.txt"
+        },
+        {
+            "name": "python-common",
+            "path": "../../../../dictionaries/node_modules/@cspell/dict-python/dict/python-common.txt"
+        },
+        {
+            "name": "django",
+            "path": "../../../../dictionaries/node_modules/@cspell/dict-django/dict/django.txt.gz"
+        }
+    ],
+    "dictionaries": ["en_us", "software-terms", "cpp", "cpp-refined", "cpp-legacy", "python", "python-common", "django"]
+}

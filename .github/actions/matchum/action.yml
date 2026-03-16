@@ -28,28 +28,51 @@ runs:
   steps:
     - name: Install matchum
       shell: bash
+      env:
+        VERSION: ${{ inputs.version }}
       run: |
-        cargo install --locked matchum-cli
+        if command -v cargo-binstall &> /dev/null; then
+          if [ "$VERSION" = "latest" ]; then
+            cargo binstall --no-confirm matchum
+          else
+            cargo binstall --no-confirm "matchum@$VERSION"
+          fi
+        else
+          # Fallback: install cargo-binstall first, then use it
+          curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
+          if [ "$VERSION" = "latest" ]; then
+            cargo binstall --no-confirm matchum
+          else
+            cargo binstall --no-confirm "matchum@$VERSION"
+          fi
+        fi
 
     - name: Fetch diff base
       shell: bash
       if: inputs.diff_base != ''
+      env:
+        DIFF_BASE: ${{ inputs.diff_base }}
       run: |
-        git fetch --depth=1 origin "${{ inputs.diff_base }}" || true
+        git fetch origin "$DIFF_BASE" || true
 
     - name: Run matchum
       shell: bash
+      env:
+        INPUT_PATHS: ${{ inputs.paths }}
+        INPUT_STRICT: ${{ inputs.strict }}
+        INPUT_CONFIG: ${{ inputs.config }}
+        INPUT_DIFF_BASE: ${{ inputs.diff_base }}
       run: |
-        ARGS="check ${{ inputs.paths }} --format github"
-        if [ "${{ inputs.strict }}" = "true" ]; then
+        ARGS="check $INPUT_PATHS --format github"
+        if [ "$INPUT_STRICT" = "true" ]; then
           ARGS="$ARGS --strict"
         fi
-        if [ -n "${{ inputs.config }}" ]; then
-          ARGS="$ARGS --config ${{ inputs.config }}"
+        if [ -n "$INPUT_CONFIG" ]; then
+          ARGS="$ARGS --config $INPUT_CONFIG"
         fi
 
-        if [ -n "${{ inputs.diff_base }}" ]; then
-          git diff "${{ inputs.diff_base }}"...HEAD | matchum $ARGS --diff
+        if [ -n "$INPUT_DIFF_BASE" ]; then
+          git diff "${INPUT_DIFF_BASE}...HEAD" | matchum $ARGS --diff
         else
           matchum $ARGS
         fi

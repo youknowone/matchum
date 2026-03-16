@@ -4,19 +4,19 @@ High-performance Rust spell checker, cspell-compatible.
 
 ## Architecture
 
-Workspace with 4 crates:
+Workspace with 6 crates:
 
 - `crates/matchum-core/` — Word splitting (`splitter.rs`), validation pipeline (`validator.rs`)
 - `crates/matchum-dict/` — Dictionary loading (trie_v3, txt) and lookup (`hashdict.rs`)
 - `crates/matchum-config/` — cspell.json parsing, config resolution, inline directives, npm dictionary fetching
-- `crates/matchum-cli/` — CLI entry point. `check` command drives the main pipeline
-
-Integration tests live in `tests/` at workspace root (10 test files, ~460 tests total).
+- `crates/matchum/` — CLI entry point. `check` command drives the main pipeline
+- `crates/cargo-matchum/` — Cargo subcommand for Rust crate spell checking
+- `crates/matchum-tests/` — Integration tests (~20 test files). Uses `workspace_root()` for `dictionaries/` and `vendor/` paths.
 
 ## Build / Test / Run
 
 ```
-cargo build --release -p matchum-cli
+cargo build --release -p matchum
 cargo test --workspace
 target/release/matchum check --config .cspell.json <path>
 ```

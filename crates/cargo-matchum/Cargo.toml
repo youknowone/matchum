@@ -4,14 +4,21 @@ version.workspace = true
 edition.workspace = true
 license.workspace = true
 rust-version.workspace = true
+repository.workspace = true
+homepage.workspace = true
 description = "Cargo subcommand for spell-checking Rust projects"
 
 [[bin]]
 name = "cargo-matchum"
 path = "src/main.rs"
 
+[features]
+default = ["mimalloc"]
+mimalloc = ["dep:mimalloc"]
+
 [dependencies]
-matchum = { path = "../matchum" }
-matchum-config = { workspace = true }
+matchum = { workspace = true }
+matchum-config = { workspace = true, features = ["fetch"] }
 clap = { workspace = true }
 anyhow = { workspace = true }
+mimalloc = { workspace = true, optional = true }

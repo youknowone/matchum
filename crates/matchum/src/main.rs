@@ -1,3 +1,11 @@
+#[cfg(feature = "mimalloc")]
+#[global_allocator]
+static GLOBAL: mimalloc::MiMalloc = mimalloc::MiMalloc;
+
+#[cfg(feature = "jemalloc")]
+#[global_allocator]
+static GLOBAL: tikv_jemallocator::Jemalloc = tikv_jemallocator::Jemalloc;
+
 use matchum::commands;
 use matchum::diff::DiffFilter;
 
@@ -198,9 +206,48 @@ enum DictAction {
 }
 
 fn main() {
-    let cli = Cli::parse();
+    if let Err(e) = run() {
+        eprintln!("Error: {:#}", e);
+        std::process::exit(2);
+    }
+}
 
-    let result = match cli.command {
+fn run() -> anyhow::Result<()> {
+    let cli = match Cli::try_parse() {
+        Ok(cli) => cli,
+        Err(e) => {
+            // When `matchum cspell .` is run without a subcommand, insert "lint"
+            // as the default subcommand (matching cspell CLI behavior).
+            let args: Vec<String> = std::env::args().collect();
+            if let Some(pos) = args.iter().position(|a| a == "cspell") {
+                let next = args.get(pos + 1).map(|s| s.as_str());
+                let known = [
+                    "lint",
+                    "check",
+                    "trace",
+                    "suggestions",
+                    "sug",
+                    "init",
+                    "link",
+                    "dictionaries",
+                    "help",
+                    "--help",
+                    "-h",
+                ];
+                if next.is_none() || !known.iter().any(|k| next == Some(k)) {
+                    let mut patched = args.clone();
+                    patched.insert(pos + 1, "lint".to_string());
+                    Cli::try_parse_from(patched).map_err(|_| e)?
+                } else {
+                    e.exit();
+                }
+            } else {
+                e.exit();
+            }
+        }
+    };
+
+    match cli.command {
         Commands::Check {
             paths,
             config,
@@ -235,23 +282,53 @@ fn main() {
                 None
             };
             let use_gitignore = if no_gitignore { Some(false) } else { None };
+
+            let resolved = {
+                let start = paths.first().map(|p| p.as_path());
+                let r = commands::setup::resolve_config(config.as_deref(), start, true, &[]);
+                match r {
+                    Ok(r) if r.config_dir.is_some() => r,
+                    Ok(mut r) => {
+                        r.settings = commands::check::default_settings();
+                        r
+                    }
+                    Err(e) => return Err(e),
+                }
+            };
+
+            let mut settings = resolved.settings;
+            if let Some(ref l) = locale {
+                settings.language = Some(l.clone());
+            }
+            commands::check::apply_default_dictionaries(&mut settings);
+
+            let is_cspell = resolved.is_cspell;
+            let catalog = commands::cspell::catalog::build_dictionary_catalog(
+                &settings,
+                resolved.config_dir.as_deref(),
+                Some(&commands::dict_cache_dir()),
+                is_cspell,
+            )?;
+
             commands::check::run_check(
                 &paths,
-                config.as_deref(),
+                &settings,
+                resolved.config_dir.as_deref(),
+                catalog,
                 &format,
-                suggestions,
+                Some(suggestions),
                 unique,
                 strict,
                 commands::check::CheckOptions {
                     config_search: true,
                     use_gitignore_default: true,
-                    dict_base_dir: Some(commands::dict_cache_dir()),
-                    fallback_settings: Some(commands::check::default_settings()),
+                    use_gitattributes: !is_cspell,
+                    per_dir_config_search: is_cspell,
+                    config_file: resolved.config_file,
                     file_type,
                     stats,
                     diff_filter,
                     exclude,
-                    locale,
                     language_id,
                     no_issues,
                     no_progress,
@@ -263,42 +340,104 @@ fn main() {
                     use_gitignore,
                     root,
                     file_list,
+                    compound_words_mode: None,
                     ..commands::check::CheckOptions::default()
                 },
             )
             .map(|_| ())
         }
 
-        Commands::Lint { paths, config } => commands::check::run_check(
-            &paths,
-            config.as_deref(),
-            "text",
-            true,
-            false,
-            true,
-            commands::check::CheckOptions {
-                config_search: true,
-                use_gitignore_default: true,
-                dict_base_dir: Some(commands::dict_cache_dir()),
-                fallback_settings: Some(commands::check::default_settings()),
-                ..commands::check::CheckOptions::default()
-            },
-        )
-        .map(|_| ()),
+        Commands::Lint { paths, config } => {
+            let resolved = {
+                let start = paths.first().map(|p| p.as_path());
+                let r = commands::setup::resolve_config(config.as_deref(), start, true, &[]);
+                match r {
+                    Ok(r) if r.config_dir.is_some() => r,
+                    Ok(mut r) => {
+                        r.settings = commands::check::default_settings();
+                        r
+                    }
+                    Err(e) => return Err(e),
+                }
+            };
+
+            let mut settings = resolved.settings;
+            commands::check::apply_default_dictionaries(&mut settings);
+
+            let is_cspell = resolved.is_cspell;
+            let catalog = commands::cspell::catalog::build_dictionary_catalog(
+                &settings,
+                resolved.config_dir.as_deref(),
+                Some(&commands::dict_cache_dir()),
+                is_cspell,
+            )?;
+
+            commands::check::run_check(
+                &paths,
+                &settings,
+                resolved.config_dir.as_deref(),
+                catalog,
+                "text",
+                Some(true),
+                false,
+                true,
+                commands::check::CheckOptions {
+                    config_search: true,
+                    use_gitignore_default: true,
+                    use_gitattributes: !is_cspell,
+                    per_dir_config_search: is_cspell,
+                    config_file: resolved.config_file,
+                    compound_words_mode: None,
+                    ..commands::check::CheckOptions::default()
+                },
+            )
+            .map(|_| ())
+        }
 
         Commands::Trace { word, config } => commands::trace::run_trace(&word, config.as_deref()),
 
-        Commands::Review { paths, config } => commands::review::run_review(
-            &paths,
-            config.as_deref(),
-            commands::check::CheckOptions {
-                config_search: true,
-                use_gitignore_default: true,
-                dict_base_dir: Some(commands::dict_cache_dir()),
-                fallback_settings: Some(commands::check::default_settings()),
-                ..commands::check::CheckOptions::default()
-            },
-        ),
+        Commands::Review { paths, config } => {
+            let resolved = {
+                let start = paths.first().map(|p| p.as_path());
+                let r = commands::setup::resolve_config(config.as_deref(), start, true, &[]);
+                match r {
+                    Ok(r) if r.config_dir.is_some() => r,
+                    Ok(mut r) => {
+                        r.settings = commands::check::default_settings();
+                        r
+                    }
+                    Err(e) => return Err(e),
+                }
+            };
+
+            let mut settings = resolved.settings;
+            commands::check::apply_default_dictionaries(&mut settings);
+
+            let is_cspell = resolved.is_cspell;
+            let catalog = commands::cspell::catalog::build_dictionary_catalog(
+                &settings,
+                resolved.config_dir.as_deref(),
+                Some(&commands::dict_cache_dir()),
+                is_cspell,
+            )?;
+
+            commands::review::run_review(
+                &paths,
+                config.as_deref(),
+                &settings,
+                resolved.config_dir.as_deref(),
+                catalog,
+                commands::check::CheckOptions {
+                    config_search: true,
+                    use_gitignore_default: true,
+                    use_gitattributes: !is_cspell,
+                    per_dir_config_search: is_cspell,
+                    config_file: resolved.config_file,
+                    compound_words_mode: None,
+                    ..commands::check::CheckOptions::default()
+                },
+            )
+        }
 
         Commands::Init {
             from_cspell,
@@ -323,10 +462,25 @@ fn main() {
         },
 
         Commands::Cspell { action } => commands::cspell::dispatch(action),
-    };
+    }
+}
 
-    if let Err(e) = result {
-        eprintln!("Error: {:#}", e);
-        std::process::exit(2);
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn parse_cspell_lint_hidden_summary_flags() {
+        let cli = Cli::try_parse_from([
+            "matchum",
+            "cspell",
+            "lint",
+            ".",
+            "--issues-summary-report",
+            "--show-perf-summary",
+        ])
+        .expect("hidden cspell summary flags should parse");
+
+        assert!(matches!(cli.command, Commands::Cspell { .. }));
     }
 }

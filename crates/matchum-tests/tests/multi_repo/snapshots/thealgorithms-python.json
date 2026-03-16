@@ -1,0 +1,7568 @@
+[
+  {
+    "file": "CONTRIBUTING.md",
+    "line": 57,
+    "column": 8,
+    "word": "docstrings"
+  },
+  {
+    "file": "CONTRIBUTING.md",
+    "line": 58,
+    "column": 11,
+    "word": "doctests"
+  },
+  {
+    "file": "CONTRIBUTING.md",
+    "line": 88,
+    "column": 334,
+    "word": "autopep"
+  },
+  {
+    "file": "CONTRIBUTING.md",
+    "line": 88,
+    "column": 344,
+    "word": "yapf"
+  },
+  {
+    "file": "CONTRIBUTING.md",
+    "line": 142,
+    "column": 33,
+    "word": "pytest"
+  },
+  {
+    "file": "CONTRIBUTING.md",
+    "line": 145,
+    "column": 14,
+    "word": "doctest"
+  },
+  {
+    "file": "CONTRIBUTING.md",
+    "line": 162,
+    "column": 171,
+    "word": "mypy"
+  },
+  {
+    "file": "CONTRIBUTING.md",
+    "line": 193,
+    "column": 10,
+    "word": "poyea"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 3,
+    "column": 6,
+    "word": "Butterworth"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 33,
+    "column": 19,
+    "word": "Setbits"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 40,
+    "column": 21,
+    "word": "Kernighan"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 66,
+    "column": 6,
+    "word": "Nand"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 67,
+    "column": 6,
+    "word": "Nimply"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 71,
+    "column": 15,
+    "word": "Cluskey"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 72,
+    "column": 6,
+    "word": "Xnor"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 76,
+    "column": 6,
+    "word": "Conways"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 78,
+    "column": 6,
+    "word": "Langtons"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 79,
+    "column": 12,
+    "word": "Schrekenberg"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 86,
+    "column": 6,
+    "word": "Atbash"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 87,
+    "column": 6,
+    "word": "Autokey"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 88,
+    "column": 6,
+    "word": "Baconian"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 97,
+    "column": 6,
+    "word": "Cryptomath"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 102,
+    "column": 6,
+    "word": "Elgamal"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 105,
+    "column": 6,
+    "word": "Gronsfeld"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 110,
+    "column": 6,
+    "word": "Onepad"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 112,
+    "column": 6,
+    "word": "Playfair"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 114,
+    "column": 6,
+    "word": "Porta"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 128,
+    "column": 6,
+    "word": "Vernam"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 129,
+    "column": 6,
+    "word": "Vigenere"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 135,
+    "column": 6,
+    "word": "Haralick"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 167,
+    "column": 10,
+    "word": "Cmyk"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 213,
+    "column": 8,
+    "word": "Fenwick"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 214,
+    "column": 16,
+    "word": "Binarytree"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 214,
+    "column": 30,
+    "word": "Linkedlist"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 257,
+    "column": 14,
+    "word": "Kdtree"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 267,
+    "column": 8,
+    "word": "Deque"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 270,
+    "column": 8,
+    "word": "Floyds"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 293,
+    "column": 8,
+    "word": "Dijkstras"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 333,
+    "column": 8,
+    "word": "Sobel"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 355,
+    "column": 10,
+    "word": "Subarray"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 356,
+    "column": 6,
+    "word": "Mergesort"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 359,
+    "column": 6,
+    "word": "Strassen"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 376,
+    "column": 12,
+    "word": "Warshall"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 378,
+    "column": 24,
+    "word": "Submasks"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 386,
+    "column": 39,
+    "word": "Nlogn"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 411,
+    "column": 6,
+    "word": "Tribonacci"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 412,
+    "column": 6,
+    "word": "Viterbi"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 458,
+    "column": 6,
+    "word": "Vicsek"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 489,
+    "column": 6,
+    "word": "Boruvka"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 495,
+    "column": 12,
+    "word": "Bipatrite"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 506,
+    "column": 6,
+    "word": "Dinic"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 508,
+    "column": 6,
+    "word": "Edmonds"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 508,
+    "column": 14,
+    "word": "Karp"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 509,
+    "column": 6,
+    "word": "Eulerian"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 514,
+    "column": 11,
+    "word": "Shapley"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 514,
+    "column": 19,
+    "word": "Bigraph"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 521,
+    "column": 6,
+    "word": "Kahns"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 522,
+    "column": 22,
+    "word": "Topo"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 523,
+    "column": 6,
+    "word": "Karger"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 524,
+    "column": 6,
+    "word": "Lanczos"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 529,
+    "column": 28,
+    "word": "Kruskal"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 533,
+    "column": 22,
+    "word": "Astar"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 537,
+    "column": 10,
+    "word": "Kosaraju"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 539,
+    "column": 6,
+    "word": "Tarjans"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 563,
+    "column": 6,
+    "word": "Luhn"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 565,
+    "column": 6,
+    "word": "Sdbm"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 586,
+    "column": 8,
+    "word": "Polynom"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 590,
+    "column": 8,
+    "word": "Schur"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 598,
+    "column": 6,
+    "word": "Apriori"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 609,
+    "column": 14,
+    "word": "Clust"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 610,
+    "column": 16,
+    "word": "Neighbours"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 617,
+    "column": 5,
+    "word": "Lstm"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 619,
+    "column": 6,
+    "word": "Mfcc"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 630,
+    "column": 6,
+    "word": "Xgboost"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 645,
+    "column": 13,
+    "word": "Borwein"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 645,
+    "column": 21,
+    "word": "Plouffe"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 653,
+    "column": 6,
+    "word": "Chebyshev"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 656,
+    "column": 6,
+    "word": "Chudnovsky"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 657,
+    "column": 6,
+    "word": "Collatz"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 669,
+    "column": 6,
+    "word": "Eulers"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 669,
+    "column": 13,
+    "word": "Totient"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 683,
+    "column": 6,
+    "word": "Germain"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 685,
+    "column": 12,
+    "word": "Ramanujanalgo"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 687,
+    "column": 6,
+    "word": "Interquartile"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 691,
+    "column": 6,
+    "word": "Jaccard"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 695,
+    "column": 6,
+    "word": "Karatsuba"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 700,
+    "column": 6,
+    "word": "Liouville"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 701,
+    "column": 12,
+    "word": "Lehmer"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 703,
+    "column": 6,
+    "word": "Maclaurin"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 707,
+    "column": 6,
+    "word": "Minkowski"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 708,
+    "column": 6,
+    "word": "Mobius"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 715,
+    "column": 14,
+    "word": "Bashforth"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 720,
+    "column": 8,
+    "word": "Nevilles"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 722,
+    "column": 15,
+    "word": "Raphson"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 725,
+    "column": 8,
+    "word": "Runge"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 725,
+    "column": 14,
+    "word": "Kutta"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 726,
+    "column": 20,
+    "word": "Fehlberg"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 749,
+    "column": 6,
+    "word": "Primelib"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 768,
+    "column": 6,
+    "word": "Signum"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 772,
+    "column": 6,
+    "word": "Softmax"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 773,
+    "column": 6,
+    "word": "Solovay"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 777,
+    "column": 8,
+    "word": "Automorphic"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 783,
+    "column": 8,
+    "word": "Harshad"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 785,
+    "column": 8,
+    "word": "Krishnamurthy"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 788,
+    "column": 8,
+    "word": "Pronic"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 789,
+    "column": 8,
+    "word": "Proth"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 797,
+    "column": 6,
+    "word": "Sumset"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 809,
+    "column": 6,
+    "word": "Zellers"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 816,
+    "column": 6,
+    "word": "Cramers"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 837,
+    "column": 11,
+    "word": "Fulkerson"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 846,
+    "column": 8,
+    "word": "Mish"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 849,
+    "column": 8,
+    "word": "Soboleva"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 850,
+    "column": 8,
+    "word": "Softplus"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 851,
+    "column": 8,
+    "word": "Squareplus"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 863,
+    "column": 19,
+    "word": "Logemann"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 863,
+    "column": 28,
+    "word": "Loveland"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 873,
+    "column": 13,
+    "word": "Congruential"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 875,
+    "column": 6,
+    "word": "Magicdiamondpattern"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 883,
+    "column": 6,
+    "word": "Sdes"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 892,
+    "column": 6,
+    "word": "Casimir"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 906,
+    "column": 6,
+    "word": "Malus"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 1268,
+    "column": 6,
+    "word": "Bitonic"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 1269,
+    "column": 6,
+    "word": "Bogo"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 1307,
+    "column": 6,
+    "word": "Slowsort"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 1318,
+    "column": 10,
+    "word": "Corasick"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 1323,
+    "column": 6,
+    "word": "Bitap"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 1331,
+    "column": 6,
+    "word": "Damerau"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 1339,
+    "column": 9,
+    "word": "Isogram"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 1343,
+    "column": 9,
+    "word": "Srilankan"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 1345,
+    "column": 6,
+    "word": "Jaro"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 1345,
+    "column": 11,
+    "word": "Winkler"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 1350,
+    "column": 6,
+    "word": "Manacher"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 1353,
+    "column": 6,
+    "word": "Ngram"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 1393,
+    "column": 10,
+    "word": "Imdb"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 1394,
+    "column": 13,
+    "word": "Geolocation"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 1397,
+    "column": 6,
+    "word": "Giphy"
+  },
+  {
+    "file": "DIRECTORY.md",
+    "line": 1404,
+    "column": 6,
+    "word": "Recaptcha"
+  },
+  {
+    "file": "audio_filters/butterworth_filter.py",
+    "line": 22,
+    "column": 18,
+    "word": "coeffs"
+  },
+  {
+    "file": "audio_filters/butterworth_filter.py",
+    "line": 38,
+    "column": 5,
+    "word": "filt"
+  },
+  {
+    "file": "audio_filters/butterworth_filter.py",
+    "line": 183,
+    "column": 5,
+    "word": "ppmc"
+  },
+  {
+    "file": "audio_filters/butterworth_filter.py",
+    "line": 185,
+    "column": 5,
+    "word": "pmpc"
+  },
+  {
+    "file": "audio_filters/show_response.py",
+    "line": 57,
+    "column": 9,
+    "word": "xlim"
+  },
+  {
+    "file": "audio_filters/show_response.py",
+    "line": 58,
+    "column": 9,
+    "word": "xlabel"
+  },
+  {
+    "file": "audio_filters/show_response.py",
+    "line": 59,
+    "column": 9,
+    "word": "xscale"
+  },
+  {
+    "file": "audio_filters/show_response.py",
+    "line": 63,
+    "column": 9,
+    "word": "ylim"
+  },
+  {
+    "file": "audio_filters/show_response.py",
+    "line": 64,
+    "column": 9,
+    "word": "ylabel"
+  },
+  {
+    "file": "backtracking/coloring.py",
+    "line": 11,
+    "column": 5,
+    "word": "neighbours"
+  },
+  {
+    "file": "backtracking/coloring.py",
+    "line": 14,
+    "column": 14,
+    "word": "neighbour"
+  },
+  {
+    "file": "backtracking/coloring.py",
+    "line": 52,
+    "column": 18,
+    "word": "Uncolor"
+  },
+  {
+    "file": "backtracking/generate_parentheses.py",
+    "line": 2,
+    "column": 9,
+    "word": "Aayush"
+  },
+  {
+    "file": "backtracking/generate_parentheses.py",
+    "line": 2,
+    "column": 16,
+    "word": "Soni"
+  },
+  {
+    "file": "backtracking/generate_parentheses_iterative.py",
+    "line": 8,
+    "column": 44,
+    "word": "onstack"
+  },
+  {
+    "file": "backtracking/n_queens.py",
+    "line": 3,
+    "column": 5,
+    "word": "nqueens"
+  },
+  {
+    "file": "backtracking/word_search.py",
+    "line": 23,
+    "column": 2,
+    "word": "ABCCED"
+  },
+  {
+    "file": "backtracking/word_search.py",
+    "line": 69,
+    "column": 5,
+    "word": "traverts"
+  },
+  {
+    "file": "backtracking/word_search.py",
+    "line": 97,
+    "column": 79,
+    "word": "ABCB"
+  },
+  {
+    "file": "bit_manipulation/count_1s_brian_kernighan_method.py",
+    "line": 3,
+    "column": 66,
+    "word": "Kernighan's"
+  },
+  {
+    "file": "bit_manipulation/count_number_of_one_bits.py",
+    "line": 4,
+    "column": 36,
+    "word": "kernighans"
+  },
+  {
+    "file": "bit_manipulation/largest_pow_of_two_le_num.py",
+    "line": 2,
+    "column": 11,
+    "word": "Naman"
+  },
+  {
+    "file": "bit_manipulation/largest_pow_of_two_le_num.py",
+    "line": 2,
+    "column": 17,
+    "word": "Sharma"
+  },
+  {
+    "file": "blockchain/diophantine_equation.py",
+    "line": 33,
+    "column": 21,
+    "word": "soln"
+  },
+  {
+    "file": "boolean_algebra/karnaugh_map_simplification.py",
+    "line": 7,
+    "column": 14,
+    "word": "kmap"
+  },
+  {
+    "file": "boolean_algebra/karnaugh_map_simplification.py",
+    "line": 9,
+    "column": 18,
+    "word": "Karnaugh"
+  },
+  {
+    "file": "boolean_algebra/nand_gate.py",
+    "line": 2,
+    "column": 3,
+    "word": "NAND"
+  },
+  {
+    "file": "boolean_algebra/nand_gate.py",
+    "line": 18,
+    "column": 5,
+    "word": "nand"
+  },
+  {
+    "file": "boolean_algebra/nor_gate.py",
+    "line": 12,
+    "column": 22,
+    "word": "Akshaj"
+  },
+  {
+    "file": "boolean_algebra/nor_gate.py",
+    "line": 12,
+    "column": 29,
+    "word": "Vishwanathan"
+  },
+  {
+    "file": "boolean_algebra/quine_mc_cluskey.py",
+    "line": 81,
+    "column": 45,
+    "word": "implicants"
+  },
+  {
+    "file": "boolean_algebra/quine_mc_cluskey.py",
+    "line": 122,
+    "column": 11,
+    "word": "implicant"
+  },
+  {
+    "file": "boolean_algebra/quine_mc_cluskey.py",
+    "line": 150,
+    "column": 18,
+    "word": "Implicants"
+  },
+  {
+    "file": "boolean_algebra/xnor_gate.py",
+    "line": 2,
+    "column": 3,
+    "word": "XNOR"
+  },
+  {
+    "file": "boolean_algebra/xnor_gate.py",
+    "line": 19,
+    "column": 5,
+    "word": "xnor"
+  },
+  {
+    "file": "cellular_automata/game_of_life.py",
+    "line": 1,
+    "column": 41,
+    "word": "Kumar"
+  },
+  {
+    "file": "cellular_automata/game_of_life.py",
+    "line": 120,
+    "column": 5,
+    "word": "cmap"
+  },
+  {
+    "file": "cellular_automata/langtons_ant.py",
+    "line": 19,
+    "column": 25,
+    "word": "Langons"
+  },
+  {
+    "file": "cellular_automata/langtons_ant.py",
+    "line": 84,
+    "column": 18,
+    "word": "imshow"
+  },
+  {
+    "file": "cellular_automata/nagel_schrekenberg.py",
+    "line": 91,
+    "column": 7,
+    "word": "Beforce"
+  },
+  {
+    "file": "cellular_automata/wa_tor.py",
+    "line": 9,
+    "column": 27,
+    "word": "utilise"
+  },
+  {
+    "file": "cellular_automata/wa_tor.py",
+    "line": 261,
+    "column": 43,
+    "word": "neighbouring"
+  },
+  {
+    "file": "cellular_automata/wa_tor.py",
+    "line": 301,
+    "column": 13,
+    "word": "reproducable"
+  },
+  {
+    "file": "cellular_automata/wa_tor.py",
+    "line": 477,
+    "column": 19,
+    "word": "visualisation"
+  },
+  {
+    "file": "cellular_automata/wa_tor.py",
+    "line": 481,
+    "column": 5,
+    "word": "visualise"
+  },
+  {
+    "file": "ciphers/affine_cipher.py",
+    "line": 42,
+    "column": 35,
+    "word": "Mpyx"
+  },
+  {
+    "file": "ciphers/atbash.py",
+    "line": 6,
+    "column": 5,
+    "word": "atbash"
+  },
+  {
+    "file": "ciphers/atbash.py",
+    "line": 9,
+    "column": 6,
+    "word": "ZYXWVUT"
+  },
+  {
+    "file": "ciphers/autokey.py",
+    "line": 18,
+    "column": 6,
+    "word": "jsqqs"
+  },
+  {
+    "file": "ciphers/autokey.py",
+    "line": 18,
+    "column": 12,
+    "word": "avvwo"
+  },
+  {
+    "file": "ciphers/autokey.py",
+    "line": 20,
+    "column": 6,
+    "word": "vvjfpk"
+  },
+  {
+    "file": "ciphers/autokey.py",
+    "line": 20,
+    "column": 16,
+    "word": "ohvp"
+  },
+  {
+    "file": "ciphers/autokey.py",
+    "line": 20,
+    "column": 24,
+    "word": "ddylsv"
+  },
+  {
+    "file": "ciphers/baconian_cipher.py",
+    "line": 8,
+    "column": 11,
+    "word": "AAAAB"
+  },
+  {
+    "file": "ciphers/baconian_cipher.py",
+    "line": 9,
+    "column": 11,
+    "word": "AAABA"
+  },
+  {
+    "file": "ciphers/baconian_cipher.py",
+    "line": 10,
+    "column": 11,
+    "word": "AAABB"
+  },
+  {
+    "file": "ciphers/baconian_cipher.py",
+    "line": 11,
+    "column": 11,
+    "word": "AABAA"
+  },
+  {
+    "file": "ciphers/baconian_cipher.py",
+    "line": 12,
+    "column": 11,
+    "word": "AABAB"
+  },
+  {
+    "file": "ciphers/baconian_cipher.py",
+    "line": 13,
+    "column": 11,
+    "word": "AABBA"
+  },
+  {
+    "file": "ciphers/baconian_cipher.py",
+    "line": 14,
+    "column": 11,
+    "word": "AABBB"
+  },
+  {
+    "file": "ciphers/baconian_cipher.py",
+    "line": 15,
+    "column": 11,
+    "word": "ABAAA"
+  },
+  {
+    "file": "ciphers/baconian_cipher.py",
+    "line": 16,
+    "column": 11,
+    "word": "BBBAA"
+  },
+  {
+    "file": "ciphers/baconian_cipher.py",
+    "line": 17,
+    "column": 11,
+    "word": "ABAAB"
+  },
+  {
+    "file": "ciphers/baconian_cipher.py",
+    "line": 18,
+    "column": 11,
+    "word": "ABABA"
+  },
+  {
+    "file": "ciphers/baconian_cipher.py",
+    "line": 19,
+    "column": 11,
+    "word": "ABABB"
+  },
+  {
+    "file": "ciphers/baconian_cipher.py",
+    "line": 20,
+    "column": 11,
+    "word": "ABBAA"
+  },
+  {
+    "file": "ciphers/baconian_cipher.py",
+    "line": 21,
+    "column": 11,
+    "word": "ABBAB"
+  },
+  {
+    "file": "ciphers/baconian_cipher.py",
+    "line": 22,
+    "column": 11,
+    "word": "ABBBA"
+  },
+  {
+    "file": "ciphers/baconian_cipher.py",
+    "line": 23,
+    "column": 11,
+    "word": "ABBBB"
+  },
+  {
+    "file": "ciphers/baconian_cipher.py",
+    "line": 24,
+    "column": 11,
+    "word": "BAAAA"
+  },
+  {
+    "file": "ciphers/baconian_cipher.py",
+    "line": 25,
+    "column": 11,
+    "word": "BAAAB"
+  },
+  {
+    "file": "ciphers/baconian_cipher.py",
+    "line": 26,
+    "column": 11,
+    "word": "BAABA"
+  },
+  {
+    "file": "ciphers/baconian_cipher.py",
+    "line": 27,
+    "column": 11,
+    "word": "BAABB"
+  },
+  {
+    "file": "ciphers/baconian_cipher.py",
+    "line": 28,
+    "column": 11,
+    "word": "BBBAB"
+  },
+  {
+    "file": "ciphers/baconian_cipher.py",
+    "line": 29,
+    "column": 11,
+    "word": "BABAA"
+  },
+  {
+    "file": "ciphers/baconian_cipher.py",
+    "line": 30,
+    "column": 11,
+    "word": "BABAB"
+  },
+  {
+    "file": "ciphers/baconian_cipher.py",
+    "line": 31,
+    "column": 11,
+    "word": "BABBA"
+  },
+  {
+    "file": "ciphers/baconian_cipher.py",
+    "line": 32,
+    "column": 11,
+    "word": "BABBB"
+  },
+  {
+    "file": "ciphers/baconian_cipher.py",
+    "line": 45,
+    "column": 6,
+    "word": "AABBBAABAAABABAABABAABBAB"
+  },
+  {
+    "file": "ciphers/baconian_cipher.py",
+    "line": 47,
+    "column": 32,
+    "word": "BABAAABBABBAAAAABABAAAABB"
+  },
+  {
+    "file": "ciphers/base32.py",
+    "line": 13,
+    "column": 7,
+    "word": "JBSWY"
+  },
+  {
+    "file": "ciphers/base32.py",
+    "line": 13,
+    "column": 13,
+    "word": "DPEBLW"
+  },
+  {
+    "file": "ciphers/base32.py",
+    "line": 13,
+    "column": 21,
+    "word": "TMMQQQ"
+  },
+  {
+    "file": "ciphers/base32.py",
+    "line": 15,
+    "column": 7,
+    "word": "GEZDGNBVGY"
+  },
+  {
+    "file": "ciphers/base32.py",
+    "line": 17,
+    "column": 7,
+    "word": "ONXW"
+  },
+  {
+    "file": "ciphers/base32.py",
+    "line": 17,
+    "column": 12,
+    "word": "ZJANRXW"
+  },
+  {
+    "file": "ciphers/base32.py",
+    "line": 17,
+    "column": 20,
+    "word": "ZZAMNXW"
+  },
+  {
+    "file": "ciphers/base32.py",
+    "line": 17,
+    "column": 29,
+    "word": "DMMV"
+  },
+  {
+    "file": "ciphers/base32.py",
+    "line": 17,
+    "column": 38,
+    "word": "UOJUW"
+  },
+  {
+    "file": "ciphers/base64_cipher.py",
+    "line": 17,
+    "column": 53,
+    "word": "Steganography"
+  },
+  {
+    "file": "ciphers/beaufort_cipher.py",
+    "line": 2,
+    "column": 9,
+    "word": "Mohit"
+  },
+  {
+    "file": "ciphers/beaufort_cipher.py",
+    "line": 2,
+    "column": 15,
+    "word": "Radadiya"
+  },
+  {
+    "file": "ciphers/beaufort_cipher.py",
+    "line": 17,
+    "column": 6,
+    "word": "SECRETSECRETSECRE"
+  },
+  {
+    "file": "ciphers/beaufort_cipher.py",
+    "line": 36,
+    "column": 10,
+    "word": "PAYUWL"
+  },
+  {
+    "file": "ciphers/beaufort_cipher.py",
+    "line": 36,
+    "column": 17,
+    "word": "JPAIYI"
+  },
+  {
+    "file": "ciphers/bifid.py",
+    "line": 58,
+    "column": 53,
+    "word": "qtltbdxrxlk"
+  },
+  {
+    "file": "ciphers/brute_force_caesar_cipher.py",
+    "line": 6,
+    "column": 18,
+    "word": "TMDETUX"
+  },
+  {
+    "file": "ciphers/brute_force_caesar_cipher.py",
+    "line": 6,
+    "column": 26,
+    "word": "PMDVU"
+  },
+  {
+    "file": "ciphers/brute_force_caesar_cipher.py",
+    "line": 8,
+    "column": 30,
+    "word": "SLCDSTW"
+  },
+  {
+    "file": "ciphers/brute_force_caesar_cipher.py",
+    "line": 8,
+    "column": 38,
+    "word": "OLCUT"
+  },
+  {
+    "file": "ciphers/brute_force_caesar_cipher.py",
+    "line": 9,
+    "column": 30,
+    "word": "RKBCRSV"
+  },
+  {
+    "file": "ciphers/brute_force_caesar_cipher.py",
+    "line": 9,
+    "column": 38,
+    "word": "NKBTS"
+  },
+  {
+    "file": "ciphers/brute_force_caesar_cipher.py",
+    "line": 10,
+    "column": 30,
+    "word": "QJABQRU"
+  },
+  {
+    "file": "ciphers/brute_force_caesar_cipher.py",
+    "line": 10,
+    "column": 38,
+    "word": "MJASR"
+  },
+  {
+    "file": "ciphers/brute_force_caesar_cipher.py",
+    "line": 11,
+    "column": 30,
+    "word": "PIZAPQT"
+  },
+  {
+    "file": "ciphers/brute_force_caesar_cipher.py",
+    "line": 11,
+    "column": 38,
+    "word": "LIZRQ"
+  },
+  {
+    "file": "ciphers/brute_force_caesar_cipher.py",
+    "line": 12,
+    "column": 30,
+    "word": "OHYZOPS"
+  },
+  {
+    "file": "ciphers/brute_force_caesar_cipher.py",
+    "line": 12,
+    "column": 38,
+    "word": "KHYQP"
+  },
+  {
+    "file": "ciphers/brute_force_caesar_cipher.py",
+    "line": 13,
+    "column": 30,
+    "word": "NGXYNOR"
+  },
+  {
+    "file": "ciphers/brute_force_caesar_cipher.py",
+    "line": 13,
+    "column": 38,
+    "word": "JGXPO"
+  },
+  {
+    "file": "ciphers/brute_force_caesar_cipher.py",
+    "line": 14,
+    "column": 30,
+    "word": "MFWXMNQ"
+  },
+  {
+    "file": "ciphers/brute_force_caesar_cipher.py",
+    "line": 14,
+    "column": 38,
+    "word": "IFWON"
+  },
+  {
+    "file": "ciphers/brute_force_caesar_cipher.py",
+    "line": 15,
+    "column": 30,
+    "word": "LEVWLMP"
+  },
+  {
+    "file": "ciphers/brute_force_caesar_cipher.py",
+    "line": 15,
+    "column": 38,
+    "word": "HEVNM"
+  },
+  {
+    "file": "ciphers/brute_force_caesar_cipher.py",
+    "line": 16,
+    "column": 30,
+    "word": "KDUVKLO"
+  },
+  {
+    "file": "ciphers/brute_force_caesar_cipher.py",
+    "line": 16,
+    "column": 38,
+    "word": "GDUML"
+  },
+  {
+    "file": "ciphers/brute_force_caesar_cipher.py",
+    "line": 17,
+    "column": 31,
+    "word": "JCTUJKN"
+  },
+  {
+    "file": "ciphers/brute_force_caesar_cipher.py",
+    "line": 17,
+    "column": 39,
+    "word": "FCTLK"
+  },
+  {
+    "file": "ciphers/brute_force_caesar_cipher.py",
+    "line": 18,
+    "column": 31,
+    "word": "IBSTIJM"
+  },
+  {
+    "file": "ciphers/brute_force_caesar_cipher.py",
+    "line": 18,
+    "column": 39,
+    "word": "EBSKJ"
+  },
+  {
+    "file": "ciphers/brute_force_caesar_cipher.py",
+    "line": 19,
+    "column": 31,
+    "word": "HARSHIL"
+  },
+  {
+    "file": "ciphers/brute_force_caesar_cipher.py",
+    "line": 19,
+    "column": 39,
+    "word": "DARJI"
+  },
+  {
+    "file": "ciphers/brute_force_caesar_cipher.py",
+    "line": 20,
+    "column": 31,
+    "word": "GZQRGHK"
+  },
+  {
+    "file": "ciphers/brute_force_caesar_cipher.py",
+    "line": 20,
+    "column": 39,
+    "word": "CZQIH"
+  },
+  {
+    "file": "ciphers/brute_force_caesar_cipher.py",
+    "line": 21,
+    "column": 31,
+    "word": "FYPQFGJ"
+  },
+  {
+    "file": "ciphers/brute_force_caesar_cipher.py",
+    "line": 21,
+    "column": 39,
+    "word": "BYPHG"
+  },
+  {
+    "file": "ciphers/brute_force_caesar_cipher.py",
+    "line": 22,
+    "column": 31,
+    "word": "EXOPEFI"
+  },
+  {
+    "file": "ciphers/brute_force_caesar_cipher.py",
+    "line": 22,
+    "column": 39,
+    "word": "AXOGF"
+  },
+  {
+    "file": "ciphers/brute_force_caesar_cipher.py",
+    "line": 23,
+    "column": 31,
+    "word": "DWNODEH"
+  },
+  {
+    "file": "ciphers/brute_force_caesar_cipher.py",
+    "line": 23,
+    "column": 39,
+    "word": "ZWNFE"
+  },
+  {
+    "file": "ciphers/brute_force_caesar_cipher.py",
+    "line": 24,
+    "column": 31,
+    "word": "CVMNCDG"
+  },
+  {
+    "file": "ciphers/brute_force_caesar_cipher.py",
+    "line": 24,
+    "column": 39,
+    "word": "YVMED"
+  },
+  {
+    "file": "ciphers/brute_force_caesar_cipher.py",
+    "line": 25,
+    "column": 31,
+    "word": "BULMBCF"
+  },
+  {
+    "file": "ciphers/brute_force_caesar_cipher.py",
+    "line": 25,
+    "column": 39,
+    "word": "XULDC"
+  },
+  {
+    "file": "ciphers/brute_force_caesar_cipher.py",
+    "line": 26,
+    "column": 31,
+    "word": "ATKLABE"
+  },
+  {
+    "file": "ciphers/brute_force_caesar_cipher.py",
+    "line": 26,
+    "column": 39,
+    "word": "WTKCB"
+  },
+  {
+    "file": "ciphers/brute_force_caesar_cipher.py",
+    "line": 27,
+    "column": 31,
+    "word": "ZSJKZAD"
+  },
+  {
+    "file": "ciphers/brute_force_caesar_cipher.py",
+    "line": 27,
+    "column": 39,
+    "word": "VSJBA"
+  },
+  {
+    "file": "ciphers/brute_force_caesar_cipher.py",
+    "line": 28,
+    "column": 31,
+    "word": "YRIJYZC"
+  },
+  {
+    "file": "ciphers/brute_force_caesar_cipher.py",
+    "line": 28,
+    "column": 39,
+    "word": "URIAZ"
+  },
+  {
+    "file": "ciphers/brute_force_caesar_cipher.py",
+    "line": 29,
+    "column": 31,
+    "word": "XQHIXYB"
+  },
+  {
+    "file": "ciphers/brute_force_caesar_cipher.py",
+    "line": 29,
+    "column": 39,
+    "word": "TQHZY"
+  },
+  {
+    "file": "ciphers/brute_force_caesar_cipher.py",
+    "line": 30,
+    "column": 31,
+    "word": "WPGHWXA"
+  },
+  {
+    "file": "ciphers/brute_force_caesar_cipher.py",
+    "line": 30,
+    "column": 39,
+    "word": "SPGYX"
+  },
+  {
+    "file": "ciphers/brute_force_caesar_cipher.py",
+    "line": 31,
+    "column": 31,
+    "word": "VOFGVWZ"
+  },
+  {
+    "file": "ciphers/brute_force_caesar_cipher.py",
+    "line": 31,
+    "column": 39,
+    "word": "ROFXW"
+  },
+  {
+    "file": "ciphers/brute_force_caesar_cipher.py",
+    "line": 32,
+    "column": 31,
+    "word": "UNEFUVY"
+  },
+  {
+    "file": "ciphers/brute_force_caesar_cipher.py",
+    "line": 32,
+    "column": 39,
+    "word": "QNEWV"
+  },
+  {
+    "file": "ciphers/caesar_cipher.py",
+    "line": 52,
+    "column": 34,
+    "word": "Jgnnq"
+  },
+  {
+    "file": "ciphers/caesar_cipher.py",
+    "line": 52,
+    "column": 41,
+    "word": "ecrvckp"
+  },
+  {
+    "file": "ciphers/caesar_cipher.py",
+    "line": 63,
+    "column": 11,
+    "word": "Cqks"
+  },
+  {
+    "file": "ciphers/caesar_cipher.py",
+    "line": 69,
+    "column": 8,
+    "word": "qtbjwhfxj"
+  },
+  {
+    "file": "ciphers/caesar_cipher.py",
+    "line": 69,
+    "column": 18,
+    "word": "fqumfgjy"
+  },
+  {
+    "file": "ciphers/decrypt_caesar_with_chi_squared.py",
+    "line": 55,
+    "column": 22,
+    "word": "ifmmp"
+  },
+  {
+    "file": "ciphers/decrypt_caesar_with_chi_squared.py",
+    "line": 115,
+    "column": 24,
+    "word": "jhlzhy"
+  },
+  {
+    "file": "ciphers/decrypt_caesar_with_chi_squared.py",
+    "line": 115,
+    "column": 31,
+    "word": "jpwoly"
+  },
+  {
+    "file": "ciphers/decrypt_caesar_with_chi_squared.py",
+    "line": 115,
+    "column": 41,
+    "word": "wvwbshy"
+  },
+  {
+    "file": "ciphers/decrypt_caesar_with_chi_squared.py",
+    "line": 115,
+    "column": 60,
+    "word": "lhzf"
+  },
+  {
+    "file": "ciphers/decrypt_caesar_with_chi_squared.py",
+    "line": 115,
+    "column": 68,
+    "word": "jyhjr"
+  },
+  {
+    "file": "ciphers/decrypt_caesar_with_chi_squared.py",
+    "line": 120,
+    "column": 42,
+    "word": "crybd"
+  },
+  {
+    "file": "ciphers/decrypt_caesar_with_chi_squared.py",
+    "line": 120,
+    "column": 48,
+    "word": "cdbsxq"
+  },
+  {
+    "file": "ciphers/decrypt_caesar_with_chi_squared.py",
+    "line": 123,
+    "column": 42,
+    "word": "Crybd"
+  },
+  {
+    "file": "ciphers/decrypt_caesar_with_chi_squared.py",
+    "line": 123,
+    "column": 48,
+    "word": "Cdbsxq"
+  },
+  {
+    "file": "ciphers/decrypt_caesar_with_chi_squared.py",
+    "line": 203,
+    "column": 31,
+    "word": "excepcted"
+  },
+  {
+    "file": "ciphers/deterministic_miller_rabin.py",
+    "line": 1,
+    "column": 30,
+    "word": "bizzfitch"
+  },
+  {
+    "file": "ciphers/diffie_hellman.py",
+    "line": 1,
+    "column": 22,
+    "word": "hexlify"
+  },
+  {
+    "file": "ciphers/diffie_hellman.py",
+    "line": 3,
+    "column": 16,
+    "word": "urandom"
+  },
+  {
+    "file": "ciphers/diffie_hellman.py",
+    "line": 5,
+    "column": 40,
+    "word": "MODP"
+  },
+  {
+    "file": "ciphers/diffie_hellman.py",
+    "line": 5,
+    "column": 46,
+    "word": "Diffie"
+  },
+  {
+    "file": "ciphers/elgamal_key_generator.py",
+    "line": 61,
+    "column": 21,
+    "word": "elgamal"
+  },
+  {
+    "file": "ciphers/enigma_machine2.py",
+    "line": 32,
+    "column": 11,
+    "word": "EGZWVONAHDCLFQMSIPJBYUKXTR"
+  },
+  {
+    "file": "ciphers/enigma_machine2.py",
+    "line": 33,
+    "column": 11,
+    "word": "FOBHMDKEXQNRAULPGSJVTYICZW"
+  },
+  {
+    "file": "ciphers/enigma_machine2.py",
+    "line": 34,
+    "column": 11,
+    "word": "ZJXESIUQLHAVRMDOYGTNFWPBKC"
+  },
+  {
+    "file": "ciphers/enigma_machine2.py",
+    "line": 66,
+    "column": 11,
+    "word": "RMDJXFUWGISLHVTCQNKYPBEZOA"
+  },
+  {
+    "file": "ciphers/enigma_machine2.py",
+    "line": 67,
+    "column": 11,
+    "word": "SGLCPQWZHKXAREONTFBVIYJUDM"
+  },
+  {
+    "file": "ciphers/enigma_machine2.py",
+    "line": 68,
+    "column": 11,
+    "word": "HVSICLTYKQUBXDWAJZOMFGPREN"
+  },
+  {
+    "file": "ciphers/enigma_machine2.py",
+    "line": 69,
+    "column": 11,
+    "word": "RZWQHFMVDBKICJLNTUXAGYPSOE"
+  },
+  {
+    "file": "ciphers/enigma_machine2.py",
+    "line": 70,
+    "column": 11,
+    "word": "LFKIJODBEGAMQPXVUHYSTCZRWN"
+  },
+  {
+    "file": "ciphers/enigma_machine2.py",
+    "line": 71,
+    "column": 11,
+    "word": "KOAEGVDHXPQZMLFTYWJNBRCIUS"
+  },
+  {
+    "file": "ciphers/enigma_machine2.py",
+    "line": 85,
+    "column": 26,
+    "word": "positon"
+  },
+  {
+    "file": "ciphers/enigma_machine2.py",
+    "line": 87,
+    "column": 16,
+    "word": "plugb"
+  },
+  {
+    "file": "ciphers/enigma_machine2.py",
+    "line": 109,
+    "column": 5,
+    "word": "pbdict"
+  },
+  {
+    "file": "ciphers/enigma_machine2.py",
+    "line": 114,
+    "column": 16,
+    "word": "pbstring"
+  },
+  {
+    "file": "ciphers/enigma_machine2.py",
+    "line": 146,
+    "column": 5,
+    "word": "tmppbl"
+  },
+  {
+    "file": "ciphers/enigma_machine2.py",
+    "line": 191,
+    "column": 9,
+    "word": "VKLEPDBGRNWTFCJOHQAMUZYIXS"
+  },
+  {
+    "file": "ciphers/enigma_machine2.py",
+    "line": 201,
+    "column": 9,
+    "word": "ZYXWVUTSRQPON"
+  },
+  {
+    "file": "ciphers/enigma_machine2.py",
+    "line": 210,
+    "column": 6,
+    "word": "KORYH"
+  },
+  {
+    "file": "ciphers/enigma_machine2.py",
+    "line": 210,
+    "column": 12,
+    "word": "JUHHI"
+  },
+  {
+    "file": "ciphers/enigma_machine2.py",
+    "line": 211,
+    "column": 24,
+    "word": "juhhi"
+  },
+  {
+    "file": "ciphers/enigma_machine2.py",
+    "line": 214,
+    "column": 6,
+    "word": "FPNCZ"
+  },
+  {
+    "file": "ciphers/enigma_machine2.py",
+    "line": 214,
+    "column": 12,
+    "word": "QWOBU"
+  },
+  {
+    "file": "ciphers/fractionated_morse_cipher.py",
+    "line": 107,
+    "column": 10,
+    "word": "ESOAVVLJRSSTRX"
+  },
+  {
+    "file": "ciphers/gronsfeld_cipher.py",
+    "line": 9,
+    "column": 6,
+    "word": "LFNPP"
+  },
+  {
+    "file": "ciphers/gronsfeld_cipher.py",
+    "line": 11,
+    "column": 6,
+    "word": "IGOMQ"
+  },
+  {
+    "file": "ciphers/hill_cipher.py",
+    "line": 108,
+    "column": 10,
+    "word": "TESTINGHILLCIPHERR"
+  },
+  {
+    "file": "ciphers/hill_cipher.py",
+    "line": 124,
+    "column": 10,
+    "word": "WHXYJOLM"
+  },
+  {
+    "file": "ciphers/mixed_keyword_cypher.py",
+    "line": 24,
+    "column": 6,
+    "word": "XKJGUFMJST"
+  },
+  {
+    "file": "ciphers/mono_alphabetic_ciphers.py",
+    "line": 10,
+    "column": 28,
+    "word": "QWERTYUIOPASDFGHJKLZXCVBNM"
+  },
+  {
+    "file": "ciphers/mono_alphabetic_ciphers.py",
+    "line": 11,
+    "column": 6,
+    "word": "Pcssi"
+  },
+  {
+    "file": "ciphers/mono_alphabetic_ciphers.py",
+    "line": 11,
+    "column": 12,
+    "word": "Bidsm"
+  },
+  {
+    "file": "ciphers/mono_alphabetic_ciphers.py",
+    "line": 42,
+    "column": 6,
+    "word": "Itssg"
+  },
+  {
+    "file": "ciphers/mono_alphabetic_ciphers.py",
+    "line": 42,
+    "column": 12,
+    "word": "Vgksr"
+  },
+  {
+    "file": "ciphers/playfair_cipher.py",
+    "line": 5,
+    "column": 22,
+    "word": "promotedby"
+  },
+  {
+    "file": "ciphers/playfair_cipher.py",
+    "line": 27,
+    "column": 5,
+    "word": "chunker"
+  },
+  {
+    "file": "ciphers/playfair_cipher.py",
+    "line": 65,
+    "column": 17,
+    "word": "ABCDEFGHIKLMNOPQRSTUVWXYZ"
+  },
+  {
+    "file": "ciphers/playfair_cipher.py",
+    "line": 89,
+    "column": 6,
+    "word": "CFSUPM"
+  },
+  {
+    "file": "ciphers/playfair_cipher.py",
+    "line": 91,
+    "column": 6,
+    "word": "DQZSBYFSDZFMFNLOHFDRSG"
+  },
+  {
+    "file": "ciphers/playfair_cipher.py",
+    "line": 93,
+    "column": 6,
+    "word": "AVXETX"
+  },
+  {
+    "file": "ciphers/playfair_cipher.py",
+    "line": 95,
+    "column": 6,
+    "word": "UMBENF"
+  },
+  {
+    "file": "ciphers/playfair_cipher.py",
+    "line": 97,
+    "column": 6,
+    "word": "OEMHQHVCHESUKE"
+  },
+  {
+    "file": "ciphers/playfair_cipher.py",
+    "line": 125,
+    "column": 17,
+    "word": "BMZFAZRZDH"
+  },
+  {
+    "file": "ciphers/playfair_cipher.py",
+    "line": 127,
+    "column": 17,
+    "word": "HNBWBPQT"
+  },
+  {
+    "file": "ciphers/playfair_cipher.py",
+    "line": 128,
+    "column": 6,
+    "word": "DRIVINGX"
+  },
+  {
+    "file": "ciphers/playfair_cipher.py",
+    "line": 129,
+    "column": 17,
+    "word": "SLYSSAQS"
+  },
+  {
+    "file": "ciphers/playfair_cipher.py",
+    "line": 130,
+    "column": 6,
+    "word": "ATXTACKX"
+  },
+  {
+    "file": "ciphers/playfair_cipher.py",
+    "line": 159,
+    "column": 31,
+    "word": "CXRBANRLBALQ"
+  },
+  {
+    "file": "ciphers/porta_cipher.py",
+    "line": 2,
+    "column": 29,
+    "word": "NOPQRSTUVWXYZ"
+  },
+  {
+    "file": "ciphers/porta_cipher.py",
+    "line": 4,
+    "column": 29,
+    "word": "ZNOPQRSTUVWXY"
+  },
+  {
+    "file": "ciphers/porta_cipher.py",
+    "line": 6,
+    "column": 29,
+    "word": "YZNOPQRSTUVWX"
+  },
+  {
+    "file": "ciphers/porta_cipher.py",
+    "line": 8,
+    "column": 29,
+    "word": "XYZNOPQRSTUVW"
+  },
+  {
+    "file": "ciphers/porta_cipher.py",
+    "line": 10,
+    "column": 29,
+    "word": "WXYZNOPQRSTUV"
+  },
+  {
+    "file": "ciphers/porta_cipher.py",
+    "line": 12,
+    "column": 29,
+    "word": "VWXYZNOPQRSTU"
+  },
+  {
+    "file": "ciphers/porta_cipher.py",
+    "line": 14,
+    "column": 29,
+    "word": "UVWXYZNOPQRST"
+  },
+  {
+    "file": "ciphers/porta_cipher.py",
+    "line": 16,
+    "column": 29,
+    "word": "TUVWXYZNOPQRS"
+  },
+  {
+    "file": "ciphers/porta_cipher.py",
+    "line": 18,
+    "column": 29,
+    "word": "STUVWXYZNOPQR"
+  },
+  {
+    "file": "ciphers/porta_cipher.py",
+    "line": 20,
+    "column": 29,
+    "word": "RSTUVWXYZNOPQ"
+  },
+  {
+    "file": "ciphers/porta_cipher.py",
+    "line": 22,
+    "column": 29,
+    "word": "QRSTUVWXYZNOP"
+  },
+  {
+    "file": "ciphers/porta_cipher.py",
+    "line": 24,
+    "column": 29,
+    "word": "PQRSTUVWXYZNO"
+  },
+  {
+    "file": "ciphers/porta_cipher.py",
+    "line": 26,
+    "column": 29,
+    "word": "OPQRSTUVWXYZN"
+  },
+  {
+    "file": "ciphers/porta_cipher.py",
+    "line": 44,
+    "column": 6,
+    "word": "QRACRWU"
+  },
+  {
+    "file": "ciphers/rabin_miller.py",
+    "line": 1,
+    "column": 3,
+    "word": "Primality"
+  },
+  {
+    "file": "ciphers/rail_fence_cipher.py",
+    "line": 11,
+    "column": 10,
+    "word": "olordll"
+  },
+  {
+    "file": "ciphers/rot13.py",
+    "line": 8,
+    "column": 9,
+    "word": "frperg"
+  },
+  {
+    "file": "ciphers/rot13.py",
+    "line": 8,
+    "column": 16,
+    "word": "onax"
+  },
+  {
+    "file": "ciphers/rot13.py",
+    "line": 8,
+    "column": 21,
+    "word": "nppbhag"
+  },
+  {
+    "file": "ciphers/rot13.py",
+    "line": 8,
+    "column": 29,
+    "word": "ahzore"
+  },
+  {
+    "file": "ciphers/rot13.py",
+    "line": 8,
+    "column": 58,
+    "word": "gryy"
+  },
+  {
+    "file": "ciphers/rot13.py",
+    "line": 8,
+    "column": 63,
+    "word": "nalbar"
+  },
+  {
+    "file": "ciphers/rsa_factorization.py",
+    "line": 19,
+    "column": 5,
+    "word": "rsafactor"
+  },
+  {
+    "file": "ciphers/shuffled_shift_cipher.py",
+    "line": 66,
+    "column": 10,
+    "word": "rtype"
+  },
+  {
+    "file": "ciphers/shuffled_shift_cipher.py",
+    "line": 82,
+    "column": 38,
+    "word": "MLKJIHGF"
+  },
+  {
+    "file": "ciphers/shuffled_shift_cipher.py",
+    "line": 82,
+    "column": 47,
+    "word": "RQPON"
+  },
+  {
+    "file": "ciphers/shuffled_shift_cipher.py",
+    "line": 82,
+    "column": 53,
+    "word": "ZYXWVUTS"
+  },
+  {
+    "file": "ciphers/shuffled_shift_cipher.py",
+    "line": 83,
+    "column": 35,
+    "word": "ACBEDMLKJIHGFRQPONZYXWVUTS"
+  },
+  {
+    "file": "ciphers/shuffled_shift_cipher.py",
+    "line": 132,
+    "column": 44,
+    "word": "Xyqe"
+  },
+  {
+    "file": "ciphers/simple_keyword_cypher.py",
+    "line": 13,
+    "column": 12,
+    "word": "dups"
+  },
+  {
+    "file": "ciphers/simple_keyword_cypher.py",
+    "line": 55,
+    "column": 6,
+    "word": "CYJJM"
+  },
+  {
+    "file": "ciphers/simple_keyword_cypher.py",
+    "line": 55,
+    "column": 12,
+    "word": "VMQJB"
+  },
+  {
+    "file": "ciphers/simple_substitution_cipher.py",
+    "line": 9,
+    "column": 12,
+    "word": "LFWOAYUISVKMNXPBDCRJTQEGHZ"
+  },
+  {
+    "file": "ciphers/simple_substitution_cipher.py",
+    "line": 36,
+    "column": 56,
+    "word": "Harshil"
+  },
+  {
+    "file": "ciphers/simple_substitution_cipher.py",
+    "line": 36,
+    "column": 64,
+    "word": "Darji"
+  },
+  {
+    "file": "ciphers/simple_substitution_cipher.py",
+    "line": 37,
+    "column": 6,
+    "word": "Ilcrism"
+  },
+  {
+    "file": "ciphers/simple_substitution_cipher.py",
+    "line": 37,
+    "column": 14,
+    "word": "Olcvs"
+  },
+  {
+    "file": "ciphers/transposition_cipher.py",
+    "line": 28,
+    "column": 6,
+    "word": "Hlia"
+  },
+  {
+    "file": "ciphers/transposition_cipher.py",
+    "line": 28,
+    "column": 12,
+    "word": "Dsahrij"
+  },
+  {
+    "file": "ciphers/trifid_cipher.py",
+    "line": 25,
+    "column": 17,
+    "word": "triagram"
+  },
+  {
+    "file": "ciphers/trifid_cipher.py",
+    "line": 66,
+    "column": 42,
+    "word": "triagrams"
+  },
+  {
+    "file": "ciphers/trifid_cipher.py",
+    "line": 72,
+    "column": 22,
+    "word": "IAMABOY"
+  },
+  {
+    "file": "ciphers/trifid_cipher.py",
+    "line": 86,
+    "column": 54,
+    "word": "Vwxyzzwwtyyujjgfd"
+  },
+  {
+    "file": "ciphers/trifid_cipher.py",
+    "line": 131,
+    "column": 53,
+    "word": "punctuatuion"
+  },
+  {
+    "file": "ciphers/trifid_cipher.py",
+    "line": 143,
+    "column": 6,
+    "word": "BCDGBQY"
+  },
+  {
+    "file": "ciphers/trifid_cipher.py",
+    "line": 149,
+    "column": 10,
+    "word": "FELIXMARDSTBCGHJKNOPQUVWYZ"
+  },
+  {
+    "file": "ciphers/trifid_cipher.py",
+    "line": 150,
+    "column": 6,
+    "word": "FMJFVOISSUFTFPUFEQQC"
+  },
+  {
+    "file": "ciphers/trifid_cipher.py",
+    "line": 192,
+    "column": 6,
+    "word": "AIDETOILECIELTAIDERA"
+  },
+  {
+    "file": "ciphers/trifid_cipher.py",
+    "line": 213,
+    "column": 39,
+    "word": "EPSDUCVWYM"
+  },
+  {
+    "file": "ciphers/trifid_cipher.py",
+    "line": 213,
+    "column": 50,
+    "word": "ZLKXNBTFGORIJHAQ"
+  },
+  {
+    "file": "ciphers/vernam_cipher.py",
+    "line": 1,
+    "column": 5,
+    "word": "vernam"
+  },
+  {
+    "file": "ciphers/vernam_cipher.py",
+    "line": 4,
+    "column": 6,
+    "word": "RIJVS"
+  },
+  {
+    "file": "ciphers/vigenere_cipher.py",
+    "line": 22,
+    "column": 63,
+    "word": "Dharmaj"
+  },
+  {
+    "file": "ciphers/vigenere_cipher.py",
+    "line": 23,
+    "column": 6,
+    "word": "Akij"
+  },
+  {
+    "file": "ciphers/vigenere_cipher.py",
+    "line": 23,
+    "column": 14,
+    "word": "Odrjqqs"
+  },
+  {
+    "file": "ciphers/vigenere_cipher.py",
+    "line": 23,
+    "column": 22,
+    "word": "Gaisq"
+  },
+  {
+    "file": "ciphers/vigenere_cipher.py",
+    "line": 23,
+    "column": 28,
+    "word": "muod"
+  },
+  {
+    "file": "ciphers/vigenere_cipher.py",
+    "line": 23,
+    "column": 33,
+    "word": "Mphumrs"
+  },
+  {
+    "file": "ciphers/xor_cipher.py",
+    "line": 116,
+    "column": 16,
+    "word": "vdmu"
+  },
+  {
+    "file": "ciphers/xor_cipher.py",
+    "line": 202,
+    "column": 66,
+    "word": "fout"
+  },
+  {
+    "file": "computer_vision/cnn_classification.py",
+    "line": 31,
+    "column": 7,
+    "word": "Initialising"
+  },
+  {
+    "file": "computer_vision/flip_augmentation.py",
+    "line": 26,
+    "column": 16,
+    "word": "annos"
+  },
+  {
+    "file": "computer_vision/flip_augmentation.py",
+    "line": 35,
+    "column": 13,
+    "word": "imwrite"
+  },
+  {
+    "file": "computer_vision/flip_augmentation.py",
+    "line": 35,
+    "column": 53,
+    "word": "IMWRITE"
+  },
+  {
+    "file": "computer_vision/flip_augmentation.py",
+    "line": 86,
+    "column": 32,
+    "word": "narray"
+  },
+  {
+    "file": "computer_vision/flip_augmentation.py",
+    "line": 98,
+    "column": 19,
+    "word": "imread"
+  },
+  {
+    "file": "computer_vision/haralick_descriptors.py",
+    "line": 88,
+    "column": 5,
+    "word": "binarize"
+  },
+  {
+    "file": "computer_vision/haralick_descriptors.py",
+    "line": 90,
+    "column": 5,
+    "word": "Binarizes"
+  },
+  {
+    "file": "computer_vision/haralick_descriptors.py",
+    "line": 280,
+    "column": 14,
+    "word": "ogrid"
+  },
+  {
+    "file": "computer_vision/haralick_descriptors.py",
+    "line": 411,
+    "column": 46,
+    "word": "Harralick"
+  },
+  {
+    "file": "computer_vision/harris_corner.py",
+    "line": 14,
+    "column": 23,
+    "word": "neighbourhoods"
+  },
+  {
+    "file": "computer_vision/horn_schunck.py",
+    "line": 2,
+    "column": 10,
+    "word": "Schunck"
+  },
+  {
+    "file": "computer_vision/horn_schunck.py",
+    "line": 15,
+    "column": 12,
+    "word": "ndimage"
+  },
+  {
+    "file": "computer_vision/horn_schunck.py",
+    "line": 61,
+    "column": 10,
+    "word": "schunck"
+  },
+  {
+    "file": "computer_vision/mosaic_augmentation.py",
+    "line": 29,
+    "column": 9,
+    "word": "idxs"
+  },
+  {
+    "file": "computer_vision/mosaic_augmentation.py",
+    "line": 110,
+    "column": 5,
+    "word": "divid"
+  },
+  {
+    "file": "conversions/astronomical_length_scale_conversion.py",
+    "line": 4,
+    "column": 30,
+    "word": "Gigametre"
+  },
+  {
+    "file": "conversions/astronomical_length_scale_conversion.py",
+    "line": 5,
+    "column": 1,
+    "word": "Terametre"
+  },
+  {
+    "file": "conversions/astronomical_length_scale_conversion.py",
+    "line": 5,
+    "column": 12,
+    "word": "Petametre"
+  },
+  {
+    "file": "conversions/astronomical_length_scale_conversion.py",
+    "line": 5,
+    "column": 23,
+    "word": "Exametre"
+  },
+  {
+    "file": "conversions/astronomical_length_scale_conversion.py",
+    "line": 5,
+    "column": 33,
+    "word": "Zettametre"
+  },
+  {
+    "file": "conversions/astronomical_length_scale_conversion.py",
+    "line": 5,
+    "column": 45,
+    "word": "Yottametre"
+  },
+  {
+    "file": "conversions/astronomical_length_scale_conversion.py",
+    "line": 25,
+    "column": 6,
+    "word": "gigametre"
+  },
+  {
+    "file": "conversions/astronomical_length_scale_conversion.py",
+    "line": 26,
+    "column": 6,
+    "word": "terametre"
+  },
+  {
+    "file": "conversions/astronomical_length_scale_conversion.py",
+    "line": 27,
+    "column": 6,
+    "word": "petametre"
+  },
+  {
+    "file": "conversions/astronomical_length_scale_conversion.py",
+    "line": 28,
+    "column": 6,
+    "word": "exametre"
+  },
+  {
+    "file": "conversions/astronomical_length_scale_conversion.py",
+    "line": 29,
+    "column": 6,
+    "word": "zettametre"
+  },
+  {
+    "file": "conversions/astronomical_length_scale_conversion.py",
+    "line": 30,
+    "column": 6,
+    "word": "yottametre"
+  },
+  {
+    "file": "conversions/binary_to_hexadecimal.py",
+    "line": 40,
+    "column": 7,
+    "word": "Sanitising"
+  },
+  {
+    "file": "conversions/energy_conversions.py",
+    "line": 5,
+    "column": 64,
+    "word": "nutr"
+  },
+  {
+    "file": "conversions/length_conversion.py",
+    "line": 39,
+    "column": 6,
+    "word": "inche"
+  },
+  {
+    "file": "conversions/molecular_chemistry.py",
+    "line": 10,
+    "column": 27,
+    "word": "nfactor"
+  },
+  {
+    "file": "conversions/octal_to_binary.py",
+    "line": 2,
+    "column": 11,
+    "word": "Bama"
+  },
+  {
+    "file": "conversions/octal_to_binary.py",
+    "line": 2,
+    "column": 23,
+    "word": "Chhandogi"
+  },
+  {
+    "file": "conversions/prefix_conversions_string.py",
+    "line": 2,
+    "column": 21,
+    "word": "Lullo"
+  },
+  {
+    "file": "conversions/prefix_conversions_string.py",
+    "line": 5,
+    "column": 67,
+    "word": "pyles"
+  },
+  {
+    "file": "conversions/prefix_conversions_string.py",
+    "line": 22,
+    "column": 5,
+    "word": "yotta"
+  },
+  {
+    "file": "conversions/prefix_conversions_string.py",
+    "line": 23,
+    "column": 5,
+    "word": "zetta"
+  },
+  {
+    "file": "conversions/prefix_conversions_string.py",
+    "line": 25,
+    "column": 5,
+    "word": "peta"
+  },
+  {
+    "file": "conversions/prefix_conversions_string.py",
+    "line": 27,
+    "column": 5,
+    "word": "giga"
+  },
+  {
+    "file": "conversions/prefix_conversions_string.py",
+    "line": 42,
+    "column": 5,
+    "word": "hecto"
+  },
+  {
+    "file": "conversions/prefix_conversions_string.py",
+    "line": 43,
+    "column": 5,
+    "word": "deca"
+  },
+  {
+    "file": "conversions/prefix_conversions_string.py",
+    "line": 44,
+    "column": 5,
+    "word": "deci"
+  },
+  {
+    "file": "conversions/prefix_conversions_string.py",
+    "line": 45,
+    "column": 5,
+    "word": "centi"
+  },
+  {
+    "file": "conversions/prefix_conversions_string.py",
+    "line": 46,
+    "column": 5,
+    "word": "milli"
+  },
+  {
+    "file": "conversions/prefix_conversions_string.py",
+    "line": 49,
+    "column": 5,
+    "word": "pico"
+  },
+  {
+    "file": "conversions/prefix_conversions_string.py",
+    "line": 50,
+    "column": 5,
+    "word": "femto"
+  },
+  {
+    "file": "conversions/prefix_conversions_string.py",
+    "line": 51,
+    "column": 5,
+    "word": "atto"
+  },
+  {
+    "file": "conversions/prefix_conversions_string.py",
+    "line": 52,
+    "column": 5,
+    "word": "zepto"
+  },
+  {
+    "file": "conversions/prefix_conversions_string.py",
+    "line": 53,
+    "column": 5,
+    "word": "yocto"
+  },
+  {
+    "file": "conversions/roman_numerals.py",
+    "line": 24,
+    "column": 29,
+    "word": "CLIV"
+  },
+  {
+    "file": "conversions/roman_numerals.py",
+    "line": 24,
+    "column": 68,
+    "word": "MMMCMXCIX"
+  },
+  {
+    "file": "conversions/temperature_conversions.py",
+    "line": 4,
+    "column": 43,
+    "word": "ndigits"
+  },
+  {
+    "file": "conversions/temperature_conversions.py",
+    "line": 306,
+    "column": 5,
+    "word": "reaumur"
+  },
+  {
+    "file": "conversions/weight_conversion.py",
+    "line": 4,
+    "column": 15,
+    "word": "Anubhav"
+  },
+  {
+    "file": "conversions/weight_conversion.py",
+    "line": 4,
+    "column": 23,
+    "word": "Solanki"
+  },
+  {
+    "file": "data_compression/burrows_wheeler.py",
+    "line": 32,
+    "column": 31,
+    "word": "ANANA"
+  },
+  {
+    "file": "data_compression/burrows_wheeler.py",
+    "line": 32,
+    "column": 43,
+    "word": "NANA"
+  },
+  {
+    "file": "data_compression/burrows_wheeler.py",
+    "line": 32,
+    "column": 71,
+    "word": "BANA"
+  },
+  {
+    "file": "data_compression/burrows_wheeler.py",
+    "line": 33,
+    "column": 9,
+    "word": "BANAN"
+  },
+  {
+    "file": "data_compression/burrows_wheeler.py",
+    "line": 35,
+    "column": 32,
+    "word": "casaa"
+  },
+  {
+    "file": "data_compression/burrows_wheeler.py",
+    "line": 37,
+    "column": 40,
+    "word": "asaa"
+  },
+  {
+    "file": "data_compression/burrows_wheeler.py",
+    "line": 40,
+    "column": 39,
+    "word": "namabananapa"
+  },
+  {
+    "file": "data_compression/burrows_wheeler.py",
+    "line": 41,
+    "column": 22,
+    "word": "abananapanam"
+  },
+  {
+    "file": "data_compression/burrows_wheeler.py",
+    "line": 42,
+    "column": 6,
+    "word": "nanapanamaba"
+  },
+  {
+    "file": "data_compression/burrows_wheeler.py",
+    "line": 42,
+    "column": 54,
+    "word": "apanamabanan"
+  },
+  {
+    "file": "data_compression/burrows_wheeler.py",
+    "line": 66,
+    "column": 21,
+    "word": "aaaadss"
+  },
+  {
+    "file": "data_compression/burrows_wheeler.py",
+    "line": 68,
+    "column": 21,
+    "word": "mnpbnnaaaaaa"
+  },
+  {
+    "file": "data_compression/lempel_ziv_decompress.py",
+    "line": 2,
+    "column": 39,
+    "word": "Lempel"
+  },
+  {
+    "file": "data_compression/lz77.py",
+    "line": 5,
+    "column": 53,
+    "word": "LZSS"
+  },
+  {
+    "file": "data_compression/lz77.py",
+    "line": 22,
+    "column": 2,
+    "word": "cabracadabrarrarrad"
+  },
+  {
+    "file": "data_compression/lz77.py",
+    "line": 24,
+    "column": 2,
+    "word": "ababcbababaa"
+  },
+  {
+    "file": "data_compression/lz77.py",
+    "line": 25,
+    "column": 2,
+    "word": "aacaacabcabaaac"
+  },
+  {
+    "file": "data_compression/lz77.py",
+    "line": 34,
+    "column": 21,
+    "word": "Harcekova"
+  },
+  {
+    "file": "data_compression/lz77.py",
+    "line": 149,
+    "column": 55,
+    "word": "abrarrarrad"
+  },
+  {
+    "file": "data_compression/lz77.py",
+    "line": 149,
+    "column": 70,
+    "word": "abracad"
+  },
+  {
+    "file": "data_compression/lz77.py",
+    "line": 151,
+    "column": 55,
+    "word": "adabrarrarrad"
+  },
+  {
+    "file": "data_compression/lz77.py",
+    "line": 151,
+    "column": 72,
+    "word": "cabrac"
+  },
+  {
+    "file": "data_compression/lz77.py",
+    "line": 200,
+    "column": 59,
+    "word": "rarrad"
+  },
+  {
+    "file": "data_compression/lz77.py",
+    "line": 200,
+    "column": 69,
+    "word": "adabrar"
+  },
+  {
+    "file": "data_compression/peak_signal_to_noise_ratio.py",
+    "line": 2,
+    "column": 30,
+    "word": "PSNR"
+  },
+  {
+    "file": "data_compression/run_length_encoding.py",
+    "line": 7,
+    "column": 28,
+    "word": "AAAABBBCCDAA"
+  },
+  {
+    "file": "data_compression/run_length_encoding.py",
+    "line": 13,
+    "column": 28,
+    "word": "AAADDDDDDFFFCCCAAVVVV"
+  },
+  {
+    "file": "data_structures/arrays/sparse_table.py",
+    "line": 8,
+    "column": 28,
+    "word": "nlogn"
+  },
+  {
+    "file": "data_structures/arrays/sudoku_solver.py",
+    "line": 115,
+    "column": 9,
+    "word": "dplaces"
+  },
+  {
+    "file": "data_structures/arrays/sudoku_solver.py",
+    "line": 169,
+    "column": 31,
+    "word": "showif"
+  },
+  {
+    "file": "data_structures/binary_tree/avl_tree.py",
+    "line": 245,
+    "column": 9,
+    "word": "Ltree"
+  },
+  {
+    "file": "data_structures/binary_tree/avl_tree.py",
+    "line": 298,
+    "column": 26,
+    "word": "traversale"
+  },
+  {
+    "file": "data_structures/binary_tree/binary_search_tree_recursive.py",
+    "line": 234,
+    "column": 9,
+    "word": "inorder"
+  },
+  {
+    "file": "data_structures/binary_tree/binary_search_tree_recursive.py",
+    "line": 601,
+    "column": 12,
+    "word": "Inorder"
+  },
+  {
+    "file": "data_structures/binary_tree/flatten_binarytree_to_linkedlist.py",
+    "line": 10,
+    "column": 9,
+    "word": "Arunkumar"
+  },
+  {
+    "file": "data_structures/binary_tree/inorder_tree_traversal_2022.py",
+    "line": 3,
+    "column": 9,
+    "word": "Gurneet"
+  },
+  {
+    "file": "data_structures/binary_tree/lazy_segment_tree.py",
+    "line": 128,
+    "column": 5,
+    "word": "segt"
+  },
+  {
+    "file": "data_structures/binary_tree/red_black_tree.py",
+    "line": 688,
+    "column": 5,
+    "word": "pytests"
+  },
+  {
+    "file": "data_structures/binary_tree/treap.py",
+    "line": 8,
+    "column": 5,
+    "word": "Treap's"
+  },
+  {
+    "file": "data_structures/binary_tree/treap.py",
+    "line": 9,
+    "column": 5,
+    "word": "Treap"
+  },
+  {
+    "file": "data_structures/binary_tree/treap.py",
+    "line": 121,
+    "column": 14,
+    "word": "treap"
+  },
+  {
+    "file": "data_structures/binary_tree/wavelet_tree.py",
+    "line": 19,
+    "column": 14,
+    "word": "maxx"
+  },
+  {
+    "file": "data_structures/disjoint_set/alternate_disjoint_set.py",
+    "line": 54,
+    "column": 26,
+    "word": "disj"
+  },
+  {
+    "file": "data_structures/hashing/hash_map.py",
+    "line": 7,
+    "column": 32,
+    "word": "Hettinger"
+  },
+  {
+    "file": "data_structures/hashing/tests/test_hash_map.py",
+    "line": 56,
+    "column": 52,
+    "word": "upsize"
+  },
+  {
+    "file": "data_structures/heap/binomial_heap.py",
+    "line": 52,
+    "column": 64,
+    "word": "logn"
+  },
+  {
+    "file": "data_structures/heap/binomial_heap.py",
+    "line": 52,
+    "column": 70,
+    "word": "amoratized"
+  },
+  {
+    "file": "data_structures/heap/binomial_heap.py",
+    "line": 53,
+    "column": 56,
+    "word": "logm"
+  },
+  {
+    "file": "data_structures/heap/binomial_heap.py",
+    "line": 177,
+    "column": 19,
+    "word": "Neighbouring"
+  },
+  {
+    "file": "data_structures/heap/binomial_heap.py",
+    "line": 325,
+    "column": 11,
+    "word": "Neighbour"
+  },
+  {
+    "file": "data_structures/kd_tree/build_kdtree.py",
+    "line": 1,
+    "column": 16,
+    "word": "Ramy"
+  },
+  {
+    "file": "data_structures/kd_tree/build_kdtree.py",
+    "line": 1,
+    "column": 21,
+    "word": "Badr"
+  },
+  {
+    "file": "data_structures/kd_tree/build_kdtree.py",
+    "line": 12,
+    "column": 11,
+    "word": "kdtree"
+  },
+  {
+    "file": "data_structures/linked_list/deque_doubly.py",
+    "line": 103,
+    "column": 8,
+    "word": "Equeu"
+  },
+  {
+    "file": "data_structures/linked_list/singly_linked_list.py",
+    "line": 420,
+    "column": 10,
+    "word": "dlrow"
+  },
+  {
+    "file": "data_structures/linked_list/singly_linked_list.py",
+    "line": 420,
+    "column": 16,
+    "word": "olle"
+  },
+  {
+    "file": "data_structures/linked_list/skip_list.py",
+    "line": 373,
+    "column": 17,
+    "word": "doesnt"
+  },
+  {
+    "file": "data_structures/queues/double_ended_queue.py",
+    "line": 245,
+    "column": 18,
+    "word": "topop"
+  },
+  {
+    "file": "data_structures/stacks/dijkstras_two_stack_algorithm.py",
+    "line": 3,
+    "column": 20,
+    "word": "echoaj"
+  },
+  {
+    "file": "data_structures/stacks/dijkstras_two_stack_algorithm.py",
+    "line": 40,
+    "column": 5,
+    "word": "dijkstras"
+  },
+  {
+    "file": "data_structures/stacks/infix_to_postfix_conversion.py",
+    "line": 19,
+    "column": 1,
+    "word": "ASSOCIATIVITIES"
+  },
+  {
+    "file": "data_structures/trie/radix_tree.py",
+    "line": 27,
+    "column": 24,
+    "word": "myprefix"
+  },
+  {
+    "file": "digital_image_processing/change_brightness.py",
+    "line": 25,
+    "column": 9,
+    "word": "brigt"
+  },
+  {
+    "file": "digital_image_processing/edge_detection/canny.py",
+    "line": 5,
+    "column": 39,
+    "word": "sobel"
+  },
+  {
+    "file": "digital_image_processing/edge_detection/canny.py",
+    "line": 12,
+    "column": 15,
+    "word": "mgrid"
+  },
+  {
+    "file": "digital_image_processing/filters/gabor_filter.py",
+    "line": 1,
+    "column": 25,
+    "word": "Gaborfilter"
+  },
+  {
+    "file": "digital_image_processing/filters/gabor_filter.py",
+    "line": 7,
+    "column": 5,
+    "word": "gabor"
+  },
+  {
+    "file": "digital_image_processing/filters/gabor_filter.py",
+    "line": 8,
+    "column": 5,
+    "word": "ksize"
+  },
+  {
+    "file": "digital_image_processing/filters/gabor_filter.py",
+    "line": 8,
+    "column": 41,
+    "word": "lambd"
+  },
+  {
+    "file": "digital_image_processing/filters/gabor_filter.py",
+    "line": 14,
+    "column": 24,
+    "word": "Gabor"
+  },
+  {
+    "file": "digital_image_processing/filters/laplacian_filter.py",
+    "line": 1,
+    "column": 14,
+    "word": "ojas"
+  },
+  {
+    "file": "digital_image_processing/filters/laplacian_filter.py",
+    "line": 1,
+    "column": 19,
+    "word": "wani"
+  },
+  {
+    "file": "digital_image_processing/filters/local_binary_pattern.py",
+    "line": 29,
+    "column": 39,
+    "word": "patternof"
+  },
+  {
+    "file": "digital_image_processing/filters/local_binary_pattern.py",
+    "line": 66,
+    "column": 61,
+    "word": "IMREAD"
+  },
+  {
+    "file": "digital_image_processing/histogram_equalization/histogram_stretch.py",
+    "line": 4,
+    "column": 10,
+    "word": "Binish"
+  },
+  {
+    "file": "digital_image_processing/index_calculation.py",
+    "line": 1,
+    "column": 11,
+    "word": "João"
+  },
+  {
+    "file": "digital_image_processing/index_calculation.py",
+    "line": 1,
+    "column": 27,
+    "word": "Amorim"
+  },
+  {
+    "file": "digital_image_processing/index_calculation.py",
+    "line": 47,
+    "column": 15,
+    "word": "ARVI"
+  },
+  {
+    "file": "digital_image_processing/index_calculation.py",
+    "line": 48,
+    "column": 15,
+    "word": "CCCI"
+  },
+  {
+    "file": "digital_image_processing/index_calculation.py",
+    "line": 51,
+    "column": 15,
+    "word": "NDVI"
+  },
+  {
+    "file": "digital_image_processing/index_calculation.py",
+    "line": 52,
+    "column": 15,
+    "word": "BNDVI"
+  },
+  {
+    "file": "digital_image_processing/index_calculation.py",
+    "line": 54,
+    "column": 15,
+    "word": "GNDVI"
+  },
+  {
+    "file": "digital_image_processing/index_calculation.py",
+    "line": 55,
+    "column": 15,
+    "word": "GBNDVI"
+  },
+  {
+    "file": "digital_image_processing/index_calculation.py",
+    "line": 56,
+    "column": 15,
+    "word": "GRNDVI"
+  },
+  {
+    "file": "digital_image_processing/index_calculation.py",
+    "line": 57,
+    "column": 15,
+    "word": "RBNDVI"
+  },
+  {
+    "file": "digital_image_processing/index_calculation.py",
+    "line": 58,
+    "column": 15,
+    "word": "PNDVI"
+  },
+  {
+    "file": "digital_image_processing/index_calculation.py",
+    "line": 60,
+    "column": 15,
+    "word": "BWDRVI"
+  },
+  {
+    "file": "digital_image_processing/index_calculation.py",
+    "line": 64,
+    "column": 15,
+    "word": "CTVI"
+  },
+  {
+    "file": "digital_image_processing/index_calculation.py",
+    "line": 65,
+    "column": 15,
+    "word": "GDVI"
+  },
+  {
+    "file": "digital_image_processing/index_calculation.py",
+    "line": 67,
+    "column": 15,
+    "word": "GEMI"
+  },
+  {
+    "file": "digital_image_processing/index_calculation.py",
+    "line": 68,
+    "column": 15,
+    "word": "GOSAVI"
+  },
+  {
+    "file": "digital_image_processing/index_calculation.py",
+    "line": 69,
+    "column": 15,
+    "word": "GSAVI"
+  },
+  {
+    "file": "digital_image_processing/index_calculation.py",
+    "line": 72,
+    "column": 15,
+    "word": "IPVI"
+  },
+  {
+    "file": "digital_image_processing/index_calculation.py",
+    "line": 75,
+    "column": 15,
+    "word": "MRVI"
+  },
+  {
+    "file": "digital_image_processing/index_calculation.py",
+    "line": 76,
+    "column": 15,
+    "word": "MSAVI"
+  },
+  {
+    "file": "digital_image_processing/index_calculation.py",
+    "line": 80,
+    "column": 15,
+    "word": "NGRDI"
+  },
+  {
+    "file": "digital_image_processing/index_calculation.py",
+    "line": 86,
+    "column": 15,
+    "word": "NDRE"
+  },
+  {
+    "file": "digital_image_processing/index_calculation.py",
+    "line": 108,
+    "column": 18,
+    "word": "matricies"
+  },
+  {
+    "file": "digital_image_processing/index_calculation.py",
+    "line": 131,
+    "column": 9,
+    "word": "funcs"
+  },
+  {
+    "file": "digital_image_processing/index_calculation.py",
+    "line": 133,
+    "column": 26,
+    "word": "ccci"
+  },
+  {
+    "file": "digital_image_processing/index_calculation.py",
+    "line": 136,
+    "column": 26,
+    "word": "ndvi"
+  },
+  {
+    "file": "digital_image_processing/index_calculation.py",
+    "line": 137,
+    "column": 27,
+    "word": "bndvi"
+  },
+  {
+    "file": "digital_image_processing/index_calculation.py",
+    "line": 139,
+    "column": 27,
+    "word": "gndvi"
+  },
+  {
+    "file": "digital_image_processing/index_calculation.py",
+    "line": 140,
+    "column": 28,
+    "word": "gbndvi"
+  },
+  {
+    "file": "digital_image_processing/index_calculation.py",
+    "line": 141,
+    "column": 28,
+    "word": "grndvi"
+  },
+  {
+    "file": "digital_image_processing/index_calculation.py",
+    "line": 142,
+    "column": 28,
+    "word": "rbndvi"
+  },
+  {
+    "file": "digital_image_processing/index_calculation.py",
+    "line": 143,
+    "column": 27,
+    "word": "pndvi"
+  },
+  {
+    "file": "digital_image_processing/index_calculation.py",
+    "line": 145,
+    "column": 28,
+    "word": "bwdrvi"
+  },
+  {
+    "file": "digital_image_processing/index_calculation.py",
+    "line": 149,
+    "column": 26,
+    "word": "ctvi"
+  },
+  {
+    "file": "digital_image_processing/index_calculation.py",
+    "line": 150,
+    "column": 26,
+    "word": "gdvi"
+  },
+  {
+    "file": "digital_image_processing/index_calculation.py",
+    "line": 152,
+    "column": 26,
+    "word": "gemi"
+  },
+  {
+    "file": "digital_image_processing/index_calculation.py",
+    "line": 153,
+    "column": 28,
+    "word": "gosavi"
+  },
+  {
+    "file": "digital_image_processing/index_calculation.py",
+    "line": 154,
+    "column": 27,
+    "word": "gsavi"
+  },
+  {
+    "file": "digital_image_processing/index_calculation.py",
+    "line": 157,
+    "column": 26,
+    "word": "ipvi"
+  },
+  {
+    "file": "digital_image_processing/index_calculation.py",
+    "line": 160,
+    "column": 26,
+    "word": "mrvi"
+  },
+  {
+    "file": "digital_image_processing/index_calculation.py",
+    "line": 161,
+    "column": 29,
+    "word": "savi"
+  },
+  {
+    "file": "digital_image_processing/index_calculation.py",
+    "line": 165,
+    "column": 27,
+    "word": "ngrdi"
+  },
+  {
+    "file": "digital_image_processing/index_calculation.py",
+    "line": 171,
+    "column": 26,
+    "word": "ndre"
+  },
+  {
+    "file": "digital_image_processing/index_calculation.py",
+    "line": 220,
+    "column": 34,
+    "word": "CDVI"
+  },
+  {
+    "file": "digital_image_processing/index_calculation.py",
+    "line": 564,
+    "column": 18,
+    "word": "maxprec"
+  },
+  {
+    "file": "divide_and_conquer/closest_pair_of_points.py",
+    "line": 5,
+    "column": 36,
+    "word": "ords"
+  },
+  {
+    "file": "divide_and_conquer/convex_hull.py",
+    "line": 409,
+    "column": 17,
+    "word": "melkman"
+  },
+  {
+    "file": "divide_and_conquer/max_subarray.py",
+    "line": 70,
+    "column": 5,
+    "word": "summ"
+  },
+  {
+    "file": "divide_and_conquer/strassen_matrix_multiplication.py",
+    "line": 74,
+    "column": 12,
+    "word": "strassen"
+  },
+  {
+    "file": "docs/conf.py",
+    "line": 3,
+    "column": 45,
+    "word": "globalns"
+  },
+  {
+    "file": "dynamic_programming/all_construct.py",
+    "line": 17,
+    "column": 34,
+    "word": "purp"
+  },
+  {
+    "file": "dynamic_programming/all_construct.py",
+    "line": 17,
+    "column": 55,
+    "word": "purpl"
+  },
+  {
+    "file": "dynamic_programming/all_construct.py",
+    "line": 53,
+    "column": 26,
+    "word": "jwajalapa"
+  },
+  {
+    "file": "dynamic_programming/all_construct.py",
+    "line": 53,
+    "column": 68,
+    "word": "lapa"
+  },
+  {
+    "file": "dynamic_programming/all_construct.py",
+    "line": 57,
+    "column": 14,
+    "word": "hexagonosaurus"
+  },
+  {
+    "file": "dynamic_programming/all_construct.py",
+    "line": 58,
+    "column": 52,
+    "word": "auru"
+  },
+  {
+    "file": "dynamic_programming/catalan_numbers.py",
+    "line": 7,
+    "column": 20,
+    "word": "Dyck"
+  },
+  {
+    "file": "dynamic_programming/climbing_stairs.py",
+    "line": 6,
+    "column": 9,
+    "word": "Cdoe"
+  },
+  {
+    "file": "dynamic_programming/edit_distance.py",
+    "line": 2,
+    "column": 11,
+    "word": "Turfa"
+  },
+  {
+    "file": "dynamic_programming/edit_distance.py",
+    "line": 2,
+    "column": 17,
+    "word": "Auliarachman"
+  },
+  {
+    "file": "dynamic_programming/iterating_through_submasks.py",
+    "line": 2,
+    "column": 10,
+    "word": "Syed"
+  },
+  {
+    "file": "dynamic_programming/iterating_through_submasks.py",
+    "line": 2,
+    "column": 15,
+    "word": "Faizan"
+  },
+  {
+    "file": "dynamic_programming/iterating_through_submasks.py",
+    "line": 2,
+    "column": 40,
+    "word": "IIIT"
+  },
+  {
+    "file": "dynamic_programming/iterating_through_submasks.py",
+    "line": 3,
+    "column": 10,
+    "word": "faizan"
+  },
+  {
+    "file": "dynamic_programming/k_means_clustering_tensorflow.py",
+    "line": 7,
+    "column": 33,
+    "word": "noofclusters"
+  },
+  {
+    "file": "dynamic_programming/k_means_clustering_tensorflow.py",
+    "line": 36,
+    "column": 9,
+    "word": "sess"
+  },
+  {
+    "file": "dynamic_programming/k_means_clustering_tensorflow.py",
+    "line": 97,
+    "column": 9,
+    "word": "noofiterations"
+  },
+  {
+    "file": "dynamic_programming/k_means_clustering_tensorflow.py",
+    "line": 104,
+    "column": 17,
+    "word": "vect"
+  },
+  {
+    "file": "dynamic_programming/k_means_clustering_tensorflow.py",
+    "line": 129,
+    "column": 26,
+    "word": "vects"
+  },
+  {
+    "file": "dynamic_programming/longest_common_subsequence.py",
+    "line": 47,
+    "column": 45,
+    "word": "ACBD"
+  },
+  {
+    "file": "dynamic_programming/longest_common_subsequence.py",
+    "line": 86,
+    "column": 10,
+    "word": "AGGTAB"
+  },
+  {
+    "file": "dynamic_programming/longest_common_subsequence.py",
+    "line": 87,
+    "column": 10,
+    "word": "GXTXAYB"
+  },
+  {
+    "file": "dynamic_programming/longest_common_subsequence.py",
+    "line": 89,
+    "column": 24,
+    "word": "GTAB"
+  },
+  {
+    "file": "dynamic_programming/longest_common_substring.py",
+    "line": 8,
+    "column": 22,
+    "word": "xabded"
+  },
+  {
+    "file": "dynamic_programming/longest_common_substring.py",
+    "line": 31,
+    "column": 35,
+    "word": "abcdxyz"
+  },
+  {
+    "file": "dynamic_programming/longest_common_substring.py",
+    "line": 31,
+    "column": 46,
+    "word": "xyzabcd"
+  },
+  {
+    "file": "dynamic_programming/longest_common_substring.py",
+    "line": 33,
+    "column": 35,
+    "word": "zxabcdezy"
+  },
+  {
+    "file": "dynamic_programming/longest_common_substring.py",
+    "line": 33,
+    "column": 48,
+    "word": "yzabcdezx"
+  },
+  {
+    "file": "dynamic_programming/longest_common_substring.py",
+    "line": 34,
+    "column": 6,
+    "word": "abcdez"
+  },
+  {
+    "file": "dynamic_programming/longest_increasing_subsequence.py",
+    "line": 2,
+    "column": 11,
+    "word": "Mehdi"
+  },
+  {
+    "file": "dynamic_programming/longest_increasing_subsequence_iterative.py",
+    "line": 2,
+    "column": 18,
+    "word": "Muthu"
+  },
+  {
+    "file": "dynamic_programming/longest_increasing_subsequence_o_nlogn.py",
+    "line": 2,
+    "column": 11,
+    "word": "Aravind"
+  },
+  {
+    "file": "dynamic_programming/longest_increasing_subsequence_o_nlogn.py",
+    "line": 2,
+    "column": 19,
+    "word": "Kashyap"
+  },
+  {
+    "file": "dynamic_programming/longest_palindromic_subsequence.py",
+    "line": 2,
+    "column": 9,
+    "word": "Sanket"
+  },
+  {
+    "file": "dynamic_programming/longest_palindromic_subsequence.py",
+    "line": 4,
+    "column": 13,
+    "word": "bbbab"
+  },
+  {
+    "file": "dynamic_programming/longest_palindromic_subsequence.py",
+    "line": 16,
+    "column": 42,
+    "word": "bbabcbcab"
+  },
+  {
+    "file": "dynamic_programming/matrix_chain_multiplication.py",
+    "line": 56,
+    "column": 32,
+    "word": "multiplcations"
+  },
+  {
+    "file": "dynamic_programming/matrix_chain_multiplication.py",
+    "line": 81,
+    "column": 7,
+    "word": "initialising"
+  },
+  {
+    "file": "dynamic_programming/max_subarray_sum.py",
+    "line": 7,
+    "column": 1,
+    "word": "Kadane's"
+  },
+  {
+    "file": "dynamic_programming/min_distance_up_bottom.py",
+    "line": 22,
+    "column": 33,
+    "word": "zooicoarchaeologist"
+  },
+  {
+    "file": "dynamic_programming/optimal_binary_search_tree.py",
+    "line": 72,
+    "column": 22,
+    "word": "CLRS"
+  },
+  {
+    "file": "dynamic_programming/optimal_binary_search_tree.py",
+    "line": 100,
+    "column": 5,
+    "word": "freqs"
+  },
+  {
+    "file": "dynamic_programming/smith_waterman.py",
+    "line": 50,
+    "column": 25,
+    "word": "ACAC"
+  },
+  {
+    "file": "dynamic_programming/smith_waterman.py",
+    "line": 52,
+    "column": 25,
+    "word": "acac"
+  },
+  {
+    "file": "dynamic_programming/smith_waterman.py",
+    "line": 95,
+    "column": 32,
+    "word": "AGTCT"
+  },
+  {
+    "file": "dynamic_programming/smith_waterman.py",
+    "line": 189,
+    "column": 14,
+    "word": "HEAGAWGHEE"
+  },
+  {
+    "file": "dynamic_programming/smith_waterman.py",
+    "line": 190,
+    "column": 16,
+    "word": "PAWHEAE"
+  },
+  {
+    "file": "dynamic_programming/tribonacci.py",
+    "line": 4,
+    "column": 5,
+    "word": "tribonacci"
+  },
+  {
+    "file": "dynamic_programming/viterbi.py",
+    "line": 4,
+    "column": 5,
+    "word": "viterbi"
+  },
+  {
+    "file": "dynamic_programming/wildcard_matching.py",
+    "line": 2,
+    "column": 11,
+    "word": "ilyas"
+  },
+  {
+    "file": "dynamic_programming/wildcard_matching.py",
+    "line": 2,
+    "column": 17,
+    "word": "dahhou"
+  },
+  {
+    "file": "dynamic_programming/wildcard_matching.py",
+    "line": 41,
+    "column": 19,
+    "word": "baaabab"
+  },
+  {
+    "file": "electronics/charging_capacitor.py",
+    "line": 1,
+    "column": 16,
+    "word": "ARRL"
+  },
+  {
+    "file": "electronics/circular_convolution.py",
+    "line": 7,
+    "column": 69,
+    "word": "DTFT"
+  },
+  {
+    "file": "electronics/circular_convolution.py",
+    "line": 9,
+    "column": 20,
+    "word": "DTFTs"
+  },
+  {
+    "file": "electronics/coulombs_law.py",
+    "line": 8,
+    "column": 5,
+    "word": "couloumbs"
+  },
+  {
+    "file": "electronics/coulombs_law.py",
+    "line": 23,
+    "column": 29,
+    "word": "mémoire"
+  },
+  {
+    "file": "electronics/coulombs_law.py",
+    "line": 23,
+    "column": 41,
+    "word": "l'électricité"
+  },
+  {
+    "file": "electronics/coulombs_law.py",
+    "line": 23,
+    "column": 61,
+    "word": "magnétisme"
+  },
+  {
+    "file": "electronics/coulombs_law.py",
+    "line": 24,
+    "column": 5,
+    "word": "Histoire"
+  },
+  {
+    "file": "electronics/coulombs_law.py",
+    "line": 24,
+    "column": 17,
+    "word": "l'Académie"
+  },
+  {
+    "file": "electronics/ic_555_timer.py",
+    "line": 4,
+    "column": 53,
+    "word": "astable"
+  },
+  {
+    "file": "electronics/resistor_color_code.py",
+    "line": 47,
+    "column": 17,
+    "word": "Coeffecient"
+  },
+  {
+    "file": "electronics/resistor_color_code.py",
+    "line": 50,
+    "column": 51,
+    "word": "coeffecient"
+  },
+  {
+    "file": "electronics/resistor_color_code.py",
+    "line": 361,
+    "column": 9,
+    "word": "resisitance"
+  },
+  {
+    "file": "electronics/resonant_frequency.py",
+    "line": 19,
+    "column": 43,
+    "word": "capacitnace"
+  },
+  {
+    "file": "file_transfer/tests/test_send_file.py",
+    "line": 18,
+    "column": 13,
+    "word": "ensurance"
+  },
+  {
+    "file": "fractals/julia_sets.py",
+    "line": 1,
+    "column": 24,
+    "word": "Zotti"
+  },
+  {
+    "file": "fractals/julia_sets.py",
+    "line": 14,
+    "column": 33,
+    "word": "ambiantly"
+  },
+  {
+    "file": "fractals/julia_sets.py",
+    "line": 14,
+    "column": 43,
+    "word": "homeomorphic"
+  },
+  {
+    "file": "fractals/sierpinski_triangle.py",
+    "line": 2,
+    "column": 55,
+    "word": "anuragkumarak"
+  },
+  {
+    "file": "fractals/sierpinski_triangle.py",
+    "line": 6,
+    "column": 13,
+    "word": "Sierpiński"
+  },
+  {
+    "file": "fractals/sierpinski_triangle.py",
+    "line": 13,
+    "column": 38,
+    "word": "Wacław"
+  },
+  {
+    "file": "fractals/vicsek.py",
+    "line": 1,
+    "column": 12,
+    "word": "Bastien"
+  },
+  {
+    "file": "fractals/vicsek.py",
+    "line": 1,
+    "column": 20,
+    "word": "Capiaux"
+  },
+  {
+    "file": "fractals/vicsek.py",
+    "line": 1,
+    "column": 36,
+    "word": "Oudghiri"
+  },
+  {
+    "file": "fractals/vicsek.py",
+    "line": 57,
+    "column": 10,
+    "word": "vicsek"
+  },
+  {
+    "file": "fuzzy_logic/fuzzy_operations.py",
+    "line": 2,
+    "column": 5,
+    "word": "Shreya"
+  },
+  {
+    "file": "fuzzy_logic/fuzzy_operations.py",
+    "line": 31,
+    "column": 9,
+    "word": "sheru"
+  },
+  {
+    "file": "fuzzy_logic/fuzzy_operations.py",
+    "line": 31,
+    "column": 27,
+    "word": "Sheru"
+  },
+  {
+    "file": "fuzzy_logic/fuzzy_operations.py",
+    "line": 37,
+    "column": 9,
+    "word": "siya"
+  },
+  {
+    "file": "fuzzy_logic/fuzzy_operations.py",
+    "line": 37,
+    "column": 26,
+    "word": "Siya"
+  },
+  {
+    "file": "genetic_algorithm/basic_string.py",
+    "line": 5,
+    "column": 11,
+    "word": "rkia"
+  },
+  {
+    "file": "genetic_algorithm/basic_string.py",
+    "line": 28,
+    "column": 19,
+    "word": "Helxo"
+  },
+  {
+    "file": "genetic_algorithm/basic_string.py",
+    "line": 28,
+    "column": 25,
+    "word": "Worlx"
+  },
+  {
+    "file": "genetic_algorithm/basic_string.py",
+    "line": 72,
+    "column": 48,
+    "word": "ghijkl"
+  },
+  {
+    "file": "genetic_algorithm/basic_string.py",
+    "line": 72,
+    "column": 65,
+    "word": "mnopqr"
+  },
+  {
+    "file": "genetic_algorithm/basic_string.py",
+    "line": 203,
+    "column": 10,
+    "word": "nopqrstuvwxyz"
+  },
+  {
+    "file": "genetic_algorithm/basic_string.py",
+    "line": 203,
+    "column": 35,
+    "word": "èéòà"
+  },
+  {
+    "file": "geodesy/lamberts_ellipsoidal_distance.py",
+    "line": 68,
+    "column": 39,
+    "word": "Pcos"
+  },
+  {
+    "file": "geodesy/lamberts_ellipsoidal_distance.py",
+    "line": 70,
+    "column": 7,
+    "word": "demonimator"
+  },
+  {
+    "file": "geodesy/lamberts_ellipsoidal_distance.py",
+    "line": 74,
+    "column": 39,
+    "word": "Psin"
+  },
+  {
+    "file": "graphics/vector3_for_2d_rendering.py",
+    "line": 10,
+    "column": 15,
+    "word": "xcodz"
+  },
+  {
+    "file": "graphics/vector3_for_2d_rendering.py",
+    "line": 10,
+    "column": 26,
+    "word": "cclaus"
+  },
+  {
+    "file": "graphics/vector3_for_2d_rendering.py",
+    "line": 10,
+    "column": 34,
+    "word": "dhruvmanila"
+  },
+  {
+    "file": "graphs/basic_graphs.py",
+    "line": 149,
+    "column": 5,
+    "word": "dijk"
+  },
+  {
+    "file": "graphs/basic_graphs.py",
+    "line": 189,
+    "column": 5,
+    "word": "topo"
+  },
+  {
+    "file": "graphs/basic_graphs.py",
+    "line": 219,
+    "column": 5,
+    "word": "adjm"
+  },
+  {
+    "file": "graphs/basic_graphs.py",
+    "line": 259,
+    "column": 5,
+    "word": "floy"
+  },
+  {
+    "file": "graphs/basic_graphs.py",
+    "line": 313,
+    "column": 5,
+    "word": "edglist"
+  },
+  {
+    "file": "graphs/basic_graphs.py",
+    "line": 342,
+    "column": 5,
+    "word": "Kruskal's"
+  },
+  {
+    "file": "graphs/basic_graphs.py",
+    "line": 350,
+    "column": 5,
+    "word": "krusk"
+  },
+  {
+    "file": "graphs/bi_directional_dijkstra.py",
+    "line": 11,
+    "column": 11,
+    "word": "Swayam"
+  },
+  {
+    "file": "graphs/bidirectional_a_star.py",
+    "line": 80,
+    "column": 9,
+    "word": "astar"
+  },
+  {
+    "file": "graphs/bidirectional_a_star.py",
+    "line": 257,
+    "column": 5,
+    "word": "bidir"
+  },
+  {
+    "file": "graphs/boruvka.py",
+    "line": 1,
+    "column": 4,
+    "word": "Borůvka's"
+  },
+  {
+    "file": "graphs/boruvka.py",
+    "line": 83,
+    "column": 9,
+    "word": "boruvka"
+  },
+  {
+    "file": "graphs/breadth_first_search.py",
+    "line": 3,
+    "column": 12,
+    "word": "OMKAR"
+  },
+  {
+    "file": "graphs/breadth_first_search.py",
+    "line": 3,
+    "column": 18,
+    "word": "PATHAK"
+  },
+  {
+    "file": "graphs/breadth_first_search.py",
+    "line": 16,
+    "column": 49,
+    "word": "graaph"
+  },
+  {
+    "file": "graphs/connected_components.py",
+    "line": 24,
+    "column": 15,
+    "word": "verts"
+  },
+  {
+    "file": "graphs/dijkstra_2.py",
+    "line": 11,
+    "column": 14,
+    "word": "mdist"
+  },
+  {
+    "file": "graphs/dijkstra_2.py",
+    "line": 11,
+    "column": 21,
+    "word": "vset"
+  },
+  {
+    "file": "graphs/dijkstra_2.py",
+    "line": 57,
+    "column": 5,
+    "word": "gsrc"
+  },
+  {
+    "file": "graphs/dijkstra_algorithm.py",
+    "line": 2,
+    "column": 11,
+    "word": "Shubham"
+  },
+  {
+    "file": "graphs/dijkstra_algorithm.py",
+    "line": 2,
+    "column": 19,
+    "word": "Malik"
+  },
+  {
+    "file": "graphs/dinic.py",
+    "line": 17,
+    "column": 33,
+    "word": "rcap"
+  },
+  {
+    "file": "graphs/dinic.py",
+    "line": 87,
+    "column": 20,
+    "word": "verices"
+  },
+  {
+    "file": "graphs/edmonds_karp_multiple_source_and_sink.py",
+    "line": 63,
+    "column": 14,
+    "word": "verticies"
+  },
+  {
+    "file": "graphs/g_topological_sort.py",
+    "line": 1,
+    "column": 11,
+    "word": "Phyllipe"
+  },
+  {
+    "file": "graphs/g_topological_sort.py",
+    "line": 1,
+    "column": 20,
+    "word": "Bezerra"
+  },
+  {
+    "file": "graphs/gale_shapley_bigraph.py",
+    "line": 10,
+    "column": 5,
+    "word": "oegan"
+  },
+  {
+    "file": "graphs/gale_shapley_bigraph.py",
+    "line": 16,
+    "column": 56,
+    "word": "Numberphile"
+  },
+  {
+    "file": "graphs/graph_adjacency_list.py",
+    "line": 3,
+    "column": 9,
+    "word": "Vikram"
+  },
+  {
+    "file": "graphs/graph_adjacency_list.py",
+    "line": 3,
+    "column": 16,
+    "word": "Nithyanandam"
+  },
+  {
+    "file": "graphs/graph_adjacency_list.py",
+    "line": 47,
+    "column": 11,
+    "word": "Falsey"
+  },
+  {
+    "file": "graphs/graph_list.py",
+    "line": 3,
+    "column": 25,
+    "word": "Nwachukwu"
+  },
+  {
+    "file": "graphs/graph_list.py",
+    "line": 3,
+    "column": 35,
+    "word": "Chidiebere"
+  },
+  {
+    "file": "graphs/greedy_min_vertex_cover.py",
+    "line": 3,
+    "column": 16,
+    "word": "Approximization"
+  },
+  {
+    "file": "graphs/kahns_algorithm_long.py",
+    "line": 3,
+    "column": 5,
+    "word": "indegree"
+  },
+  {
+    "file": "graphs/karger.py",
+    "line": 2,
+    "column": 22,
+    "word": "Karger's"
+  },
+  {
+    "file": "graphs/karger.py",
+    "line": 34,
+    "column": 40,
+    "word": "adacency"
+  },
+  {
+    "file": "graphs/lanczos_eigenvectors.py",
+    "line": 7,
+    "column": 16,
+    "word": "tridiagonal"
+  },
+  {
+    "file": "graphs/lanczos_eigenvectors.py",
+    "line": 11,
+    "column": 9,
+    "word": "lanczos"
+  },
+  {
+    "file": "graphs/lanczos_eigenvectors.py",
+    "line": 192,
+    "column": 43,
+    "word": "eigh"
+  },
+  {
+    "file": "graphs/minimum_spanning_tree_boruvka.py",
+    "line": 37,
+    "column": 13,
+    "word": "Boruvks's"
+  },
+  {
+    "file": "graphs/minimum_spanning_tree_boruvka.py",
+    "line": 70,
+    "column": 9,
+    "word": "Returna"
+  },
+  {
+    "file": "graphs/minimum_spanning_tree_boruvka.py",
+    "line": 103,
+    "column": 41,
+    "word": "Boruvka's"
+  },
+  {
+    "file": "graphs/minimum_spanning_tree_kruskal.py",
+    "line": 1,
+    "column": 5,
+    "word": "kruskal"
+  },
+  {
+    "file": "graphs/minimum_spanning_tree_prims2.py",
+    "line": 2,
+    "column": 23,
+    "word": "Jarník's"
+  },
+  {
+    "file": "graphs/multi_heuristic_astar.py",
+    "line": 47,
+    "column": 17,
+    "word": "prito"
+  },
+  {
+    "file": "graphs/multi_heuristic_astar.py",
+    "line": 135,
+    "column": 16,
+    "word": "inad"
+  },
+  {
+    "file": "graphs/multi_heuristic_astar.py",
+    "line": 139,
+    "column": 9,
+    "word": "itera"
+  },
+  {
+    "file": "graphs/scc_kosaraju.py",
+    "line": 24,
+    "column": 5,
+    "word": "kosaraju"
+  },
+  {
+    "file": "graphs/tarjans_scc.py",
+    "line": 16,
+    "column": 42,
+    "word": "equireachable"
+  },
+  {
+    "file": "hashes/README.md",
+    "line": 7,
+    "column": 113,
+    "word": "Rivest"
+  },
+  {
+    "file": "hashes/README.md",
+    "line": 17,
+    "column": 200,
+    "word": "IMEI"
+  },
+  {
+    "file": "hashes/README.md",
+    "line": 17,
+    "column": 297,
+    "word": "LUHN"
+  },
+  {
+    "file": "hashes/chaos_machine.py",
+    "line": 45,
+    "column": 7,
+    "word": "PRNG"
+  },
+  {
+    "file": "hashes/chaos_machine.py",
+    "line": 45,
+    "column": 32,
+    "word": "Marsaglia"
+  },
+  {
+    "file": "hashes/hamming_code.py",
+    "line": 1,
+    "column": 44,
+    "word": "Kunz"
+  },
+  {
+    "file": "hashes/hamming_code.py",
+    "line": 24,
+    "column": 63,
+    "word": "Pari"
+  },
+  {
+    "file": "hashes/hamming_code.py",
+    "line": 268,
+    "column": 5,
+    "word": "Receiv"
+  },
+  {
+    "file": "hashes/luhn.py",
+    "line": 6,
+    "column": 8,
+    "word": "luhn"
+  },
+  {
+    "file": "hashes/md5.py",
+    "line": 30,
+    "column": 38,
+    "word": "abcdfghijklmnopqrstuvw"
+  },
+  {
+    "file": "hashes/md5.py",
+    "line": 31,
+    "column": 7,
+    "word": "pqrstuvwhijklmno"
+  },
+  {
+    "file": "hashes/md5.py",
+    "line": 31,
+    "column": 25,
+    "word": "abcdfg"
+  },
+  {
+    "file": "hashes/md5.py",
+    "line": 318,
+    "column": 54,
+    "word": "Üñîçø"
+  },
+  {
+    "file": "hashes/sdbm.py",
+    "line": 2,
+    "column": 32,
+    "word": "sdbm"
+  },
+  {
+    "file": "hashes/sdbm.py",
+    "line": 2,
+    "column": 54,
+    "word": "reimplementation"
+  },
+  {
+    "file": "hashes/sha256.py",
+    "line": 1,
+    "column": 14,
+    "word": "Yathurshan"
+  },
+  {
+    "file": "index.md",
+    "line": 2,
+    "column": 5,
+    "word": "toctree"
+  },
+  {
+    "file": "knapsack/README.md",
+    "line": 13,
+    "column": 190,
+    "word": "Dantzig"
+  },
+  {
+    "file": "knapsack/README.md",
+    "line": 20,
+    "column": 82,
+    "word": "METHODNAME"
+  },
+  {
+    "file": "knapsack/tests/test_knapsack.py",
+    "line": 4,
+    "column": 21,
+    "word": "Schröder"
+  },
+  {
+    "file": "linear_algebra/README.md",
+    "line": 20,
+    "column": 40,
+    "word": "eulidean"
+  },
+  {
+    "file": "linear_algebra/README.md",
+    "line": 31,
+    "column": 12,
+    "word": "axpy"
+  },
+  {
+    "file": "linear_algebra/src/conjugate_gradient.py",
+    "line": 40,
+    "column": 27,
+    "word": "eignevectors"
+  },
+  {
+    "file": "linear_algebra/src/conjugate_gradient.py",
+    "line": 131,
+    "column": 25,
+    "word": "Krylov"
+  },
+  {
+    "file": "linear_algebra/src/conjugate_gradient.py",
+    "line": 133,
+    "column": 27,
+    "word": "conjuage"
+  },
+  {
+    "file": "linear_algebra/src/lib.py",
+    "line": 261,
+    "column": 9,
+    "word": "cofactor"
+  },
+  {
+    "file": "linear_algebra/src/power_iteration.py",
+    "line": 45,
+    "column": 15,
+    "word": "iscomplexobj"
+  },
+  {
+    "file": "linear_algebra/src/power_iteration.py",
+    "line": 91,
+    "column": 22,
+    "word": "triu"
+  },
+  {
+    "file": "linear_algebra/src/schur_complement.py",
+    "line": 21,
+    "column": 47,
+    "word": "Vandenberghe"
+  },
+  {
+    "file": "linear_algebra/src/test_linear_algebra.py",
+    "line": 150,
+    "column": 9,
+    "word": "cofactors"
+  },
+  {
+    "file": "linear_programming/simplex.py",
+    "line": 137,
+    "column": 29,
+    "word": "nans"
+  },
+  {
+    "file": "linear_programming/simplex.py",
+    "line": 168,
+    "column": 18,
+    "word": "coeff"
+  },
+  {
+    "file": "linear_programming/simplex.py",
+    "line": 258,
+    "column": 25,
+    "word": "minimisation"
+  },
+  {
+    "file": "linear_programming/simplex.py",
+    "line": 326,
+    "column": 21,
+    "word": "rowidx"
+  },
+  {
+    "file": "machine_learning/apriori_algorithm.py",
+    "line": 65,
+    "column": 5,
+    "word": "apriori"
+  },
+  {
+    "file": "machine_learning/astar.py",
+    "line": 65,
+    "column": 9,
+    "word": "neughbour"
+  },
+  {
+    "file": "machine_learning/automatic_differentiation.py",
+    "line": 272,
+    "column": 17,
+    "word": "dparam"
+  },
+  {
+    "file": "machine_learning/automatic_differentiation.py",
+    "line": 272,
+    "column": 24,
+    "word": "doutput"
+  },
+  {
+    "file": "machine_learning/automatic_differentiation.py",
+    "line": 273,
+    "column": 24,
+    "word": "dtarget"
+  },
+  {
+    "file": "machine_learning/dimensionality_reduction.py",
+    "line": 1,
+    "column": 29,
+    "word": "Gasco"
+  },
+  {
+    "file": "machine_learning/dimensionality_reduction.py",
+    "line": 1,
+    "column": 62,
+    "word": "Diegomangasco"
+  },
+  {
+    "file": "machine_learning/forecasting/run.py",
+    "line": 24,
+    "column": 44,
+    "word": "mtch"
+  },
+  {
+    "file": "machine_learning/forecasting/run.py",
+    "line": 45,
+    "column": 45,
+    "word": "exog"
+  },
+  {
+    "file": "machine_learning/frequent_pattern_growth.py",
+    "line": 320,
+    "column": 14,
+    "word": "patt"
+  },
+  {
+    "file": "machine_learning/gradient_descent.py",
+    "line": 123,
+    "column": 13,
+    "word": "rtol"
+  },
+  {
+    "file": "machine_learning/k_means_clust.py",
+    "line": 15,
+    "column": 8,
+    "word": "kmeans"
+  },
+  {
+    "file": "machine_learning/k_means_clust.py",
+    "line": 59,
+    "column": 16,
+    "word": "CLUST"
+  },
+  {
+    "file": "machine_learning/k_means_clust.py",
+    "line": 137,
+    "column": 80,
+    "word": "viridis"
+  },
+  {
+    "file": "machine_learning/k_means_clust.py",
+    "line": 143,
+    "column": 12,
+    "word": "zlabel"
+  },
+  {
+    "file": "machine_learning/linear_regression.py",
+    "line": 7,
+    "column": 56,
+    "word": "CSGO"
+  },
+  {
+    "file": "machine_learning/local_weighted_learning/local_weighted_learning.py",
+    "line": 7,
+    "column": 6,
+    "word": "XᵀWX"
+  },
+  {
+    "file": "machine_learning/local_weighted_learning/local_weighted_learning.py",
+    "line": 7,
+    "column": 14,
+    "word": "XᵀWy"
+  },
+  {
+    "file": "machine_learning/local_weighted_learning/local_weighted_learning.py",
+    "line": 151,
+    "column": 10,
+    "word": "preds"
+  },
+  {
+    "file": "machine_learning/loss_functions.py",
+    "line": 50,
+    "column": 52,
+    "word": "BFCE"
+  },
+  {
+    "file": "machine_learning/loss_functions.py",
+    "line": 57,
+    "column": 5,
+    "word": "BCFE"
+  },
+  {
+    "file": "machine_learning/loss_functions.py",
+    "line": 85,
+    "column": 5,
+    "word": "bcfe"
+  },
+  {
+    "file": "machine_learning/loss_functions.py",
+    "line": 159,
+    "column": 57,
+    "word": "CFCE"
+  },
+  {
+    "file": "machine_learning/loss_functions.py",
+    "line": 246,
+    "column": 5,
+    "word": "cfce"
+  },
+  {
+    "file": "machine_learning/loss_functions.py",
+    "line": 405,
+    "column": 51,
+    "word": "MSLE"
+  },
+  {
+    "file": "machine_learning/loss_functions.py",
+    "line": 632,
+    "column": 5,
+    "word": "kullback"
+  },
+  {
+    "file": "machine_learning/loss_functions.py",
+    "line": 632,
+    "column": 14,
+    "word": "leibler"
+  },
+  {
+    "file": "machine_learning/loss_functions.py",
+    "line": 634,
+    "column": 19,
+    "word": "Kullback"
+  },
+  {
+    "file": "machine_learning/loss_functions.py",
+    "line": 634,
+    "column": 28,
+    "word": "Leibler"
+  },
+  {
+    "file": "machine_learning/mfcc.py",
+    "line": 2,
+    "column": 15,
+    "word": "Cepstral"
+  },
+  {
+    "file": "machine_learning/mfcc.py",
+    "line": 2,
+    "column": 38,
+    "word": "MFCC"
+  },
+  {
+    "file": "machine_learning/mfcc.py",
+    "line": 49,
+    "column": 40,
+    "word": "MFCCs"
+  },
+  {
+    "file": "machine_learning/mfcc.py",
+    "line": 51,
+    "column": 44,
+    "word": "Jurafsky"
+  },
+  {
+    "file": "machine_learning/mfcc.py",
+    "line": 55,
+    "column": 24,
+    "word": "cepstral"
+  },
+  {
+    "file": "machine_learning/mfcc.py",
+    "line": 55,
+    "column": 46,
+    "word": "mfccs"
+  },
+  {
+    "file": "machine_learning/mfcc.py",
+    "line": 57,
+    "column": 14,
+    "word": "Lavasani"
+  },
+  {
+    "file": "machine_learning/mfcc.py",
+    "line": 63,
+    "column": 14,
+    "word": "fftpack"
+  },
+  {
+    "file": "machine_learning/mfcc.py",
+    "line": 69,
+    "column": 5,
+    "word": "mfcc"
+  },
+  {
+    "file": "machine_learning/mfcc.py",
+    "line": 123,
+    "column": 41,
+    "word": "Hanning"
+  },
+  {
+    "file": "machine_learning/mfcc.py",
+    "line": 124,
+    "column": 26,
+    "word": "hann"
+  },
+  {
+    "file": "machine_learning/mfcc.py",
+    "line": 124,
+    "column": 43,
+    "word": "fftbins"
+  },
+  {
+    "file": "machine_learning/mfcc.py",
+    "line": 146,
+    "column": 14,
+    "word": "coefficents"
+  },
+  {
+    "file": "machine_learning/mfcc.py",
+    "line": 292,
+    "column": 17,
+    "word": "mels"
+  },
+  {
+    "file": "machine_learning/mfcc.py",
+    "line": 347,
+    "column": 5,
+    "word": "enorm"
+  },
+  {
+    "file": "machine_learning/mfcc.py",
+    "line": 412,
+    "column": 5,
+    "word": "fmin"
+  },
+  {
+    "file": "machine_learning/mfcc.py",
+    "line": 413,
+    "column": 5,
+    "word": "fmax"
+  },
+  {
+    "file": "machine_learning/mfcc.py",
+    "line": 436,
+    "column": 39,
+    "word": "fbank"
+  },
+  {
+    "file": "machine_learning/mfcc.py",
+    "line": 467,
+    "column": 26,
+    "word": "wavfile"
+  },
+  {
+    "file": "machine_learning/multilayer_perceptron_classifier.py",
+    "line": 8,
+    "column": 13,
+    "word": "lbfgs"
+  },
+  {
+    "file": "machine_learning/polynomial_regression.py",
+    "line": 5,
+    "column": 29,
+    "word": "βₘxᵐ"
+  },
+  {
+    "file": "machine_learning/polynomial_regression.py",
+    "line": 28,
+    "column": 7,
+    "word": "UΣVᵀ"
+  },
+  {
+    "file": "machine_learning/polynomial_regression.py",
+    "line": 135,
+    "column": 13,
+    "word": "coefs"
+  },
+  {
+    "file": "machine_learning/polynomial_regression.py",
+    "line": 149,
+    "column": 21,
+    "word": "pinv"
+  },
+  {
+    "file": "machine_learning/scoring_functions.py",
+    "line": 4,
+    "column": 21,
+    "word": "RMSLE"
+  },
+  {
+    "file": "machine_learning/scoring_functions.py",
+    "line": 84,
+    "column": 5,
+    "word": "rmsle"
+  },
+  {
+    "file": "machine_learning/scoring_functions.py",
+    "line": 131,
+    "column": 5,
+    "word": "denumerator"
+  },
+  {
+    "file": "machine_learning/sequential_minimum_optimization.py",
+    "line": 43,
+    "column": 30,
+    "word": "wdbc"
+  },
+  {
+    "file": "machine_learning/sequential_minimum_optimization.py",
+    "line": 456,
+    "column": 62,
+    "word": "MSIE"
+  },
+  {
+    "file": "machine_learning/sequential_minimum_optimization.py",
+    "line": 484,
+    "column": 5,
+    "word": "mysvm"
+  },
+  {
+    "file": "machine_learning/sequential_minimum_optimization.py",
+    "line": 581,
+    "column": 5,
+    "word": "yrange"
+  },
+  {
+    "file": "machine_learning/sequential_minimum_optimization.py",
+    "line": 593,
+    "column": 12,
+    "word": "asmatrix"
+  },
+  {
+    "file": "machine_learning/support_vector_machines.py",
+    "line": 74,
+    "column": 15,
+    "word": "sklear"
+  },
+  {
+    "file": "machine_learning/t_stochastic_neighbour_embedding.py",
+    "line": 90,
+    "column": 11,
+    "word": "tsne"
+  },
+  {
+    "file": "machine_learning/xgboost_classifier.py",
+    "line": 27,
+    "column": 44,
+    "word": "gbtree"
+  },
+  {
+    "file": "machine_learning/xgboost_classifier.py",
+    "line": 28,
+    "column": 29,
+    "word": "bylevel"
+  },
+  {
+    "file": "machine_learning/xgboost_classifier.py",
+    "line": 28,
+    "column": 50,
+    "word": "bynode"
+  },
+  {
+    "file": "machine_learning/xgboost_classifier.py",
+    "line": 28,
+    "column": 70,
+    "word": "bytree"
+  },
+  {
+    "file": "maths/addition_without_arithmetic.py",
+    "line": 3,
+    "column": 9,
+    "word": "suraj"
+  },
+  {
+    "file": "maths/area.py",
+    "line": 584,
+    "column": 13,
+    "word": "Reqular"
+  },
+  {
+    "file": "maths/bailey_borwein_plouffe.py",
+    "line": 1,
+    "column": 12,
+    "word": "borwein"
+  },
+  {
+    "file": "maths/bailey_borwein_plouffe.py",
+    "line": 1,
+    "column": 20,
+    "word": "plouffe"
+  },
+  {
+    "file": "maths/binary_multiplication.py",
+    "line": 19,
+    "column": 9,
+    "word": "chinmoy"
+  },
+  {
+    "file": "maths/check_polygon.py",
+    "line": 26,
+    "column": 17,
+    "word": "Monogons"
+  },
+  {
+    "file": "maths/check_polygon.py",
+    "line": 26,
+    "column": 30,
+    "word": "Digons"
+  },
+  {
+    "file": "maths/chudnovsky_algorithm.py",
+    "line": 12,
+    "column": 28,
+    "word": "multinomial"
+  },
+  {
+    "file": "maths/chudnovsky_algorithm.py",
+    "line": 44,
+    "column": 18,
+    "word": "prec"
+  },
+  {
+    "file": "maths/collatz_sequence.py",
+    "line": 8,
+    "column": 62,
+    "word": "Ulam"
+  },
+  {
+    "file": "maths/collatz_sequence.py",
+    "line": 8,
+    "column": 79,
+    "word": "Kakutani's"
+  },
+  {
+    "file": "maths/collatz_sequence.py",
+    "line": 9,
+    "column": 14,
+    "word": "Thwaites"
+  },
+  {
+    "file": "maths/collatz_sequence.py",
+    "line": 20,
+    "column": 5,
+    "word": "collatz"
+  },
+  {
+    "file": "maths/dual_number_automatic_differentiation.py",
+    "line": 56,
+    "column": 20,
+    "word": "jtem"
+  },
+  {
+    "file": "maths/entropy.py",
+    "line": 28,
+    "column": 27,
+    "word": "telescreen"
+  },
+  {
+    "file": "maths/entropy.py",
+    "line": 29,
+    "column": 35,
+    "word": "overfulfilment"
+  },
+  {
+    "file": "maths/eulers_totient.py",
+    "line": 2,
+    "column": 5,
+    "word": "totient"
+  },
+  {
+    "file": "maths/eulers_totient.py",
+    "line": 19,
+    "column": 5,
+    "word": "totients"
+  },
+  {
+    "file": "maths/extended_euclidean_algorithm.py",
+    "line": 5,
+    "column": 41,
+    "word": "Bezout's"
+  },
+  {
+    "file": "maths/extended_euclidean_algorithm.py",
+    "line": 13,
+    "column": 24,
+    "word": "pikulet"
+  },
+  {
+    "file": "maths/factors.py",
+    "line": 16,
+    "column": 5,
+    "word": "facs"
+  },
+  {
+    "file": "maths/fibonacci.py",
+    "line": 6,
+    "column": 42,
+    "word": "Binet"
+  },
+  {
+    "file": "maths/fibonacci.py",
+    "line": 201,
+    "column": 9,
+    "word": "binet"
+  },
+  {
+    "file": "maths/gcd_of_n_numbers.py",
+    "line": 100,
+    "column": 5,
+    "word": "mult"
+  },
+  {
+    "file": "maths/jaccard_similarity.py",
+    "line": 8,
+    "column": 38,
+    "word": "MMDS"
+  },
+  {
+    "file": "maths/jaccard_similarity.py",
+    "line": 17,
+    "column": 5,
+    "word": "jaccard"
+  },
+  {
+    "file": "maths/juggler_sequence.py",
+    "line": 11,
+    "column": 12,
+    "word": "Akshay"
+  },
+  {
+    "file": "maths/juggler_sequence.py",
+    "line": 11,
+    "column": 19,
+    "word": "Dubey"
+  },
+  {
+    "file": "maths/largest_of_very_large_numbers.py",
+    "line": 1,
+    "column": 11,
+    "word": "Abhijeeth"
+  },
+  {
+    "file": "maths/liouville_lambda.py",
+    "line": 14,
+    "column": 5,
+    "word": "liouville"
+  },
+  {
+    "file": "maths/lucas_lehmer_primality_test.py",
+    "line": 2,
+    "column": 50,
+    "word": "primality"
+  },
+  {
+    "file": "maths/lucas_lehmer_primality_test.py",
+    "line": 2,
+    "column": 69,
+    "word": "Mersenne"
+  },
+  {
+    "file": "maths/lucas_lehmer_primality_test.py",
+    "line": 16,
+    "column": 11,
+    "word": "lehmer"
+  },
+  {
+    "file": "maths/maclaurin_series.py",
+    "line": 8,
+    "column": 5,
+    "word": "maclaurin"
+  },
+  {
+    "file": "maths/manhattan_distance.py",
+    "line": 3,
+    "column": 5,
+    "word": "Expectts"
+  },
+  {
+    "file": "maths/minkowski_distance.py",
+    "line": 1,
+    "column": 5,
+    "word": "minkowski"
+  },
+  {
+    "file": "maths/mobius_function.py",
+    "line": 12,
+    "column": 5,
+    "word": "mobius"
+  },
+  {
+    "file": "maths/modular_division.py",
+    "line": 12,
+    "column": 55,
+    "word": "modn"
+  },
+  {
+    "file": "maths/monte_carlo.py",
+    "line": 2,
+    "column": 10,
+    "word": "Matteo"
+  },
+  {
+    "file": "maths/monte_carlo.py",
+    "line": 2,
+    "column": 16,
+    "word": "Raso"
+  },
+  {
+    "file": "maths/numerical_analysis/adams_bashforth.py",
+    "line": 5,
+    "column": 10,
+    "word": "Ravi"
+  },
+  {
+    "file": "maths/numerical_analysis/integration_by_simpson_approx.py",
+    "line": 29,
+    "column": 19,
+    "word": "fxdx"
+  },
+  {
+    "file": "maths/numerical_analysis/newton_forward_interpolation.py",
+    "line": 8,
+    "column": 5,
+    "word": "ucal"
+  },
+  {
+    "file": "maths/numerical_analysis/newton_raphson.py",
+    "line": 35,
+    "column": 12,
+    "word": "raphson"
+  },
+  {
+    "file": "maths/numerical_analysis/runge_kutta_fehlberg_45.py",
+    "line": 10,
+    "column": 5,
+    "word": "runge"
+  },
+  {
+    "file": "maths/numerical_analysis/runge_kutta_fehlberg_45.py",
+    "line": 10,
+    "column": 11,
+    "word": "kutta"
+  },
+  {
+    "file": "maths/numerical_analysis/runge_kutta_fehlberg_45.py",
+    "line": 10,
+    "column": 17,
+    "word": "fehlberg"
+  },
+  {
+    "file": "maths/numerical_analysis/secant_method.py",
+    "line": 3,
+    "column": 9,
+    "word": "dimgrichr"
+  },
+  {
+    "file": "maths/numerical_analysis/weierstrass_method.py",
+    "line": 14,
+    "column": 25,
+    "word": "Kerner"
+  },
+  {
+    "file": "maths/primelib.py",
+    "line": 101,
+    "column": 14,
+    "word": "erathostenes"
+  },
+  {
+    "file": "maths/primelib.py",
+    "line": 680,
+    "column": 74,
+    "word": "Divisiors"
+  },
+  {
+    "file": "maths/qr_decomposition.py",
+    "line": 21,
+    "column": 18,
+    "word": "BLAS"
+  },
+  {
+    "file": "maths/radix2_fft.py",
+    "line": 87,
+    "column": 14,
+    "word": "ncol"
+  },
+  {
+    "file": "maths/radix2_fft.py",
+    "line": 113,
+    "column": 9,
+    "word": "inverce"
+  },
+  {
+    "file": "maths/sieve_of_eratosthenes.py",
+    "line": 10,
+    "column": 25,
+    "word": "Simas"
+  },
+  {
+    "file": "maths/sieve_of_eratosthenes.py",
+    "line": 10,
+    "column": 31,
+    "word": "Hadlich"
+  },
+  {
+    "file": "maths/sieve_of_eratosthenes.py",
+    "line": 11,
+    "column": 16,
+    "word": "Dmitry"
+  },
+  {
+    "file": "maths/signum.py",
+    "line": 6,
+    "column": 5,
+    "word": "signum"
+  },
+  {
+    "file": "maths/softmax.py",
+    "line": 6,
+    "column": 8,
+    "word": "exponentials"
+  },
+  {
+    "file": "maths/solovay_strassen_primality_test.py",
+    "line": 64,
+    "column": 5,
+    "word": "solovay"
+  },
+  {
+    "file": "maths/special_numbers/harshad_numbers.py",
+    "line": 2,
+    "column": 3,
+    "word": "harshad"
+  },
+  {
+    "file": "maths/special_numbers/krishnamurthy_number.py",
+    "line": 26,
+    "column": 5,
+    "word": "krishnamurthy"
+  },
+  {
+    "file": "maths/special_numbers/krishnamurthy_number.py",
+    "line": 45,
+    "column": 51,
+    "word": "Krisnamurthy"
+  },
+  {
+    "file": "maths/special_numbers/polygonal_numbers.py",
+    "line": 3,
+    "column": 33,
+    "word": "gonal"
+  },
+  {
+    "file": "maths/special_numbers/pronic_number.py",
+    "line": 3,
+    "column": 28,
+    "word": "Proic"
+  },
+  {
+    "file": "maths/special_numbers/pronic_number.py",
+    "line": 13,
+    "column": 8,
+    "word": "pronic"
+  },
+  {
+    "file": "maths/special_numbers/proth_number.py",
+    "line": 10,
+    "column": 5,
+    "word": "proth"
+  },
+  {
+    "file": "maths/two_sum.py",
+    "line": 37,
+    "column": 9,
+    "word": "compl"
+  },
+  {
+    "file": "maths/zellers_congruence.py",
+    "line": 5,
+    "column": 5,
+    "word": "zeller"
+  },
+  {
+    "file": "matrix/inverse_of_matrix.py",
+    "line": 91,
+    "column": 57,
+    "word": "Sarrus"
+  },
+  {
+    "file": "matrix/largest_square_area_in_matrix.py",
+    "line": 46,
+    "column": 44,
+    "word": "approch"
+  },
+  {
+    "file": "matrix/matrix_based_game.py",
+    "line": 24,
+    "column": 22,
+    "word": "movs"
+  },
+  {
+    "file": "matrix/matrix_based_game.py",
+    "line": 33,
+    "column": 1,
+    "word": "RRBG"
+  },
+  {
+    "file": "matrix/matrix_based_game.py",
+    "line": 34,
+    "column": 1,
+    "word": "RBBG"
+  },
+  {
+    "file": "matrix/matrix_based_game.py",
+    "line": 35,
+    "column": 1,
+    "word": "YYGG"
+  },
+  {
+    "file": "matrix/matrix_based_game.py",
+    "line": 36,
+    "column": 1,
+    "word": "XYGG"
+  },
+  {
+    "file": "matrix/matrix_class.py",
+    "line": 39,
+    "column": 23,
+    "word": "Cofactors"
+  },
+  {
+    "file": "matrix/matrix_class.py",
+    "line": 39,
+    "column": 37,
+    "word": "Adjugate"
+  },
+  {
+    "file": "matrix/matrix_class.py",
+    "line": 54,
+    "column": 22,
+    "word": "adjugate"
+  },
+  {
+    "file": "matrix/matrix_multiplication_recursion.py",
+    "line": 11,
+    "column": 46,
+    "word": "currenttly"
+  },
+  {
+    "file": "matrix/matrix_multiplication_recursion.py",
+    "line": 179,
+    "column": 5,
+    "word": "mytimeit"
+  },
+  {
+    "file": "matrix/pascal_triangle.py",
+    "line": 3,
+    "column": 13,
+    "word": "havingva"
+  },
+  {
+    "file": "matrix/sherman_morrison.py",
+    "line": 59,
+    "column": 33,
+    "word": "indicies"
+  },
+  {
+    "file": "matrix/sherman_morrison.py",
+    "line": 214,
+    "column": 13,
+    "word": "ainv"
+  },
+  {
+    "file": "matrix/spiral_print.py",
+    "line": 56,
+    "column": 11,
+    "word": "horizotal"
+  },
+  {
+    "file": "matrix/tests/test_matrix_operation.py",
+    "line": 18,
+    "column": 40,
+    "word": "matop"
+  },
+  {
+    "file": "matrix/tests/test_matrix_operation.py",
+    "line": 46,
+    "column": 9,
+    "word": "theo"
+  },
+  {
+    "file": "networking_flow/ford_fulkerson.py",
+    "line": 58,
+    "column": 10,
+    "word": "fulkerson"
+  },
+  {
+    "file": "neural_network/activation_functions/gaussian_error_linear_unit.py",
+    "line": 6,
+    "column": 29,
+    "word": "GELU"
+  },
+  {
+    "file": "neural_network/activation_functions/gaussian_error_linear_unit.py",
+    "line": 36,
+    "column": 9,
+    "word": "gelu"
+  },
+  {
+    "file": "neural_network/activation_functions/mish.py",
+    "line": 14,
+    "column": 5,
+    "word": "mish"
+  },
+  {
+    "file": "neural_network/activation_functions/scaled_exponential_linear_unit.py",
+    "line": 2,
+    "column": 50,
+    "word": "SELU"
+  },
+  {
+    "file": "neural_network/activation_functions/soboleva_modified_hyperbolic_tangent.py",
+    "line": 14,
+    "column": 5,
+    "word": "soboleva"
+  },
+  {
+    "file": "neural_network/activation_functions/soboleva_modified_hyperbolic_tangent.py",
+    "line": 28,
+    "column": 54,
+    "word": "SMHT"
+  },
+  {
+    "file": "neural_network/back_propagation_neural_network.py",
+    "line": 69,
+    "column": 35,
+    "word": "xdata"
+  },
+  {
+    "file": "neural_network/back_propagation_neural_network.py",
+    "line": 99,
+    "column": 7,
+    "word": "BPNN"
+  },
+  {
+    "file": "neural_network/back_propagation_neural_network.py",
+    "line": 126,
+    "column": 28,
+    "word": "ydata"
+  },
+  {
+    "file": "neural_network/back_propagation_neural_network.py",
+    "line": 130,
+    "column": 22,
+    "word": "hlines"
+  },
+  {
+    "file": "neural_network/convolution_neural_network.py",
+    "line": 43,
+    "column": 19,
+    "word": "thre"
+  },
+  {
+    "file": "neural_network/convolution_neural_network.py",
+    "line": 109,
+    "column": 31,
+    "word": "convs"
+  },
+  {
+    "file": "neural_network/convolution_neural_network.py",
+    "line": 213,
+    "column": 25,
+    "word": "datas"
+  },
+  {
+    "file": "neural_network/convolution_neural_network.py",
+    "line": 229,
+    "column": 35,
+    "word": "conved"
+  },
+  {
+    "file": "neural_network/convolution_neural_network.py",
+    "line": 299,
+    "column": 13,
+    "word": "yplot"
+  },
+  {
+    "file": "neural_network/input_data.py",
+    "line": 27,
+    "column": 40,
+    "word": "gfile"
+  },
+  {
+    "file": "neural_network/input_data.py",
+    "line": 37,
+    "column": 3,
+    "word": "CVDF"
+  },
+  {
+    "file": "neural_network/input_data.py",
+    "line": 98,
+    "column": 26,
+    "word": "bystream"
+  },
+  {
+    "file": "neural_network/input_data.py",
+    "line": 144,
+    "column": 29,
+    "word": "inages"
+  },
+  {
+    "file": "neural_network/two_hidden_layers_neural_network.py",
+    "line": 100,
+    "column": 9,
+    "word": "Updation"
+  },
+  {
+    "file": "neural_network/two_hidden_layers_neural_network.py",
+    "line": 100,
+    "column": 46,
+    "word": "sogmoid"
+  },
+  {
+    "file": "other/bankers_algorithm.py",
+    "line": 4,
+    "column": 13,
+    "word": "Biney"
+  },
+  {
+    "file": "other/davis_putnam_logemann_loveland.py",
+    "line": 4,
+    "column": 33,
+    "word": "DPLL"
+  },
+  {
+    "file": "other/davis_putnam_logemann_loveland.py",
+    "line": 5,
+    "column": 35,
+    "word": "satisfiability"
+  },
+  {
+    "file": "other/davis_putnam_logemann_loveland.py",
+    "line": 6,
+    "column": 73,
+    "word": "Tisfiability"
+  },
+  {
+    "file": "other/davis_putnam_logemann_loveland.py",
+    "line": 160,
+    "column": 23,
+    "word": "uncomplemented"
+  },
+  {
+    "file": "other/davis_putnam_logemann_loveland.py",
+    "line": 285,
+    "column": 5,
+    "word": "dpll"
+  },
+  {
+    "file": "other/doomsday.py",
+    "line": 42,
+    "column": 5,
+    "word": "centurian"
+  },
+  {
+    "file": "other/gauss_easter.py",
+    "line": 25,
+    "column": 5,
+    "word": "metonic"
+  },
+  {
+    "file": "other/graham_scan.py",
+    "line": 28,
+    "column": 55,
+    "word": "miny"
+  },
+  {
+    "file": "other/graham_scan.py",
+    "line": 119,
+    "column": 5,
+    "word": "minidx"
+  },
+  {
+    "file": "other/greedy.py",
+    "line": 45,
+    "column": 18,
+    "word": "Sambhar"
+  },
+  {
+    "file": "other/password.py",
+    "line": 47,
+    "column": 19,
+    "word": "generalised"
+  },
+  {
+    "file": "other/password.py",
+    "line": 60,
+    "column": 29,
+    "word": "Hwea"
+  },
+  {
+    "file": "other/password.py",
+    "line": 66,
+    "column": 38,
+    "word": "udfhiaf"
+  },
+  {
+    "file": "other/password.py",
+    "line": 66,
+    "column": 48,
+    "word": "fajdvjjf"
+  },
+  {
+    "file": "other/password.py",
+    "line": 66,
+    "column": 57,
+    "word": "jaiu"
+  },
+  {
+    "file": "other/password.py",
+    "line": 66,
+    "column": 61,
+    "word": "Fhkqi"
+  },
+  {
+    "file": "other/scoring_algorithm.py",
+    "line": 2,
+    "column": 17,
+    "word": "markmelnic"
+  },
+  {
+    "file": "other/scoring_algorithm.py",
+    "line": 5,
+    "column": 34,
+    "word": "percentual"
+  },
+  {
+    "file": "other/scoring_algorithm.py",
+    "line": 50,
+    "column": 9,
+    "word": "dlist"
+  },
+  {
+    "file": "other/scoring_algorithm.py",
+    "line": 52,
+    "column": 9,
+    "word": "maxd"
+  },
+  {
+    "file": "other/scoring_algorithm.py",
+    "line": 90,
+    "column": 9,
+    "word": "slist"
+  },
+  {
+    "file": "other/scoring_algorithm.py",
+    "line": 97,
+    "column": 5,
+    "word": "procentual"
+  },
+  {
+    "file": "other/sdes.py",
+    "line": 36,
+    "column": 11,
+    "word": "sbox"
+  },
+  {
+    "file": "other/sdes.py",
+    "line": 96,
+    "column": 29,
+    "word": "decypting"
+  },
+  {
+    "file": "physics/basic_orbital_capture.py",
+    "line": 173,
+    "column": 72,
+    "word": "Bezanson"
+  },
+  {
+    "file": "physics/casimir_effect.py",
+    "line": 16,
+    "column": 17,
+    "word": "Hendrik"
+  },
+  {
+    "file": "physics/casimir_effect.py",
+    "line": 35,
+    "column": 18,
+    "word": "Waals"
+  },
+  {
+    "file": "physics/casimir_effect.py",
+    "line": 49,
+    "column": 5,
+    "word": "casimir"
+  },
+  {
+    "file": "physics/grahams_law.py",
+    "line": 24,
+    "column": 22,
+    "word": "Effustion"
+  },
+  {
+    "file": "physics/grahams_law.py",
+    "line": 26,
+    "column": 58,
+    "word": "kmol"
+  },
+  {
+    "file": "physics/hubble_parameter.py",
+    "line": 6,
+    "column": 42,
+    "word": "directily"
+  },
+  {
+    "file": "physics/hubble_parameter.py",
+    "line": 40,
+    "column": 29,
+    "word": "constante"
+  },
+  {
+    "file": "physics/hubble_parameter.py",
+    "line": 98,
+    "column": 12,
+    "word": "LCDM"
+  },
+  {
+    "file": "physics/ideal_gas_law.py",
+    "line": 5,
+    "column": 45,
+    "word": "Benoît"
+  },
+  {
+    "file": "physics/ideal_gas_law.py",
+    "line": 5,
+    "column": 57,
+    "word": "Émile"
+  },
+  {
+    "file": "physics/ideal_gas_law.py",
+    "line": 7,
+    "column": 25,
+    "word": "Lussac's"
+  },
+  {
+    "file": "physics/malus_law.py",
+    "line": 7,
+    "column": 49,
+    "word": "Étienne"
+  },
+  {
+    "file": "physics/malus_law.py",
+    "line": 34,
+    "column": 39,
+    "word": "Glan"
+  },
+  {
+    "file": "physics/malus_law.py",
+    "line": 40,
+    "column": 5,
+    "word": "malus"
+  },
+  {
+    "file": "physics/n_body_simulation.py",
+    "line": 247,
+    "column": 41,
+    "word": "blit"
+  },
+  {
+    "file": "physics/newtons_law_of_gravitation.py",
+    "line": 19,
+    "column": 18,
+    "word": "Philosophiæ"
+  },
+  {
+    "file": "physics/newtons_law_of_gravitation.py",
+    "line": 19,
+    "column": 30,
+    "word": "Naturalis"
+  },
+  {
+    "file": "physics/newtons_law_of_gravitation.py",
+    "line": 19,
+    "column": 40,
+    "word": "Principia"
+  },
+  {
+    "file": "physics/newtons_law_of_gravitation.py",
+    "line": 19,
+    "column": 50,
+    "word": "Mathematica"
+  },
+  {
+    "file": "physics/rainfall_intensity.py",
+    "line": 11,
+    "column": 3,
+    "word": "Aparicio"
+  },
+  {
+    "file": "physics/rainfall_intensity.py",
+    "line": 11,
+    "column": 24,
+    "word": "Fundamentos"
+  },
+  {
+    "file": "physics/rainfall_intensity.py",
+    "line": 11,
+    "column": 39,
+    "word": "Hidrología"
+  },
+  {
+    "file": "physics/rainfall_intensity.py",
+    "line": 11,
+    "column": 53,
+    "word": "Superficie"
+  },
+  {
+    "file": "physics/rainfall_intensity.py",
+    "line": 12,
+    "column": 15,
+    "word": "México"
+  },
+  {
+    "file": "physics/rms_speed_of_molecule.py",
+    "line": 5,
+    "column": 4,
+    "word": "Vrms"
+  },
+  {
+    "file": "physics/rms_speed_of_molecule.py",
+    "line": 50,
+    "column": 5,
+    "word": "vrms"
+  },
+  {
+    "file": "project_euler/README.md",
+    "line": 66,
+    "column": 4,
+    "word": "Stackoverflow"
+  },
+  {
+    "file": "project_euler/README.md",
+    "line": 81,
+    "column": 6,
+    "word": "Doctest"
+  },
+  {
+    "file": "project_euler/problem_001/sol4.py",
+    "line": 27,
+    "column": 5,
+    "word": "xmulti"
+  },
+  {
+    "file": "project_euler/problem_001/sol4.py",
+    "line": 28,
+    "column": 5,
+    "word": "zmulti"
+  },
+  {
+    "file": "project_euler/problem_005/sol1.py",
+    "line": 57,
+    "column": 9,
+    "word": "nfound"
+  },
+  {
+    "file": "project_euler/problem_011/sol1.py",
+    "line": 43,
+    "column": 13,
+    "word": "horz"
+  },
+  {
+    "file": "project_euler/problem_014/sol2.py",
+    "line": 31,
+    "column": 1,
+    "word": "COLLATZ"
+  },
+  {
+    "file": "project_euler/problem_020/sol1.py",
+    "line": 48,
+    "column": 5,
+    "word": "nfact"
+  },
+  {
+    "file": "project_euler/problem_023/sol1.py",
+    "line": 38,
+    "column": 5,
+    "word": "abundants"
+  },
+  {
+    "file": "project_euler/problem_037/sol1.py",
+    "line": 2,
+    "column": 1,
+    "word": "Truncatable"
+  },
+  {
+    "file": "project_euler/problem_037/sol1.py",
+    "line": 9,
+    "column": 54,
+    "word": "truncatable"
+  },
+  {
+    "file": "project_euler/problem_038/sol1.py",
+    "line": 21,
+    "column": 61,
+    "word": "concactenation"
+  },
+  {
+    "file": "project_euler/problem_039/sol1.py",
+    "line": 8,
+    "column": 57,
+    "word": "maximised"
+  },
+  {
+    "file": "project_euler/problem_044/sol1.py",
+    "line": 11,
+    "column": 37,
+    "word": "minimised"
+  },
+  {
+    "file": "project_euler/problem_047/sol1.py",
+    "line": 2,
+    "column": 1,
+    "word": "Combinatoric"
+  },
+  {
+    "file": "project_euler/problem_050/sol1.py",
+    "line": 24,
+    "column": 14,
+    "word": "Erotosthenes"
+  },
+  {
+    "file": "project_euler/problem_050/sol1.py",
+    "line": 56,
+    "column": 42,
+    "word": "celing"
+  },
+  {
+    "file": "project_euler/problem_054/sol1.py",
+    "line": 115,
+    "column": 50,
+    "word": "ueen"
+  },
+  {
+    "file": "project_euler/problem_054/sol1.py",
+    "line": 118,
+    "column": 11,
+    "word": "pades"
+  },
+  {
+    "file": "project_euler/problem_054/sol1.py",
+    "line": 118,
+    "column": 21,
+    "word": "earts"
+  },
+  {
+    "file": "project_euler/problem_054/sol1.py",
+    "line": 118,
+    "column": 31,
+    "word": "iamonds"
+  },
+  {
+    "file": "project_euler/problem_054/sol1.py",
+    "line": 118,
+    "column": 43,
+    "word": "lubs"
+  },
+  {
+    "file": "project_euler/problem_054/sol1.py",
+    "line": 148,
+    "column": 53,
+    "word": "Stright"
+  },
+  {
+    "file": "project_euler/problem_054/test_poker_hand.py",
+    "line": 140,
+    "column": 11,
+    "word": "oppo"
+  },
+  {
+    "file": "project_euler/problem_055/sol1.py",
+    "line": 2,
+    "column": 1,
+    "word": "Lychrel"
+  },
+  {
+    "file": "project_euler/problem_055/sol1.py",
+    "line": 58,
+    "column": 30,
+    "word": "lychrel"
+  },
+  {
+    "file": "project_euler/problem_059/sol1.py",
+    "line": 93,
+    "column": 30,
+    "word": "asfla"
+  },
+  {
+    "file": "project_euler/problem_059/sol1.py",
+    "line": 95,
+    "column": 30,
+    "word": "athla"
+  },
+  {
+    "file": "project_euler/problem_065/sol1.py",
+    "line": 14,
+    "column": 21,
+    "word": "convergents"
+  },
+  {
+    "file": "project_euler/problem_087/sol1.py",
+    "line": 42,
+    "column": 17,
+    "word": "tetr"
+  },
+  {
+    "file": "project_euler/problem_089/sol1.py",
+    "line": 13,
+    "column": 1,
+    "word": "VVIIIIII"
+  },
+  {
+    "file": "project_euler/problem_089/sol1.py",
+    "line": 15,
+    "column": 1,
+    "word": "VVVI"
+  },
+  {
+    "file": "project_euler/problem_091/sol1.py",
+    "line": 5,
+    "column": 43,
+    "word": "ΔOPQ"
+  },
+  {
+    "file": "project_euler/problem_104/sol1.py",
+    "line": 47,
+    "column": 32,
+    "word": "pandigitality"
+  },
+  {
+    "file": "project_euler/problem_104/sol1.py",
+    "line": 119,
+    "column": 32,
+    "word": "optimisation"
+  },
+  {
+    "file": "project_euler/problem_104/sol1.py",
+    "line": 120,
+    "column": 5,
+    "word": "tocheck"
+  },
+  {
+    "file": "project_euler/problem_107/sol1.py",
+    "line": 16,
+    "column": 28,
+    "word": "optimise"
+  },
+  {
+    "file": "project_euler/problem_107/sol1.py",
+    "line": 112,
+    "column": 5,
+    "word": "adjaceny"
+  },
+  {
+    "file": "project_euler/problem_122/sol1.py",
+    "line": 64,
+    "column": 42,
+    "word": "multiplactions"
+  },
+  {
+    "file": "project_euler/problem_145/sol1.py",
+    "line": 3,
+    "column": 27,
+    "word": "Smolskiy"
+  },
+  {
+    "file": "project_euler/problem_180/sol1.py",
+    "line": 40,
+    "column": 75,
+    "word": "uniquq"
+  },
+  {
+    "file": "project_euler/problem_188/sol1.py",
+    "line": 23,
+    "column": 6,
+    "word": "modexpt"
+  },
+  {
+    "file": "project_euler/problem_188/sol1.py",
+    "line": 58,
+    "column": 39,
+    "word": "assiciative"
+  },
+  {
+    "file": "project_euler/problem_190/sol1.py",
+    "line": 4,
+    "column": 1,
+    "word": "Maximising"
+  },
+  {
+    "file": "project_euler/problem_191/sol1.py",
+    "line": 15,
+    "column": 6,
+    "word": "OOOA"
+  },
+  {
+    "file": "project_euler/problem_191/sol1.py",
+    "line": 15,
+    "column": 11,
+    "word": "OOOL"
+  },
+  {
+    "file": "project_euler/problem_191/sol1.py",
+    "line": 15,
+    "column": 16,
+    "word": "OOAO"
+  },
+  {
+    "file": "project_euler/problem_191/sol1.py",
+    "line": 15,
+    "column": 21,
+    "word": "OOAA"
+  },
+  {
+    "file": "project_euler/problem_191/sol1.py",
+    "line": 15,
+    "column": 26,
+    "word": "OOAL"
+  },
+  {
+    "file": "project_euler/problem_191/sol1.py",
+    "line": 15,
+    "column": 31,
+    "word": "OOLO"
+  },
+  {
+    "file": "project_euler/problem_191/sol1.py",
+    "line": 15,
+    "column": 36,
+    "word": "OOLA"
+  },
+  {
+    "file": "project_euler/problem_191/sol1.py",
+    "line": 15,
+    "column": 41,
+    "word": "OAOO"
+  },
+  {
+    "file": "project_euler/problem_191/sol1.py",
+    "line": 15,
+    "column": 46,
+    "word": "OAOA"
+  },
+  {
+    "file": "project_euler/problem_191/sol1.py",
+    "line": 16,
+    "column": 1,
+    "word": "OAOL"
+  },
+  {
+    "file": "project_euler/problem_191/sol1.py",
+    "line": 16,
+    "column": 6,
+    "word": "OAAO"
+  },
+  {
+    "file": "project_euler/problem_191/sol1.py",
+    "line": 16,
+    "column": 11,
+    "word": "OAAL"
+  },
+  {
+    "file": "project_euler/problem_191/sol1.py",
+    "line": 16,
+    "column": 16,
+    "word": "OALO"
+  },
+  {
+    "file": "project_euler/problem_191/sol1.py",
+    "line": 16,
+    "column": 21,
+    "word": "OALA"
+  },
+  {
+    "file": "project_euler/problem_191/sol1.py",
+    "line": 16,
+    "column": 26,
+    "word": "OLOO"
+  },
+  {
+    "file": "project_euler/problem_191/sol1.py",
+    "line": 16,
+    "column": 31,
+    "word": "OLOA"
+  },
+  {
+    "file": "project_euler/problem_191/sol1.py",
+    "line": 16,
+    "column": 36,
+    "word": "OLAO"
+  },
+  {
+    "file": "project_euler/problem_191/sol1.py",
+    "line": 16,
+    "column": 41,
+    "word": "OLAA"
+  },
+  {
+    "file": "project_euler/problem_191/sol1.py",
+    "line": 16,
+    "column": 46,
+    "word": "AOOO"
+  },
+  {
+    "file": "project_euler/problem_191/sol1.py",
+    "line": 17,
+    "column": 1,
+    "word": "AOOA"
+  },
+  {
+    "file": "project_euler/problem_191/sol1.py",
+    "line": 17,
+    "column": 6,
+    "word": "AOOL"
+  },
+  {
+    "file": "project_euler/problem_191/sol1.py",
+    "line": 17,
+    "column": 11,
+    "word": "AOAO"
+  },
+  {
+    "file": "project_euler/problem_191/sol1.py",
+    "line": 17,
+    "column": 16,
+    "word": "AOAA"
+  },
+  {
+    "file": "project_euler/problem_191/sol1.py",
+    "line": 17,
+    "column": 21,
+    "word": "AOAL"
+  },
+  {
+    "file": "project_euler/problem_191/sol1.py",
+    "line": 17,
+    "column": 26,
+    "word": "AOLO"
+  },
+  {
+    "file": "project_euler/problem_191/sol1.py",
+    "line": 17,
+    "column": 31,
+    "word": "AOLA"
+  },
+  {
+    "file": "project_euler/problem_191/sol1.py",
+    "line": 17,
+    "column": 36,
+    "word": "AAOO"
+  },
+  {
+    "file": "project_euler/problem_191/sol1.py",
+    "line": 17,
+    "column": 41,
+    "word": "AAOA"
+  },
+  {
+    "file": "project_euler/problem_191/sol1.py",
+    "line": 17,
+    "column": 46,
+    "word": "AAOL"
+  },
+  {
+    "file": "project_euler/problem_191/sol1.py",
+    "line": 18,
+    "column": 1,
+    "word": "AALO"
+  },
+  {
+    "file": "project_euler/problem_191/sol1.py",
+    "line": 18,
+    "column": 6,
+    "word": "AALA"
+  },
+  {
+    "file": "project_euler/problem_191/sol1.py",
+    "line": 18,
+    "column": 11,
+    "word": "ALOO"
+  },
+  {
+    "file": "project_euler/problem_191/sol1.py",
+    "line": 18,
+    "column": 16,
+    "word": "ALOA"
+  },
+  {
+    "file": "project_euler/problem_191/sol1.py",
+    "line": 18,
+    "column": 21,
+    "word": "ALAO"
+  },
+  {
+    "file": "project_euler/problem_191/sol1.py",
+    "line": 18,
+    "column": 26,
+    "word": "ALAA"
+  },
+  {
+    "file": "project_euler/problem_191/sol1.py",
+    "line": 18,
+    "column": 31,
+    "word": "LOOO"
+  },
+  {
+    "file": "project_euler/problem_191/sol1.py",
+    "line": 18,
+    "column": 36,
+    "word": "LOOA"
+  },
+  {
+    "file": "project_euler/problem_191/sol1.py",
+    "line": 18,
+    "column": 41,
+    "word": "LOAO"
+  },
+  {
+    "file": "project_euler/problem_191/sol1.py",
+    "line": 18,
+    "column": 46,
+    "word": "LOAA"
+  },
+  {
+    "file": "project_euler/problem_191/sol1.py",
+    "line": 19,
+    "column": 1,
+    "word": "LAOO"
+  },
+  {
+    "file": "project_euler/problem_191/sol1.py",
+    "line": 19,
+    "column": 6,
+    "word": "LAOA"
+  },
+  {
+    "file": "project_euler/problem_191/sol1.py",
+    "line": 19,
+    "column": 11,
+    "word": "LAAO"
+  },
+  {
+    "file": "project_euler/problem_191/sol1.py",
+    "line": 81,
+    "column": 11,
+    "word": "ontime"
+  },
+  {
+    "file": "project_euler/problem_493/sol1.py",
+    "line": 6,
+    "column": 62,
+    "word": "bcdefghij"
+  },
+  {
+    "file": "project_euler/problem_493/sol1.py",
+    "line": 13,
+    "column": 18,
+    "word": "binom"
+  },
+  {
+    "file": "project_euler/problem_551/sol1.py",
+    "line": 34,
+    "column": 20,
+    "word": "calulcated"
+  },
+  {
+    "file": "quantum/README.md",
+    "line": 8,
+    "column": 3,
+    "word": "Rigetti"
+  },
+  {
+    "file": "quantum/README.md",
+    "line": 18,
+    "column": 11,
+    "word": "Cirq"
+  },
+  {
+    "file": "quantum/README.md",
+    "line": 19,
+    "column": 52,
+    "word": "cirq"
+  },
+  {
+    "file": "quantum/q_fourier_transform.py",
+    "line": 3,
+    "column": 30,
+    "word": "Qiskit"
+  },
+  {
+    "file": "quantum/q_fourier_transform.py",
+    "line": 6,
+    "column": 5,
+    "word": "Shor's"
+  },
+  {
+    "file": "quantum/q_fourier_transform.py",
+    "line": 17,
+    "column": 8,
+    "word": "qiskit"
+  },
+  {
+    "file": "quantum/q_fourier_transform.py",
+    "line": 21,
+    "column": 41,
+    "word": "qubits"
+  },
+  {
+    "file": "quantum/q_fourier_transform.py",
+    "line": 86,
+    "column": 32,
+    "word": "qasm"
+  },
+  {
+    "file": "scheduling/highest_response_ratio_next.py",
+    "line": 2,
+    "column": 30,
+    "word": "HRRN"
+  },
+  {
+    "file": "scheduling/multi_level_feedback_queue.py",
+    "line": 15,
+    "column": 7,
+    "word": "MLFQ"
+  },
+  {
+    "file": "scheduling/multi_level_feedback_queue.py",
+    "line": 32,
+    "column": 27,
+    "word": "mlfq's"
+  },
+  {
+    "file": "scheduling/multi_level_feedback_queue.py",
+    "line": 50,
+    "column": 13,
+    "word": "mlfq"
+  },
+  {
+    "file": "scheduling/multi_level_feedback_queue.py",
+    "line": 152,
+    "column": 9,
+    "word": "FCFS"
+  },
+  {
+    "file": "scheduling/multi_level_feedback_queue.py",
+    "line": 153,
+    "column": 33,
+    "word": "MLFQ's"
+  },
+  {
+    "file": "scheduling/shortest_job_first.py",
+    "line": 33,
+    "column": 5,
+    "word": "minm"
+  },
+  {
+    "file": "scheduling/shortest_job_first.py",
+    "line": 66,
+    "column": 13,
+    "word": "finar"
+  },
+  {
+    "file": "scheduling/shortest_job_first.py",
+    "line": 140,
+    "column": 5,
+    "word": "fcfs"
+  },
+  {
+    "file": "scripts/build_directory_md.py",
+    "line": 17,
+    "column": 59,
+    "word": "ipynb"
+  },
+  {
+    "file": "scripts/validate_filenames.py",
+    "line": 8,
+    "column": 71,
+    "word": "redef"
+  },
+  {
+    "file": "scripts/validate_filenames.py",
+    "line": 27,
+    "column": 4,
+    "word": "nodir"
+  },
+  {
+    "file": "searches/fibonacci_search.py",
+    "line": 110,
+    "column": 13,
+    "word": "fibb"
+  },
+  {
+    "file": "sorts/README.md",
+    "line": 4,
+    "column": 102,
+    "word": "optimised"
+  },
+  {
+    "file": "sorts/bitonic_sort.py",
+    "line": 41,
+    "column": 5,
+    "word": "bitonic"
+  },
+  {
+    "file": "sorts/bogo_sort.py",
+    "line": 2,
+    "column": 45,
+    "word": "bogosort"
+  },
+  {
+    "file": "sorts/bogo_sort.py",
+    "line": 4,
+    "column": 1,
+    "word": "Bogosort"
+  },
+  {
+    "file": "sorts/bogo_sort.py",
+    "line": 9,
+    "column": 22,
+    "word": "bogo"
+  },
+  {
+    "file": "sorts/comb_sort.py",
+    "line": 3,
+    "column": 75,
+    "word": "Wlodzimierz"
+  },
+  {
+    "file": "sorts/comb_sort.py",
+    "line": 4,
+    "column": 1,
+    "word": "Dobosiewicz"
+  },
+  {
+    "file": "sorts/counting_sort.py",
+    "line": 62,
+    "column": 6,
+    "word": "eghhiiinrsssttt"
+  },
+  {
+    "file": "sorts/external_sort.py",
+    "line": 82,
+    "column": 9,
+    "word": "unshift"
+  },
+  {
+    "file": "sorts/gnome_sort.py",
+    "line": 34,
+    "column": 8,
+    "word": "Gadeimnoprstu"
+  },
+  {
+    "file": "sorts/iterative_merge_sort.py",
+    "line": 3,
+    "column": 9,
+    "word": "Aman"
+  },
+  {
+    "file": "sorts/iterative_merge_sort.py",
+    "line": 49,
+    "column": 42,
+    "word": "trai"
+  },
+  {
+    "file": "sorts/natural_sort.py",
+    "line": 27,
+    "column": 9,
+    "word": "alphanum"
+  },
+  {
+    "file": "sorts/normal_distribution_quick_sort.md",
+    "line": 13,
+    "column": 12,
+    "word": "numpy"
+  },
+  {
+    "file": "sorts/normal_distribution_quick_sort.md",
+    "line": 47,
+    "column": 12,
+    "word": "matplotlib"
+  },
+  {
+    "file": "sorts/normal_distribution_quick_sort.md",
+    "line": 47,
+    "column": 23,
+    "word": "pyplot"
+  },
+  {
+    "file": "sorts/quick_sort_3_partition.py",
+    "line": 44,
+    "column": 16,
+    "word": "lomuto"
+  },
+  {
+    "file": "sorts/quick_sort_3_partition.py",
+    "line": 47,
+    "column": 10,
+    "word": "Lomuto"
+  },
+  {
+    "file": "sorts/shell_sort.py",
+    "line": 19,
+    "column": 7,
+    "word": "Marcin"
+  },
+  {
+    "file": "sorts/shell_sort.py",
+    "line": 19,
+    "column": 14,
+    "word": "Ciura's"
+  },
+  {
+    "file": "sorts/slowsort.py",
+    "line": 5,
+    "column": 53,
+    "word": "Stolfi"
+  },
+  {
+    "file": "sorts/slowsort.py",
+    "line": 6,
+    "column": 40,
+    "word": "Simplexity"
+  },
+  {
+    "file": "strings/aho_corasick.py",
+    "line": 8,
+    "column": 14,
+    "word": "adlist"
+  },
+  {
+    "file": "strings/alternative_string_arrange.py",
+    "line": 8,
+    "column": 6,
+    "word": "AXBYCD"
+  },
+  {
+    "file": "strings/alternative_string_arrange.py",
+    "line": 10,
+    "column": 6,
+    "word": "XAYBCD"
+  },
+  {
+    "file": "strings/alternative_string_arrange.py",
+    "line": 12,
+    "column": 6,
+    "word": "AXBYZ"
+  },
+  {
+    "file": "strings/barcode_validator.py",
+    "line": 48,
+    "column": 18,
+    "word": "dwefgiweuf"
+  },
+  {
+    "file": "strings/bitap_string_match.py",
+    "line": 13,
+    "column": 23,
+    "word": "bitap"
+  },
+  {
+    "file": "strings/bitap_string_match.py",
+    "line": 28,
+    "column": 29,
+    "word": "abdabababc"
+  },
+  {
+    "file": "strings/bitap_string_match.py",
+    "line": 28,
+    "column": 43,
+    "word": "ababc"
+  },
+  {
+    "file": "strings/bitap_string_match.py",
+    "line": 32,
+    "column": 29,
+    "word": "zxywsijdfosdfnso"
+  },
+  {
+    "file": "strings/bitap_string_match.py",
+    "line": 38,
+    "column": 43,
+    "word": "fofosdfo"
+  },
+  {
+    "file": "strings/bitap_string_match.py",
+    "line": 40,
+    "column": 29,
+    "word": "abdab"
+  },
+  {
+    "file": "strings/can_string_be_rearranged_as_palindrome.py",
+    "line": 1,
+    "column": 14,
+    "word": "susmith"
+  },
+  {
+    "file": "strings/can_string_be_rearranged_as_palindrome.py",
+    "line": 17,
+    "column": 57,
+    "word": "Momo"
+  },
+  {
+    "file": "strings/count_vowels.py",
+    "line": 27,
+    "column": 15,
+    "word": "aeiou"
+  },
+  {
+    "file": "strings/count_vowels.py",
+    "line": 27,
+    "column": 20,
+    "word": "AEIOU"
+  },
+  {
+    "file": "strings/damerau_levenshtein_distance.py",
+    "line": 11,
+    "column": 5,
+    "word": "damerau"
+  },
+  {
+    "file": "strings/detecting_english_programmatically.py",
+    "line": 49,
+    "column": 21,
+    "word": "llold"
+  },
+  {
+    "file": "strings/dna.py",
+    "line": 9,
+    "column": 14,
+    "word": "GCTA"
+  },
+  {
+    "file": "strings/dna.py",
+    "line": 10,
+    "column": 6,
+    "word": "CGAT"
+  },
+  {
+    "file": "strings/dna.py",
+    "line": 11,
+    "column": 14,
+    "word": "ATGC"
+  },
+  {
+    "file": "strings/dna.py",
+    "line": 12,
+    "column": 6,
+    "word": "TACG"
+  },
+  {
+    "file": "strings/dna.py",
+    "line": 13,
+    "column": 14,
+    "word": "CTGA"
+  },
+  {
+    "file": "strings/dna.py",
+    "line": 14,
+    "column": 6,
+    "word": "GACT"
+  },
+  {
+    "file": "strings/dna.py",
+    "line": 15,
+    "column": 14,
+    "word": "GFGG"
+  },
+  {
+    "file": "strings/dna.py",
+    "line": 21,
+    "column": 25,
+    "word": "ATCG"
+  },
+  {
+    "file": "strings/dna.py",
+    "line": 24,
+    "column": 49,
+    "word": "TAGC"
+  },
+  {
+    "file": "strings/edit_distance.py",
+    "line": 27,
+    "column": 34,
+    "word": "Beautyyyy"
+  },
+  {
+    "file": "strings/edit_distance.py",
+    "line": 29,
+    "column": 24,
+    "word": "lstring"
+  },
+  {
+    "file": "strings/edit_distance.py",
+    "line": 29,
+    "column": 35,
+    "word": "lsstring"
+  },
+  {
+    "file": "strings/edit_distance.py",
+    "line": 46,
+    "column": 26,
+    "word": "ATCGCTG"
+  },
+  {
+    "file": "strings/edit_distance.py",
+    "line": 46,
+    "column": 37,
+    "word": "TAGCTAA"
+  },
+  {
+    "file": "strings/frequency_finder.py",
+    "line": 34,
+    "column": 1,
+    "word": "ETAOIN"
+  },
+  {
+    "file": "strings/frequency_finder.py",
+    "line": 34,
+    "column": 11,
+    "word": "ETAOINSHRDLCUMWFGYPBVKJXQZ"
+  },
+  {
+    "file": "strings/frequency_finder.py",
+    "line": 55,
+    "column": 6,
+    "word": "LOWDRHEZQXJKVBPYGFMUCSNIAT"
+  },
+  {
+    "file": "strings/frequency_finder.py",
+    "line": 57,
+    "column": 6,
+    "word": "LHOEZQXJKVBPYGFWMUCDRSNIAT"
+  },
+  {
+    "file": "strings/frequency_finder.py",
+    "line": 59,
+    "column": 6,
+    "word": "HZQXJKVBPYGFWMUCLDRSNIOATE"
+  },
+  {
+    "file": "strings/hamming_distance.py",
+    "line": 16,
+    "column": 38,
+    "word": "kathrin"
+  },
+  {
+    "file": "strings/hamming_distance.py",
+    "line": 20,
+    "column": 38,
+    "word": "kath"
+  },
+  {
+    "file": "strings/is_isogram.py",
+    "line": 9,
+    "column": 30,
+    "word": "uncopyrightable"
+  },
+  {
+    "file": "strings/is_isogram.py",
+    "line": 10,
+    "column": 21,
+    "word": "Uncopyrightable"
+  },
+  {
+    "file": "strings/is_polish_national_id.py",
+    "line": 3,
+    "column": 44,
+    "word": "PESEL"
+  },
+  {
+    "file": "strings/is_polish_national_id.py",
+    "line": 4,
+    "column": 39,
+    "word": "czym"
+  },
+  {
+    "file": "strings/is_polish_national_id.py",
+    "line": 4,
+    "column": 49,
+    "word": "numer"
+  },
+  {
+    "file": "strings/is_polish_national_id.py",
+    "line": 4,
+    "column": 55,
+    "word": "pesel"
+  },
+  {
+    "file": "strings/is_spain_national_id.py",
+    "line": 2,
+    "column": 19,
+    "word": "TRWAGMYFPDXBNJZSQVHLCKE"
+  },
+  {
+    "file": "strings/jaro_winkler.py",
+    "line": 4,
+    "column": 5,
+    "word": "jaro"
+  },
+  {
+    "file": "strings/jaro_winkler.py",
+    "line": 4,
+    "column": 10,
+    "word": "winkler"
+  },
+  {
+    "file": "strings/jaro_winkler.py",
+    "line": 10,
+    "column": 33,
+    "word": "marhta"
+  },
+  {
+    "file": "strings/jaro_winkler.py",
+    "line": 14,
+    "column": 31,
+    "word": "dbdbdbdb"
+  },
+  {
+    "file": "strings/knuth_morris_pratt.py",
+    "line": 72,
+    "column": 14,
+    "word": "alskfjaldsabc"
+  },
+  {
+    "file": "strings/knuth_morris_pratt.py",
+    "line": 72,
+    "column": 40,
+    "word": "adsfabcabc"
+  },
+  {
+    "file": "strings/knuth_morris_pratt.py",
+    "line": 73,
+    "column": 14,
+    "word": "alskfjaldsk"
+  },
+  {
+    "file": "strings/knuth_morris_pratt.py",
+    "line": 78,
+    "column": 16,
+    "word": "ABABX"
+  },
+  {
+    "file": "strings/knuth_morris_pratt.py",
+    "line": 79,
+    "column": 13,
+    "word": "ABABZABABYABABX"
+  },
+  {
+    "file": "strings/knuth_morris_pratt.py",
+    "line": 83,
+    "column": 16,
+    "word": "AAAB"
+  },
+  {
+    "file": "strings/knuth_morris_pratt.py",
+    "line": 84,
+    "column": 13,
+    "word": "ABAAAAAB"
+  },
+  {
+    "file": "strings/knuth_morris_pratt.py",
+    "line": 88,
+    "column": 16,
+    "word": "abcdabcy"
+  },
+  {
+    "file": "strings/knuth_morris_pratt.py",
+    "line": 89,
+    "column": 13,
+    "word": "abcxabcdabxabcdabcdabcy"
+  },
+  {
+    "file": "strings/knuth_morris_pratt.py",
+    "line": 100,
+    "column": 16,
+    "word": "aabaabaaa"
+  },
+  {
+    "file": "strings/lower.py",
+    "line": 8,
+    "column": 6,
+    "word": "hellzo"
+  },
+  {
+    "file": "strings/manacher.py",
+    "line": 4,
+    "column": 6,
+    "word": "abbba"
+  },
+  {
+    "file": "strings/manacher.py",
+    "line": 5,
+    "column": 29,
+    "word": "ababa"
+  },
+  {
+    "file": "strings/naive_string_search.py",
+    "line": 14,
+    "column": 31,
+    "word": "ABAAABCDBBABCDDEBCABC"
+  },
+  {
+    "file": "strings/naive_string_search.py",
+    "line": 22,
+    "column": 31,
+    "word": "ABCDEGFTEST"
+  },
+  {
+    "file": "strings/ngram.py",
+    "line": 6,
+    "column": 12,
+    "word": "ngram"
+  },
+  {
+    "file": "strings/ngram.py",
+    "line": 8,
+    "column": 12,
+    "word": "ngrams"
+  },
+  {
+    "file": "strings/palindrome.py",
+    "line": 14,
+    "column": 6,
+    "word": "abcdba"
+  },
+  {
+    "file": "strings/pig_latin.py",
+    "line": 8,
+    "column": 6,
+    "word": "igpay"
+  },
+  {
+    "file": "strings/pig_latin.py",
+    "line": 10,
+    "column": 6,
+    "word": "atinlay"
+  },
+  {
+    "file": "strings/pig_latin.py",
+    "line": 12,
+    "column": 6,
+    "word": "ananabay"
+  },
+  {
+    "file": "strings/pig_latin.py",
+    "line": 14,
+    "column": 6,
+    "word": "iendsfray"
+  },
+  {
+    "file": "strings/pig_latin.py",
+    "line": 16,
+    "column": 6,
+    "word": "ilesmay"
+  },
+  {
+    "file": "strings/prefix_function.py",
+    "line": 22,
+    "column": 26,
+    "word": "aabcdaabc"
+  },
+  {
+    "file": "strings/prefix_function.py",
+    "line": 24,
+    "column": 26,
+    "word": "asdasdad"
+  },
+  {
+    "file": "strings/prefix_function.py",
+    "line": 53,
+    "column": 25,
+    "word": "abcab"
+  },
+  {
+    "file": "strings/rabin_karp.py",
+    "line": 7,
+    "column": 11,
+    "word": "karp"
+  },
+  {
+    "file": "strings/rabin_karp.py",
+    "line": 83,
+    "column": 13,
+    "word": "Lüsai"
+  },
+  {
+    "file": "strings/reverse_letters.py",
+    "line": 6,
+    "column": 30,
+    "word": "wollef"
+  },
+  {
+    "file": "strings/reverse_letters.py",
+    "line": 6,
+    "column": 37,
+    "word": "sroirraw"
+  },
+  {
+    "file": "strings/reverse_letters.py",
+    "line": 8,
+    "column": 26,
+    "word": "nohty"
+  },
+  {
+    "file": "strings/split.py",
+    "line": 18,
+    "column": 17,
+    "word": "abbb"
+  },
+  {
+    "file": "strings/title.py",
+    "line": 5,
+    "column": 24,
+    "word": "Aakash"
+  },
+  {
+    "file": "strings/title.py",
+    "line": 8,
+    "column": 24,
+    "word": "aakash"
+  },
+  {
+    "file": "strings/title.py",
+    "line": 11,
+    "column": 24,
+    "word": "AAKASH"
+  },
+  {
+    "file": "strings/title.py",
+    "line": 38,
+    "column": 40,
+    "word": "Giri"
+  },
+  {
+    "file": "strings/title.py",
+    "line": 41,
+    "column": 40,
+    "word": "giri"
+  },
+  {
+    "file": "strings/title.py",
+    "line": 44,
+    "column": 40,
+    "word": "GIRI"
+  },
+  {
+    "file": "strings/wildcard_pattern_matching.py",
+    "line": 37,
+    "column": 24,
+    "word": "dabc"
+  },
+  {
+    "file": "strings/wildcard_pattern_matching.py",
+    "line": 43,
+    "column": 24,
+    "word": "aaab"
+  },
+  {
+    "file": "strings/word_occurrence.py",
+    "line": 1,
+    "column": 14,
+    "word": "sarathkaul"
+  },
+  {
+    "file": "strings/word_occurrence.py",
+    "line": 2,
+    "column": 15,
+    "word": "Arkadip"
+  },
+  {
+    "file": "strings/word_occurrence.py",
+    "line": 2,
+    "column": 23,
+    "word": "Bhattacharya"
+  },
+  {
+    "file": "strings/word_occurrence.py",
+    "line": 10,
+    "column": 9,
+    "word": "occurence"
+  },
+  {
+    "file": "strings/z_function.py",
+    "line": 27,
+    "column": 21,
+    "word": "zxxzxxz"
+  },
+  {
+    "file": "web_programming/covid_stats_via_xpath.py",
+    "line": 3,
+    "column": 1,
+    "word": "Worldometers"
+  },
+  {
+    "file": "web_programming/currency_converter.py",
+    "line": 53,
+    "column": 11,
+    "word": "Rican"
+  },
+  {
+    "file": "web_programming/currency_converter.py",
+    "line": 55,
+    "column": 10,
+    "word": "Verdean"
+  },
+  {
+    "file": "web_programming/currency_converter.py",
+    "line": 57,
+    "column": 5,
+    "word": "Djiboutian"
+  },
+  {
+    "file": "web_programming/currency_converter.py",
+    "line": 89,
+    "column": 5,
+    "word": "Kyrgystani"
+  },
+  {
+    "file": "web_programming/currency_converter.py",
+    "line": 105,
+    "column": 14,
+    "word": "Ariary"
+  },
+  {
+    "file": "web_programming/currency_converter.py",
+    "line": 107,
+    "column": 5,
+    "word": "Myanma"
+  },
+  {
+    "file": "web_programming/currency_converter.py",
+    "line": 125,
+    "column": 14,
+    "word": "Nuevo"
+  },
+  {
+    "file": "web_programming/currency_converter.py",
+    "line": 138,
+    "column": 5,
+    "word": "Seychellois"
+  },
+  {
+    "file": "web_programming/currency_converter.py",
+    "line": 143,
+    "column": 12,
+    "word": "Leonean"
+  },
+  {
+    "file": "web_programming/currency_converter.py",
+    "line": 151,
+    "column": 16,
+    "word": "Somoni"
+  },
+  {
+    "file": "web_programming/currency_converter.py",
+    "line": 152,
+    "column": 5,
+    "word": "Turkmenistani"
+  },
+  {
+    "file": "web_programming/currency_converter.py",
+    "line": 154,
+    "column": 11,
+    "word": "Paanga"
+  },
+  {
+    "file": "web_programming/download_images_from_google_query.py",
+    "line": 20,
+    "column": 8,
+    "word": "KHTML"
+  },
+  {
+    "file": "web_programming/download_images_from_google_query.py",
+    "line": 45,
+    "column": 17,
+    "word": "isch"
+  },
+  {
+    "file": "web_programming/download_images_from_google_query.py",
+    "line": 69,
+    "column": 43,
+    "word": "gstatic"
+  },
+  {
+    "file": "web_programming/emails_from_url.py",
+    "line": 12,
+    "column": 24,
+    "word": "Umer"
+  },
+  {
+    "file": "web_programming/emails_from_url.py",
+    "line": 12,
+    "column": 29,
+    "word": "Farooq"
+  },
+  {
+    "file": "web_programming/fetch_anime_and_play.py",
+    "line": 33,
+    "column": 26,
+    "word": "animes"
+  },
+  {
+    "file": "web_programming/fetch_anime_and_play.py",
+    "line": 79,
+    "column": 48,
+    "word": "kimetsu"
+  },
+  {
+    "file": "web_programming/fetch_anime_and_play.py",
+    "line": 79,
+    "column": 59,
+    "word": "yaiba"
+  },
+  {
+    "file": "web_programming/fetch_anime_and_play.py",
+    "line": 104,
+    "column": 42,
+    "word": "eposiodes"
+  },
+  {
+    "file": "web_programming/fetch_github_info.py",
+    "line": 4,
+    "column": 12,
+    "word": "lawric"
+  },
+  {
+    "file": "web_programming/fetch_well_rx_price.py",
+    "line": 33,
+    "column": 46,
+    "word": "eliquis"
+  },
+  {
+    "file": "web_programming/get_imdb_top_250_movies_csv.py",
+    "line": 17,
+    "column": 9,
+    "word": "imdb"
+  },
+  {
+    "file": "web_programming/giphy.py",
+    "line": 12,
+    "column": 1,
+    "word": "giphy"
+  },
+  {
+    "file": "web_programming/giphy.py",
+    "line": 16,
+    "column": 9,
+    "word": "gifs"
+  },
+  {
+    "file": "web_programming/instagram_video.py",
+    "line": 20,
+    "column": 30,
+    "word": "IGTV"
+  },
+  {
+    "file": "web_programming/nasa_data.py",
+    "line": 11,
+    "column": 9,
+    "word": "apod"
+  },
+  {
+    "file": "web_programming/nasa_data.py",
+    "line": 13,
+    "column": 13,
+    "word": "APOD"
+  },
+  {
+    "file": "web_programming/reddit.py",
+    "line": 19,
+    "column": 16,
+    "word": "pwls"
+  },
+  {
+    "file": "web_programming/search_books_by_isbn.py",
+    "line": 23,
+    "column": 29,
+    "word": "olids"
+  },
+  {
+    "file": "web_programming/search_books_by_isbn.py",
+    "line": 29,
+    "column": 22,
+    "word": "Brisku"
+  }
+]

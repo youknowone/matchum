@@ -1,0 +1,920 @@
+[
+  {
+    "file": "CONTRIBUTING.md",
+    "line": 7,
+    "column": 22,
+    "word": "Cheatsheets"
+  },
+  {
+    "file": "CONTRIBUTING.md",
+    "line": 23,
+    "column": 43,
+    "word": "swyx's"
+  },
+  {
+    "file": "CONTRIBUTING.md",
+    "line": 25,
+    "column": 12,
+    "word": "docsite"
+  },
+  {
+    "file": "CONTRIBUTING.md",
+    "line": 46,
+    "column": 57,
+    "word": "wanshawn"
+  },
+  {
+    "file": "CONTRIBUTING.md",
+    "line": 46,
+    "column": 88,
+    "word": "cheatsheet"
+  },
+  {
+    "file": "CONTRIBUTORS.md",
+    "line": 9,
+    "column": 183,
+    "word": "Ferdy"
+  },
+  {
+    "file": "CONTRIBUTORS.md",
+    "line": 9,
+    "column": 189,
+    "word": "Budhidharma"
+  },
+  {
+    "file": "CONTRIBUTORS.md",
+    "line": 9,
+    "column": 411,
+    "word": "ferdaber"
+  },
+  {
+    "file": "CONTRIBUTORS.md",
+    "line": 11,
+    "column": 192,
+    "word": "Silbermann"
+  },
+  {
+    "file": "CONTRIBUTORS.md",
+    "line": 12,
+    "column": 212,
+    "word": "Attrash"
+  },
+  {
+    "file": "CONTRIBUTORS.md",
+    "line": 13,
+    "column": 263,
+    "word": "stephenkoo"
+  },
+  {
+    "file": "CONTRIBUTORS.md",
+    "line": 14,
+    "column": 188,
+    "word": "Andreas"
+  },
+  {
+    "file": "CONTRIBUTORS.md",
+    "line": 14,
+    "column": 478,
+    "word": "andreasgruenh"
+  },
+  {
+    "file": "CONTRIBUTORS.md",
+    "line": 15,
+    "column": 187,
+    "word": "Arvind"
+  },
+  {
+    "file": "CONTRIBUTORS.md",
+    "line": 15,
+    "column": 194,
+    "word": "Srinivasan"
+  },
+  {
+    "file": "CONTRIBUTORS.md",
+    "line": 15,
+    "column": 382,
+    "word": "arvindcheenu"
+  },
+  {
+    "file": "CONTRIBUTORS.md",
+    "line": 18,
+    "column": 200,
+    "word": "Ribeiro"
+  },
+  {
+    "file": "CONTRIBUTORS.md",
+    "line": 18,
+    "column": 281,
+    "word": "williamrjribeiro"
+  },
+  {
+    "file": "CONTRIBUTORS.md",
+    "line": 19,
+    "column": 184,
+    "word": "Alexandru"
+  },
+  {
+    "file": "CONTRIBUTORS.md",
+    "line": 22,
+    "column": 188,
+    "word": "Ryota"
+  },
+  {
+    "file": "CONTRIBUTORS.md",
+    "line": 22,
+    "column": 194,
+    "word": "Murakami"
+  },
+  {
+    "file": "CONTRIBUTORS.md",
+    "line": 22,
+    "column": 271,
+    "word": "ryota"
+  },
+  {
+    "file": "CONTRIBUTORS.md",
+    "line": 22,
+    "column": 277,
+    "word": "murakami"
+  },
+  {
+    "file": "CONTRIBUTORS.md",
+    "line": 23,
+    "column": 181,
+    "word": "Árpád"
+  },
+  {
+    "file": "CONTRIBUTORS.md",
+    "line": 23,
+    "column": 187,
+    "word": "Illyés"
+  },
+  {
+    "file": "CONTRIBUTORS.md",
+    "line": 24,
+    "column": 187,
+    "word": "Strebezhev"
+  },
+  {
+    "file": "CONTRIBUTORS.md",
+    "line": 24,
+    "column": 265,
+    "word": "xamgore"
+  },
+  {
+    "file": "CONTRIBUTORS.md",
+    "line": 28,
+    "column": 181,
+    "word": "Kristóf"
+  },
+  {
+    "file": "CONTRIBUTORS.md",
+    "line": 28,
+    "column": 189,
+    "word": "Poduszló"
+  },
+  {
+    "file": "CONTRIBUTORS.md",
+    "line": 31,
+    "column": 190,
+    "word": "Andil"
+  },
+  {
+    "file": "CONTRIBUTORS.md",
+    "line": 32,
+    "column": 188,
+    "word": "Adnan"
+  },
+  {
+    "file": "CONTRIBUTORS.md",
+    "line": 32,
+    "column": 194,
+    "word": "Husain"
+  },
+  {
+    "file": "CONTRIBUTORS.md",
+    "line": 36,
+    "column": 176,
+    "word": "Filip"
+  },
+  {
+    "file": "CONTRIBUTORS.md",
+    "line": 36,
+    "column": 182,
+    "word": "Tammergård"
+  },
+  {
+    "file": "CONTRIBUTORS.md",
+    "line": 37,
+    "column": 181,
+    "word": "Previte"
+  },
+  {
+    "file": "CONTRIBUTORS.md",
+    "line": 38,
+    "column": 182,
+    "word": "Sasiru"
+  },
+  {
+    "file": "CONTRIBUTORS.md",
+    "line": 38,
+    "column": 189,
+    "word": "Ravihansa"
+  },
+  {
+    "file": "README.md",
+    "line": 28,
+    "column": 47,
+    "word": "pastable"
+  },
+  {
+    "file": "code-of-conduct.md",
+    "line": 4,
+    "column": 17,
+    "word": "cheatsheets"
+  },
+  {
+    "file": "code-of-conduct.md",
+    "line": 12,
+    "column": 98,
+    "word": "colour"
+  },
+  {
+    "file": "code-of-conduct.md",
+    "line": 59,
+    "column": 25,
+    "word": "swyx"
+  },
+  {
+    "file": "code-of-conduct.md",
+    "line": 60,
+    "column": 7,
+    "word": "filiptammergard"
+  },
+  {
+    "file": "docs/advanced/index.md",
+    "line": 4,
+    "column": 17,
+    "word": "Cheatsheet"
+  },
+  {
+    "file": "docs/advanced/index.md",
+    "line": 15,
+    "column": 64,
+    "word": "tsdx"
+  },
+  {
+    "file": "docs/advanced/index.md",
+    "line": 17,
+    "column": 20,
+    "word": "Rollpkg"
+  },
+  {
+    "file": "docs/advanced/index.md",
+    "line": 17,
+    "column": 255,
+    "word": "Bundlephobia"
+  },
+  {
+    "file": "docs/advanced/index.md",
+    "line": 19,
+    "column": 27,
+    "word": "basarat"
+  },
+  {
+    "file": "docs/advanced/misc-concerns.md",
+    "line": 31,
+    "column": 231,
+    "word": "Docz"
+  },
+  {
+    "file": "docs/advanced/misc-concerns.md",
+    "line": 78,
+    "column": 18,
+    "word": "bryceosterhaus"
+  },
+  {
+    "file": "docs/advanced/misc-concerns.md",
+    "line": 86,
+    "column": 151,
+    "word": "proptype"
+  },
+  {
+    "file": "docs/advanced/misc-concerns.md",
+    "line": 173,
+    "column": 12,
+    "word": "deindent"
+  },
+  {
+    "file": "docs/advanced/misc-concerns.md",
+    "line": 192,
+    "column": 130,
+    "word": "Rossenwasser"
+  },
+  {
+    "file": "docs/advanced/misc-concerns.md",
+    "line": 194,
+    "column": 17,
+    "word": "pathinfo"
+  },
+  {
+    "file": "docs/advanced/patterns_by_usecase.md",
+    "line": 2,
+    "column": 17,
+    "word": "usecase"
+  },
+  {
+    "file": "docs/advanced/patterns_by_usecase.md",
+    "line": 11,
+    "column": 1,
+    "word": "Usecase"
+  },
+  {
+    "file": "docs/advanced/patterns_by_usecase.md",
+    "line": 19,
+    "column": 33,
+    "word": "sldkj"
+  },
+  {
+    "file": "docs/advanced/patterns_by_usecase.md",
+    "line": 153,
+    "column": 10,
+    "word": "dmisdm"
+  },
+  {
+    "file": "docs/advanced/patterns_by_usecase.md",
+    "line": 201,
+    "column": 88,
+    "word": "majewski"
+  },
+  {
+    "file": "docs/advanced/patterns_by_usecase.md",
+    "line": 283,
+    "column": 45,
+    "word": "Majewski"
+  },
+  {
+    "file": "docs/advanced/patterns_by_usecase.md",
+    "line": 378,
+    "column": 114,
+    "word": "blackboxed"
+  },
+  {
+    "file": "docs/advanced/patterns_by_usecase.md",
+    "line": 393,
+    "column": 32,
+    "word": "doesnt"
+  },
+  {
+    "file": "docs/advanced/patterns_by_usecase.md",
+    "line": 479,
+    "column": 91,
+    "word": "jpavon"
+  },
+  {
+    "file": "docs/advanced/patterns_by_usecase.md",
+    "line": 975,
+    "column": 21,
+    "word": "mydate"
+  },
+  {
+    "file": "docs/advanced/patterns_by_version.md",
+    "line": 136,
+    "column": 83,
+    "word": "dont"
+  },
+  {
+    "file": "docs/advanced/patterns_by_version.md",
+    "line": 144,
+    "column": 19,
+    "word": "myreferencedproject"
+  },
+  {
+    "file": "docs/advanced/patterns_by_version.md",
+    "line": 290,
+    "column": 86,
+    "word": "falsiness"
+  },
+  {
+    "file": "docs/advanced/patterns_by_version.md",
+    "line": 473,
+    "column": 19,
+    "word": "middel"
+  },
+  {
+    "file": "docs/advanced/patterns_by_version.md",
+    "line": 477,
+    "column": 22,
+    "word": "dynaming"
+  },
+  {
+    "file": "docs/advanced/patterns_by_version.md",
+    "line": 489,
+    "column": 104,
+    "word": "Uncapitalize"
+  },
+  {
+    "file": "docs/advanced/patterns_by_version.md",
+    "line": 528,
+    "column": 23,
+    "word": "jsxdev"
+  },
+  {
+    "file": "docs/advanced/types-react-ap.md",
+    "line": 19,
+    "column": 34,
+    "word": "renderable"
+  },
+  {
+    "file": "docs/advanced/types-react-ap.md",
+    "line": 105,
+    "column": 3,
+    "word": "Ferdaber's"
+  },
+  {
+    "file": "docs/advanced/utility-types.md",
+    "line": 11,
+    "column": 119,
+    "word": "Rauschmayer's"
+  },
+  {
+    "file": "docs/basic/editor-integration.md",
+    "line": 11,
+    "column": 5,
+    "word": "nvim"
+  },
+  {
+    "file": "docs/basic/editor-integration.md",
+    "line": 13,
+    "column": 5,
+    "word": "peitalin"
+  },
+  {
+    "file": "docs/basic/examples.md",
+    "line": 8,
+    "column": 8,
+    "word": "Awad's"
+  },
+  {
+    "file": "docs/basic/examples.md",
+    "line": 9,
+    "column": 12,
+    "word": "Realworld"
+  },
+  {
+    "file": "docs/basic/getting-started/basic-type-examples.md",
+    "line": 122,
+    "column": 10,
+    "word": "pomle"
+  },
+  {
+    "file": "docs/basic/getting-started/basic-type-examples.md",
+    "line": 146,
+    "column": 38,
+    "word": "orta"
+  },
+  {
+    "file": "docs/basic/getting-started/forms-and-events.md",
+    "line": 45,
+    "column": 173,
+    "word": "Hubelbauer"
+  },
+  {
+    "file": "docs/basic/getting-started/forms-and-events.md",
+    "line": 58,
+    "column": 318,
+    "word": "artisanally"
+  },
+  {
+    "file": "docs/basic/getting-started/forms-and-events.md",
+    "line": 75,
+    "column": 42,
+    "word": "typechecks"
+  },
+  {
+    "file": "docs/basic/getting-started/forward-create-ref.md",
+    "line": 138,
+    "column": 20,
+    "word": "HTMLU"
+  },
+  {
+    "file": "docs/basic/getting-started/function-components.md",
+    "line": 32,
+    "column": 28,
+    "word": "Shen's"
+  },
+  {
+    "file": "docs/basic/getting-started/function-components.md",
+    "line": 46,
+    "column": 382,
+    "word": "jscodeshift"
+  },
+  {
+    "file": "docs/basic/getting-started/function-components.md",
+    "line": 46,
+    "column": 394,
+    "word": "codemod"
+  },
+  {
+    "file": "docs/basic/getting-started/hooks.md",
+    "line": 251,
+    "column": 22,
+    "word": "rajivpunjabi"
+  },
+  {
+    "file": "docs/basic/getting-started/hooks.md",
+    "line": 252,
+    "column": 24,
+    "word": "Baumgartner"
+  },
+  {
+    "file": "docs/basic/getting-started/hooks.md",
+    "line": 256,
+    "column": 16,
+    "word": "Stackoverflow"
+  },
+  {
+    "file": "docs/basic/getting-started/hooks.md",
+    "line": 348,
+    "column": 10,
+    "word": "tuplify"
+  },
+  {
+    "file": "docs/basic/getting-started/portals.md",
+    "line": 87,
+    "column": 28,
+    "word": "rgba"
+  },
+  {
+    "file": "docs/basic/getting-started/portals.md",
+    "line": 93,
+    "column": 37,
+    "word": "papyawhip"
+  },
+  {
+    "file": "docs/basic/linting.md",
+    "line": 6,
+    "column": 211,
+    "word": "azdanov"
+  },
+  {
+    "file": "docs/basic/linting.md",
+    "line": 101,
+    "column": 173,
+    "word": "robertcoopercode"
+  },
+  {
+    "file": "docs/basic/recommended/codebases.md",
+    "line": 39,
+    "column": 46,
+    "word": "spoeck"
+  },
+  {
+    "file": "docs/basic/recommended/resources.md",
+    "line": 18,
+    "column": 23,
+    "word": "nonboolean"
+  },
+  {
+    "file": "docs/basic/recommended/resources.md",
+    "line": 19,
+    "column": 6,
+    "word": "bangbang"
+  },
+  {
+    "file": "docs/basic/recommended/resources.md",
+    "line": 22,
+    "column": 4,
+    "word": "Basarat's"
+  },
+  {
+    "file": "docs/basic/recommended/resources.md",
+    "line": 22,
+    "column": 25,
+    "word": "gitbook"
+  },
+  {
+    "file": "docs/basic/recommended/resources.md",
+    "line": 24,
+    "column": 4,
+    "word": "Sindre"
+  },
+  {
+    "file": "docs/basic/recommended/resources.md",
+    "line": 24,
+    "column": 11,
+    "word": "Sorhus"
+  },
+  {
+    "file": "docs/basic/recommended/resources.md",
+    "line": 29,
+    "column": 51,
+    "word": "gojutin"
+  },
+  {
+    "file": "docs/basic/recommended/resources.md",
+    "line": 32,
+    "column": 13,
+    "word": "Wengel's"
+  },
+  {
+    "file": "docs/basic/recommended/resources.md",
+    "line": 34,
+    "column": 9,
+    "word": "Pocock's"
+  },
+  {
+    "file": "docs/basic/recommended/talks.md",
+    "line": 7,
+    "column": 111,
+    "word": "Hochel"
+  },
+  {
+    "file": "docs/basic/recommended/talks.md",
+    "line": 9,
+    "column": 119,
+    "word": "Brillhart"
+  },
+  {
+    "file": "docs/basic/recommended/talks.md",
+    "line": 10,
+    "column": 90,
+    "word": "Nikhil"
+  },
+  {
+    "file": "docs/basic/recommended/talks.md",
+    "line": 10,
+    "column": 97,
+    "word": "Verma"
+  },
+  {
+    "file": "docs/basic/recommended/talks.md",
+    "line": 13,
+    "column": 79,
+    "word": "Toomey"
+  },
+  {
+    "file": "docs/basic/recommended/talks.md",
+    "line": 14,
+    "column": 81,
+    "word": "Herrington"
+  },
+  {
+    "file": "docs/basic/recommended/talks.md",
+    "line": 15,
+    "column": 20,
+    "word": "codegen"
+  },
+  {
+    "file": "docs/basic/recommended/talks.md",
+    "line": 15,
+    "column": 77,
+    "word": "Tejas"
+  },
+  {
+    "file": "docs/basic/recommended/talks.md",
+    "line": 15,
+    "column": 83,
+    "word": "Kumar"
+  },
+  {
+    "file": "docs/basic/troubleshooting/learn-ts.md",
+    "line": 13,
+    "column": 135,
+    "word": "Orta"
+  },
+  {
+    "file": "docs/basic/troubleshooting/learn-ts.md",
+    "line": 14,
+    "column": 3,
+    "word": "Anders"
+  },
+  {
+    "file": "docs/basic/troubleshooting/learn-ts.md",
+    "line": 14,
+    "column": 10,
+    "word": "Hejlsberg's"
+  },
+  {
+    "file": "docs/basic/troubleshooting/learn-ts.md",
+    "line": 17,
+    "column": 8,
+    "word": "Rauschmeyer's"
+  },
+  {
+    "file": "docs/basic/troubleshooting/learn-ts.md",
+    "line": 18,
+    "column": 9,
+    "word": "Matei"
+  },
+  {
+    "file": "docs/basic/troubleshooting/learn-ts.md",
+    "line": 20,
+    "column": 7,
+    "word": "Uesugi"
+  },
+  {
+    "file": "docs/basic/troubleshooting/official-typings-bugs.md",
+    "line": 19,
+    "column": 13,
+    "word": "adamrackis"
+  },
+  {
+    "file": "docs/basic/troubleshooting/official-typings-bugs.md",
+    "line": 25,
+    "column": 17,
+    "word": "plotly"
+  },
+  {
+    "file": "docs/basic/troubleshooting/official-typings-bugs.md",
+    "line": 26,
+    "column": 13,
+    "word": "Plotly"
+  },
+  {
+    "file": "docs/basic/troubleshooting/operators.md",
+    "line": 14,
+    "column": 8,
+    "word": "Nonnull"
+  },
+  {
+    "file": "docs/basic/troubleshooting/types.md",
+    "line": 53,
+    "column": 34,
+    "word": "typeguards"
+  },
+  {
+    "file": "docs/basic/troubleshooting/types.md",
+    "line": 60,
+    "column": 88,
+    "word": "isnt"
+  },
+  {
+    "file": "docs/basic/troubleshooting/types.md",
+    "line": 221,
+    "column": 103,
+    "word": "usecases"
+  },
+  {
+    "file": "docs/basic/troubleshooting/types.md",
+    "line": 333,
+    "column": 78,
+    "word": "Koshelev"
+  },
+  {
+    "file": "docs/basic/troubleshooting/types.md",
+    "line": 369,
+    "column": 275,
+    "word": "Basarat"
+  },
+  {
+    "file": "docs/basic/troubleshooting/types.md",
+    "line": 381,
+    "column": 71,
+    "word": "typedec"
+  },
+  {
+    "file": "docs/basic/troubleshooting/types.md",
+    "line": 401,
+    "column": 83,
+    "word": "hackier"
+  },
+  {
+    "file": "docs/basic/troubleshooting/types.md",
+    "line": 553,
+    "column": 14,
+    "word": "typesafety"
+  },
+  {
+    "file": "docs/hoc/excluding-props.md",
+    "line": 7,
+    "column": 122,
+    "word": "premade"
+  },
+  {
+    "file": "docs/hoc/excluding-props.md",
+    "line": 62,
+    "column": 96,
+    "word": "otherprop"
+  },
+  {
+    "file": "docs/hoc/excluding-props.md",
+    "line": 62,
+    "column": 110,
+    "word": "moreprop"
+  },
+  {
+    "file": "docs/hoc/react-hoc-docs.md",
+    "line": 57,
+    "column": 9,
+    "word": "Optionalize"
+  },
+  {
+    "file": "docs/hoc/react-hoc-docs.md",
+    "line": 105,
+    "column": 82,
+    "word": "Wraped"
+  },
+  {
+    "file": "docs/migration/from-flow.md",
+    "line": 7,
+    "column": 102,
+    "word": "braposo"
+  },
+  {
+    "file": "docs/migration/from-flow.md",
+    "line": 8,
+    "column": 8,
+    "word": "Airtable's"
+  },
+  {
+    "file": "docs/migration/from-flow.md",
+    "line": 9,
+    "column": 45,
+    "word": "Flowtype"
+  },
+  {
+    "file": "docs/migration/from-flow.md",
+    "line": 9,
+    "column": 75,
+    "word": "Entria"
+  },
+  {
+    "file": "docs/migration/from-flow.md",
+    "line": 11,
+    "column": 29,
+    "word": "Codemod"
+  },
+  {
+    "file": "docs/migration/from-flow.md",
+    "line": 12,
+    "column": 4,
+    "word": "Ecobee's"
+  },
+  {
+    "file": "docs/migration/from-flow.md",
+    "line": 13,
+    "column": 20,
+    "word": "SLOC"
+  },
+  {
+    "file": "docs/migration/from-js.md",
+    "line": 8,
+    "column": 69,
+    "word": "Codecademy"
+  },
+  {
+    "file": "docs/migration/from-js.md",
+    "line": 64,
+    "column": 11,
+    "word": "TYPEME"
+  },
+  {
+    "file": "docs/migration/from-js.md",
+    "line": 93,
+    "column": 4,
+    "word": "Hootsuite"
+  },
+  {
+    "file": "docs/migration/index.md",
+    "line": 21,
+    "column": 34,
+    "word": "clayallsop"
+  },
+  {
+    "file": "docs/migration/index.md",
+    "line": 21,
+    "column": 60,
+    "word": "pleo"
+  },
+  {
+    "file": "docs/migration/index.md",
+    "line": 128,
+    "column": 4,
+    "word": "Hasura"
+  },
+  {
+    "file": "docs/migration/js-docs.md",
+    "line": 16,
+    "column": 15,
+    "word": "Tayar"
+  },
+  {
+    "file": "docs/migration/js-docs.md",
+    "line": 16,
+    "column": 84,
+    "word": "Gleb"
+  },
+  {
+    "file": "docs/migration/js-docs.md",
+    "line": 16,
+    "column": 89,
+    "word": "Bahmutov"
+  },
+  {
+    "file": "website/docusaurus.config.js",
+    "line": 176,
+    "column": 21,
+    "word": "UPXZ"
+  }
+]

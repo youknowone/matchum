@@ -1,0 +1,35 @@
+---
+source: tests/cli_snapshots.rs
+expression: stdout
+---
+Check files for spelling errors
+
+Usage: matchum check [OPTIONS] [PATHS]...
+
+Arguments:
+  [PATHS]...  Files or directories to check [default: .]
+
+Options:
+  -c, --config <CONFIG>            Config file path
+  -f, --format <FORMAT>            Output format: text, json, github, words-only [default: text]
+      --suggestions                Show spelling suggestions
+      --unique                     Only show unique misspelled words
+      --strict                     Exit with code 1 if any spelling errors found
+  -t, --type <FILE_TYPE>           Only check files of this type (e.g., rust, python, js)
+      --stats                      Show execution statistics
+      --diff                       Read unified diff from stdin; only report issues on added lines
+  -e, --exclude <EXCLUDE>          Exclude files matching the glob pattern (can be used multiple times)
+      --locale <LOCALE>            Set language locales (e.g., "en,fr" or "en-GB")
+      --language-id <LANGUAGE_ID>  Force programming language for unknown extensions
+      --no-issues                  Do not show the spelling errors
+      --no-progress                Turn off progress messages
+      --no-summary                 Turn off summary message
+      --quiet                      Only show spelling issues or errors
+  -s, --silent                     Silent mode, suppress error messages
+      --relative                   Use paths relative to the config file or root
+      --fail-fast                  Exit after first file with an issue or error
+      --dot                        Show hidden files
+      --no-gitignore               Do not use .gitignore
+      --root <ROOT>                Set the root directory for relative paths
+      --file-list <FILE_LIST>      Specify a list of files to be spell checked
+  -h, --help                       Print help

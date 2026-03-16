@@ -1,49 +1,95 @@
 # matchum
 
-Performance-first Rust spell checker.
+A next-generation spell checker, inspired by [cspell](https://cspell.org/).
 
-## Vision
+## Overview
 
-`matchum` has two explicit operating modes:
+matchum is a high-performance spell checker written in Rust. It draws heavy inspiration from cspell's ecosystem — configuration format, dictionary format, inline directives, and word splitting rules — while leveraging Rust's performance characteristics to deliver significantly faster execution.
 
-1. Native mode: `matchum ...`
-- Optimized for speed, low overhead, and Rust-native ergonomics.
-- Not required to mirror cspell CLI surface 1:1.
+Currently, `matchum cspell` is the primary interface. It provides **100% compatibility with cspell**, serving as a drop-in replacement that reads the same config files, uses the same dictionaries, and produces equivalent results.
 
-2. Compatibility mode: `matchum cspell ...`
-- Dedicated cspell drop-in replacement layer.
-- This is where cspell argument and behavior parity belongs.
+Beyond cspell compatibility, matchum will offer its own set of spell-checking features with a streamlined, performance-oriented interface. For now, consider `matchum cspell` to be the only production-ready feature.
 
-## Why split modes?
+## Installation
 
-Trying to preserve full cspell compatibility directly in native commands adds parser complexity,
-runtime branching, and maintenance burden that can hurt performance goals.
+```
+cargo install matchum
+```
 
-By isolating compatibility in `matchum cspell`, we keep:
-- native path fast and clean
-- compatibility path predictable for existing cspell users
+## Usage
 
-## Planned Work
+### `matchum cspell` — cspell-compatible interface
 
-1. Add `matchum cspell` command namespace
-- separate command parser/dispatch for compatibility
+Drop-in replacement for cspell. Supports the full cspell CLI surface:
 
-2. Move cspell-style flags to compatibility namespace
-- keep native command options minimal and performance-oriented
+```bash
+# Lint files (strict mode)
+matchum cspell lint .
 
-3. Build compatibility translation layer
-- map cspell options to internal request model
+# Check files
+matchum cspell check src/
 
-4. Achieve drop-in parity incrementally
-- prioritize `lint`, `check`, `trace`
-- then `suggestions`, `dictionaries`, and config-related workflows
+# Trace a word through dictionaries
+matchum cspell trace "misspelled"
 
-5. Validation and release gating
-- parity tests against cspell fixtures
-- binary comparison tests in CI for compatibility namespace
-- performance benchmarks for native namespace
+# Get spelling suggestions
+matchum cspell suggestions "wrods"
 
-## Current Policy
+# List available dictionaries
+matchum cspell dictionaries
 
-- Default `matchum` CLI: performance first.
-- cspell parity: `matchum cspell` only.
+# Initialize config
+matchum cspell init
+```
+
+All cspell flags are supported: `--config`, `--locale`, `--unique`, `--no-progress`, `--dot`, `--fail-fast`, etc.
+
+### `matchum` — native interface
+
+Preparing...
+
+The native interface provides the same core functionality with a cleaner command set:
+
+```bash
+matchum check .
+
+```
+
+### `cargo matchum` — Rust crate spell checking
+
+`cargo-matchum` runs matchum on valid Rust source files within a crate, integrating spell checking into the Cargo workflow:
+
+```bash
+cargo matchum
+```
+
+## Architecture
+
+Workspace with 5 crates:
+
+| Crate | Role |
+|---|---|
+| `matchum` | CLI entry point, `check`/`lint`/`trace`/`review`/`add` commands |
+| `matchum-core` | Word splitting, validation pipeline |
+| `matchum-dict` | Dictionary loading (trie v3, txt) and lookup |
+| `matchum-config` | cspell.json parsing, config resolution, inline directives |
+| `cargo-matchum` | Cargo subcommand for Rust projects |
+
+## Performance
+
+matchum uses several techniques to achieve high throughput:
+
+- **mimalloc** — Global allocator (default), ~13% average improvement over system allocator
+- **Parallel file processing** — `rayon` for file-level parallelism
+- **Parallel directory walking** — `ignore::WalkBuilder::build_parallel()` with up to 12 threads
+- **Clean-only caching** — Only cache files with zero issues
+- **Memory-mapped I/O** — mmap for large file reading
+- **O(1) context line lookup** — Pre-computed line offset arrays
+
+## Build
+
+```bash
+cargo build --release -p matchum
+cargo build --release -p cargo-matchum
+cargo test --workspace
+```

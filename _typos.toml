@@ -1,0 +1,4 @@
+[default.extend-words]
+allcaps = "all_caps"
+backstep = "back_step"
+bufs = "buffers"

@@ -242,11 +242,10 @@ pub fn expand_word(
 /// Apply a suffix rule to a word. Returns the new form if the condition matches.
 fn apply_suffix(word: &str, rule: &AffixRule) -> Option<String> {
     // Check condition against the original word
-    if let Some(ref cond) = rule.condition {
-        if !condition_matches(word, cond) {
+    if let Some(ref cond) = rule.condition
+        && !condition_matches(word, cond) {
             return None;
         }
-    }
 
     // Strip suffix
     let base = if rule.strip.is_empty() {
@@ -312,6 +311,7 @@ pub fn load_hunspell(dic_path: &Path, aff_path: &Path) -> Result<HashDictionary,
     Ok(dict)
 }
 
+// cspell:disable
 #[cfg(test)]
 mod tests {
     use super::*;

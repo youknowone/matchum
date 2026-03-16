@@ -1,0 +1,152 @@
+[
+  {
+    "file": "electron/src/locale/index.ts",
+    "line": 121,
+    "column": 8,
+    "word": "Čeština"
+  },
+  {
+    "file": "electron/src/locale/index.ts",
+    "line": 122,
+    "column": 8,
+    "word": "Dansk"
+  },
+  {
+    "file": "electron/src/locale/index.ts",
+    "line": 123,
+    "column": 8,
+    "word": "Deutsch"
+  },
+  {
+    "file": "electron/src/locale/index.ts",
+    "line": 124,
+    "column": 8,
+    "word": "Ελληνικά"
+  },
+  {
+    "file": "electron/src/locale/index.ts",
+    "line": 125,
+    "column": 8,
+    "word": "Eesti"
+  },
+  {
+    "file": "electron/src/locale/index.ts",
+    "line": 126,
+    "column": 8,
+    "word": "Español"
+  },
+  {
+    "file": "electron/src/locale/index.ts",
+    "line": 127,
+    "column": 8,
+    "word": "Français"
+  },
+  {
+    "file": "electron/src/locale/index.ts",
+    "line": 128,
+    "column": 8,
+    "word": "Hrvatski"
+  },
+  {
+    "file": "electron/src/locale/index.ts",
+    "line": 129,
+    "column": 8,
+    "word": "Italiano"
+  },
+  {
+    "file": "electron/src/locale/index.ts",
+    "line": 130,
+    "column": 8,
+    "word": "Lietuvos"
+  },
+  {
+    "file": "electron/src/locale/index.ts",
+    "line": 132,
+    "column": 8,
+    "word": "Nederlands"
+  },
+  {
+    "file": "electron/src/locale/index.ts",
+    "line": 133,
+    "column": 8,
+    "word": "Polski"
+  },
+  {
+    "file": "electron/src/locale/index.ts",
+    "line": 134,
+    "column": 8,
+    "word": "Português"
+  },
+  {
+    "file": "electron/src/locale/index.ts",
+    "line": 135,
+    "column": 8,
+    "word": "Română"
+  },
+  {
+    "file": "electron/src/locale/index.ts",
+    "line": 136,
+    "column": 8,
+    "word": "Русский"
+  },
+  {
+    "file": "electron/src/locale/index.ts",
+    "line": 138,
+    "column": 8,
+    "word": "Slovenčina"
+  },
+  {
+    "file": "electron/src/locale/index.ts",
+    "line": 139,
+    "column": 8,
+    "word": "Slovenščina"
+  },
+  {
+    "file": "electron/src/locale/index.ts",
+    "line": 141,
+    "column": 8,
+    "word": "Türkçe"
+  },
+  {
+    "file": "electron/src/locale/index.ts",
+    "line": 142,
+    "column": 8,
+    "word": "Українська"
+  },
+  {
+    "file": "electron/src/main.ts",
+    "line": 175,
+    "column": 51,
+    "word": "webrtc"
+  },
+  {
+    "file": "electron/src/main.ts",
+    "line": 175,
+    "column": 78,
+    "word": "mdns"
+  },
+  {
+    "file": "electron/src/menu/developer.ts",
+    "line": 71,
+    "column": 27,
+    "word": "Availeble"
+  },
+  {
+    "file": "electron/src/preload/preload-webview.ts",
+    "line": 263,
+    "column": 37,
+    "word": "polyfilling"
+  },
+  {
+    "file": "electron/src/preload/preload-webview.ts",
+    "line": 279,
+    "column": 91,
+    "word": "Popout"
+  },
+  {
+    "file": "electron/src/preload/preload-webview.ts",
+    "line": 310,
+    "column": 8,
+    "word": "SQSERVICES"
+  }
+]

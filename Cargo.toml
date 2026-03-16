@@ -1,25 +1,23 @@
-[package]
-name = "matchum-integration-tests"
-version = "0.1.0"
-edition = "2024"
-publish = false
-
 [workspace]
 default-members = ["crates/matchum"]
 members = [
+    "crates/matchum",
     "crates/matchum-core",
     "crates/matchum-dict",
     "crates/matchum-config",
-    "crates/matchum",
+    "crates/matchum-wasm",
+    "crates/matchum-tests",
     "crates/cargo-matchum",
 ]
 resolver = "2"
 
 [workspace.package]
-version = "0.1.0"
+version = "0.0.1"
 edition = "2024"
 license = "MIT"
 rust-version = "1.91"
+repository = "https://github.com/youknowone/matchum"
+homepage = "https://github.com/youknowone/matchum"
 
 [workspace.dependencies]
 # Serialization
@@ -29,6 +27,8 @@ json5 = "0.4"
 
 # Pattern matching
 regex = "1"
+fancy-regex = "0.14"
+aho-corasick = "1"
 
 # File scanning
 ignore = "0.4"
@@ -43,6 +43,7 @@ foldhash = "0.1"
 rayon = "1"
 memmap2 = "0.9"
 compact_str = "0.8"
+papaya = "0.2.3"
 
 # Compression
 flate2 = "1"
@@ -54,6 +55,8 @@ tar = "0.4"
 # Unicode
 unicode-xid = "0.2"
 unicode-normalization = "0.1"
+unicode-general-category = "1.1.0"
+unicase = "2.9.0"
 
 # Hashing
 md-5 = "0.10"
@@ -66,26 +69,36 @@ anyhow = "1"
 toml = "0.8"
 serde_yaml = "0.9"
 
+# Spelling
+typos-dict = "0.13.22"
+
+# Allocators
+mimalloc = { version = "0.1", default-features = false }
+tikv-jemallocator = "0.6"
+
+# Git
+gix-attributes = "0.27.0"
+unidiff = "0.4.0"
+
+# Wasm
+wasm-bindgen = "0.2"
+js-sys = "0.3"
+
 # Testing
 insta = "1"
+tempfile = "3"
 
 # Internal crates
-matchum-core = { path = "crates/matchum-core" }
-matchum-dict = { path = "crates/matchum-dict" }
-matchum-config = { path = "crates/matchum-config" }
+matchum = { version = "0.0.1", path = "crates/matchum" }
+matchum-core = { version = "0.0.1", path = "crates/matchum-core" }
+matchum-dict = { version = "0.0.1", path = "crates/matchum-dict" }
+matchum-config = { version = "0.0.1", path = "crates/matchum-config", default-features = false }
 
 [profile.release]
 lto = true
 codegen-units = 1
 
-[dev-dependencies]
-matchum-core = { workspace = true }
-matchum-dict = { workspace = true }
-matchum-config = { workspace = true }
-compact_str = { workspace = true }
-regex = { workspace = true }
-serde = { workspace = true }
-serde_json = { workspace = true }
-unicode-normalization = { workspace = true }
-insta = { workspace = true }
-globset = { workspace = true }
+# The profile that 'dist' will build with
+[profile.dist]
+inherits = "release"
+lto = "thin"

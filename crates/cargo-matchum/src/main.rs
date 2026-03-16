@@ -1,3 +1,7 @@
+#[cfg(feature = "mimalloc")]
+#[global_allocator]
+static GLOBAL: mimalloc::MiMalloc = mimalloc::MiMalloc;
+
 use clap::Parser;
 use matchum::commands;
 use std::path::{Path, PathBuf};
@@ -64,22 +68,16 @@ fn find_workspace_root() -> Option<PathBuf> {
             if nearest.is_none() {
                 nearest = Some(dir.clone());
             }
-            if let Ok(content) = std::fs::read_to_string(&manifest) {
-                if content.contains("[workspace]") {
+            if let Ok(content) = std::fs::read_to_string(&manifest)
+                && content.contains("[workspace]") {
                     workspace_root = Some(dir.clone());
                 }
-            }
         }
         if !dir.pop() {
             break;
         }
     }
     workspace_root.or(nearest)
-}
-
-fn dict_base_dir() -> PathBuf {
-    let home = std::env::var_os("HOME").unwrap_or_default();
-    PathBuf::from(home).join(".matchum_cache").join("packages")
 }
 
 fn find_config_in_workspace(workspace_root: &Path) -> Option<PathBuf> {
@@ -111,17 +109,28 @@ fn main() {
     let result = match args.action {
         Some(MatchumAction::Review { config }) => {
             let config_path = config.or_else(|| find_config_in_workspace(&workspace_root));
-            commands::review::run_review(
-                &[workspace_root],
-                config_path.as_deref(),
-                commands::check::CheckOptions {
-                    config_search: true,
-                    use_gitignore_default: true,
-                    dict_base_dir: Some(dict_base_dir()),
-                    fallback_settings: Some(default_rust_settings()),
-                    ..commands::check::CheckOptions::default()
-                },
-            )
+            let resolved = resolve_for_workspace(config_path.as_deref(), &workspace_root);
+            match resolved {
+                Ok((settings, config_dir, is_cspell, config_file, catalog)) => {
+                    commands::review::run_review(
+                        &[workspace_root],
+                        config_path.as_deref(),
+                        &settings,
+                        config_dir.as_deref(),
+                        catalog,
+                        commands::check::CheckOptions {
+                            config_search: true,
+                            use_gitignore_default: true,
+                            use_gitattributes: !is_cspell,
+                            per_dir_config_search: is_cspell,
+                            config_file,
+                            compound_words_mode: None,
+                            ..commands::check::CheckOptions::default()
+                        },
+                    )
+                }
+                Err(e) => Err(e),
+            }
         }
         None => run_check(&args.check, &workspace_root),
     };
@@ -132,61 +141,75 @@ fn main() {
     }
 }
 
+fn resolve_for_workspace(
+    config_path: Option<&Path>,
+    workspace_root: &Path,
+) -> anyhow::Result<(
+    matchum_config::settings::CSpellSettings,
+    Option<PathBuf>,
+    bool,
+    Option<PathBuf>,
+    commands::check::DictionaryCatalog,
+)> {
+    let resolved = {
+        let r = commands::setup::resolve_config(config_path, Some(workspace_root), true, &[]);
+        match r {
+            Ok(r) if r.config_dir.is_some() => r,
+            Ok(mut r) => {
+                r.settings = default_rust_settings();
+                r
+            }
+            Err(e) => return Err(e),
+        }
+    };
+
+    let mut settings = resolved.settings;
+    commands::check::apply_default_dictionaries(&mut settings);
+
+    let is_cspell = resolved.is_cspell;
+    let catalog = commands::cspell::catalog::build_dictionary_catalog(
+        &settings,
+        resolved.config_dir.as_deref(),
+        Some(&commands::dict_cache_dir()),
+        is_cspell,
+    )?;
+
+    Ok((
+        settings,
+        resolved.config_dir,
+        is_cspell,
+        resolved.config_file,
+        catalog,
+    ))
+}
+
 fn run_check(args: &CheckArgs, workspace_root: &Path) -> anyhow::Result<()> {
     let config_path = args
         .config
         .clone()
         .or_else(|| find_config_in_workspace(workspace_root));
 
-    let is_cspell_config = config_path
-        .as_ref()
-        .map(|p| matchum_config::resolver::ConfigFound::classify(p).is_cspell())
-        .unwrap_or(true);
+    let (settings, config_dir, is_cspell, config_file, catalog) =
+        resolve_for_workspace(config_path.as_deref(), workspace_root)?;
 
-    let (settings, config_dir) = if let Some(ref config) = config_path {
-        match matchum_config::resolver::load_config_auto(config) {
-            Ok(mut s) => {
-                let has_rust = s
-                    .dictionaries
-                    .iter()
-                    .any(|d| d.eq_ignore_ascii_case("rust"));
-                if !has_rust {
-                    s.dictionaries.push("rust".into());
-                }
-                let dir = config.parent().map(|p| p.to_path_buf());
-                (s, dir)
-            }
-            Err(e) => {
-                eprintln!("Warning: failed to load config: {:#}", e);
-                (default_rust_settings(), None)
-            }
-        }
-    } else {
-        // No config found — use defaults, which need npm auto-resolve
-        (default_rust_settings(), None)
-    };
-
-    let dict_base = if config_dir.is_some() {
-        None
-    } else {
-        Some(dict_base_dir())
-    };
-    let options = commands::check::CheckOptions {
-        use_gitignore_default: true,
-        dict_base_dir: dict_base,
-        auto_resolve_cspell: is_cspell_config,
-        ..commands::check::CheckOptions::default()
-    };
-
-    commands::check::run_check_with_settings(
+    commands::check::run_check(
         &[workspace_root.to_path_buf()],
         &settings,
         config_dir.as_deref(),
+        catalog,
         &args.format,
-        args.suggestions,
+        Some(args.suggestions),
         args.unique,
         args.strict,
-        options,
+        commands::check::CheckOptions {
+            config_search: true,
+            use_gitignore_default: true,
+            use_gitattributes: !is_cspell,
+            per_dir_config_search: is_cspell,
+            config_file,
+            compound_words_mode: None,
+            ..commands::check::CheckOptions::default()
+        },
     )
     .map(|_| ())
 }

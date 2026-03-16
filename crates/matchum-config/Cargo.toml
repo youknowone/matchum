@@ -4,22 +4,28 @@ version.workspace = true
 edition.workspace = true
 license.workspace = true
 rust-version.workspace = true
+repository.workspace = true
+homepage.workspace = true
 description = "cspell.json configuration parsing for matchum"
+
+[features]
+default = ["fetch"]
+fetch = ["dep:ureq", "dep:tar"]
 
 [dependencies]
 serde = { workspace = true }
 serde_json = { workspace = true }
 json5 = { workspace = true }
 regex = { workspace = true }
-aho-corasick = "1"
+aho-corasick = { workspace = true }
 globset = { workspace = true }
 thiserror = { workspace = true }
 toml = { workspace = true }
 serde_yaml = { workspace = true }
-ureq = { workspace = true }
-tar = { workspace = true }
+ureq = { workspace = true, optional = true }
+tar = { workspace = true, optional = true }
 flate2 = { workspace = true }
 
 [dev-dependencies]
 insta = { workspace = true }
-tempfile = "3"
+tempfile = { workspace = true }

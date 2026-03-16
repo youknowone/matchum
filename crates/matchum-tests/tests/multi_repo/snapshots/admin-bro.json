@@ -1,0 +1,194 @@
+[
+  {
+    "file": "CONTRIBUTING.md",
+    "line": 10,
+    "column": 93,
+    "word": "premade"
+  },
+  {
+    "file": "CONTRIBUTING.md",
+    "line": 28,
+    "column": 49,
+    "word": "releaserc"
+  },
+  {
+    "file": "CONTRIBUTING.md",
+    "line": 46,
+    "column": 4,
+    "word": "inlang"
+  },
+  {
+    "file": "UPGRADE-6.0.md",
+    "line": 5,
+    "column": 40,
+    "word": "wersion"
+  },
+  {
+    "file": "cy/readme.md",
+    "line": 433,
+    "column": 45,
+    "word": "Favourite"
+  },
+  {
+    "file": "src/adminjs-options.interface.ts",
+    "line": 205,
+    "column": 26,
+    "word": "Komentarze"
+  },
+  {
+    "file": "src/adminjs-options.interface.ts",
+    "line": 210,
+    "column": 26,
+    "word": "Nazwa"
+  },
+  {
+    "file": "src/adminjs-options.interface.ts",
+    "line": 210,
+    "column": 32,
+    "word": "Komentarza"
+  },
+  {
+    "file": "src/adminjs-options.interface.ts",
+    "line": 211,
+    "column": 29,
+    "word": "Zawartość"
+  },
+  {
+    "file": "src/adminjs.spec.ts",
+    "line": 104,
+    "column": 19,
+    "word": "uniqe"
+  },
+  {
+    "file": "src/backend/bundler/utils/asset-bundler.ts",
+    "line": 58,
+    "column": 44,
+    "word": "watchmode"
+  },
+  {
+    "file": "src/backend/controllers/api-controller.ts",
+    "line": 21,
+    "column": 20,
+    "word": "utilise"
+  },
+  {
+    "file": "src/backend/decorators/resource/utils/decorate-actions.ts",
+    "line": 11,
+    "column": 15,
+    "word": "Customizer"
+  },
+  {
+    "file": "src/backend/utils/build-feature/build-feature.spec.ts",
+    "line": 86,
+    "column": 14,
+    "word": "falsey"
+  },
+  {
+    "file": "src/frontend/components/app/drawer-portal.tsx",
+    "line": 10,
+    "column": 67,
+    "word": "preroute"
+  },
+  {
+    "file": "src/frontend/components/app/language-select/language-select.tsx",
+    "line": 17,
+    "column": 27,
+    "word": "Lngs"
+  },
+  {
+    "file": "src/frontend/components/app/language-select/language-select.tsx",
+    "line": 24,
+    "column": 69,
+    "word": "cimode"
+  },
+  {
+    "file": "src/frontend/components/app/top-bar.tsx",
+    "line": 37,
+    "column": 23,
+    "word": "topbar"
+  },
+  {
+    "file": "src/frontend/components/app/top-bar.tsx",
+    "line": 54,
+    "column": 18,
+    "word": "Topbar"
+  },
+  {
+    "file": "src/frontend/components/app/utils/discord-logo-svg.tsx",
+    "line": 14,
+    "column": 19,
+    "word": "SVGID"
+  },
+  {
+    "file": "src/frontend/components/property-type/array/convert-to-sub-property.tsx",
+    "line": 4,
+    "column": 17,
+    "word": "Subproperty"
+  },
+  {
+    "file": "src/frontend/components/property-type/array/convert-to-sub-property.tsx",
+    "line": 5,
+    "column": 45,
+    "word": "subproperty"
+  },
+  {
+    "file": "src/frontend/components/property-type/array/convert-to-sub-property.tsx",
+    "line": 12,
+    "column": 66,
+    "word": "Futhermore"
+  },
+  {
+    "file": "src/frontend/components/property-type/array/edit.tsx",
+    "line": 3,
+    "column": 75,
+    "word": "pangea"
+  },
+  {
+    "file": "src/frontend/hooks/use-modal.doc.md",
+    "line": 74,
+    "column": 49,
+    "word": "popularised"
+  },
+  {
+    "file": "src/frontend/hooks/use-modal.doc.md",
+    "line": 74,
+    "column": 94,
+    "word": "Letraset"
+  },
+  {
+    "file": "src/frontend/hooks/use-modal.doc.md",
+    "line": 75,
+    "column": 87,
+    "word": "Aldus"
+  },
+  {
+    "file": "src/frontend/interfaces/action/build-action-click-handler.ts",
+    "line": 70,
+    "column": 16,
+    "word": "behaviour"
+  },
+  {
+    "file": "src/frontend/store/actions/set-drawer-preroute.ts",
+    "line": 3,
+    "column": 21,
+    "word": "PREROUTE"
+  },
+  {
+    "file": "src/frontend/store/reducers/localesReducer.ts",
+    "line": 4,
+    "column": 13,
+    "word": "Lolcale"
+  },
+  {
+    "file": "src/frontend/utils/adminjs.i18n.ts",
+    "line": 4,
+    "column": 47,
+    "word": "languagedetector"
+  },
+  {
+    "file": "src/utils/flat/set.spec.ts",
+    "line": 115,
+    "column": 23,
+    "word": "JSCEO"
+  }
+]

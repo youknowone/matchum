@@ -1,11 +1,8 @@
-use anyhow::{Context, Result};
-use matchum_config::resolver;
-use matchum_config::settings::CSpellSettings;
+use anyhow::Result;
 use matchum_dict::dictionary::Dictionary;
-use matchum_dict::loader;
 use std::collections::HashSet;
 use std::io::{self, BufRead, Write};
-use std::path::{Path, PathBuf};
+use std::path::PathBuf;
 
 #[allow(dead_code)]
 pub struct SuggestionsOptions {
@@ -24,14 +21,14 @@ pub struct SuggestionsOptions {
 
 /// cspell suggestions: provide spelling suggestions for words.
 pub fn run(opts: SuggestionsOptions) -> Result<()> {
-    let (mut settings, config_dir) = load_settings(opts.config.as_deref())?;
+    let (mut settings, config_dir) = super::load_settings(opts.config.as_deref())?;
 
     // Apply --locale
     if let Some(ref locale) = opts.locale {
         settings.language = Some(locale.clone());
     }
 
-    let all_dicts = build_dictionaries(&settings, config_dir.as_deref())?;
+    let all_dicts = super::build_named_dictionaries(&settings, config_dir.as_deref())?;
 
     // Filter by --dictionary/--dictionaries if specified
     let filter_set: HashSet<String> = opts.filter_dicts.iter().map(|d| d.to_lowercase()).collect();
@@ -122,51 +119,4 @@ fn print_suggestions(word: &str, dictionaries: &[&dyn Dictionary], limit: usize,
     } else {
         println!("{word}: {}", all_suggestions.join(", "));
     }
-}
-
-fn load_settings(config_path: Option<&Path>) -> Result<(CSpellSettings, Option<PathBuf>)> {
-    if let Some(path) = config_path {
-        let config_dir = path.parent().map(|p| p.to_path_buf());
-        let settings = resolver::load_config(path).context("failed to load config file")?;
-        Ok((settings, config_dir))
-    } else {
-        let cwd = std::env::current_dir()?;
-        match resolver::find_config(&cwd) {
-            Some(path) => {
-                let config_dir = path.parent().map(|p| p.to_path_buf());
-                let settings =
-                    resolver::load_config(&path).context("failed to load config file")?;
-                Ok((settings, config_dir))
-            }
-            None => Ok((CSpellSettings::default(), None)),
-        }
-    }
-}
-
-fn build_dictionaries(
-    settings: &CSpellSettings,
-    config_dir: Option<&Path>,
-) -> Result<Vec<(String, Box<dyn Dictionary>)>> {
-    let mut dicts: Vec<(String, Box<dyn Dictionary>)> = Vec::new();
-    for def in &settings.dictionary_definitions {
-        if let Some(ref path_str) = def.path {
-            let path = Path::new(path_str);
-            let resolved = if path.is_absolute() {
-                path.to_path_buf()
-            } else if let Some(base) = config_dir {
-                base.join(path)
-            } else {
-                path.to_path_buf()
-            };
-            if resolved.exists() {
-                match loader::load_dictionary(&resolved) {
-                    Ok(dict) => dicts.push((def.name.clone(), Box::new(dict))),
-                    Err(e) => {
-                        eprintln!("Warning: failed to load dictionary {}: {}", path_str, e)
-                    }
-                }
-            }
-        }
-    }
-    Ok(dicts)
 }

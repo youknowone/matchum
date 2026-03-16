@@ -1,0 +1,140 @@
+[
+  {
+    "file": "docs/_includes/component.njk",
+    "line": 105,
+    "column": 24,
+    "word": "nowrap"
+  },
+  {
+    "file": "docs/_includes/component.njk",
+    "line": 114,
+    "column": 12,
+    "word": "endfor"
+  },
+  {
+    "file": "docs/_includes/default.njk",
+    "line": 22,
+    "column": 8,
+    "word": "Favicons"
+  },
+  {
+    "file": "docs/_includes/default.njk",
+    "line": 65,
+    "column": 75,
+    "word": "evenodd"
+  },
+  {
+    "file": "docs/_includes/default.njk",
+    "line": 65,
+    "column": 91,
+    "word": "linecap"
+  },
+  {
+    "file": "docs/_includes/default.njk",
+    "line": 113,
+    "column": 48,
+    "word": "rarr"
+  },
+  {
+    "file": "docs/pages/components/popup.md",
+    "line": 1843,
+    "column": 33,
+    "word": "Rects"
+  },
+  {
+    "file": "docs/pages/frameworks/svelte.md",
+    "line": 71,
+    "column": 24,
+    "word": "onsl"
+  },
+  {
+    "file": "docs/pages/getting-started/localization.md",
+    "line": 109,
+    "column": 11,
+    "word": "Español"
+  },
+  {
+    "file": "docs/pages/resources/changelog.md",
+    "line": 121,
+    "column": 70,
+    "word": "spritesheets"
+  },
+  {
+    "file": "docs/pages/tutorials/integrating-with-astro.md",
+    "line": 17,
+    "column": 83,
+    "word": "frontmatter"
+  },
+  {
+    "file": "docs/pages/tutorials/integrating-with-astro.md",
+    "line": 121,
+    "column": 41,
+    "word": "dont"
+  },
+  {
+    "file": "src/components/carousel/carousel.component.ts",
+    "line": 313,
+    "column": 42,
+    "word": "snappable"
+  },
+  {
+    "file": "src/components/carousel/carousel.test.ts",
+    "line": 446,
+    "column": 13,
+    "word": "alenaksu"
+  },
+  {
+    "file": "src/components/icon/icon.test.ts",
+    "line": 189,
+    "column": 52,
+    "word": "spritesheet"
+  },
+  {
+    "file": "src/components/select/select.test.ts",
+    "line": 210,
+    "column": 38,
+    "word": "autofilling"
+  },
+  {
+    "file": "src/components/textarea/textarea.component.ts",
+    "line": 200,
+    "column": 218,
+    "word": "Konnor"
+  },
+  {
+    "file": "src/internal/form.ts",
+    "line": 203,
+    "column": 94,
+    "word": "unattach"
+  },
+  {
+    "file": "src/internal/tabbable.test.ts",
+    "line": 151,
+    "column": 29,
+    "word": "amet"
+  },
+  {
+    "file": "src/internal/tabbable.test.ts",
+    "line": 151,
+    "column": 47,
+    "word": "adipiscing"
+  },
+  {
+    "file": "src/internal/tabbable.test.ts",
+    "line": 151,
+    "column": 58,
+    "word": "elit"
+  },
+  {
+    "file": "src/internal/tabbable.ts",
+    "line": 200,
+    "column": 88,
+    "word": "tabindexes"
+  },
+  {
+    "file": "src/utilities/localize.ts",
+    "line": 7,
+    "column": 6,
+    "word": "Technicallly"
+  }
+]

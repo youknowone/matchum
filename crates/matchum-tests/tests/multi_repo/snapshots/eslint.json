@@ -1,0 +1,3212 @@
+[
+  {
+    "file": "Makefile.js",
+    "line": 83,
+    "column": 7,
+    "word": "MULTIFILES"
+  },
+  {
+    "file": "Makefile.js",
+    "line": 126,
+    "column": 82,
+    "word": "ined"
+  },
+  {
+    "file": "Makefile.js",
+    "line": 375,
+    "column": 9,
+    "word": "gensite"
+  },
+  {
+    "file": "Makefile.js",
+    "line": 986,
+    "column": 18,
+    "word": "Multifiles"
+  },
+  {
+    "file": "README.md",
+    "line": 245,
+    "column": 5,
+    "word": "teamstart"
+  },
+  {
+    "file": "README.md",
+    "line": 253,
+    "column": 87,
+    "word": "Zakas's"
+  },
+  {
+    "file": "README.md",
+    "line": 258,
+    "column": 77,
+    "word": "Francesco"
+  },
+  {
+    "file": "README.md",
+    "line": 258,
+    "column": 87,
+    "word": "Trotta's"
+  },
+  {
+    "file": "README.md",
+    "line": 259,
+    "column": 11,
+    "word": "Trotta"
+  },
+  {
+    "file": "README.md",
+    "line": 263,
+    "column": 87,
+    "word": "Djermanovic's"
+  },
+  {
+    "file": "README.md",
+    "line": 264,
+    "column": 7,
+    "word": "Djermanovic"
+  },
+  {
+    "file": "README.md",
+    "line": 279,
+    "column": 78,
+    "word": "Nitin"
+  },
+  {
+    "file": "README.md",
+    "line": 279,
+    "column": 84,
+    "word": "Kumar's"
+  },
+  {
+    "file": "README.md",
+    "line": 280,
+    "column": 7,
+    "word": "Kumar"
+  },
+  {
+    "file": "README.md",
+    "line": 300,
+    "column": 80,
+    "word": "Sweta"
+  },
+  {
+    "file": "README.md",
+    "line": 300,
+    "column": 86,
+    "word": "Tanwar's"
+  },
+  {
+    "file": "README.md",
+    "line": 301,
+    "column": 7,
+    "word": "Tanwar"
+  },
+  {
+    "file": "README.md",
+    "line": 305,
+    "column": 83,
+    "word": "Tanuj"
+  },
+  {
+    "file": "README.md",
+    "line": 305,
+    "column": 89,
+    "word": "Kanti's"
+  },
+  {
+    "file": "README.md",
+    "line": 306,
+    "column": 7,
+    "word": "Kanti"
+  },
+  {
+    "file": "README.md",
+    "line": 326,
+    "column": 78,
+    "word": "Amaresh"
+  },
+  {
+    "file": "README.md",
+    "line": 331,
+    "column": 86,
+    "word": "Harish's"
+  },
+  {
+    "file": "README.md",
+    "line": 332,
+    "column": 1,
+    "word": "Harish"
+  },
+  {
+    "file": "README.md",
+    "line": 341,
+    "column": 5,
+    "word": "teamend"
+  },
+  {
+    "file": "README.md",
+    "line": 344,
+    "column": 5,
+    "word": "sponsorsstart"
+  },
+  {
+    "file": "README.md",
+    "line": 353,
+    "column": 105,
+    "word": "Qlty"
+  },
+  {
+    "file": "README.md",
+    "line": 360,
+    "column": 5,
+    "word": "sponsorsend"
+  },
+  {
+    "file": "docs/README.md",
+    "line": 44,
+    "column": 51,
+    "word": "openjsf"
+  },
+  {
+    "file": "docs/package.json",
+    "line": 31,
+    "column": 32,
+    "word": "syntaxhighlight"
+  },
+  {
+    "file": "docs/package.json",
+    "line": 32,
+    "column": 11,
+    "word": "munter"
+  },
+  {
+    "file": "docs/package.json",
+    "line": 35,
+    "column": 10,
+    "word": "algoliasearch"
+  },
+  {
+    "file": "docs/package.json",
+    "line": 44,
+    "column": 10,
+    "word": "luxon"
+  },
+  {
+    "file": "docs/src/_plugins/md-syntax-highlighter.js",
+    "line": 4,
+    "column": 29,
+    "word": "Yuxi"
+  },
+  {
+    "file": "docs/src/_plugins/pre-wrapper.js",
+    "line": 14,
+    "column": 35,
+    "word": "labelledby"
+  },
+  {
+    "file": "docs/src/about/index.md",
+    "line": 5,
+    "column": 87,
+    "word": "Zakas"
+  },
+  {
+    "file": "docs/src/assets/js/components-index.js",
+    "line": 17,
+    "column": 11,
+    "word": "toggleindex"
+  },
+  {
+    "file": "docs/src/assets/js/css-vars-ponyfill@2.js",
+    "line": 5,
+    "column": 23,
+    "word": "Hildenbiddle"
+  },
+  {
+    "file": "docs/src/assets/js/css-vars-ponyfill@2.js",
+    "line": 619,
+    "column": 40,
+    "word": "CSSVARSPONYFILL"
+  },
+  {
+    "file": "docs/src/assets/js/css-vars-ponyfill@2.js",
+    "line": 903,
+    "column": 24,
+    "word": "cssvars"
+  },
+  {
+    "file": "docs/src/assets/js/main.js",
+    "line": 104,
+    "column": 42,
+    "word": "togglenav"
+  },
+  {
+    "file": "docs/src/assets/js/main.js",
+    "line": 235,
+    "column": 4,
+    "word": "setupindex"
+  },
+  {
+    "file": "docs/src/assets/js/main.js",
+    "line": 274,
+    "column": 8,
+    "word": "thepanel"
+  },
+  {
+    "file": "docs/src/assets/js/tabs.js",
+    "line": 92,
+    "column": 7,
+    "word": "tabpanels"
+  },
+  {
+    "file": "docs/src/assets/js/tabs.js",
+    "line": 170,
+    "column": 7,
+    "word": "unactivate"
+  },
+  {
+    "file": "docs/src/assets/js/tabs.js",
+    "line": 240,
+    "column": 7,
+    "word": "incrementcurrent"
+  },
+  {
+    "file": "docs/src/assets/js/tabs.js",
+    "line": 249,
+    "column": 7,
+    "word": "decrementcurrent"
+  },
+  {
+    "file": "docs/src/assets/scss/ads.scss",
+    "line": 16,
+    "column": 2,
+    "word": "carbonads"
+  },
+  {
+    "file": "docs/src/assets/scss/components/docs-navigation.scss",
+    "line": 27,
+    "column": 3,
+    "word": "flexer"
+  },
+  {
+    "file": "docs/src/assets/scss/docs.scss",
+    "line": 124,
+    "column": 38,
+    "word": "Csvg"
+  },
+  {
+    "file": "docs/src/assets/scss/docs.scss",
+    "line": 124,
+    "column": 210,
+    "word": "Cpath"
+  },
+  {
+    "file": "docs/src/assets/scss/docs.scss",
+    "line": 124,
+    "column": 333,
+    "word": "Crect"
+  },
+  {
+    "file": "docs/src/assets/scss/docs.scss",
+    "line": 160,
+    "column": 3,
+    "word": "anchorjs"
+  },
+  {
+    "file": "docs/src/assets/scss/syntax-highlighter.scss",
+    "line": 70,
+    "column": 8,
+    "word": "atrule"
+  },
+  {
+    "file": "docs/src/assets/scss/syntax-highlighter.scss",
+    "line": 91,
+    "column": 68,
+    "word": "Fwww"
+  },
+  {
+    "file": "docs/src/assets/scss/syntax-highlighter.scss",
+    "line": 91,
+    "column": 88,
+    "word": "Fsvg"
+  },
+  {
+    "file": "docs/src/assets/scss/syntax-highlighter.scss",
+    "line": 91,
+    "column": 227,
+    "word": "Cpolygon"
+  },
+  {
+    "file": "docs/src/assets/scss/syntax-highlighter.scss",
+    "line": 150,
+    "column": 33,
+    "word": "nums"
+  },
+  {
+    "file": "docs/src/assets/scss/tokens/typography.scss",
+    "line": 85,
+    "column": 4,
+    "word": "Twemoji"
+  },
+  {
+    "file": "docs/src/contribute/governance.md",
+    "line": 34,
+    "column": 51,
+    "word": "triaging"
+  },
+  {
+    "file": "docs/src/contribute/governance.md",
+    "line": 84,
+    "column": 35,
+    "word": "committership"
+  },
+  {
+    "file": "docs/src/contribute/package-json-conventions.md",
+    "line": 20,
+    "column": 114,
+    "word": "postprepare"
+  },
+  {
+    "file": "docs/src/contribute/package-json-conventions.md",
+    "line": 20,
+    "column": 142,
+    "word": "postpack"
+  },
+  {
+    "file": "docs/src/extend/code-path-analysis.md",
+    "line": 533,
+    "column": 2,
+    "word": "hoge"
+  },
+  {
+    "file": "docs/src/extend/code-path-analysis.md",
+    "line": 582,
+    "column": 3,
+    "word": "fuga"
+  },
+  {
+    "file": "docs/src/extend/custom-formatters.md",
+    "line": 223,
+    "column": 61,
+    "word": "Guake"
+  },
+  {
+    "file": "docs/src/extend/custom-formatters.md",
+    "line": 245,
+    "column": 9,
+    "word": "eslintformatter"
+  },
+  {
+    "file": "docs/src/extend/custom-parsers.md",
+    "line": 124,
+    "column": 31,
+    "word": "myparser"
+  },
+  {
+    "file": "docs/src/extend/custom-rule-tutorial.md",
+    "line": 91,
+    "column": 127,
+    "word": "fixability"
+  },
+  {
+    "file": "docs/src/extend/custom-rule-tutorial.md",
+    "line": 180,
+    "column": 4,
+    "word": "endraw"
+  },
+  {
+    "file": "docs/src/extend/plugin-migration-flat-config.md",
+    "line": 242,
+    "column": 17,
+    "word": "xdescribe"
+  },
+  {
+    "file": "docs/src/extend/shareable-configs-deprecated.md",
+    "line": 19,
+    "column": 55,
+    "word": "myconfig"
+  },
+  {
+    "file": "docs/src/integrate/nodejs-api.md",
+    "line": 211,
+    "column": 35,
+    "word": "omittable"
+  },
+  {
+    "file": "docs/src/integrate/nodejs-api.md",
+    "line": 609,
+    "column": 35,
+    "word": "Fvar"
+  },
+  {
+    "file": "docs/src/maintain/manage-issues.md",
+    "line": 31,
+    "column": 4,
+    "word": "Triaging"
+  },
+  {
+    "file": "docs/src/maintain/manage-releases.md",
+    "line": 106,
+    "column": 103,
+    "word": "eslintbot"
+  },
+  {
+    "file": "docs/src/maintain/overview.md",
+    "line": 32,
+    "column": 6,
+    "word": "Stackaid"
+  },
+  {
+    "file": "docs/src/pages/flags.md",
+    "line": 50,
+    "column": 5,
+    "word": "endfor"
+  },
+  {
+    "file": "docs/src/rules/arrow-body-style.md",
+    "line": 51,
+    "column": 14,
+    "word": "retv"
+  },
+  {
+    "file": "docs/src/rules/brace-style.md",
+    "line": 22,
+    "column": 54,
+    "word": "Stroustrup"
+  },
+  {
+    "file": "docs/src/rules/brace-style.md",
+    "line": 33,
+    "column": 26,
+    "word": "Allman"
+  },
+  {
+    "file": "docs/src/rules/brace-style.md",
+    "line": 57,
+    "column": 5,
+    "word": "stroustrup"
+  },
+  {
+    "file": "docs/src/rules/brace-style.md",
+    "line": 58,
+    "column": 5,
+    "word": "allman"
+  },
+  {
+    "file": "docs/src/rules/capitalized-comments.md",
+    "line": 280,
+    "column": 84,
+    "word": "blockignore"
+  },
+  {
+    "file": "docs/src/rules/complexity.md",
+    "line": 177,
+    "column": 37,
+    "word": "Cabe"
+  },
+  {
+    "file": "docs/src/rules/function-paren-newline.md",
+    "line": 335,
+    "column": 5,
+    "word": "barbaz"
+  },
+  {
+    "file": "docs/src/rules/id-denylist.md",
+    "line": 7,
+    "column": 102,
+    "word": "Karlton"
+  },
+  {
+    "file": "docs/src/rules/id-length.md",
+    "line": 91,
+    "column": 10,
+    "word": "foobaz"
+  },
+  {
+    "file": "docs/src/rules/id-match.md",
+    "line": 162,
+    "column": 9,
+    "word": "categoryid"
+  },
+  {
+    "file": "docs/src/rules/indent-legacy.md",
+    "line": 24,
+    "column": 16,
+    "word": "Crockford"
+  },
+  {
+    "file": "docs/src/rules/key-spacing.md",
+    "line": 191,
+    "column": 5,
+    "word": "bcde"
+  },
+  {
+    "file": "docs/src/rules/key-spacing.md",
+    "line": 213,
+    "column": 5,
+    "word": "ijkl"
+  },
+  {
+    "file": "docs/src/rules/max-lines-per-function.md",
+    "line": 31,
+    "column": 45,
+    "word": "dbname"
+  },
+  {
+    "file": "docs/src/rules/no-await-in-loop.md",
+    "line": 166,
+    "column": 45,
+    "word": "desireable"
+  },
+  {
+    "file": "docs/src/rules/no-dupe-keys.md",
+    "line": 56,
+    "column": 5,
+    "word": "quxx"
+  },
+  {
+    "file": "docs/src/rules/no-empty-character-class.md",
+    "line": 40,
+    "column": 13,
+    "word": "abcefg"
+  },
+  {
+    "file": "docs/src/rules/no-eq-null.md",
+    "line": 67,
+    "column": 41,
+    "word": "eqnull"
+  },
+  {
+    "file": "docs/src/rules/no-extend-native.md",
+    "line": 74,
+    "column": 34,
+    "word": "muhahaha"
+  },
+  {
+    "file": "docs/src/rules/no-fallthrough.md",
+    "line": 59,
+    "column": 12,
+    "word": "fallsthrough"
+  },
+  {
+    "file": "docs/src/rules/no-irregular-whitespace.md",
+    "line": 43,
+    "column": 30,
+    "word": "OGSP"
+  },
+  {
+    "file": "docs/src/rules/no-irregular-whitespace.md",
+    "line": 45,
+    "column": 21,
+    "word": "NQSP"
+  },
+  {
+    "file": "docs/src/rules/no-irregular-whitespace.md",
+    "line": 46,
+    "column": 21,
+    "word": "MQSP"
+  },
+  {
+    "file": "docs/src/rules/no-irregular-whitespace.md",
+    "line": 49,
+    "column": 26,
+    "word": "THPMSP"
+  },
+  {
+    "file": "docs/src/rules/no-irregular-whitespace.md",
+    "line": 50,
+    "column": 25,
+    "word": "FPMSP"
+  },
+  {
+    "file": "docs/src/rules/no-irregular-whitespace.md",
+    "line": 51,
+    "column": 24,
+    "word": "SPMSP"
+  },
+  {
+    "file": "docs/src/rules/no-irregular-whitespace.md",
+    "line": 54,
+    "column": 24,
+    "word": "THSP"
+  },
+  {
+    "file": "docs/src/rules/no-irregular-whitespace.md",
+    "line": 56,
+    "column": 30,
+    "word": "ZWSP"
+  },
+  {
+    "file": "docs/src/rules/no-irregular-whitespace.md",
+    "line": 57,
+    "column": 35,
+    "word": "LSEP"
+  },
+  {
+    "file": "docs/src/rules/no-irregular-whitespace.md",
+    "line": 58,
+    "column": 40,
+    "word": "PSEP"
+  },
+  {
+    "file": "docs/src/rules/no-irregular-whitespace.md",
+    "line": 59,
+    "column": 35,
+    "word": "NNBSP"
+  },
+  {
+    "file": "docs/src/rules/no-irregular-whitespace.md",
+    "line": 60,
+    "column": 39,
+    "word": "MMSP"
+  },
+  {
+    "file": "docs/src/rules/no-irregular-whitespace.md",
+    "line": 61,
+    "column": 31,
+    "word": "IDSP"
+  },
+  {
+    "file": "docs/src/rules/no-irregular-whitespace.md",
+    "line": 62,
+    "column": 3,
+    "word": "FEFF"
+  },
+  {
+    "file": "docs/src/rules/no-loop-func.md",
+    "line": 11,
+    "column": 5,
+    "word": "funcs"
+  },
+  {
+    "file": "docs/src/rules/no-loop-func.md",
+    "line": 129,
+    "column": 17,
+    "word": "getsomething"
+  },
+  {
+    "file": "docs/src/rules/no-new-native-nonconstructor.md",
+    "line": 2,
+    "column": 22,
+    "word": "nonconstructor"
+  },
+  {
+    "file": "docs/src/rules/no-new-native-nonconstructor.md",
+    "line": 62,
+    "column": 11,
+    "word": "corge"
+  },
+  {
+    "file": "docs/src/rules/no-nonoctal-decimal-escape.md",
+    "line": 2,
+    "column": 11,
+    "word": "nonoctal"
+  },
+  {
+    "file": "docs/src/rules/no-param-reassign.md",
+    "line": 164,
+    "column": 23,
+    "word": "barrito"
+  },
+  {
+    "file": "docs/src/rules/no-restricted-globals.md",
+    "line": 30,
+    "column": 54,
+    "word": "fdescribe"
+  },
+  {
+    "file": "docs/src/rules/no-restricted-modules.md",
+    "line": 66,
+    "column": 63,
+    "word": "dgram"
+  },
+  {
+    "file": "docs/src/rules/no-restricted-modules.md",
+    "line": 66,
+    "column": 95,
+    "word": "freelist"
+  },
+  {
+    "file": "docs/src/rules/no-restricted-syntax.md",
+    "line": 71,
+    "column": 5,
+    "word": "dont"
+  },
+  {
+    "file": "docs/src/rules/no-return-await.md",
+    "line": 12,
+    "column": 59,
+    "word": "microtask"
+  },
+  {
+    "file": "docs/src/rules/no-script-url.md",
+    "line": 33,
+    "column": 41,
+    "word": "scripturl"
+  },
+  {
+    "file": "docs/src/rules/no-unexpected-multiline.md",
+    "line": 14,
+    "column": 78,
+    "word": "Schlueter"
+  },
+  {
+    "file": "docs/src/rules/no-unused-vars.md",
+    "line": 58,
+    "column": 31,
+    "word": "destructures"
+  },
+  {
+    "file": "docs/src/rules/no-unused-vars.md",
+    "line": 198,
+    "column": 67,
+    "word": "gnored"
+  },
+  {
+    "file": "docs/src/rules/no-unused-vars.md",
+    "line": 453,
+    "column": 12,
+    "word": "mymethod"
+  },
+  {
+    "file": "docs/src/rules/nonblock-statement-body-position.md",
+    "line": 2,
+    "column": 8,
+    "word": "nonblock"
+  },
+  {
+    "file": "docs/src/rules/object-property-newline.md",
+    "line": 71,
+    "column": 12,
+    "word": "bazz"
+  },
+  {
+    "file": "docs/src/rules/object-property-newline.md",
+    "line": 125,
+    "column": 6,
+    "word": "Officiële"
+  },
+  {
+    "file": "docs/src/rules/object-property-newline.md",
+    "line": 125,
+    "column": 31,
+    "word": "Europese"
+  },
+  {
+    "file": "docs/src/rules/object-property-newline.md",
+    "line": 125,
+    "column": 40,
+    "word": "Unie"
+  },
+  {
+    "file": "docs/src/rules/object-property-newline.md",
+    "line": 126,
+    "column": 6,
+    "word": "Официален"
+  },
+  {
+    "file": "docs/src/rules/object-property-newline.md",
+    "line": 126,
+    "column": 16,
+    "word": "уебсайт"
+  },
+  {
+    "file": "docs/src/rules/object-property-newline.md",
+    "line": 126,
+    "column": 27,
+    "word": "Европейския"
+  },
+  {
+    "file": "docs/src/rules/object-property-newline.md",
+    "line": 126,
+    "column": 39,
+    "word": "съюз"
+  },
+  {
+    "file": "docs/src/rules/object-property-newline.md",
+    "line": 207,
+    "column": 12,
+    "word": "antidisestablishmentarianistically"
+  },
+  {
+    "file": "docs/src/rules/object-property-newline.md",
+    "line": 208,
+    "column": 12,
+    "word": "yugoslavyalılaştırabildiklerimizdenmişsiniz"
+  },
+  {
+    "file": "docs/src/rules/object-property-newline.md",
+    "line": 214,
+    "column": 29,
+    "word": "complexdomain"
+  },
+  {
+    "file": "docs/src/rules/object-property-newline.md",
+    "line": 214,
+    "column": 47,
+    "word": "simpledomain"
+  },
+  {
+    "file": "docs/src/rules/one-var.md",
+    "line": 85,
+    "column": 9,
+    "word": "norf"
+  },
+  {
+    "file": "docs/src/rules/one-var.md",
+    "line": 439,
+    "column": 11,
+    "word": "barfoo"
+  },
+  {
+    "file": "docs/src/rules/one-var.md",
+    "line": 439,
+    "column": 23,
+    "word": "bazfoo"
+  },
+  {
+    "file": "docs/src/rules/one-var.md",
+    "line": 442,
+    "column": 9,
+    "word": "fooqux"
+  },
+  {
+    "file": "docs/src/rules/one-var.md",
+    "line": 442,
+    "column": 17,
+    "word": "foonorf"
+  },
+  {
+    "file": "docs/src/rules/one-var.md",
+    "line": 443,
+    "column": 11,
+    "word": "foobarfoo"
+  },
+  {
+    "file": "docs/src/rules/one-var.md",
+    "line": 444,
+    "column": 11,
+    "word": "foobazfoo"
+  },
+  {
+    "file": "docs/src/rules/one-var.md",
+    "line": 445,
+    "column": 11,
+    "word": "bazbarfoo"
+  },
+  {
+    "file": "docs/src/rules/one-var.md",
+    "line": 445,
+    "column": 26,
+    "word": "bazfoobar"
+  },
+  {
+    "file": "docs/src/rules/one-var.md",
+    "line": 446,
+    "column": 17,
+    "word": "foobarbaz"
+  },
+  {
+    "file": "docs/src/rules/one-var.md",
+    "line": 447,
+    "column": 17,
+    "word": "foobazqux"
+  },
+  {
+    "file": "docs/src/rules/one-var.md",
+    "line": 448,
+    "column": 17,
+    "word": "bazbarqux"
+  },
+  {
+    "file": "docs/src/rules/one-var.md",
+    "line": 448,
+    "column": 32,
+    "word": "bazfooqux"
+  },
+  {
+    "file": "docs/src/rules/one-var.md",
+    "line": 783,
+    "column": 38,
+    "word": "onevar"
+  },
+  {
+    "file": "docs/src/rules/prefer-named-capture-group.md",
+    "line": 21,
+    "column": 19,
+    "word": "cauli"
+  },
+  {
+    "file": "docs/src/rules/space-unary-ops.md",
+    "line": 9,
+    "column": 101,
+    "word": "nonwords"
+  },
+  {
+    "file": "docs/src/rules/spaced-comment.md",
+    "line": 36,
+    "column": 78,
+    "word": "vsdoc"
+  },
+  {
+    "file": "docs/src/rules/use-isnan.md",
+    "line": 2,
+    "column": 12,
+    "word": "isnan"
+  },
+  {
+    "file": "docs/src/rules/valid-typeof.md",
+    "line": 25,
+    "column": 17,
+    "word": "strnig"
+  },
+  {
+    "file": "docs/src/rules/valid-typeof.md",
+    "line": 26,
+    "column": 16,
+    "word": "undefimed"
+  },
+  {
+    "file": "docs/src/rules/valid-typeof.md",
+    "line": 27,
+    "column": 16,
+    "word": "nunber"
+  },
+  {
+    "file": "docs/src/rules/valid-typeof.md",
+    "line": 28,
+    "column": 17,
+    "word": "fucntion"
+  },
+  {
+    "file": "docs/src/static/feed.njk",
+    "line": 5,
+    "column": 4,
+    "word": "eleventy"
+  },
+  {
+    "file": "docs/src/static/feed.njk",
+    "line": 31,
+    "column": 79,
+    "word": "endset"
+  },
+  {
+    "file": "docs/src/static/sitemap.njk",
+    "line": 7,
+    "column": 2,
+    "word": "urlset"
+  },
+  {
+    "file": "docs/src/static/sitemap.njk",
+    "line": 11,
+    "column": 14,
+    "word": "lastmod"
+  },
+  {
+    "file": "docs/src/static/sitemap.njk",
+    "line": 12,
+    "column": 14,
+    "word": "changefreq"
+  },
+  {
+    "file": "docs/src/use/command-line-interface.md",
+    "line": 318,
+    "column": 68,
+    "word": "levn"
+  },
+  {
+    "file": "docs/src/use/command-line-interface.md",
+    "line": 567,
+    "column": 21,
+    "word": "customformat"
+  },
+  {
+    "file": "docs/src/use/configure/configuration-files-deprecated.md",
+    "line": 39,
+    "column": 25,
+    "word": "myfiletotest"
+  },
+  {
+    "file": "docs/src/use/configure/debug.md",
+    "line": 30,
+    "column": 44,
+    "word": "nzakas"
+  },
+  {
+    "file": "docs/src/use/configure/ignore-deprecated.md",
+    "line": 100,
+    "column": 200,
+    "word": "jshintignore"
+  },
+  {
+    "file": "docs/src/use/configure/ignore-deprecated.md",
+    "line": 120,
+    "column": 11,
+    "word": "mypackage"
+  },
+  {
+    "file": "docs/src/use/configure/ignore.md",
+    "line": 95,
+    "column": 165,
+    "word": "mylibrary"
+  },
+  {
+    "file": "docs/src/use/configure/language-options-deprecated.md",
+    "line": 38,
+    "column": 4,
+    "word": "prototypejs"
+  },
+  {
+    "file": "docs/src/use/configure/language-options-deprecated.md",
+    "line": 42,
+    "column": 4,
+    "word": "applescript"
+  },
+  {
+    "file": "docs/src/use/configure/language-options-deprecated.md",
+    "line": 43,
+    "column": 4,
+    "word": "nashorn"
+  },
+  {
+    "file": "docs/src/use/configure/language-options-deprecated.md",
+    "line": 43,
+    "column": 22,
+    "word": "Nashorn"
+  },
+  {
+    "file": "docs/src/use/configure/language-options-deprecated.md",
+    "line": 44,
+    "column": 4,
+    "word": "serviceworker"
+  },
+  {
+    "file": "docs/src/use/configure/language-options-deprecated.md",
+    "line": 45,
+    "column": 4,
+    "word": "atomtest"
+  },
+  {
+    "file": "docs/src/use/configure/language-options-deprecated.md",
+    "line": 46,
+    "column": 4,
+    "word": "embertest"
+  },
+  {
+    "file": "docs/src/use/configure/migration-guide.md",
+    "line": 150,
+    "column": 31,
+    "word": "someplugin"
+  },
+  {
+    "file": "docs/src/use/configure/plugins-deprecated.md",
+    "line": 39,
+    "column": 152,
+    "word": "pluginname"
+  },
+  {
+    "file": "docs/src/use/core-concepts/glossary.md",
+    "line": 79,
+    "column": 17,
+    "word": "estools"
+  },
+  {
+    "file": "docs/src/use/getting-started.md",
+    "line": 46,
+    "column": 13,
+    "word": "yourfile"
+  },
+  {
+    "file": "docs/src/use/getting-started.md",
+    "line": 68,
+    "column": 238,
+    "word": "npmjs"
+  },
+  {
+    "file": "docs/src/use/integrations.md",
+    "line": 21,
+    "column": 8,
+    "word": "Syntastic"
+  },
+  {
+    "file": "docs/src/use/integrations.md",
+    "line": 23,
+    "column": 8,
+    "word": "nvim"
+  },
+  {
+    "file": "docs/src/use/integrations.md",
+    "line": 23,
+    "column": 13,
+    "word": "lspconfig"
+  },
+  {
+    "file": "docs/src/use/integrations.md",
+    "line": 25,
+    "column": 11,
+    "word": "Flycheck"
+  },
+  {
+    "file": "docs/src/use/migrate-to-10.0.0.md",
+    "line": 267,
+    "column": 13,
+    "word": "ruletester"
+  },
+  {
+    "file": "docs/src/use/migrate-to-10.0.0.md",
+    "line": 420,
+    "column": 13,
+    "word": "lintmessage"
+  },
+  {
+    "file": "docs/src/use/migrate-to-10.0.0.md",
+    "line": 420,
+    "column": 25,
+    "word": "nodetype"
+  },
+  {
+    "file": "docs/src/use/migrate-to-8.0.0.md",
+    "line": 231,
+    "column": 20,
+    "word": "cliengine"
+  },
+  {
+    "file": "docs/src/use/migrate-to-9.0.0.md",
+    "line": 477,
+    "column": 32,
+    "word": "getcomments"
+  },
+  {
+    "file": "docs/src/use/migrate-to-9.0.0.md",
+    "line": 485,
+    "column": 30,
+    "word": "currentsegments"
+  },
+  {
+    "file": "docs/src/use/migrating-from-jscs.md",
+    "line": 13,
+    "column": 111,
+    "word": "jscsrs"
+  },
+  {
+    "file": "docs/src/use/migrating-from-jscs.md",
+    "line": 16,
+    "column": 38,
+    "word": "Polyjuice"
+  },
+  {
+    "file": "docs/src/use/migrating-from-jscs.md",
+    "line": 24,
+    "column": 17,
+    "word": "polyjuice"
+  },
+  {
+    "file": "docs/src/use/migrating-from-jscs.md",
+    "line": 65,
+    "column": 4,
+    "word": "crockford"
+  },
+  {
+    "file": "docs/src/use/migrating-from-jscs.md",
+    "line": 70,
+    "column": 4,
+    "word": "mdcs"
+  },
+  {
+    "file": "docs/src/use/migrating-to-3.0.0.md",
+    "line": 46,
+    "column": 229,
+    "word": "lifed"
+  },
+  {
+    "file": "docs/src/use/migrating-to-5.0.0.md",
+    "line": 113,
+    "column": 68,
+    "word": "lintable"
+  },
+  {
+    "file": "lib/cli-engine/formatters/html.js",
+    "line": 46,
+    "column": 48,
+    "word": "Neue"
+  },
+  {
+    "file": "lib/cli-engine/formatters/html.js",
+    "line": 247,
+    "column": 66,
+    "word": "noopener"
+  },
+  {
+    "file": "lib/cli-engine/formatters/html.js",
+    "line": 247,
+    "column": 75,
+    "word": "noreferrer"
+  },
+  {
+    "file": "lib/cli-engine/lint-result-cache.js",
+    "line": 13,
+    "column": 58,
+    "word": "jsonify"
+  },
+  {
+    "file": "lib/config/config.js",
+    "line": 568,
+    "column": 47,
+    "word": "inting"
+  },
+  {
+    "file": "lib/config/flat-config-schema.js",
+    "line": 263,
+    "column": 36,
+    "word": "incompat"
+  },
+  {
+    "file": "lib/eslint/eslint-helpers.js",
+    "line": 43,
+    "column": 31,
+    "word": "humanwhocodes"
+  },
+  {
+    "file": "lib/eslint/eslint-helpers.js",
+    "line": 205,
+    "column": 33,
+    "word": "humanfs"
+  },
+  {
+    "file": "lib/eslint/eslint-helpers.js",
+    "line": 553,
+    "column": 53,
+    "word": "subsubdir"
+  },
+  {
+    "file": "lib/eslint/eslint-helpers.js",
+    "line": 559,
+    "column": 51,
+    "word": "subd"
+  },
+  {
+    "file": "lib/eslint/eslint-helpers.js",
+    "line": 668,
+    "column": 34,
+    "word": "unconfigured"
+  },
+  {
+    "file": "lib/eslint/eslint.js",
+    "line": 434,
+    "column": 14,
+    "word": "Cloneability"
+  },
+  {
+    "file": "lib/eslint/eslint.js",
+    "line": 435,
+    "column": 20,
+    "word": "uncloneable"
+  },
+  {
+    "file": "lib/eslint/eslint.js",
+    "line": 685,
+    "column": 23,
+    "word": "UNCLONEABLE"
+  },
+  {
+    "file": "lib/eslint/worker.js",
+    "line": 163,
+    "column": 94,
+    "word": "parallelizable"
+  },
+  {
+    "file": "lib/languages/js/index.js",
+    "line": 165,
+    "column": 31,
+    "word": "Feenstra"
+  },
+  {
+    "file": "lib/languages/js/index.js",
+    "line": 182,
+    "column": 41,
+    "word": "FEENSTRA"
+  },
+  {
+    "file": "lib/linter/code-path-analysis/code-path-state.js",
+    "line": 1246,
+    "column": 37,
+    "word": "circuting"
+  },
+  {
+    "file": "lib/linter/code-path-analysis/code-path-state.js",
+    "line": 1725,
+    "column": 14,
+    "word": "Segs"
+  },
+  {
+    "file": "lib/linter/code-path-analysis/debug-helpers.js",
+    "line": 109,
+    "column": 41,
+    "word": "Graphvis"
+  },
+  {
+    "file": "lib/rule-tester/rule-tester.js",
+    "line": 36,
+    "column": 7,
+    "word": "jslang"
+  },
+  {
+    "file": "lib/rule-tester/rule-tester.js",
+    "line": 260,
+    "column": 42,
+    "word": "errorize"
+  },
+  {
+    "file": "lib/rule-tester/rule-tester.js",
+    "line": 1356,
+    "column": 21,
+    "word": "Didnt"
+  },
+  {
+    "file": "lib/rules/dot-notation.js",
+    "line": 163,
+    "column": 21,
+    "word": "quasis"
+  },
+  {
+    "file": "lib/rules/for-direction.js",
+    "line": 86,
+    "column": 62,
+    "word": "nochange"
+  },
+  {
+    "file": "lib/rules/func-name-matching.js",
+    "line": 13,
+    "column": 7,
+    "word": "esutils"
+  },
+  {
+    "file": "lib/rules/id-match.js",
+    "line": 296,
+    "column": 27,
+    "word": "righthand"
+  },
+  {
+    "file": "lib/rules/indent-legacy.js",
+    "line": 4,
+    "column": 48,
+    "word": "nodeca"
+  },
+  {
+    "file": "lib/rules/lines-around-comment.js",
+    "line": 23,
+    "column": 22,
+    "word": "Nums"
+  },
+  {
+    "file": "lib/rules/logical-assignment-operators.js",
+    "line": 138,
+    "column": 4,
+    "word": "falsiness"
+  },
+  {
+    "file": "lib/rules/max-len.js",
+    "line": 307,
+    "column": 24,
+    "word": "accululated"
+  },
+  {
+    "file": "lib/rules/no-caller.js",
+    "line": 41,
+    "column": 27,
+    "word": "calle"
+  },
+  {
+    "file": "lib/rules/no-constant-binary-expression.js",
+    "line": 55,
+    "column": 59,
+    "word": "nullishness"
+  },
+  {
+    "file": "lib/rules/no-constant-binary-expression.js",
+    "line": 64,
+    "column": 21,
+    "word": "Nullishness"
+  },
+  {
+    "file": "lib/rules/no-else-return.js",
+    "line": 396,
+    "column": 10,
+    "word": "consequents"
+  },
+  {
+    "file": "lib/rules/no-empty-function.js",
+    "line": 167,
+    "column": 16,
+    "word": "etters"
+  },
+  {
+    "file": "lib/rules/no-extend-native.js",
+    "line": 125,
+    "column": 14,
+    "word": "Propert"
+  },
+  {
+    "file": "lib/rules/no-extra-parens.js",
+    "line": 2,
+    "column": 27,
+    "word": "parenthesising"
+  },
+  {
+    "file": "lib/rules/no-extra-parens.js",
+    "line": 346,
+    "column": 46,
+    "word": "newed"
+  },
+  {
+    "file": "lib/rules/no-extra-parens.js",
+    "line": 695,
+    "column": 22,
+    "word": "logicals"
+  },
+  {
+    "file": "lib/rules/no-extra-parens.js",
+    "line": 701,
+    "column": 10,
+    "word": "prec"
+  },
+  {
+    "file": "lib/rules/no-implicit-coercion.js",
+    "line": 14,
+    "column": 39,
+    "word": "ndex"
+  },
+  {
+    "file": "lib/rules/no-inline-comments.js",
+    "line": 60,
+    "column": 5,
+    "word": "postamble"
+  },
+  {
+    "file": "lib/rules/no-inline-comments.js",
+    "line": 62,
+    "column": 7,
+    "word": "Postamble"
+  },
+  {
+    "file": "lib/rules/no-invalid-regexp.js",
+    "line": 13,
+    "column": 21,
+    "word": "dgimsuvy"
+  },
+  {
+    "file": "lib/rules/no-mixed-requires.js",
+    "line": 95,
+    "column": 57,
+    "word": "iojs"
+  },
+  {
+    "file": "lib/rules/no-mixed-spaces-and-tabs.js",
+    "line": 102,
+    "column": 50,
+    "word": "lookarounds"
+  },
+  {
+    "file": "lib/rules/no-new-native-nonconstructor.js",
+    "line": 33,
+    "column": 9,
+    "word": "Nonconstructor"
+  },
+  {
+    "file": "lib/rules/no-trailing-spaces.js",
+    "line": 88,
+    "column": 4,
+    "word": "NONBLANK"
+  },
+  {
+    "file": "lib/rules/no-useless-backreference.js",
+    "line": 83,
+    "column": 31,
+    "word": "bref"
+  },
+  {
+    "file": "lib/rules/no-useless-backreference.js",
+    "line": 127,
+    "column": 20,
+    "word": "bref's"
+  },
+  {
+    "file": "lib/rules/no-useless-escape.js",
+    "line": 34,
+    "column": 47,
+    "word": "nrvtbfux"
+  },
+  {
+    "file": "lib/rules/no-useless-escape.js",
+    "line": 35,
+    "column": 45,
+    "word": "Dfnp"
+  },
+  {
+    "file": "lib/rules/no-useless-escape.js",
+    "line": 35,
+    "column": 52,
+    "word": "Stvw"
+  },
+  {
+    "file": "lib/rules/no-useless-escape.js",
+    "line": 36,
+    "column": 17,
+    "word": "CHARCLASS"
+  },
+  {
+    "file": "lib/rules/no-useless-escape.js",
+    "line": 45,
+    "column": 13,
+    "word": "CLASSSET"
+  },
+  {
+    "file": "lib/rules/space-unary-ops.js",
+    "line": 167,
+    "column": 22,
+    "word": "Doesnt"
+  },
+  {
+    "file": "lib/rules/space-unary-ops.js",
+    "line": 303,
+    "column": 26,
+    "word": "Dont"
+  },
+  {
+    "file": "lib/rules/use-isnan.js",
+    "line": 142,
+    "column": 13,
+    "word": "Suggestable"
+  },
+  {
+    "file": "lib/rules/utils/ast-utils.js",
+    "line": 433,
+    "column": 34,
+    "word": "samely"
+  },
+  {
+    "file": "lib/services/processor-service.js",
+    "line": 87,
+    "column": 5,
+    "word": "Postprocesses"
+  },
+  {
+    "file": "lib/shared/text-table.js",
+    "line": 36,
+    "column": 8,
+    "word": "hsep"
+  },
+  {
+    "file": "package.json",
+    "line": 63,
+    "column": 20,
+    "word": "attw"
+  },
+  {
+    "file": "package.json",
+    "line": 147,
+    "column": 7,
+    "word": "trunkio"
+  },
+  {
+    "file": "package.json",
+    "line": 166,
+    "column": 6,
+    "word": "eslump"
+  },
+  {
+    "file": "package.json",
+    "line": 179,
+    "column": 6,
+    "word": "metascraper"
+  },
+  {
+    "file": "templates/blogpost.md.ejs",
+    "line": 18,
+    "column": 10,
+    "word": "linkify"
+  },
+  {
+    "file": "tests/bin/eslint.js",
+    "line": 507,
+    "column": 36,
+    "word": "eslintsuppressions"
+  },
+  {
+    "file": "tests/fixtures/bad-examples.md",
+    "line": 115,
+    "column": 35,
+    "word": "errorr"
+  },
+  {
+    "file": "tests/fixtures/code-path-analysis/try--try-finally-4.js",
+    "line": 45,
+    "column": 156,
+    "word": "Expressio"
+  },
+  {
+    "file": "tests/fixtures/config-hierarchy/file-structure.json",
+    "line": 19,
+    "column": 10,
+    "word": "subbroken"
+  },
+  {
+    "file": "tests/fixtures/config-hierarchy/file-structure.json",
+    "line": 22,
+    "column": 14,
+    "word": "subsubbroken"
+  },
+  {
+    "file": "tests/fixtures/config-hierarchy/file-structure.json",
+    "line": 36,
+    "column": 6,
+    "word": "fileexts"
+  },
+  {
+    "file": "tests/fixtures/config-hierarchy/file-structure.json",
+    "line": 57,
+    "column": 6,
+    "word": "packagejson"
+  },
+  {
+    "file": "tests/fixtures/config-hierarchy/file-structure.json",
+    "line": 64,
+    "column": 18,
+    "word": "subsubsubdir"
+  },
+  {
+    "file": "tests/fixtures/parsers/arrow-parens/identifier-type.js",
+    "line": 323,
+    "column": 17,
+    "word": "binop"
+  },
+  {
+    "file": "tests/fixtures/parsers/typescript-parsers/declare-class.js",
+    "line": 4,
+    "column": 14,
+    "word": "astexplorer"
+  },
+  {
+    "file": "tests/fixtures/rules/indent-legacy/indent-invalid-fixture-1.js",
+    "line": 440,
+    "column": 40,
+    "word": "youll"
+  },
+  {
+    "file": "tests/lib/cli-engine/formatters/html.js",
+    "line": 789,
+    "column": 42,
+    "word": "apos"
+  },
+  {
+    "file": "tests/lib/cli.js",
+    "line": 351,
+    "column": 11,
+    "word": "fakeformatter"
+  },
+  {
+    "file": "tests/lib/cli.js",
+    "line": 2013,
+    "column": 37,
+    "word": "oldx"
+  },
+  {
+    "file": "tests/lib/config/flat-config-array.js",
+    "line": 222,
+    "column": 19,
+    "word": "noniterable"
+  },
+  {
+    "file": "tests/lib/config/flat-config-array.js",
+    "line": 1932,
+    "column": 17,
+    "word": "truex"
+  },
+  {
+    "file": "tests/lib/config/flat-config-array.js",
+    "line": 2534,
+    "column": 9,
+    "word": "foox"
+  },
+  {
+    "file": "tests/lib/config/flat-config-array.js",
+    "line": 2560,
+    "column": 10,
+    "word": "doesnt"
+  },
+  {
+    "file": "tests/lib/eslint/eslint.js",
+    "line": 1046,
+    "column": 25,
+    "word": "foothis"
+  },
+  {
+    "file": "tests/lib/eslint/eslint.js",
+    "line": 1876,
+    "column": 21,
+    "word": "myjs"
+  },
+  {
+    "file": "tests/lib/eslint/eslint.js",
+    "line": 2379,
+    "column": 13,
+    "word": "alnum"
+  },
+  {
+    "file": "tests/lib/eslint/eslint.js",
+    "line": 2379,
+    "column": 25,
+    "word": "punct"
+  },
+  {
+    "file": "tests/lib/eslint/eslint.js",
+    "line": 2522,
+    "column": 42,
+    "word": "doesnotexist"
+  },
+  {
+    "file": "tests/lib/eslint/eslint.js",
+    "line": 2606,
+    "column": 46,
+    "word": "doesexist"
+  },
+  {
+    "file": "tests/lib/eslint/eslint.js",
+    "line": 3362,
+    "column": 62,
+    "word": "unignoring"
+  },
+  {
+    "file": "tests/lib/eslint/eslint.js",
+    "line": 3375,
+    "column": 26,
+    "word": "jsfmt"
+  },
+  {
+    "file": "tests/lib/eslint/eslint.js",
+    "line": 4294,
+    "column": 46,
+    "word": "fixmode"
+  },
+  {
+    "file": "tests/lib/eslint/eslint.js",
+    "line": 7476,
+    "column": 23,
+    "word": "mcts"
+  },
+  {
+    "file": "tests/lib/eslint/eslint.js",
+    "line": 9084,
+    "column": 19,
+    "word": "layou"
+  },
+  {
+    "file": "tests/lib/eslint/eslint.js",
+    "line": 9742,
+    "column": 51,
+    "word": "somenamespace"
+  },
+  {
+    "file": "tests/lib/eslint/eslint.js",
+    "line": 9764,
+    "column": 6,
+    "word": "doesntexist"
+  },
+  {
+    "file": "tests/lib/eslint/eslint.js",
+    "line": 11593,
+    "column": 19,
+    "word": "dignore"
+  },
+  {
+    "file": "tests/lib/eslint/eslint.js",
+    "line": 11855,
+    "column": 81,
+    "word": "myconf"
+  },
+  {
+    "file": "tests/lib/eslint/eslint.js",
+    "line": 12620,
+    "column": 10,
+    "word": "multitreading"
+  },
+  {
+    "file": "tests/lib/eslint/eslint.js",
+    "line": 12685,
+    "column": 8,
+    "word": "Multitreading"
+  },
+  {
+    "file": "tests/lib/eslint/eslint.js",
+    "line": 14994,
+    "column": 81,
+    "word": "unerasable"
+  },
+  {
+    "file": "tests/lib/linter/file-report.js",
+    "line": 669,
+    "column": 13,
+    "word": "fooo"
+  },
+  {
+    "file": "tests/lib/linter/file-report.js",
+    "line": 722,
+    "column": 15,
+    "word": "ncdar"
+  },
+  {
+    "file": "tests/lib/linter/linter.js",
+    "line": 5380,
+    "column": 11,
+    "word": "consolexlog"
+  },
+  {
+    "file": "tests/lib/linter/linter.js",
+    "line": 10684,
+    "column": 13,
+    "word": "postprocessors"
+  },
+  {
+    "file": "tests/lib/linter/source-code-fixer.js",
+    "line": 63,
+    "column": 13,
+    "word": "removestart"
+  },
+  {
+    "file": "tests/lib/linter/source-code-fixer.js",
+    "line": 70,
+    "column": 13,
+    "word": "removemiddle"
+  },
+  {
+    "file": "tests/lib/linter/source-code-fixer.js",
+    "line": 77,
+    "column": 13,
+    "word": "removeend"
+  },
+  {
+    "file": "tests/lib/rule-tester/rule-tester.js",
+    "line": 4096,
+    "column": 13,
+    "word": "outpt"
+  },
+  {
+    "file": "tests/lib/rule-tester/rule-tester.js",
+    "line": 5279,
+    "column": 12,
+    "word": "Subclassing"
+  },
+  {
+    "file": "tests/lib/rules/array-bracket-spacing.js",
+    "line": 74,
+    "column": 69,
+    "word": "n'quxx"
+  },
+  {
+    "file": "tests/lib/rules/array-element-newline.js",
+    "line": 42,
+    "column": 72,
+    "word": "nosomething"
+  },
+  {
+    "file": "tests/lib/rules/arrow-body-style.js",
+    "line": 27,
+    "column": 32,
+    "word": "nretv"
+  },
+  {
+    "file": "tests/lib/rules/brace-style.js",
+    "line": 34,
+    "column": 38,
+    "word": "Varint"
+  },
+  {
+    "file": "tests/lib/rules/brace-style.js",
+    "line": 176,
+    "column": 26,
+    "word": "fontstack"
+  },
+  {
+    "file": "tests/lib/rules/capitalized-comments.js",
+    "line": 355,
+    "column": 13,
+    "word": "über"
+  },
+  {
+    "file": "tests/lib/rules/capitalized-comments.js",
+    "line": 356,
+    "column": 15,
+    "word": "Über"
+  },
+  {
+    "file": "tests/lib/rules/capitalized-comments.js",
+    "line": 618,
+    "column": 30,
+    "word": "Mtavruli"
+  },
+  {
+    "file": "tests/lib/rules/capitalized-comments.js",
+    "line": 630,
+    "column": 22,
+    "word": "Warang"
+  },
+  {
+    "file": "tests/lib/rules/capitalized-comments.js",
+    "line": 630,
+    "column": 29,
+    "word": "Citi"
+  },
+  {
+    "file": "tests/lib/rules/comma-spacing.js",
+    "line": 22,
+    "column": 4,
+    "word": "myfunc"
+  },
+  {
+    "file": "tests/lib/rules/comma-style.js",
+    "line": 82,
+    "column": 27,
+    "word": "nsnd"
+  },
+  {
+    "file": "tests/lib/rules/comma-style.js",
+    "line": 334,
+    "column": 29,
+    "word": "fifi"
+  },
+  {
+    "file": "tests/lib/rules/function-paren-newline.js",
+    "line": 959,
+    "column": 31,
+    "word": "nqwe"
+  },
+  {
+    "file": "tests/lib/rules/getter-return.js",
+    "line": 259,
+    "column": 61,
+    "word": "getfoo"
+  },
+  {
+    "file": "tests/lib/rules/handle-callback-err.js",
+    "line": 86,
+    "column": 23,
+    "word": "rror"
+  },
+  {
+    "file": "tests/lib/rules/id-blacklist.js",
+    "line": 71,
+    "column": 61,
+    "word": "bingg"
+  },
+  {
+    "file": "tests/lib/rules/id-blacklist.js",
+    "line": 143,
+    "column": 32,
+    "word": "mydate"
+  },
+  {
+    "file": "tests/lib/rules/id-blacklist.js",
+    "line": 143,
+    "column": 42,
+    "word": "myarray"
+  },
+  {
+    "file": "tests/lib/rules/id-blacklist.js",
+    "line": 198,
+    "column": 38,
+    "word": "writability"
+  },
+  {
+    "file": "tests/lib/rules/id-length.js",
+    "line": 61,
+    "column": 16,
+    "word": "lalala"
+  },
+  {
+    "file": "tests/lib/rules/id-length.js",
+    "line": 834,
+    "column": 20,
+    "word": "NOTMATCHED"
+  },
+  {
+    "file": "tests/lib/rules/id-match.js",
+    "line": 27,
+    "column": 20,
+    "word": "Matthieu"
+  },
+  {
+    "file": "tests/lib/rules/id-match.js",
+    "line": 36,
+    "column": 11,
+    "word": "firstname"
+  },
+  {
+    "file": "tests/lib/rules/id-match.js",
+    "line": 48,
+    "column": 24,
+    "word": "Larcher"
+  },
+  {
+    "file": "tests/lib/rules/indent-legacy.js",
+    "line": 330,
+    "column": 8,
+    "word": "otherdata"
+  },
+  {
+    "file": "tests/lib/rules/indent-legacy.js",
+    "line": 899,
+    "column": 34,
+    "word": "xfilter"
+  },
+  {
+    "file": "tests/lib/rules/indent-legacy.js",
+    "line": 1581,
+    "column": 10,
+    "word": "barqux"
+  },
+  {
+    "file": "tests/lib/rules/indent-legacy.js",
+    "line": 1581,
+    "column": 18,
+    "word": "bazqux"
+  },
+  {
+    "file": "tests/lib/rules/indent.js",
+    "line": 423,
+    "column": 17,
+    "word": "lmnn"
+  },
+  {
+    "file": "tests/lib/rules/indent.js",
+    "line": 3080,
+    "column": 15,
+    "word": "curlies"
+  },
+  {
+    "file": "tests/lib/rules/indent.js",
+    "line": 3741,
+    "column": 30,
+    "word": "foop"
+  },
+  {
+    "file": "tests/lib/rules/key-spacing.js",
+    "line": 887,
+    "column": 39,
+    "word": "longlonglong"
+  },
+  {
+    "file": "tests/lib/rules/line-comment-position.js",
+    "line": 44,
+    "column": 14,
+    "word": "Meep"
+  },
+  {
+    "file": "tests/lib/rules/no-cond-assign.js",
+    "line": 263,
+    "column": 24,
+    "word": "bkufyydt"
+  },
+  {
+    "file": "tests/lib/rules/no-console.js",
+    "line": 41,
+    "column": 27,
+    "word": "myconsole"
+  },
+  {
+    "file": "tests/lib/rules/no-constant-condition.js",
+    "line": 77,
+    "column": 23,
+    "word": "fooa"
+  },
+  {
+    "file": "tests/lib/rules/no-constant-condition.js",
+    "line": 174,
+    "column": 8,
+    "word": "checkloops"
+  },
+  {
+    "file": "tests/lib/rules/no-constructor-return.js",
+    "line": 32,
+    "column": 16,
+    "word": "kumiko"
+  },
+  {
+    "file": "tests/lib/rules/no-constructor-return.js",
+    "line": 38,
+    "column": 19,
+    "word": "Kumiko"
+  },
+  {
+    "file": "tests/lib/rules/no-constructor-return.js",
+    "line": 38,
+    "column": 26,
+    "word": "Oumae"
+  },
+  {
+    "file": "tests/lib/rules/no-dupe-else-if.js",
+    "line": 55,
+    "column": 55,
+    "word": "subconditions"
+  },
+  {
+    "file": "tests/lib/rules/no-duplicate-imports.js",
+    "line": 117,
+    "column": 23,
+    "word": "modns"
+  },
+  {
+    "file": "tests/lib/rules/no-duplicate-imports.js",
+    "line": 359,
+    "column": 28,
+    "word": "Modns"
+  },
+  {
+    "file": "tests/lib/rules/no-else-return.js",
+    "line": 239,
+    "column": 68,
+    "word": "nqaz"
+  },
+  {
+    "file": "tests/lib/rules/no-eval.js",
+    "line": 66,
+    "column": 22,
+    "word": "noneval"
+  },
+  {
+    "file": "tests/lib/rules/no-implied-eval.js",
+    "line": 367,
+    "column": 16,
+    "word": "wibble"
+  },
+  {
+    "file": "tests/lib/rules/no-inline-comments.js",
+    "line": 128,
+    "column": 22,
+    "word": "otherthing"
+  },
+  {
+    "file": "tests/lib/rules/no-invalid-regexp.js",
+    "line": 70,
+    "column": 29,
+    "word": "Nandinagari"
+  },
+  {
+    "file": "tests/lib/rules/no-invalid-regexp.js",
+    "line": 74,
+    "column": 29,
+    "word": "Cpmn"
+  },
+  {
+    "file": "tests/lib/rules/no-invalid-regexp.js",
+    "line": 75,
+    "column": 29,
+    "word": "Cypro"
+  },
+  {
+    "file": "tests/lib/rules/no-invalid-regexp.js",
+    "line": 76,
+    "column": 33,
+    "word": "Uyghur"
+  },
+  {
+    "file": "tests/lib/rules/no-invalid-regexp.js",
+    "line": 77,
+    "column": 29,
+    "word": "Ougr"
+  },
+  {
+    "file": "tests/lib/rules/no-invalid-regexp.js",
+    "line": 78,
+    "column": 29,
+    "word": "Tangsa"
+  },
+  {
+    "file": "tests/lib/rules/no-invalid-regexp.js",
+    "line": 79,
+    "column": 29,
+    "word": "Tnsa"
+  },
+  {
+    "file": "tests/lib/rules/no-invalid-regexp.js",
+    "line": 81,
+    "column": 29,
+    "word": "Vith"
+  },
+  {
+    "file": "tests/lib/rules/no-invalid-regexp.js",
+    "line": 82,
+    "column": 29,
+    "word": "Vithkuqi"
+  },
+  {
+    "file": "tests/lib/rules/no-loop-func.js",
+    "line": 840,
+    "column": 8,
+    "word": "Unconfigured"
+  },
+  {
+    "file": "tests/lib/rules/no-loop-func.js",
+    "line": 856,
+    "column": 52,
+    "word": "unconfig"
+  },
+  {
+    "file": "tests/lib/rules/no-prototype-builtins.js",
+    "line": 48,
+    "column": 28,
+    "word": "Enumerabl"
+  },
+  {
+    "file": "tests/lib/rules/no-restricted-imports.js",
+    "line": 799,
+    "column": 27,
+    "word": "subimports"
+  },
+  {
+    "file": "tests/lib/rules/no-script-url.js",
+    "line": 25,
+    "column": 15,
+    "word": "xjavascript"
+  },
+  {
+    "file": "tests/lib/rules/no-shadow.js",
+    "line": 3493,
+    "column": 17,
+    "word": "Foopy"
+  },
+  {
+    "file": "tests/lib/rules/no-tabs.js",
+    "line": 23,
+    "column": 34,
+    "word": "sdfdsf"
+  },
+  {
+    "file": "tests/lib/rules/no-tabs.js",
+    "line": 60,
+    "column": 39,
+    "word": "tsdfdsf"
+  },
+  {
+    "file": "tests/lib/rules/no-undefined.js",
+    "line": 42,
+    "column": 4,
+    "word": "ndefined"
+  },
+  {
+    "file": "tests/lib/rules/no-unexpected-multiline.js",
+    "line": 335,
+    "column": 22,
+    "word": "gimuygimuygimuy"
+  },
+  {
+    "file": "tests/lib/rules/no-unused-vars.js",
+    "line": 2002,
+    "column": 23,
+    "word": "fooz"
+  },
+  {
+    "file": "tests/lib/rules/no-use-before-define.js",
+    "line": 2272,
+    "column": 21,
+    "word": "Xopenport"
+  },
+  {
+    "file": "tests/lib/rules/no-warning-comments.js",
+    "line": 54,
+    "column": 26,
+    "word": "aeiou"
+  },
+  {
+    "file": "tests/lib/rules/no-warning-comments.js",
+    "line": 240,
+    "column": 21,
+    "word": "litera"
+  },
+  {
+    "file": "tests/lib/rules/object-shorthand.js",
+    "line": 242,
+    "column": 21,
+    "word": "afoob"
+  },
+  {
+    "file": "tests/lib/rules/prefer-arrow-callback.js",
+    "line": 238,
+    "column": 27,
+    "word": "amet"
+  },
+  {
+    "file": "tests/lib/rules/prefer-object-spread.js",
+    "line": 201,
+    "column": 105,
+    "word": "butwhy"
+  },
+  {
+    "file": "tests/lib/rules/prefer-object-spread.js",
+    "line": 654,
+    "column": 39,
+    "word": "somethingelse"
+  },
+  {
+    "file": "tests/lib/rules/prefer-regex-literals.js",
+    "line": 1618,
+    "column": 27,
+    "word": "someregular"
+  },
+  {
+    "file": "tests/lib/rules/prefer-regex-literals.js",
+    "line": 1646,
+    "column": 182,
+    "word": "notregbutstring"
+  },
+  {
+    "file": "tests/lib/rules/prefer-regex-literals.js",
+    "line": 2594,
+    "column": 53,
+    "word": "avalue"
+  },
+  {
+    "file": "tests/lib/rules/prefer-regex-literals.js",
+    "line": 2785,
+    "column": 23,
+    "word": "mysafereg"
+  },
+  {
+    "file": "tests/lib/rules/quotes.js",
+    "line": 775,
+    "column": 15,
+    "word": "notoctal"
+  },
+  {
+    "file": "tests/lib/rules/require-unicode-regexp.js",
+    "line": 79,
+    "column": 17,
+    "word": "gimvy"
+  },
+  {
+    "file": "tests/lib/rules/require-unicode-regexp.js",
+    "line": 98,
+    "column": 26,
+    "word": "gimv"
+  },
+  {
+    "file": "tests/lib/rules/require-unicode-regexp.js",
+    "line": 137,
+    "column": 16,
+    "word": "gimy"
+  },
+  {
+    "file": "tests/lib/rules/require-unicode-regexp.js",
+    "line": 144,
+    "column": 22,
+    "word": "gimyu"
+  },
+  {
+    "file": "tests/lib/rules/semi.js",
+    "line": 380,
+    "column": 59,
+    "word": "mylib"
+  },
+  {
+    "file": "tests/lib/rules/sort-keys.js",
+    "line": 509,
+    "column": 24,
+    "word": "abce"
+  },
+  {
+    "file": "tests/lib/rules/spaced-comment.js",
+    "line": 150,
+    "column": 45,
+    "word": "xmldoc"
+  },
+  {
+    "file": "tests/lib/rules/spaced-comment.js",
+    "line": 769,
+    "column": 14,
+    "word": "endregionfoo"
+  },
+  {
+    "file": "tests/lib/rules/utils/ast-utils.js",
+    "line": 1315,
+    "column": 8,
+    "word": "ncde"
+  },
+  {
+    "file": "tests/lib/rules/utils/ast-utils.js",
+    "line": 2092,
+    "column": 10,
+    "word": "invalidtoken"
+  },
+  {
+    "file": "tests/lib/rules/valid-typeof.js",
+    "line": 98,
+    "column": 31,
+    "word": "umdefined"
+  },
+  {
+    "file": "tests/lib/shared/string-utils.js",
+    "line": 40,
+    "column": 6,
+    "word": "uppercases"
+  },
+  {
+    "file": "tests/lib/types/types.test.ts",
+    "line": 1038,
+    "column": 7,
+    "word": "eslinter"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 91,
+    "column": 14,
+    "word": "shtylman"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 540,
+    "column": 8,
+    "word": "SVGCSS"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 594,
+    "column": 8,
+    "word": "SVGH"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 595,
+    "column": 8,
+    "word": "SVGICC"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 603,
+    "column": 8,
+    "word": "SVGM"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 667,
+    "column": 8,
+    "word": "SVGV"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 771,
+    "column": 8,
+    "word": "toint"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 793,
+    "column": 8,
+    "word": "pushd"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 794,
+    "column": 8,
+    "word": "popd"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 821,
+    "column": 8,
+    "word": "dijit"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 822,
+    "column": 8,
+    "word": "dojox"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 872,
+    "column": 8,
+    "word": "Swiff"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 908,
+    "column": 8,
+    "word": "Autocompleter"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 912,
+    "column": 8,
+    "word": "Draggables"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 913,
+    "column": 8,
+    "word": "Droppables"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 918,
+    "column": 8,
+    "word": "Scriptaculous"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 936,
+    "column": 15,
+    "word": "maxlen"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 962,
+    "column": 23,
+    "word": "jscript"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 962,
+    "column": 57,
+    "word": "livescript"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 1082,
+    "column": 14,
+    "word": "quotmark"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 1242,
+    "column": 32,
+    "word": "Kovalyov"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 1289,
+    "column": 12,
+    "word": "anonname"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 1328,
+    "column": 10,
+    "word": "funcscope"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 1331,
+    "column": 10,
+    "word": "immed"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 1334,
+    "column": 10,
+    "word": "lastsemic"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 1336,
+    "column": 10,
+    "word": "laxbreak"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 1337,
+    "column": 10,
+    "word": "laxcomma"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 1338,
+    "column": 10,
+    "word": "loopfunc"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 1341,
+    "column": 10,
+    "word": "multistr"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 1342,
+    "column": 10,
+    "word": "newcap"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 1343,
+    "column": 10,
+    "word": "noarg"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 1348,
+    "column": 10,
+    "word": "nonew"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 1354,
+    "column": 10,
+    "word": "passfail"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 1369,
+    "column": 10,
+    "word": "supernew"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 1372,
+    "column": 10,
+    "word": "validthis"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 1374,
+    "column": 10,
+    "word": "withstmt"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 1382,
+    "column": 10,
+    "word": "onecase"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 1384,
+    "column": 10,
+    "word": "regexdash"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 1392,
+    "column": 10,
+    "word": "maxerr"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 1396,
+    "column": 10,
+    "word": "maxstatements"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 1398,
+    "column": 10,
+    "word": "maxparams"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 1399,
+    "column": 10,
+    "word": "maxcomplexity"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 1405,
+    "column": 10,
+    "word": "latedef"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 1437,
+    "column": 9,
+    "word": "functionicity"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 1446,
+    "column": 9,
+    "word": "funct"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 1450,
+    "column": 9,
+    "word": "inblock"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 1456,
+    "column": 9,
+    "word": "noreach"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 1460,
+    "column": 9,
+    "word": "unuseds"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 1704,
+    "column": 23,
+    "word": "undefs"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 1807,
+    "column": 17,
+    "word": "addlabel"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 1850,
+    "column": 34,
+    "word": "getlabel"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 1981,
+    "column": 13,
+    "word": "numvals"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 2144,
+    "column": 24,
+    "word": "Newcap"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 2504,
+    "column": 17,
+    "word": "nobreaknonadjacent"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 2553,
+    "column": 17,
+    "word": "nobreakcomma"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 2772,
+    "column": 17,
+    "word": "reservevar"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 2900,
+    "column": 17,
+    "word": "assignop"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 3066,
+    "column": 17,
+    "word": "bitwiseassignop"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 3129,
+    "column": 11,
+    "word": "fnparam"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 3133,
+    "column": 17,
+    "word": "optionalidentifier"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 3488,
+    "column": 11,
+    "word": "isfunc"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 3490,
+    "column": 47,
+    "word": "isfatarrow"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 3789,
+    "column": 23,
+    "word": "comparray"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 3981,
+    "column": 24,
+    "word": "assignadd"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 3982,
+    "column": 24,
+    "word": "assignsub"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 3983,
+    "column": 24,
+    "word": "assignmult"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 3984,
+    "column": 24,
+    "word": "assigndiv"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 3987,
+    "column": 24,
+    "word": "assignmod"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 3989,
+    "column": 31,
+    "word": "assignbitand"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 3990,
+    "column": 31,
+    "word": "assignbitor"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 3991,
+    "column": 31,
+    "word": "assignbitxor"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 3992,
+    "column": 32,
+    "word": "assignshiftleft"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 3993,
+    "column": 32,
+    "word": "assignshiftright"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 3996,
+    "column": 10,
+    "word": "assignshiftrightunsigned"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 4038,
+    "column": 14,
+    "word": "Precendence"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 4155,
+    "column": 20,
+    "word": "mult"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 4159,
+    "column": 22,
+    "word": "postinc"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 4160,
+    "column": 22,
+    "word": "preinc"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 4163,
+    "column": 22,
+    "word": "postdec"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 4164,
+    "column": 22,
+    "word": "predec"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 4766,
+    "column": 17,
+    "word": "functionparams"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 4915,
+    "column": 9,
+    "word": "fatarrowparams"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 4932,
+    "column": 12,
+    "word": "loopage"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 4991,
+    "column": 17,
+    "word": "lastcharacter"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 5106,
+    "column": 27,
+    "word": "isclassdef"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 5121,
+    "column": 23,
+    "word": "basictkn"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 5509,
+    "column": 12,
+    "word": "conststatement"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 5736,
+    "column": 12,
+    "word": "letstatement"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 5737,
+    "column": 34,
+    "word": "letblock"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 5898,
+    "column": 9,
+    "word": "classtail"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 6356,
+    "column": 13,
+    "word": "letscope"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 6357,
+    "column": 13,
+    "word": "foreachtok"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 6379,
+    "column": 13,
+    "word": "nextop"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 6381,
+    "column": 13,
+    "word": "inof"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 6820,
+    "column": 15,
+    "word": "exportee"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 6941,
+    "column": 56,
+    "word": "squarebracket"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 6941,
+    "column": 75,
+    "word": "curlybracket"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 7050,
+    "column": 14,
+    "word": "carrays"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 7710,
+    "column": 15,
+    "word": "warnable"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 7904,
+    "column": 13,
+    "word": "implieds"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 8043,
+    "column": 15,
+    "word": "Unbegun"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 8090,
+    "column": 48,
+    "word": "preferrable"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 8485,
+    "column": 13,
+    "word": "prereg"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 8839,
+    "column": 19,
+    "word": "unbegun"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 8981,
+    "column": 52,
+    "word": "Titlecase"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 8986,
+    "column": 21,
+    "word": "Traceur"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 9231,
+    "column": 62,
+    "word": "octals"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 10347,
+    "column": 35,
+    "word": "Ashkenas"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 10491,
+    "column": 15,
+    "word": "foldl"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 10533,
+    "column": 67,
+    "word": "foldr"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 11539,
+    "column": 29,
+    "word": "egal"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 11722,
+    "column": 27,
+    "word": "inspectable"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 11788,
+    "column": 13,
+    "word": "accum"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 11908,
+    "column": 56,
+    "word": "Resig's"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 13373,
+    "column": 11,
+    "word": "Fastpath"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 14235,
+    "column": 10,
+    "word": "Whoh"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 14487,
+    "column": 16,
+    "word": "verifuint"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 14674,
+    "column": 54,
+    "word": "wuint"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 14700,
+    "column": 16,
+    "word": "verifsint"
+  },
+  {
+    "file": "tests/performance/jshint.js",
+    "line": 14722,
+    "column": 16,
+    "word": "verif"
+  },
+  {
+    "file": "tests/tools/check-rule-examples.js",
+    "line": 78,
+    "column": 12,
+    "word": "mbad"
+  },
+  {
+    "file": "tests/tools/check-rule-examples.js",
+    "line": 79,
+    "column": 37,
+    "word": "merror"
+  },
+  {
+    "file": "tests/tools/eslint-fuzzer.js",
+    "line": 169,
+    "column": 23,
+    "word": "foos"
+  },
+  {
+    "file": "tools/check-emfile-handling.js",
+    "line": 30,
+    "column": 10,
+    "word": "Sonoma"
+  },
+  {
+    "file": "tools/fuzzer-runner.js",
+    "line": 50,
+    "column": 36,
+    "word": "elapseds"
+  },
+  {
+    "file": "tools/update-readme.js",
+    "line": 39,
+    "column": 31,
+    "word": "Prerendered"
+  }
+]

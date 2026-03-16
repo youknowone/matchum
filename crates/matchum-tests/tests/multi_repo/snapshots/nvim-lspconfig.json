@@ -1,0 +1,3692 @@
+[
+  {
+    "file": "CONTRIBUTING.md",
+    "line": 1,
+    "column": 19,
+    "word": "nvim"
+  },
+  {
+    "file": "CONTRIBUTING.md",
+    "line": 1,
+    "column": 24,
+    "word": "lspconfig"
+  },
+  {
+    "file": "CONTRIBUTING.md",
+    "line": 12,
+    "column": 81,
+    "word": "upstreamed"
+  },
+  {
+    "file": "CONTRIBUTING.md",
+    "line": 12,
+    "column": 95,
+    "word": "Nvim"
+  },
+  {
+    "file": "CONTRIBUTING.md",
+    "line": 35,
+    "column": 118,
+    "word": "jdtls"
+  },
+  {
+    "file": "CONTRIBUTING.md",
+    "line": 37,
+    "column": 303,
+    "word": "jsonnet"
+  },
+  {
+    "file": "CONTRIBUTING.md",
+    "line": 55,
+    "column": 25,
+    "word": "bufnr"
+  },
+  {
+    "file": "CONTRIBUTING.md",
+    "line": 57,
+    "column": 139,
+    "word": "keymap"
+  },
+  {
+    "file": "CONTRIBUTING.md",
+    "line": 71,
+    "column": 20,
+    "word": "langserver"
+  },
+  {
+    "file": "CONTRIBUTING.md",
+    "line": 74,
+    "column": 6,
+    "word": "pyproject"
+  },
+  {
+    "file": "CONTRIBUTING.md",
+    "line": 78,
+    "column": 6,
+    "word": "Pipfile"
+  },
+  {
+    "file": "CONTRIBUTING.md",
+    "line": 79,
+    "column": 6,
+    "word": "pyrightconfig"
+  },
+  {
+    "file": "CONTRIBUTING.md",
+    "line": 93,
+    "column": 28,
+    "word": "organizeimports"
+  },
+  {
+    "file": "CONTRIBUTING.md",
+    "line": 170,
+    "column": 4,
+    "word": "luals"
+  },
+  {
+    "file": "CONTRIBUTING.md",
+    "line": 171,
+    "column": 4,
+    "word": "stylua"
+  },
+  {
+    "file": "CONTRIBUTING.md",
+    "line": 182,
+    "column": 35,
+    "word": "docstrings"
+  },
+  {
+    "file": "CONTRIBUTING.md",
+    "line": 188,
+    "column": 56,
+    "word": "luafile"
+  },
+  {
+    "file": "README.md",
+    "line": 145,
+    "column": 95,
+    "word": "exrc"
+  },
+  {
+    "file": "README.md",
+    "line": 148,
+    "column": 42,
+    "word": "getinfo"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 8,
+    "column": 4,
+    "word": "agda"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 12,
+    "column": 4,
+    "word": "anakin"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 13,
+    "column": 4,
+    "word": "angularls"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 14,
+    "column": 4,
+    "word": "ansiblels"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 15,
+    "column": 4,
+    "word": "antlersls"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 22,
+    "column": 4,
+    "word": "atopile"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 23,
+    "column": 4,
+    "word": "autohotkey"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 24,
+    "column": 4,
+    "word": "autotools"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 29,
+    "column": 4,
+    "word": "basedpyright"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 30,
+    "column": 4,
+    "word": "bashls"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 32,
+    "column": 4,
+    "word": "bazelrc"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 33,
+    "column": 4,
+    "word": "beancount"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 36,
+    "column": 4,
+    "word": "bitbake"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 38,
+    "column": 4,
+    "word": "bqls"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 48,
+    "column": 4,
+    "word": "ccls"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 51,
+    "column": 4,
+    "word": "circom"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 57,
+    "column": 4,
+    "word": "codebook"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 58,
+    "column": 4,
+    "word": "coffeesense"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 59,
+    "column": 4,
+    "word": "contextive"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 66,
+    "column": 4,
+    "word": "cssls"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 67,
+    "column": 4,
+    "word": "cssmodules"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 73,
+    "column": 4,
+    "word": "dafny"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 75,
+    "column": 4,
+    "word": "dartls"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 76,
+    "column": 4,
+    "word": "dcmls"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 77,
+    "column": 4,
+    "word": "debputy"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 78,
+    "column": 4,
+    "word": "denols"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 79,
+    "column": 4,
+    "word": "dhall"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 80,
+    "column": 4,
+    "word": "diagnosticls"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 82,
+    "column": 4,
+    "word": "djls"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 83,
+    "column": 4,
+    "word": "djlsp"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 86,
+    "column": 4,
+    "word": "dockerls"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 87,
+    "column": 4,
+    "word": "dolmenls"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 88,
+    "column": 4,
+    "word": "dotls"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 92,
+    "column": 4,
+    "word": "earthlyls"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 93,
+    "column": 4,
+    "word": "ecsact"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 95,
+    "column": 4,
+    "word": "elixirls"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 96,
+    "column": 4,
+    "word": "elmls"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 101,
+    "column": 4,
+    "word": "emmylua"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 103,
+    "column": 4,
+    "word": "esbonio"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 113,
+    "column": 4,
+    "word": "fortls"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 114,
+    "column": 4,
+    "word": "fsautocomplete"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 116,
+    "column": 4,
+    "word": "fstar"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 119,
+    "column": 4,
+    "word": "gdshader"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 121,
+    "column": 4,
+    "word": "ghcide"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 122,
+    "column": 4,
+    "word": "ghdl"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 123,
+    "column": 4,
+    "word": "ginko"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 129,
+    "column": 4,
+    "word": "glsl"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 130,
+    "column": 4,
+    "word": "glslls"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 132,
+    "column": 4,
+    "word": "gnls"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 133,
+    "column": 4,
+    "word": "golangci"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 134,
+    "column": 4,
+    "word": "gopls"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 138,
+    "column": 4,
+    "word": "groovyls"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 144,
+    "column": 4,
+    "word": "hhvm"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 146,
+    "column": 4,
+    "word": "hlasm"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 149,
+    "column": 4,
+    "word": "hoon"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 151,
+    "column": 4,
+    "word": "htmx"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 153,
+    "column": 4,
+    "word": "hylo"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 154,
+    "column": 4,
+    "word": "hyprls"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 155,
+    "column": 4,
+    "word": "idris"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 156,
+    "column": 4,
+    "word": "intelephense"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 162,
+    "column": 4,
+    "word": "jqls"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 163,
+    "column": 4,
+    "word": "jsonls"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 165,
+    "column": 4,
+    "word": "julials"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 168,
+    "column": 4,
+    "word": "koka"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 171,
+    "column": 4,
+    "word": "kulala"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 172,
+    "column": 4,
+    "word": "laravel"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 174,
+    "column": 4,
+    "word": "lelwel"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 175,
+    "column": 4,
+    "word": "lemminx"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 178,
+    "column": 4,
+    "word": "ltex"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 185,
+    "column": 4,
+    "word": "marko"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 189,
+    "column": 4,
+    "word": "mesonlsp"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 193,
+    "column": 4,
+    "word": "mlir"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 194,
+    "column": 9,
+    "word": "pdll"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 197,
+    "column": 4,
+    "word": "motoko"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 199,
+    "column": 4,
+    "word": "msbuild"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 202,
+    "column": 4,
+    "word": "nelua"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 203,
+    "column": 4,
+    "word": "neocmake"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 204,
+    "column": 4,
+    "word": "nextflow"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 205,
+    "column": 4,
+    "word": "nextls"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 210,
+    "column": 4,
+    "word": "nimls"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 211,
+    "column": 4,
+    "word": "nixd"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 215,
+    "column": 4,
+    "word": "nxls"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 216,
+    "column": 4,
+    "word": "ocamllsp"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 218,
+    "column": 4,
+    "word": "omnisharp"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 220,
+    "column": 4,
+    "word": "openscad"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 223,
+    "column": 4,
+    "word": "oxfmt"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 224,
+    "column": 4,
+    "word": "oxlint"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 226,
+    "column": 4,
+    "word": "pasls"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 227,
+    "column": 4,
+    "word": "pbls"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 228,
+    "column": 4,
+    "word": "perlls"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 229,
+    "column": 4,
+    "word": "perlnavigator"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 230,
+    "column": 4,
+    "word": "perlpls"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 232,
+    "column": 4,
+    "word": "phan"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 233,
+    "column": 4,
+    "word": "phpactor"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 234,
+    "column": 4,
+    "word": "phptools"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 235,
+    "column": 4,
+    "word": "pico"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 239,
+    "column": 4,
+    "word": "poryscript"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 242,
+    "column": 4,
+    "word": "prismals"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 244,
+    "column": 4,
+    "word": "prosemd"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 245,
+    "column": 4,
+    "word": "protols"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 249,
+    "column": 4,
+    "word": "purescriptls"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 250,
+    "column": 4,
+    "word": "pylsp"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 251,
+    "column": 4,
+    "word": "pylyzer"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 253,
+    "column": 4,
+    "word": "pyrefly"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 255,
+    "column": 4,
+    "word": "qmlls"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 259,
+    "column": 4,
+    "word": "raku"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 262,
+    "column": 4,
+    "word": "regols"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 264,
+    "column": 4,
+    "word": "rescriptls"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 266,
+    "column": 4,
+    "word": "rnix"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 267,
+    "column": 4,
+    "word": "robotcode"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 268,
+    "column": 4,
+    "word": "robotframework"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 272,
+    "column": 4,
+    "word": "rpmspec"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 273,
+    "column": 4,
+    "word": "rubocop"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 277,
+    "column": 4,
+    "word": "rumdl"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 282,
+    "column": 4,
+    "word": "scry"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 286,
+    "column": 4,
+    "word": "sixtyfps"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 287,
+    "column": 4,
+    "word": "slangd"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 288,
+    "column": 4,
+    "word": "slint"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 293,
+    "column": 4,
+    "word": "solang"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 294,
+    "column": 4,
+    "word": "solargraph"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 299,
+    "column": 4,
+    "word": "somesass"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 301,
+    "column": 4,
+    "word": "sourcekit"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 303,
+    "column": 4,
+    "word": "spyglassmc"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 304,
+    "column": 4,
+    "word": "sqlls"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 305,
+    "column": 4,
+    "word": "sqls"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 306,
+    "column": 4,
+    "word": "sqruff"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 307,
+    "column": 4,
+    "word": "standardrb"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 308,
+    "column": 4,
+    "word": "starlark"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 309,
+    "column": 4,
+    "word": "starpls"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 310,
+    "column": 4,
+    "word": "statix"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 316,
+    "column": 4,
+    "word": "superhtml"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 318,
+    "column": 4,
+    "word": "svlangserver"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 319,
+    "column": 4,
+    "word": "svls"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 320,
+    "column": 10,
+    "word": "mesonls"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 326,
+    "column": 4,
+    "word": "taplo"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 327,
+    "column": 4,
+    "word": "tblgen"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 328,
+    "column": 4,
+    "word": "tclsp"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 330,
+    "column": 4,
+    "word": "templ"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 331,
+    "column": 4,
+    "word": "termux"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 333,
+    "column": 4,
+    "word": "terraformls"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 334,
+    "column": 4,
+    "word": "texlab"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 335,
+    "column": 4,
+    "word": "textlsp"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 336,
+    "column": 4,
+    "word": "tflint"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 338,
+    "column": 4,
+    "word": "thriftls"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 340,
+    "column": 4,
+    "word": "tinymist"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 342,
+    "column": 4,
+    "word": "tombi"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 345,
+    "column": 4,
+    "word": "tsgo"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 347,
+    "column": 4,
+    "word": "ttags"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 353,
+    "column": 4,
+    "word": "typeprof"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 355,
+    "column": 4,
+    "word": "typst"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 356,
+    "column": 4,
+    "word": "uiua"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 357,
+    "column": 4,
+    "word": "ungrammar"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 359,
+    "column": 4,
+    "word": "unocss"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 360,
+    "column": 4,
+    "word": "uvls"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 365,
+    "column": 4,
+    "word": "vectorcode"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 366,
+    "column": 4,
+    "word": "verible"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 367,
+    "column": 4,
+    "word": "veridian"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 368,
+    "column": 4,
+    "word": "veryl"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 369,
+    "column": 4,
+    "word": "vespa"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 370,
+    "column": 4,
+    "word": "vhdl"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 371,
+    "column": 4,
+    "word": "vimls"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 372,
+    "column": 4,
+    "word": "visualforce"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 375,
+    "column": 4,
+    "word": "vscoqtop"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 376,
+    "column": 4,
+    "word": "vsrocq"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 377,
+    "column": 4,
+    "word": "vtsls"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 381,
+    "column": 4,
+    "word": "wgsl"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 382,
+    "column": 4,
+    "word": "yamlls"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 389,
+    "column": 4,
+    "word": "zuban"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 433,
+    "column": 21,
+    "word": "Agda"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 521,
+    "column": 1,
+    "word": "autocmd"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 576,
+    "column": 6,
+    "word": "anakinls"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 590,
+    "column": 7,
+    "word": "pyflakes"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 604,
+    "column": 15,
+    "word": "ngserver"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 620,
+    "column": 65,
+    "word": "htmlangular"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 726,
+    "column": 35,
+    "word": "jorje"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 736,
+    "column": 27,
+    "word": "stdpath"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 759,
+    "column": 14,
+    "word": "apexcode"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 763,
+    "column": 6,
+    "word": "sfdx"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 808,
+    "column": 53,
+    "word": "FQBN"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 821,
+    "column": 9,
+    "word": "fqbn"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 871,
+    "column": 21,
+    "word": "NASM"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 888,
+    "column": 13,
+    "word": "vmasm"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 902,
+    "column": 48,
+    "word": "sgconfig"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 943,
+    "column": 11,
+    "word": "pkgs"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 1016,
+    "column": 63,
+    "word": "clickhouse"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 1166,
+    "column": 11,
+    "word": "Foldin"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 1313,
+    "column": 21,
+    "word": "Millis"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 1596,
+    "column": 7,
+    "word": "mktemp"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 1728,
+    "column": 25,
+    "word": "kitagry"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 1760,
+    "column": 2,
+    "word": "brightscript"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 1762,
+    "column": 16,
+    "word": "brighterscript"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 1864,
+    "column": 7,
+    "word": "buckconfig"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 2004,
+    "column": 6,
+    "word": "scarb"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 2018,
+    "column": 6,
+    "word": "Scarb"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 2041,
+    "column": 25,
+    "word": "frounding"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 2059,
+    "column": 18,
+    "word": "objc"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 2059,
+    "column": 26,
+    "word": "objcpp"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 2059,
+    "column": 36,
+    "word": "cuda"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 2144,
+    "column": 2,
+    "word": "Circom"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 2177,
+    "column": 18,
+    "word": "myproject"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 2234,
+    "column": 6,
+    "word": "clar"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 2394,
+    "column": 21,
+    "word": "Contextive"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 2652,
+    "column": 17,
+    "word": "langservers"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 2924,
+    "column": 17,
+    "word": "Dafny"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 2951,
+    "column": 25,
+    "word": "cuelang"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 2961,
+    "column": 6,
+    "word": "cuelsp"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 3006,
+    "column": 6,
+    "word": "pubspec"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 3065,
+    "column": 6,
+    "word": "debcontrol"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 3065,
+    "column": 20,
+    "word": "debcopyright"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 3065,
+    "column": 36,
+    "word": "debchangelog"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 3065,
+    "column": 52,
+    "word": "autopkgtest"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 3080,
+    "column": 28,
+    "word": "codefences"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 3201,
+    "column": 75,
+    "word": "caterva"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 3219,
+    "column": 13,
+    "word": "plaintex"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 3246,
+    "column": 6,
+    "word": "htmldjango"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 3400,
+    "column": 34,
+    "word": "opam"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 3417,
+    "column": 14,
+    "word": "tptp"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 3417,
+    "column": 34,
+    "word": "icnf"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 3527,
+    "column": 33,
+    "word": "hanzi"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 3540,
+    "column": 25,
+    "word": "Devicetree"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 3540,
+    "column": 70,
+    "word": "devicetree"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 3564,
+    "column": 13,
+    "word": "dtsi"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 3599,
+    "column": 6,
+    "word": "earthfile"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 3603,
+    "column": 6,
+    "word": "Earthfile"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 3612,
+    "column": 21,
+    "word": "Ecsact"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 3649,
+    "column": 19,
+    "word": "autocommand"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 3719,
+    "column": 16,
+    "word": "eelixir"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 3719,
+    "column": 27,
+    "word": "heex"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 3790,
+    "column": 6,
+    "word": "rebar"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 3832,
+    "column": 17,
+    "word": "olrtg"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 3847,
+    "column": 22,
+    "word": "eruby"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 3890,
+    "column": 1,
+    "word": "Emmylua"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 3914,
+    "column": 7,
+    "word": "luarc"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 3914,
+    "column": 22,
+    "word": "emmyrc"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 3914,
+    "column": 38,
+    "word": "luacheckrc"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 3958,
+    "column": 1,
+    "word": "Esbonio"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 3978,
+    "column": 21,
+    "word": "virtualenv"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 4219,
+    "column": 81,
+    "word": "flsproject"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 4309,
+    "column": 7,
+    "word": "flowconfig"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 4413,
+    "column": 52,
+    "word": "FSAC"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 4425,
+    "column": 168,
+    "word": "adelarsq"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 4425,
+    "column": 177,
+    "word": "neofsharp"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 4455,
+    "column": 44,
+    "word": "failwith"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 4618,
+    "column": 18,
+    "word": "gdshaderinc"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 4633,
+    "column": 15,
+    "word": "forgejo"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 4633,
+    "column": 51,
+    "word": "gitea"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 4701,
+    "column": 17,
+    "word": "lhaskell"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 4714,
+    "column": 23,
+    "word": "VHDL"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 4716,
+    "column": 22,
+    "word": "pyghdl"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 4925,
+    "column": 32,
+    "word": "WGSL"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 5043,
+    "column": 7,
+    "word": "glintrc"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 5053,
+    "column": 21,
+    "word": "GLSL"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 5071,
+    "column": 22,
+    "word": "tesc"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 5071,
+    "column": 30,
+    "word": "tese"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 5159,
+    "column": 1,
+    "word": "GNLS"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 5196,
+    "column": 23,
+    "word": "nametake"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 5213,
+    "column": 12,
+    "word": "gomod"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 5218,
+    "column": 203,
+    "word": "sarif"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 5246,
+    "column": 21,
+    "word": "gowork"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 5246,
+    "column": 31,
+    "word": "gotmpl"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 5258,
+    "column": 66,
+    "word": "gradlew"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 5324,
+    "column": 40,
+    "word": "YRCX"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 5409,
+    "column": 61,
+    "word": "Guix"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 5409,
+    "column": 175,
+    "word": "guix"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 5416,
+    "column": 95,
+    "word": "modeline"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 5497,
+    "column": 14,
+    "word": "verilog"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 5497,
+    "column": 25,
+    "word": "systemverilog"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 5598,
+    "column": 28,
+    "word": "HHVM"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 5617,
+    "column": 7,
+    "word": "hhconfig"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 5630,
+    "column": 5,
+    "word": "hlint"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 5636,
+    "column": 65,
+    "word": "floskell"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 5666,
+    "column": 31,
+    "word": "HLASM"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 5684,
+    "column": 7,
+    "word": "hlasmplugin"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 5764,
+    "column": 23,
+    "word": "Hoon"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 5768,
+    "column": 25,
+    "word": "urbit"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 5769,
+    "column": 34,
+    "word": "Urbit"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 5875,
+    "column": 6,
+    "word": "aspnetcorerazor"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 5875,
+    "column": 153,
+    "word": "gohtml"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 5875,
+    "column": 163,
+    "word": "gohtmltmpl"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 5875,
+    "column": 177,
+    "word": "haml"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 5915,
+    "column": 27,
+    "word": "Hylo"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 5963,
+    "column": 6,
+    "word": "hyprlang"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 5976,
+    "column": 5,
+    "word": "Idris"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 6035,
+    "column": 3,
+    "word": "licence"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 6146,
+    "column": 77,
+    "word": "gotos"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 6158,
+    "column": 55,
+    "word": "JDTLS"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 6163,
+    "column": 25,
+    "word": "javaagent"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 6190,
+    "column": 8,
+    "word": "mvnw"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 6224,
+    "column": 20,
+    "word": "minijinja"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 6272,
+    "column": 13,
+    "word": "GOPATH"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 6278,
+    "column": 38,
+    "word": "setfiletype"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 6356,
+    "column": 45,
+    "word": "Jsonnet"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 6375,
+    "column": 17,
+    "word": "libsonnet"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 6379,
+    "column": 6,
+    "word": "jsonnetfile"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 6417,
+    "column": 222,
+    "word": "joinpath"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 6417,
+    "column": 346,
+    "word": "pushfirst"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 6417,
+    "column": 442,
+    "word": "popfirst"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 6417,
+    "column": 1458,
+    "word": "runlinter"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 6488,
+    "column": 1,
+    "word": "Koka"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 6498,
+    "column": 37,
+    "word": "lsstdio"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 6515,
+    "column": 8,
+    "word": "fwcd"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 6713,
+    "column": 208,
+    "word": "xattr"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 6822,
+    "column": 27,
+    "word": "sweave"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 6840,
+    "column": 64,
+    "word": "rnoweb"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 6840,
+    "column": 81,
+    "word": "pandoc"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 6851,
+    "column": 20,
+    "word": "bibtex"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 6851,
+    "column": 89,
+    "word": "rsweave"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 6955,
+    "column": 19,
+    "word": "VIMRUNTIME"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 6961,
+    "column": 31,
+    "word": "runtimepath"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 7025,
+    "column": 35,
+    "word": "setf"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 7112,
+    "column": 7,
+    "word": "asmsyntax"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 7164,
+    "column": 28,
+    "word": "moxide"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 7173,
+    "column": 47,
+    "word": "Marko's"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 7352,
+    "column": 39,
+    "word": "coursier"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 7459,
+    "column": 34,
+    "word": "MLIR"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 7488,
+    "column": 34,
+    "word": "PDLL"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 7517,
+    "column": 25,
+    "word": "metamath"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 7549,
+    "column": 159,
+    "word": "metaprogramming"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 7576,
+    "column": 25,
+    "word": "Motoko"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 7722,
+    "column": 35,
+    "word": "muttrc"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 7740,
+    "column": 16,
+    "word": "neomuttrc"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 7761,
+    "column": 4,
+    "word": "vimscript"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 7802,
+    "column": 55,
+    "word": "neocmakelsp"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 7972,
+    "column": 72,
+    "word": "autostarting"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 8002,
+    "column": 75,
+    "word": "oxalica"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 8035,
+    "column": 16,
+    "word": "nimlangserver"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 8060,
+    "column": 2,
+    "word": "nimlsp"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 8176,
+    "column": 6,
+    "word": "ttcn"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 8264,
+    "column": 25,
+    "word": "ocamlinterface"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 8264,
+    "column": 43,
+    "word": "ocamllex"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 8611,
+    "column": 8,
+    "word": "FPCDIR"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 8612,
+    "column": 31,
+    "word": "ppcx"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 8613,
+    "column": 8,
+    "word": "LAZARUSDIR"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 8614,
+    "column": 8,
+    "word": "FPCTARGET"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 8615,
+    "column": 8,
+    "word": "FPCTARGETCPU"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 8640,
+    "column": 23,
+    "word": "protoc"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 8686,
+    "column": 99,
+    "word": "nostdio"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 8730,
+    "column": 101,
+    "word": "perltidy"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 8730,
+    "column": 116,
+    "word": "perlcritic"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 8879,
+    "column": 2,
+    "word": "devsense"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 8923,
+    "column": 31,
+    "word": "PICO"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 8971,
+    "column": 7,
+    "word": "plzconfig"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 8998,
+    "column": 7,
+    "word": "pliplugin"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 9048,
+    "column": 6,
+    "word": "pory"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 9119,
+    "column": 59,
+    "word": "PSES"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 9193,
+    "column": 6,
+    "word": "swipl"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 9359,
+    "column": 38,
+    "word": "hiera"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 9368,
+    "column": 6,
+    "word": "purescript"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 9389,
+    "column": 66,
+    "word": "spago"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 9404,
+    "column": 49,
+    "word": "pycodestyle"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 9420,
+    "column": 36,
+    "word": "pyls"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 9498,
+    "column": 36,
+    "word": "featureset"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 9615,
+    "column": 13,
+    "word": "qmljs"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 9659,
+    "column": 19,
+    "word": "CRAN"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 9691,
+    "column": 14,
+    "word": "raco"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 9717,
+    "column": 3,
+    "word": "Raku"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 9779,
+    "column": 6,
+    "word": "bsconfig"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 9788,
+    "column": 14,
+    "word": "Rego"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 9792,
+    "column": 23,
+    "word": "Styra"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 9807,
+    "column": 6,
+    "word": "rego"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 9857,
+    "column": 36,
+    "word": "remarkrc"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 9889,
+    "column": 123,
+    "word": "remarkignore"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 10003,
+    "column": 9,
+    "word": "rustup"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 10031,
+    "column": 73,
+    "word": "nixpkgs"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 10113,
+    "column": 6,
+    "word": "robotidy"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 10694,
+    "column": 6,
+    "word": "Akku"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 10807,
+    "column": 7,
+    "word": "shopifyignore"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 10890,
+    "column": 6,
+    "word": "hlsl"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 10890,
+    "column": 14,
+    "word": "shaderslang"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 10902,
+    "column": 2,
+    "word": "Slint"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 11101,
+    "column": 15,
+    "word": "yourname"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 11292,
+    "column": 52,
+    "word": "remappings"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 11373,
+    "column": 71,
+    "word": "Nomic"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 11566,
+    "column": 31,
+    "word": "datapacks"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 11576,
+    "column": 31,
+    "word": "mcfunction"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 11596,
+    "column": 11,
+    "word": "mcmeta"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 11623,
+    "column": 7,
+    "word": "sqllsrc"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 11642,
+    "column": 1,
+    "word": "Sqls"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 11758,
+    "column": 40,
+    "word": "Starlark"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 11814,
+    "column": 11,
+    "word": "Steepfile"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 11884,
+    "column": 42,
+    "word": "stylelintplus"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 11908,
+    "column": 64,
+    "word": "wxss"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 11952,
+    "column": 31,
+    "word": "Stylua"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 12033,
+    "column": 6,
+    "word": "svelteserver"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 12048,
+    "column": 27,
+    "word": "Verilog"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 12168,
+    "column": 6,
+    "word": "stree"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 12176,
+    "column": 7,
+    "word": "streerc"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 12243,
+    "column": 31,
+    "word": "opensource"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 12340,
+    "column": 21,
+    "word": "Taplo"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 12388,
+    "column": 6,
+    "word": "tablegen"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 12403,
+    "column": 31,
+    "word": "pipx"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 12405,
+    "column": 14,
+    "word": "tclint"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 12440,
+    "column": 1,
+    "word": "luarocks"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 12464,
+    "column": 6,
+    "word": "tlconfig"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 12500,
+    "column": 55,
+    "word": "PKGBUILD"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 12500,
+    "column": 80,
+    "word": "Termux"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 12631,
+    "column": 5,
+    "word": "Texlab"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 12653,
+    "column": 15,
+    "word": "latexmkrc"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 12653,
+    "column": 42,
+    "word": "texlabroot"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 12661,
+    "column": 40,
+    "word": "nonstopmode"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 12661,
+    "column": 56,
+    "word": "synctex"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 12662,
+    "column": 23,
+    "word": "latexmk"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 12666,
+    "column": 7,
+    "word": "chktex"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 12675,
+    "column": 25,
+    "word": "latexindent"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 12720,
+    "column": 7,
+    "word": "analysers"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 12721,
+    "column": 9,
+    "word": "languagetool"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 12847,
+    "column": 17,
+    "word": "Tiltfile"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 12847,
+    "column": 31,
+    "word": "tiltfile"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 12874,
+    "column": 36,
+    "word": "Typst"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 12874,
+    "column": 43,
+    "word": "taɪpst"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 12876,
+    "column": 19,
+    "word": "Tinymist's"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 12877,
+    "column": 5,
+    "word": "Tinymist"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 12934,
+    "column": 21,
+    "word": "Tombi"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 13089,
+    "column": 7,
+    "word": "tsqueryrc"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 13130,
+    "column": 49,
+    "word": "typespec"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 13151,
+    "column": 6,
+    "word": "tspconfig"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 13425,
+    "column": 36,
+    "word": "Uiua"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 13453,
+    "column": 21,
+    "word": "Ungrammar"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 13804,
+    "column": 21,
+    "word": "Veryl"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 13836,
+    "column": 1,
+    "word": "Vespa"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 13969,
+    "column": 5,
+    "word": "iskeyword"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 13972,
+    "column": 11,
+    "word": "Runtimepath"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 13973,
+    "column": 11,
+    "word": "Vimruntime"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 13975,
+    "column": 5,
+    "word": "vimruntime"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 13989,
+    "column": 21,
+    "word": "Visualforce"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 13992,
+    "column": 2,
+    "word": "forcedotcom"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 13992,
+    "column": 14,
+    "word": "salesforcedx"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 14051,
+    "column": 11,
+    "word": "vlang"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 14102,
+    "column": 6,
+    "word": "vsrocqtop"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 14115,
+    "column": 7,
+    "word": "Rocq"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 14439,
+    "column": 67,
+    "word": "checkhealth"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 14458,
+    "column": 43,
+    "word": "yammls"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 14547,
+    "column": 22,
+    "word": "YARA"
+  },
+  {
+    "file": "doc/configs.md",
+    "line": 14549,
+    "column": 18,
+    "word": "yara"
+  },
+  {
+    "file": "doc/configs.txt",
+    "line": 440,
+    "column": 19,
+    "word": "astrojs"
+  },
+  {
+    "file": "doc/configs.txt",
+    "line": 985,
+    "column": 21,
+    "word": "biomejs"
+  },
+  {
+    "file": "doc/configs.txt",
+    "line": 1958,
+    "column": 7,
+    "word": "loglevel"
+  },
+  {
+    "file": "doc/configs.txt",
+    "line": 4235,
+    "column": 313,
+    "word": "nunjucks"
+  },
+  {
+    "file": "doc/configs.txt",
+    "line": 4816,
+    "column": 71,
+    "word": "runnin"
+  },
+  {
+    "file": "doc/configs.txt",
+    "line": 8440,
+    "column": 13,
+    "word": "nomicfoundation"
+  },
+  {
+    "file": "doc/configs.txt",
+    "line": 8846,
+    "column": 46,
+    "word": "sugarss"
+  },
+  {
+    "file": "doc/configs.txt",
+    "line": 11023,
+    "column": 20,
+    "word": "norl"
+  },
+  {
+    "file": "doc/configs.txt",
+    "line": 11023,
+    "column": 25,
+    "word": "expandtab"
+  },
+  {
+    "file": "doc/lspconfig.txt",
+    "line": 69,
+    "column": 19,
+    "word": "require'lspconfig"
+  },
+  {
+    "file": "doc/lspconfig.txt",
+    "line": 80,
+    "column": 19,
+    "word": "fname"
+  },
+  {
+    "file": "doc/lspconfig.txt",
+    "line": 211,
+    "column": 10,
+    "word": "Nvim's"
+  },
+  {
+    "file": "flake.nix",
+    "line": 16,
+    "column": 16,
+    "word": "luajit"
+  },
+  {
+    "file": "flake.nix",
+    "line": 16,
+    "column": 31,
+    "word": "vusted"
+  },
+  {
+    "file": "lsp/ada_ls.lua",
+    "line": 29,
+    "column": 51,
+    "word": "alire"
+  },
+  {
+    "file": "lsp/angularls.lua",
+    "line": 39,
+    "column": 32,
+    "word": "readblob"
+  },
+  {
+    "file": "lsp/angularls.lua",
+    "line": 62,
+    "column": 27,
+    "word": "exepath"
+  },
+  {
+    "file": "lsp/angularls.lua",
+    "line": 64,
+    "column": 11,
+    "word": "realpath"
+  },
+  {
+    "file": "lsp/angularls.lua",
+    "line": 95,
+    "column": 57,
+    "word": "getcwd"
+  },
+  {
+    "file": "lsp/apex_ls.lua",
+    "line": 44,
+    "column": 9,
+    "word": "Ddebug"
+  },
+  {
+    "file": "lsp/apex_ls.lua",
+    "line": 47,
+    "column": 9,
+    "word": "Dlwc"
+  },
+  {
+    "file": "lsp/apex_ls.lua",
+    "line": 47,
+    "column": 14,
+    "word": "typegeneration"
+  },
+  {
+    "file": "lsp/basedpyright.lua",
+    "line": 67,
+    "column": 7,
+    "word": "nargs"
+  },
+  {
+    "file": "lsp/ccls.lua",
+    "line": 49,
+    "column": 53,
+    "word": "Ccls"
+  },
+  {
+    "file": "lsp/copilot.lua",
+    "line": 59,
+    "column": 16,
+    "word": "setreg"
+  },
+  {
+    "file": "lsp/csharp_ls.lua",
+    "line": 17,
+    "column": 43,
+    "word": "slnx"
+  },
+  {
+    "file": "lsp/denols.lua",
+    "line": 114,
+    "column": 53,
+    "word": "Denols"
+  },
+  {
+    "file": "lsp/docker_language_server.lua",
+    "line": 14,
+    "column": 33,
+    "word": "ftype"
+  },
+  {
+    "file": "lsp/docker_language_server.lua",
+    "line": 16,
+    "column": 15,
+    "word": "dockercompose"
+  },
+  {
+    "file": "lsp/elmls.lua",
+    "line": 15,
+    "column": 11,
+    "word": "ashkan"
+  },
+  {
+    "file": "lsp/eslint.lua",
+    "line": 174,
+    "column": 23,
+    "word": "fnamemodify"
+  },
+  {
+    "file": "lsp/eslint.lua",
+    "line": 184,
+    "column": 36,
+    "word": "globpath"
+  },
+  {
+    "file": "lsp/fennel_ls.lua",
+    "line": 17,
+    "column": 13,
+    "word": "fnlpath"
+  },
+  {
+    "file": "lsp/gh_actions_ls.lua",
+    "line": 26,
+    "column": 11,
+    "word": "endswith"
+  },
+  {
+    "file": "lsp/gh_actions_ls.lua",
+    "line": 39,
+    "column": 17,
+    "word": "filereadable"
+  },
+  {
+    "file": "lsp/gopls.lua",
+    "line": 48,
+    "column": 34,
+    "word": "GOROOT"
+  },
+  {
+    "file": "lsp/gopls.lua",
+    "line": 62,
+    "column": 34,
+    "word": "GOMODCACHE"
+  },
+  {
+    "file": "lsp/graphql.lua",
+    "line": 21,
+    "column": 32,
+    "word": "graphqlrc"
+  },
+  {
+    "file": "lsp/idris2_lsp.lua",
+    "line": 40,
+    "column": 33,
+    "word": "ipkg"
+  },
+  {
+    "file": "lsp/julials.lua",
+    "line": 34,
+    "column": 19,
+    "word": "activateenvironment"
+  },
+  {
+    "file": "lsp/lean3ls.lua",
+    "line": 28,
+    "column": 16,
+    "word": "endpos"
+  },
+  {
+    "file": "lsp/lean3ls.lua",
+    "line": 35,
+    "column": 29,
+    "word": "leanpkg"
+  },
+  {
+    "file": "lsp/ocamllsp.lua",
+    "line": 13,
+    "column": 28,
+    "word": "intf"
+  },
+  {
+    "file": "lsp/ocamllsp.lua",
+    "line": 14,
+    "column": 43,
+    "word": "Intf"
+  },
+  {
+    "file": "lsp/ocamllsp.lua",
+    "line": 84,
+    "column": 53,
+    "word": "Ocamllsp"
+  },
+  {
+    "file": "lsp/omnisharp.lua",
+    "line": 23,
+    "column": 21,
+    "word": "getpid"
+  },
+  {
+    "file": "lsp/oxfmt.lua",
+    "line": 46,
+    "column": 8,
+    "word": "Oxfmt"
+  },
+  {
+    "file": "lsp/oxfmt.lua",
+    "line": 48,
+    "column": 22,
+    "word": "oxfmtrc"
+  },
+  {
+    "file": "lsp/oxlint.lua",
+    "line": 32,
+    "column": 53,
+    "word": "Oxlint"
+  },
+  {
+    "file": "lsp/oxlint.lua",
+    "line": 47,
+    "column": 22,
+    "word": "oxlintrc"
+  },
+  {
+    "file": "lsp/phan.lua",
+    "line": 30,
+    "column": 28,
+    "word": "relpath"
+  },
+  {
+    "file": "lsp/pyrefly.lua",
+    "line": 24,
+    "column": 25,
+    "word": "Pyrefly"
+  },
+  {
+    "file": "lsp/roslyn_ls.lua",
+    "line": 27,
+    "column": 35,
+    "word": "augroup"
+  },
+  {
+    "file": "lsp/roslyn_ls.lua",
+    "line": 108,
+    "column": 17,
+    "word": "finddir"
+  },
+  {
+    "file": "lsp/roslyn_ls.lua",
+    "line": 206,
+    "column": 24,
+    "word": "autocmds"
+  },
+  {
+    "file": "lsp/rust_analyzer.lua",
+    "line": 44,
+    "column": 34,
+    "word": "RUSTUP"
+  },
+  {
+    "file": "lsp/sourcekit.lua",
+    "line": 17,
+    "column": 33,
+    "word": "xcodeproj"
+  },
+  {
+    "file": "lsp/sourcekit.lua",
+    "line": 17,
+    "column": 48,
+    "word": "xcworkspace"
+  },
+  {
+    "file": "lsp/svlangserver.lua",
+    "line": 24,
+    "column": 53,
+    "word": "Svlangserver"
+  },
+  {
+    "file": "lsp/svlangserver.lua",
+    "line": 36,
+    "column": 39,
+    "word": "cword"
+  },
+  {
+    "file": "lsp/termux_language_server.lua",
+    "line": 17,
+    "column": 15,
+    "word": "MSYS"
+  },
+  {
+    "file": "lsp/termux_language_server.lua",
+    "line": 19,
+    "column": 8,
+    "word": "makepkg"
+  },
+  {
+    "file": "lsp/termux_language_server.lua",
+    "line": 25,
+    "column": 10,
+    "word": "eclass"
+  },
+  {
+    "file": "lsp/texlab.lua",
+    "line": 43,
+    "column": 14,
+    "word": "Unconfigured"
+  },
+  {
+    "file": "lsp/textlsp.lua",
+    "line": 23,
+    "column": 67,
+    "word": "enaled"
+  },
+  {
+    "file": "lsp/ts_ls.lua",
+    "line": 97,
+    "column": 14,
+    "word": "setqflist"
+  },
+  {
+    "file": "lsp/ts_ls.lua",
+    "line": 115,
+    "column": 16,
+    "word": "botright"
+  },
+  {
+    "file": "lsp/ts_ls.lua",
+    "line": 115,
+    "column": 25,
+    "word": "copen"
+  },
+  {
+    "file": "lsp/ts_ls.lua",
+    "line": 123,
+    "column": 20,
+    "word": "startswith"
+  },
+  {
+    "file": "lsp/ts_query_ls.lua",
+    "line": 22,
+    "column": 4,
+    "word": "ftplugin"
+  },
+  {
+    "file": "lsp/ts_query_ls.lua",
+    "line": 41,
+    "column": 17,
+    "word": "omnifunc"
+  },
+  {
+    "file": "lsp/yamlls.lua",
+    "line": 77,
+    "column": 9,
+    "word": "autocmd's"
+  },
+  {
+    "file": "lsp/zk.lua",
+    "line": 97,
+    "column": 27,
+    "word": "fargs"
+  },
+  {
+    "file": "lua/lspconfig.lua",
+    "line": 12,
+    "column": 11,
+    "word": "inconfig"
+  },
+  {
+    "file": "lua/lspconfig.lua",
+    "line": 12,
+    "column": 47,
+    "word": "healthcheck"
+  },
+  {
+    "file": "lua/lspconfig.lua",
+    "line": 30,
+    "column": 3,
+    "word": "sumneko"
+  },
+  {
+    "file": "lua/lspconfig.lua",
+    "line": 38,
+    "column": 3,
+    "word": "bufls"
+  },
+  {
+    "file": "lua/lspconfig.lua",
+    "line": 55,
+    "column": 7,
+    "word": "sname"
+  },
+  {
+    "file": "lua/lspconfig/async.lua",
+    "line": 21,
+    "column": 9,
+    "word": "jobid"
+  },
+  {
+    "file": "lua/lspconfig/async.lua",
+    "line": 21,
+    "column": 24,
+    "word": "jobstart"
+  },
+  {
+    "file": "lua/lspconfig/configs.lua",
+    "line": 1,
+    "column": 36,
+    "word": "usfeul"
+  },
+  {
+    "file": "lua/lspconfig/configs.lua",
+    "line": 122,
+    "column": 26,
+    "word": "fnameescape"
+  },
+  {
+    "file": "lua/lspconfig/configs.lua",
+    "line": 137,
+    "column": 46,
+    "word": "bufs"
+  },
+  {
+    "file": "lua/lspconfig/configs.lua",
+    "line": 148,
+    "column": 48,
+    "word": "lspconfig's"
+  },
+  {
+    "file": "lua/lspconfig/configs/bitbake_ls.lua",
+    "line": 22,
+    "column": 10,
+    "word": "Bitbake"
+  },
+  {
+    "file": "lua/lspconfig/configs/bitbake_ls.lua",
+    "line": 22,
+    "column": 42,
+    "word": "Yocto"
+  },
+  {
+    "file": "lua/lspconfig/configs/bqnlsp.lua",
+    "line": 12,
+    "column": 18,
+    "word": "macunix"
+  },
+  {
+    "file": "lua/lspconfig/configs/bqnlsp.lua",
+    "line": 12,
+    "column": 43,
+    "word": "DYLD"
+  },
+  {
+    "file": "lua/lspconfig/configs/bqnlsp.lua",
+    "line": 22,
+    "column": 14,
+    "word": "bqnlsp"
+  },
+  {
+    "file": "lua/lspconfig/configs/bqnlsp.lua",
+    "line": 28,
+    "column": 5,
+    "word": "libcbqn"
+  },
+  {
+    "file": "lua/lspconfig/configs/bqnlsp.lua",
+    "line": 42,
+    "column": 46,
+    "word": "CBQN"
+  },
+  {
+    "file": "lua/lspconfig/configs/bqnlsp.lua",
+    "line": 43,
+    "column": 188,
+    "word": "ldconfig"
+  },
+  {
+    "file": "lua/lspconfig/configs/bufls.lua",
+    "line": 24,
+    "column": 23,
+    "word": "bufbuild"
+  },
+  {
+    "file": "lua/lspconfig/configs/codeqlls.lua",
+    "line": 16,
+    "column": 35,
+    "word": "qlpack"
+  },
+  {
+    "file": "lua/lspconfig/configs/delphi_ls.lua",
+    "line": 22,
+    "column": 14,
+    "word": "delphilsp"
+  },
+  {
+    "file": "lua/lspconfig/configs/gh_actions_ls.lua",
+    "line": 26,
+    "column": 29,
+    "word": "isdirectory"
+  },
+  {
+    "file": "lua/lspconfig/configs/haxe_language_server.lua",
+    "line": 10,
+    "column": 21,
+    "word": "hxml"
+  },
+  {
+    "file": "lua/lspconfig/configs/haxe_language_server.lua",
+    "line": 18,
+    "column": 14,
+    "word": "haxe"
+  },
+  {
+    "file": "lua/lspconfig/configs/haxe_language_server.lua",
+    "line": 35,
+    "column": 27,
+    "word": "HXML"
+  },
+  {
+    "file": "lua/lspconfig/configs/haxe_language_server.lua",
+    "line": 44,
+    "column": 5,
+    "word": "Haxe"
+  },
+  {
+    "file": "lua/lspconfig/configs/haxe_language_server.lua",
+    "line": 48,
+    "column": 17,
+    "word": "vshaxe"
+  },
+  {
+    "file": "lua/lspconfig/configs/hls.lua",
+    "line": 19,
+    "column": 36,
+    "word": "cabalfmt"
+  },
+  {
+    "file": "lua/lspconfig/configs/hyprls.lua",
+    "line": 23,
+    "column": 23,
+    "word": "ewen"
+  },
+  {
+    "file": "lua/lspconfig/configs/jdtls.lua",
+    "line": 57,
+    "column": 32,
+    "word": "codeaction"
+  },
+  {
+    "file": "lua/lspconfig/configs/jdtls.lua",
+    "line": 59,
+    "column": 15,
+    "word": "steelsojka"
+  },
+  {
+    "file": "lua/lspconfig/configs/jdtls.lua",
+    "line": 74,
+    "column": 29,
+    "word": "applyedit"
+  },
+  {
+    "file": "lua/lspconfig/configs/jdtls.lua",
+    "line": 81,
+    "column": 12,
+    "word": "echohl"
+  },
+  {
+    "file": "lua/lspconfig/configs/jsonnet_ls.lua",
+    "line": 32,
+    "column": 33,
+    "word": "JSONNET"
+  },
+  {
+    "file": "lua/lspconfig/configs/leanls.lua",
+    "line": 31,
+    "column": 33,
+    "word": "lakefile"
+  },
+  {
+    "file": "lua/lspconfig/configs/leanls.lua",
+    "line": 53,
+    "column": 27,
+    "word": "leanls"
+  },
+  {
+    "file": "lua/lspconfig/configs/omnisharp.lua",
+    "line": 83,
+    "column": 37,
+    "word": "deepcopy"
+  },
+  {
+    "file": "lua/lspconfig/configs/openedge_ls.lua",
+    "line": 13,
+    "column": 35,
+    "word": "openedge"
+  },
+  {
+    "file": "lua/lspconfig/configs/openedge_ls.lua",
+    "line": 34,
+    "column": 39,
+    "word": "lsda"
+  },
+  {
+    "file": "lua/lspconfig/configs/pkgbuild_language_server.lua",
+    "line": 10,
+    "column": 14,
+    "word": "pkgbuild"
+  },
+  {
+    "file": "lua/lspconfig/configs/pkgbuild_language_server.lua",
+    "line": 20,
+    "column": 39,
+    "word": "Msys"
+  },
+  {
+    "file": "lua/lspconfig/configs/postgres_lsp.lua",
+    "line": 10,
+    "column": 14,
+    "word": "postgrestools"
+  },
+  {
+    "file": "lua/lspconfig/configs/sourcery.lua",
+    "line": 24,
+    "column": 54,
+    "word": "sourcery"
+  },
+  {
+    "file": "lua/lspconfig/configs/sourcery.lua",
+    "line": 73,
+    "column": 17,
+    "word": "Sourcery"
+  },
+  {
+    "file": "lua/lspconfig/configs/vdmj.lua",
+    "line": 10,
+    "column": 28,
+    "word": "mavenrepo"
+  },
+  {
+    "file": "lua/lspconfig/configs/vdmj.lua",
+    "line": 11,
+    "column": 59,
+    "word": "vdmj"
+  },
+  {
+    "file": "lua/lspconfig/configs/vdmj.lua",
+    "line": 31,
+    "column": 9,
+    "word": "subdirs"
+  },
+  {
+    "file": "lua/lspconfig/configs/vdmj.lua",
+    "line": 42,
+    "column": 37,
+    "word": "startpath"
+  },
+  {
+    "file": "lua/lspconfig/configs/vdmj.lua",
+    "line": 53,
+    "column": 20,
+    "word": "vdmsl"
+  },
+  {
+    "file": "lua/lspconfig/configs/vdmj.lua",
+    "line": 53,
+    "column": 29,
+    "word": "vdmpp"
+  },
+  {
+    "file": "lua/lspconfig/configs/vdmj.lua",
+    "line": 53,
+    "column": 38,
+    "word": "vdmrt"
+  },
+  {
+    "file": "lua/lspconfig/configs/vdmj.lua",
+    "line": 62,
+    "column": 7,
+    "word": "logfile"
+  },
+  {
+    "file": "lua/lspconfig/configs/vdmj.lua",
+    "line": 71,
+    "column": 5,
+    "word": "VDMJ"
+  },
+  {
+    "file": "lua/lspconfig/configs/vdmj.lua",
+    "line": 107,
+    "column": 9,
+    "word": "Dlsp"
+  },
+  {
+    "file": "lua/lspconfig/configs/vuels.lua",
+    "line": 17,
+    "column": 9,
+    "word": "vetur"
+  },
+  {
+    "file": "lua/lspconfig/configs/zk.lua",
+    "line": 36,
+    "column": 15,
+    "word": "bufpath"
+  },
+  {
+    "file": "lua/lspconfig/health.lua",
+    "line": 14,
+    "column": 7,
+    "word": "helptags"
+  },
+  {
+    "file": "lua/lspconfig/health.lua",
+    "line": 19,
+    "column": 21,
+    "word": "blankspace"
+  },
+  {
+    "file": "lua/lspconfig/health.lua",
+    "line": 47,
+    "column": 9,
+    "word": "chanid"
+  },
+  {
+    "file": "lua/lspconfig/health.lua",
+    "line": 54,
+    "column": 21,
+    "word": "jobwait"
+  },
+  {
+    "file": "lua/lspconfig/health.lua",
+    "line": 55,
+    "column": 10,
+    "word": "jobstop"
+  },
+  {
+    "file": "lua/lspconfig/health.lua",
+    "line": 86,
+    "column": 16,
+    "word": "fmtpath"
+  },
+  {
+    "file": "lua/lspconfig/health.lua",
+    "line": 90,
+    "column": 9,
+    "word": "isdir"
+  },
+  {
+    "file": "lua/lspconfig/health.lua",
+    "line": 178,
+    "column": 39,
+    "word": "helptag"
+  },
+  {
+    "file": "lua/lspconfig/health.lua",
+    "line": 240,
+    "column": 44,
+    "word": "getbufvar"
+  },
+  {
+    "file": "lua/lspconfig/health.lua",
+    "line": 278,
+    "column": 10,
+    "word": "matchadd"
+  },
+  {
+    "file": "lua/lspconfig/health.lua",
+    "line": 288,
+    "column": 11,
+    "word": "justimk"
+  },
+  {
+    "file": "lua/lspconfig/health.lua",
+    "line": 288,
+    "column": 30,
+    "word": "checkhealth's"
+  },
+  {
+    "file": "lua/lspconfig/health.lua",
+    "line": 297,
+    "column": 22,
+    "word": "lspdocs"
+  },
+  {
+    "file": "lua/lspconfig/health.lua",
+    "line": 327,
+    "column": 11,
+    "word": "bufempty"
+  },
+  {
+    "file": "lua/lspconfig/health.lua",
+    "line": 333,
+    "column": 10,
+    "word": "Healthcheck"
+  },
+  {
+    "file": "lua/lspconfig/health.lua",
+    "line": 341,
+    "column": 13,
+    "word": "nnoremap"
+  },
+  {
+    "file": "lua/lspconfig/manager.lua",
+    "line": 183,
+    "column": 20,
+    "word": "buftype"
+  },
+  {
+    "file": "lua/lspconfig/manager.lua",
+    "line": 183,
+    "column": 32,
+    "word": "nofile"
+  },
+  {
+    "file": "lua/lspconfig/util.lua",
+    "line": 6,
+    "column": 7,
+    "word": "iswin"
+  },
+  {
+    "file": "lua/lspconfig/util.lua",
+    "line": 353,
+    "column": 50,
+    "word": "customlist"
+  },
+  {
+    "file": "nvim-lspconfig-scm-1.rockspec",
+    "line": 1,
+    "column": 8,
+    "word": "MODREV"
+  },
+  {
+    "file": "nvim-lspconfig-scm-1.rockspec",
+    "line": 1,
+    "column": 17,
+    "word": "SPECREV"
+  },
+  {
+    "file": "nvim-lspconfig-scm-1.rockspec",
+    "line": 3,
+    "column": 1,
+    "word": "rockspec"
+  },
+  {
+    "file": "plugin/lspconfig.lua",
+    "line": 75,
+    "column": 14,
+    "word": "scriptnames"
+  },
+  {
+    "file": "plugin/lspconfig.lua",
+    "line": 79,
+    "column": 26,
+    "word": "tabnew"
+  },
+  {
+    "file": "scripts/docgen.lua",
+    "line": 5,
+    "column": 74,
+    "word": "docgen"
+  },
+  {
+    "file": "scripts/docgen.lua",
+    "line": 29,
+    "column": 19,
+    "word": "spairs"
+  },
+  {
+    "file": "scripts/docgen.lua",
+    "line": 53,
+    "column": 29,
+    "word": "indentlvl"
+  },
+  {
+    "file": "scripts/docgen.lua",
+    "line": 96,
+    "column": 42,
+    "word": "vimdoc"
+  },
+  {
+    "file": "scripts/docgen.lua",
+    "line": 112,
+    "column": 30,
+    "word": "nonblank"
+  },
+  {
+    "file": "scripts/docgen.lua",
+    "line": 193,
+    "column": 17,
+    "word": "linenr"
+  },
+  {
+    "file": "test/lspconfig_spec.lua",
+    "line": 38,
+    "column": 26,
+    "word": "subpaths"
+  }
+]

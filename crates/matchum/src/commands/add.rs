@@ -29,11 +29,10 @@ pub fn run_add(words: &[String], forbidden: bool, config_path: Option<&Path>) ->
                 ".matchum/words.txt"
             };
             let full_path = config_dir.join(default_name);
-            if let Some(parent) = full_path.parent() {
-                if !parent.exists() {
+            if let Some(parent) = full_path.parent()
+                && !parent.exists() {
                     std::fs::create_dir_all(parent)?;
                 }
-            }
             // Add the field to the config file
             if !content.contains(&format!("{key_label} ="))
                 && !content.contains(&format!("{key_label}="))
@@ -46,38 +45,14 @@ pub fn run_add(words: &[String], forbidden: bool, config_path: Option<&Path>) ->
         }
     };
 
-    // Read existing words
-    let existing_content = std::fs::read_to_string(&file_path).unwrap_or_default();
-    let existing: std::collections::HashSet<String> = existing_content
-        .lines()
-        .map(|l| l.trim().to_lowercase())
-        .collect();
-
-    let mut added = Vec::new();
-    let mut new_content = existing_content;
-    for word in words {
-        if !existing.contains(&word.to_lowercase()) {
-            if !new_content.is_empty() && !new_content.ends_with('\n') {
-                new_content.push('\n');
-            }
-            new_content.push_str(word);
-            new_content.push('\n');
-            added.push(word.as_str());
-        }
-    }
+    let word_refs: Vec<&str> = words.iter().map(|s| s.as_str()).collect();
+    let added = matchum_config::words_file::append_words(&file_path, &word_refs)
+        .with_context(|| format!("failed to write {}", file_path.display()))?;
 
     if added.is_empty() {
         eprintln!("All words already present");
         return Ok(());
     }
-
-    if let Some(parent) = file_path.parent() {
-        if !parent.exists() {
-            std::fs::create_dir_all(parent)?;
-        }
-    }
-    std::fs::write(&file_path, &new_content)
-        .with_context(|| format!("failed to write {}", file_path.display()))?;
 
     eprintln!(
         "Added {} word{} to {}",
@@ -94,17 +69,8 @@ fn find_matchum_config(explicit: Option<&Path>) -> Result<PathBuf> {
         return Ok(p.to_path_buf());
     }
     let cwd = std::env::current_dir()?;
-    let mut dir = cwd.as_path();
-    loop {
-        for name in &["matchum.toml", ".matchum.toml"] {
-            let p = dir.join(name);
-            if p.exists() {
-                return Ok(p);
-            }
-        }
-        match dir.parent() {
-            Some(parent) => dir = parent,
-            None => anyhow::bail!("no matchum.toml found; run `matchum init` first"),
-        }
+    match matchum_config::resolver::find_config_prioritized(&cwd) {
+        matchum_config::resolver::ConfigFound::Matchum(p) => Ok(p),
+        _ => anyhow::bail!("no matchum.toml found; run `matchum init` first"),
     }
 }

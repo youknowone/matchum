@@ -1,0 +1,1208 @@
+[
+  {
+    "file": "AUTHORS.rst",
+    "line": 3,
+    "column": 21,
+    "word": "Contribs"
+  },
+  {
+    "file": "AUTHORS.rst",
+    "line": 5,
+    "column": 7,
+    "word": "Speakmon"
+  },
+  {
+    "file": "AUTHORS.rst",
+    "line": 6,
+    "column": 3,
+    "word": "Sorin"
+  },
+  {
+    "file": "AUTHORS.rst",
+    "line": 6,
+    "column": 9,
+    "word": "Sbarnea"
+  },
+  {
+    "file": "MANIFEST.in",
+    "line": 14,
+    "column": 23,
+    "word": "pycache"
+  },
+  {
+    "file": "README.rst",
+    "line": 89,
+    "column": 11,
+    "word": "pyenv"
+  },
+  {
+    "file": "README.rst",
+    "line": 91,
+    "column": 50,
+    "word": "addono"
+  },
+  {
+    "file": "README.rst",
+    "line": 115,
+    "column": 94,
+    "word": "Greenhopper"
+  },
+  {
+    "file": "README.rst",
+    "line": 134,
+    "column": 3,
+    "word": "Navicat"
+  },
+  {
+    "file": "bindep.txt",
+    "line": 1,
+    "column": 3,
+    "word": "gssapi"
+  },
+  {
+    "file": "bindep.txt",
+    "line": 1,
+    "column": 10,
+    "word": "pypi"
+  },
+  {
+    "file": "bindep.txt",
+    "line": 2,
+    "column": 1,
+    "word": "libkrb"
+  },
+  {
+    "file": "bindep.txt",
+    "line": 2,
+    "column": 23,
+    "word": "dpkg"
+  },
+  {
+    "file": "docs/api.rst",
+    "line": 10,
+    "column": 4,
+    "word": "automodule"
+  },
+  {
+    "file": "docs/api.rst",
+    "line": 12,
+    "column": 5,
+    "word": "undoc"
+  },
+  {
+    "file": "docs/api.rst",
+    "line": 31,
+    "column": 6,
+    "word": "jirashell"
+  },
+  {
+    "file": "docs/api.rst",
+    "line": 39,
+    "column": 6,
+    "word": "resilientsession"
+  },
+  {
+    "file": "docs/api.rst",
+    "line": 59,
+    "column": 4,
+    "word": "autoclass"
+  },
+  {
+    "file": "docs/conf.py",
+    "line": 29,
+    "column": 17,
+    "word": "intersphinx"
+  },
+  {
+    "file": "docs/conf.py",
+    "line": 31,
+    "column": 17,
+    "word": "viewcode"
+  },
+  {
+    "file": "docs/conf.py",
+    "line": 33,
+    "column": 13,
+    "word": "copybutton"
+  },
+  {
+    "file": "docs/conf.py",
+    "line": 45,
+    "column": 22,
+    "word": "bysource"
+  },
+  {
+    "file": "docs/conf.py",
+    "line": 51,
+    "column": 17,
+    "word": "docstrings"
+  },
+  {
+    "file": "docs/conf.py",
+    "line": 71,
+    "column": 78,
+    "word": "typehint"
+  },
+  {
+    "file": "docs/conf.py",
+    "line": 124,
+    "column": 12,
+    "word": "sectionauthor"
+  },
+  {
+    "file": "docs/conf.py",
+    "line": 124,
+    "column": 30,
+    "word": "moduleauthor"
+  },
+  {
+    "file": "docs/conf.py",
+    "line": 132,
+    "column": 3,
+    "word": "modindex"
+  },
+  {
+    "file": "docs/conf.py",
+    "line": 197,
+    "column": 11,
+    "word": "sourcelink"
+  },
+  {
+    "file": "docs/conf.py",
+    "line": 208,
+    "column": 10,
+    "word": "opensearch"
+  },
+  {
+    "file": "docs/conf.py",
+    "line": 214,
+    "column": 1,
+    "word": "htmlhelp"
+  },
+  {
+    "file": "docs/conf.py",
+    "line": 214,
+    "column": 22,
+    "word": "jirapythondoc"
+  },
+  {
+    "file": "docs/conf.py",
+    "line": 219,
+    "column": 20,
+    "word": "papersize"
+  },
+  {
+    "file": "docs/conf.py",
+    "line": 219,
+    "column": 44,
+    "word": "pointsize"
+  },
+  {
+    "file": "docs/conf.py",
+    "line": 222,
+    "column": 51,
+    "word": "documentclass"
+  },
+  {
+    "file": "docs/conf.py",
+    "line": 242,
+    "column": 14,
+    "word": "pagerefs"
+  },
+  {
+    "file": "docs/conf.py",
+    "line": 270,
+    "column": 14,
+    "word": "rtype"
+  },
+  {
+    "file": "docs/contributing.rst",
+    "line": 43,
+    "column": 4,
+    "word": "utilise"
+  },
+  {
+    "file": "docs/contributing.rst",
+    "line": 69,
+    "column": 27,
+    "word": "pipx"
+  },
+  {
+    "file": "docs/contributing.rst",
+    "line": 79,
+    "column": 34,
+    "word": "pytest"
+  },
+  {
+    "file": "docs/contributing.rst",
+    "line": 88,
+    "column": 22,
+    "word": "Pytest"
+  },
+  {
+    "file": "docs/contributing.rst",
+    "line": 101,
+    "column": 18,
+    "word": "PYTEST"
+  },
+  {
+    "file": "docs/examples.rst",
+    "line": 6,
+    "column": 4,
+    "word": "literalinclude"
+  },
+  {
+    "file": "docs/examples.rst",
+    "line": 42,
+    "column": 64,
+    "word": "netrc"
+  },
+  {
+    "file": "docs/examples.rst",
+    "line": 86,
+    "column": 4,
+    "word": "seealso"
+  },
+  {
+    "file": "docs/examples.rst",
+    "line": 163,
+    "column": 19,
+    "word": "toolbelt"
+  },
+  {
+    "file": "docs/examples.rst",
+    "line": 190,
+    "column": 31,
+    "word": "newassignee"
+  },
+  {
+    "file": "docs/examples.rst",
+    "line": 199,
+    "column": 69,
+    "word": "issuetype"
+  },
+  {
+    "file": "docs/examples.rst",
+    "line": 236,
+    "column": 59,
+    "word": "createmeta"
+  },
+  {
+    "file": "docs/examples.rst",
+    "line": 282,
+    "column": 48,
+    "word": "amet"
+  },
+  {
+    "file": "docs/examples.rst",
+    "line": 282,
+    "column": 54,
+    "word": "consectetur"
+  },
+  {
+    "file": "docs/examples.rst",
+    "line": 282,
+    "column": 66,
+    "word": "adipiscing"
+  },
+  {
+    "file": "docs/examples.rst",
+    "line": 282,
+    "column": 77,
+    "word": "elit"
+  },
+  {
+    "file": "docs/examples.rst",
+    "line": 282,
+    "column": 83,
+    "word": "Pellentesque"
+  },
+  {
+    "file": "docs/examples.rst",
+    "line": 282,
+    "column": 96,
+    "word": "eget"
+  },
+  {
+    "file": "docs/examples.rst",
+    "line": 282,
+    "column": 101,
+    "word": "venenatis"
+  },
+  {
+    "file": "docs/examples.rst",
+    "line": 282,
+    "column": 117,
+    "word": "Duis"
+  },
+  {
+    "file": "docs/examples.rst",
+    "line": 282,
+    "column": 125,
+    "word": "justo"
+  },
+  {
+    "file": "docs/examples.rst",
+    "line": 282,
+    "column": 136,
+    "word": "augue"
+  },
+  {
+    "file": "docs/examples.rst",
+    "line": 282,
+    "column": 142,
+    "word": "iaculis"
+  },
+  {
+    "file": "docs/examples.rst",
+    "line": 282,
+    "column": 150,
+    "word": "fermentum"
+  },
+  {
+    "file": "docs/examples.rst",
+    "line": 282,
+    "column": 177,
+    "word": "laoreet"
+  },
+  {
+    "file": "docs/examples.rst",
+    "line": 282,
+    "column": 190,
+    "word": "egestas"
+  },
+  {
+    "file": "docs/examples.rst",
+    "line": 282,
+    "column": 201,
+    "word": "posuere"
+  },
+  {
+    "file": "docs/examples.rst",
+    "line": 294,
+    "column": 27,
+    "word": "worklogs"
+  },
+  {
+    "file": "docs/examples.rst",
+    "line": 296,
+    "column": 18,
+    "word": "worklog"
+  },
+  {
+    "file": "docs/examples.rst",
+    "line": 296,
+    "column": 77,
+    "word": "Worklog"
+  },
+  {
+    "file": "docs/examples.rst",
+    "line": 309,
+    "column": 18,
+    "word": "timetracking"
+  },
+  {
+    "file": "docs/examples.rst",
+    "line": 363,
+    "column": 5,
+    "word": "pngs"
+  },
+  {
+    "file": "docs/examples.rst",
+    "line": 363,
+    "column": 42,
+    "word": "findall"
+  },
+  {
+    "file": "docs/index.rst",
+    "line": 5,
+    "column": 4,
+    "word": "toctree"
+  },
+  {
+    "file": "docs/index.rst",
+    "line": 20,
+    "column": 27,
+    "word": "Fjira"
+  },
+  {
+    "file": "docs/index.rst",
+    "line": 20,
+    "column": 54,
+    "word": "Flatest"
+  },
+  {
+    "file": "docs/index.rst",
+    "line": 29,
+    "column": 9,
+    "word": "genindex"
+  },
+  {
+    "file": "docs/installation.rst",
+    "line": 11,
+    "column": 78,
+    "word": "virtualenv"
+  },
+  {
+    "file": "docs/installation.rst",
+    "line": 15,
+    "column": 15,
+    "word": "venv"
+  },
+  {
+    "file": "docs/installation.rst",
+    "line": 40,
+    "column": 12,
+    "word": "ipython"
+  },
+  {
+    "file": "docs/installation.rst",
+    "line": 41,
+    "column": 12,
+    "word": "filemagic"
+  },
+  {
+    "file": "docs/installation.rst",
+    "line": 41,
+    "column": 59,
+    "word": "autodetection"
+  },
+  {
+    "file": "docs/installation.rst",
+    "line": 41,
+    "column": 150,
+    "word": "libmagic"
+  },
+  {
+    "file": "docs/jirashell.rst",
+    "line": 44,
+    "column": 18,
+    "word": "aggregateprogress"
+  },
+  {
+    "file": "docs/jirashell.rst",
+    "line": 44,
+    "column": 62,
+    "word": "customfield"
+  },
+  {
+    "file": "docs/jirashell.rst",
+    "line": 45,
+    "column": 18,
+    "word": "aggregatetimeestimate"
+  },
+  {
+    "file": "docs/jirashell.rst",
+    "line": 46,
+    "column": 18,
+    "word": "aggregatetimeoriginalestimate"
+  },
+  {
+    "file": "docs/jirashell.rst",
+    "line": 47,
+    "column": 18,
+    "word": "aggregatetimespent"
+  },
+  {
+    "file": "docs/jirashell.rst",
+    "line": 52,
+    "column": 62,
+    "word": "issuelinks"
+  },
+  {
+    "file": "docs/jirashell.rst",
+    "line": 60,
+    "column": 62,
+    "word": "resolutiondate"
+  },
+  {
+    "file": "docs/jirashell.rst",
+    "line": 64,
+    "column": 62,
+    "word": "timeestimate"
+  },
+  {
+    "file": "docs/jirashell.rst",
+    "line": 65,
+    "column": 62,
+    "word": "timeoriginalestimate"
+  },
+  {
+    "file": "docs/jirashell.rst",
+    "line": 66,
+    "column": 62,
+    "word": "timespent"
+  },
+  {
+    "file": "docs/jirashell.rst",
+    "line": 71,
+    "column": 62,
+    "word": "workratio"
+  },
+  {
+    "file": "examples/basic_use.py",
+    "line": 21,
+    "column": 29,
+    "word": "Atlassians"
+  },
+  {
+    "file": "examples/basic_use.py",
+    "line": 50,
+    "column": 38,
+    "word": "applinks"
+  },
+  {
+    "file": "examples/maintenance.py",
+    "line": 58,
+    "column": 12,
+    "word": "projectcategories"
+  },
+  {
+    "file": "examples/maintenance.py",
+    "line": 79,
+    "column": 12,
+    "word": "notificationschemes"
+  },
+  {
+    "file": "examples/maintenance.py",
+    "line": 82,
+    "column": 8,
+    "word": "ssbarnea"
+  },
+  {
+    "file": "jira/client.py",
+    "line": 153,
+    "column": 56,
+    "word": "reraises"
+  },
+  {
+    "file": "jira/client.py",
+    "line": 618,
+    "column": 28,
+    "word": "verif"
+  },
+  {
+    "file": "jira/client.py",
+    "line": 1085,
+    "column": 66,
+    "word": "applicationlink"
+  },
+  {
+    "file": "jira/client.py",
+    "line": 1154,
+    "column": 22,
+    "word": "multipartencoded"
+  },
+  {
+    "file": "jira/client.py",
+    "line": 1312,
+    "column": 45,
+    "word": "favourite"
+  },
+  {
+    "file": "jira/client.py",
+    "line": 1613,
+    "column": 57,
+    "word": "favourites"
+  },
+  {
+    "file": "jira/client.py",
+    "line": 2175,
+    "column": 20,
+    "word": "fieldtypes"
+  },
+  {
+    "file": "jira/client.py",
+    "line": 2605,
+    "column": 14,
+    "word": "transitionid"
+  },
+  {
+    "file": "jira/client.py",
+    "line": 3197,
+    "column": 65,
+    "word": "requesttype"
+  },
+  {
+    "file": "jira/client.py",
+    "line": 3254,
+    "column": 32,
+    "word": "mypermissions"
+  },
+  {
+    "file": "jira/client.py",
+    "line": 3501,
+    "column": 10,
+    "word": "rolesdict"
+  },
+  {
+    "file": "jira/client.py",
+    "line": 4243,
+    "column": 31,
+    "word": "viewissue"
+  },
+  {
+    "file": "jira/client.py",
+    "line": 4762,
+    "column": 66,
+    "word": "jspa"
+  },
+  {
+    "file": "jira/client.py",
+    "line": 4790,
+    "column": 52,
+    "word": "reindexing"
+  },
+  {
+    "file": "jira/client.py",
+    "line": 4803,
+    "column": 61,
+    "word": "stoptheworld"
+  },
+  {
+    "file": "jira/client.py",
+    "line": 4843,
+    "column": 78,
+    "word": "statuscode"
+  },
+  {
+    "file": "jira/client.py",
+    "line": 4847,
+    "column": 60,
+    "word": "runbackup"
+  },
+  {
+    "file": "jira/client.py",
+    "line": 4873,
+    "column": 53,
+    "word": "getprogress"
+  },
+  {
+    "file": "jira/client.py",
+    "line": 4904,
+    "column": 9,
+    "word": "perc"
+  },
+  {
+    "file": "jira/client.py",
+    "line": 4921,
+    "column": 35,
+    "word": "webdav"
+  },
+  {
+    "file": "jira/client.py",
+    "line": 4921,
+    "column": 42,
+    "word": "backupmanager"
+  },
+  {
+    "file": "jira/client.py",
+    "line": 5104,
+    "column": 30,
+    "word": "workflowschemes"
+  },
+  {
+    "file": "jira/client.py",
+    "line": 5448,
+    "column": 33,
+    "word": "Dalko"
+  },
+  {
+    "file": "jira/client.py",
+    "line": 5450,
+    "column": 13,
+    "word": "igrid"
+  },
+  {
+    "file": "jira/client.py",
+    "line": 5451,
+    "column": 40,
+    "word": "idalko"
+  },
+  {
+    "file": "jira/client.py",
+    "line": 5608,
+    "column": 9,
+    "word": "incompleted"
+  },
+  {
+    "file": "jira/client.py",
+    "line": 5611,
+    "column": 28,
+    "word": "sprintreport"
+  },
+  {
+    "file": "jira/client.py",
+    "line": 5848,
+    "column": 59,
+    "word": "lexo"
+  },
+  {
+    "file": "jira/config.py",
+    "line": 66,
+    "column": 9,
+    "word": "findfile"
+  },
+  {
+    "file": "jira/exceptions.py",
+    "line": 38,
+    "column": 33,
+    "word": "PYJIRA"
+  },
+  {
+    "file": "jira/exceptions.py",
+    "line": 62,
+    "column": 68,
+    "word": "jiraerror"
+  },
+  {
+    "file": "jira/jirashell.py",
+    "line": 71,
+    "column": 51,
+    "word": "faceplants"
+  },
+  {
+    "file": "jira/resilientsession.py",
+    "line": 185,
+    "column": 65,
+    "word": "behaviour"
+  },
+  {
+    "file": "jira/resources.py",
+    "line": 784,
+    "column": 18,
+    "word": "duedate"
+  },
+  {
+    "file": "jira/resources.py",
+    "line": 794,
+    "column": 18,
+    "word": "statuscategorychangedate"
+  },
+  {
+    "file": "jira/resources.py",
+    "line": 916,
+    "column": 42,
+    "word": "browsable"
+  },
+  {
+    "file": "jira/resources.py",
+    "line": 1069,
+    "column": 32,
+    "word": "issuesecuritylevelscheme"
+  },
+  {
+    "file": "jira/resources.py",
+    "line": 1325,
+    "column": 14,
+    "word": "categorised"
+  },
+  {
+    "file": "pyproject.toml",
+    "line": 2,
+    "column": 18,
+    "word": "setuptools"
+  },
+  {
+    "file": "pyproject.toml",
+    "line": 24,
+    "column": 4,
+    "word": "defusedxml"
+  },
+  {
+    "file": "pyproject.toml",
+    "line": 48,
+    "column": 4,
+    "word": "furo"
+  },
+  {
+    "file": "pyproject.toml",
+    "line": 66,
+    "column": 11,
+    "word": "instafail"
+  },
+  {
+    "file": "pyproject.toml",
+    "line": 69,
+    "column": 11,
+    "word": "xdist"
+  },
+  {
+    "file": "pyproject.toml",
+    "line": 75,
+    "column": 4,
+    "word": "yanc"
+  },
+  {
+    "file": "pyproject.toml",
+    "line": 95,
+    "column": 7,
+    "word": "codespell"
+  },
+  {
+    "file": "pyproject.toml",
+    "line": 105,
+    "column": 7,
+    "word": "mypy"
+  },
+  {
+    "file": "pyproject.toml",
+    "line": 157,
+    "column": 1,
+    "word": "addopts"
+  },
+  {
+    "file": "pyproject.toml",
+    "line": 159,
+    "column": 1,
+    "word": "filterwarnings"
+  },
+  {
+    "file": "pyproject.toml",
+    "line": 161,
+    "column": 1,
+    "word": "minversion"
+  },
+  {
+    "file": "pyproject.toml",
+    "line": 164,
+    "column": 1,
+    "word": "rsyncdirs"
+  },
+  {
+    "file": "pyproject.toml",
+    "line": 165,
+    "column": 1,
+    "word": "rsyncignore"
+  },
+  {
+    "file": "pyproject.toml",
+    "line": 166,
+    "column": 1,
+    "word": "testpaths"
+  },
+  {
+    "file": "pyproject.toml",
+    "line": 197,
+    "column": 10,
+    "word": "pydocstyle"
+  },
+  {
+    "file": "pyproject.toml",
+    "line": 199,
+    "column": 10,
+    "word": "pyflakes"
+  },
+  {
+    "file": "pyproject.toml",
+    "line": 200,
+    "column": 10,
+    "word": "isort"
+  },
+  {
+    "file": "pyproject.toml",
+    "line": 201,
+    "column": 11,
+    "word": "pyupgrade"
+  },
+  {
+    "file": "pyproject.toml",
+    "line": 247,
+    "column": 7,
+    "word": "tomlsort"
+  },
+  {
+    "file": "pyproject.toml",
+    "line": 258,
+    "column": 4,
+    "word": "secretstorage"
+  },
+  {
+    "file": "pyproject.toml",
+    "line": 259,
+    "column": 4,
+    "word": "jeepney"
+  },
+  {
+    "file": "tests/conftest.py",
+    "line": 104,
+    "column": 5,
+    "word": "rndstr"
+  },
+  {
+    "file": "tests/conftest.py",
+    "line": 108,
+    "column": 5,
+    "word": "rndpassword"
+  },
+  {
+    "file": "tests/conftest.py",
+    "line": 119,
+    "column": 5,
+    "word": "hashify"
+  },
+  {
+    "file": "tests/resources/test_dashboard.py",
+    "line": 29,
+    "column": 55,
+    "word": "issuekey"
+  },
+  {
+    "file": "tests/resources/test_dashboard.py",
+    "line": 83,
+    "column": 66,
+    "word": "loggedin"
+  },
+  {
+    "file": "tests/resources/test_issue.py",
+    "line": 108,
+    "column": 32,
+    "word": "fielddict"
+  },
+  {
+    "file": "tests/resources/test_issue.py",
+    "line": 334,
+    "column": 9,
+    "word": "labelarray"
+  },
+  {
+    "file": "tests/resources/test_issue.py",
+    "line": 372,
+    "column": 46,
+    "word": "wiith"
+  },
+  {
+    "file": "tests/resources/test_issue.py",
+    "line": 412,
+    "column": 35,
+    "word": "projectkey"
+  },
+  {
+    "file": "tests/resources/test_issue.py",
+    "line": 417,
+    "column": 35,
+    "word": "projectkeys"
+  },
+  {
+    "file": "tests/resources/test_issue.py",
+    "line": 427,
+    "column": 9,
+    "word": "proja"
+  },
+  {
+    "file": "tests/resources/test_issue.py",
+    "line": 428,
+    "column": 9,
+    "word": "projb"
+  },
+  {
+    "file": "tests/resources/test_issue.py",
+    "line": 477,
+    "column": 73,
+    "word": "notauser"
+  },
+  {
+    "file": "tests/resources/test_issue_link.py",
+    "line": 31,
+    "column": 9,
+    "word": "inwardissue"
+  },
+  {
+    "file": "tests/resources/test_issue_link.py",
+    "line": 35,
+    "column": 9,
+    "word": "outwardissue"
+  },
+  {
+    "file": "tests/resources/test_pinned_comment.py",
+    "line": 18,
+    "column": 14,
+    "word": "pincomments"
+  },
+  {
+    "file": "tests/resources/test_project.py",
+    "line": 196,
+    "column": 9,
+    "word": "actornames"
+  },
+  {
+    "file": "tests/resources/test_remote_link.py",
+    "line": 6,
+    "column": 73,
+    "word": "googlicious"
+  },
+  {
+    "file": "tests/resources/test_sprint.py",
+    "line": 117,
+    "column": 13,
+    "word": "serialised"
+  },
+  {
+    "file": "tests/test_client.py",
+    "line": 129,
+    "column": 13,
+    "word": "abogus"
+  },
+  {
+    "file": "tests/test_client.py",
+    "line": 193,
+    "column": 18,
+    "word": "unclobbered"
+  },
+  {
+    "file": "tests/test_client.py",
+    "line": 362,
+    "column": 69,
+    "word": "caplog"
+  },
+  {
+    "file": "tests/test_exceptions.py",
+    "line": 69,
+    "column": 13,
+    "word": "repsonse"
+  },
+  {
+    "file": "tests/test_resilientsession.py",
+    "line": 39,
+    "column": 20,
+    "word": "etwhpxbhfniqnbbjoqvw"
+  },
+  {
+    "file": "tests/test_shell.py",
+    "line": 19,
+    "column": 33,
+    "word": "capsys"
+  },
+  {
+    "file": "tests/test_shell.py",
+    "line": 27,
+    "column": 19,
+    "word": "βρέθηκε"
+  },
+  {
+    "file": "tests/tests.py",
+    "line": 41,
+    "column": 29,
+    "word": "woopsydoodle"
+  },
+  {
+    "file": "tests/tests.py",
+    "line": 130,
+    "column": 31,
+    "word": "headingcolour"
+  },
+  {
+    "file": "tests/tests.py",
+    "line": 422,
+    "column": 26,
+    "word": "kall"
+  },
+  {
+    "file": "tox.ini",
+    "line": 38,
+    "column": 12,
+    "word": "REQPASS"
+  },
+  {
+    "file": "tox.ini",
+    "line": 40,
+    "column": 5,
+    "word": "PYTHONBREAKPOINT"
+  },
+  {
+    "file": "tox.ini",
+    "line": 41,
+    "column": 5,
+    "word": "PYTHONIOENCODING"
+  },
+  {
+    "file": "tox.ini",
+    "line": 42,
+    "column": 5,
+    "word": "PYTHONPYCACHEPREFIX"
+  },
+  {
+    "file": "tox.ini",
+    "line": 46,
+    "column": 5,
+    "word": "SETUPTOOLS"
+  },
+  {
+    "file": "tox.ini",
+    "line": 62,
+    "column": 41,
+    "word": "pyproject"
+  },
+  {
+    "file": "tox.ini",
+    "line": 78,
+    "column": 29,
+    "word": "posargs"
+  },
+  {
+    "file": "tox.ini",
+    "line": 80,
+    "column": 9,
+    "word": "showlocals"
+  },
+  {
+    "file": "tox.ini",
+    "line": 81,
+    "column": 9,
+    "word": "doctest"
+  },
+  {
+    "file": "tox.ini",
+    "line": 116,
+    "column": 38,
+    "word": "shutil"
+  },
+  {
+    "file": "tox.ini",
+    "line": 118,
+    "column": 15,
+    "word": "isdir"
+  },
+  {
+    "file": "tox.ini",
+    "line": 120,
+    "column": 14,
+    "word": "rmtree"
+  },
+  {
+    "file": "tox.ini",
+    "line": 135,
+    "column": 5,
+    "word": "DYLD"
+  },
+  {
+    "file": "tox.ini",
+    "line": 143,
+    "column": 9,
+    "word": "nitpicky"
+  },
+  {
+    "file": "tox.ini",
+    "line": 145,
+    "column": 12,
+    "word": "toxworkdir"
+  },
+  {
+    "file": "tox.ini",
+    "line": 145,
+    "column": 29,
+    "word": "doctree"
+  },
+  {
+    "file": "tox.ini",
+    "line": 148,
+    "column": 15,
+    "word": "pathlib"
+  },
+  {
+    "file": "tox.ini",
+    "line": 150,
+    "column": 1,
+    "word": "skipdist"
+  }
+]

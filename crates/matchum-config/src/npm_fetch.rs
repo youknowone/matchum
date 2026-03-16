@@ -102,11 +102,7 @@ pub fn extract_sub_path(import: &str) -> Option<&str> {
     let pkg_name = extract_package_name(import);
     let rest = import.strip_prefix(pkg_name)?;
     let rest = rest.strip_prefix('/')?;
-    if rest.is_empty() {
-        None
-    } else {
-        Some(rest)
-    }
+    if rest.is_empty() { None } else { Some(rest) }
 }
 
 /// Fetch package metadata from the npm registry.
@@ -222,6 +218,7 @@ fn is_installed(pkg_dir: &Path, expected_version: Option<&str>) -> bool {
 ///
 /// If the package is already installed (and matches the version if specified),
 /// returns the existing path. Otherwise downloads from the npm registry.
+/// A negative cache prevents repeated 404 requests for non-existent packages.
 pub fn ensure_package(
     package_name: &str,
     version: Option<&str>,
@@ -233,12 +230,29 @@ pub fn ensure_package(
         return Ok(pkg_dir);
     }
 
+    // Check negative cache: skip packages previously confirmed as non-existent.
+    let neg_marker = pkg_dir.with_extension("notfound");
+    if neg_marker.exists() {
+        return Err(FetchError::NotFound(package_name.to_string()));
+    }
+
     eprintln!(
         "Fetching {package_name}{}...",
         version.map_or(String::new(), |v| format!("@{v}"))
     );
 
-    let meta = fetch_package_meta(package_name, version)?;
+    let meta = match fetch_package_meta(package_name, version) {
+        Ok(m) => m,
+        Err(FetchError::NotFound(_)) => {
+            // Write negative cache marker so we don't retry.
+            if let Some(parent) = neg_marker.parent() {
+                let _ = fs::create_dir_all(parent);
+            }
+            let _ = fs::write(&neg_marker, b"");
+            return Err(FetchError::NotFound(package_name.to_string()));
+        }
+        Err(e) => return Err(e),
+    };
 
     // Remove old version if exists
     if pkg_dir.exists() {

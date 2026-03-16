@@ -16,21 +16,23 @@ struct TrieNode {
 }
 
 struct StackEntry {
-    parent_pool_idx: usize,
+    parent_idx: usize,
     child_char: char,
 }
 
-/// Builds a trie from TrieXv3 format data, mirroring cspell's BuilderCursor.
+/// Builds a trie from TrieXv3 format data, mirroring cspell's TrieBlobBuilder
+/// cursor semantics.
 struct TrieBuilder {
-    /// All trie nodes. pool[0] = root, pool[1] = shared EOW sentinel.
-    pool: Vec<TrieNode>,
-    /// Maps reference IDs to pool indices. Mirrors cspell's `nodes` array.
-    ref_ids: Vec<usize>,
-    /// Stack tracking parent info at each depth level.
+    /// Unique trie nodes. `nodes[0]` = root, `nodes[1]` = shared EOW sentinel.
+    nodes: Vec<TrieNode>,
+    /// History of node pushes as tracked by cspell's TrieNodeBuilder cursor.
+    /// Reference ids in TrieXv3 point into this history, not into unique nodes.
+    history: Vec<usize>,
+    /// Stack tracking parent info at each character depth level.
     stack: Vec<StackEntry>,
-    /// Current node (pool index).
+    /// Current unique node index.
     curr: usize,
-    /// Current depth in the trie.
+    /// Current character depth in the trie.
     depth: usize,
 }
 
@@ -44,10 +46,10 @@ impl TrieBuilder {
         };
 
         Self {
-            pool: vec![root, eow],
-            ref_ids: vec![0, 1], // [root, EOW]
+            nodes: vec![root, eow],
+            history: vec![0, 1],
             stack: vec![StackEntry {
-                parent_pool_idx: 0,
+                parent_idx: 0,
                 child_char: '\0',
             }],
             curr: 0,
@@ -56,47 +58,40 @@ impl TrieBuilder {
     }
 
     fn insert_char(&mut self, c: char) {
-        // If current node is locked (from a reference), clone it first
-        if self.pool[self.curr].locked {
-            let mut cloned = self.pool[self.curr].clone();
+        if self.nodes[self.curr].locked {
+            let mut cloned = self.nodes[self.curr].clone();
             cloned.locked = false;
-            let new_idx = self.pool.len();
-            self.pool.push(cloned);
+            let new_idx = self.nodes.len();
+            self.nodes.push(cloned);
 
-            // Update parent's child pointer to the clone
             let entry = &self.stack[self.depth];
-            self.pool[entry.parent_pool_idx]
+            self.nodes[entry.parent_idx]
                 .children
                 .insert(entry.child_char, new_idx);
+            self.history.push(new_idx);
             self.curr = new_idx;
-
-            self.ref_ids.push(new_idx);
         }
 
         let parent = self.curr;
-
-        // Get existing child or create new one
-        let child = if let Some(&existing) = self.pool[parent].children.get(&c) {
+        let child = if let Some(existing) = self.nodes[parent].children.get(&c).copied() {
             existing
         } else {
-            let idx = self.pool.len();
-            self.pool.push(TrieNode::default());
-            self.pool[parent].children.insert(c, idx);
+            let idx = self.nodes.len();
+            self.nodes.push(TrieNode::default());
+            self.nodes[parent].children.insert(c, idx);
             idx
         };
-
-        // Track for reference numbering (mirrors cspell's nodes.push(next))
-        self.ref_ids.push(child);
+        self.history.push(child);
 
         self.depth += 1;
         if self.depth < self.stack.len() {
             self.stack[self.depth] = StackEntry {
-                parent_pool_idx: parent,
+                parent_idx: parent,
                 child_char: c,
             };
         } else {
             self.stack.push(StackEntry {
-                parent_pool_idx: parent,
+                parent_idx: parent,
                 child_char: c,
             });
         }
@@ -104,29 +99,32 @@ impl TrieBuilder {
     }
 
     fn mark_eow(&mut self) {
-        if self.pool[self.curr].children.is_empty() {
-            // Leaf node: replace with shared EOW sentinel (pool[1])
+        if self.curr == 1 {
+            return;
+        }
+
+        if self.nodes[self.curr].children.is_empty() {
             let entry = &self.stack[self.depth];
-            self.pool[entry.parent_pool_idx]
+            self.nodes[entry.parent_idx]
                 .children
                 .insert(entry.child_char, 1);
-
-            if self.ref_ids.last() == Some(&self.curr) {
-                self.ref_ids.pop();
+            if self.history.last().copied() == Some(self.curr) {
+                self.history.pop();
             }
-            self.curr = 1; // EOW sentinel
+            self.curr = 1;
         } else {
-            self.pool[self.curr].is_word = true;
+            self.nodes[self.curr].is_word = true;
         }
     }
 
     fn reference(&mut self, ref_id: usize) {
-        let referenced = self.ref_ids[ref_id];
+        let referenced = self.history[ref_id];
         let entry = &self.stack[self.depth];
-        self.pool[entry.parent_pool_idx]
+        self.curr = entry.parent_idx;
+        self.nodes[self.curr]
             .children
             .insert(entry.child_char, referenced);
-        self.ref_ids.pop();
+        self.history.pop();
     }
 
     fn back_step(&mut self, n: usize) {
@@ -139,26 +137,33 @@ impl TrieBuilder {
             self.depth
         );
         self.depth -= n;
-        self.curr = self.stack[self.depth + 1].parent_pool_idx;
+        self.curr = self.stack[self.depth + 1].parent_idx;
     }
 
     /// Walk the trie and add words directly to the dictionary,
     /// avoiding the intermediate Vec<String> allocation.
     fn populate_dict(&self, dict: &mut HashDictionary) {
-        let mut path = String::new();
+        let mut path = Vec::new();
         self.walk_into_dict(0, &mut path, dict);
     }
 
-    fn walk_into_dict(&self, node_idx: usize, path: &mut String, dict: &mut HashDictionary) {
-        let node = &self.pool[node_idx];
+    fn walk_into_dict(&self, node_idx: usize, path: &mut Vec<u8>, dict: &mut HashDictionary) {
+        let Some(node) = self.nodes.get(node_idx) else {
+            return;
+        };
         if node.is_word {
-            add_trie_word(dict, path);
+            let word = std::str::from_utf8(path).expect("TrieXv3 path must remain valid UTF-8");
+            add_trie_word(dict, word);
         }
 
-        for (&c, &child_idx) in &node.children {
-            path.push(c);
+        for (&ch, &child_idx) in &node.children {
+            let mut buf = [0; 4];
+            let bytes = ch.encode_utf8(&mut buf).as_bytes();
+            path.extend_from_slice(bytes);
             self.walk_into_dict(child_idx, path, dict);
-            path.pop();
+            for _ in 0..bytes.len() {
+                path.pop();
+            }
         }
     }
 
@@ -166,25 +171,35 @@ impl TrieBuilder {
     #[cfg(test)]
     fn extract_words(&self) -> Vec<String> {
         let mut words = Vec::new();
-        let mut path = String::new();
+        let mut path = Vec::new();
         self.walk(0, &mut path, &mut words);
         words
     }
 
     #[cfg(test)]
-    fn walk(&self, node_idx: usize, path: &mut String, words: &mut Vec<String>) {
-        let node = &self.pool[node_idx];
+    fn walk(&self, node_idx: usize, path: &mut Vec<u8>, words: &mut Vec<String>) {
+        let Some(node) = self.nodes.get(node_idx) else {
+            return;
+        };
         if node.is_word {
-            words.push(path.clone());
+            words.push(
+                std::str::from_utf8(path)
+                    .expect("TrieXv3 path must remain valid UTF-8")
+                    .to_owned(),
+            );
         }
 
         let mut children: Vec<_> = node.children.iter().collect();
-        children.sort_by_key(|(c, _)| *c);
+        children.sort_by_key(|(ch, _)| **ch);
 
-        for (&c, &child_idx) in children {
-            path.push(c);
+        for (&ch, &child_idx) in children {
+            let mut buf = [0; 4];
+            let bytes = ch.encode_utf8(&mut buf).as_bytes();
+            path.extend_from_slice(bytes);
             self.walk(child_idx, path, words);
-            path.pop();
+            for _ in 0..bytes.len() {
+                path.pop();
+            }
         }
     }
 }
@@ -197,7 +212,7 @@ enum ParseState {
     EscapeWithBackslash,
 }
 
-/// Load a TrieXv3 format dictionary (.trie or .trie.gz).
+/// Load a TrieXv3 format dictionary (.trie or .trie.gz) from a file path.
 pub fn load_trie_v3(path: &Path) -> Result<HashDictionary, LoadError> {
     let file = std::fs::File::open(path)?;
     let reader: Box<dyn Read> = if path.extension().is_some_and(|ext| ext == "gz") {
@@ -205,7 +220,11 @@ pub fn load_trie_v3(path: &Path) -> Result<HashDictionary, LoadError> {
     } else {
         Box::new(file)
     };
+    load_trie_v3_from_reader(reader)
+}
 
+/// Load a TrieXv3 format dictionary from a reader.
+pub fn load_trie_v3_from_reader(reader: impl Read) -> Result<HashDictionary, LoadError> {
     let content = {
         let mut s = String::new();
         let mut buf = std::io::BufReader::new(reader);
@@ -243,31 +262,74 @@ fn add_trie_word(dict: &mut HashDictionary, word: &str) {
     if word.is_empty() {
         return;
     }
-    match word.as_bytes()[0] {
-        b'~' => {
-            // Case-insensitive variant: add as no-suggest word
-            let base = &word[1..];
-            if !base.is_empty() {
-                dict.add_no_suggest(base);
+    let mut rest = word;
+    let mut non_strict = false;
+    if let Some(base) = rest.strip_prefix('~') {
+        non_strict = true;
+        rest = base;
+    }
+
+    if let Some(rest) = rest.strip_prefix(':') {
+        // Suggestion metadata is encoded as `:word` / `:word:0:suggestion`.
+        // The underlying word itself is emitted separately, so it is safe to
+        // skip these entries here.
+        let _ = rest;
+        return;
+    }
+
+    let mut forbidden = false;
+    if let Some(base) = rest.strip_prefix('!') {
+        forbidden = true;
+        rest = base;
+    }
+
+    if rest.starts_with('+') || rest.ends_with('+') {
+        let plus_start = rest.starts_with('+');
+        let plus_end = rest.ends_with('+');
+        let base = rest.trim_matches('+');
+        if base.is_empty() {
+            return;
+        }
+
+        if forbidden {
+            dict.add_forbidden(base);
+        } else if !non_strict {
+            if rest.chars().any(|c| c.is_alphabetic() && c.is_uppercase()) {
+                dict.add_exact_word(rest);
+            } else {
+                dict.add_word(rest);
             }
         }
-        b'!' => {
-            // Forbidden word
-            let base = &word[1..];
-            if !base.is_empty() {
-                dict.add_forbidden(base);
-            }
-        }
-        b'+' => {
-            // Compound-only word
-            let base = &word[1..];
-            if !base.is_empty() {
-                dict.add_compound_part(base);
-            }
-        }
-        _ => {
-            dict.add_word(word);
-        }
+
+        dict.add_compound_part_explicit(
+            base,
+            plus_end && !plus_start,
+            plus_start && !plus_end,
+            plus_start && plus_end,
+        );
+        return;
+    }
+
+    if rest.is_empty() {
+        return;
+    }
+
+    if forbidden {
+        dict.add_forbidden(rest);
+        return;
+    }
+
+    // `~word` entries belong to cspell's non-strict trie branch. They should
+    // only participate in non-strict searches, not become standalone words.
+    if non_strict {
+        dict.add_non_strict_word(rest);
+        return;
+    }
+
+    if rest.chars().any(|c| c.is_alphabetic() && c.is_uppercase()) {
+        dict.add_exact_word(rest);
+    } else {
+        dict.add_word(rest);
     }
 }
 
@@ -389,6 +451,7 @@ fn parse_escape_mapped(builder: &mut TrieBuilder, c: char) -> ParseState {
     ParseState::Main
 }
 
+// cspell:disable
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -465,6 +528,100 @@ mod tests {
         assert_eq!(words, vec!["bat", "cat"]);
     }
 
+    fn en_us_dict_path() -> Option<std::path::PathBuf> {
+        let candidates = [
+            std::path::PathBuf::from(env!("CARGO_MANIFEST_DIR"))
+                .parent()
+                .unwrap()
+                .parent()
+                .unwrap()
+                .join("dictionaries/node_modules/@cspell/dict-en_us/en_US.trie.gz"),
+            {
+                let home = std::env::var("HOME").unwrap_or_default();
+                std::path::PathBuf::from(home)
+                    .join(".matchum_cache/packages/node_modules/@cspell/dict-en_us/en_US.trie.gz")
+            },
+        ];
+        candidates.iter().find(|p| p.exists()).cloned()
+    }
+
+    fn java_dict_path() -> Option<std::path::PathBuf> {
+        let candidates = [{
+            let home = std::env::var("HOME").unwrap_or_default();
+            std::path::PathBuf::from(home)
+                .join(".matchum_cache/packages/node_modules/@cspell/dict-java/dict/java.trie")
+        }];
+        candidates.iter().find(|p| p.exists()).cloned()
+    }
+
+    fn parse_en_us_words() -> Option<Vec<String>> {
+        let dict_path = en_us_dict_path()?;
+        parse_trie_words(&dict_path)
+    }
+
+    fn parse_trie_words(dict_path: &std::path::Path) -> Option<Vec<String>> {
+        let file = std::fs::File::open(&dict_path).ok()?;
+        let reader: Box<dyn Read> = if dict_path.extension().is_some_and(|ext| ext == "gz") {
+            Box::new(flate2::read::GzDecoder::new(file))
+        } else {
+            Box::new(file)
+        };
+
+        let mut content = String::new();
+        let mut buf = std::io::BufReader::new(reader);
+        buf.read_to_string(&mut content).ok()?;
+
+        let lines: Vec<&str> = content.lines().collect();
+        let data_start = lines.iter().position(|l| l.contains("__DATA__"))?;
+        let radix = parse_header(&lines[..data_start]).ok()?;
+
+        let mut builder = TrieBuilder::new();
+        let mut state = ParseState::Main;
+        for line in &lines[data_start + 1..] {
+            for c in line.chars() {
+                state = process_char(&mut builder, state, c, radix);
+            }
+        }
+
+        Some(builder.extract_words())
+    }
+
+    #[test]
+    fn test_en_us_raw_words_do_not_include_colum() {
+        let words = match parse_en_us_words() {
+            Some(words) => words,
+            None => {
+                eprintln!("Skipping: en_US dictionary not found");
+                return;
+            }
+        };
+        assert!(
+            !words.iter().any(|w| w == "colum"),
+            "raw trie should not contain 'colum'"
+        );
+    }
+
+    #[test]
+    fn test_en_us_add_trie_word_does_not_create_colum() {
+        let words = match parse_en_us_words() {
+            Some(words) => words,
+            None => {
+                eprintln!("Skipping: en_US dictionary not found");
+                return;
+            }
+        };
+
+        let mut dict = HashDictionary::new(false);
+        for raw_word in &words {
+            add_trie_word(&mut dict, raw_word);
+            assert!(
+                !dict.has("colum"),
+                "add_trie_word unexpectedly made 'colum' valid after processing {:?}",
+                raw_word
+            );
+        }
+    }
+
     #[test]
     fn test_escape_special_chars() {
         // Word "cost$" (literal dollar sign)
@@ -506,6 +663,94 @@ mod tests {
         // \\n in data = backslash + n -> mapped to newline
         let words = parse_trie_str("eol \\\\n$5", 10);
         assert_eq!(words, vec!["eol \n"]);
+    }
+
+    #[test]
+    fn test_add_trie_word_compound_markers_stay_literal() {
+        let mut dict = HashDictionary::new(false);
+
+        add_trie_word(&mut dict, "error+");
+        add_trie_word(&mut dict, "+code");
+        add_trie_word(&mut dict, "+msg+");
+
+        assert!(dict.has("error+"));
+        assert!(dict.has("+code"));
+        assert!(dict.has("+msg+"));
+        assert!(dict.has("errorcode"));
+        assert!(!dict.has("codeerror"));
+        assert!(!dict.has("errormsgcode"));
+    }
+
+    #[test]
+    fn test_add_trie_word_non_strict_prefix_is_not_no_suggest() {
+        let mut dict = HashDictionary::new(false);
+
+        add_trie_word(&mut dict, "~cafe");
+
+        assert!(dict.has("cafe"));
+        assert!(!dict.find("cafe").no_suggest);
+    }
+
+    #[test]
+    fn test_add_trie_word_non_strict_prefix_is_not_standalone_in_case_sensitive_dicts() {
+        let mut dict = HashDictionary::new(true);
+
+        add_trie_word(&mut dict, "~kenn");
+
+        assert!(!dict.has("kenn"));
+        assert!(!dict.find("kenn").found);
+    }
+
+    #[test]
+    fn test_add_trie_word_non_strict_compound_markers_survive_prefix_parsing() {
+        let mut dict = HashDictionary::new(false);
+
+        add_trie_word(&mut dict, "~multi+");
+        add_trie_word(&mut dict, "~+api");
+        add_trie_word(&mut dict, "~+api+");
+        add_trie_word(&mut dict, "~+script");
+
+        assert!(
+            !dict.has("multi"),
+            "compound-only non-strict prefixes must not become standalone words"
+        );
+        // Trie compound decomposition only allows 2-part (prefix+suffix).
+        assert!(dict.has("multiapi"));
+        // 3-part chain (multi+api+script) is NOT valid in trie compounds.
+        assert!(!dict.has("multiapiscript"));
+    }
+
+    #[test]
+    fn test_add_trie_word_non_strict_forbidden_remains_forbidden() {
+        let mut dict = HashDictionary::new(false);
+
+        add_trie_word(&mut dict, "~!bluecode");
+
+        let found = dict.find("bluecode");
+        assert!(!found.found);
+        assert!(found.forbidden);
+    }
+
+    #[test]
+    fn test_add_trie_word_mixed_case_plain_word_stays_exact_case() {
+        let mut dict = HashDictionary::new(false);
+
+        add_trie_word(&mut dict, "Colum");
+
+        assert!(dict.has("Colum"));
+        assert!(!dict.has("colum"));
+        assert!(
+            <HashDictionary as crate::dictionary::Dictionary>::has_pre_normalized_direct_only(
+                &dict, "Colum", "colum",
+            ),
+            "pre-normalized lookup should preserve exact mixed-case entries"
+        );
+        assert!(
+            !<HashDictionary as crate::dictionary::Dictionary>::has_pre_normalized_direct_only(
+                &dict, "colum", "colum",
+            ),
+            "pre-normalized lookup should not invent lowercase variants for exact mixed-case entries"
+        );
     }
 
     #[test]
@@ -595,21 +840,7 @@ mod tests {
 
     #[test]
     fn test_load_en_us_trie() {
-        // Try multiple known locations
-        let candidates = [
-            std::path::PathBuf::from(env!("CARGO_MANIFEST_DIR"))
-                .parent()
-                .unwrap()
-                .parent()
-                .unwrap()
-                .join("dictionaries/node_modules/@cspell/dict-en_us/en_US.trie.gz"),
-            {
-                let home = std::env::var("HOME").unwrap_or_default();
-                std::path::PathBuf::from(home)
-                    .join(".matchum_cache/packages/node_modules/@cspell/dict-en_us/en_US.trie.gz")
-            },
-        ];
-        let dict_path = match candidates.iter().find(|p| p.exists()) {
+        let dict_path = match en_us_dict_path() {
             Some(p) => p.clone(),
             None => {
                 eprintln!("Skipping: en_US dictionary not found");
@@ -635,8 +866,181 @@ mod tests {
         assert!(dict.has("programming"), "should have 'programming'");
         assert!(dict.has("dictionary"), "should have 'dictionary'");
         assert!(dict.has("active"), "should have 'active'");
+        assert!(!dict.has("colum"), "should not have 'colum'");
 
         // Should not have random gibberish
         assert!(!dict.has("xyzzyplugh"), "should not have gibberish");
+    }
+
+    #[test]
+    fn test_load_en_us_trie_rejects_unprefixed_derivations_without_entries() {
+        let dict_path = match en_us_dict_path() {
+            Some(p) => p.clone(),
+            None => {
+                eprintln!("Skipping: en_US dictionary not found");
+                return;
+            }
+        };
+
+        let dict = load_trie_v3(&dict_path).expect("Failed to load en_US trie");
+
+        assert!(
+            dict.has("enumerable"),
+            "sanity check: should have 'enumerable'"
+        );
+        assert!(
+            dict.has("overridden"),
+            "sanity check: should have 'overridden'"
+        );
+        assert!(
+            !dict.has("unenumerable"),
+            "en_US trie should not synthesize 'unenumerable'"
+        );
+        assert!(
+            !dict.has("unoverridden"),
+            "en_US trie should not synthesize 'unoverridden'"
+        );
+    }
+
+    #[test]
+    fn test_load_en_us_trie_matches_cspell_raw_lookup_semantics() {
+        let dict_path = match en_us_dict_path() {
+            Some(p) => p.clone(),
+            None => {
+                eprintln!("Skipping: en_US dictionary not found");
+                return;
+            }
+        };
+
+        let dict = load_trie_v3(&dict_path).expect("Failed to load en_US trie");
+
+        assert!(dict.has("multi"), "en_US trie should recognize 'multi'");
+        assert!(dict.has("api"), "en_US trie should recognize 'api'");
+        assert!(dict.has("script"), "en_US trie should recognize 'script'");
+        assert!(
+            !dict.has("multiapi"),
+            "raw en_US trie should not synthesize 'multiapi' without allowCompoundWords"
+        );
+        assert!(
+            !dict.has("multiapiscript"),
+            "raw en_US trie should not synthesize 'multiapiscript' without allowCompoundWords"
+        );
+        assert!(
+            !dict.has("splashscreen"),
+            "en_US trie should not synthesize unrelated compound 'splashscreen'"
+        );
+    }
+
+    #[test]
+    fn test_load_java_trie_does_not_accept_splashscreen_without_explicit_entry() {
+        let dict_path = match java_dict_path() {
+            Some(p) => p.clone(),
+            None => {
+                eprintln!("Skipping: Java dictionary not found");
+                return;
+            }
+        };
+
+        let mut dict = load_trie_v3(&dict_path).expect("Failed to load java trie");
+        dict.set_case_sensitive(true);
+        let matches = parse_trie_words(&dict_path)
+            .unwrap_or_default()
+            .into_iter()
+            .filter(|word| {
+                let lower = word.to_lowercase();
+                lower.contains("splash") || lower.contains("screen")
+            })
+            .take(20)
+            .collect::<Vec<_>>();
+
+        assert!(
+            !<HashDictionary as crate::dictionary::Dictionary>::has_pre_normalized_direct_only(
+                &dict,
+                "splashscreen",
+                "splashscreen",
+            ),
+            "java trie should not accept lowercase splashscreen via direct ignore-case lookup; nearby parsed words={matches:?}"
+        );
+        assert!(
+            !<HashDictionary as crate::dictionary::Dictionary>::find_without_compounds(
+                &dict,
+                "splashscreen",
+            )
+            .found,
+            "java trie should not accept splashscreen without compounds; nearby parsed words={matches:?}"
+        );
+    }
+
+    #[test]
+    fn test_non_strict_words_excluded_in_case_sensitive_mode() {
+        let mut dict = HashDictionary::new(false);
+        add_trie_word(&mut dict, "~cafe");
+
+        // case-insensitive (default): non-strict words should be found
+        assert!(
+            dict.has("cafe"),
+            "non-strict word should be found case-insensitively"
+        );
+
+        // case-sensitive: non-strict words should NOT be found (matches cspell)
+        dict.set_case_sensitive(true);
+        let found = <HashDictionary as crate::dictionary::Dictionary>::find_without_compounds(
+            &dict, "cafe",
+        )
+        .found;
+        assert!(
+            !found,
+            "non-strict word should NOT be found in case-sensitive mode"
+        );
+    }
+
+    #[test]
+    fn test_debug_en_us_raw_words_for_multiapi() {
+        let words = match parse_en_us_words() {
+            Some(words) => words,
+            None => {
+                eprintln!("Skipping: en_US dictionary not found");
+                return;
+            }
+        };
+
+        let multi: Vec<_> = words
+            .iter()
+            .filter(|w| w.contains("multi"))
+            .take(30)
+            .cloned()
+            .collect();
+        let api: Vec<_> = words
+            .iter()
+            .filter(|w| w.contains("api"))
+            .take(30)
+            .cloned()
+            .collect();
+        let script: Vec<_> = words
+            .iter()
+            .filter(|w| w.contains("script"))
+            .take(30)
+            .cloned()
+            .collect();
+        let splash: Vec<_> = words
+            .iter()
+            .filter(|w| w.contains("splash"))
+            .take(30)
+            .cloned()
+            .collect();
+        let compound_like: Vec<_> = words
+            .iter()
+            .filter(|w| {
+                w.contains('+')
+                    && (w.contains("multi") || w.contains("api") || w.contains("script"))
+            })
+            .take(50)
+            .cloned()
+            .collect();
+        eprintln!("multi raw words: {multi:?}");
+        eprintln!("api raw words: {api:?}");
+        eprintln!("script raw words: {script:?}");
+        eprintln!("splash raw words: {splash:?}");
+        eprintln!("compound-like raw words: {compound_like:?}");
     }
 }

@@ -1,13 +1,15 @@
 use crate::convert;
 use crate::matchum_config::MatchumConfig;
+#[cfg(feature = "fetch")]
 use crate::npm_fetch;
-use crate::settings::CSpellSettings;
+use crate::settings::{CSpellSettings, GlobDef, GlobPatternSet};
 use std::collections::HashSet;
 use std::path::{Path, PathBuf};
 
 /// Config file search locations, matching cspell's configLocations.ts.
 /// JS/TS/TOML config formats are excluded (require runtime execution).
 const CONFIG_NAMES: &[&str] = &[
+    "package.json",
     // Original locations
     ".cspell.json",
     "cspell.json",
@@ -67,10 +69,7 @@ pub enum ConfigFound {
 impl ConfigFound {
     /// Classify an explicit config path as matchum or cspell config.
     pub fn classify(path: &Path) -> Self {
-        let name = path
-            .file_name()
-            .and_then(|n| n.to_str())
-            .unwrap_or("");
+        let name = path.file_name().and_then(|n| n.to_str()).unwrap_or("");
         if MATCHUM_CONFIG_NAMES.contains(&name) {
             ConfigFound::Matchum(path.to_path_buf())
         } else {
@@ -118,7 +117,7 @@ pub fn find_config_with_stop(start_dir: &Path, stop_search_at: &[PathBuf]) -> Op
         }
         for name in CONFIG_NAMES {
             let config_path = d.join(name);
-            if config_path.exists() {
+            if config_path.exists() && is_searchable_cspell_config(&config_path) {
                 return Some(config_path);
             }
         }
@@ -160,7 +159,7 @@ pub fn find_config_prioritized_with_stop(
         // Then check cspell configs
         for name in CONFIG_NAMES {
             let config_path = d.join(name);
-            if config_path.exists() {
+            if config_path.exists() && is_searchable_cspell_config(&config_path) {
                 return ConfigFound::Cspell(config_path);
             }
         }
@@ -175,7 +174,20 @@ pub fn load_matchum_config(path: &Path) -> Result<CSpellSettings, ResolveError> 
     let config: MatchumConfig =
         toml::from_str(&content).map_err(|e| ResolveError::Toml(e.to_string()))?;
     let config_dir = path.parent().unwrap_or(Path::new("."));
-    Ok(convert::to_cspell_settings(&config, config_dir))
+    let mut settings = convert::to_cspell_settings(&config, config_dir);
+    let resolved_glob_root = config_dir
+        .canonicalize()
+        .unwrap_or_else(|_| config_dir.to_path_buf())
+        .to_string_lossy()
+        .into_owned();
+    settings.glob_root = Some(resolved_glob_root.clone());
+    let source = path
+        .canonicalize()
+        .unwrap_or_else(|_| path.to_path_buf())
+        .to_string_lossy()
+        .into_owned();
+    hydrate_resolved_globs(&mut settings, &resolved_glob_root, &source, config_dir);
+    Ok(settings)
 }
 
 /// Load config by file extension: `.toml` → matchum loader, otherwise → cspell loader.
@@ -206,25 +218,50 @@ fn load_config_recursive(
     }
 
     let content = std::fs::read_to_string(path)?;
-    let mut settings: CSpellSettings = match path
-        .extension()
-        .and_then(|e| e.to_str())
-    {
-        Some("yaml" | "yml") => {
-            serde_yaml::from_str(&content).map_err(|e| ResolveError::Json(e.to_string()))?
-        }
-        _ => json5::from_str(&content).map_err(|e| ResolveError::Json(e.to_string()))?,
-    };
+    let mut settings = parse_config_settings(path, &content)?;
 
     let base_dir = path.parent().unwrap_or(Path::new("."));
+    let resolved_glob_root = settings
+        .glob_root
+        .as_deref()
+        .map(|raw| resolve_glob_root_path(raw, base_dir))
+        .unwrap_or_else(|| {
+            base_dir
+                .canonicalize()
+                .unwrap_or_else(|_| base_dir.to_path_buf())
+                .to_string_lossy()
+                .into_owned()
+        });
+    settings.glob_root = Some(resolved_glob_root.clone());
+    let source = canonical.to_string_lossy().into_owned();
 
-    // Resolve relative dictionary paths to absolute before merging
+    hydrate_resolved_globs(&mut settings, &resolved_glob_root, &source, base_dir);
+
+    for ov in &mut settings.overrides {
+        for glob in ov.filename.iter_mut() {
+            let resolved_root = glob
+                .root
+                .as_deref()
+                .map(|raw| resolve_glob_root_path(raw, base_dir))
+                .unwrap_or_else(|| resolved_glob_root.clone());
+            glob.root = Some(resolved_root);
+            if glob.source.is_none() {
+                glob.source = Some(source.clone());
+            }
+        }
+    }
+
+    // Resolve relative dictionary paths to absolute before merging.
+    // Use canonicalize() to produce truly absolute paths, preventing
+    // double-resolution when build_dictionary_catalog re-joins with config_dir.
     for def in &mut settings.dictionary_definitions {
         if let Some(ref p) = def.path {
             let dict_path = Path::new(p);
             if !dict_path.is_absolute() {
                 let abs = base_dir.join(dict_path);
-                if abs.exists() {
+                if let Ok(canonical) = abs.canonicalize() {
+                    def.path = Some(canonical.to_string_lossy().into_owned());
+                } else if abs.exists() {
                     def.path = Some(abs.to_string_lossy().into_owned());
                 }
             }
@@ -251,6 +288,104 @@ fn load_config_recursive(
     }
 
     Ok(result)
+}
+
+/// Check if a package.json has a `cspell` object section, or accept non-package.json files.
+pub fn is_searchable_cspell_config(path: &Path) -> bool {
+    if path.file_name().and_then(|n| n.to_str()) != Some("package.json") {
+        return true;
+    }
+
+    let Ok(content) = std::fs::read_to_string(path) else {
+        return false;
+    };
+    let Ok(package_json) = serde_json::from_str::<serde_json::Value>(&content) else {
+        return false;
+    };
+    package_json.get("cspell").is_some_and(|v| v.is_object())
+}
+
+fn parse_config_settings(path: &Path, content: &str) -> Result<CSpellSettings, ResolveError> {
+    if path.file_name().and_then(|n| n.to_str()) == Some("package.json") {
+        let package_json = serde_json::from_str::<serde_json::Value>(content)
+            .map_err(|e| ResolveError::Json(e.to_string()))?;
+        let cspell = package_json
+            .get("cspell")
+            .cloned()
+            .unwrap_or(serde_json::Value::Object(Default::default()));
+        return serde_json::from_value(cspell).map_err(|e| ResolveError::Json(e.to_string()));
+    }
+
+    match path.extension().and_then(|e| e.to_str()) {
+        Some("yaml" | "yml") => {
+            serde_yaml::from_str(content).map_err(|e| ResolveError::Json(e.to_string()))
+        }
+        Some("json") => {
+            // Try fast serde_json first; fall back to json5 for files with comments.
+            serde_json::from_str(content)
+                .or_else(|_| json5::from_str(content))
+                .map_err(|e| ResolveError::Json(e.to_string()))
+        }
+        _ => json5::from_str(content).map_err(|e| ResolveError::Json(e.to_string())),
+    }
+}
+
+fn resolve_glob_root_path(raw: &str, base_dir: &Path) -> String {
+    let cwd = std::env::current_dir().unwrap_or_else(|_| base_dir.to_path_buf());
+    let expanded = raw.replace("${cwd}", &cwd.to_string_lossy());
+    let path = Path::new(&expanded);
+    let resolved = if path.is_absolute() {
+        path.to_path_buf()
+    } else {
+        base_dir.join(path)
+    };
+    resolved
+        .canonicalize()
+        .unwrap_or(resolved)
+        .to_string_lossy()
+        .into_owned()
+}
+
+fn hydrate_resolved_globs(
+    settings: &mut CSpellSettings,
+    resolved_glob_root: &str,
+    source: &str,
+    base_dir: &Path,
+) {
+    settings.resolved_ignore_paths = GlobPatternSet::from_glob_defs(
+        settings
+            .ignore_paths
+            .iter()
+            .map(|glob| GlobDef {
+                glob: glob.clone(),
+                root: Some(resolved_glob_root.to_string()),
+                source: Some(source.to_string()),
+            })
+            .collect(),
+    );
+
+    settings.resolved_files = settings.files.as_ref().map(|patterns| {
+        GlobPatternSet::from_glob_defs(
+            patterns
+                .iter()
+                .map(|glob| GlobDef {
+                    glob: glob.clone(),
+                    root: Some(resolved_glob_root.to_string()),
+                    source: Some(source.to_string()),
+                })
+                .collect(),
+        )
+    });
+
+    if settings.glob_root.is_none() {
+        settings.glob_root = Some(
+            base_dir
+                .canonicalize()
+                .unwrap_or_else(|_| base_dir.to_path_buf())
+                .to_string_lossy()
+                .into_owned(),
+        );
+    }
 }
 
 /// Resolve an import path. Supports:
@@ -300,6 +435,7 @@ fn resolve_import_path(import: &str, base_dir: &Path) -> Option<PathBuf> {
     }
 
     // Auto-download scoped npm packages (e.g., @cspell/dict-en_us/cspell-ext.json)
+    #[cfg(feature = "fetch")]
     if import.starts_with('@') {
         let package_name = npm_fetch::extract_package_name(import);
         let sub_path = npm_fetch::extract_sub_path(import);
@@ -331,6 +467,7 @@ pub fn merge_settings(base: CSpellSettings, overlay: CSpellSettings) -> CSpellSe
     CSpellSettings {
         version: overlay.version.or(base.version),
         language: overlay.language.or(base.language),
+        language_id: overlay.language_id.or(base.language_id),
         enabled: overlay.enabled.or(base.enabled),
 
         words: concat_vecs(base.words, overlay.words),
@@ -351,10 +488,17 @@ pub fn merge_settings(base: CSpellSettings, overlay: CSpellSettings) -> CSpellSe
         files: overlay.files.or(base.files),
         ignore_paths: concat_vecs(base.ignore_paths, overlay.ignore_paths),
         use_gitignore: overlay.use_gitignore.or(base.use_gitignore),
+        resolved_files: overlay.resolved_files.or(base.resolved_files),
+        resolved_ignore_paths: concat_glob_pattern_sets(
+            base.resolved_ignore_paths,
+            overlay.resolved_ignore_paths,
+        ),
 
         case_sensitive: overlay.case_sensitive.or(base.case_sensitive),
         allow_compound_words: overlay.allow_compound_words.or(base.allow_compound_words),
         min_word_length: overlay.min_word_length.or(base.min_word_length),
+        ignore_random_strings: overlay.ignore_random_strings.or(base.ignore_random_strings),
+        min_random_length: overlay.min_random_length.or(base.min_random_length),
         max_duplicate_problems: overlay
             .max_duplicate_problems
             .or(base.max_duplicate_problems),
@@ -395,6 +539,13 @@ fn concat_vecs_unique(mut a: Vec<String>, b: Vec<String>) -> Vec<String> {
     a
 }
 
+fn concat_glob_pattern_sets(a: GlobPatternSet, b: GlobPatternSet) -> GlobPatternSet {
+    let mut defs: Vec<GlobDef> = a.iter().cloned().collect();
+    defs.extend(b.iter().cloned());
+    GlobPatternSet::from_glob_defs(defs)
+}
+
+// cspell:disable
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -425,6 +576,31 @@ mod tests {
         let dir = tempfile::tempdir().unwrap();
         let config_path = dir.path().join("cspell.json");
         std::fs::write(&config_path, "{}").unwrap();
+
+        let found = find_config(dir.path());
+        assert_eq!(found, Some(config_path));
+    }
+
+    #[test]
+    fn test_find_config_ignores_package_json_without_cspell_section() {
+        let dir = tempfile::tempdir().unwrap();
+        std::fs::write(dir.path().join("package.json"), r#"{ "name": "repo" }"#).unwrap();
+        let config_path = dir.path().join("cspell.json");
+        std::fs::write(&config_path, "{}").unwrap();
+
+        let found = find_config(dir.path());
+        assert_eq!(found, Some(config_path));
+    }
+
+    #[test]
+    fn test_find_config_accepts_package_json_with_cspell_section() {
+        let dir = tempfile::tempdir().unwrap();
+        let config_path = dir.path().join("package.json");
+        std::fs::write(
+            &config_path,
+            r#"{ "name": "repo", "cspell": { "words": ["pkgword"] } }"#,
+        )
+        .unwrap();
 
         let found = find_config(dir.path());
         assert_eq!(found, Some(config_path));
@@ -507,6 +683,60 @@ dictionaries = ["en_us"]
         let merged = merge_settings(base, overlay);
         assert_eq!(merged.words, vec!["base_word", "overlay_word"]);
         assert_eq!(merged.language.as_deref(), Some("fr"));
+    }
+
+    #[test]
+    fn test_load_config_keeps_language_settings_from_cspell_ext_json() {
+        let dir = tempfile::tempdir().unwrap();
+        let config_path = dir.path().join("cspell-ext.json");
+        std::fs::write(
+            &config_path,
+            r#"{
+                "dictionaryDefinitions": [
+                    { "name": "scala", "path": "./dict/scala.txt" }
+                ],
+                "languageSettings": [
+                    {
+                        "languageId": "scala",
+                        "locale": "*",
+                        "ignoreRegExpList": ["/^\\s*import\\s+\\w+/m", "/\\.\\w+/"],
+                        "dictionaries": ["scala"]
+                    }
+                ]
+            }"#,
+        )
+        .unwrap();
+        std::fs::create_dir_all(dir.path().join("dict")).unwrap();
+        std::fs::write(dir.path().join("dict/scala.txt"), "scalatra\n").unwrap();
+
+        let settings = load_config(&config_path).unwrap();
+        assert_eq!(settings.language_settings.len(), 1);
+        assert_eq!(settings.language_settings[0].language_id, vec!["scala"]);
+        assert_eq!(
+            settings.language_settings[0].ignore_reg_exp_list,
+            vec![r"/^\s*import\s+\w+/m".to_string(), r"/\.\w+/".to_string()]
+        );
+    }
+
+    #[test]
+    fn test_load_config_reads_package_json_cspell_section() {
+        let dir = tempfile::tempdir().unwrap();
+        let config_path = dir.path().join("package.json");
+        std::fs::write(
+            &config_path,
+            r#"{
+                "name": "repo",
+                "cspell": {
+                    "words": ["pkgword"],
+                    "ignorePaths": ["pnpm-lock.yaml"]
+                }
+            }"#,
+        )
+        .unwrap();
+
+        let settings = load_config(&config_path).unwrap();
+        assert_eq!(settings.words, vec!["pkgword"]);
+        assert_eq!(settings.ignore_paths, vec!["pnpm-lock.yaml"]);
     }
 }
 

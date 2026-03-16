@@ -1,0 +1,104 @@
+[
+  {
+    "file": "STYLEGUIDE.md",
+    "line": 1,
+    "column": 16,
+    "word": "Styleguides"
+  },
+  {
+    "file": "STYLEGUIDE.md",
+    "line": 55,
+    "column": 25,
+    "word": "Chewbacca"
+  },
+  {
+    "file": "STYLEGUIDE.md",
+    "line": 87,
+    "column": 10,
+    "word": "realise"
+  },
+  {
+    "file": "STYLEGUIDE.md",
+    "line": 127,
+    "column": 16,
+    "word": "full-stack"
+  },
+  {
+    "file": "public/images/gen2/q-developer/authentication.md",
+    "line": 12,
+    "column": 53,
+    "word": "EXTERNALPROVIDERS"
+  },
+  {
+    "file": "public/images/gen2/q-developer/authentication.md",
+    "line": 13,
+    "column": 74,
+    "word": "DOESNT"
+  },
+  {
+    "file": "public/images/gen2/q-developer/authentication.md",
+    "line": 15,
+    "column": 6,
+    "word": "STATNDARD"
+  },
+  {
+    "file": "public/images/gen2/q-developer/authentication.md",
+    "line": 15,
+    "column": 16,
+    "word": "ATTIBUTES"
+  },
+  {
+    "file": "public/images/gen2/q-developer/authentication.md",
+    "line": 48,
+    "column": 78,
+    "word": "LOGINMETHODS"
+  },
+  {
+    "file": "public/images/gen2/q-developer/authentication.md",
+    "line": 56,
+    "column": 47,
+    "word": "AUTHENTHICATION"
+  },
+  {
+    "file": "public/images/gen2/q-developer/authentication.md",
+    "line": 77,
+    "column": 157,
+    "word": "DEFINEAUTH"
+  },
+  {
+    "file": "public/images/gen2/q-developer/modeling-relationships.md",
+    "line": 144,
+    "column": 325,
+    "word": "POSTTAG"
+  },
+  {
+    "file": "public/images/gen2/q-developer/modeling-relationships.md",
+    "line": 144,
+    "column": 344,
+    "word": "RETYPESCRIPTSENTS"
+  },
+  {
+    "file": "public/images/gen2/q-developer/modeling-schema.md",
+    "line": 13,
+    "column": 8,
+    "word": "BEONGSTO"
+  },
+  {
+    "file": "public/images/gen2/q-developer/modeling-schema.md",
+    "line": 13,
+    "column": 69,
+    "word": "RELATEDFIELD"
+  },
+  {
+    "file": "public/images/gen2/q-developer/modeling-schema.md",
+    "line": 14,
+    "column": 49,
+    "word": "DEFAULTVALUE"
+  },
+  {
+    "file": "public/images/gen2/q-developer/modeling-schema.md",
+    "line": 68,
+    "column": 93,
+    "word": "Authorizaiton"
+  }
+]

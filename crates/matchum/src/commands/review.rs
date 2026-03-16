@@ -6,16 +6,16 @@ use std::collections::{BTreeMap, HashMap, HashSet};
 use std::io::{self, BufRead, Write};
 use std::path::{Path, PathBuf};
 
-use crate::commands::check::{self, CheckOptions};
+use crate::commands::check::{self, CheckOptions, DictionaryCatalog};
+use matchum_config::settings::CSpellSettings;
 
 /// Make a path relative to `base` for display.
 /// Handles both absolute paths (strips base prefix) and `./`-prefixed relative paths.
 fn display_relative(path: &Path, base: Option<&Path>) -> String {
-    if let Some(base) = base {
-        if let Ok(rel) = path.strip_prefix(base) {
+    if let Some(base) = base
+        && let Ok(rel) = path.strip_prefix(base) {
             return rel.display().to_string();
         }
-    }
     let s = path.display().to_string();
     s.strip_prefix("./").unwrap_or(&s).to_string()
 }
@@ -50,15 +50,19 @@ enum DispatchResult {
 pub fn run_review(
     paths: &[PathBuf],
     config_path: Option<&Path>,
+    settings: &CSpellSettings,
+    config_dir: Option<&Path>,
+    catalog: DictionaryCatalog,
     options: CheckOptions,
 ) -> Result<()> {
     // 1. Load matchum config for writable dicts
-    let (matchum_config, matchum_config_path, config_dir) = load_matchum_config(config_path)?;
-    let mut writable_dicts = collect_writable_dicts(&matchum_config, &config_dir);
+    let (matchum_config, matchum_config_path, matchum_config_dir) =
+        load_matchum_config(config_path)?;
+    let mut writable_dicts = collect_writable_dicts(&matchum_config, &matchum_config_dir);
 
     // 2. Collect all issues
     eprintln!("Checking files...");
-    let results = check::collect_all_issues(paths, config_path, options)?;
+    let results = check::collect_all_issues(paths, settings, config_dir, catalog, options)?;
 
     if results.is_empty() {
         eprintln!("No spelling issues found.");
@@ -76,7 +80,7 @@ pub fn run_review(
     );
 
     // 4. Load _typos.toml (typos-cli compatible)
-    let typos_toml = config_dir.join("_typos.toml");
+    let typos_toml = matchum_config_dir.join("_typos.toml");
     let mut fix_memory: HashMap<String, String> = load_typos_toml(&typos_toml);
 
     // 5. Interactive loop
@@ -158,7 +162,10 @@ pub fn run_review(
 
         // Prompt
         println!();
-        print!("  [a]ccept N | [i]gnore | [d]isable [l]ine/[f]ile | [f]ix | [e]dit | [s]kip | [q]uit > ");
+        // cspell:ignore gnore isable
+        print!(
+            "  [a]ccept N | [i]gnore | [d]isable [l]ine/[f]ile | [f]ix | [e]dit | [s]kip | [q]uit > "
+        );
         io::stdout().flush()?;
 
         let mut input = String::new();
@@ -170,7 +177,7 @@ pub fn run_review(
             input,
             group,
             &mut writable_dicts,
-            &config_dir,
+            &matchum_config_dir,
             matchum_config_path.as_deref(),
             &typos_toml,
             &mut fix_memory,
@@ -458,8 +465,8 @@ fn collect_writable_dicts(
 
     // Custom dictionaries with add_words=true — only if file exists
     for def in &config.dictionary_definitions {
-        if def.add_words {
-            if let Some(ref p) = def.path {
+        if def.add_words
+            && let Some(ref p) = def.path {
                 let path = config_dir.join(p);
                 if path.exists() && seen.insert(path.clone()) {
                     dicts.push(WritableDict {
@@ -468,7 +475,6 @@ fn collect_writable_dicts(
                     });
                 }
             }
-        }
     }
 
     dicts
@@ -551,32 +557,8 @@ fn resolve_dict<'a>(dicts: &'a [WritableDict], arg: Option<&str>) -> Result<&'a 
 }
 
 fn append_word_to_file(path: &Path, word: &str) -> Result<()> {
-    if let Some(parent) = path.parent() {
-        if !parent.exists() {
-            std::fs::create_dir_all(parent)?;
-        }
-    }
-
-    // Check if word already exists
-    let existing = std::fs::read_to_string(path).unwrap_or_default();
-    let already: HashSet<String> = existing.lines().map(|l| l.trim().to_lowercase()).collect();
-    if already.contains(&word.to_lowercase()) {
-        return Ok(());
-    }
-
-    // Append
-    use std::fs::OpenOptions;
-    let mut file = OpenOptions::new()
-        .create(true)
-        .append(true)
-        .open(path)
-        .with_context(|| format!("failed to open {}", path.display()))?;
-
-    // Ensure newline before appending if file doesn't end with one
-    if !existing.is_empty() && !existing.ends_with('\n') {
-        writeln!(file)?;
-    }
-    writeln!(file, "{}", word)?;
+    matchum_config::words_file::append_word(path, word)
+        .with_context(|| format!("failed to append word to {}", path.display()))?;
     Ok(())
 }
 
@@ -603,11 +585,10 @@ fn create_new_dict(
     };
 
     let full_path = config_dir.join(&rel_path);
-    if let Some(parent) = full_path.parent() {
-        if !parent.exists() {
+    if let Some(parent) = full_path.parent()
+        && !parent.exists() {
             std::fs::create_dir_all(parent)?;
         }
-    }
     // Create the file if it doesn't exist
     if !full_path.exists() {
         std::fs::write(&full_path, "")?;
@@ -881,18 +862,18 @@ fn load_typos_toml(path: &Path) -> HashMap<String, String> {
         Err(_) => return HashMap::new(),
     };
     let mut map = HashMap::new();
-    if let Some(default) = doc.get("default").and_then(|v| v.as_table()) {
-        if let Some(words) = default.get("extend-words").and_then(|v| v.as_table()) {
+    if let Some(default) = doc.get("default").and_then(|v| v.as_table())
+        && let Some(words) = default.get("extend-words").and_then(|v| v.as_table()) {
             for (k, v) in words {
                 if let Some(s) = v.as_str() {
                     map.insert(k.to_lowercase(), s.to_string());
                 }
             }
         }
-    }
     map
 }
 
+// cspell:disable
 #[cfg(test)]
 mod tests {
     use super::*;

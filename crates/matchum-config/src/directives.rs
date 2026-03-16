@@ -91,11 +91,10 @@ pub fn check_directive_typo(name: &str) -> Option<DirectiveWarning> {
     let mut best: Option<(&str, usize)> = None;
     for &valid in VALID_DIRECTIVES {
         let dist = levenshtein(&lower, &valid.to_lowercase());
-        if dist <= 3 {
-            if best.is_none() || dist < best.unwrap().1 {
+        if dist <= 3
+            && (best.is_none() || dist < best.unwrap().1) {
                 best = Some((valid, dist));
             }
-        }
     }
 
     best.map(|(suggestion, _)| DirectiveWarning {
@@ -171,13 +170,14 @@ pub fn parse_directive(line: &str) -> Option<Directive> {
     if !DIRECTIVE_PREFILTER.is_match(line) {
         return None;
     }
-    parse_directive_inner(line)
+    // Try cspell-style directives first, then Emacs-style LocalWords
+    parse_directive_inner(line).or_else(|| parse_local_words(line))
 }
 
 /// Parse a directive without the AC prefilter check.
 /// Use when the caller has already verified the line contains a directive keyword.
 pub fn parse_directive_no_prefilter(line: &str) -> Option<Directive> {
-    parse_directive_inner(line)
+    parse_directive_inner(line).or_else(|| parse_local_words(line))
 }
 
 /// Check that a keyword match is at a word boundary followed by non-hyphen.
@@ -340,11 +340,6 @@ fn parse_locale_value(text: &str) -> String {
 }
 
 fn parse_directive_inner(line: &str) -> Option<Directive> {
-    // Check for Emacs-style "LocalWords:" first
-    if let Some(lw) = parse_local_words(line) {
-        return Some(lw);
-    }
-
     let caps = DIRECTIVE_RE.captures(line)?;
     let directive_text = caps.get(1)?.as_str().trim();
     let lower = directive_text.to_lowercase();
@@ -352,26 +347,24 @@ fn parse_directive_inner(line: &str) -> Option<Directive> {
     // Order follows cspell's settingParsers array for correct precedence.
 
     // 1. CompoundWords: /^(?:enable|disable)(?:allow)?CompoundWords\b(?!-)/i
-    if let Some(kw_len) = matches_compound_words(&lower) {
-        if keyword_boundary(&lower, kw_len) {
+    if let Some(kw_len) = matches_compound_words(&lower)
+        && keyword_boundary(&lower, kw_len) {
             return Some(if lower.starts_with("enable") {
                 Directive::EnableCompoundWords
             } else {
                 Directive::DisableCompoundWords
             });
         }
-    }
 
     // 2. CaseSensitive: /^(?:enable|disable)CaseSensitive\b(?!-)/i
-    if let Some(kw_len) = matches_case_sensitive(&lower) {
-        if keyword_boundary(&lower, kw_len) {
+    if let Some(kw_len) = matches_case_sensitive(&lower)
+        && keyword_boundary(&lower, kw_len) {
             return Some(if lower.starts_with("enable") {
                 Directive::EnableCaseSensitive
             } else {
                 Directive::DisableCaseSensitive
             });
         }
-    }
 
     // 3. Enable: /^enable\b(?!-)/i
     if lower.starts_with("enable") && keyword_boundary(&lower, 6) {
@@ -498,6 +491,7 @@ fn parse_word_list(text: &str) -> Vec<String> {
         .collect()
 }
 
+// cspell:disable
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -515,6 +509,18 @@ mod tests {
     #[test]
     fn test_enable() {
         assert_eq!(parse_directive("// cSpell:enable"), Some(Directive::Enable));
+    }
+
+    #[test]
+    fn test_parse_directive_no_prefilter_local_words() {
+        assert_eq!(
+            parse_directive_no_prefilter("// LocalWords: Megistos Antonis Stamboulis"),
+            Some(Directive::LocalWords(vec![
+                "Megistos".into(),
+                "Antonis".into(),
+                "Stamboulis".into(),
+            ]))
+        );
     }
 
     #[test]

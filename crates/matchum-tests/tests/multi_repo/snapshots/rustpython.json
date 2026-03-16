@@ -1,0 +1,7238 @@
+[
+  {
+    "file": "Cargo.toml",
+    "line": 93,
+    "column": 62,
+    "word": "redoxer"
+  },
+  {
+    "file": "Cargo.toml",
+    "line": 107,
+    "column": 28,
+    "word": "nsis"
+  },
+  {
+    "file": "Cargo.toml",
+    "line": 161,
+    "column": 80,
+    "word": "oldtime"
+  },
+  {
+    "file": "Cargo.toml",
+    "line": 177,
+    "column": 119,
+    "word": "zerocopy"
+  },
+  {
+    "file": "Cargo.toml",
+    "line": 201,
+    "column": 1,
+    "word": "scopeguard"
+  },
+  {
+    "file": "DEVELOPMENT.md",
+    "line": 148,
+    "column": 5,
+    "word": "speedscope"
+  },
+  {
+    "file": "DEVELOPMENT.md",
+    "line": 165,
+    "column": 26,
+    "word": "subcrates"
+  },
+  {
+    "file": "LICENSE-logo",
+    "line": 36,
+    "column": 7,
+    "word": "creativecommons"
+  },
+  {
+    "file": "LICENSE-logo",
+    "line": 53,
+    "column": 7,
+    "word": "creativecommons"
+  },
+  {
+    "file": "LICENSE-logo",
+    "line": 139,
+    "column": 15,
+    "word": "sublicensable"
+  },
+  {
+    "file": "LICENSE-logo",
+    "line": 205,
+    "column": 34,
+    "word": "waivable"
+  },
+  {
+    "file": "LICENSE-logo",
+    "line": 386,
+    "column": 1,
+    "word": "creativecommons"
+  },
+  {
+    "file": "LICENSE-logo",
+    "line": 395,
+    "column": 38,
+    "word": "creativecommons"
+  },
+  {
+    "file": "README.md",
+    "line": 126,
+    "column": 8,
+    "word": "wapm"
+  },
+  {
+    "file": "README.md",
+    "line": 129,
+    "column": 3,
+    "word": "wapm"
+  },
+  {
+    "file": "README.md",
+    "line": 130,
+    "column": 3,
+    "word": "wapm"
+  },
+  {
+    "file": "README.md",
+    "line": 191,
+    "column": 4,
+    "word": "FOSDEM"
+  },
+  {
+    "file": "README.md",
+    "line": 199,
+    "column": 4,
+    "word": "Greptime"
+  },
+  {
+    "file": "README.md",
+    "line": 200,
+    "column": 4,
+    "word": "pyckitup"
+  },
+  {
+    "file": "README.md",
+    "line": 268,
+    "column": 2,
+    "word": "windelbouwman"
+  },
+  {
+    "file": "README.md",
+    "line": 268,
+    "column": 16,
+    "word": "rspython"
+  },
+  {
+    "file": "README.md",
+    "line": 269,
+    "column": 2,
+    "word": "shinglyu"
+  },
+  {
+    "file": "benches/README.md",
+    "line": 66,
+    "column": 1,
+    "word": "rustflags"
+  },
+  {
+    "file": "benches/_data/pypi_org__simple__psutil.json",
+    "line": 1,
+    "column": 542055,
+    "word": "manylinux"
+  },
+  {
+    "file": "benches/_data/pypi_org__simple__psutil.json",
+    "line": 1,
+    "column": 542717,
+    "word": "manylinux"
+  },
+  {
+    "file": "benches/_data/pypi_org__simple__psutil.json",
+    "line": 1,
+    "column": 543384,
+    "word": "manylinux"
+  },
+  {
+    "file": "benches/_data/pypi_org__simple__psutil.json",
+    "line": 1,
+    "column": 544048,
+    "word": "manylinux"
+  },
+  {
+    "file": "benches/_data/pypi_org__simple__psutil.json",
+    "line": 1,
+    "column": 546653,
+    "word": "manylinux"
+  },
+  {
+    "file": "benches/_data/pypi_org__simple__psutil.json",
+    "line": 1,
+    "column": 787724,
+    "word": "musllinux"
+  },
+  {
+    "file": "benches/_data/pypi_org__simple__psutil.json",
+    "line": 1,
+    "column": 788354,
+    "word": "musllinux"
+  },
+  {
+    "file": "benches/_data/pypi_org__simple__psutil.json",
+    "line": 1,
+    "column": 801174,
+    "word": "musllinux"
+  },
+  {
+    "file": "benches/_data/pypi_org__simple__psutil.json",
+    "line": 1,
+    "column": 801804,
+    "word": "musllinux"
+  },
+  {
+    "file": "benches/benchmarks/fannkuch.py",
+    "line": 5,
+    "column": 16,
+    "word": "Sokolov"
+  },
+  {
+    "file": "benches/benchmarks/fannkuch.py",
+    "line": 5,
+    "column": 24,
+    "word": "Yura"
+  },
+  {
+    "file": "benches/benchmarks/fannkuch.py",
+    "line": 5,
+    "column": 42,
+    "word": "Tupteq"
+  },
+  {
+    "file": "benches/benchmarks/fannkuch.py",
+    "line": 8,
+    "column": 10,
+    "word": "pyperf"
+  },
+  {
+    "file": "benches/benchmarks/fannkuch.py",
+    "line": 14,
+    "column": 5,
+    "word": "fannkuch"
+  },
+  {
+    "file": "benches/benchmarks/fannkuch.py",
+    "line": 52,
+    "column": 15,
+    "word": "pyperf"
+  },
+  {
+    "file": "benches/benchmarks/fannkuch.py",
+    "line": 54,
+    "column": 25,
+    "word": "fannkuch"
+  },
+  {
+    "file": "benches/benchmarks/fannkuch.py",
+    "line": 54,
+    "column": 36,
+    "word": "fannkuch"
+  },
+  {
+    "file": "benches/benchmarks/fannkuch.py",
+    "line": 55,
+    "column": 5,
+    "word": "fannkuch"
+  },
+  {
+    "file": "benches/benchmarks/nbody.py",
+    "line": 5,
+    "column": 15,
+    "word": "Tupteq"
+  },
+  {
+    "file": "benches/benchmarks/nbody.py",
+    "line": 5,
+    "column": 23,
+    "word": "Fredrik"
+  },
+  {
+    "file": "benches/benchmarks/nbody.py",
+    "line": 5,
+    "column": 31,
+    "word": "Johansson"
+  },
+  {
+    "file": "benches/benchmarks/nbody.py",
+    "line": 5,
+    "column": 53,
+    "word": "Nanz"
+  },
+  {
+    "file": "benches/benchmarks/pystone.py",
+    "line": 9,
+    "column": 29,
+    "word": "Weicker"
+  },
+  {
+    "file": "benches/benchmarks/pystone.py",
+    "line": 9,
+    "column": 39,
+    "word": "CACM"
+  },
+  {
+    "file": "benches/benchmarks/pystone.py",
+    "line": 19,
+    "column": 51,
+    "word": "Arndt"
+  },
+  {
+    "file": "benches/benchmarks/pystone.py",
+    "line": 52,
+    "column": 40,
+    "word": "Discr"
+  },
+  {
+    "file": "benches/benchmarks/pystone.py",
+    "line": 55,
+    "column": 14,
+    "word": "Discr"
+  },
+  {
+    "file": "benches/benchmarks/pystone.py",
+    "line": 55,
+    "column": 22,
+    "word": "Discr"
+  },
+  {
+    "file": "benches/benchmarks/pystone.py",
+    "line": 61,
+    "column": 42,
+    "word": "Discr"
+  },
+  {
+    "file": "benches/benchmarks/pystone.py",
+    "line": 90,
+    "column": 5,
+    "word": "nulltime"
+  },
+  {
+    "file": "benches/benchmarks/pystone.py",
+    "line": 95,
+    "column": 12,
+    "word": "Discr"
+  },
+  {
+    "file": "benches/benchmarks/pystone.py",
+    "line": 98,
+    "column": 26,
+    "word": "DHRYSTONE"
+  },
+  {
+    "file": "benches/benchmarks/pystone.py",
+    "line": 99,
+    "column": 19,
+    "word": "DHRYSTONE"
+  },
+  {
+    "file": "benches/benchmarks/pystone.py",
+    "line": 109,
+    "column": 23,
+    "word": "DHRYSTONE"
+  },
+  {
+    "file": "benches/benchmarks/pystone.py",
+    "line": 128,
+    "column": 5,
+    "word": "benchtime"
+  },
+  {
+    "file": "benches/benchmarks/pystone.py",
+    "line": 128,
+    "column": 39,
+    "word": "nulltime"
+  },
+  {
+    "file": "benches/benchmarks/pystone.py",
+    "line": 129,
+    "column": 8,
+    "word": "benchtime"
+  },
+  {
+    "file": "benches/benchmarks/pystone.py",
+    "line": 130,
+    "column": 17,
+    "word": "Benchtime"
+  },
+  {
+    "file": "benches/benchmarks/pystone.py",
+    "line": 132,
+    "column": 17,
+    "word": "Benchtime"
+  },
+  {
+    "file": "benches/benchmarks/pystone.py",
+    "line": 132,
+    "column": 38,
+    "word": "benchtime"
+  },
+  {
+    "file": "benches/benchmarks/pystone.py",
+    "line": 133,
+    "column": 12,
+    "word": "benchtime"
+  },
+  {
+    "file": "benches/benchmarks/pystone.py",
+    "line": 133,
+    "column": 31,
+    "word": "Benchtime"
+  },
+  {
+    "file": "benches/test_benchmarks.py",
+    "line": 19,
+    "column": 18,
+    "word": "nbody"
+  },
+  {
+    "file": "crates/doc/LICENSE",
+    "line": 4,
+    "column": 62,
+    "word": "Stichting"
+  },
+  {
+    "file": "crates/doc/LICENSE",
+    "line": 5,
+    "column": 1,
+    "word": "Mathematisch"
+  },
+  {
+    "file": "crates/doc/LICENSE",
+    "line": 10,
+    "column": 32,
+    "word": "CNRI"
+  },
+  {
+    "file": "crates/doc/LICENSE",
+    "line": 11,
+    "column": 4,
+    "word": "Reston"
+  },
+  {
+    "file": "crates/doc/LICENSE",
+    "line": 17,
+    "column": 1,
+    "word": "Zope"
+  },
+  {
+    "file": "crates/doc/LICENSE",
+    "line": 20,
+    "column": 1,
+    "word": "Zope"
+  },
+  {
+    "file": "crates/doc/LICENSE",
+    "line": 31,
+    "column": 45,
+    "word": "CNRI"
+  },
+  {
+    "file": "crates/doc/LICENSE",
+    "line": 32,
+    "column": 45,
+    "word": "CNRI"
+  },
+  {
+    "file": "crates/doc/LICENSE",
+    "line": 34,
+    "column": 45,
+    "word": "CNRI"
+  },
+  {
+    "file": "crates/doc/LICENSE",
+    "line": 50,
+    "column": 26,
+    "word": "Stallman"
+  },
+  {
+    "file": "crates/doc/LICENSE",
+    "line": 52,
+    "column": 5,
+    "word": "CNRI"
+  },
+  {
+    "file": "crates/doc/LICENSE",
+    "line": 52,
+    "column": 20,
+    "word": "Stallman's"
+  },
+  {
+    "file": "crates/doc/LICENSE",
+    "line": 52,
+    "column": 47,
+    "word": "CNRI's"
+  },
+  {
+    "file": "crates/doc/LICENSE",
+    "line": 121,
+    "column": 1,
+    "word": "BEOPEN"
+  },
+  {
+    "file": "crates/doc/LICENSE",
+    "line": 124,
+    "column": 1,
+    "word": "BEOPEN"
+  },
+  {
+    "file": "crates/doc/LICENSE",
+    "line": 141,
+    "column": 9,
+    "word": "BEOPEN"
+  },
+  {
+    "file": "crates/doc/LICENSE",
+    "line": 142,
+    "column": 50,
+    "word": "BEOPEN"
+  },
+  {
+    "file": "crates/doc/LICENSE",
+    "line": 147,
+    "column": 4,
+    "word": "BEOPEN"
+  },
+  {
+    "file": "crates/doc/LICENSE",
+    "line": 176,
+    "column": 1,
+    "word": "Reston"
+  },
+  {
+    "file": "crates/doc/LICENSE",
+    "line": 184,
+    "column": 61,
+    "word": "CNRI's"
+  },
+  {
+    "file": "crates/doc/LICENSE",
+    "line": 185,
+    "column": 23,
+    "word": "CNRI's"
+  },
+  {
+    "file": "crates/doc/LICENSE",
+    "line": 188,
+    "column": 56,
+    "word": "CNRI's"
+  },
+  {
+    "file": "crates/doc/LICENSE",
+    "line": 191,
+    "column": 15,
+    "word": "CNRI's"
+  },
+  {
+    "file": "crates/doc/LICENSE",
+    "line": 245,
+    "column": 28,
+    "word": "Stichting"
+  },
+  {
+    "file": "crates/doc/LICENSE",
+    "line": 245,
+    "column": 38,
+    "word": "Mathematisch"
+  },
+  {
+    "file": "crates/doc/LICENSE",
+    "line": 252,
+    "column": 48,
+    "word": "Stichting"
+  },
+  {
+    "file": "crates/doc/LICENSE",
+    "line": 252,
+    "column": 58,
+    "word": "Mathematisch"
+  },
+  {
+    "file": "crates/doc/LICENSE",
+    "line": 257,
+    "column": 1,
+    "word": "STICHTING"
+  },
+  {
+    "file": "crates/doc/LICENSE",
+    "line": 257,
+    "column": 11,
+    "word": "MATHEMATISCH"
+  },
+  {
+    "file": "crates/doc/LICENSE",
+    "line": 259,
+    "column": 28,
+    "word": "STICHTING"
+  },
+  {
+    "file": "crates/doc/LICENSE",
+    "line": 259,
+    "column": 38,
+    "word": "MATHEMATISCH"
+  },
+  {
+    "file": "crates/doc/generate.py",
+    "line": 140,
+    "column": 38,
+    "word": "getowndoc"
+  },
+  {
+    "file": "crates/doc/generate.py",
+    "line": 177,
+    "column": 46,
+    "word": "getowndoc"
+  },
+  {
+    "file": "crates/doc/generate.py",
+    "line": 216,
+    "column": 38,
+    "word": "getowndoc"
+  },
+  {
+    "file": "crates/jit/Cargo.toml",
+    "line": 11,
+    "column": 1,
+    "word": "autotests"
+  },
+  {
+    "file": "crates/sre_engine/Cargo.toml",
+    "line": 3,
+    "column": 13,
+    "word": "Kangzhi"
+  },
+  {
+    "file": "crates/vm/Cargo.toml",
+    "line": 70,
+    "column": 1,
+    "word": "scopeguard"
+  },
+  {
+    "file": "crates/wasm/Cargo.toml",
+    "line": 12,
+    "column": 16,
+    "word": "cdylib"
+  },
+  {
+    "file": "crates/wasm/Cargo.toml",
+    "line": 12,
+    "column": 26,
+    "word": "rlib"
+  },
+  {
+    "file": "crates/wasm/Lib/_microdistlib.py",
+    "line": 24,
+    "column": 5,
+    "word": "distname"
+  },
+  {
+    "file": "crates/wasm/Lib/_microdistlib.py",
+    "line": 127,
+    "column": 14,
+    "word": "distname"
+  },
+  {
+    "file": "crates/wasm/Lib/_microdistlib.py",
+    "line": 129,
+    "column": 25,
+    "word": "distname"
+  },
+  {
+    "file": "crates/wasm/Lib/_microdistlib.py",
+    "line": 130,
+    "column": 27,
+    "word": "distname"
+  },
+  {
+    "file": "crates/wasm/Lib/asyncweb.py",
+    "line": 204,
+    "column": 18,
+    "word": "jsclosure"
+  },
+  {
+    "file": "crates/wasm/Lib/asyncweb.py",
+    "line": 209,
+    "column": 47,
+    "word": "jsfloat"
+  },
+  {
+    "file": "crates/wasm/Lib/browser.py",
+    "line": 14,
+    "column": 6,
+    "word": "jsstr"
+  },
+  {
+    "file": "crates/wasm/Lib/browser.py",
+    "line": 15,
+    "column": 6,
+    "word": "jsclosure"
+  },
+  {
+    "file": "crates/wasm/Lib/browser.py",
+    "line": 16,
+    "column": 6,
+    "word": "jsclosure"
+  },
+  {
+    "file": "crates/wasm/Lib/browser.py",
+    "line": 17,
+    "column": 6,
+    "word": "jsfloat"
+  },
+  {
+    "file": "crates/wasm/Lib/browser.py",
+    "line": 34,
+    "column": 1,
+    "word": "jsstr"
+  },
+  {
+    "file": "crates/wasm/Lib/browser.py",
+    "line": 35,
+    "column": 1,
+    "word": "jsclosure"
+  },
+  {
+    "file": "crates/wasm/Lib/browser.py",
+    "line": 36,
+    "column": 1,
+    "word": "jsclosure"
+  },
+  {
+    "file": "crates/wasm/Lib/browser.py",
+    "line": 37,
+    "column": 2,
+    "word": "jsfloat"
+  },
+  {
+    "file": "crates/wasm/Lib/browser.py",
+    "line": 43,
+    "column": 5,
+    "word": "jsfloat"
+  },
+  {
+    "file": "crates/wasm/Lib/browser.py",
+    "line": 44,
+    "column": 13,
+    "word": "jsfloat"
+  },
+  {
+    "file": "crates/wasm/Lib/browser.py",
+    "line": 53,
+    "column": 17,
+    "word": "jsstr"
+  },
+  {
+    "file": "crates/wasm/Lib/browser.py",
+    "line": 62,
+    "column": 26,
+    "word": "jsstr"
+  },
+  {
+    "file": "crates/wasm/Lib/browser.py",
+    "line": 75,
+    "column": 9,
+    "word": "jsstr"
+  },
+  {
+    "file": "crates/wasm/Lib/whlimport.py",
+    "line": 3,
+    "column": 8,
+    "word": "asyncweb"
+  },
+  {
+    "file": "crates/wasm/Lib/whlimport.py",
+    "line": 9,
+    "column": 9,
+    "word": "microdistlib"
+  },
+  {
+    "file": "crates/wasm/Lib/whlimport.py",
+    "line": 33,
+    "column": 11,
+    "word": "asyncweb"
+  },
+  {
+    "file": "crates/wasm/Lib/whlimport.py",
+    "line": 45,
+    "column": 9,
+    "word": "urlobj"
+  },
+  {
+    "file": "crates/wasm/Lib/whlimport.py",
+    "line": 46,
+    "column": 36,
+    "word": "urlobj"
+  },
+  {
+    "file": "crates/wasm/Lib/whlimport.py",
+    "line": 53,
+    "column": 12,
+    "word": "asyncweb"
+  },
+  {
+    "file": "crates/wasm/Lib/whlimport.py",
+    "line": 53,
+    "column": 27,
+    "word": "asyncweb"
+  },
+  {
+    "file": "crates/wasm/Lib/whlimport.py",
+    "line": 64,
+    "column": 12,
+    "word": "microdistlib"
+  },
+  {
+    "file": "crates/wasm/Lib/whlimport.py",
+    "line": 76,
+    "column": 53,
+    "word": "packagetype"
+  },
+  {
+    "file": "crates/wasm/Lib/whlimport.py",
+    "line": 106,
+    "column": 13,
+    "word": "zname"
+  },
+  {
+    "file": "crates/wasm/Lib/whlimport.py",
+    "line": 110,
+    "column": 50,
+    "word": "zname"
+  },
+  {
+    "file": "crates/wasm/Lib/whlimport.py",
+    "line": 152,
+    "column": 6,
+    "word": "searchorder"
+  },
+  {
+    "file": "crates/wasm/Lib/whlimport.py",
+    "line": 161,
+    "column": 17,
+    "word": "isbytecode"
+  },
+  {
+    "file": "crates/wasm/Lib/whlimport.py",
+    "line": 161,
+    "column": 47,
+    "word": "searchorder"
+  },
+  {
+    "file": "deny.toml",
+    "line": 73,
+    "column": 7,
+    "word": "RUSTSEC"
+  },
+  {
+    "file": "deny.toml",
+    "line": 74,
+    "column": 14,
+    "word": "RUSTSEC"
+  },
+  {
+    "file": "deny.toml",
+    "line": 156,
+    "column": 45,
+    "word": "dotgraphs"
+  },
+  {
+    "file": "deny.toml",
+    "line": 188,
+    "column": 11,
+    "word": "reqwest"
+  },
+  {
+    "file": "deny.toml",
+    "line": 210,
+    "column": 21,
+    "word": "gnullvm"
+  },
+  {
+    "file": "deny.toml",
+    "line": 215,
+    "column": 22,
+    "word": "gnullvm"
+  },
+  {
+    "file": "example_projects/aheui-rust.md",
+    "line": 1,
+    "column": 3,
+    "word": "aheui"
+  },
+  {
+    "file": "example_projects/aheui-rust.md",
+    "line": 4,
+    "column": 14,
+    "word": "frozenlib"
+  },
+  {
+    "file": "example_projects/barebone/Cargo.toml",
+    "line": 2,
+    "column": 17,
+    "word": "barebone"
+  },
+  {
+    "file": "example_projects/wasm32_without_js/rustpython-without-js/Cargo.toml",
+    "line": 7,
+    "column": 16,
+    "word": "cdylib"
+  },
+  {
+    "file": "examples/atexit_example.py",
+    "line": 5,
+    "column": 5,
+    "word": "myexit"
+  },
+  {
+    "file": "examples/atexit_example.py",
+    "line": 9,
+    "column": 17,
+    "word": "myexit"
+  },
+  {
+    "file": "extra_tests/custom_text_test_runner.py",
+    "line": 7,
+    "column": 22,
+    "word": "Abtin"
+  },
+  {
+    "file": "extra_tests/custom_text_test_runner.py",
+    "line": 7,
+    "column": 28,
+    "word": "Gramian"
+  },
+  {
+    "file": "extra_tests/jsontests.py",
+    "line": 5,
+    "column": 11,
+    "word": "libregrtest"
+  },
+  {
+    "file": "extra_tests/jsontests.py",
+    "line": 5,
+    "column": 23,
+    "word": "findtests"
+  },
+  {
+    "file": "extra_tests/jsontests.py",
+    "line": 5,
+    "column": 40,
+    "word": "findtests"
+  },
+  {
+    "file": "extra_tests/jsontests.py",
+    "line": 7,
+    "column": 1,
+    "word": "testnames"
+  },
+  {
+    "file": "extra_tests/jsontests.py",
+    "line": 7,
+    "column": 13,
+    "word": "findtests"
+  },
+  {
+    "file": "extra_tests/jsontests.py",
+    "line": 9,
+    "column": 1,
+    "word": "testnames"
+  },
+  {
+    "file": "extra_tests/jsontests.py",
+    "line": 10,
+    "column": 1,
+    "word": "testnames"
+  },
+  {
+    "file": "extra_tests/jsontests.py",
+    "line": 29,
+    "column": 58,
+    "word": "testnames"
+  },
+  {
+    "file": "extra_tests/jsontests.py",
+    "line": 32,
+    "column": 1,
+    "word": "resultsfile"
+  },
+  {
+    "file": "extra_tests/jsontests.py",
+    "line": 33,
+    "column": 19,
+    "word": "resultsfile"
+  },
+  {
+    "file": "extra_tests/jsontests.py",
+    "line": 34,
+    "column": 15,
+    "word": "resultsfile"
+  },
+  {
+    "file": "extra_tests/jsontests.py",
+    "line": 36,
+    "column": 35,
+    "word": "resultsfile"
+  },
+  {
+    "file": "extra_tests/jsontests.py",
+    "line": 39,
+    "column": 41,
+    "word": "resultsfile"
+  },
+  {
+    "file": "extra_tests/snippets/3.1.2.18.py",
+    "line": 3,
+    "column": 9,
+    "word": "Jython"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_all.py",
+    "line": 1,
+    "column": 6,
+    "word": "testutils"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_any.py",
+    "line": 1,
+    "column": 6,
+    "word": "testutils"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bool.py",
+    "line": 1,
+    "column": 6,
+    "word": "testutils"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bool.py",
+    "line": 36,
+    "column": 7,
+    "word": "Falsey"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bool.py",
+    "line": 41,
+    "column": 12,
+    "word": "Falsey"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytearray.py",
+    "line": 4,
+    "column": 6,
+    "word": "testutils"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytearray.py",
+    "line": 18,
+    "column": 33,
+    "word": "jilj"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytearray.py",
+    "line": 26,
+    "column": 20,
+    "word": "omkmok"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytearray.py",
+    "line": 57,
+    "column": 23,
+    "word": "abcdé"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytearray.py",
+    "line": 75,
+    "column": 33,
+    "word": "unashable"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytearray.py",
+    "line": 82,
+    "column": 29,
+    "word": "abcdab"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytearray.py",
+    "line": 103,
+    "column": 30,
+    "word": "efghij"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytearray.py",
+    "line": 104,
+    "column": 32,
+    "word": "bdfh"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytearray.py",
+    "line": 105,
+    "column": 33,
+    "word": "igec"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytearray.py",
+    "line": 191,
+    "column": 25,
+    "word": "hhjjk"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytearray.py",
+    "line": 193,
+    "column": 21,
+    "word": "koki"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytearray.py",
+    "line": 194,
+    "column": 7,
+    "word": "koki"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytearray.py",
+    "line": 195,
+    "column": 7,
+    "word": "koki"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytearray.py",
+    "line": 196,
+    "column": 8,
+    "word": "koki"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytearray.py",
+    "line": 197,
+    "column": 8,
+    "word": "koki"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytearray.py",
+    "line": 220,
+    "column": 58,
+    "word": "xkokx"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytearray.py",
+    "line": 252,
+    "column": 57,
+    "word": "kokxx"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytearray.py",
+    "line": 284,
+    "column": 57,
+    "word": "xxkok"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytearray.py",
+    "line": 289,
+    "column": 20,
+    "word": "azeazerazeazopia"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytearray.py",
+    "line": 290,
+    "column": 20,
+    "word": "azeazerazeazopia"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytearray.py",
+    "line": 291,
+    "column": 20,
+    "word": "azeazerazeazopia"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytearray.py",
+    "line": 293,
+    "column": 20,
+    "word": "azeazerazeazopia"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytearray.py",
+    "line": 294,
+    "column": 20,
+    "word": "azeazerazeazopia"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytearray.py",
+    "line": 310,
+    "column": 8,
+    "word": "jiljl"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytearray.py",
+    "line": 310,
+    "column": 28,
+    "word": "kmoomk"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytearray.py",
+    "line": 311,
+    "column": 18,
+    "word": "jiljlkmoomkaaaa"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytearray.py",
+    "line": 315,
+    "column": 10,
+    "word": "abcxyz"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytearray.py",
+    "line": 343,
+    "column": 32,
+    "word": "cdaaaaa"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytearray.py",
+    "line": 354,
+    "column": 34,
+    "word": "cdaaaaa"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytearray.py",
+    "line": 359,
+    "column": 20,
+    "word": "abcdabcda"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytearray.py",
+    "line": 360,
+    "column": 20,
+    "word": "abcdabcda"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytearray.py",
+    "line": 361,
+    "column": 20,
+    "word": "abcdabcda"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytearray.py",
+    "line": 362,
+    "column": 20,
+    "word": "abcdabcda"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytearray.py",
+    "line": 363,
+    "column": 20,
+    "word": "abcdabcda"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytearray.py",
+    "line": 377,
+    "column": 20,
+    "word": "hjhtuyjyujuyj"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytearray.py",
+    "line": 379,
+    "column": 18,
+    "word": "btuybyubuyb"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytearray.py",
+    "line": 380,
+    "column": 20,
+    "word": "hjhtuyjyujuyj"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytearray.py",
+    "line": 382,
+    "column": 18,
+    "word": "abatuybyubuyb"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytearray.py",
+    "line": 383,
+    "column": 20,
+    "word": "hjhtuyjyujuyj"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytearray.py",
+    "line": 385,
+    "column": 18,
+    "word": "abatuybyubuyb"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytearray.py",
+    "line": 386,
+    "column": 20,
+    "word": "hjhtuyfjtyhuhjuyj"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytearray.py",
+    "line": 387,
+    "column": 7,
+    "word": "juyfjyujuyj"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytearray.py",
+    "line": 389,
+    "column": 20,
+    "word": "hjhtuyfjtyhuhjuyj"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytearray.py",
+    "line": 390,
+    "column": 7,
+    "word": "juyfjyujuyj"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytearray.py",
+    "line": 396,
+    "column": 46,
+    "word": "cmowz"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytearray.py",
+    "line": 398,
+    "column": 47,
+    "word": "cmowz"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytearray.py",
+    "line": 400,
+    "column": 64,
+    "word": "mississ"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytearray.py",
+    "line": 729,
+    "column": 17,
+    "word": "appen"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytearray.py",
+    "line": 748,
+    "column": 29,
+    "word": "abcdabcdabcd"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytearray.py",
+    "line": 749,
+    "column": 29,
+    "word": "abcdabcdabcd"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytearray.py",
+    "line": 753,
+    "column": 25,
+    "word": "abcdabcdabcd"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytearray.py",
+    "line": 778,
+    "column": 25,
+    "word": "whello"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytearray.py",
+    "line": 781,
+    "column": 25,
+    "word": "whello"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytearray.py",
+    "line": 781,
+    "column": 33,
+    "word": "worlwd"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytearray.py",
+    "line": 784,
+    "column": 25,
+    "word": "owhello"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytearray.py",
+    "line": 784,
+    "column": 34,
+    "word": "worlwd"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytearray.py",
+    "line": 787,
+    "column": 25,
+    "word": "owhello"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytearray.py",
+    "line": 787,
+    "column": 34,
+    "word": "worlwdo"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytearray.py",
+    "line": 791,
+    "column": 17,
+    "word": "abcdabcd"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytearray.py",
+    "line": 794,
+    "column": 25,
+    "word": "abdabcd"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytearray.py",
+    "line": 800,
+    "column": 25,
+    "word": "dlrow"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytearray.py",
+    "line": 800,
+    "column": 32,
+    "word": "olleh"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytearray.py",
+    "line": 818,
+    "column": 24,
+    "word": "bpython"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytearray.py",
+    "line": 829,
+    "column": 18,
+    "word": "xffab"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytearray.py",
+    "line": 832,
+    "column": 65,
+    "word": "xffab"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytearray.py",
+    "line": 832,
+    "column": 112,
+    "word": "Vlatin"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytearray.py",
+    "line": 836,
+    "column": 87,
+    "word": "xbfab"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytearray.py",
+    "line": 840,
+    "column": 93,
+    "word": "xbfab"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytearray.py",
+    "line": 844,
+    "column": 18,
+    "word": "cbuiltins"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytearray.py",
+    "line": 844,
+    "column": 49,
+    "word": "xffab"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytearray.py",
+    "line": 848,
+    "column": 102,
+    "word": "xffab"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytes.py",
+    "line": 3,
+    "column": 6,
+    "word": "testutils"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytes.py",
+    "line": 15,
+    "column": 29,
+    "word": "jilj"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytes.py",
+    "line": 25,
+    "column": 10,
+    "word": "omkmok"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytes.py",
+    "line": 42,
+    "column": 19,
+    "word": "abcdé"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytes.py",
+    "line": 66,
+    "column": 19,
+    "word": "abcdab"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytes.py",
+    "line": 87,
+    "column": 20,
+    "word": "efghij"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytes.py",
+    "line": 88,
+    "column": 22,
+    "word": "bdfh"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytes.py",
+    "line": 89,
+    "column": 23,
+    "word": "igec"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytes.py",
+    "line": 175,
+    "column": 21,
+    "word": "hhjjk"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytes.py",
+    "line": 177,
+    "column": 11,
+    "word": "koki"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytes.py",
+    "line": 178,
+    "column": 7,
+    "word": "koki"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytes.py",
+    "line": 179,
+    "column": 7,
+    "word": "koki"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytes.py",
+    "line": 180,
+    "column": 8,
+    "word": "koki"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytes.py",
+    "line": 181,
+    "column": 8,
+    "word": "koki"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytes.py",
+    "line": 204,
+    "column": 47,
+    "word": "xkokx"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytes.py",
+    "line": 236,
+    "column": 46,
+    "word": "kokxx"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytes.py",
+    "line": 268,
+    "column": 46,
+    "word": "xxkok"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytes.py",
+    "line": 273,
+    "column": 10,
+    "word": "azeazerazeazopia"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytes.py",
+    "line": 274,
+    "column": 10,
+    "word": "azeazerazeazopia"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytes.py",
+    "line": 275,
+    "column": 10,
+    "word": "azeazerazeazopia"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytes.py",
+    "line": 277,
+    "column": 10,
+    "word": "azeazerazeazopia"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytes.py",
+    "line": 278,
+    "column": 10,
+    "word": "azeazerazeazopia"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytes.py",
+    "line": 294,
+    "column": 17,
+    "word": "jiljl"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytes.py",
+    "line": 294,
+    "column": 37,
+    "word": "kmoomk"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytes.py",
+    "line": 295,
+    "column": 10,
+    "word": "jiljlkmoomkaaaa"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytes.py",
+    "line": 300,
+    "column": 46,
+    "word": "abcxyz"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytes.py",
+    "line": 327,
+    "column": 21,
+    "word": "cdaaaaa"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytes.py",
+    "line": 338,
+    "column": 23,
+    "word": "cdaaaaa"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytes.py",
+    "line": 343,
+    "column": 10,
+    "word": "abcdabcda"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytes.py",
+    "line": 344,
+    "column": 10,
+    "word": "abcdabcda"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytes.py",
+    "line": 345,
+    "column": 10,
+    "word": "abcdabcda"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytes.py",
+    "line": 346,
+    "column": 10,
+    "word": "abcdabcda"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytes.py",
+    "line": 347,
+    "column": 10,
+    "word": "abcdabcda"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytes.py",
+    "line": 361,
+    "column": 10,
+    "word": "hjhtuyjyujuyj"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytes.py",
+    "line": 361,
+    "column": 77,
+    "word": "btuybyubuyb"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytes.py",
+    "line": 363,
+    "column": 7,
+    "word": "hjhtuyjyujuyj"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytes.py",
+    "line": 363,
+    "column": 74,
+    "word": "abatuybyubuyb"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytes.py",
+    "line": 365,
+    "column": 10,
+    "word": "hjhtuyjyujuyj"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytes.py",
+    "line": 365,
+    "column": 71,
+    "word": "abatuybyubuyb"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytes.py",
+    "line": 366,
+    "column": 10,
+    "word": "hjhtuyfjtyhuhjuyj"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytes.py",
+    "line": 366,
+    "column": 57,
+    "word": "juyfjyujuyj"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytes.py",
+    "line": 367,
+    "column": 10,
+    "word": "hjhtuyfjtyhuhjuyj"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytes.py",
+    "line": 367,
+    "column": 64,
+    "word": "juyfjyujuyj"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytes.py",
+    "line": 372,
+    "column": 35,
+    "word": "cmowz"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytes.py",
+    "line": 374,
+    "column": 36,
+    "word": "cmowz"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytes.py",
+    "line": 376,
+    "column": 43,
+    "word": "mississ"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytes.py",
+    "line": 630,
+    "column": 19,
+    "word": "abcdabcdabcd"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytes.py",
+    "line": 631,
+    "column": 19,
+    "word": "abcdabcdabcd"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytes.py",
+    "line": 642,
+    "column": 78,
+    "word": "udcff"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytes.py",
+    "line": 645,
+    "column": 15,
+    "word": "bpython"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytes.py",
+    "line": 665,
+    "column": 18,
+    "word": "bytess"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_bytes.py",
+    "line": 668,
+    "column": 24,
+    "word": "bytess"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_chr.py",
+    "line": 1,
+    "column": 6,
+    "word": "testutils"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_complex.py",
+    "line": 1,
+    "column": 8,
+    "word": "testutils"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_complex.py",
+    "line": 2,
+    "column": 6,
+    "word": "testutils"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_dict.py",
+    "line": 1,
+    "column": 6,
+    "word": "testutils"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_dict_union.py",
+    "line": 1,
+    "column": 6,
+    "word": "testutils"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_dict_union.py",
+    "line": 4,
+    "column": 10,
+    "word": "dunion"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_dict_union.py",
+    "line": 13,
+    "column": 10,
+    "word": "dunion"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_dict_union.py",
+    "line": 25,
+    "column": 10,
+    "word": "dunion"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_dict_union.py",
+    "line": 37,
+    "column": 10,
+    "word": "dunion"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_dict_union.py",
+    "line": 49,
+    "column": 10,
+    "word": "dunion"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_divmod.py",
+    "line": 1,
+    "column": 6,
+    "word": "testutils"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_exit.py",
+    "line": 1,
+    "column": 6,
+    "word": "testutils"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_float.py",
+    "line": 3,
+    "column": 6,
+    "word": "testutils"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_float.py",
+    "line": 267,
+    "column": 6,
+    "word": "infi"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_float.py",
+    "line": 268,
+    "column": 7,
+    "word": "Infinit"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_float.py",
+    "line": 278,
+    "column": 6,
+    "word": "nfinity"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_float.py",
+    "line": 279,
+    "column": 6,
+    "word": "inity"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_float.py",
+    "line": 280,
+    "column": 6,
+    "word": "iinity"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_float.py",
+    "line": 281,
+    "column": 7,
+    "word": "xnan"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_float.py",
+    "line": 393,
+    "column": 21,
+    "word": "xbep"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_format.py",
+    "line": 1,
+    "column": 6,
+    "word": "testutils"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_hash.py",
+    "line": 1,
+    "column": 6,
+    "word": "testutils"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_hex.py",
+    "line": 1,
+    "column": 6,
+    "word": "testutils"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_int.py",
+    "line": 1,
+    "column": 6,
+    "word": "testutils"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_int.py",
+    "line": 366,
+    "column": 1,
+    "word": "subint"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_int.py",
+    "line": 367,
+    "column": 8,
+    "word": "subint"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_int.py",
+    "line": 367,
+    "column": 27,
+    "word": "subint"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_int.py",
+    "line": 368,
+    "column": 13,
+    "word": "subint"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_list.py",
+    "line": 1,
+    "column": 6,
+    "word": "testutils"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_list.py",
+    "line": 862,
+    "column": 26,
+    "word": "daedlock"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_mappingproxy.py",
+    "line": 1,
+    "column": 6,
+    "word": "testutils"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_max.py",
+    "line": 1,
+    "column": 6,
+    "word": "testutils"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_memoryview.py",
+    "line": 3,
+    "column": 6,
+    "word": "testutils"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_min.py",
+    "line": 1,
+    "column": 6,
+    "word": "testutils"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_object.py",
+    "line": 7,
+    "column": 1,
+    "word": "myobj"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_object.py",
+    "line": 8,
+    "column": 8,
+    "word": "myobj"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_object.py",
+    "line": 8,
+    "column": 17,
+    "word": "myobj"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_object.py",
+    "line": 9,
+    "column": 12,
+    "word": "myobj"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_object.py",
+    "line": 9,
+    "column": 21,
+    "word": "myobj"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_open.py",
+    "line": 1,
+    "column": 6,
+    "word": "testutils"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_ord.py",
+    "line": 1,
+    "column": 6,
+    "word": "testutils"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_pow.py",
+    "line": 1,
+    "column": 6,
+    "word": "testutils"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_pow.py",
+    "line": 29,
+    "column": 5,
+    "word": "powtest"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_pow.py",
+    "line": 46,
+    "column": 13,
+    "word": "othertype"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_pow.py",
+    "line": 50,
+    "column": 27,
+    "word": "othertype"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_pow.py",
+    "line": 53,
+    "column": 9,
+    "word": "othertype"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_pow.py",
+    "line": 56,
+    "column": 20,
+    "word": "othertype"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_pow.py",
+    "line": 64,
+    "column": 5,
+    "word": "asseq"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_pow.py",
+    "line": 67,
+    "column": 9,
+    "word": "asseq"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_pow.py",
+    "line": 79,
+    "column": 21,
+    "word": "asseq"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_pow.py",
+    "line": 82,
+    "column": 10,
+    "word": "powint"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_pow.py",
+    "line": 83,
+    "column": 5,
+    "word": "powtest"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_pow.py",
+    "line": 86,
+    "column": 10,
+    "word": "powfloat"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_pow.py",
+    "line": 87,
+    "column": 5,
+    "word": "powtest"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_pow.py",
+    "line": 136,
+    "column": 9,
+    "word": "fiveto"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_pow.py",
+    "line": 137,
+    "column": 24,
+    "word": "fiveto"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_pow.py",
+    "line": 138,
+    "column": 38,
+    "word": "thereafer"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_pow.py",
+    "line": 138,
+    "column": 48,
+    "word": "fiveto"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_pow.py",
+    "line": 139,
+    "column": 20,
+    "word": "fiveto"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_pow.py",
+    "line": 140,
+    "column": 19,
+    "word": "fiveto"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_print.py",
+    "line": 3,
+    "column": 6,
+    "word": "testutils"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_property.py",
+    "line": 1,
+    "column": 6,
+    "word": "testutils"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_property.py",
+    "line": 4,
+    "column": 7,
+    "word": "Fubar"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_property.py",
+    "line": 15,
+    "column": 5,
+    "word": "Fubar"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_property.py",
+    "line": 19,
+    "column": 13,
+    "word": "Fubar"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_range.py",
+    "line": 1,
+    "column": 6,
+    "word": "testutils"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_round.py",
+    "line": 1,
+    "column": 6,
+    "word": "testutils"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_set.py",
+    "line": 1,
+    "column": 6,
+    "word": "testutils"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_set.py",
+    "line": 428,
+    "column": 27,
+    "word": "aruguments"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_slice.py",
+    "line": 1,
+    "column": 6,
+    "word": "testutils"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_str.py",
+    "line": 1,
+    "column": 6,
+    "word": "testutils"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_str.py",
+    "line": 40,
+    "column": 21,
+    "word": "xyxyxy"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_str.py",
+    "line": 44,
+    "column": 21,
+    "word": "xyxyxy"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_str.py",
+    "line": 99,
+    "column": 10,
+    "word": "koki"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_str.py",
+    "line": 100,
+    "column": 6,
+    "word": "koki"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_str.py",
+    "line": 101,
+    "column": 6,
+    "word": "koki"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_str.py",
+    "line": 102,
+    "column": 7,
+    "word": "koki"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_str.py",
+    "line": 103,
+    "column": 7,
+    "word": "koki"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_str.py",
+    "line": 186,
+    "column": 39,
+    "word": "dhoho"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_str.py",
+    "line": 186,
+    "column": 47,
+    "word": "ehaha"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_str.py",
+    "line": 186,
+    "column": 69,
+    "word": "yetanother"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_str.py",
+    "line": 192,
+    "column": 10,
+    "word": "hoho"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_str.py",
+    "line": 193,
+    "column": 10,
+    "word": "haha"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_str.py",
+    "line": 195,
+    "column": 10,
+    "word": "yetanother"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_str.py",
+    "line": 201,
+    "column": 39,
+    "word": "dhoho"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_str.py",
+    "line": 201,
+    "column": 47,
+    "word": "ehaha"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_str.py",
+    "line": 201,
+    "column": 69,
+    "word": "yetanother"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_str.py",
+    "line": 209,
+    "column": 10,
+    "word": "hoho"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_str.py",
+    "line": 210,
+    "column": 10,
+    "word": "haha"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_str.py",
+    "line": 212,
+    "column": 10,
+    "word": "yetanother"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_str.py",
+    "line": 411,
+    "column": 7,
+    "word": "isisprintable"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_str.py",
+    "line": 721,
+    "column": 10,
+    "word": "foobarfoo"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_str.py",
+    "line": 722,
+    "column": 14,
+    "word": "foobarfoo"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_str.py",
+    "line": 732,
+    "column": 28,
+    "word": "afoo"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_str.py",
+    "line": 737,
+    "column": 15,
+    "word": "foobarfoo"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_str.py",
+    "line": 738,
+    "column": 19,
+    "word": "foobarfoo"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_str.py",
+    "line": 767,
+    "column": 10,
+    "word": "foobarfoo"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_str.py",
+    "line": 779,
+    "column": 28,
+    "word": "fooa"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_str_encode.py",
+    "line": 1,
+    "column": 6,
+    "word": "testutils"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_str_encode.py",
+    "line": 11,
+    "column": 42,
+    "word": "estás"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_str_encode.py",
+    "line": 21,
+    "column": 25,
+    "word": "𝕐𝕥"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_str_encode.py",
+    "line": 22,
+    "column": 19,
+    "word": "ק𝔂t"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_str_subclass.py",
+    "line": 1,
+    "column": 6,
+    "word": "testutils"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_str_unicode.py",
+    "line": 26,
+    "column": 40,
+    "word": "abcij"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_str_unicode.py",
+    "line": 31,
+    "column": 48,
+    "word": "pythn"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_str_unicode.py",
+    "line": 32,
+    "column": 49,
+    "word": "pythn"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_str_unicode.py",
+    "line": 35,
+    "column": 14,
+    "word": "pythn"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_str_unicode.py",
+    "line": 36,
+    "column": 14,
+    "word": "pythn"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_str_unicode_slice.py",
+    "line": 37,
+    "column": 19,
+    "word": "רֵאשִ"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_str_unicode_slice.py",
+    "line": 37,
+    "column": 36,
+    "word": "אֱלֹהִים"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_str_unicode_slice.py",
+    "line": 37,
+    "column": 50,
+    "word": "הַשָּׁמַיִם"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_str_unicode_slice.py",
+    "line": 37,
+    "column": 63,
+    "word": "וְאֵת"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_str_unicode_slice.py",
+    "line": 37,
+    "column": 69,
+    "word": "הָאָרֶץ"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_str_unicode_slice.py",
+    "line": 49,
+    "column": 32,
+    "word": "מַיִם"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_str_unicode_slice.py",
+    "line": 51,
+    "column": 35,
+    "word": "רֵאשִ"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_str_unicode_slice.py",
+    "line": 51,
+    "column": 52,
+    "word": "אֱלֹהִים"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_str_unicode_slice.py",
+    "line": 53,
+    "column": 42,
+    "word": "אֱלֹהִים"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_str_unicode_slice.py",
+    "line": 58,
+    "column": 34,
+    "word": "אםהֱאּ"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_str_unicode_slice.py",
+    "line": 60,
+    "column": 37,
+    "word": "םיִהֹלֱא"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_str_unicode_slice.py",
+    "line": 60,
+    "column": 46,
+    "word": "אָרּ"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_tuple.py",
+    "line": 1,
+    "column": 6,
+    "word": "testutils"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_type.py",
+    "line": 3,
+    "column": 6,
+    "word": "testutils"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_type.py",
+    "line": 352,
+    "column": 9,
+    "word": "clsmethod"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_type.py",
+    "line": 356,
+    "column": 9,
+    "word": "stmethod"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_type.py",
+    "line": 374,
+    "column": 25,
+    "word": "clsmethod"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_type.py",
+    "line": 374,
+    "column": 48,
+    "word": "clsmethod"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_type.py",
+    "line": 375,
+    "column": 27,
+    "word": "clsmethod"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_type.py",
+    "line": 375,
+    "column": 50,
+    "word": "clsmethod"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_type.py",
+    "line": 376,
+    "column": 25,
+    "word": "stmethod"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_type.py",
+    "line": 376,
+    "column": 47,
+    "word": "stmethod"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_type.py",
+    "line": 377,
+    "column": 27,
+    "word": "stmethod"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_type.py",
+    "line": 377,
+    "column": 49,
+    "word": "stmethod"
+  },
+  {
+    "file": "extra_tests/snippets/builtin_type.py",
+    "line": 415,
+    "column": 3,
+    "word": "Regresesion"
+  },
+  {
+    "file": "extra_tests/snippets/builtins_module.py",
+    "line": 1,
+    "column": 6,
+    "word": "testutils"
+  },
+  {
+    "file": "extra_tests/snippets/example_interactive.py",
+    "line": 25,
+    "column": 64,
+    "word": "NOFREE"
+  },
+  {
+    "file": "extra_tests/snippets/example_interactive.py",
+    "line": 28,
+    "column": 16,
+    "word": "lnotab"
+  },
+  {
+    "file": "extra_tests/snippets/example_interactive.py",
+    "line": 28,
+    "column": 35,
+    "word": "lnotab"
+  },
+  {
+    "file": "extra_tests/snippets/forbidden_instantiation.py",
+    "line": 17,
+    "column": 6,
+    "word": "testutils"
+  },
+  {
+    "file": "extra_tests/snippets/forbidden_instantiation.py",
+    "line": 41,
+    "column": 1,
+    "word": "reviter"
+  },
+  {
+    "file": "extra_tests/snippets/forbidden_instantiation.py",
+    "line": 60,
+    "column": 12,
+    "word": "reviter"
+  },
+  {
+    "file": "extra_tests/snippets/import.py",
+    "line": 75,
+    "column": 6,
+    "word": "testutils"
+  },
+  {
+    "file": "extra_tests/snippets/intro/3.1.2.5.py",
+    "line": 1,
+    "column": 9,
+    "word": "unununium"
+  },
+  {
+    "file": "extra_tests/snippets/operator_arithmetic.py",
+    "line": 1,
+    "column": 6,
+    "word": "testutils"
+  },
+  {
+    "file": "extra_tests/snippets/operator_comparison.py",
+    "line": 1,
+    "column": 6,
+    "word": "testutils"
+  },
+  {
+    "file": "extra_tests/snippets/operator_div.py",
+    "line": 1,
+    "column": 6,
+    "word": "testutils"
+  },
+  {
+    "file": "extra_tests/snippets/operator_membership.py",
+    "line": 1,
+    "column": 6,
+    "word": "testutils"
+  },
+  {
+    "file": "extra_tests/snippets/protocol_index_bad.py",
+    "line": 6,
+    "column": 6,
+    "word": "testutils"
+  },
+  {
+    "file": "extra_tests/snippets/protocol_index_bad.py",
+    "line": 25,
+    "column": 9,
+    "word": "delslice"
+  },
+  {
+    "file": "extra_tests/snippets/protocol_index_bad.py",
+    "line": 35,
+    "column": 9,
+    "word": "delslice"
+  },
+  {
+    "file": "extra_tests/snippets/protocol_iterable.py",
+    "line": 1,
+    "column": 6,
+    "word": "testutils"
+  },
+  {
+    "file": "extra_tests/snippets/recursion.py",
+    "line": 1,
+    "column": 6,
+    "word": "testutils"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_abc.py",
+    "line": 3,
+    "column": 6,
+    "word": "testutils"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_abc_number.py",
+    "line": 1,
+    "column": 6,
+    "word": "testutils"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_array.py",
+    "line": 4,
+    "column": 6,
+    "word": "testutils"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_array.py",
+    "line": 125,
+    "column": 3,
+    "word": "teset"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_binascii.py",
+    "line": 3,
+    "column": 6,
+    "word": "testutils"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_binascii.py",
+    "line": 5,
+    "column": 3,
+    "word": "hexlify"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_binascii.py",
+    "line": 6,
+    "column": 14,
+    "word": "hexlify"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_binascii.py",
+    "line": 18,
+    "column": 3,
+    "word": "unhexlify"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_binascii.py",
+    "line": 19,
+    "column": 15,
+    "word": "unhexlify"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_binascii.py",
+    "line": 47,
+    "column": 33,
+    "word": "Ghvbg"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_binascii.py",
+    "line": 50,
+    "column": 18,
+    "word": "𝕐𝕥"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_collections_deque.py",
+    "line": 4,
+    "column": 6,
+    "word": "testutils"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_collections_deque.py",
+    "line": 8,
+    "column": 5,
+    "word": "klass"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_collections_deque.py",
+    "line": 10,
+    "column": 9,
+    "word": "klass"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_collections_deque.py",
+    "line": 18,
+    "column": 5,
+    "word": "klass"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_collections_deque.py",
+    "line": 23,
+    "column": 17,
+    "word": "klass"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_collections_deque.py",
+    "line": 29,
+    "column": 17,
+    "word": "klass"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_csv.py",
+    "line": 3,
+    "column": 6,
+    "word": "testutils"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_ctypes.py",
+    "line": 44,
+    "column": 9,
+    "word": "buftype"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_ctypes.py",
+    "line": 45,
+    "column": 11,
+    "word": "buftype"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_ctypes.py",
+    "line": 46,
+    "column": 15,
+    "word": "buftype"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_ctypes.py",
+    "line": 51,
+    "column": 9,
+    "word": "buftype"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_ctypes.py",
+    "line": 52,
+    "column": 11,
+    "word": "buftype"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_ctypes.py",
+    "line": 58,
+    "column": 22,
+    "word": "typecode"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_ctypes.py",
+    "line": 63,
+    "column": 8,
+    "word": "typecode"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_ctypes.py",
+    "line": 65,
+    "column": 9,
+    "word": "typecode"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_ctypes.py",
+    "line": 66,
+    "column": 46,
+    "word": "typecode"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_ctypes.py",
+    "line": 250,
+    "column": 9,
+    "word": "winmode"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_ctypes.py",
+    "line": 265,
+    "column": 29,
+    "word": "RTLD"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_ctypes.py",
+    "line": 267,
+    "column": 16,
+    "word": "winmode"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_ctypes.py",
+    "line": 268,
+    "column": 24,
+    "word": "winmode"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_ctypes.py",
+    "line": 274,
+    "column": 38,
+    "word": "getfullpathname"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_ctypes.py",
+    "line": 311,
+    "column": 24,
+    "word": "dlltype"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_ctypes.py",
+    "line": 312,
+    "column": 15,
+    "word": "dlltype"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_ctypes.py",
+    "line": 312,
+    "column": 25,
+    "word": "dlltype"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_ctypes.py",
+    "line": 318,
+    "column": 25,
+    "word": "dlltype"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_ctypes.py",
+    "line": 328,
+    "column": 22,
+    "word": "dlltype"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 14,
+    "column": 6,
+    "word": "testutils"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 25,
+    "column": 1,
+    "word": "OTHERSTUFF"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 71,
+    "column": 38,
+    "word": "dstoffset"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 74,
+    "column": 23,
+    "word": "dstoffset"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 75,
+    "column": 13,
+    "word": "dstoffset"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 75,
+    "column": 43,
+    "word": "dstoffset"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 78,
+    "column": 16,
+    "word": "dstoffset"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 141,
+    "column": 3,
+    "word": "unsupport"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 159,
+    "column": 14,
+    "word": "ACDT"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 159,
+    "column": 53,
+    "word": "ACDT"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 164,
+    "column": 25,
+    "word": "ACDT"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 170,
+    "column": 25,
+    "word": "ACDT"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 173,
+    "column": 13,
+    "word": "tzrep"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 174,
+    "column": 35,
+    "word": "tzrep"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 235,
+    "column": 35,
+    "word": "ACDT"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 236,
+    "column": 13,
+    "word": "utctime"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 237,
+    "column": 32,
+    "word": "utctime"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 238,
+    "column": 34,
+    "word": "utctime"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 264,
+    "column": 17,
+    "word": "pickler"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 264,
+    "column": 26,
+    "word": "unpickler"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 265,
+    "column": 27,
+    "word": "unpickler"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 265,
+    "column": 43,
+    "word": "pickler"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 268,
+    "column": 13,
+    "word": "pickler"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 268,
+    "column": 22,
+    "word": "unpickler"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 269,
+    "column": 23,
+    "word": "unpickler"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 269,
+    "column": 39,
+    "word": "pickler"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 296,
+    "column": 27,
+    "word": "theclass"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 296,
+    "column": 42,
+    "word": "theclass"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 299,
+    "column": 5,
+    "word": "theclass"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 301,
+    "column": 10,
+    "word": "theclass"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 312,
+    "column": 10,
+    "word": "theclass"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 516,
+    "column": 13,
+    "word": "pickler"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 516,
+    "column": 22,
+    "word": "unpickler"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 546,
+    "column": 23,
+    "word": "OTHERSTUFF"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 733,
+    "column": 9,
+    "word": "zerotd"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 734,
+    "column": 54,
+    "word": "zerotd"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 735,
+    "column": 55,
+    "word": "zerotd"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 751,
+    "column": 9,
+    "word": "zerotd"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 752,
+    "column": 50,
+    "word": "zerotd"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 848,
+    "column": 13,
+    "word": "fromord"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 849,
+    "column": 29,
+    "word": "fromord"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 850,
+    "column": 24,
+    "word": "fromord"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 853,
+    "column": 30,
+    "word": "fromord"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 854,
+    "column": 30,
+    "word": "fromord"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 877,
+    "column": 24,
+    "word": "maxday"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 879,
+    "column": 21,
+    "word": "maxday"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 880,
+    "column": 37,
+    "word": "maxday"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 889,
+    "column": 9,
+    "word": "aord"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 890,
+    "column": 27,
+    "word": "aord"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 893,
+    "column": 57,
+    "word": "aord"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 896,
+    "column": 37,
+    "word": "aord"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 897,
+    "column": 51,
+    "word": "aord"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 1050,
+    "column": 13,
+    "word": "todayagain"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 1051,
+    "column": 25,
+    "word": "todayagain"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 1067,
+    "column": 21,
+    "word": "todayagain"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 1068,
+    "column": 36,
+    "word": "todayagain"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 1165,
+    "column": 20,
+    "word": "excercise"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 1219,
+    "column": 9,
+    "word": "justasbig"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 1220,
+    "column": 27,
+    "word": "justasbig"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 1282,
+    "column": 23,
+    "word": "OTHERSTUFF"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 1372,
+    "column": 19,
+    "word": "newval"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 1376,
+    "column": 26,
+    "word": "newval"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 1378,
+    "column": 41,
+    "word": "newval"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 1398,
+    "column": 17,
+    "word": "newmeth"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 1410,
+    "column": 26,
+    "word": "newmeth"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 1982,
+    "column": 19,
+    "word": "newval"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 1990,
+    "column": 26,
+    "word": "newval"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 2022,
+    "column": 9,
+    "word": "alsobog"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 2023,
+    "column": 50,
+    "word": "alsobog"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 2037,
+    "column": 17,
+    "word": "newmeth"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 2049,
+    "column": 26,
+    "word": "newmeth"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 2125,
+    "column": 23,
+    "word": "OTHERSTUFF"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 2341,
+    "column": 17,
+    "word": "newmeth"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 2363,
+    "column": 23,
+    "word": "atribute"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 2420,
+    "column": 17,
+    "word": "aofs"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 2421,
+    "column": 31,
+    "word": "aofs"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 2480,
+    "column": 55,
+    "word": "comparands"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 2502,
+    "column": 50,
+    "word": "uctoffset"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 2503,
+    "column": 59,
+    "word": "depedent"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 2612,
+    "column": 15,
+    "word": "Badtzname"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 2615,
+    "column": 34,
+    "word": "Badtzname"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 2621,
+    "column": 13,
+    "word": "Badtzname"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 2812,
+    "column": 17,
+    "word": "afer"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 2852,
+    "column": 23,
+    "word": "uctoffset"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 2945,
+    "column": 9,
+    "word": "timeaware"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 2946,
+    "column": 9,
+    "word": "nowaware"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 2946,
+    "column": 54,
+    "word": "timeaware"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 2947,
+    "column": 23,
+    "word": "nowaware"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 2948,
+    "column": 22,
+    "word": "nowaware"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 2948,
+    "column": 41,
+    "word": "timeaware"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 2951,
+    "column": 48,
+    "word": "nowaware"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 2952,
+    "column": 42,
+    "word": "nowaware"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 2965,
+    "column": 9,
+    "word": "nowawareplus"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 2967,
+    "column": 9,
+    "word": "nowawareplus"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 2968,
+    "column": 23,
+    "word": "nowawareplus"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 2969,
+    "column": 22,
+    "word": "nowawareplus"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 2969,
+    "column": 36,
+    "word": "nowawareplus"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 2980,
+    "column": 59,
+    "word": "randomtimezone"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3029,
+    "column": 13,
+    "word": "weirdtz"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3029,
+    "column": 71,
+    "word": "weirdtz"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3030,
+    "column": 68,
+    "word": "weirdtz"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3032,
+    "column": 36,
+    "word": "weirdtz"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3033,
+    "column": 43,
+    "word": "weirdtz"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3068,
+    "column": 9,
+    "word": "utcdatetime"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3075,
+    "column": 20,
+    "word": "utcdatetime"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3105,
+    "column": 32,
+    "word": "dstvalue"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3106,
+    "column": 31,
+    "word": "dstvalue"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3107,
+    "column": 21,
+    "word": "dstvalue"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3107,
+    "column": 50,
+    "word": "dstvalue"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3108,
+    "column": 22,
+    "word": "dstvalue"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3151,
+    "column": 15,
+    "word": "UOFS"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3152,
+    "column": 32,
+    "word": "uofs"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3152,
+    "column": 38,
+    "word": "dofs"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3153,
+    "column": 36,
+    "word": "dofs"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3154,
+    "column": 22,
+    "word": "uofs"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3154,
+    "column": 47,
+    "word": "uofs"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3156,
+    "column": 29,
+    "word": "uofs"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3159,
+    "column": 53,
+    "word": "UOFS"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3180,
+    "column": 15,
+    "word": "NOFS"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3183,
+    "column": 49,
+    "word": "NOFS"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3204,
+    "column": 52,
+    "word": "UOFS"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3208,
+    "column": 64,
+    "word": "UOFS"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3228,
+    "column": 17,
+    "word": "timestr"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3229,
+    "column": 17,
+    "word": "ofsstr"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3230,
+    "column": 17,
+    "word": "tailstr"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3230,
+    "column": 27,
+    "word": "timestr"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3230,
+    "column": 37,
+    "word": "ofsstr"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3232,
+    "column": 51,
+    "word": "tailstr"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3234,
+    "column": 64,
+    "word": "tailstr"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3235,
+    "column": 74,
+    "word": "tailstr"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3236,
+    "column": 54,
+    "word": "tailstr"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3279,
+    "column": 9,
+    "word": "fnone"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3286,
+    "column": 50,
+    "word": "fnone"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3349,
+    "column": 53,
+    "word": "utcoffsets"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3399,
+    "column": 23,
+    "word": "datetimetz"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3438,
+    "column": 1,
+    "word": "DSTSTART"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3443,
+    "column": 1,
+    "word": "DSTEND"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3447,
+    "column": 31,
+    "word": "reprname"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3447,
+    "column": 50,
+    "word": "dstname"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3448,
+    "column": 14,
+    "word": "stdoffset"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3449,
+    "column": 14,
+    "word": "reprname"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3449,
+    "column": 25,
+    "word": "reprname"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3451,
+    "column": 14,
+    "word": "dstname"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3451,
+    "column": 24,
+    "word": "dstname"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3454,
+    "column": 21,
+    "word": "reprname"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3458,
+    "column": 25,
+    "word": "dstname"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3463,
+    "column": 21,
+    "word": "stdoffset"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3473,
+    "column": 42,
+    "word": "DSTSTART"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3477,
+    "column": 40,
+    "word": "DSTEND"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3498,
+    "column": 5,
+    "word": "dston"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3499,
+    "column": 5,
+    "word": "dstoff"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3504,
+    "column": 9,
+    "word": "checkinside"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3504,
+    "column": 40,
+    "word": "dston"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3504,
+    "column": 47,
+    "word": "dstoff"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3510,
+    "column": 9,
+    "word": "asutc"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3511,
+    "column": 26,
+    "word": "asutc"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3521,
+    "column": 25,
+    "word": "dston"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3543,
+    "column": 9,
+    "word": "nexthour"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3543,
+    "column": 24,
+    "word": "asutc"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3544,
+    "column": 9,
+    "word": "nexthour"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3544,
+    "column": 23,
+    "word": "nexthour"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3545,
+    "column": 25,
+    "word": "dstoff"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3548,
+    "column": 26,
+    "word": "nexthour"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3549,
+    "column": 13,
+    "word": "nexthour"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3556,
+    "column": 9,
+    "word": "checkoutside"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3563,
+    "column": 9,
+    "word": "asutc"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3564,
+    "column": 26,
+    "word": "asutc"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3568,
+    "column": 9,
+    "word": "dston"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3568,
+    "column": 22,
+    "word": "dston"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3574,
+    "column": 9,
+    "word": "dstoff"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3574,
+    "column": 23,
+    "word": "dstoff"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3581,
+    "column": 18,
+    "word": "checkinside"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3583,
+    "column": 22,
+    "word": "checkinside"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3585,
+    "column": 18,
+    "word": "checkoutside"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3587,
+    "column": 22,
+    "word": "checkoutside"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3590,
+    "column": 46,
+    "word": "endcases"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3615,
+    "column": 9,
+    "word": "fourback"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3616,
+    "column": 9,
+    "word": "ninewest"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3617,
+    "column": 9,
+    "word": "fourback"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3617,
+    "column": 20,
+    "word": "fourback"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3617,
+    "column": 44,
+    "word": "ninewest"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3626,
+    "column": 15,
+    "word": "fourback"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3631,
+    "column": 9,
+    "word": "sixutc"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3636,
+    "column": 15,
+    "word": "sixutc"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3653,
+    "column": 17,
+    "word": "asutcbase"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3654,
+    "column": 21,
+    "word": "tzhour"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3655,
+    "column": 21,
+    "word": "expectedbase"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3655,
+    "column": 61,
+    "word": "tzhour"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3657,
+    "column": 36,
+    "word": "expectedbase"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3658,
+    "column": 33,
+    "word": "asutcbase"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3659,
+    "column": 25,
+    "word": "astz"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3660,
+    "column": 38,
+    "word": "astz"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3661,
+    "column": 21,
+    "word": "asutcbase"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3674,
+    "column": 15,
+    "word": "notok"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3676,
+    "column": 51,
+    "word": "notok"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3682,
+    "column": 22,
+    "word": "notok"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3689,
+    "column": 57,
+    "word": "notok"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3704,
+    "column": 34,
+    "word": "stdoffset"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3705,
+    "column": 62,
+    "word": "FEDT"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3713,
+    "column": 9,
+    "word": "fstart"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3721,
+    "column": 24,
+    "word": "fstart"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3721,
+    "column": 42,
+    "word": "stdoffset"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3722,
+    "column": 36,
+    "word": "fstart"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3726,
+    "column": 19,
+    "word": "fstart"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3730,
+    "column": 13,
+    "word": "fstart"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3740,
+    "column": 42,
+    "word": "stdoffset"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_datetime.py",
+    "line": 3775,
+    "column": 3,
+    "word": "Neverthelss"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_dir_module.py",
+    "line": 2,
+    "column": 6,
+    "word": "testutils"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_functools.py",
+    "line": 3,
+    "column": 6,
+    "word": "testutils"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_hashlib.py",
+    "line": 41,
+    "column": 30,
+    "word": "fubar"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_io.py",
+    "line": 4,
+    "column": 6,
+    "word": "testutils"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_io.py",
+    "line": 39,
+    "column": 5,
+    "word": "nres"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_io.py",
+    "line": 40,
+    "column": 16,
+    "word": "nres"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_io.py",
+    "line": 41,
+    "column": 5,
+    "word": "nres"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_io.py",
+    "line": 42,
+    "column": 16,
+    "word": "nres"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_itertools.py",
+    "line": 3,
+    "column": 6,
+    "word": "testutils"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_itertools.py",
+    "line": 307,
+    "column": 72,
+    "word": "ACEF"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_itertools.py",
+    "line": 312,
+    "column": 82,
+    "word": "ACEF"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_json.py",
+    "line": 4,
+    "column": 6,
+    "word": "testutils"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_json.py",
+    "line": 70,
+    "column": 33,
+    "word": "jsons"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_logging.py",
+    "line": 9,
+    "column": 16,
+    "word": "WOOT"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_logging.py",
+    "line": 14,
+    "column": 9,
+    "word": "WOOT"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_math.py",
+    "line": 3,
+    "column": 6,
+    "word": "testutils"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_math.py",
+    "line": 12,
+    "column": 9,
+    "word": "Conversible"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_math.py",
+    "line": 17,
+    "column": 39,
+    "word": "Conversible"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_math.py",
+    "line": 19,
+    "column": 3,
+    "word": "roundings"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_os.py",
+    "line": 6,
+    "column": 6,
+    "word": "testutils"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_os.py",
+    "line": 119,
+    "column": 14,
+    "word": "BOYA"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_os.py",
+    "line": 291,
+    "column": 48,
+    "word": "getpwall"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_os.py",
+    "line": 387,
+    "column": 51,
+    "word": "setresuid"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_os.py",
+    "line": 518,
+    "column": 63,
+    "word": "VDISABLE"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_pwd.py",
+    "line": 9,
+    "column": 6,
+    "word": "testutils"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_re.py",
+    "line": 4,
+    "column": 11,
+    "word": "ello"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_re.py",
+    "line": 17,
+    "column": 17,
+    "word": "abcabca"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_re.py",
+    "line": 19,
+    "column": 14,
+    "word": "xcxca"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_re.py",
+    "line": 39,
+    "column": 35,
+    "word": "abcdddd"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_re.py",
+    "line": 39,
+    "column": 57,
+    "word": "abcdddd"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_re.py",
+    "line": 41,
+    "column": 36,
+    "word": "abce"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_re.py",
+    "line": 41,
+    "column": 55,
+    "word": "abce"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_re.py",
+    "line": 42,
+    "column": 37,
+    "word": "abcddeee"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_re.py",
+    "line": 42,
+    "column": 60,
+    "word": "abcddeee"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_re.py",
+    "line": 43,
+    "column": 35,
+    "word": "abcddd"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_re.py",
+    "line": 43,
+    "column": 56,
+    "word": "abcddd"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_re.py",
+    "line": 51,
+    "column": 41,
+    "word": "abcdcdcd"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_re.py",
+    "line": 52,
+    "column": 6,
+    "word": "abcdcdcd"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_re.py",
+    "line": 68,
+    "column": 41,
+    "word": "Xtest"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_select.py",
+    "line": 5,
+    "column": 6,
+    "word": "testutils"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_select.py",
+    "line": 26,
+    "column": 1,
+    "word": "recvr"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_select.py",
+    "line": 28,
+    "column": 1,
+    "word": "recvr"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_select.py",
+    "line": 30,
+    "column": 1,
+    "word": "recvr"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_select.py",
+    "line": 32,
+    "column": 1,
+    "word": "recvr"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_select.py",
+    "line": 34,
+    "column": 1,
+    "word": "sendr"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_select.py",
+    "line": 36,
+    "column": 1,
+    "word": "sendr"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_select.py",
+    "line": 37,
+    "column": 1,
+    "word": "sendr"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_select.py",
+    "line": 39,
+    "column": 1,
+    "word": "rres"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_select.py",
+    "line": 39,
+    "column": 35,
+    "word": "recvr"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_select.py",
+    "line": 39,
+    "column": 44,
+    "word": "sendr"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_select.py",
+    "line": 42,
+    "column": 21,
+    "word": "rres"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_select.py",
+    "line": 44,
+    "column": 8,
+    "word": "sendr"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_signal.py",
+    "line": 5,
+    "column": 6,
+    "word": "testutils"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_socket.py",
+    "line": 5,
+    "column": 6,
+    "word": "testutils"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_socket.py",
+    "line": 166,
+    "column": 13,
+    "word": "gaierror"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_socket.py",
+    "line": 166,
+    "column": 24,
+    "word": "gaierror"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_sqlite.py",
+    "line": 7,
+    "column": 4,
+    "word": "executescript"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_sqlite.py",
+    "line": 9,
+    "column": 4,
+    "word": "executemany"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_sqlite.py",
+    "line": 15,
+    "column": 4,
+    "word": "executescript"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_sqlite.py",
+    "line": 33,
+    "column": 22,
+    "word": "mysum"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_sqlite.py",
+    "line": 34,
+    "column": 21,
+    "word": "mysum"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_sqlite.py",
+    "line": 53,
+    "column": 22,
+    "word": "aggtxt"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_sqlite.py",
+    "line": 54,
+    "column": 21,
+    "word": "aggtxt"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_struct.py",
+    "line": 3,
+    "column": 6,
+    "word": "testutils"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_subprocess.py",
+    "line": 6,
+    "column": 6,
+    "word": "testutils"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_subprocess.py",
+    "line": 22,
+    "column": 36,
+    "word": "unixy"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_sys.py",
+    "line": 5,
+    "column": 6,
+    "word": "testutils"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_types.py",
+    "line": 5,
+    "column": 6,
+    "word": "testutils"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_weakref.py",
+    "line": 3,
+    "column": 6,
+    "word": "testutils"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_zlib.py",
+    "line": 3,
+    "column": 6,
+    "word": "testutils"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_zlib.py",
+    "line": 37,
+    "column": 38,
+    "word": "amet"
+  },
+  {
+    "file": "extra_tests/snippets/stdlib_zlib.py",
+    "line": 40,
+    "column": 54,
+    "word": "amet"
+  },
+  {
+    "file": "extra_tests/snippets/syntax_assignment.py",
+    "line": 64,
+    "column": 6,
+    "word": "testutils"
+  },
+  {
+    "file": "extra_tests/snippets/syntax_async.py",
+    "line": 8,
+    "column": 16,
+    "word": "Entrada"
+  },
+  {
+    "file": "extra_tests/snippets/syntax_attr.py",
+    "line": 1,
+    "column": 6,
+    "word": "testutils"
+  },
+  {
+    "file": "extra_tests/snippets/syntax_class.py",
+    "line": 1,
+    "column": 6,
+    "word": "testutils"
+  },
+  {
+    "file": "extra_tests/snippets/syntax_class.py",
+    "line": 42,
+    "column": 9,
+    "word": "fubar"
+  },
+  {
+    "file": "extra_tests/snippets/syntax_class.py",
+    "line": 48,
+    "column": 9,
+    "word": "kungfu"
+  },
+  {
+    "file": "extra_tests/snippets/syntax_class.py",
+    "line": 59,
+    "column": 5,
+    "word": "fubar"
+  },
+  {
+    "file": "extra_tests/snippets/syntax_class.py",
+    "line": 60,
+    "column": 5,
+    "word": "fubar"
+  },
+  {
+    "file": "extra_tests/snippets/syntax_class.py",
+    "line": 62,
+    "column": 5,
+    "word": "kungfu"
+  },
+  {
+    "file": "extra_tests/snippets/syntax_class.py",
+    "line": 63,
+    "column": 5,
+    "word": "kungfu"
+  },
+  {
+    "file": "extra_tests/snippets/syntax_class.py",
+    "line": 229,
+    "column": 20,
+    "word": "dbca"
+  },
+  {
+    "file": "extra_tests/snippets/syntax_class.py",
+    "line": 269,
+    "column": 17,
+    "word": "mcls"
+  },
+  {
+    "file": "extra_tests/snippets/syntax_class.py",
+    "line": 270,
+    "column": 21,
+    "word": "mcls"
+  },
+  {
+    "file": "extra_tests/snippets/syntax_class.py",
+    "line": 271,
+    "column": 21,
+    "word": "mcls"
+  },
+  {
+    "file": "extra_tests/snippets/syntax_del.py",
+    "line": 1,
+    "column": 6,
+    "word": "testutils"
+  },
+  {
+    "file": "extra_tests/snippets/syntax_del.py",
+    "line": 30,
+    "column": 5,
+    "word": "mytest"
+  },
+  {
+    "file": "extra_tests/snippets/syntax_del.py",
+    "line": 31,
+    "column": 9,
+    "word": "mytest"
+  },
+  {
+    "file": "extra_tests/snippets/syntax_forbidden_name.py",
+    "line": 1,
+    "column": 6,
+    "word": "testutils"
+  },
+  {
+    "file": "extra_tests/snippets/syntax_fstring.py",
+    "line": 1,
+    "column": 6,
+    "word": "testutils"
+  },
+  {
+    "file": "extra_tests/snippets/syntax_fstring.py",
+    "line": 16,
+    "column": 14,
+    "word": "tersing"
+  },
+  {
+    "file": "extra_tests/snippets/syntax_fstring.py",
+    "line": 22,
+    "column": 24,
+    "word": "barfoo"
+  },
+  {
+    "file": "extra_tests/snippets/syntax_fstring.py",
+    "line": 23,
+    "column": 27,
+    "word": "foobarfoo"
+  },
+  {
+    "file": "extra_tests/snippets/syntax_fstring.py",
+    "line": 29,
+    "column": 36,
+    "word": "barbarfoo"
+  },
+  {
+    "file": "extra_tests/snippets/syntax_fstring.py",
+    "line": 91,
+    "column": 32,
+    "word": "unicodes"
+  },
+  {
+    "file": "extra_tests/snippets/syntax_fstring.py",
+    "line": 138,
+    "column": 1,
+    "word": "tenπ"
+  },
+  {
+    "file": "extra_tests/snippets/syntax_fstring.py",
+    "line": 139,
+    "column": 21,
+    "word": "tenπ"
+  },
+  {
+    "file": "extra_tests/snippets/syntax_fstring.py",
+    "line": 139,
+    "column": 35,
+    "word": "tenπ"
+  },
+  {
+    "file": "extra_tests/snippets/syntax_function.py",
+    "line": 1,
+    "column": 6,
+    "word": "testutils"
+  },
+  {
+    "file": "extra_tests/snippets/syntax_function2.py",
+    "line": 1,
+    "column": 6,
+    "word": "testutils"
+  },
+  {
+    "file": "extra_tests/snippets/syntax_function2.py",
+    "line": 23,
+    "column": 5,
+    "word": "fubar"
+  },
+  {
+    "file": "extra_tests/snippets/syntax_function2.py",
+    "line": 26,
+    "column": 8,
+    "word": "fubar"
+  },
+  {
+    "file": "extra_tests/snippets/syntax_function2.py",
+    "line": 58,
+    "column": 5,
+    "word": "revdocstr"
+  },
+  {
+    "file": "extra_tests/snippets/syntax_function2.py",
+    "line": 64,
+    "column": 2,
+    "word": "revdocstr"
+  },
+  {
+    "file": "extra_tests/snippets/syntax_function2.py",
+    "line": 68,
+    "column": 23,
+    "word": "abcw"
+  },
+  {
+    "file": "extra_tests/snippets/syntax_function_args.py",
+    "line": 1,
+    "column": 6,
+    "word": "testutils"
+  },
+  {
+    "file": "extra_tests/snippets/syntax_function_args.py",
+    "line": 76,
+    "column": 5,
+    "word": "fubar"
+  },
+  {
+    "file": "extra_tests/snippets/syntax_function_args.py",
+    "line": 82,
+    "column": 1,
+    "word": "fubar"
+  },
+  {
+    "file": "extra_tests/snippets/syntax_generator.py",
+    "line": 1,
+    "column": 6,
+    "word": "testutils"
+  },
+  {
+    "file": "extra_tests/snippets/syntax_global_nonlocal.py",
+    "line": 1,
+    "column": 6,
+    "word": "testutils"
+  },
+  {
+    "file": "extra_tests/snippets/syntax_global_nonlocal.py",
+    "line": 3,
+    "column": 28,
+    "word": "funkyness"
+  },
+  {
+    "file": "extra_tests/snippets/syntax_invalid.py",
+    "line": 1,
+    "column": 6,
+    "word": "testutils"
+  },
+  {
+    "file": "extra_tests/snippets/syntax_match.py",
+    "line": 108,
+    "column": 59,
+    "word": "wheelinfo"
+  },
+  {
+    "file": "extra_tests/snippets/syntax_non_utf8.py",
+    "line": 3,
+    "column": 6,
+    "word": "testutils"
+  },
+  {
+    "file": "extra_tests/snippets/syntax_short_circuit_bool.py",
+    "line": 14,
+    "column": 14,
+    "word": "booled"
+  },
+  {
+    "file": "extra_tests/snippets/syntax_short_circuit_bool.py",
+    "line": 17,
+    "column": 25,
+    "word": "booled"
+  },
+  {
+    "file": "extra_tests/snippets/syntax_short_circuit_bool.py",
+    "line": 18,
+    "column": 14,
+    "word": "booled"
+  },
+  {
+    "file": "extra_tests/snippets/syntax_slice.py",
+    "line": 1,
+    "column": 6,
+    "word": "testutils"
+  },
+  {
+    "file": "extra_tests/snippets/syntax_statement.py",
+    "line": 4,
+    "column": 15,
+    "word": "seperated"
+  },
+  {
+    "file": "extra_tests/snippets/syntax_try.py",
+    "line": 1,
+    "column": 6,
+    "word": "testutils"
+  },
+  {
+    "file": "extra_tests/snippets/syntax_try.py",
+    "line": 35,
+    "column": 12,
+    "word": "kablam"
+  },
+  {
+    "file": "extra_tests/snippets/syntax_try.py",
+    "line": 49,
+    "column": 12,
+    "word": "kablam"
+  },
+  {
+    "file": "extra_tests/snippets/syntax_try.py",
+    "line": 62,
+    "column": 12,
+    "word": "kablam"
+  },
+  {
+    "file": "extra_tests/snippets/syntax_try.py",
+    "line": 73,
+    "column": 16,
+    "word": "kablam"
+  },
+  {
+    "file": "extra_tests/snippets/syntax_try.py",
+    "line": 82,
+    "column": 5,
+    "word": "fubar"
+  },
+  {
+    "file": "extra_tests/snippets/syntax_with.py",
+    "line": 5,
+    "column": 16,
+    "word": "Entrada"
+  },
+  {
+    "file": "extra_tests/snippets/syntax_with.py",
+    "line": 30,
+    "column": 16,
+    "word": "Ajuus"
+  },
+  {
+    "file": "extra_tests/snippets/testutils.py",
+    "line": 19,
+    "column": 14,
+    "word": "failmsg"
+  },
+  {
+    "file": "extra_tests/snippets/testutils.py",
+    "line": 26,
+    "column": 13,
+    "word": "failmsg"
+  },
+  {
+    "file": "extra_tests/snippets/testutils.py",
+    "line": 26,
+    "column": 28,
+    "word": "failmsg"
+  },
+  {
+    "file": "extra_tests/snippets/testutils.py",
+    "line": 27,
+    "column": 27,
+    "word": "failmsg"
+  },
+  {
+    "file": "extra_tests/snippets/testutils.py",
+    "line": 71,
+    "column": 28,
+    "word": "klass"
+  },
+  {
+    "file": "extra_tests/snippets/testutils.py",
+    "line": 73,
+    "column": 33,
+    "word": "klass"
+  },
+  {
+    "file": "extra_tests/snippets/testutils.py",
+    "line": 73,
+    "column": 43,
+    "word": "isisntance"
+  },
+  {
+    "file": "extra_tests/snippets/testutils.py",
+    "line": 73,
+    "column": 75,
+    "word": "klass"
+  },
+  {
+    "file": "extra_tests/test_snippets.py",
+    "line": 27,
+    "column": 5,
+    "word": "pushd"
+  },
+  {
+    "file": "extra_tests/test_snippets.py",
+    "line": 58,
+    "column": 41,
+    "word": "jobserver"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 23,
+    "column": 9,
+    "word": "VERSIONWITHBUILD"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 25,
+    "column": 9,
+    "word": "INSTALLMODE"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 27,
+    "column": 9,
+    "word": "INSTALLERICON"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 28,
+    "column": 9,
+    "word": "SIDEBARIMAGE"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 29,
+    "column": 9,
+    "word": "HEADERIMAGE"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 30,
+    "column": 9,
+    "word": "MAINBINARYNAME"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 31,
+    "column": 9,
+    "word": "MAINBINARYSRCPATH"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 36,
+    "column": 9,
+    "word": "PLUGINSPATH"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 37,
+    "column": 9,
+    "word": "ALLOWDOWNGRADES"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 38,
+    "column": 9,
+    "word": "DISPLAYLANGUAGESELECTOR"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 39,
+    "column": 9,
+    "word": "UNINSTKEY"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 40,
+    "column": 9,
+    "word": "MANUPRODUCTKEY"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 41,
+    "column": 9,
+    "word": "UNINSTALLERSIGNCOMMAND"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 42,
+    "column": 9,
+    "word": "ESTIMATEDSIZE"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 48,
+    "column": 21,
+    "word": "VERSIONWITHBUILD"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 56,
+    "column": 8,
+    "word": "PLUGINSPATH"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 57,
+    "column": 6,
+    "word": "addplugindir"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 57,
+    "column": 22,
+    "word": "PLUGINSPATH"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 60,
+    "column": 8,
+    "word": "UNINSTALLERSIGNCOMMAND"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 61,
+    "column": 4,
+    "word": "uninstfinalize"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 61,
+    "column": 22,
+    "word": "UNINSTALLERSIGNCOMMAND"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 65,
+    "column": 8,
+    "word": "INSTALLMODE"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 69,
+    "column": 8,
+    "word": "INSTALLMODE"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 73,
+    "column": 8,
+    "word": "INSTALLMODE"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 75,
+    "column": 21,
+    "word": "INSTALLMODE"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 75,
+    "column": 33,
+    "word": "INSTDIR"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 82,
+    "column": 57,
+    "word": "UNINSTKEY"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 84,
+    "column": 21,
+    "word": "INSTALLMODEPAGE"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 84,
+    "column": 37,
+    "word": "SHOWUSERNAME"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 86,
+    "column": 21,
+    "word": "EXECUTIONLEVEL"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 91,
+    "column": 8,
+    "word": "INSTALLERICON"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 92,
+    "column": 23,
+    "word": "INSTALLERICON"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 96,
+    "column": 8,
+    "word": "SIDEBARIMAGE"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 97,
+    "column": 15,
+    "word": "WELCOMEFINISHPAGE"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 97,
+    "column": 43,
+    "word": "SIDEBARIMAGE"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 101,
+    "column": 8,
+    "word": "HEADERIMAGE"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 102,
+    "column": 15,
+    "word": "HEADERIMAGE"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 103,
+    "column": 15,
+    "word": "HEADERIMAGE"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 103,
+    "column": 38,
+    "word": "HEADERIMAGE"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 107,
+    "column": 13,
+    "word": "LANGDLL"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 108,
+    "column": 13,
+    "word": "LANGDLL"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 108,
+    "column": 37,
+    "word": "MANUPRODUCTKEY"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 109,
+    "column": 13,
+    "word": "LANGDLL"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 113,
+    "column": 18,
+    "word": "CUSTOMFUNCTION"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 114,
+    "column": 2,
+    "word": "insertmacro"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 118,
+    "column": 20,
+    "word": "CUSTOMFUNCTION"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 119,
+    "column": 4,
+    "word": "insertmacro"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 124,
+    "column": 20,
+    "word": "CUSTOMFUNCTION"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 125,
+    "column": 4,
+    "word": "insertmacro"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 130,
+    "column": 25,
+    "word": "installtion"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 136,
+    "column": 32,
+    "word": "isntallation"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 141,
+    "column": 16,
+    "word": "potentional"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 155,
+    "column": 24,
+    "word": "msiexec"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 163,
+    "column": 18,
+    "word": "SHCTX"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 163,
+    "column": 27,
+    "word": "UNINSTKEY"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 164,
+    "column": 18,
+    "word": "SHCTX"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 164,
+    "column": 27,
+    "word": "UNINSTKEY"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 167,
+    "column": 18,
+    "word": "installar"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 174,
+    "column": 20,
+    "word": "SHCTX"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 174,
+    "column": 29,
+    "word": "UNINSTKEY"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 178,
+    "column": 3,
+    "word": "nsis"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 178,
+    "column": 8,
+    "word": "tauri"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 185,
+    "column": 6,
+    "word": "insertmacro"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 192,
+    "column": 6,
+    "word": "insertmacro"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 192,
+    "column": 59,
+    "word": "choow"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 198,
+    "column": 12,
+    "word": "ALLOWDOWNGRADES"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 203,
+    "column": 59,
+    "word": "choow"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 225,
+    "column": 10,
+    "word": "ALLOWDOWNGRADES"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 259,
+    "column": 20,
+    "word": "reinst"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 259,
+    "column": 37,
+    "word": "reinst"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 260,
+    "column": 18,
+    "word": "reinst"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 262,
+    "column": 3,
+    "word": "reinst"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 270,
+    "column": 21,
+    "word": "SHCTX"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 270,
+    "column": 30,
+    "word": "MANUPRODUCTKEY"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 271,
+    "column": 22,
+    "word": "SHCTX"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 280,
+    "column": 29,
+    "word": "INSTDIR"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 280,
+    "column": 39,
+    "word": "MAINBINARYNAME"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 292,
+    "column": 14,
+    "word": "INSTDIR"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 294,
+    "column": 3,
+    "word": "reinst"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 297,
+    "column": 21,
+    "word": "directoy"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 298,
+    "column": 18,
+    "word": "CUSTOMFUNCTION"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 302,
+    "column": 18,
+    "word": "CUSTOMFUNCTION"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 307,
+    "column": 23,
+    "word": "INSTFILES"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 313,
+    "column": 13,
+    "word": "FINISHPAGE"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 313,
+    "column": 24,
+    "word": "NOAUTOCLOSE"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 315,
+    "column": 13,
+    "word": "FINISHPAGE"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 315,
+    "column": 24,
+    "word": "SHOWREADME"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 316,
+    "column": 13,
+    "word": "FINISHPAGE"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 316,
+    "column": 24,
+    "word": "SHOWREADME"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 317,
+    "column": 13,
+    "word": "FINISHPAGE"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 317,
+    "column": 24,
+    "word": "SHOWREADME"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 319,
+    "column": 13,
+    "word": "FINISHPAGE"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 319,
+    "column": 30,
+    "word": "INSTDIR"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 319,
+    "column": 40,
+    "word": "MAINBINARYNAME"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 349,
+    "column": 25,
+    "word": "INSTFILES"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 355,
+    "column": 18,
+    "word": "RESERVEFILE"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 355,
+    "column": 30,
+    "word": "LANGDLL"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 376,
+    "column": 2,
+    "word": "macroend"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 384,
+    "column": 10,
+    "word": "DISPLAYLANGUAGESELECTOR"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 385,
+    "column": 22,
+    "word": "LANGDLL"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 390,
+    "column": 10,
+    "word": "INSTDIR"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 420,
+    "column": 10,
+    "word": "ALLOWDOWNGRADES"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 442,
+    "column": 3,
+    "word": "nsis"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 442,
+    "column": 8,
+    "word": "tauri"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 442,
+    "column": 36,
+    "word": "MAINBINARYNAME"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 448,
+    "column": 9,
+    "word": "nsis"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 448,
+    "column": 14,
+    "word": "tauri"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 448,
+    "column": 42,
+    "word": "MAINBINARYNAME"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 470,
+    "column": 2,
+    "word": "macroend"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 478,
+    "column": 11,
+    "word": "MAINBINARYSRCPATH"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 505,
+    "column": 66,
+    "word": "BUNDLEID"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 514,
+    "column": 24,
+    "word": "MANUPRODUCTKEY"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 531,
+    "column": 57,
+    "word": "ESTIMATEDSIZE"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 575,
+    "column": 20,
+    "word": "UNGETLANGUAGE"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 614,
+    "column": 10,
+    "word": "REBOOTOK"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 619,
+    "column": 30,
+    "word": "GETFOLDER"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 620,
+    "column": 12,
+    "word": "SMPROGRAMS"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 621,
+    "column": 11,
+    "word": "SMPROGRAMS"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 635,
+    "column": 26,
+    "word": "MANUPRODUCTKEY"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 668,
+    "column": 21,
+    "word": "SMPROGRAMS"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 669,
+    "column": 20,
+    "word": "SMPROGRAMS"
+  },
+  {
+    "file": "installer-config/installer.nsi",
+    "line": 670,
+    "column": 24,
+    "word": "SMPROGRAMS"
+  },
+  {
+    "file": "installer-config/installer.wxs",
+    "line": 1,
+    "column": 12,
+    "word": "BUILDARCH"
+  },
+  {
+    "file": "installer-config/installer.wxs",
+    "line": 4,
+    "column": 16,
+    "word": "BUILDARCH"
+  },
+  {
+    "file": "installer-config/installer.wxs",
+    "line": 8,
+    "column": 38,
+    "word": "BUILDARCH"
+  },
+  {
+    "file": "installer-config/installer.wxs",
+    "line": 8,
+    "column": 54,
+    "word": "BUILDARCH"
+  },
+  {
+    "file": "installer-config/installer.wxs",
+    "line": 30,
+    "column": 45,
+    "word": "amus"
+  },
+  {
+    "file": "installer-config/installer.wxs",
+    "line": 39,
+    "column": 48,
+    "word": "UPGRADINGPRODUCTCODE"
+  },
+  {
+    "file": "installer-config/installer.wxs",
+    "line": 67,
+    "column": 23,
+    "word": "WIXUI"
+  },
+  {
+    "file": "installer-config/installer.wxs",
+    "line": 67,
+    "column": 29,
+    "word": "EXITDIALOGOPTIONALCHECKBOXTEXT"
+  },
+  {
+    "file": "installer-config/installer.wxs",
+    "line": 68,
+    "column": 23,
+    "word": "WIXUI"
+  },
+  {
+    "file": "installer-config/installer.wxs",
+    "line": 68,
+    "column": 29,
+    "word": "EXITDIALOGOPTIONALCHECKBOX"
+  },
+  {
+    "file": "installer-config/installer.wxs",
+    "line": 74,
+    "column": 102,
+    "word": "WIXUI"
+  },
+  {
+    "file": "installer-config/installer.wxs",
+    "line": 74,
+    "column": 108,
+    "word": "EXITDIALOGOPTIONALCHECKBOX"
+  },
+  {
+    "file": "installer-config/installer.wxs",
+    "line": 76,
+    "column": 27,
+    "word": "WIXUI"
+  },
+  {
+    "file": "installer-config/installer.wxs",
+    "line": 112,
+    "column": 128,
+    "word": "APPLICATIONFOLDER"
+  },
+  {
+    "file": "installer-config/installer.wxs",
+    "line": 113,
+    "column": 23,
+    "word": "APPLICATIONFOLDER"
+  },
+  {
+    "file": "installer-config/installer.wxs",
+    "line": 114,
+    "column": 70,
+    "word": "APPLICATIONFOLDER"
+  },
+  {
+    "file": "installer-config/installer.wxs",
+    "line": 118,
+    "column": 128,
+    "word": "APPLICATIONFOLDER"
+  },
+  {
+    "file": "installer-config/installer.wxs",
+    "line": 119,
+    "column": 67,
+    "word": "APPLICATIONFOLDER"
+  },
+  {
+    "file": "installer-config/installer.wxs",
+    "line": 165,
+    "column": 33,
+    "word": "msiexec"
+  },
+  {
+    "file": "installer-config/installer.wxs",
+    "line": 277,
+    "column": 23,
+    "word": "WVRTINSTALLED"
+  },
+  {
+    "file": "installer-config/installer.wxs",
+    "line": 278,
+    "column": 33,
+    "word": "WVRT"
+  },
+  {
+    "file": "installer-config/installer.wxs",
+    "line": 279,
+    "column": 33,
+    "word": "WVRT"
+  },
+  {
+    "file": "installer-config/installer.wxs",
+    "line": 282,
+    "column": 24,
+    "word": "bootstrapper"
+  },
+  {
+    "file": "installer-config/installer.wxs",
+    "line": 283,
+    "column": 44,
+    "word": "Bootstrapper"
+  },
+  {
+    "file": "installer-config/installer.wxs",
+    "line": 285,
+    "column": 46,
+    "word": "Bootstrapper"
+  },
+  {
+    "file": "installer-config/installer.wxs",
+    "line": 286,
+    "column": 40,
+    "word": "WVRTINSTALLED"
+  },
+  {
+    "file": "installer-config/installer.wxs",
+    "line": 291,
+    "column": 31,
+    "word": "bootstrapper"
+  },
+  {
+    "file": "installer-config/installer.wxs",
+    "line": 292,
+    "column": 24,
+    "word": "bootstrapper"
+  },
+  {
+    "file": "installer-config/installer.wxs",
+    "line": 293,
+    "column": 76,
+    "word": "bootstrapper"
+  },
+  {
+    "file": "installer-config/installer.wxs",
+    "line": 294,
+    "column": 33,
+    "word": "Bootstrapper"
+  },
+  {
+    "file": "installer-config/installer.wxs",
+    "line": 296,
+    "column": 35,
+    "word": "Bootstrapper"
+  },
+  {
+    "file": "installer-config/installer.wxs",
+    "line": 297,
+    "column": 40,
+    "word": "WVRTINSTALLED"
+  },
+  {
+    "file": "installer-config/installer.wxs",
+    "line": 308,
+    "column": 40,
+    "word": "WVRTINSTALLED"
+  },
+  {
+    "file": "pdc.sh",
+    "line": 26,
+    "column": 90,
+    "word": "Dwarnings"
+  },
+  {
+    "file": "scripts/bench.sh",
+    "line": 1,
+    "column": 21,
+    "word": "nbody"
+  },
+  {
+    "file": "scripts/bench.sh",
+    "line": 1,
+    "column": 29,
+    "word": "fannkuch"
+  },
+  {
+    "file": "scripts/bench.sh",
+    "line": 1,
+    "column": 40,
+    "word": "scimark"
+  },
+  {
+    "file": "scripts/bench.sh",
+    "line": 3,
+    "column": 75,
+    "word": "pyperf"
+  },
+  {
+    "file": "scripts/bench.sh",
+    "line": 9,
+    "column": 107,
+    "word": "pyperf"
+  },
+  {
+    "file": "scripts/checklist_template.md",
+    "line": 1,
+    "column": 166,
+    "word": "endmacro"
+  },
+  {
+    "file": "scripts/find_eq.py",
+    "line": 67,
+    "column": 17,
+    "word": "lineterm"
+  },
+  {
+    "file": "scripts/generate_checklist.py",
+    "line": 142,
+    "column": 61,
+    "word": "lineterm"
+  },
+  {
+    "file": "scripts/generate_sre_constants.py",
+    "line": 9,
+    "column": 33,
+    "word": "fobj"
+  },
+  {
+    "file": "scripts/generate_sre_constants.py",
+    "line": 10,
+    "column": 16,
+    "word": "fobj"
+  },
+  {
+    "file": "scripts/generate_sre_constants.py",
+    "line": 14,
+    "column": 29,
+    "word": "fobj"
+  },
+  {
+    "file": "scripts/generate_sre_constants.py",
+    "line": 15,
+    "column": 9,
+    "word": "fobj"
+  },
+  {
+    "file": "scripts/generate_sre_constants.py",
+    "line": 107,
+    "column": 17,
+    "word": "ATCODES"
+  },
+  {
+    "file": "scripts/generate_sre_constants.py",
+    "line": 115,
+    "column": 17,
+    "word": "CHCODES"
+  },
+  {
+    "file": "scripts/install-openssl.ps1",
+    "line": 1,
+    "column": 12,
+    "word": "Actix"
+  },
+  {
+    "file": "scripts/make_ssl_data_rs.py",
+    "line": 49,
+    "column": 36,
+    "word": "AKID"
+  },
+  {
+    "file": "scripts/make_ssl_data_rs.py",
+    "line": 52,
+    "column": 36,
+    "word": "errtxt"
+  },
+  {
+    "file": "scripts/make_ssl_data_rs.py",
+    "line": 53,
+    "column": 26,
+    "word": "errname"
+  },
+  {
+    "file": "scripts/make_ssl_data_rs.py",
+    "line": 58,
+    "column": 32,
+    "word": "errname"
+  },
+  {
+    "file": "scripts/make_ssl_data_rs.py",
+    "line": 64,
+    "column": 36,
+    "word": "errcodes"
+  },
+  {
+    "file": "scripts/make_ssl_data_rs.py",
+    "line": 65,
+    "column": 26,
+    "word": "errname"
+  },
+  {
+    "file": "scripts/make_ssl_data_rs.py",
+    "line": 67,
+    "column": 32,
+    "word": "errname"
+  },
+  {
+    "file": "scripts/make_ssl_data_rs.py",
+    "line": 95,
+    "column": 26,
+    "word": "errname"
+  },
+  {
+    "file": "scripts/make_ssl_data_rs.py",
+    "line": 113,
+    "column": 10,
+    "word": "errcodes"
+  },
+  {
+    "file": "scripts/make_ssl_data_rs.py",
+    "line": 114,
+    "column": 10,
+    "word": "errtxt"
+  },
+  {
+    "file": "scripts/make_ssl_data_rs.py",
+    "line": 116,
+    "column": 32,
+    "word": "errtxt"
+  },
+  {
+    "file": "scripts/make_ssl_data_rs.py",
+    "line": 117,
+    "column": 35,
+    "word": "errtxt"
+  },
+  {
+    "file": "scripts/make_ssl_data_rs.py",
+    "line": 122,
+    "column": 17,
+    "word": "AKID"
+  },
+  {
+    "file": "scripts/make_ssl_data_rs.py",
+    "line": 122,
+    "column": 42,
+    "word": "AKID"
+  },
+  {
+    "file": "scripts/notes.txt",
+    "line": 23,
+    "column": 14,
+    "word": "pickletester"
+  },
+  {
+    "file": "scripts/notes.txt",
+    "line": 24,
+    "column": 19,
+    "word": "picklebuffer"
+  },
+  {
+    "file": "scripts/redox/recipe.sh",
+    "line": 3,
+    "column": 1,
+    "word": "CARGOFLAGS"
+  },
+  {
+    "file": "scripts/redox/run-redoxer.sh",
+    "line": 12,
+    "column": 47,
+    "word": "redoxer"
+  },
+  {
+    "file": "scripts/redox/run-redoxer.sh",
+    "line": 17,
+    "column": 1,
+    "word": "redoxer"
+  },
+  {
+    "file": "scripts/release-wapm.sh",
+    "line": 6,
+    "column": 14,
+    "word": "WAPM"
+  },
+  {
+    "file": "scripts/release-wapm.sh",
+    "line": 10,
+    "column": 95,
+    "word": "WAPM"
+  },
+  {
+    "file": "scripts/release-wapm.sh",
+    "line": 12,
+    "column": 1,
+    "word": "wapm"
+  },
+  {
+    "file": "scripts/update_lib/cmd_quick.py",
+    "line": 286,
+    "column": 9,
+    "word": "regrtest"
+  },
+  {
+    "file": "scripts/update_lib/cmd_quick.py",
+    "line": 286,
+    "column": 38,
+    "word": "libregrtest"
+  },
+  {
+    "file": "scripts/update_lib/cmd_quick.py",
+    "line": 294,
+    "column": 58,
+    "word": "regrtest"
+  },
+  {
+    "file": "scripts/update_lib/deps.py",
+    "line": 5,
+    "column": 34,
+    "word": "libregrtest"
+  },
+  {
+    "file": "scripts/update_lib/deps.py",
+    "line": 5,
+    "column": 58,
+    "word": "libregrtest"
+  },
+  {
+    "file": "scripts/update_lib/deps.py",
+    "line": 218,
+    "column": 7,
+    "word": "regrtest"
+  },
+  {
+    "file": "scripts/update_lib/deps.py",
+    "line": 218,
+    "column": 31,
+    "word": "libregrtest"
+  },
+  {
+    "file": "scripts/update_lib/deps.py",
+    "line": 218,
+    "column": 53,
+    "word": "libregrtest"
+  },
+  {
+    "file": "scripts/update_lib/deps.py",
+    "line": 219,
+    "column": 6,
+    "word": "regrtest"
+  },
+  {
+    "file": "scripts/update_lib/deps.py",
+    "line": 220,
+    "column": 23,
+    "word": "libregrtest"
+  },
+  {
+    "file": "scripts/update_lib/deps.py",
+    "line": 221,
+    "column": 24,
+    "word": "regrtest"
+  },
+  {
+    "file": "scripts/update_lib/deps.py",
+    "line": 222,
+    "column": 24,
+    "word": "regrtestdata"
+  },
+  {
+    "file": "scripts/update_lib/deps.py",
+    "line": 249,
+    "column": 19,
+    "word": "dictcomps"
+  },
+  {
+    "file": "scripts/update_lib/deps.py",
+    "line": 250,
+    "column": 19,
+    "word": "dictviews"
+  },
+  {
+    "file": "scripts/update_lib/deps.py",
+    "line": 258,
+    "column": 19,
+    "word": "listcomps"
+  },
+  {
+    "file": "scripts/update_lib/deps.py",
+    "line": 283,
+    "column": 19,
+    "word": "picklebuffer"
+  },
+  {
+    "file": "scripts/update_lib/deps.py",
+    "line": 294,
+    "column": 19,
+    "word": "weakset"
+  },
+  {
+    "file": "scripts/update_lib/deps.py",
+    "line": 300,
+    "column": 19,
+    "word": "codeccallbacks"
+  },
+  {
+    "file": "scripts/update_lib/deps.py",
+    "line": 301,
+    "column": 19,
+    "word": "codecencodings"
+  },
+  {
+    "file": "scripts/update_lib/deps.py",
+    "line": 302,
+    "column": 19,
+    "word": "codecencodings"
+  },
+  {
+    "file": "scripts/update_lib/deps.py",
+    "line": 303,
+    "column": 19,
+    "word": "codecencodings"
+  },
+  {
+    "file": "scripts/update_lib/deps.py",
+    "line": 304,
+    "column": 19,
+    "word": "codecencodings"
+  },
+  {
+    "file": "scripts/update_lib/deps.py",
+    "line": 305,
+    "column": 19,
+    "word": "codecencodings"
+  },
+  {
+    "file": "scripts/update_lib/deps.py",
+    "line": 307,
+    "column": 19,
+    "word": "codecmaps"
+  },
+  {
+    "file": "scripts/update_lib/deps.py",
+    "line": 308,
+    "column": 19,
+    "word": "codecmaps"
+  },
+  {
+    "file": "scripts/update_lib/deps.py",
+    "line": 309,
+    "column": 19,
+    "word": "codecmaps"
+  },
+  {
+    "file": "scripts/update_lib/deps.py",
+    "line": 310,
+    "column": 19,
+    "word": "codecmaps"
+  },
+  {
+    "file": "scripts/update_lib/deps.py",
+    "line": 311,
+    "column": 19,
+    "word": "codecmaps"
+  },
+  {
+    "file": "scripts/update_lib/deps.py",
+    "line": 312,
+    "column": 19,
+    "word": "charmapcodec"
+  },
+  {
+    "file": "scripts/update_lib/deps.py",
+    "line": 348,
+    "column": 34,
+    "word": "regrtest"
+  },
+  {
+    "file": "scripts/update_lib/deps.py",
+    "line": 351,
+    "column": 24,
+    "word": "wheeldata"
+  },
+  {
+    "file": "scripts/update_lib/deps.py",
+    "line": 386,
+    "column": 27,
+    "word": "localnet"
+  },
+  {
+    "file": "scripts/update_lib/deps.py",
+    "line": 388,
+    "column": 19,
+    "word": "urllibnet"
+  },
+  {
+    "file": "scripts/update_lib/deps.py",
+    "line": 408,
+    "column": 19,
+    "word": "httpservers"
+  },
+  {
+    "file": "scripts/update_lib/deps.py",
+    "line": 472,
+    "column": 19,
+    "word": "threadsignals"
+  },
+  {
+    "file": "scripts/update_lib/deps.py",
+    "line": 479,
+    "column": 19,
+    "word": "threadedtempfile"
+  },
+  {
+    "file": "scripts/update_lib/deps.py",
+    "line": 487,
+    "column": 19,
+    "word": "genericclass"
+  },
+  {
+    "file": "scripts/update_lib/deps.py",
+    "line": 488,
+    "column": 19,
+    "word": "subclassinit"
+  },
+  {
+    "file": "scripts/update_lib/deps.py",
+    "line": 495,
+    "column": 19,
+    "word": "genexps"
+  },
+  {
+    "file": "scripts/update_lib/deps.py",
+    "line": 504,
+    "column": 19,
+    "word": "descrtut"
+  },
+  {
+    "file": "scripts/update_lib/deps.py",
+    "line": 523,
+    "column": 19,
+    "word": "memoryio"
+  },
+  {
+    "file": "scripts/update_lib/deps.py",
+    "line": 578,
+    "column": 19,
+    "word": "docxmlrpc"
+  },
+  {
+    "file": "scripts/update_lib/deps.py",
+    "line": 620,
+    "column": 19,
+    "word": "smtpnet"
+  },
+  {
+    "file": "scripts/update_lib/deps.py",
+    "line": 653,
+    "column": 19,
+    "word": "crossinterp"
+  },
+  {
+    "file": "scripts/update_lib/deps.py",
+    "line": 743,
+    "column": 6,
+    "word": "audiotests"
+  },
+  {
+    "file": "scripts/update_lib/deps.py",
+    "line": 748,
+    "column": 19,
+    "word": "archivetestdata"
+  },
+  {
+    "file": "scripts/update_lib/deps.py",
+    "line": 751,
+    "column": 19,
+    "word": "archivetestdata"
+  },
+  {
+    "file": "scripts/update_lib/deps.py",
+    "line": 755,
+    "column": 19,
+    "word": "configdata"
+  },
+  {
+    "file": "scripts/update_lib/deps.py",
+    "line": 758,
+    "column": 19,
+    "word": "configdata"
+  },
+  {
+    "file": "scripts/update_lib/deps.py",
+    "line": 762,
+    "column": 19,
+    "word": "decimaltestdata"
+  },
+  {
+    "file": "scripts/update_lib/deps.py",
+    "line": 765,
+    "column": 19,
+    "word": "dtracedata"
+  },
+  {
+    "file": "scripts/update_lib/deps.py",
+    "line": 768,
+    "column": 19,
+    "word": "mathdata"
+  },
+  {
+    "file": "scripts/update_lib/deps.py",
+    "line": 771,
+    "column": 19,
+    "word": "certdata"
+  },
+  {
+    "file": "scripts/update_lib/deps.py",
+    "line": 774,
+    "column": 19,
+    "word": "subprocessdata"
+  },
+  {
+    "file": "scripts/update_lib/deps.py",
+    "line": 777,
+    "column": 19,
+    "word": "tkinterdata"
+  },
+  {
+    "file": "scripts/update_lib/deps.py",
+    "line": 780,
+    "column": 19,
+    "word": "tokenizedata"
+  },
+  {
+    "file": "scripts/update_lib/deps.py",
+    "line": 783,
+    "column": 19,
+    "word": "typinganndata"
+  },
+  {
+    "file": "scripts/update_lib/deps.py",
+    "line": 788,
+    "column": 23,
+    "word": "xmltestdata"
+  },
+  {
+    "file": "scripts/update_lib/deps.py",
+    "line": 790,
+    "column": 19,
+    "word": "xmltestdata"
+  },
+  {
+    "file": "scripts/update_lib/deps.py",
+    "line": 793,
+    "column": 19,
+    "word": "xmltestdata"
+  },
+  {
+    "file": "scripts/update_lib/deps.py",
+    "line": 796,
+    "column": 19,
+    "word": "xmltestdata"
+  },
+  {
+    "file": "scripts/update_lib/deps.py",
+    "line": 799,
+    "column": 19,
+    "word": "xmltestdata"
+  },
+  {
+    "file": "scripts/update_lib/deps.py",
+    "line": 801,
+    "column": 36,
+    "word": "cjkencodings"
+  },
+  {
+    "file": "scripts/update_lib/deps.py",
+    "line": 803,
+    "column": 19,
+    "word": "cjkencodings"
+  },
+  {
+    "file": "scripts/update_lib/deps.py",
+    "line": 807,
+    "column": 19,
+    "word": "translationdata"
+  },
+  {
+    "file": "scripts/update_lib/deps.py",
+    "line": 809,
+    "column": 7,
+    "word": "wheeldata"
+  },
+  {
+    "file": "scripts/update_lib/deps.py",
+    "line": 811,
+    "column": 19,
+    "word": "wheeldata"
+  },
+  {
+    "file": "scripts/update_lib/deps.py",
+    "line": 1026,
+    "column": 56,
+    "word": "lineterm"
+  },
+  {
+    "file": "scripts/update_lib/deps.py",
+    "line": 1178,
+    "column": 65,
+    "word": "cjkencodings"
+  },
+  {
+    "file": "scripts/update_lib/deps.py",
+    "line": 1438,
+    "column": 14,
+    "word": "submods"
+  },
+  {
+    "file": "scripts/update_lib/deps.py",
+    "line": 1439,
+    "column": 16,
+    "word": "submods"
+  },
+  {
+    "file": "scripts/update_lib/deps.py",
+    "line": 1441,
+    "column": 27,
+    "word": "submods"
+  },
+  {
+    "file": "scripts/update_lib/deps.py",
+    "line": 1444,
+    "column": 24,
+    "word": "submods"
+  },
+  {
+    "file": "scripts/update_lib/deps.py",
+    "line": 1550,
+    "column": 62,
+    "word": "blocklisted"
+  },
+  {
+    "file": "scripts/update_lib/tests/test_deps.py",
+    "line": 74,
+    "column": 26,
+    "word": "pymymodule"
+  },
+  {
+    "file": "scripts/update_lib/tests/test_deps.py",
+    "line": 74,
+    "column": 57,
+    "word": "pymymodule"
+  },
+  {
+    "file": "scripts/update_lib/tests/test_deps.py",
+    "line": 79,
+    "column": 46,
+    "word": "pymymodule"
+  },
+  {
+    "file": "scripts/update_lib/tests/test_deps.py",
+    "line": 109,
+    "column": 33,
+    "word": "regrtest"
+  },
+  {
+    "file": "scripts/update_lib/tests/test_deps.py",
+    "line": 111,
+    "column": 72,
+    "word": "regrtest"
+  },
+  {
+    "file": "scripts/update_lib/tests/test_deps.py",
+    "line": 170,
+    "column": 21,
+    "word": "codecencodings"
+  },
+  {
+    "file": "scripts/update_lib/tests/test_deps.py",
+    "line": 170,
+    "column": 68,
+    "word": "cjkencodings"
+  },
+  {
+    "file": "scripts/update_lib/tests/test_deps.py",
+    "line": 177,
+    "column": 27,
+    "word": "codecencodings"
+  },
+  {
+    "file": "scripts/update_lib/tests/test_deps.py",
+    "line": 178,
+    "column": 42,
+    "word": "codecencodings"
+  },
+  {
+    "file": "scripts/update_lib/tests/test_deps.py",
+    "line": 188,
+    "column": 22,
+    "word": "cjkencodings"
+  },
+  {
+    "file": "scripts/update_lib/tests/test_deps.py",
+    "line": 189,
+    "column": 26,
+    "word": "cjkencodings"
+  },
+  {
+    "file": "scripts/update_lib/tests/test_deps.py",
+    "line": 199,
+    "column": 27,
+    "word": "cjkencodings"
+  },
+  {
+    "file": "scripts/update_lib/tests/test_deps.py",
+    "line": 201,
+    "column": 61,
+    "word": "cjkencodings"
+  },
+  {
+    "file": "scripts/update_lib/tests/test_quick.py",
+    "line": 99,
+    "column": 11,
+    "word": "regrtest"
+  },
+  {
+    "file": "scripts/update_lib/tests/test_quick.py",
+    "line": 100,
+    "column": 24,
+    "word": "regrtest"
+  },
+  {
+    "file": "scripts/update_lib/tests/test_quick.py",
+    "line": 101,
+    "column": 44,
+    "word": "regrtest"
+  },
+  {
+    "file": "scripts/update_lib/tests/test_quick.py",
+    "line": 104,
+    "column": 30,
+    "word": "regrtest"
+  },
+  {
+    "file": "scripts/update_lib/tests/test_quick.py",
+    "line": 105,
+    "column": 51,
+    "word": "libregrtest"
+  },
+  {
+    "file": "scripts/update_lib/tests/test_quick.py",
+    "line": 111,
+    "column": 68,
+    "word": "regrtest"
+  },
+  {
+    "file": "scripts/whats_left.py",
+    "line": 8,
+    "column": 3,
+    "word": "cpymods"
+  },
+  {
+    "file": "scripts/whats_left.py",
+    "line": 83,
+    "column": 6,
+    "word": "xxmodule"
+  },
+  {
+    "file": "scripts/whats_left.py",
+    "line": 84,
+    "column": 6,
+    "word": "xxsubtype"
+  },
+  {
+    "file": "scripts/whats_left.py",
+    "line": 85,
+    "column": 6,
+    "word": "xxlimited"
+  },
+  {
+    "file": "scripts/whats_left.py",
+    "line": 86,
+    "column": 7,
+    "word": "xxtestfuzz"
+  },
+  {
+    "file": "scripts/whats_left.py",
+    "line": 87,
+    "column": 7,
+    "word": "testbuffer"
+  },
+  {
+    "file": "scripts/whats_left.py",
+    "line": 88,
+    "column": 7,
+    "word": "testcapi"
+  },
+  {
+    "file": "scripts/whats_left.py",
+    "line": 89,
+    "column": 7,
+    "word": "testimportmultiple"
+  },
+  {
+    "file": "scripts/whats_left.py",
+    "line": 90,
+    "column": 7,
+    "word": "testinternalcapi"
+  },
+  {
+    "file": "scripts/whats_left.py",
+    "line": 91,
+    "column": 7,
+    "word": "testmultiphase"
+  },
+  {
+    "file": "scripts/whats_left.py",
+    "line": 92,
+    "column": 7,
+    "word": "testlimitedcapi"
+  },
+  {
+    "file": "scripts/whats_left.py",
+    "line": 311,
+    "column": 1,
+    "word": "cpymods"
+  },
+  {
+    "file": "scripts/whats_left.py",
+    "line": 329,
+    "column": 1,
+    "word": "cpymods"
+  },
+  {
+    "file": "scripts/whats_left.py",
+    "line": 360,
+    "column": 9,
+    "word": "implementeds"
+  },
+  {
+    "file": "scripts/whats_left.py",
+    "line": 368,
+    "column": 17,
+    "word": "implementeds"
+  },
+  {
+    "file": "scripts/whats_left.py",
+    "line": 371,
+    "column": 16,
+    "word": "implementeds"
+  },
+  {
+    "file": "scripts/whats_left.py",
+    "line": 373,
+    "column": 80,
+    "word": "implementeds"
+  },
+  {
+    "file": "scripts/whats_left.py",
+    "line": 385,
+    "column": 5,
+    "word": "rustpymods"
+  },
+  {
+    "file": "scripts/whats_left.py",
+    "line": 396,
+    "column": 18,
+    "word": "cpymod"
+  },
+  {
+    "file": "scripts/whats_left.py",
+    "line": 396,
+    "column": 28,
+    "word": "cpymods"
+  },
+  {
+    "file": "scripts/whats_left.py",
+    "line": 397,
+    "column": 9,
+    "word": "rustpymod"
+  },
+  {
+    "file": "scripts/whats_left.py",
+    "line": 397,
+    "column": 21,
+    "word": "rustpymods"
+  },
+  {
+    "file": "scripts/whats_left.py",
+    "line": 398,
+    "column": 12,
+    "word": "rustpymod"
+  },
+  {
+    "file": "scripts/whats_left.py",
+    "line": 400,
+    "column": 25,
+    "word": "rustpymod"
+  },
+  {
+    "file": "scripts/whats_left.py",
+    "line": 401,
+    "column": 51,
+    "word": "rustpymod"
+  },
+  {
+    "file": "scripts/whats_left.py",
+    "line": 402,
+    "column": 17,
+    "word": "rustpymod"
+  },
+  {
+    "file": "scripts/whats_left.py",
+    "line": 405,
+    "column": 44,
+    "word": "cpymod"
+  },
+  {
+    "file": "scripts/whats_left.py",
+    "line": 406,
+    "column": 37,
+    "word": "cpymod"
+  },
+  {
+    "file": "scripts/whats_left.py",
+    "line": 411,
+    "column": 63,
+    "word": "cpymod"
+  },
+  {
+    "file": "scripts/whats_left.py",
+    "line": 413,
+    "column": 46,
+    "word": "cpymod"
+  },
+  {
+    "file": "scripts/whats_left.py",
+    "line": 431,
+    "column": 33,
+    "word": "cpymods"
+  },
+  {
+    "file": "scripts/whats_left.py",
+    "line": 432,
+    "column": 17,
+    "word": "implementeds"
+  },
+  {
+    "file": "scripts/whats_left.py",
+    "line": 502,
+    "column": 23,
+    "word": "rustpy"
+  },
+  {
+    "file": "scripts/whats_left.py",
+    "line": 505,
+    "column": 16,
+    "word": "rustpy"
+  },
+  {
+    "file": "scripts/whats_left.py",
+    "line": 505,
+    "column": 40,
+    "word": "rustpy"
+  },
+  {
+    "file": "scripts/whats_left.py",
+    "line": 506,
+    "column": 17,
+    "word": "rustpy"
+  },
+  {
+    "file": "scripts/whats_left.py",
+    "line": 506,
+    "column": 36,
+    "word": "rustpy"
+  },
+  {
+    "file": "wasm/README.md",
+    "line": 1,
+    "column": 16,
+    "word": "webassembly"
+  },
+  {
+    "file": "wasm/demo/package.json",
+    "line": 34,
+    "column": 21,
+    "word": "Liddle"
+  },
+  {
+    "file": "wasm/demo/snippets/asyncbrowser.py",
+    "line": 1,
+    "column": 8,
+    "word": "asyncweb"
+  },
+  {
+    "file": "wasm/demo/snippets/asyncbrowser.py",
+    "line": 16,
+    "column": 5,
+    "word": "asyncweb"
+  },
+  {
+    "file": "wasm/demo/snippets/import_pypi.py",
+    "line": 5,
+    "column": 8,
+    "word": "asyncweb"
+  },
+  {
+    "file": "wasm/demo/snippets/import_pypi.py",
+    "line": 6,
+    "column": 8,
+    "word": "whlimport"
+  },
+  {
+    "file": "wasm/demo/snippets/import_pypi.py",
+    "line": 8,
+    "column": 1,
+    "word": "whlimport"
+  },
+  {
+    "file": "wasm/demo/snippets/import_pypi.py",
+    "line": 11,
+    "column": 2,
+    "word": "asyncweb"
+  },
+  {
+    "file": "wasm/demo/snippets/import_pypi.py",
+    "line": 13,
+    "column": 11,
+    "word": "whlimport"
+  },
+  {
+    "file": "wasm/demo/snippets/import_pypi.py",
+    "line": 19,
+    "column": 5,
+    "word": "fmter"
+  },
+  {
+    "file": "wasm/demo/snippets/import_pypi.py",
+    "line": 19,
+    "column": 52,
+    "word": "noclasses"
+  },
+  {
+    "file": "wasm/demo/snippets/import_pypi.py",
+    "line": 20,
+    "column": 58,
+    "word": "fmter"
+  },
+  {
+    "file": "wasm/demo/snippets/mandelbrot.py",
+    "line": 5,
+    "column": 5,
+    "word": "mandel"
+  },
+  {
+    "file": "wasm/demo/snippets/mandelbrot.py",
+    "line": 43,
+    "column": 7,
+    "word": "mandel"
+  },
+  {
+    "file": "wasm/notebook/README.md",
+    "line": 99,
+    "column": 71,
+    "word": "Etherpad"
+  },
+  {
+    "file": "wasm/notebook/package.json",
+    "line": 9,
+    "column": 10,
+    "word": "katex"
+  },
+  {
+    "file": "wasm/notebook/package.json",
+    "line": 18,
+    "column": 10,
+    "word": "lezer"
+  },
+  {
+    "file": "wasm/notebook/package.json",
+    "line": 34,
+    "column": 21,
+    "word": "Liddle"
+  },
+  {
+    "file": "wasm/notebook/snippets/python-markdown-math.txt",
+    "line": 50,
+    "column": 8,
+    "word": "Bmatrix"
+  },
+  {
+    "file": "wasm/notebook/snippets/python-markdown-math.txt",
+    "line": 53,
+    "column": 6,
+    "word": "Bmatrix"
+  },
+  {
+    "file": "wasm/notebook/src/index.js",
+    "line": 9,
+    "column": 25,
+    "word": "stex"
+  },
+  {
+    "file": "wasm/notebook/src/index.js",
+    "line": 9,
+    "column": 30,
+    "word": "stex"
+  },
+  {
+    "file": "wasm/notebook/src/index.js",
+    "line": 20,
+    "column": 10,
+    "word": "iomd"
+  },
+  {
+    "file": "wasm/notebook/src/index.js",
+    "line": 142,
+    "column": 5,
+    "word": "pyvm"
+  },
+  {
+    "file": "wasm/notebook/src/index.js",
+    "line": 171,
+    "column": 9,
+    "word": "pyvm"
+  },
+  {
+    "file": "wasm/notebook/src/index.js",
+    "line": 172,
+    "column": 9,
+    "word": "pyvm"
+  },
+  {
+    "file": "wasm/notebook/src/index.js",
+    "line": 173,
+    "column": 9,
+    "word": "pyvm"
+  },
+  {
+    "file": "wasm/notebook/src/index.js",
+    "line": 175,
+    "column": 5,
+    "word": "pyvm"
+  },
+  {
+    "file": "wasm/notebook/src/index.js",
+    "line": 230,
+    "column": 22,
+    "word": "iomd"
+  },
+  {
+    "file": "wasm/notebook/src/parse.js",
+    "line": 5,
+    "column": 44,
+    "word": "hashcode"
+  },
+  {
+    "file": "wasm/notebook/src/parse.js",
+    "line": 19,
+    "column": 17,
+    "word": "iomd"
+  },
+  {
+    "file": "wasm/notebook/src/parse.js",
+    "line": 19,
+    "column": 32,
+    "word": "Iomd"
+  },
+  {
+    "file": "wasm/notebook/src/parse.js",
+    "line": 20,
+    "column": 11,
+    "word": "iomd"
+  },
+  {
+    "file": "wasm/notebook/src/parse.js",
+    "line": 20,
+    "column": 27,
+    "word": "Iomd"
+  },
+  {
+    "file": "wasm/notebook/src/parse.js",
+    "line": 51,
+    "column": 29,
+    "word": "iomd"
+  },
+  {
+    "file": "wasm/notebook/src/parse.js",
+    "line": 84,
+    "column": 15,
+    "word": "iomd"
+  },
+  {
+    "file": "wasm/notebook/src/process.js",
+    "line": 7,
+    "column": 8,
+    "word": "katex"
+  },
+  {
+    "file": "wasm/notebook/src/process.js",
+    "line": 7,
+    "column": 20,
+    "word": "katex"
+  },
+  {
+    "file": "wasm/notebook/src/process.js",
+    "line": 8,
+    "column": 9,
+    "word": "katex"
+  },
+  {
+    "file": "wasm/notebook/src/process.js",
+    "line": 8,
+    "column": 20,
+    "word": "katex"
+  },
+  {
+    "file": "wasm/notebook/src/process.js",
+    "line": 20,
+    "column": 21,
+    "word": "Katex"
+  },
+  {
+    "file": "wasm/notebook/src/process.js",
+    "line": 23,
+    "column": 12,
+    "word": "katex"
+  },
+  {
+    "file": "wasm/notebook/src/process.js",
+    "line": 28,
+    "column": 20,
+    "word": "pyvm"
+  },
+  {
+    "file": "wasm/notebook/src/process.js",
+    "line": 30,
+    "column": 9,
+    "word": "pyvm"
+  },
+  {
+    "file": "wasm/tests/conftest.py",
+    "line": 24,
+    "column": 12,
+    "word": "sessionstart"
+  },
+  {
+    "file": "wasm/tests/conftest.py",
+    "line": 35,
+    "column": 12,
+    "word": "sessionfinish"
+  },
+  {
+    "file": "wasm/tests/conftest.py",
+    "line": 93,
+    "column": 5,
+    "word": "wdriver"
+  },
+  {
+    "file": "wasm/tests/test_demo.py",
+    "line": 19,
+    "column": 15,
+    "word": "wdriver"
+  },
+  {
+    "file": "wasm/tests/test_demo.py",
+    "line": 21,
+    "column": 21,
+    "word": "wdriver"
+  },
+  {
+    "file": "wasm/tests/test_exec_mode.py",
+    "line": 1,
+    "column": 20,
+    "word": "wdriver"
+  },
+  {
+    "file": "wasm/tests/test_exec_mode.py",
+    "line": 2,
+    "column": 12,
+    "word": "wdriver"
+  },
+  {
+    "file": "wasm/tests/test_exec_mode.py",
+    "line": 5,
+    "column": 20,
+    "word": "wdriver"
+  },
+  {
+    "file": "wasm/tests/test_exec_mode.py",
+    "line": 6,
+    "column": 12,
+    "word": "wdriver"
+  },
+  {
+    "file": "wasm/tests/test_exec_mode.py",
+    "line": 9,
+    "column": 27,
+    "word": "wdriver"
+  },
+  {
+    "file": "wasm/tests/test_inject_module.py",
+    "line": 1,
+    "column": 30,
+    "word": "wdriver"
+  },
+  {
+    "file": "wasm/tests/test_inject_module.py",
+    "line": 2,
+    "column": 5,
+    "word": "wdriver"
+  }
+]

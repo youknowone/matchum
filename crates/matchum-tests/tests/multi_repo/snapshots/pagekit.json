@@ -1,0 +1,968 @@
+[
+  {
+    "file": "README.md",
+    "line": 20,
+    "column": 55,
+    "word": "Otheme"
+  },
+  {
+    "file": "app/assets/marked/marked.js",
+    "line": 19,
+    "column": 3,
+    "word": "nptable"
+  },
+  {
+    "file": "app/assets/marked/marked.js",
+    "line": 20,
+    "column": 3,
+    "word": "lheading"
+  },
+  {
+    "file": "app/assets/marked/marked.js",
+    "line": 1211,
+    "column": 27,
+    "word": "occured"
+  },
+  {
+    "file": "app/console/src/Commands/BuildCommand.php",
+    "line": 32,
+    "column": 24,
+    "word": "lusitanian"
+  },
+  {
+    "file": "app/console/src/Commands/BuildCommand.php",
+    "line": 33,
+    "column": 24,
+    "word": "maximebf"
+  },
+  {
+    "file": "app/console/src/Commands/BuildCommand.php",
+    "line": 33,
+    "column": 34,
+    "word": "debugbar"
+  },
+  {
+    "file": "app/console/src/Commands/BuildCommand.php",
+    "line": 34,
+    "column": 24,
+    "word": "nickic"
+  },
+  {
+    "file": "app/console/src/Commands/BuildCommand.php",
+    "line": 35,
+    "column": 25,
+    "word": "phpdocumentor"
+  },
+  {
+    "file": "app/console/src/Commands/BuildCommand.php",
+    "line": 35,
+    "column": 39,
+    "word": "phpspec"
+  },
+  {
+    "file": "app/console/src/Commands/ExtensionTranslateCommand.php",
+    "line": 106,
+    "column": 17,
+    "word": "translateable"
+  },
+  {
+    "file": "app/console/src/Commands/SelfupdateCommand.php",
+    "line": 12,
+    "column": 7,
+    "word": "Selfupdate"
+  },
+  {
+    "file": "app/installer/app/lib/output.js",
+    "line": 10,
+    "column": 17,
+    "word": "bgclose"
+  },
+  {
+    "file": "app/installer/app/lib/version.js",
+    "line": 4,
+    "column": 33,
+    "word": "Jausions"
+  },
+  {
+    "file": "app/installer/app/lib/version.js",
+    "line": 5,
+    "column": 24,
+    "word": "Aidan"
+  },
+  {
+    "file": "app/installer/app/lib/version.js",
+    "line": 6,
+    "column": 24,
+    "word": "Kankrelune"
+  },
+  {
+    "file": "app/installer/app/lib/version.js",
+    "line": 7,
+    "column": 30,
+    "word": "Zamir"
+  },
+  {
+    "file": "app/installer/app/lib/version.js",
+    "line": 9,
+    "column": 24,
+    "word": "Theriault"
+  },
+  {
+    "file": "app/installer/app/lib/version.js",
+    "line": 51,
+    "column": 26,
+    "word": "unexisting"
+  },
+  {
+    "file": "app/installer/assets/images/icon-marketplace.svg",
+    "line": 3,
+    "column": 83,
+    "word": "xlink"
+  },
+  {
+    "file": "app/installer/assets/images/icon-marketplace.svg",
+    "line": 8,
+    "column": 21,
+    "word": "SVGID"
+  },
+  {
+    "file": "app/installer/assets/less/installer.less",
+    "line": 1,
+    "column": 45,
+    "word": "uikit"
+  },
+  {
+    "file": "app/installer/assets/less/installer.less",
+    "line": 204,
+    "column": 8,
+    "word": "Checkmark"
+  },
+  {
+    "file": "app/installer/assets/less/installer.less",
+    "line": 207,
+    "column": 5,
+    "word": "checkmark"
+  },
+  {
+    "file": "app/installer/requirements.php",
+    "line": 8,
+    "column": 19,
+    "word": "Schultze"
+  },
+  {
+    "file": "app/installer/requirements.php",
+    "line": 101,
+    "column": 155,
+    "word": "Suhosin"
+  },
+  {
+    "file": "app/installer/requirements.php",
+    "line": 128,
+    "column": 105,
+    "word": "phpini"
+  },
+  {
+    "file": "app/installer/requirements.php",
+    "line": 287,
+    "column": 29,
+    "word": "recommmendations"
+  },
+  {
+    "file": "app/installer/requirements.php",
+    "line": 351,
+    "column": 12,
+    "word": "Fabien"
+  },
+  {
+    "file": "app/installer/requirements.php",
+    "line": 351,
+    "column": 19,
+    "word": "Potencier"
+  },
+  {
+    "file": "app/installer/requirements.php",
+    "line": 427,
+    "column": 22,
+    "word": "PCRE"
+  },
+  {
+    "file": "app/installer/requirements.php",
+    "line": 522,
+    "column": 46,
+    "word": "eaccelerator"
+  },
+  {
+    "file": "app/installer/requirements.php",
+    "line": 524,
+    "column": 45,
+    "word": "xcache"
+  },
+  {
+    "file": "app/installer/src/Package/PackageFactory.php",
+    "line": 176,
+    "column": 39,
+    "word": "NOSORT"
+  },
+  {
+    "file": "app/installer/views/installer.php",
+    "line": 6,
+    "column": 90,
+    "word": "precomposed"
+  },
+  {
+    "file": "app/installer/views/installer.php",
+    "line": 80,
+    "column": 60,
+    "word": "dbhost"
+  },
+  {
+    "file": "app/installer/views/installer.php",
+    "line": 87,
+    "column": 60,
+    "word": "dbuser"
+  },
+  {
+    "file": "app/installer/views/installer.php",
+    "line": 94,
+    "column": 60,
+    "word": "dbpassword"
+  },
+  {
+    "file": "app/installer/views/installer.php",
+    "line": 110,
+    "column": 60,
+    "word": "dbprefix"
+  },
+  {
+    "file": "app/installer/views/installer.php",
+    "line": 112,
+    "column": 112,
+    "word": "mysqlprefix"
+  },
+  {
+    "file": "app/installer/views/installer.php",
+    "line": 121,
+    "column": 113,
+    "word": "sqliteprefix"
+  },
+  {
+    "file": "app/installer/views/installer.php",
+    "line": 151,
+    "column": 50,
+    "word": "sitename"
+  },
+  {
+    "file": "app/installer/views/themes.php",
+    "line": 24,
+    "column": 93,
+    "word": "xlarge"
+  },
+  {
+    "file": "app/modules/application/src/Application/Traits/RouterTrait.php",
+    "line": 39,
+    "column": 18,
+    "word": "subrequest"
+  },
+  {
+    "file": "app/modules/application/src/Event/Event.php",
+    "line": 164,
+    "column": 8,
+    "word": "Unsets"
+  },
+  {
+    "file": "app/modules/application/src/Tests/DbUtil.php",
+    "line": 32,
+    "column": 27,
+    "word": "tmpdb"
+  },
+  {
+    "file": "app/modules/auth/phpunit.xml.dist",
+    "line": 3,
+    "column": 2,
+    "word": "phpunit"
+  },
+  {
+    "file": "app/modules/auth/src/Handler/DatabaseHandler.php",
+    "line": 155,
+    "column": 59,
+    "word": "notnull"
+  },
+  {
+    "file": "app/modules/database/index.php",
+    "line": 37,
+    "column": 59,
+    "word": "metas"
+  },
+  {
+    "file": "app/modules/database/index.php",
+    "line": 44,
+    "column": 44,
+    "word": "phpfile"
+  },
+  {
+    "file": "app/modules/database/index.php",
+    "line": 80,
+    "column": 32,
+    "word": "Inno"
+  },
+  {
+    "file": "app/modules/database/src/Table.php",
+    "line": 76,
+    "column": 61,
+    "word": "NOCASE"
+  },
+  {
+    "file": "app/modules/debug/app/debugbar.js",
+    "line": 1,
+    "column": 5,
+    "word": "Debugbar"
+  },
+  {
+    "file": "app/modules/debug/assets/vendor/highlight/highlight.css",
+    "line": 3,
+    "column": 22,
+    "word": "Vasily"
+  },
+  {
+    "file": "app/modules/debug/assets/vendor/highlight/highlight.css",
+    "line": 3,
+    "column": 29,
+    "word": "Polovnyov"
+  },
+  {
+    "file": "app/modules/debug/assets/vendor/highlight/highlight.css",
+    "line": 23,
+    "column": 6,
+    "word": "winutils"
+  },
+  {
+    "file": "app/modules/debug/assets/vendor/highlight/highlight.css",
+    "line": 61,
+    "column": 6,
+    "word": "vhdl"
+  },
+  {
+    "file": "app/modules/debug/assets/vendor/highlight/highlight.js",
+    "line": 1,
+    "column": 6038,
+    "word": "CLCM"
+  },
+  {
+    "file": "app/modules/debug/assets/vendor/highlight/highlight.js",
+    "line": 1,
+    "column": 6076,
+    "word": "CBLCLM"
+  },
+  {
+    "file": "app/modules/debug/assets/vendor/highlight/highlight.js",
+    "line": 1,
+    "column": 6778,
+    "word": "yardoctag"
+  },
+  {
+    "file": "app/modules/debug/assets/vendor/highlight/highlight.js",
+    "line": 1,
+    "column": 11369,
+    "word": "endswitch"
+  },
+  {
+    "file": "app/modules/debug/assets/vendor/highlight/highlight.js",
+    "line": 1,
+    "column": 11393,
+    "word": "endwhile"
+  },
+  {
+    "file": "app/modules/debug/assets/vendor/highlight/highlight.js",
+    "line": 1,
+    "column": 11806,
+    "word": "insteadof"
+  },
+  {
+    "file": "app/modules/debug/assets/vendor/highlight/highlight.js",
+    "line": 1,
+    "column": 13438,
+    "word": "savepoint"
+  },
+  {
+    "file": "app/modules/debug/assets/vendor/highlight/highlight.js",
+    "line": 1,
+    "column": 13898,
+    "word": "ilike"
+  },
+  {
+    "file": "app/modules/debug/assets/vendor/highlight/highlight.js",
+    "line": 1,
+    "column": 14097,
+    "word": "sqlstate"
+  },
+  {
+    "file": "app/modules/debug/src/Storage/SqliteStorage.php",
+    "line": 16,
+    "column": 53,
+    "word": "phpdebugbar"
+  },
+  {
+    "file": "app/modules/filesystem/src/Adapter/FileAdapter.php",
+    "line": 42,
+    "column": 16,
+    "word": "localpath"
+  },
+  {
+    "file": "app/modules/filesystem/src/Archive/Zip.php",
+    "line": 38,
+    "column": 34,
+    "word": "INCONS"
+  },
+  {
+    "file": "app/modules/filesystem/src/Archive/Zip.php",
+    "line": 40,
+    "column": 34,
+    "word": "INVAL"
+  },
+  {
+    "file": "app/modules/filesystem/src/Archive/Zip.php",
+    "line": 44,
+    "column": 34,
+    "word": "NOENT"
+  },
+  {
+    "file": "app/modules/filesystem/src/Archive/Zip.php",
+    "line": 46,
+    "column": 34,
+    "word": "NOZIP"
+  },
+  {
+    "file": "app/modules/filesystem/src/Archive/Zip.php",
+    "line": 54,
+    "column": 34,
+    "word": "MULTIDISK"
+  },
+  {
+    "file": "app/modules/filesystem/src/Archive/Zip.php",
+    "line": 55,
+    "column": 33,
+    "word": "Multidisk"
+  },
+  {
+    "file": "app/modules/filesystem/src/Archive/Zip.php",
+    "line": 64,
+    "column": 34,
+    "word": "ZIPCLOSED"
+  },
+  {
+    "file": "app/modules/filesystem/src/Archive/Zip.php",
+    "line": 66,
+    "column": 34,
+    "word": "TMPOPEN"
+  },
+  {
+    "file": "app/modules/filesystem/src/Archive/Zip.php",
+    "line": 72,
+    "column": 34,
+    "word": "COMPNOTSUPP"
+  },
+  {
+    "file": "app/modules/filesystem/src/StreamWrapper.php",
+    "line": 140,
+    "column": 21,
+    "word": "underlaying"
+  },
+  {
+    "file": "app/modules/filter/src/FilterManager.php",
+    "line": 11,
+    "column": 10,
+    "word": "addrelnofollow"
+  },
+  {
+    "file": "app/modules/filter/src/FilterManager.php",
+    "line": 21,
+    "column": 10,
+    "word": "pregreplace"
+  },
+  {
+    "file": "app/modules/filter/src/FilterManager.php",
+    "line": 24,
+    "column": 10,
+    "word": "stripnewlines"
+  },
+  {
+    "file": "app/modules/filter/src/PregReplaceFilter.php",
+    "line": 106,
+    "column": 40,
+    "word": "imsxe"
+  },
+  {
+    "file": "app/modules/filter/src/PregReplaceFilter.php",
+    "line": 106,
+    "column": 45,
+    "word": "ADSUX"
+  },
+  {
+    "file": "app/modules/filter/src/Tests/AlphaTest.php",
+    "line": 23,
+    "column": 33,
+    "word": "abcabc"
+  },
+  {
+    "file": "app/modules/filter/src/Tests/StringTest.php",
+    "line": 18,
+    "column": 14,
+    "word": "whateverthisis"
+  },
+  {
+    "file": "app/modules/filter/src/Tests/StripNewlinesTest.php",
+    "line": 32,
+    "column": 84,
+    "word": "shouldbe"
+  },
+  {
+    "file": "app/modules/filter/src/Tests/StripNewlinesTest.php",
+    "line": 32,
+    "column": 101,
+    "word": "bythe"
+  },
+  {
+    "file": "app/modules/kernel/src/Controller/ControllerResolver.php",
+    "line": 94,
+    "column": 22,
+    "word": "repr"
+  },
+  {
+    "file": "app/modules/markdown/src/Lexer/BlockLexer.php",
+    "line": 374,
+    "column": 36,
+    "word": "nooooop"
+  },
+  {
+    "file": "app/modules/markdown/src/Lexer/InlineLexer.php",
+    "line": 15,
+    "column": 23,
+    "word": "inlines"
+  },
+  {
+    "file": "app/modules/session/index.php",
+    "line": 62,
+    "column": 68,
+    "word": "maxlifetime"
+  },
+  {
+    "file": "app/modules/view/src/Helper/GravatarHelper.php",
+    "line": 13,
+    "column": 50,
+    "word": "imageset"
+  },
+  {
+    "file": "app/modules/view/src/Helper/GravatarHelper.php",
+    "line": 13,
+    "column": 91,
+    "word": "monsterid"
+  },
+  {
+    "file": "app/modules/view/src/Helper/GravatarHelper.php",
+    "line": 13,
+    "column": 103,
+    "word": "wavatar"
+  },
+  {
+    "file": "app/modules/view/src/PhpEngine.php",
+    "line": 46,
+    "column": 36,
+    "word": "EXTR"
+  },
+  {
+    "file": "app/system/app/components/input-video.vue",
+    "line": 86,
+    "column": 48,
+    "word": "youtu"
+  },
+  {
+    "file": "app/system/app/components/input-video.vue",
+    "line": 88,
+    "column": 75,
+    "word": "hqdefault"
+  },
+  {
+    "file": "app/system/app/directives/gravatar.js",
+    "line": 62,
+    "column": 13,
+    "word": "colours"
+  },
+  {
+    "file": "app/system/app/directives/gravatar.js",
+    "line": 68,
+    "column": 34,
+    "word": "colour"
+  },
+  {
+    "file": "app/system/app/lib/cache.js",
+    "line": 11,
+    "column": 27,
+    "word": "setex"
+  },
+  {
+    "file": "app/system/app/lib/trans.js",
+    "line": 4,
+    "column": 26,
+    "word": "DURAND"
+  },
+  {
+    "file": "app/system/app/lib/trans.js",
+    "line": 110,
+    "column": 8,
+    "word": "helpfull"
+  },
+  {
+    "file": "app/system/app/lib/trans.js",
+    "line": 136,
+    "column": 33,
+    "word": "Symfony"
+  },
+  {
+    "file": "app/system/app/lib/trans.js",
+    "line": 156,
+    "column": 63,
+    "word": "indice"
+  },
+  {
+    "file": "app/system/app/lib/trans.js",
+    "line": 217,
+    "column": 35,
+    "word": "litteral"
+  },
+  {
+    "file": "app/system/app/lib/trans.js",
+    "line": 452,
+    "column": 12,
+    "word": "Plurar"
+  },
+  {
+    "file": "app/system/assets/images/icon-large-brush.svg",
+    "line": 5,
+    "column": 46,
+    "word": "linejoin"
+  },
+  {
+    "file": "app/system/assets/images/icon-large-brush.svg",
+    "line": 5,
+    "column": 70,
+    "word": "miterlimit"
+  },
+  {
+    "file": "app/system/assets/less/pagekit.less",
+    "line": 307,
+    "column": 14,
+    "word": "Subnav"
+  },
+  {
+    "file": "app/system/assets/less/pagekit.less",
+    "line": 315,
+    "column": 5,
+    "word": "subnav"
+  },
+  {
+    "file": "app/system/assets/less/pagekit.less",
+    "line": 649,
+    "column": 5,
+    "word": "dragover"
+  },
+  {
+    "file": "app/system/config.php",
+    "line": 35,
+    "column": 14,
+    "word": "httponly"
+  },
+  {
+    "file": "app/system/config.php",
+    "line": 73,
+    "column": 14,
+    "word": "userdefault"
+  },
+  {
+    "file": "app/system/modules/captcha/app/interceptor.js",
+    "line": 4,
+    "column": 12,
+    "word": "grecaptcha"
+  },
+  {
+    "file": "app/system/modules/captcha/src/CaptchaListener.php",
+    "line": 43,
+    "column": 168,
+    "word": "annot"
+  },
+  {
+    "file": "app/system/modules/captcha/src/CaptchaListener.php",
+    "line": 121,
+    "column": 13,
+    "word": "CURLOPT"
+  },
+  {
+    "file": "app/system/modules/captcha/src/CaptchaListener.php",
+    "line": 121,
+    "column": 21,
+    "word": "RETURNTRANSFER"
+  },
+  {
+    "file": "app/system/modules/captcha/src/CaptchaListener.php",
+    "line": 124,
+    "column": 21,
+    "word": "POSTFIELDS"
+  },
+  {
+    "file": "app/system/modules/content/src/Plugin/VideoPlugin.php",
+    "line": 61,
+    "column": 19,
+    "word": "wmode"
+  },
+  {
+    "file": "app/system/modules/finder/app/templates/table.html",
+    "line": 28,
+    "column": 48,
+    "word": "lastmodified"
+  },
+  {
+    "file": "app/system/modules/finder/index.php",
+    "line": 94,
+    "column": 59,
+    "word": "svgz"
+  },
+  {
+    "file": "app/system/modules/finder/src/Event/FileAccessEvent.php",
+    "line": 95,
+    "column": 36,
+    "word": "imsxu"
+  },
+  {
+    "file": "app/system/modules/info/views/info.php",
+    "line": 118,
+    "column": 71,
+    "word": "Unwritable"
+  },
+  {
+    "file": "app/system/modules/intl/src/Loader/MoFileLoader.php",
+    "line": 159,
+    "column": 54,
+    "word": "endianess"
+  },
+  {
+    "file": "app/system/modules/intl/src/Loader/PoFileLoader.php",
+    "line": 10,
+    "column": 43,
+    "word": "Tolboom"
+  },
+  {
+    "file": "app/system/modules/intl/src/Loader/PoFileLoader.php",
+    "line": 59,
+    "column": 11,
+    "word": "msgctxt"
+  },
+  {
+    "file": "app/system/modules/mail/index.php",
+    "line": 16,
+    "column": 71,
+    "word": "spooltransport"
+  },
+  {
+    "file": "app/system/modules/mail/index.php",
+    "line": 28,
+    "column": 50,
+    "word": "Esmtp"
+  },
+  {
+    "file": "app/system/modules/mail/index.php",
+    "line": 30,
+    "column": 44,
+    "word": "authhandler"
+  },
+  {
+    "file": "app/system/modules/mail/index.php",
+    "line": 31,
+    "column": 43,
+    "word": "eventdispatcher"
+  },
+  {
+    "file": "app/system/modules/mail/src/Controller/MailController.php",
+    "line": 41,
+    "column": 88,
+    "word": "Testemail"
+  },
+  {
+    "file": "app/system/modules/settings/app/components/locale.vue",
+    "line": 53,
+    "column": 82,
+    "word": "Transifex"
+  },
+  {
+    "file": "app/system/modules/theme/images/icon-chat.svg",
+    "line": 5,
+    "column": 18,
+    "word": "evenodd"
+  },
+  {
+    "file": "app/system/modules/theme/less/theme.less",
+    "line": 62,
+    "column": 4,
+    "word": "Headerbar"
+  },
+  {
+    "file": "app/system/modules/theme/less/theme.less",
+    "line": 65,
+    "column": 5,
+    "word": "headerbar"
+  },
+  {
+    "file": "app/system/modules/theme/less/theme.less",
+    "line": 228,
+    "column": 11,
+    "word": "marginless"
+  },
+  {
+    "file": "app/system/modules/theme/less/uikit/datepicker.less",
+    "line": 2,
+    "column": 15,
+    "word": "Datepicker"
+  },
+  {
+    "file": "app/system/modules/theme/less/uikit/datepicker.less",
+    "line": 10,
+    "column": 2,
+    "word": "datepicker"
+  },
+  {
+    "file": "app/system/modules/theme/less/uikit/datepicker.less",
+    "line": 18,
+    "column": 19,
+    "word": "onclick"
+  },
+  {
+    "file": "app/system/modules/theme/less/uikit/dotnav.less",
+    "line": 2,
+    "column": 15,
+    "word": "Dotnav"
+  },
+  {
+    "file": "app/system/modules/theme/less/uikit/dotnav.less",
+    "line": 14,
+    "column": 7,
+    "word": "dotnav"
+  },
+  {
+    "file": "app/system/modules/theme/less/uikit/htmleditor.less",
+    "line": 10,
+    "column": 2,
+    "word": "htmleditor"
+  },
+  {
+    "file": "app/system/modules/theme/less/uikit/modal.less",
+    "line": 37,
+    "column": 31,
+    "word": "lightbox"
+  },
+  {
+    "file": "app/system/modules/theme/less/uikit/nav.less",
+    "line": 55,
+    "column": 6,
+    "word": "offcanvas"
+  },
+  {
+    "file": "app/system/modules/theme/less/uikit/slidenav.less",
+    "line": 2,
+    "column": 15,
+    "word": "Slidenav"
+  },
+  {
+    "file": "app/system/modules/theme/less/uikit/slidenav.less",
+    "line": 14,
+    "column": 7,
+    "word": "slidenav"
+  },
+  {
+    "file": "app/system/modules/theme/less/uikit/thumbnav.less",
+    "line": 2,
+    "column": 15,
+    "word": "Thumbnav"
+  },
+  {
+    "file": "app/system/modules/theme/less/uikit/thumbnav.less",
+    "line": 10,
+    "column": 7,
+    "word": "thumbnav"
+  },
+  {
+    "file": "app/system/modules/theme/less/uikit/uikit.less",
+    "line": 6,
+    "column": 16,
+    "word": "Navs"
+  },
+  {
+    "file": "app/system/modules/theme/views/template.php",
+    "line": 18,
+    "column": 88,
+    "word": "preventflip"
+  },
+  {
+    "file": "app/system/modules/widget/app/views/index.js",
+    "line": 189,
+    "column": 9,
+    "word": "emptyafterfilter"
+  },
+  {
+    "file": "app/system/scripts.php",
+    "line": 23,
+    "column": 90,
+    "word": "autoincrement"
+  },
+  {
+    "file": "app/system/src/Model/NodeInterface.php",
+    "line": 71,
+    "column": 27,
+    "word": "hashcode"
+  },
+  {
+    "file": "composer.json",
+    "line": 19,
+    "column": 10,
+    "word": "ircmaxell"
+  },
+  {
+    "file": "composer.json",
+    "line": 22,
+    "column": 10,
+    "word": "nikic"
+  },
+  {
+    "file": "composer.json",
+    "line": 24,
+    "column": 10,
+    "word": "swiftmailer"
+  },
+  {
+    "file": "composer.json",
+    "line": 25,
+    "column": 10,
+    "word": "symfony"
+  },
+  {
+    "file": "gulpfile.js",
+    "line": 28,
+    "column": 5,
+    "word": "cldr"
+  },
+  {
+    "file": "package.json",
+    "line": 14,
+    "column": 11,
+    "word": "localenames"
+  },
+  {
+    "file": "pagekit",
+    "line": 4,
+    "column": 9,
+    "word": "SAPI"
+  },
+  {
+    "file": "phpunit.xml.dist",
+    "line": 52,
+    "column": 26,
+    "word": "adress"
+  }
+]

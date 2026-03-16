@@ -1,0 +1,566 @@
+[
+  {
+    "file": "CONTRIBUTING.md",
+    "line": 110,
+    "column": 62,
+    "word": "strawman"
+  },
+  {
+    "file": "CONTRIBUTING.md",
+    "line": 123,
+    "column": 14,
+    "word": "Strawman"
+  },
+  {
+    "file": "CONTRIBUTING.md",
+    "line": 129,
+    "column": 68,
+    "word": "preferrable"
+  },
+  {
+    "file": "STYLE_GUIDE.md",
+    "line": 67,
+    "column": 29,
+    "word": "fullstop"
+  },
+  {
+    "file": "STYLE_GUIDE.md",
+    "line": 132,
+    "column": 10,
+    "word": "hypenated"
+  },
+  {
+    "file": "changelogs/October2021.md",
+    "line": 19,
+    "column": 4,
+    "word": "Andreas"
+  },
+  {
+    "file": "changelogs/October2021.md",
+    "line": 19,
+    "column": 12,
+    "word": "Marek"
+  },
+  {
+    "file": "changelogs/October2021.md",
+    "line": 21,
+    "column": 4,
+    "word": "António"
+  },
+  {
+    "file": "changelogs/October2021.md",
+    "line": 21,
+    "column": 12,
+    "word": "Nuno"
+  },
+  {
+    "file": "changelogs/October2021.md",
+    "line": 21,
+    "column": 17,
+    "word": "Monteiro"
+  },
+  {
+    "file": "changelogs/October2021.md",
+    "line": 22,
+    "column": 4,
+    "word": "Arun"
+  },
+  {
+    "file": "changelogs/October2021.md",
+    "line": 22,
+    "column": 9,
+    "word": "Ponniah"
+  },
+  {
+    "file": "changelogs/October2021.md",
+    "line": 22,
+    "column": 17,
+    "word": "Sethuramalingam"
+  },
+  {
+    "file": "changelogs/October2021.md",
+    "line": 23,
+    "column": 4,
+    "word": "Benedikt"
+  },
+  {
+    "file": "changelogs/October2021.md",
+    "line": 23,
+    "column": 13,
+    "word": "Franke"
+  },
+  {
+    "file": "changelogs/October2021.md",
+    "line": 24,
+    "column": 4,
+    "word": "Benjie"
+  },
+  {
+    "file": "changelogs/October2021.md",
+    "line": 24,
+    "column": 11,
+    "word": "Gillam"
+  },
+  {
+    "file": "changelogs/October2021.md",
+    "line": 28,
+    "column": 4,
+    "word": "dugenkui"
+  },
+  {
+    "file": "changelogs/October2021.md",
+    "line": 30,
+    "column": 9,
+    "word": "Huus"
+  },
+  {
+    "file": "changelogs/October2021.md",
+    "line": 32,
+    "column": 4,
+    "word": "Görcsös"
+  },
+  {
+    "file": "changelogs/October2021.md",
+    "line": 32,
+    "column": 12,
+    "word": "Zoltán"
+  },
+  {
+    "file": "changelogs/October2021.md",
+    "line": 33,
+    "column": 9,
+    "word": "Goncharov"
+  },
+  {
+    "file": "changelogs/October2021.md",
+    "line": 34,
+    "column": 9,
+    "word": "Maximov"
+  },
+  {
+    "file": "changelogs/October2021.md",
+    "line": 36,
+    "column": 10,
+    "word": "Schouten"
+  },
+  {
+    "file": "changelogs/October2021.md",
+    "line": 37,
+    "column": 8,
+    "word": "Duarte"
+  },
+  {
+    "file": "changelogs/October2021.md",
+    "line": 38,
+    "column": 8,
+    "word": "Kamikawa"
+  },
+  {
+    "file": "changelogs/October2021.md",
+    "line": 40,
+    "column": 16,
+    "word": "Ramshaw"
+  },
+  {
+    "file": "changelogs/October2021.md",
+    "line": 41,
+    "column": 4,
+    "word": "Marais"
+  },
+  {
+    "file": "changelogs/October2021.md",
+    "line": 41,
+    "column": 11,
+    "word": "Rossouw"
+  },
+  {
+    "file": "changelogs/October2021.md",
+    "line": 42,
+    "column": 9,
+    "word": "Knaup"
+  },
+  {
+    "file": "changelogs/October2021.md",
+    "line": 43,
+    "column": 11,
+    "word": "Bonnin"
+  },
+  {
+    "file": "changelogs/October2021.md",
+    "line": 45,
+    "column": 9,
+    "word": "Mahoney"
+  },
+  {
+    "file": "changelogs/October2021.md",
+    "line": 46,
+    "column": 19,
+    "word": "Rosenthal"
+  },
+  {
+    "file": "changelogs/October2021.md",
+    "line": 47,
+    "column": 9,
+    "word": "Marcacci"
+  },
+  {
+    "file": "changelogs/October2021.md",
+    "line": 48,
+    "column": 13,
+    "word": "Prechtl"
+  },
+  {
+    "file": "changelogs/October2021.md",
+    "line": 49,
+    "column": 11,
+    "word": "Senn"
+  },
+  {
+    "file": "changelogs/October2021.md",
+    "line": 50,
+    "column": 14,
+    "word": "Redl"
+  },
+  {
+    "file": "changelogs/October2021.md",
+    "line": 51,
+    "column": 4,
+    "word": "Tejas"
+  },
+  {
+    "file": "changelogs/October2021.md",
+    "line": 51,
+    "column": 10,
+    "word": "Kumar"
+  },
+  {
+    "file": "changelogs/October2021.md",
+    "line": 52,
+    "column": 4,
+    "word": "Oleg"
+  },
+  {
+    "file": "changelogs/October2021.md",
+    "line": 52,
+    "column": 9,
+    "word": "Ilyenko"
+  },
+  {
+    "file": "changelogs/October2021.md",
+    "line": 93,
+    "column": 77,
+    "word": "valueonly"
+  },
+  {
+    "file": "changelogs/October2021.md",
+    "line": 180,
+    "column": 104,
+    "word": "Synchronise"
+  },
+  {
+    "file": "changelogs/October2021.md",
+    "line": 983,
+    "column": 32,
+    "word": "cocacola"
+  },
+  {
+    "file": "changelogs/October2021.md",
+    "line": 1268,
+    "column": 16,
+    "word": "explictly"
+  },
+  {
+    "file": "changelogs/October2021.md",
+    "line": 3056,
+    "column": 49,
+    "word": "occuring"
+  },
+  {
+    "file": "changelogs/October2021.md",
+    "line": 3134,
+    "column": 68,
+    "word": "propogates"
+  },
+  {
+    "file": "changelogs/October2021.md",
+    "line": 3281,
+    "column": 96,
+    "word": "definitio"
+  },
+  {
+    "file": "changelogs/October2021.md",
+    "line": 4077,
+    "column": 6,
+    "word": "Housetrained"
+  },
+  {
+    "file": "changelogs/October2021.md",
+    "line": 4458,
+    "column": 12,
+    "word": "Reqs"
+  },
+  {
+    "file": "changelogs/October2021.md",
+    "line": 4647,
+    "column": 55,
+    "word": "unioned"
+  },
+  {
+    "file": "changelogs/October2021.md",
+    "line": 5130,
+    "column": 45,
+    "word": "typesystem"
+  },
+  {
+    "file": "changelogs/October2021.md",
+    "line": 5306,
+    "column": 8,
+    "word": "housetrained"
+  },
+  {
+    "file": "changelogs/October2021.md",
+    "line": 5739,
+    "column": 64,
+    "word": "acknoledgement"
+  },
+  {
+    "file": "changelogs/October2021.md",
+    "line": 6142,
+    "column": 67,
+    "word": "implementors"
+  },
+  {
+    "file": "changelogs/October2021.md",
+    "line": 6462,
+    "column": 17,
+    "word": "nonterminal"
+  },
+  {
+    "file": "changelogs/September2025.md",
+    "line": 38,
+    "column": 5,
+    "word": "leebyron"
+  },
+  {
+    "file": "changelogs/September2025.md",
+    "line": 49,
+    "column": 26,
+    "word": "twof"
+  },
+  {
+    "file": "changelogs/September2025.md",
+    "line": 50,
+    "column": 26,
+    "word": "andimarek"
+  },
+  {
+    "file": "changelogs/September2025.md",
+    "line": 51,
+    "column": 26,
+    "word": "benjaminjkraft"
+  },
+  {
+    "file": "changelogs/September2025.md",
+    "line": 52,
+    "column": 26,
+    "word": "spawnia"
+  },
+  {
+    "file": "changelogs/September2025.md",
+    "line": 53,
+    "column": 26,
+    "word": "benjie"
+  },
+  {
+    "file": "changelogs/September2025.md",
+    "line": 54,
+    "column": 3,
+    "word": "Benoit"
+  },
+  {
+    "file": "changelogs/September2025.md",
+    "line": 54,
+    "column": 16,
+    "word": "Lubek"
+  },
+  {
+    "file": "changelogs/September2025.md",
+    "line": 55,
+    "column": 3,
+    "word": "dondonz"
+  },
+  {
+    "file": "changelogs/September2025.md",
+    "line": 59,
+    "column": 26,
+    "word": "sungam"
+  },
+  {
+    "file": "changelogs/September2025.md",
+    "line": 60,
+    "column": 9,
+    "word": "Bellenger"
+  },
+  {
+    "file": "changelogs/September2025.md",
+    "line": 60,
+    "column": 26,
+    "word": "jbellenger"
+  },
+  {
+    "file": "changelogs/September2025.md",
+    "line": 61,
+    "column": 7,
+    "word": "Melcher"
+  },
+  {
+    "file": "changelogs/September2025.md",
+    "line": 61,
+    "column": 26,
+    "word": "Yogu"
+  },
+  {
+    "file": "changelogs/September2025.md",
+    "line": 63,
+    "column": 8,
+    "word": "Auriemma"
+  },
+  {
+    "file": "changelogs/September2025.md",
+    "line": 63,
+    "column": 26,
+    "word": "bignimbus"
+  },
+  {
+    "file": "changelogs/September2025.md",
+    "line": 64,
+    "column": 3,
+    "word": "Jovi"
+  },
+  {
+    "file": "changelogs/September2025.md",
+    "line": 64,
+    "column": 11,
+    "word": "Croock"
+  },
+  {
+    "file": "changelogs/September2025.md",
+    "line": 65,
+    "column": 26,
+    "word": "smitt"
+  },
+  {
+    "file": "changelogs/September2025.md",
+    "line": 67,
+    "column": 8,
+    "word": "Larah"
+  },
+  {
+    "file": "changelogs/September2025.md",
+    "line": 67,
+    "column": 26,
+    "word": "magicmark"
+  },
+  {
+    "file": "changelogs/September2025.md",
+    "line": 68,
+    "column": 26,
+    "word": "martinbonnin"
+  },
+  {
+    "file": "changelogs/September2025.md",
+    "line": 69,
+    "column": 11,
+    "word": "Staib"
+  },
+  {
+    "file": "changelogs/September2025.md",
+    "line": 69,
+    "column": 26,
+    "word": "michaelstaib"
+  },
+  {
+    "file": "changelogs/September2025.md",
+    "line": 70,
+    "column": 26,
+    "word": "msolomon"
+  },
+  {
+    "file": "changelogs/September2025.md",
+    "line": 72,
+    "column": 3,
+    "word": "Renée"
+  },
+  {
+    "file": "changelogs/September2025.md",
+    "line": 73,
+    "column": 26,
+    "word": "robrichard"
+  },
+  {
+    "file": "changelogs/September2025.md",
+    "line": 74,
+    "column": 9,
+    "word": "Ivantsov"
+  },
+  {
+    "file": "changelogs/September2025.md",
+    "line": 74,
+    "column": 26,
+    "word": "rivantsov"
+  },
+  {
+    "file": "changelogs/September2025.md",
+    "line": 75,
+    "column": 9,
+    "word": "Krueger"
+  },
+  {
+    "file": "changelogs/September2025.md",
+    "line": 76,
+    "column": 11,
+    "word": "Spalding"
+  },
+  {
+    "file": "changelogs/September2025.md",
+    "line": 76,
+    "column": 26,
+    "word": "fotoetienne"
+  },
+  {
+    "file": "changelogs/September2025.md",
+    "line": 77,
+    "column": 10,
+    "word": "Heyenbrock"
+  },
+  {
+    "file": "changelogs/September2025.md",
+    "line": 77,
+    "column": 26,
+    "word": "thomasheyenbrock"
+  },
+  {
+    "file": "changelogs/September2025.md",
+    "line": 78,
+    "column": 3,
+    "word": "Yaacov"
+  },
+  {
+    "file": "changelogs/September2025.md",
+    "line": 78,
+    "column": 10,
+    "word": "Rydzinski"
+  },
+  {
+    "file": "changelogs/September2025.md",
+    "line": 78,
+    "column": 26,
+    "word": "yaacov"
+  },
+  {
+    "file": "changelogs/September2025.md",
+    "line": 160,
+    "column": 230,
+    "word": "melcher"
+  }
+]
