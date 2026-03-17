@@ -822,18 +822,9 @@ mod tests {
 
     #[test]
     fn de_de_catalog_masks_forbidden_fragments_like_cspell() {
-        let workspace_root = Path::new(env!("CARGO_MANIFEST_DIR"))
-            .parent()
-            .unwrap()
-            .parent()
-            .unwrap()
-            .to_path_buf();
-        let ext = workspace_root.join(
-            "vendor/cspell/integration-tests/repositories/node_modules/@cspell/dict-de-de/cspell-ext.json",
-        );
-        if !ext.exists() {
-            panic!("expected de-de fixture at {}", ext.display());
-        }
+        let cache_dir = crate::commands::dict_cache_dir();
+        let ext = resolve::resolve_npm_import("@cspell/dict-de-de/cspell-ext.json", &cache_dir)
+            .expect("resolve dict-de-de (run `matchum cspell lint` once to populate cache)");
 
         let settings = matchum_config::resolver::load_config(&ext).expect("load de-de ext config");
         let catalog =
