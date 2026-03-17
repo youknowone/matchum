@@ -458,32 +458,34 @@ pub fn extract_words_into<'a>(text: &'a str, words: &mut Vec<Word<'a>>) {
                         let mut lookahead = chars.clone();
                         lookahead.next(); // skip '\'
                         if let Some(&(_, apos)) = lookahead.peek()
-                            && (apos == '\'' || apos == '\u{2019}') {
-                                lookahead.next(); // skip apostrophe
-                                if let Some(&(_, after)) = lookahead.peek()
-                                    && is_word_char(after) {
-                                        // Include \' + subsequent letters
-                                        end += 1; // backslash
-                                        chars.next();
-                                        end += apos.len_utf8();
+                            && (apos == '\'' || apos == '\u{2019}')
+                        {
+                            lookahead.next(); // skip apostrophe
+                            if let Some(&(_, after)) = lookahead.peek()
+                                && is_word_char(after)
+                            {
+                                // Include \' + subsequent letters
+                                end += 1; // backslash
+                                chars.next();
+                                end += apos.len_utf8();
+                                chars.next();
+                                prev_was_mark = false;
+                                while let Some(&(_, c)) = chars.peek() {
+                                    if is_word_char(c) {
+                                        end += c.len_utf8();
                                         chars.next();
                                         prev_was_mark = false;
-                                        while let Some(&(_, c)) = chars.peek() {
-                                            if is_word_char(c) {
-                                                end += c.len_utf8();
-                                                chars.next();
-                                                prev_was_mark = false;
-                                            } else if is_combining_mark(c) && !prev_was_mark {
-                                                end += c.len_utf8();
-                                                chars.next();
-                                                prev_was_mark = true;
-                                            } else {
-                                                break;
-                                            }
-                                        }
-                                        continue;
+                                    } else if is_combining_mark(c) && !prev_was_mark {
+                                        end += c.len_utf8();
+                                        chars.next();
+                                        prev_was_mark = true;
+                                    } else {
+                                        break;
                                     }
+                                }
+                                continue;
                             }
+                        }
                         break;
                     }
                     Some(&(apos_offset, c))
@@ -613,11 +615,12 @@ pub fn find_next_word_text(text: &str, offset: usize) -> Word<'_> {
             }
             if ch == '\\'
                 && let Some((_, next)) = iter.peek().copied()
-                    && (next == '\'' || next == '\u{2019}') {
-                        end = abs_idx + ch.len_utf8() + next.len_utf8();
-                        iter.next();
-                        continue;
-                    }
+                && (next == '\'' || next == '\u{2019}')
+            {
+                end = abs_idx + ch.len_utf8() + next.len_utf8();
+                iter.next();
+                continue;
+            }
             break;
         }
 
@@ -768,13 +771,12 @@ where
                     &candidates,
                     &mut path_nodes,
                     &mut known_paths_by_index,
-                )
-                    && best_path
-                        .map(|idx| path_nodes[path_idx].c < path_nodes[idx].c)
-                        .unwrap_or(true)
-                    {
-                        best_path = Some(path_idx);
-                    }
+                ) && best_path
+                    .map(|idx| path_nodes[path_idx].c < path_nodes[idx].c)
+                    .unwrap_or(true)
+                {
+                    best_path = Some(path_idx);
+                }
             } else if best.c < max_cost {
                 append_split_candidates(
                     &mut candidates,
@@ -820,20 +822,20 @@ where
                         &mut path_nodes,
                         &mut known_paths_by_index,
                     )
-                })
-                    && best_path
-                        .map(|idx| path_nodes[path_idx].c < path_nodes[idx].c)
-                        .unwrap_or(true)
-                    {
-                        best_path = Some(path_idx);
-                    }
+                }) && best_path
+                    .map(|idx| path_nodes[path_idx].c < path_nodes[idx].c)
+                    .unwrap_or(true)
+                {
+                    best_path = Some(path_idx);
+                }
             }
         }
 
         if let Some(path_idx) = best_path
-            && path_nodes[path_idx].c < max_cost {
-                max_cost = path_nodes[path_idx].c;
-            }
+            && path_nodes[path_idx].c < max_cost
+        {
+            max_cost = path_nodes[path_idx].c;
+        }
     }
 
     best_path
@@ -841,6 +843,7 @@ where
         .unwrap_or_default()
 }
 
+#[allow(clippy::too_many_arguments)]
 fn append_split_candidates<'a>(
     candidates: &mut Vec<SplitCandidate<'a>>,
     queue: &mut BinaryHeap<(Reverse<usize>, usize, usize, usize)>,
@@ -904,9 +907,10 @@ fn add_to_known_paths<'a>(
             + path_idx.map(|p| path_nodes[p].c).unwrap_or(0);
 
         if let Some(&existing) = known_paths_by_index.get(&candidate.i)
-            && path_nodes[existing].c <= cost {
-                return None;
-            }
+            && path_nodes[existing].c <= cost
+        {
+            return None;
+        }
 
         let node_idx = path_nodes.len();
         path_nodes.push(SplitPathNode {

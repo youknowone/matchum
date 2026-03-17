@@ -243,9 +243,10 @@ pub fn expand_word(
 fn apply_suffix(word: &str, rule: &AffixRule) -> Option<String> {
     // Check condition against the original word
     if let Some(ref cond) = rule.condition
-        && !condition_matches(word, cond) {
-            return None;
-        }
+        && !condition_matches(word, cond)
+    {
+        return None;
+    }
 
     // Strip suffix
     let base = if rule.strip.is_empty() {

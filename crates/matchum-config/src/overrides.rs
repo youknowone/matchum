@@ -1,6 +1,6 @@
 use crate::glob_match::{
-    global_match_path, is_global_pattern, normalized_match_path,
-    resolve_match_root, root_relative_match_path,
+    global_match_path, is_global_pattern, normalized_match_path, resolve_match_root,
+    root_relative_match_path,
 };
 use crate::settings::{CSpellSettings, OverrideSettings};
 use globset::{Glob, GlobMatcher};
@@ -201,8 +201,8 @@ fn normalize_override_pattern_nested(pattern: &str) -> Vec<Cow<'_, str>> {
     let has_leading_slash = pattern.starts_with('/');
     let pattern = pattern.strip_prefix('/').unwrap_or(pattern);
 
-    if pattern.ends_with('/') {
-        if has_leading_slash || pattern[..pattern.len() - 1].contains('/') {
+    if let Some(without_slash) = pattern.strip_suffix('/') {
+        if has_leading_slash || without_slash.contains('/') {
             return vec![Cow::Owned(format!("{pattern}**/*"))];
         }
         return vec![Cow::Owned(format!("**/{pattern}**/*"))];

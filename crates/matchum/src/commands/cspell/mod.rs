@@ -20,6 +20,7 @@ use matchum_dict::loader;
 use std::path::{Path, PathBuf};
 
 #[derive(Subcommand)]
+#[allow(clippy::large_enum_variant)]
 pub enum CspellCommands {
     /// Check spelling
     Lint {

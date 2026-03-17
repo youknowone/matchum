@@ -57,9 +57,10 @@ fn migrate_from_cspell(config_path: Option<&Path>) -> Result<()> {
         for (path, content) in &word_files {
             let file_path = Path::new(path);
             if let Some(parent) = file_path.parent()
-                && !parent.exists() {
-                    std::fs::create_dir_all(parent)?;
-                }
+                && !parent.exists()
+            {
+                std::fs::create_dir_all(parent)?;
+            }
             std::fs::write(file_path, content)
                 .with_context(|| format!("failed to write {}", path))?;
             eprintln!("  Created {}", path);

@@ -183,12 +183,10 @@ fn try_load_cache(source: &Path) -> Option<HashDictionary> {
 }
 
 fn write_cache(source: &Path, dict: &HashDictionary) -> std::io::Result<()> {
-    let (mtime, size) = source_metadata(source).ok_or_else(|| {
-        std::io::Error::other("cannot read source metadata")
-    })?;
-    let cp = cache_path(source).ok_or_else(|| {
-        std::io::Error::other("cannot determine cache path")
-    })?;
+    let (mtime, size) = source_metadata(source)
+        .ok_or_else(|| std::io::Error::other("cannot read source metadata"))?;
+    let cp =
+        cache_path(source).ok_or_else(|| std::io::Error::other("cannot determine cache path"))?;
     if let Some(parent) = cp.parent() {
         std::fs::create_dir_all(parent)?;
     }

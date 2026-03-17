@@ -137,7 +137,8 @@
     "Viet",
     "Tham",
     "ignoreregexp",
-    "dictionar"
+    "dictionar",
+    "hexdigit"
   ],
   "ignorePaths": [
     "target/**",

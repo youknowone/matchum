@@ -70,6 +70,7 @@ impl ConfiguredDictionary {
         self.find_direct_with_compounds(word).found
     }
 
+    #[allow(clippy::needless_range_loop)]
     fn has_legacy_compound(&self, word: &str) -> bool {
         const MAX_DEPTH: usize = 6;
         const MIN_PART_LEN: usize = 3;
@@ -429,27 +430,28 @@ pub fn build_dictionary_catalog(
             };
             let ext_path = format!("{}/cspell-ext.json", pkg_name);
             if let Some(ext_json) = resolve::resolve_npm_import(&ext_path, base)
-                && let Ok(ext_settings) = matchum_config::resolver::load_config(&ext_json) {
-                    let ext_dir = ext_json.parent().unwrap_or(base);
-                    let ext_active: HashSet<String> = ext_settings
-                        .dictionaries
-                        .iter()
-                        .map(|d| d.to_lowercase())
-                        .collect();
-                    for ext_def in &ext_settings.dictionary_definitions {
-                        let is_active = ext_active.contains(&ext_def.name.to_lowercase())
-                            || ext_def.name.eq_ignore_ascii_case(&lower);
-                        collect_dictionary_definition(
-                            ext_def,
-                            Some(ext_dir),
-                            is_active,
-                            &mut jobs,
-                            &mut collected_names,
-                            &mut inline_named_dicts,
-                            &mut inline_extra_active,
-                        );
-                    }
+                && let Ok(ext_settings) = matchum_config::resolver::load_config(&ext_json)
+            {
+                let ext_dir = ext_json.parent().unwrap_or(base);
+                let ext_active: HashSet<String> = ext_settings
+                    .dictionaries
+                    .iter()
+                    .map(|d| d.to_lowercase())
+                    .collect();
+                for ext_def in &ext_settings.dictionary_definitions {
+                    let is_active = ext_active.contains(&ext_def.name.to_lowercase())
+                        || ext_def.name.eq_ignore_ascii_case(&lower);
+                    collect_dictionary_definition(
+                        ext_def,
+                        Some(ext_dir),
+                        is_active,
+                        &mut jobs,
+                        &mut collected_names,
+                        &mut inline_named_dicts,
+                        &mut inline_extra_active,
+                    );
                 }
+            }
         }
     }
 
@@ -457,47 +459,47 @@ pub fn build_dictionary_catalog(
     // Dicts listed in the package's `dictionaries` field are globally active.
     // Dicts only in languageSettings are activated per file type.
     // Only in cspell mode: matchum.toml mode requires explicit definitions.
-    if auto_resolve_cspell
-        && let Some(base) = npm_base {
-            let mut loaded_pkgs: HashSet<String> = HashSet::new();
-            for &(pkg, _dict_name, _version) in defaults::DEFAULT_BUNDLED_DICTS {
-                if loaded_pkgs.contains(pkg) {
-                    continue;
+    if auto_resolve_cspell && let Some(base) = npm_base {
+        let mut loaded_pkgs: HashSet<String> = HashSet::new();
+        for &(pkg, _dict_name, _version) in defaults::DEFAULT_BUNDLED_DICTS {
+            if loaded_pkgs.contains(pkg) {
+                continue;
+            }
+            let ext_path = format!("{}/cspell-ext.json", pkg);
+            if let Some(ext_json) = resolve::resolve_npm_import(&ext_path, base)
+                && let Ok(ext_settings) = matchum_config::resolver::load_config(&ext_json)
+            {
+                loaded_pkgs.insert(pkg.to_string());
+                let ext_dir = ext_json.parent().unwrap_or(base);
+                let pkg_active: HashSet<String> = ext_settings
+                    .dictionaries
+                    .iter()
+                    .map(|d| d.to_lowercase())
+                    .collect();
+                for ext_def in &ext_settings.dictionary_definitions {
+                    let is_active = pkg_active.contains(&ext_def.name.to_lowercase());
+                    collect_dictionary_definition(
+                        ext_def,
+                        Some(ext_dir),
+                        is_active,
+                        &mut jobs,
+                        &mut collected_names,
+                        &mut inline_named_dicts,
+                        &mut inline_extra_active,
+                    );
                 }
-                let ext_path = format!("{}/cspell-ext.json", pkg);
-                if let Some(ext_json) = resolve::resolve_npm_import(&ext_path, base)
-                    && let Ok(ext_settings) = matchum_config::resolver::load_config(&ext_json) {
-                        loaded_pkgs.insert(pkg.to_string());
-                        let ext_dir = ext_json.parent().unwrap_or(base);
-                        let pkg_active: HashSet<String> = ext_settings
-                            .dictionaries
-                            .iter()
-                            .map(|d| d.to_lowercase())
-                            .collect();
-                        for ext_def in &ext_settings.dictionary_definitions {
-                            let is_active = pkg_active.contains(&ext_def.name.to_lowercase());
-                            collect_dictionary_definition(
-                                ext_def,
-                                Some(ext_dir),
-                                is_active,
-                                &mut jobs,
-                                &mut collected_names,
-                                &mut inline_named_dicts,
-                                &mut inline_extra_active,
-                            );
+                for mut ls in ext_settings.language_settings {
+                    for p in &ext_settings.patterns {
+                        if !ls.patterns.iter().any(|existing| existing.name == p.name) {
+                            ls.patterns.push(p.clone());
                         }
-                        for mut ls in ext_settings.language_settings {
-                            for p in &ext_settings.patterns {
-                                if !ls.patterns.iter().any(|existing| existing.name == p.name) {
-                                    ls.patterns.push(p.clone());
-                                }
-                            }
-                            accumulated_lang_settings.push(ls);
-                        }
-                        accumulated_overrides.extend(ext_settings.overrides);
                     }
+                    accumulated_lang_settings.push(ls);
+                }
+                accumulated_overrides.extend(ext_settings.overrides);
             }
         }
+    }
 
     // Add cspell's core default languageSettings.
     accumulated_lang_settings.extend(defaults::default_language_settings());

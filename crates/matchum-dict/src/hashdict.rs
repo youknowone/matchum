@@ -325,10 +325,7 @@ impl HashDictionary {
         let folded_exact_words = if version >= 11 {
             read_set(bytes, &mut pos)?
         } else {
-            exact_words
-                .iter()
-                .map(|word| word.to_lowercase())
-                .collect()
+            exact_words.iter().map(|word| word.to_lowercase()).collect()
         };
         // v3: compound position sets
         let (compound_can_prefix, compound_can_suffix) = if version >= 3 {
@@ -408,8 +405,7 @@ impl HashDictionary {
         }
 
         let chars: Vec<(usize, char)> = word.char_indices().collect();
-        for i in 1..chars.len() {
-            let split_byte = chars[i].0;
+        for &(split_byte, _) in &chars[1..] {
             let left = &word[..split_byte];
             let right = &word[split_byte..];
 

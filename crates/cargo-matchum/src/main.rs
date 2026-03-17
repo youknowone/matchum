@@ -69,9 +69,10 @@ fn find_workspace_root() -> Option<PathBuf> {
                 nearest = Some(dir.clone());
             }
             if let Ok(content) = std::fs::read_to_string(&manifest)
-                && content.contains("[workspace]") {
-                    workspace_root = Some(dir.clone());
-                }
+                && content.contains("[workspace]")
+            {
+                workspace_root = Some(dir.clone());
+            }
         }
         if !dir.pop() {
             break;
@@ -141,6 +142,7 @@ fn main() {
     }
 }
 
+#[allow(clippy::type_complexity)]
 fn resolve_for_workspace(
     config_path: Option<&Path>,
     workspace_root: &Path,

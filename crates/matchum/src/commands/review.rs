@@ -13,9 +13,10 @@ use matchum_config::settings::CSpellSettings;
 /// Handles both absolute paths (strips base prefix) and `./`-prefixed relative paths.
 fn display_relative(path: &Path, base: Option<&Path>) -> String {
     if let Some(base) = base
-        && let Ok(rel) = path.strip_prefix(base) {
-            return rel.display().to_string();
-        }
+        && let Ok(rel) = path.strip_prefix(base)
+    {
+        return rel.display().to_string();
+    }
     let s = path.display().to_string();
     s.strip_prefix("./").unwrap_or(&s).to_string()
 }
@@ -215,6 +216,7 @@ pub fn run_review(
     Ok(())
 }
 
+#[allow(clippy::too_many_arguments)]
 fn dispatch_command(
     reader: &mut impl BufRead,
     input: &str,
@@ -466,15 +468,16 @@ fn collect_writable_dicts(
     // Custom dictionaries with add_words=true — only if file exists
     for def in &config.dictionary_definitions {
         if def.add_words
-            && let Some(ref p) = def.path {
-                let path = config_dir.join(p);
-                if path.exists() && seen.insert(path.clone()) {
-                    dicts.push(WritableDict {
-                        name: def.name.clone(),
-                        path,
-                    });
-                }
+            && let Some(ref p) = def.path
+        {
+            let path = config_dir.join(p);
+            if path.exists() && seen.insert(path.clone()) {
+                dicts.push(WritableDict {
+                    name: def.name.clone(),
+                    path,
+                });
             }
+        }
     }
 
     dicts
@@ -586,9 +589,10 @@ fn create_new_dict(
 
     let full_path = config_dir.join(&rel_path);
     if let Some(parent) = full_path.parent()
-        && !parent.exists() {
-            std::fs::create_dir_all(parent)?;
-        }
+        && !parent.exists()
+    {
+        std::fs::create_dir_all(parent)?;
+    }
     // Create the file if it doesn't exist
     if !full_path.exists() {
         std::fs::write(&full_path, "")?;
@@ -863,13 +867,14 @@ fn load_typos_toml(path: &Path) -> HashMap<String, String> {
     };
     let mut map = HashMap::new();
     if let Some(default) = doc.get("default").and_then(|v| v.as_table())
-        && let Some(words) = default.get("extend-words").and_then(|v| v.as_table()) {
-            for (k, v) in words {
-                if let Some(s) = v.as_str() {
-                    map.insert(k.to_lowercase(), s.to_string());
-                }
+        && let Some(words) = default.get("extend-words").and_then(|v| v.as_table())
+    {
+        for (k, v) in words {
+            if let Some(s) = v.as_str() {
+                map.insert(k.to_lowercase(), s.to_string());
             }
         }
+    }
     map
 }
 

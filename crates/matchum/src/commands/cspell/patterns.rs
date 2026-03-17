@@ -105,15 +105,15 @@ pub fn try_compile_regex(pat: &str) -> Option<CompiledRegex> {
                 .unwrap_or(true)
         });
 
-        if has_required_backref
-            && let Ok(re) = fancy_regex::Regex::new(pat) {
-                return Some(CompiledRegex::Fancy(re));
-            }
+        if has_required_backref && let Ok(re) = fancy_regex::Regex::new(pat) {
+            return Some(CompiledRegex::Fancy(re));
+        }
 
         if let Some(expanded) = expand_single_optional_backreference_pattern(pat)
-            && let Ok(re) = regex::Regex::new(&expanded) {
-                return Some(CompiledRegex::Rust(re));
-            }
+            && let Ok(re) = regex::Regex::new(&expanded)
+        {
+            return Some(CompiledRegex::Rust(re));
+        }
 
         if !groups.is_empty() {
             let resolved = BACKREF_RE.replace_all(pat, |caps: &regex::Captures| {
@@ -246,12 +246,12 @@ fn extract_capture_groups(pat: &str) -> Vec<(String, bool)> {
             }
             b')' => {
                 if let Some((start, is_capturing)) = stack.pop()
-                    && is_capturing {
-                        let content = &pat[start..i];
-                        let optional =
-                            i + 1 < len && (bytes[i + 1] == b'?' || bytes[i + 1] == b'*');
-                        groups.push((content.to_string(), optional));
-                    }
+                    && is_capturing
+                {
+                    let content = &pat[start..i];
+                    let optional = i + 1 < len && (bytes[i + 1] == b'?' || bytes[i + 1] == b'*');
+                    groups.push((content.to_string(), optional));
+                }
                 i += 1;
             }
             _ => {
@@ -334,19 +334,20 @@ pub fn normalize_pattern_nested(pattern: &str) -> Vec<String> {
 /// Expand bash-style `!(...)` extglob negation into positive + negation patterns.
 pub fn expand_extglobs(pattern: &str) -> Vec<String> {
     if let Some(start) = pattern.find("!(")
-        && let Some(close_offset) = pattern[start + 2..].find(')') {
-            let close = start + 2 + close_offset;
-            let prefix = &pattern[..start];
-            let inner = &pattern[start + 2..close];
-            let suffix = &pattern[close + 1..];
+        && let Some(close_offset) = pattern[start + 2..].find(')')
+    {
+        let close = start + 2 + close_offset;
+        let prefix = &pattern[..start];
+        let inner = &pattern[start + 2..close];
+        let suffix = &pattern[close + 1..];
 
-            let positive = format!("{prefix}*{suffix}");
-            let mut result = vec![positive];
-            for alt in inner.split('|') {
-                result.push(format!("!{prefix}{alt}{suffix}"));
-            }
-            return result;
+        let positive = format!("{prefix}*{suffix}");
+        let mut result = vec![positive];
+        for alt in inner.split('|') {
+            result.push(format!("!{prefix}{alt}{suffix}"));
         }
+        return result;
+    }
     vec![pattern.to_string()]
 }
 
@@ -473,9 +474,7 @@ fn split_inline_flag_prefix(pattern: &str) -> Option<(usize, usize)> {
             return Some((offset, offset));
         }
 
-        let Some(close) = rest.find(')') else {
-            return None;
-        };
+        let close = rest.find(')')?;
         let flags = &rest[2..close];
         if flags.is_empty()
             || flags

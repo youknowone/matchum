@@ -28,9 +28,10 @@ impl DiffFilter {
             for hunk in patched_file.hunks() {
                 for line in hunk.lines() {
                     if line.is_added()
-                        && let Some(n) = line.target_line_no {
-                            lines.insert(n);
-                        }
+                        && let Some(n) = line.target_line_no
+                    {
+                        lines.insert(n);
+                    }
                 }
             }
         }
@@ -65,17 +66,19 @@ fn strip_to_relative(path: &Path) -> &Path {
         return stripped;
     }
     if let Ok(stripped) = path.strip_prefix(".")
-        && !stripped.as_os_str().is_empty() {
-            return stripped;
-        }
+        && !stripped.as_os_str().is_empty()
+    {
+        return stripped;
+    }
     if path.is_relative() {
         return path;
     }
     // Try stripping cwd; fall back to the full path
     if let Ok(cwd) = std::env::current_dir()
-        && let Ok(rel) = path.strip_prefix(&cwd) {
-            return rel;
-        }
+        && let Ok(rel) = path.strip_prefix(&cwd)
+    {
+        return rel;
+    }
     path
 }
 

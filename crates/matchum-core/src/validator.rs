@@ -794,9 +794,11 @@ fn scan_hash_strings(text: &[u8], ranges: &mut Vec<(usize, usize)>) {
                 idx += 1;
             }
             if let Some(q) = quote
-                && idx < len && text[idx] == q {
-                    idx += 1;
-                }
+                && idx < len
+                && text[idx] == q
+            {
+                idx += 1;
+            }
 
             let Some(next_end) = consume_hash_string_payload(text, idx) else {
                 end = saved;
@@ -1039,9 +1041,10 @@ fn scan_base64_multiline(text: &[u8], ranges: &mut Vec<(usize, usize)>) {
         if consume_base64_padding_and_optional_quote(text, &mut cursor) {
             end = cursor;
         } else if consume_base64_multiline_gap(text, &mut cursor)
-            && let Some(next_end) = consume_base64_quoted_run(text, &mut cursor, 1, true) {
-                end = next_end;
-            }
+            && let Some(next_end) = consume_base64_quoted_run(text, &mut cursor, 1, true)
+        {
+            end = next_end;
+        }
 
         if end < len {
             let next = text[end];
@@ -1725,9 +1728,9 @@ impl Validator {
                             case_sensitive,
                             cache_guard.as_ref(),
                         ))
-                    {
-                        prevalidated_ranges.push((ct.offset, ct.offset + ct.text.len()));
-                    }
+                {
+                    prevalidated_ranges.push((ct.offset, ct.offset + ct.text.len()));
+                }
             }
 
             splitter::extract_words_into(line, &mut words_buf);
@@ -1905,9 +1908,9 @@ impl Validator {
                                     case_sensitive,
                                     cache_guard.as_ref(),
                                 ))
-                            {
-                                continue;
-                            }
+                        {
+                            continue;
+                        }
 
                         // Fallback: ALL-CAPS + English suffix (e.g. REPLs → REPL)
                         // cspell's isAllCapsWithTrailingCommonEnglishSuffix:
@@ -1936,9 +1939,9 @@ impl Validator {
                                     case_sensitive,
                                     cache_guard.as_ref(),
                                 ) || base.chars().count() < self.config.min_word_length)
-                                {
-                                    continue;
-                                }
+                            {
+                                continue;
+                            }
                         }
 
                         // Fallback: split at apostrophe and check all parts
@@ -1950,11 +1953,12 @@ impl Validator {
                                 allow_compound_words,
                                 case_sensitive,
                                 cache_guard.as_ref(),
-                            ) {
-                                continue;
-                            }
-                            // Fall through to report the whole word (cspell behavior:
-                            // reports "Zakas's" not just "Zakas") // cspell:ignore Zakas
+                            )
+                        {
+                            continue;
+                        }
+                        // Fall through to report the whole word (cspell behavior:
+                        // reports "Zakas's" not just "Zakas") // cspell:ignore Zakas
 
                         // Fallback: if preceded by '\', drop first char and retry.
                         // Handles regex escapes (\s, \n, etc.) where the escape char
@@ -2025,6 +2029,7 @@ impl Validator {
         issues
     }
 
+    #[allow(clippy::too_many_arguments)]
     fn validate_line_cspell_compat<'a>(
         &self,
         line: &'a str,
@@ -2253,7 +2258,8 @@ impl Validator {
                     directive_dictionaries,
                     case_sensitive,
                     known_cspell_words,
-                ) && (js_string_len(base) < self.config.min_word_length
+                )
+                && (js_string_len(base) < self.config.min_word_length
                     || self.is_word_valid(
                         base,
                         directive_dictionaries,
@@ -2261,9 +2267,9 @@ impl Validator {
                         case_sensitive,
                         cache_guard,
                     ))
-                {
-                    continue;
-                }
+            {
+                continue;
+            }
 
             filtered.push(CompatIssue {
                 word: split_word.text.to_string(),
@@ -2617,6 +2623,7 @@ impl Validator {
         ignored
     }
 
+    #[allow(clippy::too_many_arguments)]
     fn is_word_valid_with_escape_retry_cspell(
         &self,
         line: splitter::Word<'_>,
@@ -2732,14 +2739,14 @@ impl Validator {
         known_cspell_words: &mut std::collections::HashMap<String, KnownCspellWordInfo>,
     ) -> CheckedCspellWord {
         if let Some(info) = known_cspell_words.get(word.text)
-            && info.fin {
-                let is_flagged =
-                    info.is_flagged.unwrap_or(false) && !info.is_ignored.unwrap_or(false);
-                return CheckedCspellWord {
-                    is_flagged,
-                    is_found: if is_flagged { None } else { info.is_found },
-                };
-            }
+            && info.fin
+        {
+            let is_flagged = info.is_flagged.unwrap_or(false) && !info.is_ignored.unwrap_or(false);
+            return CheckedCspellWord {
+                is_flagged,
+                is_found: if is_flagged { None } else { info.is_found },
+            };
+        }
 
         let is_ignored = self.cached_is_word_ignored_cspell(
             word.text,
@@ -2816,6 +2823,7 @@ impl Validator {
             .is_some_and(splitter::is_cspell_letter)
     }
 
+    #[allow(clippy::too_many_arguments)]
     fn is_all_caps_with_suffix_ok_cspell(
         &self,
         word: splitter::Word<'_>,
@@ -2886,6 +2894,7 @@ impl Validator {
         None
     }
 
+    #[allow(clippy::too_many_arguments)]
     fn report_compat_issue(
         &self,
         issue: CompatIssue,
@@ -3265,10 +3274,9 @@ impl Validator {
             && allow_compound_words == self.config.allow_compound_words
             && case_sensitive == self.config.case_sensitive;
 
-        if can_cache
-            && let Some(result) = self.local_word_cache_get(word) {
-                return result;
-            }
+        if can_cache && let Some(result) = self.local_word_cache_get(word) {
+            return result;
+        }
 
         if let (true, Some(cache), Some(guard)) = (
             can_cache && cache_guard.is_some(),
@@ -3506,6 +3514,7 @@ impl Validator {
 
     /// Iterative compound decomposition for legacy join-words behavior.
     /// Parts may come from different active dictionaries.
+    #[allow(clippy::needless_range_loop)]
     fn is_compound_valid_join_recursive(
         &self,
         word: &str,
@@ -3564,6 +3573,7 @@ impl Validator {
 
     /// Iterative compound decomposition constrained to a single dictionary.
     /// This matches cspell's legacy `allowCompoundWords` behavior.
+    #[allow(clippy::needless_range_loop)]
     fn is_compound_valid_in_single_dict_recursive(
         &self,
         word: &str,
@@ -3626,6 +3636,7 @@ impl Validator {
     ///
     /// For example, `S_IMODE_method` can be split as `S_IMODE` + `method`,
     /// where `S_IMODE` is in the python dict and `method` is in en_us.
+    #[allow(clippy::needless_range_loop)]
     fn is_underscore_compound_valid(
         &self,
         token: &str,
@@ -3828,6 +3839,7 @@ impl Validator {
             status
         }
 
+        #[allow(clippy::too_many_arguments)]
         fn search(
             token: &str,
             positions: &[usize],

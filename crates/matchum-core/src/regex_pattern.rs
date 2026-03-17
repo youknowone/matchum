@@ -21,33 +21,35 @@ pub fn parse_regex_pattern(value: &str) -> Option<Regex> {
 /// `None` if it's a plain (non-delimited) pattern.
 pub fn parse_slash_regex(value: &str) -> Option<String> {
     let s = value.trim();
-    if s.starts_with('/') && s.len() > 1
+    if s.starts_with('/')
+        && s.len() > 1
         && let Some(last_slash) = s.rfind('/')
-            && last_slash > 0 {
-                let body = &s[1..last_slash];
-                let flags = &s[last_slash + 1..];
-                let mut prefix = String::new();
-                if flags.contains('i') {
-                    prefix.push('i');
-                }
-                if flags.contains('m') {
-                    prefix.push('m');
-                }
-                if flags.contains('s') {
-                    prefix.push('s');
-                }
-                let body = if flags.contains('x') {
-                    strip_verbose_whitespace(body)
-                } else {
-                    body.to_string()
-                };
-                let pat = if prefix.is_empty() {
-                    body
-                } else {
-                    format!("(?{}){}", prefix, body)
-                };
-                return Some(pat);
-            }
+        && last_slash > 0
+    {
+        let body = &s[1..last_slash];
+        let flags = &s[last_slash + 1..];
+        let mut prefix = String::new();
+        if flags.contains('i') {
+            prefix.push('i');
+        }
+        if flags.contains('m') {
+            prefix.push('m');
+        }
+        if flags.contains('s') {
+            prefix.push('s');
+        }
+        let body = if flags.contains('x') {
+            strip_verbose_whitespace(body)
+        } else {
+            body.to_string()
+        };
+        let pat = if prefix.is_empty() {
+            body
+        } else {
+            format!("(?{}){}", prefix, body)
+        };
+        return Some(pat);
+    }
     None
 }
 

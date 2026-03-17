@@ -91,10 +91,9 @@ pub fn check_directive_typo(name: &str) -> Option<DirectiveWarning> {
     let mut best: Option<(&str, usize)> = None;
     for &valid in VALID_DIRECTIVES {
         let dist = levenshtein(&lower, &valid.to_lowercase());
-        if dist <= 3
-            && (best.is_none() || dist < best.unwrap().1) {
-                best = Some((valid, dist));
-            }
+        if dist <= 3 && (best.is_none() || dist < best.unwrap().1) {
+            best = Some((valid, dist));
+        }
     }
 
     best.map(|(suggestion, _)| DirectiveWarning {
@@ -197,9 +196,7 @@ fn keyword_boundary(text: &str, keyword_len: usize) -> bool {
 fn strip_words_suffix_len(s: &str) -> usize {
     if s.starts_with("-words") {
         6
-    } else if s.starts_with("-word") {
-        5
-    } else if s.starts_with("words") {
+    } else if s.starts_with("-word") || s.starts_with("words") {
         5
     } else if s.starts_with("word") {
         4
@@ -219,11 +216,7 @@ fn matches_compound_words(lower: &str) -> Option<usize> {
         return None;
     };
     let rest = &lower[prefix_len..];
-    let after_allow = if rest.starts_with("allow") {
-        &rest[5..]
-    } else {
-        rest
-    };
+    let after_allow = rest.strip_prefix("allow").unwrap_or(rest);
     if after_allow.starts_with("compoundwords") {
         Some(lower.len() - after_allow.len() + 13)
     } else {
@@ -348,23 +341,25 @@ fn parse_directive_inner(line: &str) -> Option<Directive> {
 
     // 1. CompoundWords: /^(?:enable|disable)(?:allow)?CompoundWords\b(?!-)/i
     if let Some(kw_len) = matches_compound_words(&lower)
-        && keyword_boundary(&lower, kw_len) {
-            return Some(if lower.starts_with("enable") {
-                Directive::EnableCompoundWords
-            } else {
-                Directive::DisableCompoundWords
-            });
-        }
+        && keyword_boundary(&lower, kw_len)
+    {
+        return Some(if lower.starts_with("enable") {
+            Directive::EnableCompoundWords
+        } else {
+            Directive::DisableCompoundWords
+        });
+    }
 
     // 2. CaseSensitive: /^(?:enable|disable)CaseSensitive\b(?!-)/i
     if let Some(kw_len) = matches_case_sensitive(&lower)
-        && keyword_boundary(&lower, kw_len) {
-            return Some(if lower.starts_with("enable") {
-                Directive::EnableCaseSensitive
-            } else {
-                Directive::DisableCaseSensitive
-            });
-        }
+        && keyword_boundary(&lower, kw_len)
+    {
+        return Some(if lower.starts_with("enable") {
+            Directive::EnableCaseSensitive
+        } else {
+            Directive::DisableCaseSensitive
+        });
+    }
 
     // 3. Enable: /^enable\b(?!-)/i
     if lower.starts_with("enable") && keyword_boundary(&lower, 6) {
@@ -398,8 +393,8 @@ fn parse_directive_inner(line: &str) -> Option<Directive> {
     }
 
     // 6. IgnoreWords: /^ignore(?:-?words?)?\b(?!-)/i
-    if lower.starts_with("ignore") {
-        let suffix_len = strip_words_suffix_len(&lower[6..]);
+    if let Some(after_ignore) = lower.strip_prefix("ignore") {
+        let suffix_len = strip_words_suffix_len(after_ignore);
         let full_len = 6 + suffix_len;
         if keyword_boundary(&lower, full_len) {
             let rest = &directive_text[full_len..];

@@ -6,8 +6,8 @@ use anyhow::Context as _;
 use anyhow::Result;
 use ignore::{WalkBuilder, WalkState};
 use matchum_config::glob_match::{
-    global_match_path, is_global_pattern, normalized_match_path,
-    resolve_match_root, root_relative_match_path,
+    global_match_path, is_global_pattern, normalized_match_path, resolve_match_root,
+    root_relative_match_path,
 };
 use matchum_config::overrides;
 use matchum_config::resolver;
@@ -317,6 +317,7 @@ fn build_per_dir_config_contexts(
 /// Run check with pre-resolved settings and dictionary catalog.
 /// This is the main public entry point — callers resolve config and build
 /// the catalog themselves before calling this.
+#[allow(clippy::too_many_arguments)]
 pub fn run_check(
     paths: &[PathBuf],
     settings: &CSpellSettings,
@@ -524,6 +525,7 @@ fn run_collect_issues(
     Ok(results)
 }
 
+#[allow(clippy::too_many_arguments)]
 fn run_check_inner(
     effective_paths: &[PathBuf],
     settings: &CSpellSettings,
@@ -557,10 +559,9 @@ fn run_check_inner(
         files.retain(|f| df.contains_file(f));
     }
 
-    if files.is_empty() && !options.no_must_find_files
-        && !options.quiet && !options.silent {
-            eprintln!("No files found to check.");
-        }
+    if files.is_empty() && !options.no_must_find_files && !options.quiet && !options.silent {
+        eprintln!("No files found to check.");
+    }
 
     let max_file_size = options
         .max_file_size
@@ -627,12 +628,13 @@ fn run_check_inner(
             // last time, so we can skip it entirely.
             if use_cache
                 && let Ok(guard) = cache.lock()
-                    && guard.check_clean(file, cache_strategy).is_some() {
-                        if verbose > 0 && !silent {
-                            eprintln!("Cache hit (clean): {}", file.display());
-                        }
-                        return None;
-                    }
+                && guard.check_clean(file, cache_strategy).is_some()
+            {
+                if verbose > 0 && !silent {
+                    eprintln!("Cache hit (clean): {}", file.display());
+                }
+                return None;
+            }
 
             if verbose > 0 && !silent {
                 eprintln!("Checking: {}", file.display());
@@ -748,19 +750,17 @@ fn run_check_inner(
             issues = apply_issue_limits(issues, effective_settings.max_number_of_problems);
 
             if issues.is_empty() {
-                if use_cache
-                    && let Ok(mut guard) = cache.lock() {
-                        guard.update(file, &[], cache_strategy, Some(content.as_bytes()));
-                    }
+                if use_cache && let Ok(mut guard) = cache.lock() {
+                    guard.update(file, &[], cache_strategy, Some(content.as_bytes()));
+                }
                 None
             } else {
                 if fail_fast {
                     fail_fast_flag.store(true, std::sync::atomic::Ordering::Relaxed);
                 }
-                if use_cache
-                    && let Ok(mut guard) = cache.lock() {
-                        guard.update(file, &issues, cache_strategy, Some(content.as_bytes()));
-                    }
+                if use_cache && let Ok(mut guard) = cache.lock() {
+                    guard.update(file, &issues, cache_strategy, Some(content.as_bytes()));
+                }
                 let kept_content = if need_context { content } else { String::new() };
                 Some((file.clone(), kept_content, issues))
             }
@@ -768,10 +768,9 @@ fn run_check_inner(
         .collect();
 
     // Save cache
-    if use_cache
-        && let Ok(guard) = cache.lock() {
-            guard.save(&cache_path(&options));
-        }
+    if use_cache && let Ok(guard) = cache.lock() {
+        guard.save(&cache_path(&options));
+    }
 
     let mut total_issues = 0;
     let mut unique_words = HashSet::new();
@@ -808,9 +807,10 @@ fn run_check_inner(
         for issue in issues {
             // Skip issues not on added lines when diff filtering
             if let Some(ref df) = options.diff_filter
-                && !df.should_report(file, issue.line) {
-                    continue;
-                }
+                && !df.should_report(file, issue.line)
+            {
+                continue;
+            }
             if unique && !unique_words.insert(issue.word.clone()) {
                 continue;
             }
@@ -1881,9 +1881,10 @@ fn matches_rooted_candidate(glob: &RootedGlobMatcher, candidate: &Path) -> bool 
     }
     if let Some(basename_matcher) = &glob.basename_matcher
         && let Some(name) = candidate.file_name()
-            && basename_matcher.is_match(Path::new(name)) {
-                return true;
-            }
+        && basename_matcher.is_match(Path::new(name))
+    {
+        return true;
+    }
     normalized_match_path(candidate)
         .is_some_and(|normalized| glob.matcher.is_match(Path::new(normalized.as_ref())))
 }
@@ -2068,36 +2069,35 @@ fn collect_files(
     // cspell uses include-mode glob normalization here:
     // patterns are matched relative to the root without implicit `**/` prefixing.
     if roots.is_empty()
-        && let Some(ref file_globs) = settings.files {
-            let mut glob_builder = globset::GlobSetBuilder::new();
-            for pattern in file_globs {
-                if let Ok(glob) = globset::GlobBuilder::new(pattern)
-                    .literal_separator(true)
-                    .build()
-                {
-                    glob_builder.add(glob);
-                }
-            }
-            if let Ok(glob_set) = glob_builder.build() {
-                let walk_dir = std::env::current_dir().unwrap_or_default();
-                collect_walk_matches(
-                    &walk_dir,
-                    show_hidden,
-                    options.cspell_compat_mode,
-                    use_gitignore,
-                    &glob_set,
-                    &mut roots,
-                );
+        && let Some(ref file_globs) = settings.files
+    {
+        let mut glob_builder = globset::GlobSetBuilder::new();
+        for pattern in file_globs {
+            if let Ok(glob) = globset::GlobBuilder::new(pattern)
+                .literal_separator(true)
+                .build()
+            {
+                glob_builder.add(glob);
             }
         }
+        if let Ok(glob_set) = glob_builder.build() {
+            let walk_dir = std::env::current_dir().unwrap_or_default();
+            collect_walk_matches(
+                &walk_dir,
+                show_hidden,
+                options.cspell_compat_mode,
+                use_gitignore,
+                &glob_set,
+                &mut roots,
+            );
+        }
+    }
 
     let mut files = Vec::new();
 
     for pending in &roots {
         let path = pending.path();
-        if matches!(pending, PendingPath::KnownFile(_)) {
-            files.push(path.to_path_buf());
-        } else if path.is_file() {
+        if matches!(pending, PendingPath::KnownFile(_)) || path.is_file() {
             files.push(path.to_path_buf());
         } else if is_glob_pattern(&path.to_string_lossy()) {
             // Expand glob patterns in path arguments (e.g. "**/*.rs", "src/**/*.{ts,js}")
@@ -2109,26 +2109,28 @@ fn collect_files(
                     PathBuf::from(&base_dir)
                 };
                 if base.is_dir()
-                    && let Ok(glob) = globset::Glob::new(&pattern) {
-                        let matcher = glob.compile_matcher();
-                        let mut builder = WalkBuilder::new(&base);
-                        configure_walk_builder(
-                            &mut builder,
-                            show_hidden,
-                            options.cspell_compat_mode,
-                            use_gitignore,
-                        );
-                        for entry in builder.build() {
-                            if let Ok(entry) = entry
-                                && entry.file_type().is_some_and(|ft| ft.is_file()) {
-                                    let entry_path = entry.path();
-                                    let rel = entry_path.strip_prefix(&base).unwrap_or(entry_path);
-                                    if matcher.is_match(rel) {
-                                        files.push(entry.into_path());
-                                    }
-                                }
+                    && let Ok(glob) = globset::Glob::new(&pattern)
+                {
+                    let matcher = glob.compile_matcher();
+                    let mut builder = WalkBuilder::new(&base);
+                    configure_walk_builder(
+                        &mut builder,
+                        show_hidden,
+                        options.cspell_compat_mode,
+                        use_gitignore,
+                    );
+                    for entry in builder.build() {
+                        if let Ok(entry) = entry
+                            && entry.file_type().is_some_and(|ft| ft.is_file())
+                        {
+                            let entry_path = entry.path();
+                            let rel = entry_path.strip_prefix(&base).unwrap_or(entry_path);
+                            if matcher.is_match(rel) {
+                                files.push(entry.into_path());
+                            }
                         }
                     }
+                }
             }
         } else {
             // Resolve relative paths (e.g., ".") to absolute so that
@@ -2149,14 +2151,15 @@ fn collect_files(
 
             // --gitignore-root limits .gitignore search depth
             if !options.cspell_compat_mode
-                && let Some(ref gi_root) = options.gitignore_root {
-                    builder.git_global(false);
-                    // Add the gitignore root as a custom ignore root
-                    let gi_path = gi_root.join(".gitignore");
-                    if gi_path.exists() {
-                        let _ = builder.add_ignore(&gi_path);
-                    }
+                && let Some(ref gi_root) = options.gitignore_root
+            {
+                builder.git_global(false);
+                // Add the gitignore root as a custom ignore root
+                let gi_path = gi_root.join(".gitignore");
+                if gi_path.exists() {
+                    let _ = builder.add_ignore(&gi_path);
                 }
+            }
 
             // Parallel directory walk — collect all files across threads.
             builder.threads(
@@ -2172,9 +2175,10 @@ fn collect_files(
                 let collected = std::sync::Arc::clone(&collected);
                 Box::new(move |entry| {
                     if let Ok(entry) = entry
-                        && entry.file_type().is_some_and(|ft| ft.is_file()) {
-                            collected.lock().unwrap().push(entry.into_path());
-                        }
+                        && entry.file_type().is_some_and(|ft| ft.is_file())
+                    {
+                        collected.lock().unwrap().push(entry.into_path());
+                    }
                     WalkState::Continue
                 })
             });
@@ -2555,9 +2559,10 @@ fn print_issue_text(
 
     if show_context
         && let Some(text) = content
-            && let Some(line_text) = text.lines().nth(issue.line.saturating_sub(1)) {
-                eprintln!("    {line_text}");
-            }
+        && let Some(line_text) = text.lines().nth(issue.line.saturating_sub(1))
+    {
+        eprintln!("    {line_text}");
+    }
 }
 
 /// Like `print_issue_text` but accepts a pre-resolved context line slice,
@@ -2591,10 +2596,9 @@ fn print_issue_text_fast(
     }
     println!();
 
-    if show_context
-        && let Some(line_text) = ctx_line {
-            eprintln!("    {line_text}");
-        }
+    if show_context && let Some(line_text) = ctx_line {
+        eprintln!("    {line_text}");
+    }
 }
 
 fn should_render_suggestions(show_context: bool, show_suggestions: Option<bool>) -> bool {

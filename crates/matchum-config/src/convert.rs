@@ -22,10 +22,11 @@ pub fn load_word_file(path: &Path) -> Vec<String> {
 
 /// Convert `MatchumConfig` to the internal `CSpellSettings`, loading word files.
 pub fn to_cspell_settings(config: &MatchumConfig, config_dir: &Path) -> CSpellSettings {
-    let mut s = CSpellSettings::default();
-
-    s.language = config.language.clone();
-    s.enabled = config.enabled;
+    let mut s = CSpellSettings {
+        language: config.language.clone(),
+        enabled: config.enabled,
+        ..CSpellSettings::default()
+    };
 
     if let Some(ref p) = config.words_file {
         s.words = load_word_file(&config_dir.join(p));

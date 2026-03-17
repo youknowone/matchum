@@ -30,9 +30,10 @@ pub fn run_add(words: &[String], forbidden: bool, config_path: Option<&Path>) ->
             };
             let full_path = config_dir.join(default_name);
             if let Some(parent) = full_path.parent()
-                && !parent.exists() {
-                    std::fs::create_dir_all(parent)?;
-                }
+                && !parent.exists()
+            {
+                std::fs::create_dir_all(parent)?;
+            }
             // Add the field to the config file
             if !content.contains(&format!("{key_label} ="))
                 && !content.contains(&format!("{key_label}="))

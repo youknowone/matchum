@@ -111,8 +111,8 @@ pub fn weighted_damerau_levenshtein(a: &str, b: &str, costs: &EditCosts) -> usiz
     let mut p = vec![0usize; width];
     let mut c = vec![0usize; width];
 
-    for j in 0..width {
-        p[j] = j * costs.insertion;
+    for (j, slot) in p.iter_mut().enumerate().take(width) {
+        *slot = j * costs.insertion;
     }
 
     for i in 1..=a_len {
@@ -187,8 +187,8 @@ pub fn damerau_levenshtein(a: &str, b: &str) -> usize {
     let mut c = vec![0usize; width]; // row i
 
     // Initialize row 0
-    for j in 0..width {
-        p[j] = j;
+    for (j, slot) in p.iter_mut().enumerate().take(width) {
+        *slot = j;
     }
 
     for i in 1..=a_len {

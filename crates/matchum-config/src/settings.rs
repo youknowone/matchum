@@ -257,7 +257,6 @@ pub struct OverrideSettings {
     pub enabled: Option<bool>,
 }
 
-
 /// Per-language-type settings for dictionary activation.
 #[derive(Debug, Clone, Deserialize, Serialize, Default)]
 #[serde(rename_all = "camelCase", default)]
