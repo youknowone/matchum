@@ -105,6 +105,26 @@ pub struct CheckOptions {
     pub use_gitattributes: bool,
     /// When true, search for per-directory cspell configs that add local words.
     pub per_dir_config_search: bool,
+    /// Working directory for path resolution.
+    /// Not exposed as a CLI flag — used for programmatic and test overrides.
+    /// `None` falls back to `std::env::current_dir()`.
+    pub cwd: Option<PathBuf>,
+}
+
+impl CheckOptions {
+    /// Resolved working directory. Falls back to `std::env::current_dir()`.
+    /// The returned path is canonicalized to match `std::env::current_dir()` behavior
+    /// (resolves symlinks, e.g. `/var` -> `/private/var` on macOS).
+    pub fn cwd(&self) -> PathBuf {
+        let raw = match &self.cwd {
+            Some(path) => path.clone(),
+            None => std::env::current_dir().unwrap_or_else(|e| {
+                eprintln!("warning: failed to get current directory: {e}");
+                PathBuf::new()
+            }),
+        };
+        raw.canonicalize().unwrap_or(raw)
+    }
 }
 
 const DEFAULT_DICTIONARIES: &[&str] = &[
@@ -229,8 +249,7 @@ fn build_root_config_context(
 ) -> Arc<ConfigContext> {
     let base_dir = config_dir
         .map(|dir| dir.canonicalize().unwrap_or_else(|_| dir.to_path_buf()))
-        .or_else(|| std::env::current_dir().ok())
-        .unwrap_or_default();
+        .unwrap_or_else(|| options.cwd());
 
     build_config_context(
         settings.clone(),
@@ -785,7 +804,7 @@ fn run_check_inner(
             .iter()
             .find(|p| p.is_dir() && p.is_absolute())
             .cloned()
-            .or_else(|| std::env::current_dir().ok())
+            .or_else(|| Some(options.cwd()))
     };
 
     for (file, content, issues) in &results {
@@ -2009,6 +2028,7 @@ fn collect_files(
     settings: &CSpellSettings,
     options: &CheckOptions,
 ) -> Result<Vec<PathBuf>> {
+    let cwd = options.cwd();
     let mut roots: Vec<PendingPath> = Vec::new();
     let mut glob_patterns: Vec<String> = Vec::new();
 
@@ -2053,9 +2073,8 @@ fn collect_files(
             }
         }
         if let Ok(glob_set) = glob_builder.build() {
-            let walk_dir = std::env::current_dir().unwrap_or_default();
             collect_walk_matches(
-                &walk_dir,
+                &cwd,
                 show_hidden,
                 options.cspell_compat_mode,
                 use_gitignore,
@@ -2081,9 +2100,8 @@ fn collect_files(
             }
         }
         if let Ok(glob_set) = glob_builder.build() {
-            let walk_dir = std::env::current_dir().unwrap_or_default();
             collect_walk_matches(
-                &walk_dir,
+                &cwd,
                 show_hidden,
                 options.cspell_compat_mode,
                 use_gitignore,
@@ -2104,9 +2122,14 @@ fn collect_files(
             let path_str = path.to_string_lossy();
             if let Some((base_dir, pattern)) = split_glob_base(&path_str) {
                 let base = if base_dir.is_empty() {
-                    std::env::current_dir().unwrap_or_default()
+                    cwd.clone()
                 } else {
-                    PathBuf::from(&base_dir)
+                    let candidate = PathBuf::from(&base_dir);
+                    if candidate.is_absolute() {
+                        candidate
+                    } else {
+                        cwd.join(candidate)
+                    }
                 };
                 if base.is_dir()
                     && let Ok(glob) = globset::Glob::new(&pattern)
@@ -2137,7 +2160,7 @@ fn collect_files(
             // entry.into_path() yields absolute paths. This ensures
             // strip_prefix(cwd) works correctly for --exclude / ignorePaths.
             let abs_path = if path.is_relative() {
-                std::env::current_dir().unwrap_or_default().join(path)
+                cwd.join(path)
             } else {
                 path.to_path_buf()
             };
@@ -2194,7 +2217,6 @@ fn collect_files(
 
     // ignorePaths and --exclude patterns are matched against relative paths,
     // with patterns without '/' treated as basename-anywhere matches (prefixed with **/).
-    let cwd = std::env::current_dir().unwrap_or_default();
 
     // Exclude the config file itself (cspell auto-excludes its own config)
     if let Some(ref config_file) = options.config_file {
@@ -2233,9 +2255,8 @@ fn collect_files(
     } else if !settings.ignore_paths.is_empty() {
         let filter = build_ignore_filter(&settings.ignore_paths);
         if let Some(filter) = filter {
-            let cwd2 = std::env::current_dir().unwrap_or_default();
             files.retain(|f| {
-                let rel = f.strip_prefix(&cwd2).unwrap_or(f);
+                let rel = f.strip_prefix(&cwd).unwrap_or(f);
                 !filter.is_ignored(rel)
             });
         }
@@ -2981,20 +3002,6 @@ impl SpellCache {
 mod tests {
     use super::*;
     use regex::Regex;
-    use std::sync::{Mutex, OnceLock};
-
-    fn cwd_test_lock() -> &'static Mutex<()> {
-        static LOCK: OnceLock<Mutex<()>> = OnceLock::new();
-        LOCK.get_or_init(|| Mutex::new(()))
-    }
-
-    struct CwdGuard(PathBuf);
-
-    impl Drop for CwdGuard {
-        fn drop(&mut self) {
-            let _ = std::env::set_current_dir(&self.0);
-        }
-    }
 
     #[test]
     fn apply_defaults_when_empty() {
@@ -3591,9 +3598,6 @@ dictionaries = ["en_us"]
 
     #[test]
     fn vitest_runtime_config_accepts_unplugin_in_markdown_links() {
-        let _guard = cwd_test_lock().lock().unwrap();
-        let _cwd_guard = CwdGuard(std::env::current_dir().unwrap());
-
         let workspace_root = Path::new(env!("CARGO_MANIFEST_DIR"))
             .parent()
             .unwrap()
@@ -3603,7 +3607,6 @@ dictionaries = ["en_us"]
         let repo = workspace_root
             .join("vendor/cspell/integration-tests/repositories/temp/vitest-dev/vitest");
 
-        std::env::set_current_dir(&repo).unwrap();
         let resolved =
             crate::commands::setup::resolve_config(None, Some(repo.as_path()), true, &[]).unwrap();
 
@@ -3664,9 +3667,6 @@ dictionaries = ["en_us"]
 
     #[test]
     fn collect_all_issues_vitest_runtime_config_skips_unplugin() {
-        let _guard = cwd_test_lock().lock().unwrap();
-        let _cwd_guard = CwdGuard(std::env::current_dir().unwrap());
-
         let workspace_root = Path::new(env!("CARGO_MANIFEST_DIR"))
             .parent()
             .unwrap()
@@ -3677,7 +3677,6 @@ dictionaries = ["en_us"]
             .join("vendor/cspell/integration-tests/repositories/temp/vitest-dev/vitest");
         let file = repo.join("docs/guide/index.md");
 
-        std::env::set_current_dir(&repo).unwrap();
         let resolved =
             crate::commands::setup::resolve_config(None, Some(repo.as_path()), true, &[]).unwrap();
 
@@ -3704,6 +3703,7 @@ dictionaries = ["en_us"]
                 per_dir_config_search: true,
                 no_must_find_files: true,
                 compound_words_mode: Some(CompoundWordsMode::SeparateWords),
+                cwd: Some(repo.clone()),
                 ..CheckOptions::default()
             },
         )
@@ -3722,9 +3722,6 @@ dictionaries = ["en_us"]
 
     #[test]
     fn vitest_runtime_js_reports_weba_like_cspell() {
-        let _guard = cwd_test_lock().lock().unwrap();
-        let _cwd_guard = CwdGuard(std::env::current_dir().unwrap());
-
         let workspace_root = Path::new(env!("CARGO_MANIFEST_DIR"))
             .parent()
             .unwrap()
@@ -3734,7 +3731,6 @@ dictionaries = ["en_us"]
         let repo = workspace_root
             .join("vendor/cspell/integration-tests/repositories/temp/vitest-dev/vitest");
 
-        std::env::set_current_dir(&repo).unwrap();
         let resolved =
             crate::commands::setup::resolve_config(None, Some(repo.as_path()), true, &[]).unwrap();
 
@@ -3776,9 +3772,6 @@ dictionaries = ["en_us"]
 
     #[test]
     fn vitest_runtime_css_reports_percent_encoded_svg_tokens_like_cspell() {
-        let _guard = cwd_test_lock().lock().unwrap();
-        let _cwd_guard = CwdGuard(std::env::current_dir().unwrap());
-
         let workspace_root = Path::new(env!("CARGO_MANIFEST_DIR"))
             .parent()
             .unwrap()
@@ -3788,7 +3781,6 @@ dictionaries = ["en_us"]
         let repo = workspace_root
             .join("vendor/cspell/integration-tests/repositories/temp/vitest-dev/vitest");
 
-        std::env::set_current_dir(&repo).unwrap();
         let resolved =
             crate::commands::setup::resolve_config(None, Some(repo.as_path()), true, &[]).unwrap();
 
@@ -3840,9 +3832,6 @@ dictionaries = ["en_us"]
 
     #[test]
     fn gitbucket_runtime_config_keeps_java_member_function_ignore_pattern() {
-        let _guard = cwd_test_lock().lock().unwrap();
-        let _cwd_guard = CwdGuard(std::env::current_dir().unwrap());
-
         let workspace_root = Path::new(env!("CARGO_MANIFEST_DIR"))
             .parent()
             .unwrap()
@@ -3852,7 +3841,6 @@ dictionaries = ["en_us"]
         let repo = workspace_root
             .join("vendor/cspell/integration-tests/repositories/temp/gitbucket/gitbucket");
 
-        std::env::set_current_dir(&repo).unwrap();
         let resolved =
             crate::commands::setup::resolve_config(None, Some(repo.as_path()), true, &[]).unwrap();
 
@@ -4682,9 +4670,6 @@ dictionaries = ["en_us"]
 
     #[test]
     fn collect_issues_applies_nested_local_config_override_from_glob_expanded_paths() {
-        let _guard = cwd_test_lock().lock().unwrap();
-        let _cwd_guard = CwdGuard(std::env::current_dir().unwrap());
-
         let dir = tempfile::tempdir().unwrap();
         let root_config = dir.path().join("cspell.json");
         let keyvault_dir = dir.path().join("specification/keyvault");
@@ -4716,7 +4701,6 @@ dictionaries = ["en_us"]
             overrides: Vec::new(),
         };
 
-        std::env::set_current_dir(dir.path()).unwrap();
         let results = collect_all_issues(
             &[PathBuf::from(
                 "**/Security.KeyVault.Administration/README.md",
@@ -4728,6 +4712,7 @@ dictionaries = ["en_us"]
                 config_search: true,
                 per_dir_config_search: true,
                 no_must_find_files: true,
+                cwd: Some(dir.path().to_path_buf()),
                 ..CheckOptions::default()
             },
         )
@@ -4741,9 +4726,6 @@ dictionaries = ["en_us"]
 
     #[test]
     fn azure_rest_api_specs_markdown_yaml_keeps_allow_compound_words() {
-        let _guard = cwd_test_lock().lock().unwrap();
-        let _cwd_guard = CwdGuard(std::env::current_dir().unwrap());
-
         let workspace_root = PathBuf::from(env!("CARGO_MANIFEST_DIR"))
             .parent()
             .unwrap()
@@ -4759,7 +4741,6 @@ dictionaries = ["en_us"]
             );
         }
 
-        std::env::set_current_dir(&repo).unwrap();
         let resolved =
             crate::commands::setup::resolve_config(None, Some(repo.as_path()), true, &[])
                 .expect("resolve config");
@@ -4841,9 +4822,6 @@ dictionaries = ["en_us"]
 
     #[test]
     fn azure_documentation_local_config_keeps_allow_compound_words() {
-        let _guard = cwd_test_lock().lock().unwrap();
-        let _cwd_guard = CwdGuard(std::env::current_dir().unwrap());
-
         let workspace_root = PathBuf::from(env!("CARGO_MANIFEST_DIR"))
             .parent()
             .unwrap()
@@ -4859,7 +4837,6 @@ dictionaries = ["en_us"]
             );
         }
 
-        std::env::set_current_dir(&repo).unwrap();
         let resolved =
             crate::commands::setup::resolve_config(None, Some(repo.as_path()), true, &[])
                 .expect("resolve config");
@@ -4947,9 +4924,6 @@ dictionaries = ["en_us"]
 
     #[test]
     fn flutter_kotlin_file_does_not_activate_fullstack_and_reports_splashscreen() {
-        let _guard = cwd_test_lock().lock().unwrap();
-        let _cwd_guard = CwdGuard(std::env::current_dir().unwrap());
-
         let workspace_root = PathBuf::from(env!("CARGO_MANIFEST_DIR"))
             .parent()
             .unwrap()
@@ -4962,7 +4936,6 @@ dictionaries = ["en_us"]
             panic!("expected flutter fixture at {}", repo.display());
         }
 
-        std::env::set_current_dir(&repo).unwrap();
         let resolved =
             crate::commands::setup::resolve_config(None, Some(repo.as_path()), true, &[])
                 .expect("resolve config");
@@ -5079,7 +5052,6 @@ dictionaries = ["en_us"]
             panic!("expected flutter fixture at {}", repo.display());
         }
 
-        std::env::set_current_dir(&repo).unwrap();
         let resolved =
             crate::commands::setup::resolve_config(None, Some(repo.as_path()), true, &[])
                 .expect("resolve config");
@@ -5106,6 +5078,7 @@ dictionaries = ["en_us"]
             per_dir_config_search: true,
             compound_words_mode: Some(CompoundWordsMode::SeparateWords),
             config_file: resolved.config_file.clone(),
+            cwd: Some(repo.clone()),
             ..CheckOptions::default()
         };
 
@@ -5141,9 +5114,6 @@ dictionaries = ["en_us"]
 
     #[test]
     fn flutter_runtime_accepts_livedata_in_gradle() {
-        let _guard = cwd_test_lock().lock().unwrap();
-        let _cwd_guard = CwdGuard(std::env::current_dir().unwrap());
-
         let (file, _context, template, catalog, options) =
             flutter_runtime_validator_for("add_to_app/android_view/android_view/app/build.gradle");
         let requested = template
@@ -5163,9 +5133,6 @@ dictionaries = ["en_us"]
 
     #[test]
     fn flutter_runtime_accepts_apientry_in_cpp() {
-        let _guard = cwd_test_lock().lock().unwrap();
-        let _cwd_guard = CwdGuard(std::env::current_dir().unwrap());
-
         let (file, _context, template, catalog, options) =
             flutter_runtime_validator_for("animations/windows/runner/main.cpp");
         let requested = template
@@ -5185,9 +5152,6 @@ dictionaries = ["en_us"]
 
     #[test]
     fn collect_issues_applies_nested_local_override_with_duplicate_root_import_chain() {
-        let _guard = cwd_test_lock().lock().unwrap();
-        let _cwd_guard = CwdGuard(std::env::current_dir().unwrap());
-
         let dir = tempfile::tempdir().unwrap();
         let root_json = dir.path().join("cspell.json");
         let root_yaml = dir.path().join("cspell.yaml");
@@ -5236,7 +5200,6 @@ dictionaries = ["en_us"]
             overrides: Vec::new(),
         };
 
-        std::env::set_current_dir(dir.path()).unwrap();
         let results = collect_all_issues(
             &[PathBuf::from(
                 "**/Security.KeyVault.Administration/README.md",
@@ -5248,6 +5211,7 @@ dictionaries = ["en_us"]
                 config_search: true,
                 per_dir_config_search: true,
                 no_must_find_files: true,
+                cwd: Some(dir.path().to_path_buf()),
                 ..CheckOptions::default()
             },
         )
@@ -5307,14 +5271,9 @@ dictionaries = ["en_us"]
 
     #[test]
     fn collect_files_sorts_in_cspell_compat_mode() {
-        let _guard = cwd_test_lock().lock().unwrap();
-        let _cwd_guard = CwdGuard(std::env::current_dir().unwrap());
-
         let dir = tempfile::tempdir().unwrap();
         std::fs::write(dir.path().join("b.md"), "b\n").unwrap();
         std::fs::write(dir.path().join("a.md"), "a\n").unwrap();
-
-        std::env::set_current_dir(dir.path()).unwrap();
 
         let files = collect_files(
             &[PathBuf::from(".")],
@@ -5323,6 +5282,7 @@ dictionaries = ["en_us"]
                 cspell_compat_mode: true,
                 use_gitignore: Some(false),
                 no_must_find_files: true,
+                cwd: Some(dir.path().to_path_buf()),
                 ..CheckOptions::default()
             },
         )
@@ -5338,14 +5298,9 @@ dictionaries = ["en_us"]
 
     #[test]
     fn collect_files_excludes_config_file_via_lexical_relative_match() {
-        let _guard = cwd_test_lock().lock().unwrap();
-        let _cwd_guard = CwdGuard(std::env::current_dir().unwrap());
-
         let dir = tempfile::tempdir().unwrap();
         std::fs::write(dir.path().join("cspell.json"), "{ \"version\": \"0.2\" }\n").unwrap();
         std::fs::write(dir.path().join("notes.md"), "hello\n").unwrap();
-
-        std::env::set_current_dir(dir.path()).unwrap();
 
         let files = collect_files(
             &[PathBuf::from(".")],
@@ -5355,6 +5310,7 @@ dictionaries = ["en_us"]
                 use_gitignore: Some(false),
                 config_file: Some(PathBuf::from("configs/../cspell.json")),
                 no_must_find_files: true,
+                cwd: Some(dir.path().to_path_buf()),
                 ..CheckOptions::default()
             },
         )
@@ -5370,15 +5326,10 @@ dictionaries = ["en_us"]
 
     #[test]
     fn collect_files_cspell_compat_gitignore_honors_same_file_negation() {
-        let _guard = cwd_test_lock().lock().unwrap();
-        let _cwd_guard = CwdGuard(std::env::current_dir().unwrap());
-
         let dir = tempfile::tempdir().unwrap();
         std::fs::write(dir.path().join(".gitignore"), "*.md\n!keep.md\n").unwrap();
         std::fs::write(dir.path().join("keep.md"), "keep\n").unwrap();
         std::fs::write(dir.path().join("drop.md"), "drop\n").unwrap();
-
-        std::env::set_current_dir(dir.path()).unwrap();
 
         let files = collect_files(
             &[PathBuf::from(".")],
@@ -5388,6 +5339,7 @@ dictionaries = ["en_us"]
                 use_gitignore: Some(true),
                 gitignore_root: Some(PathBuf::from(".")),
                 no_must_find_files: true,
+                cwd: Some(dir.path().to_path_buf()),
                 ..CheckOptions::default()
             },
         )
@@ -5403,9 +5355,6 @@ dictionaries = ["en_us"]
 
     #[test]
     fn collect_files_cspell_compat_gitignore_child_negation_does_not_override_parent_ignore() {
-        let _guard = cwd_test_lock().lock().unwrap();
-        let _cwd_guard = CwdGuard(std::env::current_dir().unwrap());
-
         let dir = tempfile::tempdir().unwrap();
         let child = dir.path().join("docs");
         std::fs::create_dir_all(&child).unwrap();
@@ -5413,8 +5362,6 @@ dictionaries = ["en_us"]
         std::fs::write(child.join(".gitignore"), "!keep.md\n").unwrap();
         std::fs::write(child.join("keep.md"), "keep\n").unwrap();
         std::fs::write(child.join("keep.txt"), "keep\n").unwrap();
-
-        std::env::set_current_dir(dir.path()).unwrap();
 
         let files = collect_files(
             &[PathBuf::from(".")],
@@ -5424,6 +5371,7 @@ dictionaries = ["en_us"]
                 use_gitignore: Some(true),
                 gitignore_root: Some(PathBuf::from(".")),
                 no_must_find_files: true,
+                cwd: Some(dir.path().to_path_buf()),
                 ..CheckOptions::default()
             },
         )
@@ -5447,9 +5395,6 @@ dictionaries = ["en_us"]
 
     #[test]
     fn collect_files_respects_ignore_paths_relative_to_parent_config_root() {
-        let _guard = cwd_test_lock().lock().unwrap();
-        let _cwd_guard = CwdGuard(std::env::current_dir().unwrap());
-
         let dir = tempfile::tempdir().unwrap();
         let repositories = dir.path().join("repositories");
         let repo = repositories.join("temp/gitbucket/gitbucket");
@@ -5476,7 +5421,6 @@ dictionaries = ["en_us"]
             "expected resolved ignore paths to be hydrated from config root"
         );
 
-        std::env::set_current_dir(&repo).unwrap();
         let files = collect_files(
             &[PathBuf::from("**")],
             &settings,
@@ -5484,6 +5428,7 @@ dictionaries = ["en_us"]
                 cspell_compat_mode: true,
                 use_gitignore: Some(false),
                 no_must_find_files: true,
+                cwd: Some(repo.clone()),
                 ..CheckOptions::default()
             },
         )
@@ -5507,9 +5452,6 @@ dictionaries = ["en_us"]
 
     #[test]
     fn collect_files_respects_ignore_paths_loaded_via_imported_root_config() {
-        let _guard = cwd_test_lock().lock().unwrap();
-        let _cwd_guard = CwdGuard(std::env::current_dir().unwrap());
-
         let dir = tempfile::tempdir().unwrap();
         let repo = dir.path();
         let eng = repo.join("eng/common");
@@ -5536,7 +5478,6 @@ dictionaries = ["en_us"]
             "expected imported ignore paths to be hydrated"
         );
 
-        std::env::set_current_dir(repo).unwrap();
         let files = collect_files(
             &[PathBuf::from("**/*.{md,ts,js}")],
             &settings,
@@ -5544,6 +5485,7 @@ dictionaries = ["en_us"]
                 cspell_compat_mode: true,
                 use_gitignore: Some(false),
                 no_must_find_files: true,
+                cwd: Some(repo.to_path_buf()),
                 ..CheckOptions::default()
             },
         )
@@ -5574,9 +5516,6 @@ dictionaries = ["en_us"]
 
     #[test]
     fn collect_files_excludes_eng_paths_for_real_azure_rest_api_specs_fixture() {
-        let _guard = cwd_test_lock().lock().unwrap();
-        let _cwd_guard = CwdGuard(std::env::current_dir().unwrap());
-
         let workspace_root = Path::new(env!("CARGO_MANIFEST_DIR"))
             .parent()
             .unwrap()
@@ -5594,7 +5533,6 @@ dictionaries = ["en_us"]
         }
 
         let settings = resolver::load_config(&config).unwrap();
-        std::env::set_current_dir(&repo).unwrap();
 
         let files = collect_files(
             &[PathBuf::from("**/*.{md,ts,js}")],
@@ -5604,6 +5542,7 @@ dictionaries = ["en_us"]
                 use_gitignore: Some(true),
                 gitignore_root: Some(PathBuf::from(".")),
                 no_must_find_files: true,
+                cwd: Some(repo.clone()),
                 ..CheckOptions::default()
             },
         )
@@ -5634,9 +5573,6 @@ dictionaries = ["en_us"]
 
     #[test]
     fn collect_all_issues_skips_eng_glob_for_real_azure_rest_api_specs_fixture() {
-        let _guard = cwd_test_lock().lock().unwrap();
-        let _cwd_guard = CwdGuard(std::env::current_dir().unwrap());
-
         let workspace_root = Path::new(env!("CARGO_MANIFEST_DIR"))
             .parent()
             .unwrap()
@@ -5657,7 +5593,6 @@ dictionaries = ["en_us"]
         apply_default_dictionaries(&mut settings);
         apply_default_patterns(&mut settings);
 
-        std::env::set_current_dir(&repo).unwrap();
         let results = collect_all_issues(
             &[PathBuf::from("eng/**/*.{md,ts,js}")],
             &settings,
@@ -5675,6 +5610,7 @@ dictionaries = ["en_us"]
                 use_gitignore: Some(true),
                 gitignore_root: Some(PathBuf::from(".")),
                 no_must_find_files: true,
+                cwd: Some(repo.clone()),
                 ..CheckOptions::default()
             },
         )
@@ -5692,9 +5628,6 @@ dictionaries = ["en_us"]
 
     #[test]
     fn collect_all_issues_skips_eng_glob_for_real_azure_fixture_via_setup_resolve_config() {
-        let _guard = cwd_test_lock().lock().unwrap();
-        let _cwd_guard = CwdGuard(std::env::current_dir().unwrap());
-
         let workspace_root = Path::new(env!("CARGO_MANIFEST_DIR"))
             .parent()
             .unwrap()
@@ -5711,9 +5644,8 @@ dictionaries = ["en_us"]
             );
         }
 
-        std::env::set_current_dir(&repo).unwrap();
         let resolved = crate::commands::setup::resolve_config(
-            Some(Path::new("cspell.json")),
+            Some(config.as_path()),
             Some(repo.as_path()),
             true,
             &[],
@@ -5742,6 +5674,7 @@ dictionaries = ["en_us"]
                 gitignore_root: Some(PathBuf::from(".")),
                 config_file: resolved.config_file,
                 no_must_find_files: true,
+                cwd: Some(repo.clone()),
                 ..CheckOptions::default()
             },
         )
@@ -5759,9 +5692,6 @@ dictionaries = ["en_us"]
 
     #[test]
     fn collect_all_issues_uses_vendor_common_local_ignore_paths_outside_explicit_config_dir() {
-        let _guard = cwd_test_lock().lock().unwrap();
-        let _cwd_guard = CwdGuard(std::env::current_dir().unwrap());
-
         let dir = tempfile::tempdir().unwrap();
         let repositories = dir.path().join("repositories");
         let repo = repositories.join("temp/microsoft/TypeScript-Website");
@@ -5784,7 +5714,6 @@ dictionaries = ["en_us"]
         apply_default_dictionaries(&mut settings);
         apply_default_patterns(&mut settings);
 
-        std::env::set_current_dir(&repo).unwrap();
         let results = collect_all_issues(
             &[PathBuf::from("pnpm-lock.yaml")],
             &settings,
@@ -5801,6 +5730,7 @@ dictionaries = ["en_us"]
                 per_dir_config_search: true,
                 config_file: Some(repo_config),
                 no_must_find_files: true,
+                cwd: Some(repo.clone()),
                 ..CheckOptions::default()
             },
         )
@@ -5923,9 +5853,6 @@ dictionaries = ["en_us"]
 
     #[test]
     fn collect_files_keeps_real_licia_explicit_changelog() {
-        let _guard = cwd_test_lock().lock().unwrap();
-        let _cwd_guard = CwdGuard(std::env::current_dir().unwrap());
-
         let workspace_root = Path::new(env!("CARGO_MANIFEST_DIR"))
             .parent()
             .unwrap()
@@ -5939,9 +5866,8 @@ dictionaries = ["en_us"]
             panic!("expected licia fixture at {}", config.display());
         }
 
-        std::env::set_current_dir(&repo).unwrap();
         let resolved = crate::commands::setup::resolve_config(
-            Some(Path::new("cspell.json")),
+            Some(config.as_path()),
             Some(repo.as_path()),
             true,
             &[],
@@ -5970,6 +5896,7 @@ dictionaries = ["en_us"]
                 per_dir_config_search: true,
                 config_file: resolved.config_file.clone(),
                 no_must_find_files: true,
+                cwd: Some(repo.clone()),
                 ..CheckOptions::default()
             },
         )
@@ -6002,9 +5929,6 @@ dictionaries = ["en_us"]
 
     #[test]
     fn collect_all_issues_reports_real_licia_changelog_unenumerable() {
-        let _guard = cwd_test_lock().lock().unwrap();
-        let _cwd_guard = CwdGuard(std::env::current_dir().unwrap());
-
         let workspace_root = Path::new(env!("CARGO_MANIFEST_DIR"))
             .parent()
             .unwrap()
@@ -6018,9 +5942,8 @@ dictionaries = ["en_us"]
             panic!("expected licia fixture at {}", config.display());
         }
 
-        std::env::set_current_dir(&repo).unwrap();
         let resolved = crate::commands::setup::resolve_config(
-            Some(Path::new("cspell.json")),
+            Some(config.as_path()),
             Some(repo.as_path()),
             true,
             &[],
@@ -6056,6 +5979,7 @@ dictionaries = ["en_us"]
                 per_dir_config_search: true,
                 config_file: resolved.config_file.clone(),
                 no_must_find_files: true,
+                cwd: Some(repo.clone()),
                 ..CheckOptions::default()
             },
         )
@@ -6076,9 +6000,6 @@ dictionaries = ["en_us"]
 
     #[test]
     fn collect_all_issues_reports_real_dart_sdk_unoverridden() {
-        let _guard = cwd_test_lock().lock().unwrap();
-        let _cwd_guard = CwdGuard(std::env::current_dir().unwrap());
-
         let workspace_root = Path::new(env!("CARGO_MANIFEST_DIR"))
             .parent()
             .unwrap()
@@ -6091,7 +6012,6 @@ dictionaries = ["en_us"]
             panic!("expected dart-sdk fixture at {}", repo.display());
         }
 
-        std::env::set_current_dir(&repo).unwrap();
         let resolved =
             crate::commands::setup::resolve_config(None, Some(repo.as_path()), true, &[])
                 .expect("resolve config");
@@ -6127,6 +6047,7 @@ dictionaries = ["en_us"]
                 per_dir_config_search: true,
                 config_file: resolved.config_file.clone(),
                 no_must_find_files: true,
+                cwd: Some(repo.clone()),
                 ..CheckOptions::default()
             },
         )
@@ -6152,9 +6073,6 @@ dictionaries = ["en_us"]
 
     #[test]
     fn latex_examples_runtime_override_activates_de_locale_and_latex_dictionary() {
-        let _guard = cwd_test_lock().lock().unwrap();
-        let _cwd_guard = CwdGuard(std::env::current_dir().unwrap());
-
         let workspace_root = Path::new(env!("CARGO_MANIFEST_DIR"))
             .parent()
             .unwrap()
@@ -6167,7 +6085,6 @@ dictionaries = ["en_us"]
             panic!("expected latex-examples fixture at {}", repo.display());
         }
 
-        std::env::set_current_dir(&repo).unwrap();
         let resolved =
             crate::commands::setup::resolve_config(None, Some(repo.as_path()), true, &[])
                 .expect("resolve config");
@@ -6186,10 +6103,10 @@ dictionaries = ["en_us"]
         let merged_settings =
             merge_bundled_settings(&settings, &catalog.lang_settings, &catalog.overrides);
 
-        let file = Path::new("documents/Analysis I/Analysis-I.tex");
+        let file = repo.join("documents/Analysis I/Analysis-I.tex");
         let compiled_overrides = overrides::compile_overrides(&merged_settings);
         let effective_settings =
-            overrides::apply_compiled_overrides(&merged_settings, file, &compiled_overrides)
+            overrides::apply_compiled_overrides(&merged_settings, &file, &compiled_overrides)
                 .expect("expected latex override to match fixture file");
 
         assert_eq!(
@@ -6205,7 +6122,8 @@ dictionaries = ["en_us"]
             "expected runtime override to activate latex dictionary"
         );
 
-        let resolved_lang_settings = resolve_language_settings(&effective_settings, Some(file));
+        let resolved_lang_settings =
+            resolve_language_settings(&effective_settings, Some(file.as_path()));
         assert!(
             resolved_lang_settings
                 .dictionaries
@@ -6226,7 +6144,7 @@ dictionaries = ["en_us"]
             },
             &catalog.extra_active,
             false,
-            Some(file),
+            Some(file.as_path()),
             None,
         );
         let issues = validator.validate_text("Formelsammlung\n");
@@ -6238,9 +6156,6 @@ dictionaries = ["en_us"]
 
     #[test]
     fn collect_files_respects_real_prettier_files_whitelist() {
-        let _guard = cwd_test_lock().lock().unwrap();
-        let _cwd_guard = CwdGuard(std::env::current_dir().unwrap());
-
         let workspace_root = Path::new(env!("CARGO_MANIFEST_DIR"))
             .parent()
             .unwrap()
@@ -6254,7 +6169,6 @@ dictionaries = ["en_us"]
             panic!("expected prettier fixture at {}", config.display());
         }
 
-        std::env::set_current_dir(&repo).unwrap();
         let resolved =
             crate::commands::setup::resolve_config(None, Some(repo.as_path()), true, &[])
                 .expect("resolve config");
@@ -6282,6 +6196,7 @@ dictionaries = ["en_us"]
                 config_file: resolved.config_file.clone(),
                 use_gitignore: Some(true),
                 no_must_find_files: true,
+                cwd: Some(repo.clone()),
                 ..CheckOptions::default()
             },
         )
@@ -6312,9 +6227,6 @@ dictionaries = ["en_us"]
 
     #[test]
     fn collect_all_issues_ignores_real_prettier_prettier_ignore_fence() {
-        let _guard = cwd_test_lock().lock().unwrap();
-        let _cwd_guard = CwdGuard(std::env::current_dir().unwrap());
-
         let workspace_root = Path::new(env!("CARGO_MANIFEST_DIR"))
             .parent()
             .unwrap()
@@ -6327,7 +6239,6 @@ dictionaries = ["en_us"]
             panic!("expected prettier fixture at {}", repo.display());
         }
 
-        std::env::set_current_dir(&repo).unwrap();
         let resolved =
             crate::commands::setup::resolve_config(None, Some(repo.as_path()), true, &[])
                 .expect("resolve config");
@@ -6362,6 +6273,7 @@ dictionaries = ["en_us"]
                 config_file: resolved.config_file.clone(),
                 use_gitignore: Some(true),
                 no_must_find_files: true,
+                cwd: Some(repo.clone()),
                 ..CheckOptions::default()
             },
         )

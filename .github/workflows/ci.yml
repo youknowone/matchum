@@ -13,18 +13,28 @@ jobs:
     name: Test
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v4
         with:
           submodules: recursive
       - uses: dtolnay/rust-toolchain@stable
       - uses: Swatinem/rust-cache@v2
+      - name: Cache integration test fixtures
+        id: fixtures-cache
+        uses: actions/cache@v4
+        with:
+          path: vendor/cspell/integration-tests/repositories/temp
+          key: fixtures-${{ hashFiles('scripts/fetch-fixtures.sh') }}
+      - name: Fetch integration test fixtures
+        if: steps.fixtures-cache.outputs.cache-hit != 'true'
+        run: bash scripts/fetch-fixtures.sh
+      - run: cargo build -p matchum
       - run: cargo test --workspace
 
   clippy:
     name: Clippy
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v4
         with:
           submodules: recursive
       - uses: dtolnay/rust-toolchain@stable
@@ -37,7 +47,7 @@ jobs:
     name: Format
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v4
       - uses: dtolnay/rust-toolchain@stable
         with:
           components: rustfmt
@@ -47,7 +57,7 @@ jobs:
     name: Spell Check
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v4
         with:
           submodules: recursive
       - uses: dtolnay/rust-toolchain@stable
