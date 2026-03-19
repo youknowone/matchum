@@ -68,7 +68,7 @@ anyhow = "1"
 
 # Config formats
 toml = "0.8"
-serde_yaml = "0.9"
+serde_yml = "0.0.12"
 
 # Spelling
 typos-dict = "0.13.22"

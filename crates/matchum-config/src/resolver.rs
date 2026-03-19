@@ -318,7 +318,7 @@ fn parse_config_settings(path: &Path, content: &str) -> Result<CSpellSettings, R
 
     match path.extension().and_then(|e| e.to_str()) {
         Some("yaml" | "yml") => {
-            serde_yaml::from_str(content).map_err(|e| ResolveError::Json(e.to_string()))
+            serde_yml::from_str(content).map_err(|e| ResolveError::Json(e.to_string()))
         }
         Some("json") => {
             // Try fast serde_json first; fall back to json5 for files with comments.
