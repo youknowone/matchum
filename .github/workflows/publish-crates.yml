@@ -21,7 +21,7 @@ jobs:
           CARGO_REGISTRY_TOKEN: ${{ secrets.CARGO_REGISTRY_TOKEN }}
         run: |
           # Publish in dependency order with retry for index propagation
-          for crate in matchum-core matchum-dict matchum-config matchum cargo-matchum; do
+          for crate in matchum-config matchum-dict matchum-core matchum cargo-matchum; do
             echo "Publishing $crate..."
             cargo publish -p "$crate" --no-verify || {
               echo "Retrying $crate in 30s (waiting for index)..."
