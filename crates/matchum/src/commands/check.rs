@@ -876,7 +876,15 @@ fn run_check_inner(
     let files_with_issues = results.len();
 
     if !options.no_summary && !quiet && format != "json" {
-        if total_issues > 0 {
+        if options.cspell_compat_mode {
+            eprintln!(
+                "CSpell: Files checked: {}, Issues found: {} in {} file{}.",
+                files_checked,
+                total_issues,
+                files_with_issues,
+                if files_with_issues == 1 { "" } else { "s" },
+            );
+        } else if total_issues > 0 {
             eprintln!(
                 "\nFound {} issue{} in {} file{}",
                 total_issues,
