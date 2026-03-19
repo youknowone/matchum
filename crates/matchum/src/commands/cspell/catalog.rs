@@ -575,7 +575,18 @@ fn fetch_remote_dict(url: &str, dict_name: &str) -> Option<PathBuf> {
     }
 
     eprintln!("Fetching remote dictionary: {url}");
-    let body = ureq::get(url).call().ok()?.into_body().read_to_vec().ok()?;
+    let agent = ureq::Agent::new_with_config(
+        ureq::config::Config::builder()
+            .tls_config(
+                ureq::tls::TlsConfig::builder()
+                    .unversioned_rustls_crypto_provider(std::sync::Arc::new(
+                        rustls::crypto::aws_lc_rs::default_provider(),
+                    ))
+                    .build(),
+            )
+            .build(),
+    );
+    let body = agent.get(url).call().ok()?.into_body().read_to_vec().ok()?;
     std::fs::write(&cached, &body).ok()?;
     Some(cached)
 }

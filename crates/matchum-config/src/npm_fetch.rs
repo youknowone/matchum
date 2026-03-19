@@ -2,7 +2,16 @@ use flate2::read::GzDecoder;
 use serde::Deserialize;
 use std::fs;
 use std::path::{Path, PathBuf};
+use std::sync::Arc;
 use tar::Archive;
+
+fn tls_config() -> ureq::tls::TlsConfig {
+    ureq::tls::TlsConfig::builder()
+        .unversioned_rustls_crypto_provider(Arc::new(
+            rustls::crypto::aws_lc_rs::default_provider(),
+        ))
+        .build()
+}
 
 const NPM_REGISTRY: &str = "https://registry.npmjs.org";
 
@@ -117,6 +126,7 @@ fn fetch_package_meta(
 
     let agent = ureq::Agent::new_with_config(
         ureq::config::Config::builder()
+            .tls_config(tls_config())
             .timeout_global(Some(std::time::Duration::from_secs(30)))
             .build(),
     );
@@ -146,6 +156,7 @@ fn fetch_package_meta(
 fn download_and_extract(tarball_url: &str, target_dir: &Path) -> Result<(), FetchError> {
     let agent = ureq::Agent::new_with_config(
         ureq::config::Config::builder()
+            .tls_config(tls_config())
             .timeout_global(Some(std::time::Duration::from_secs(30)))
             .build(),
     );
