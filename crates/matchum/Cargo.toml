@@ -43,6 +43,7 @@ unidiff = { workspace = true }
 gix-attributes = { workspace = true }
 toml = { workspace = true }
 ureq = { workspace = true }
+rustls = { workspace = true }
 
 [dev-dependencies]
 tempfile = { workspace = true }
