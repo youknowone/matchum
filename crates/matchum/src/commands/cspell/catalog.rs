@@ -414,6 +414,7 @@ pub fn build_dictionary_catalog(
     // When false (matchum.toml mode), only names already starting with "@" are
     // resolved as npm packages — bare names require a matching dictionary_definition.
     let npm_base = dict_base_dir.or(config_dir);
+    let resolve_start = std::time::Instant::now();
     if let Some(base) = npm_base {
         for dict_name in &settings.dictionaries {
             let lower = dict_name.to_lowercase();
@@ -503,6 +504,15 @@ pub fn build_dictionary_catalog(
 
     // Add cspell's core default languageSettings.
     accumulated_lang_settings.extend(defaults::default_language_settings());
+
+    let resolve_elapsed = resolve_start.elapsed();
+    if resolve_elapsed.as_millis() > 500 {
+        eprintln!(
+            "Loading {} dictionaries... ({:.1}s resolving packages)",
+            jobs.len(),
+            resolve_elapsed.as_secs_f64()
+        );
+    }
 
     // Phase 2: Load all dictionaries in parallel
     let results: Vec<_> = jobs
