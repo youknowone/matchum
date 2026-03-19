@@ -625,6 +625,16 @@ fn run_check_inner(
         std::collections::HashMap<String, Arc<ValidatorTemplate>>,
     > = std::sync::Mutex::new(std::collections::HashMap::new());
 
+    let show_progress =
+        options.cspell_compat_mode && !options.no_progress && !options.quiet && !options.silent;
+    let progress_total = files.len();
+    let progress_counter = std::sync::atomic::AtomicUsize::new(0);
+    let progress_cwd = if show_progress {
+        Some(options.cwd())
+    } else {
+        None
+    };
+
     let results: Vec<(PathBuf, String, Vec<ValidationIssue>)> = files
         .par_iter()
         .filter_map(|file| {
@@ -658,6 +668,12 @@ fn run_check_inner(
             if verbose > 0 && !silent {
                 eprintln!("Checking: {}", file.display());
             }
+
+            let file_start = if show_progress {
+                Some(std::time::Instant::now())
+            } else {
+                None
+            };
 
             let context = file
                 .parent()
@@ -767,6 +783,17 @@ fn run_check_inner(
 
             // Apply per-file total issue limit (cspell's maxNumberOfProblems, default 10000)
             issues = apply_issue_limits(issues, effective_settings.max_number_of_problems);
+
+            if let Some(start) = file_start {
+                let idx = progress_counter.fetch_add(1, std::sync::atomic::Ordering::Relaxed) + 1;
+                let elapsed = start.elapsed();
+                let elapsed_ms = elapsed.as_secs_f64() * 1000.0;
+                let rel_path = progress_cwd
+                    .as_ref()
+                    .and_then(|cwd| file.strip_prefix(cwd).ok())
+                    .unwrap_or(file);
+                eprintln!("{idx}/{progress_total} {path} {elapsed_ms:.2}ms", path = rel_path.display());
+            }
 
             if issues.is_empty() {
                 if use_cache && let Ok(mut guard) = cache.lock() {

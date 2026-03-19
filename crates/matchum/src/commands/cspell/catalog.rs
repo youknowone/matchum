@@ -9,7 +9,7 @@ use matchum_dict::repmap::RepMap;
 use md5::{Digest, Md5};
 use rayon::prelude::*;
 use std::borrow::Cow;
-use std::collections::HashSet;
+use std::collections::{HashMap, HashSet};
 use std::path::{Path, PathBuf};
 use std::sync::Arc;
 use unicode_normalization::UnicodeNormalization;
@@ -415,6 +415,12 @@ pub fn build_dictionary_catalog(
     // resolved as npm packages — bare names require a matching dictionary_definition.
     let npm_base = dict_base_dir.or(config_dir);
     let resolve_start = std::time::Instant::now();
+
+    // Caches to avoid redundant parent-dir walks and JSON parsing.
+    // Each ext_path is resolved at most once, and each resolved file parsed at most once.
+    let mut resolve_cache: HashMap<String, Option<PathBuf>> = HashMap::new();
+    let mut settings_cache: HashMap<PathBuf, CSpellSettings> = HashMap::new();
+
     if let Some(base) = npm_base {
         for dict_name in &settings.dictionaries {
             let lower = dict_name.to_lowercase();
@@ -422,7 +428,6 @@ pub fn build_dictionary_catalog(
                 continue;
             }
             let pkg_name = if dict_name.starts_with('@') {
-                // Already a scoped package name — use as-is
                 lower.clone()
             } else if auto_resolve_cspell {
                 defaults::dict_name_to_package(&lower)
@@ -430,9 +435,17 @@ pub fn build_dictionary_catalog(
                 continue;
             };
             let ext_path = format!("{}/cspell-ext.json", pkg_name);
-            if let Some(ext_json) = resolve::resolve_npm_import(&ext_path, base)
-                && let Ok(ext_settings) = matchum_config::resolver::load_config(&ext_json)
-            {
+            let ext_json = resolve_cache
+                .entry(ext_path.clone())
+                .or_insert_with(|| resolve::resolve_npm_import(&ext_path, base))
+                .clone();
+            if let Some(ext_json) = ext_json {
+                let ext_settings = settings_cache
+                    .entry(ext_json.clone())
+                    .or_insert_with(|| {
+                        matchum_config::resolver::load_config(&ext_json)
+                            .unwrap_or_default()
+                    });
                 let ext_dir = ext_json.parent().unwrap_or(base);
                 let ext_active: HashSet<String> = ext_settings
                     .dictionaries
@@ -467,10 +480,18 @@ pub fn build_dictionary_catalog(
                 continue;
             }
             let ext_path = format!("{}/cspell-ext.json", pkg);
-            if let Some(ext_json) = resolve::resolve_npm_import(&ext_path, base)
-                && let Ok(ext_settings) = matchum_config::resolver::load_config(&ext_json)
-            {
+            let ext_json = resolve_cache
+                .entry(ext_path.clone())
+                .or_insert_with(|| resolve::resolve_npm_import(&ext_path, base))
+                .clone();
+            if let Some(ext_json) = ext_json {
                 loaded_pkgs.insert(pkg.to_string());
+                let ext_settings = settings_cache
+                    .entry(ext_json.clone())
+                    .or_insert_with(|| {
+                        matchum_config::resolver::load_config(&ext_json)
+                            .unwrap_or_default()
+                    });
                 let ext_dir = ext_json.parent().unwrap_or(base);
                 let pkg_active: HashSet<String> = ext_settings
                     .dictionaries
@@ -489,7 +510,7 @@ pub fn build_dictionary_catalog(
                         &mut inline_extra_active,
                     );
                 }
-                for mut ls in ext_settings.language_settings {
+                for mut ls in ext_settings.language_settings.clone() {
                     for p in &ext_settings.patterns {
                         if !ls.patterns.iter().any(|existing| existing.name == p.name) {
                             ls.patterns.push(p.clone());
@@ -497,7 +518,7 @@ pub fn build_dictionary_catalog(
                     }
                     accumulated_lang_settings.push(ls);
                 }
-                accumulated_overrides.extend(ext_settings.overrides);
+                accumulated_overrides.extend(ext_settings.overrides.clone());
             }
         }
     }
