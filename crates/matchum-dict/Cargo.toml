@@ -16,6 +16,7 @@ flate2 = { workspace = true }
 regex = { workspace = true }
 thiserror = { workspace = true }
 unicode-normalization = { workspace = true }
+memmap2 = { workspace = true }
 
 [dev-dependencies]
 insta = { workspace = true }
