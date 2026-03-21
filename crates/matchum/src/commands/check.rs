@@ -463,7 +463,7 @@ fn run_collect_issues(
                 )
             };
             let needs_lang = language_id.is_some();
-            let effective_owned = if overridden.is_some() || needs_lang {
+            let mut effective_owned = if overridden.is_some() || needs_lang {
                 let mut s = overridden.unwrap_or_else(|| context_settings.clone());
                 if let Some(ref lang) = language_id {
                     s.language_id = Some(lang.clone());
@@ -472,8 +472,8 @@ fn run_collect_issues(
             } else {
                 None
             };
-            let effective_settings = effective_owned.as_ref().unwrap_or(context_settings);
-            if resolve_language_setting_scalars(effective_settings, Some(file)).enabled
+            let pre_settings = effective_owned.as_ref().unwrap_or(context_settings);
+            if resolve_language_setting_scalars(pre_settings, Some(file)).enabled
                 == Some(false)
             {
                 return None;
@@ -484,6 +484,12 @@ fn run_collect_issues(
                 ReadFileMmap::Binary => return None,
             };
 
+            if let Some(locale) = extract_indoc_locale(&content) {
+                let s = effective_owned.get_or_insert_with(|| context_settings.clone());
+                s.language = Some(locale);
+            }
+
+            let effective_settings = effective_owned.as_ref().unwrap_or(context_settings);
             let lang_ids = effective_owned
                 .is_none()
                 .then(|| active_language_ids(effective_settings, Some(file)));
@@ -698,7 +704,7 @@ fn run_check_inner(
                 )
             };
             let needs_lang = language_id.is_some();
-            let effective_owned = if overridden.is_some() || needs_lang {
+            let mut effective_owned = if overridden.is_some() || needs_lang {
                 let mut s = overridden.unwrap_or_else(|| context_settings.clone());
                 if let Some(ref lang) = language_id {
                     s.language_id = Some(lang.clone());
@@ -707,8 +713,9 @@ fn run_check_inner(
             } else {
                 None
             };
-            let effective_settings = effective_owned.as_ref().unwrap_or(context_settings);
-            if resolve_language_setting_scalars(effective_settings, Some(file)).enabled
+            // Pre-check enabled before reading the file (locale not yet applied)
+            let pre_settings = effective_owned.as_ref().unwrap_or(context_settings);
+            if resolve_language_setting_scalars(pre_settings, Some(file)).enabled
                 == Some(false)
             {
                 return None;
@@ -725,6 +732,14 @@ fn run_check_inner(
                 }
             };
 
+            // Apply in-doc locale directive: changes which languageSettings
+            // match, affecting active dictionaries for this file.
+            if let Some(locale) = extract_indoc_locale(&content) {
+                let s = effective_owned.get_or_insert_with(|| context_settings.clone());
+                s.language = Some(locale);
+            }
+
+            let effective_settings = effective_owned.as_ref().unwrap_or(context_settings);
             let lang_ids = effective_owned
                 .is_none()
                 .then(|| active_language_ids(effective_settings, Some(file)));
@@ -1452,6 +1467,22 @@ fn resolve_pattern_token(
     }
 
     custom_out.extend(patterns::classify_custom_ignore_pattern(token));
+}
+
+/// Pre-scan text for `cspell:locale`/`cspell:language` directive.
+///
+/// cspell resolves the locale from in-doc settings before selecting
+/// which `languageSettings` entries match (`combineTextAndLanguageSettings`
+/// in `TextDocumentSettings.ts`). The last directive wins.
+fn extract_indoc_locale(text: &str) -> Option<String> {
+    use matchum_config::directives::{Directive, parse_directive};
+    let mut locale = None;
+    for line in text.lines() {
+        if let Some(Directive::Language(lang)) = parse_directive(line) {
+            locale = Some(lang);
+        }
+    }
+    locale
 }
 
 fn is_glob_pattern(s: &str) -> bool {
