@@ -168,7 +168,7 @@ pub fn run(opts: LintOptions) -> Result<()> {
             cache_reset: opts.cache_reset,
             cache_strategy: opts.cache_strategy,
             cache_location: opts.cache_location,
-            use_gitignore_default: false,
+            use_gitignore_default: true,
             file_type: None,
             stats: false,
             diff_filter: None,

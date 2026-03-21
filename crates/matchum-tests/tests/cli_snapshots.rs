@@ -76,6 +76,7 @@ fn normalize_stderr(text: &str) -> String {
         .filter(|line| {
             !line.starts_with("Fetching ")
                 && !line.starts_with("Installed ")
+                && !line.starts_with("Loading ")
                 && !line.starts_with("hint: using cspell config")
         })
         .collect::<Vec<_>>()

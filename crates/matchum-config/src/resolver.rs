@@ -8,7 +8,7 @@ use std::path::{Path, PathBuf};
 
 /// Config file search locations, matching cspell's configLocations.ts.
 /// JS/TS/TOML config formats are excluded (require runtime execution).
-const CONFIG_NAMES: &[&str] = &[
+pub const CONFIG_NAMES: &[&str] = &[
     "package.json",
     // Original locations
     ".cspell.json",

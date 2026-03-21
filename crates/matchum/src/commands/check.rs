@@ -1141,8 +1141,8 @@ fn should_compute_suggestions(show_suggestions: Option<bool>) -> bool {
     show_suggestions == Some(true)
 }
 
-fn should_use_shared_word_cache(options: &CheckOptions, using_precompiled_settings: bool) -> bool {
-    using_precompiled_settings && !options.cspell_compat_mode
+fn should_use_shared_word_cache(_options: &CheckOptions, using_precompiled_settings: bool) -> bool {
+    using_precompiled_settings
 }
 pub fn build_validator(
     settings: &CSpellSettings,
@@ -1978,11 +1978,13 @@ fn configure_walk_builder(
 ) {
     builder.hidden(!show_hidden);
     if cspell_compat_mode {
+        // cspell disables .ignore files but respects .gitignore during walk
+        // for performance (avoids traversing target/, node_modules/, etc.)
         builder
-            .git_ignore(false)
-            .git_global(false)
-            .git_exclude(false)
-            .ignore(false);
+            .ignore(false)
+            .git_ignore(use_gitignore)
+            .git_global(use_gitignore)
+            .git_exclude(use_gitignore);
     } else {
         builder.git_ignore(use_gitignore);
     }
@@ -6333,20 +6335,18 @@ dictionaries = ["en_us"]
     }
 
     #[test]
-    fn shared_word_cache_is_disabled_in_cspell_compat_mode() {
+    fn shared_word_cache_enabled_for_precompiled_settings() {
         let compat_options = CheckOptions {
             cspell_compat_mode: true,
             ..CheckOptions::default()
         };
         assert!(
-            !should_use_shared_word_cache(&compat_options, true),
-            "compat mode must avoid cross-file shared word cache"
+            should_use_shared_word_cache(&compat_options, true),
+            "precompiled settings allow shared word cache"
         );
-
-        let native_options = CheckOptions::default();
         assert!(
-            should_use_shared_word_cache(&native_options, true),
-            "native mode can keep the precompiled shared cache"
+            !should_use_shared_word_cache(&compat_options, false),
+            "non-precompiled settings disable shared word cache"
         );
     }
 }

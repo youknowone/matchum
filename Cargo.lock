@@ -880,6 +880,7 @@ dependencies = [
  "foldhash 0.1.5",
  "hashbrown 0.16.1",
  "insta",
+ "memmap2",
  "regex",
  "thiserror",
  "unicode-normalization",
