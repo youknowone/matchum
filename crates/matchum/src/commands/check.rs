@@ -609,7 +609,6 @@ fn run_check_inner(
     let verbose = options.verbose;
     let silent = options.silent;
     let quiet = options.quiet;
-    let validate_directives = options.validate_directives;
     let language_id = options.language_id.clone();
     let root_context = build_root_config_context(settings, config_dir, &options, show_suggestions);
     let per_dir_contexts = if options.per_dir_config_search && options.config_search {
@@ -789,12 +788,7 @@ fn run_check_inner(
             }
             let mut issues = validator.validate_text(&content);
 
-            // Validate directives if requested
-            if validate_directives {
-                let directive_issues = check_directives(&content);
-                issues.extend(directive_issues);
-                issues.sort_by(|a, b| a.offset.cmp(&b.offset));
-            }
+
 
             // Apply per-file total issue limit (cspell's maxNumberOfProblems, default 10000)
             issues = apply_issue_limits(issues, effective_settings.max_number_of_problems);
@@ -2811,75 +2805,6 @@ fn read_file_mmap(path: &Path) -> Option<String> {
     }
 }
 
-// ---------------------------------------------------------------------------
-// Directive validation
-// ---------------------------------------------------------------------------
-
-/// Known directive prefixes (case-insensitive)
-const DIRECTIVE_PREFIXES: &[&str] = &["cspell:", "spell-checker:", "spellchecker:"];
-
-const KNOWN_DIRECTIVES: &[&str] = &[
-    "enable",
-    "disable",
-    "disable-line",
-    "disable-next",
-    "disable-next-line",
-    "word",
-    "words",
-    "ignore",
-    "ignoreWord",
-    "ignoreWords",
-    "ignore-word",
-    "ignore-words",
-    "includeRegExp",
-    "ignoreRegExp",
-    "local",
-    "locale",
-    "language",
-    "dictionaries",
-    "dictionary",
-    "forbid",
-    "forbidWord",
-    "forbid-word",
-    "flag",
-    "flagWord",
-    "flag-word",
-    "enableCompoundWords",
-    "enableAllowCompoundWords",
-    "disableCompoundWords",
-    "disableAllowCompoundWords",
-    "enableCaseSensitive",
-    "disableCaseSensitive",
-];
-
-fn check_directives(content: &str) -> Vec<ValidationIssue> {
-    let mut issues = Vec::new();
-    let directive_re = regex::Regex::new(r"(?i)(?:cspell|spell-?checker)\s*:\s*(\S+)").unwrap();
-
-    for (line_idx, line) in content.lines().enumerate() {
-        for cap in directive_re.captures_iter(line) {
-            let directive = &cap[1];
-            let directive_lower = directive.to_lowercase();
-            let is_known = KNOWN_DIRECTIVES
-                .iter()
-                .any(|d| d.to_lowercase() == directive_lower);
-            if !is_known {
-                let _ = DIRECTIVE_PREFIXES; // suppress unused warning
-                let match_start = cap.get(1).unwrap().start();
-                issues.push(ValidationIssue {
-                    word: format!("cspell:{directive}"),
-                    offset: 0,
-                    line: line_idx + 1,
-                    column: match_start + 1,
-                    is_forbidden: false,
-                    is_known_typo: false,
-                    suggestions: vec![],
-                });
-            }
-        }
-    }
-    issues
-}
 
 // ---------------------------------------------------------------------------
 // Cache system
