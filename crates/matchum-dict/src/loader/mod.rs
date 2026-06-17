@@ -178,8 +178,9 @@ fn source_metadata(source: &Path) -> Option<(u64, u32)> {
 fn try_load_cache(source: &Path) -> Option<HashDictionary> {
     let (mtime, size) = source_metadata(source)?;
     let cp = cache_path(source)?;
-    let cache_bytes = std::fs::read(&cp).ok()?;
-    HashDictionary::from_cache_bytes(&cache_bytes, mtime, size)
+    let file = std::fs::File::open(&cp).ok()?;
+    let mmap = unsafe { memmap2::Mmap::map(&file) }.ok()?;
+    HashDictionary::from_cache_bytes(&mmap, mtime, size)
 }
 
 fn write_cache(source: &Path, dict: &HashDictionary) -> std::io::Result<()> {

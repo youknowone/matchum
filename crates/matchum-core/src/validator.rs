@@ -1481,21 +1481,6 @@ impl Validator {
                     if keyword_lines.contains(&i) {
                         if let Some(directive) = directives::parse_directive_no_prefilter(line) {
                             directive_map.insert(i, directive);
-                        } else if let Some(name) = directives::extract_directive_name(line) {
-                            // Typo check: AC matched but no valid directive parsed
-                            if let Some(warning) = directives::check_directive_typo(&name) {
-                                let col =
-                                    line.to_lowercase().find(&name).map(|p| p + 1).unwrap_or(1);
-                                issues.push(ValidationIssue {
-                                    word: warning.found,
-                                    offset: line_info.offset + col - 1,
-                                    line: i + 1,
-                                    column: col,
-                                    is_forbidden: false,
-                                    is_known_typo: false,
-                                    suggestions: vec![warning.suggestion],
-                                });
-                            }
                         }
                     }
                 }

@@ -43,18 +43,7 @@ fn find_nearest_config_inner(
         cache.insert(canonical, None);
         return None;
     }
-    static LOCAL_CONFIG_NAMES: &[&str] = &[
-        "package.json",
-        "cspell.json",
-        ".cspell.json",
-        "cspell.yaml",
-        "cspell.yml",
-        ".cspell.yaml",
-        ".cspell.yml",
-        "cspell.jsonc",
-        ".cspell.jsonc",
-    ];
-    for name in LOCAL_CONFIG_NAMES {
+    for name in matchum_config::resolver::CONFIG_NAMES {
         let config_path = canonical.join(name);
         if config_path.exists() && is_searchable_local_config(&config_path) {
             let result = Some(config_path);

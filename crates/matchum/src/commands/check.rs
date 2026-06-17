@@ -463,7 +463,7 @@ fn run_collect_issues(
                 )
             };
             let needs_lang = language_id.is_some();
-            let effective_owned = if overridden.is_some() || needs_lang {
+            let mut effective_owned = if overridden.is_some() || needs_lang {
                 let mut s = overridden.unwrap_or_else(|| context_settings.clone());
                 if let Some(ref lang) = language_id {
                     s.language_id = Some(lang.clone());
@@ -472,8 +472,8 @@ fn run_collect_issues(
             } else {
                 None
             };
-            let effective_settings = effective_owned.as_ref().unwrap_or(context_settings);
-            if resolve_language_setting_scalars(effective_settings, Some(file)).enabled
+            let pre_settings = effective_owned.as_ref().unwrap_or(context_settings);
+            if resolve_language_setting_scalars(pre_settings, Some(file)).enabled
                 == Some(false)
             {
                 return None;
@@ -484,6 +484,12 @@ fn run_collect_issues(
                 ReadFileMmap::Binary => return None,
             };
 
+            if let Some(locale) = extract_indoc_locale(&content) {
+                let s = effective_owned.get_or_insert_with(|| context_settings.clone());
+                s.language = Some(locale);
+            }
+
+            let effective_settings = effective_owned.as_ref().unwrap_or(context_settings);
             let lang_ids = effective_owned
                 .is_none()
                 .then(|| active_language_ids(effective_settings, Some(file)));
@@ -603,7 +609,6 @@ fn run_check_inner(
     let verbose = options.verbose;
     let silent = options.silent;
     let quiet = options.quiet;
-    let validate_directives = options.validate_directives;
     let language_id = options.language_id.clone();
     let root_context = build_root_config_context(settings, config_dir, &options, show_suggestions);
     let per_dir_contexts = if options.per_dir_config_search && options.config_search {
@@ -624,6 +629,16 @@ fn run_check_inner(
     let validator_templates: std::sync::Mutex<
         std::collections::HashMap<String, Arc<ValidatorTemplate>>,
     > = std::sync::Mutex::new(std::collections::HashMap::new());
+
+    let show_progress =
+        options.cspell_compat_mode && !options.no_progress && !options.quiet && !options.silent;
+    let progress_total = files.len();
+    let progress_counter = std::sync::atomic::AtomicUsize::new(0);
+    let progress_cwd = if show_progress {
+        Some(options.cwd())
+    } else {
+        None
+    };
 
     let results: Vec<(PathBuf, String, Vec<ValidationIssue>)> = files
         .par_iter()
@@ -659,6 +674,12 @@ fn run_check_inner(
                 eprintln!("Checking: {}", file.display());
             }
 
+            let file_start = if show_progress {
+                Some(std::time::Instant::now())
+            } else {
+                None
+            };
+
             let context = file
                 .parent()
                 .and_then(|dir| config_search::find_nearest_dir_value(dir, &per_dir_contexts))
@@ -682,7 +703,7 @@ fn run_check_inner(
                 )
             };
             let needs_lang = language_id.is_some();
-            let effective_owned = if overridden.is_some() || needs_lang {
+            let mut effective_owned = if overridden.is_some() || needs_lang {
                 let mut s = overridden.unwrap_or_else(|| context_settings.clone());
                 if let Some(ref lang) = language_id {
                     s.language_id = Some(lang.clone());
@@ -691,8 +712,9 @@ fn run_check_inner(
             } else {
                 None
             };
-            let effective_settings = effective_owned.as_ref().unwrap_or(context_settings);
-            if resolve_language_setting_scalars(effective_settings, Some(file)).enabled
+            // Pre-check enabled before reading the file (locale not yet applied)
+            let pre_settings = effective_owned.as_ref().unwrap_or(context_settings);
+            if resolve_language_setting_scalars(pre_settings, Some(file)).enabled
                 == Some(false)
             {
                 return None;
@@ -709,6 +731,14 @@ fn run_check_inner(
                 }
             };
 
+            // Apply in-doc locale directive: changes which languageSettings
+            // match, affecting active dictionaries for this file.
+            if let Some(locale) = extract_indoc_locale(&content) {
+                let s = effective_owned.get_or_insert_with(|| context_settings.clone());
+                s.language = Some(locale);
+            }
+
+            let effective_settings = effective_owned.as_ref().unwrap_or(context_settings);
             let lang_ids = effective_owned
                 .is_none()
                 .then(|| active_language_ids(effective_settings, Some(file)));
@@ -758,15 +788,21 @@ fn run_check_inner(
             }
             let mut issues = validator.validate_text(&content);
 
-            // Validate directives if requested
-            if validate_directives {
-                let directive_issues = check_directives(&content);
-                issues.extend(directive_issues);
-                issues.sort_by(|a, b| a.offset.cmp(&b.offset));
-            }
+
 
             // Apply per-file total issue limit (cspell's maxNumberOfProblems, default 10000)
             issues = apply_issue_limits(issues, effective_settings.max_number_of_problems);
+
+            if let Some(start) = file_start {
+                let idx = progress_counter.fetch_add(1, std::sync::atomic::Ordering::Relaxed) + 1;
+                let elapsed = start.elapsed();
+                let elapsed_ms = elapsed.as_secs_f64() * 1000.0;
+                let rel_path = progress_cwd
+                    .as_ref()
+                    .and_then(|cwd| file.strip_prefix(cwd).ok())
+                    .unwrap_or(file);
+                eprintln!("{idx}/{progress_total} {path} {elapsed_ms:.2}ms", path = rel_path.display());
+            }
 
             if issues.is_empty() {
                 if use_cache && let Ok(mut guard) = cache.lock() {
@@ -876,7 +912,15 @@ fn run_check_inner(
     let files_with_issues = results.len();
 
     if !options.no_summary && !quiet && format != "json" {
-        if total_issues > 0 {
+        if options.cspell_compat_mode {
+            eprintln!(
+                "CSpell: Files checked: {}, Issues found: {} in {} file{}.",
+                files_checked,
+                total_issues,
+                files_with_issues,
+                if files_with_issues == 1 { "" } else { "s" },
+            );
+        } else if total_issues > 0 {
             eprintln!(
                 "\nFound {} issue{} in {} file{}",
                 total_issues,
@@ -1106,8 +1150,8 @@ fn should_compute_suggestions(show_suggestions: Option<bool>) -> bool {
     show_suggestions == Some(true)
 }
 
-fn should_use_shared_word_cache(options: &CheckOptions, using_precompiled_settings: bool) -> bool {
-    using_precompiled_settings && !options.cspell_compat_mode
+fn should_use_shared_word_cache(_options: &CheckOptions, using_precompiled_settings: bool) -> bool {
+    using_precompiled_settings
 }
 pub fn build_validator(
     settings: &CSpellSettings,
@@ -1417,6 +1461,22 @@ fn resolve_pattern_token(
     }
 
     custom_out.extend(patterns::classify_custom_ignore_pattern(token));
+}
+
+/// Pre-scan text for `cspell:locale`/`cspell:language` directive.
+///
+/// cspell resolves the locale from in-doc settings before selecting
+/// which `languageSettings` entries match (`combineTextAndLanguageSettings`
+/// in `TextDocumentSettings.ts`). The last directive wins.
+fn extract_indoc_locale(text: &str) -> Option<String> {
+    use matchum_config::directives::{Directive, parse_directive};
+    let mut locale = None;
+    for line in text.lines() {
+        if let Some(Directive::Language(lang)) = parse_directive(line) {
+            locale = Some(lang);
+        }
+    }
+    locale
 }
 
 fn is_glob_pattern(s: &str) -> bool {
@@ -1943,11 +2003,13 @@ fn configure_walk_builder(
 ) {
     builder.hidden(!show_hidden);
     if cspell_compat_mode {
+        // cspell disables .ignore files but respects .gitignore during walk
+        // for performance (avoids traversing target/, node_modules/, etc.)
         builder
-            .git_ignore(false)
-            .git_global(false)
-            .git_exclude(false)
-            .ignore(false);
+            .ignore(false)
+            .git_ignore(use_gitignore)
+            .git_global(use_gitignore)
+            .git_exclude(use_gitignore);
     } else {
         builder.git_ignore(use_gitignore);
     }
@@ -2743,75 +2805,6 @@ fn read_file_mmap(path: &Path) -> Option<String> {
     }
 }
 
-// ---------------------------------------------------------------------------
-// Directive validation
-// ---------------------------------------------------------------------------
-
-/// Known directive prefixes (case-insensitive)
-const DIRECTIVE_PREFIXES: &[&str] = &["cspell:", "spell-checker:", "spellchecker:"];
-
-const KNOWN_DIRECTIVES: &[&str] = &[
-    "enable",
-    "disable",
-    "disable-line",
-    "disable-next",
-    "disable-next-line",
-    "word",
-    "words",
-    "ignore",
-    "ignoreWord",
-    "ignoreWords",
-    "ignore-word",
-    "ignore-words",
-    "includeRegExp",
-    "ignoreRegExp",
-    "local",
-    "locale",
-    "language",
-    "dictionaries",
-    "dictionary",
-    "forbid",
-    "forbidWord",
-    "forbid-word",
-    "flag",
-    "flagWord",
-    "flag-word",
-    "enableCompoundWords",
-    "enableAllowCompoundWords",
-    "disableCompoundWords",
-    "disableAllowCompoundWords",
-    "enableCaseSensitive",
-    "disableCaseSensitive",
-];
-
-fn check_directives(content: &str) -> Vec<ValidationIssue> {
-    let mut issues = Vec::new();
-    let directive_re = regex::Regex::new(r"(?i)(?:cspell|spell-?checker)\s*:\s*(\S+)").unwrap();
-
-    for (line_idx, line) in content.lines().enumerate() {
-        for cap in directive_re.captures_iter(line) {
-            let directive = &cap[1];
-            let directive_lower = directive.to_lowercase();
-            let is_known = KNOWN_DIRECTIVES
-                .iter()
-                .any(|d| d.to_lowercase() == directive_lower);
-            if !is_known {
-                let _ = DIRECTIVE_PREFIXES; // suppress unused warning
-                let match_start = cap.get(1).unwrap().start();
-                issues.push(ValidationIssue {
-                    word: format!("cspell:{directive}"),
-                    offset: 0,
-                    line: line_idx + 1,
-                    column: match_start + 1,
-                    is_forbidden: false,
-                    is_known_typo: false,
-                    suggestions: vec![],
-                });
-            }
-        }
-    }
-    issues
-}
 
 // ---------------------------------------------------------------------------
 // Cache system
@@ -6298,20 +6291,18 @@ dictionaries = ["en_us"]
     }
 
     #[test]
-    fn shared_word_cache_is_disabled_in_cspell_compat_mode() {
+    fn shared_word_cache_enabled_for_precompiled_settings() {
         let compat_options = CheckOptions {
             cspell_compat_mode: true,
             ..CheckOptions::default()
         };
         assert!(
-            !should_use_shared_word_cache(&compat_options, true),
-            "compat mode must avoid cross-file shared word cache"
+            should_use_shared_word_cache(&compat_options, true),
+            "precompiled settings allow shared word cache"
         );
-
-        let native_options = CheckOptions::default();
         assert!(
-            should_use_shared_word_cache(&native_options, true),
-            "native mode can keep the precompiled shared cache"
+            !should_use_shared_word_cache(&compat_options, false),
+            "non-precompiled settings disable shared word cache"
         );
     }
 }

@@ -21,7 +21,7 @@ aho-corasick = { workspace = true }
 globset = { workspace = true }
 thiserror = { workspace = true }
 toml = { workspace = true }
-serde_yaml = { workspace = true }
+serde_yml = { workspace = true }
 ureq = { workspace = true, optional = true }
 rustls = { workspace = true, optional = true }
 tar = { workspace = true, optional = true }
